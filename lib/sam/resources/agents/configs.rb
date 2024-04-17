@@ -11,7 +11,7 @@ module Sam
           @chat = Sam::Resources::Agents::Configs::Chat.new(client: client)
         end
 
-        # @param agentId [String]
+        # @param agent_id [String]
         # @param integration [Symbol]
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
         # 
@@ -24,7 +24,7 @@ module Sam
           @client.request(req, opts)
         end
 
-        # @param agentId [String]
+        # @param agent_id [String]
         # 
         # @param integration [Symbol]
         # 

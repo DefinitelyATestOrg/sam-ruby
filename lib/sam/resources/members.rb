@@ -7,7 +7,7 @@ module Sam
         @client = client
       end
 
-      # @param memberId [String]
+      # @param member_id [String]
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :id
@@ -29,7 +29,7 @@ module Sam
         @client.request(req, opts)
       end
 
-      # @param memberId [String]
+      # @param member_id [String]
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
       # @return [NilClass]
