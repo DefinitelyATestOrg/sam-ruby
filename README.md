@@ -7,7 +7,7 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 
 ## Documentation
 
-Documentation for the most recent version of this gem can be found [on RubyDoc](https://rubydoc.info/github/stainless-sdks/sam/sam-ruby).
+Documentation for the most recent version of this gem can be found [on RubyDoc](https://rubydoc.info/github/DefinitelyATestOrg/sam-ruby).
 
 The underlying REST API documentation can be found [on docs.elborai.software](https://docs.elborai.software).
 
@@ -17,7 +17,7 @@ To use this gem during the beta, install directly from GitHub with Bundler by
 adding the following to your application's `Gemfile`:
 
 ```ruby
-gem "sam", git: "https://github.com/stainless-sdks/sam/sam-ruby", branch: "main"
+gem "sam", git: "https://github.com/DefinitelyATestOrg/sam-ruby", branch: "main"
 ```
 
 To fetch an initial copy of the gem:
@@ -44,83 +44,6 @@ sam = Sam::Client.new(
 
 action_set = sam.action_sets.retrieve("abc123")
 ```
-
-### Resources
-
-Functionality in this library is organized around the resources exposed by the
-Sam API. Methods on those resources correspond to endpoints on the API,
-e.g.:
-
-```ruby
-card = sam.cards.create({
-  account_id: "account_in71c4a4ph0vgo2ql3ky",
-  description: "Card for Alice"
-})
-```
-
-Methods that reference an object will take an identifier for that object as
-the first argument:
-
-```ruby
-card = sam.cards.retrieve("card_ou2s0hwk5rn6kn2e7xg2")
-```
-
-When data beyond an identifier is needed for a request, such as with create or
-update, pass a Hash with Symbol keys:
-
-```ruby
-updated_card = sam.cards.update(
-  "card_ou2s0hwk5rn6kn2e7xg2",
-  {description: "New description"}
-)
-```
-
-All methods take request options as their last argument. These can be used to
-modify the behaviour of the client for that particular request. This argument
-can always be omitted if not needed. See the `Sam::RequestOptions`
-docs for details:
-
-```ruby
-card = sam.cards.update(
-  "card_ou2s0hwk5rn6kn2e7xg2",
-  {description: "New description"},
-  {max_retries: 1}
-)
-```
-
-Detailed documentation for all resources can be found in the `Sam::Resources`
-namespace.
-
-### Models
-
-The library provides Ruby classes for all responses returned by the API.
-Instances of these classes allow convenient access to parsed response data:
-
-```ruby
-card = sam.cards.create({
-  account_id: "account_in71c4a4ph0vgo2ql3ky",
-  description: "Card for Bob"
-})
-card.expiration_year
-#=> 2028
-```
-
-You can also access model attribute data using key lookup syntax:
-
-```ruby
-card[:expiration_year]
-#=> 2028
-```
-
-To get all parsed data as a Hash, use `to_h`:
-
-```ruby
-card_data = card.to_h
-card_data.keys
-#=> [:id, :account_id, :created_at, :description, ...]
-```
-
-See the `Sam::Models` docs for details.
 
 ### Errors
 
