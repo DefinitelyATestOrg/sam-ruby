@@ -43,7 +43,7 @@ class Sam::Test::UtilTest < Test::Unit::TestCase
       {b: {b2: 1, b3: {d: 5}}},
       Sam::Util.deep_merge(
         {b: {b2: 1, b3: {c: 4, d: 5}}},
-        {b: {b2: 1, b3: {c: Sam::OMIT, d: 5}}}
+        {b: {b2: 1, b3: {c: Sam::Util::OMIT, d: 5}}}
       )
     )
   end
