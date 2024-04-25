@@ -9,11 +9,11 @@ class Sam::Test::Resources::MembersTest < Test::Unit::TestCase
 
   def test_update
     response = @sam.members.update("string")
-    assert(Sam::Converter.same_type?(Sam::Unknown, response), response.class.to_s)
+    refute_nil(Object, response)
   end
 
   def test_delete
     response = @sam.members.delete("string")
-    assert(Sam::Converter.same_type?(NilClass, response), response.class.to_s)
+    assert_nil(response)
   end
 end

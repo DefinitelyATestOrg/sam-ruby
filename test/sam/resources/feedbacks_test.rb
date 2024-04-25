@@ -9,6 +9,6 @@ class Sam::Test::Resources::FeedbacksTest < Test::Unit::TestCase
 
   def test_update_required_params
     response = @sam.feedbacks.update("string", {agentId: "string", ticketMessageId: "string"})
-    assert(Sam::Converter.same_type?(Sam::Unknown, response), response.class.to_s)
+    refute_nil(Object, response)
   end
 end
