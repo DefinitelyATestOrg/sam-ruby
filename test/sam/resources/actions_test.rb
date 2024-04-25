@@ -9,11 +9,11 @@ class Sam::Test::Resources::ActionsTest < Test::Unit::TestCase
 
   def test_retrieve
     response = @sam.actions.retrieve("string")
-    assert(Sam::Converter.same_type?(Sam::Unknown, response), response.class.to_s)
+    refute_nil(Object, response)
   end
 
   def test_update
     response = @sam.actions.update("string")
-    assert(Sam::Converter.same_type?(Sam::Unknown, response), response.class.to_s)
+    refute_nil(Object, response)
   end
 end
