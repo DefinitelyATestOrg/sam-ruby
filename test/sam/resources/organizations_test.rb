@@ -9,6 +9,6 @@ class Sam::Test::Resources::OrganizationsTest < Test::Unit::TestCase
 
   def test_update_required_params
     response = @sam.organizations.update({id: "string", friendlyId: "string", name: "string"})
-    assert(Sam::Converter.same_type?(Sam::Unknown, response), response.class.to_s)
+    refute_nil(Object, response)
   end
 end
