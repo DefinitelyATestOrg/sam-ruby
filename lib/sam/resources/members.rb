@@ -26,13 +26,14 @@ module Sam
         req[:path] = "/api/v1/members/#{member_id}"
         req[:body] = params
         req[:headers] = {"Accept" => "*/*"}
+        req[:model] = Sam::Unknown
         @client.request(req, opts)
       end
 
       # @param member_id [String]
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [NilClass]
+      # @return [nil]
       def delete(member_id, opts = {})
         req = {}
         req[:method] = :delete

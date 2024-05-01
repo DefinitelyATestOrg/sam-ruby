@@ -22,6 +22,7 @@ module Sam
         req[:path] = "/api/v1/organizations"
         req[:body] = params
         req[:headers] = {"Accept" => "*/*"}
+        req[:model] = Sam::Unknown
         @client.request(req, opts)
       end
     end
