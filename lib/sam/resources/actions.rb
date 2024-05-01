@@ -16,6 +16,7 @@ module Sam
         req[:method] = :get
         req[:path] = "/api/v1/actions/#{action_id}"
         req[:headers] = {"Accept" => "*/*"}
+        req[:model] = Sam::Unknown
         @client.request(req, opts)
       end
 
@@ -44,6 +45,7 @@ module Sam
         req[:path] = "/api/v1/actions/#{action_id}"
         req[:body] = params
         req[:headers] = {"Accept" => "*/*"}
+        req[:model] = Sam::Unknown
         @client.request(req, opts)
       end
     end

@@ -27,6 +27,7 @@ module Sam
         req[:path] = "/api/v1/feedbacks/#{feedback_id}"
         req[:body] = params
         req[:headers] = {"Accept" => "*/*"}
+        req[:model] = Sam::Unknown
         @client.request(req, opts)
       end
     end

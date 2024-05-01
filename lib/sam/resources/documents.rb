@@ -21,6 +21,7 @@ module Sam
         req[:path] = "/api/v1/document/#{doc_id}"
         req[:query] = params
         req[:headers] = {"Accept" => "*/*"}
+        req[:model] = Sam::Unknown
         @client.request(req, opts)
       end
 
@@ -50,13 +51,14 @@ module Sam
         req[:path] = "/api/v1/document/#{doc_id}"
         req[:body] = params
         req[:headers] = {"Accept" => "*/*"}
+        req[:model] = Sam::Unknown
         @client.request(req, opts)
       end
 
       # @param doc_id [String]
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [NilClass]
+      # @return [nil]
       def delete(doc_id, opts = {})
         req = {}
         req[:method] = :delete

@@ -16,6 +16,7 @@ module Sam
         req[:method] = :get
         req[:path] = "/api/v1/referencesets/#{id}"
         req[:headers] = {"Accept" => "*/*"}
+        req[:model] = Sam::Unknown
         @client.request(req, opts)
       end
 
@@ -36,13 +37,14 @@ module Sam
         req[:path] = "/api/v1/referencesets/#{params.fetch(:path_id)}"
         req[:body] = params
         req[:headers] = {"Accept" => "*/*"}
+        req[:model] = Sam::Unknown
         @client.request(req, opts)
       end
 
       # @param id [String]
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [NilClass]
+      # @return [nil]
       def delete(id, opts = {})
         req = {}
         req[:method] = :delete
