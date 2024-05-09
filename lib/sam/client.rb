@@ -8,17 +8,35 @@ module Sam
     # Client options.
     attr_reader :auth_token
 
-    # Resources.
-    attr_reader :reference_sets,
-                :reference_sessions,
-                :organizations,
-                :members,
-                :feedbacks,
-                :documents,
-                :corpora,
-                :agents,
-                :action_sets,
-                :actions
+    # @return [Sam::Resources::ReferenceSets]
+    attr_reader :reference_sets
+
+    # @return [Sam::Resources::ReferenceSessions]
+    attr_reader :reference_sessions
+
+    # @return [Sam::Resources::Organizations]
+    attr_reader :organizations
+
+    # @return [Sam::Resources::Members]
+    attr_reader :members
+
+    # @return [Sam::Resources::Feedbacks]
+    attr_reader :feedbacks
+
+    # @return [Sam::Resources::Documents]
+    attr_reader :documents
+
+    # @return [Sam::Resources::Corpora]
+    attr_reader :corpora
+
+    # @return [Sam::Resources::Agents]
+    attr_reader :agents
+
+    # @return [Sam::Resources::ActionSets]
+    attr_reader :action_sets
+
+    # @return [Sam::Resources::Actions]
+    attr_reader :actions
 
     # @!visibility private
     def auth_headers
