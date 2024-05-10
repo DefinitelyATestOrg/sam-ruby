@@ -4,6 +4,7 @@ module Sam
   module Resources
     class Agents
       class Configs
+        # @return [Sam::Resources::Agents::Configs::Chat]
         attr_reader :chat
 
         def initialize(client:)

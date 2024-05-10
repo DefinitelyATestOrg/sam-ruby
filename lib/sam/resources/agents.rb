@@ -3,7 +3,11 @@
 module Sam
   module Resources
     class Agents
-      attr_reader :hidden_tags, :configs
+      # @return [Sam::Resources::Agents::HiddenTags]
+      attr_reader :hidden_tags
+
+      # @return [Sam::Resources::Agents::Configs]
+      attr_reader :configs
 
       def initialize(client:)
         @client = client
