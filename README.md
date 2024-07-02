@@ -1,15 +1,13 @@
-# Sam Ruby API library
+# Increase Ruby API library
 
-The Sam Ruby library provides convenient access to the Sam REST API from any Ruby 3.0+
+The Increase Ruby library provides convenient access to the Increase REST API from any Ruby 3.0+
 application.
-
-It is generated with [Stainless](https://www.stainlessapi.com/).
 
 ## Documentation
 
-Documentation for the most recent version of this gem can be found [on RubyDoc](https://rubydoc.info/github/DefinitelyATestOrg/sam-ruby).
+Documentation for the most recent version of this gem can be found [on RubyDoc](https://rubydoc.info/github/increase/increase-ruby).
 
-The underlying REST API documentation can be found [on docs.elborai.software](https://docs.elborai.software).
+The underlying REST API documentation can be found [on increase.com](https://increase.com/documentation).
 
 ## Installation
 
@@ -17,7 +15,7 @@ To use this gem during the beta, install directly from GitHub with Bundler by
 adding the following to your application's `Gemfile`:
 
 ```ruby
-gem "sam", git: "https://github.com/DefinitelyATestOrg/sam-ruby", branch: "main"
+gem "increase", git: "https://github.com/increase/increase-ruby", branch: "main"
 ```
 
 To fetch an initial copy of the gem:
@@ -30,31 +28,34 @@ To update the version used by your application when updates are pushed to
 GitHub:
 
 ```sh
-bundle update sam
+bundle update increase
 ```
 
 ## Usage
 
 ```ruby
-require "sam"
+require "increase"
 
-sam = Sam::Client.new(
-  auth_token: "My Auth Token" # defaults to ENV["MAVENAGI_AUTH_TOKEN"]
+increase = Increase::Client.new(
+  api_key: "My API Key", # defaults to ENV["INCREASE_API_KEY"]
+  environment: "sandbox" # defaults to "production"
 )
 
-action_set = sam.action_sets.retrieve("abc123")
+account = increase.accounts.create(name: "My First Increase Account")
+
+puts account.id
 ```
 
 ### Errors
 
 When the library is unable to connect to the API, or if the API returns a
 non-success status code (i.e., 4xx or 5xx response), a subclass of
-`Sam::HTTP::Error` will be thrown:
+`Increase::HTTP::Error` will be thrown:
 
 ```ruby
 begin
-  agent = sam.agents.retrieve("abc123")
-rescue Sam::HTTP::Error => e
+  account = increase.accounts.create
+rescue Increase::HTTP::Error => e
   puts e.code # 400
 end
 ```
@@ -85,12 +86,12 @@ You can use the `max_retries` option to configure or disable this:
 
 ```ruby
 # Configure the default for all requests:
-sam = Sam::Client.new(
+increase = Increase::Client.new(
   max_retries: 0 # default is 2
 )
 
 # Or, configure per-request:
-sam.agents.retrieve("abc123", max_retries: 5)
+increase.accounts.create(name: "Jack", max_retries: 5)
 ```
 
 ## Versioning
