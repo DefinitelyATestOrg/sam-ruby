@@ -5,7 +5,7 @@ application.
 
 ## Documentation
 
-Documentation for the most recent version of this gem can be found [on RubyDoc](https://rubydoc.info/github/increase/increase-ruby).
+Documentation for the most recent version of this gem can be found [on RubyDoc](https://rubydoc.info/github/DefinitelyATestOrg/sam-ruby).
 
 The underlying REST API documentation can be found on [increase.com](https://increase.com/documentation).
 
@@ -15,7 +15,7 @@ To use this gem during the beta, install directly from GitHub with Bundler by
 adding the following to your application's `Gemfile`:
 
 ```ruby
-gem "increase", git: "https://github.com/increase/increase-ruby", branch: "main"
+gem "sam-ruby", git: "https://github.com/DefinitelyATestOrg/sam-ruby", branch: "main"
 ```
 
 To fetch an initial copy of the gem:
@@ -28,15 +28,15 @@ To update the version used by your application when updates are pushed to
 GitHub:
 
 ```sh
-bundle update increase
+bundle update sam-ruby
 ```
 
 ## Usage
 
 ```ruby
-require "increase"
+require "sam-ruby"
 
-increase = Increase::Client.new(
+increase = SamRuby::Client.new(
   api_key: "My API Key", # defaults to ENV["INCREASE_API_KEY"]
   environment: "sandbox" # defaults to "production"
 )
@@ -50,12 +50,12 @@ puts account.id
 
 When the library is unable to connect to the API, or if the API returns a
 non-success status code (i.e., 4xx or 5xx response), a subclass of
-`Increase::HTTP::Error` will be thrown:
+`SamRuby::HTTP::Error` will be thrown:
 
 ```ruby
 begin
   account = increase.accounts.create
-rescue Increase::HTTP::Error => e
+rescue SamRuby::HTTP::Error => e
   puts e.code # 400
 end
 ```
@@ -86,7 +86,7 @@ You can use the `max_retries` option to configure or disable this:
 
 ```ruby
 # Configure the default for all requests:
-increase = Increase::Client.new(
+increase = SamRuby::Client.new(
   max_retries: 0 # default is 2
 )
 
