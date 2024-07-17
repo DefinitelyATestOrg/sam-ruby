@@ -1,0 +1,24 @@
+# frozen_string_literal: true
+
+require_relative "../test_helper"
+
+class SamRuby::Test::Resources::ExportsTest < Test::Unit::TestCase
+  def setup
+    @increase = SamRuby::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
+  end
+
+  def test_create_required_params
+    response = @increase.exports.create({category: "transaction_csv"})
+    assert_kind_of(SamRuby::Models::Export, response)
+  end
+
+  def test_retrieve
+    response = @increase.exports.retrieve("export_id")
+    assert_kind_of(SamRuby::Models::Export, response)
+  end
+
+  def test_list
+    response = @increase.exports.list 
+    assert_kind_of(SamRuby::Page, response)
+  end
+end
