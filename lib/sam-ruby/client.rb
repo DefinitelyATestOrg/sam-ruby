@@ -14,9 +14,6 @@ module SamRuby
     # @return [SamRuby::Resources::Stores]
     attr_reader :stores
 
-    # @return [SamRuby::Resources::Store]
-    attr_reader :store
-
     # @return [SamRuby::Resources::Users]
     attr_reader :users
 
@@ -30,7 +27,6 @@ module SamRuby
 
       @pets = SamRuby::Resources::Pets.new(client: self)
       @stores = SamRuby::Resources::Stores.new(client: self)
-      @store = SamRuby::Resources::Store.new(client: self)
       @users = SamRuby::Resources::Users.new(client: self)
     end
 
