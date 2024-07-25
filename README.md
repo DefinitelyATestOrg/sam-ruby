@@ -1,13 +1,15 @@
-# Increase Ruby API library
+# Sam Ruby API library
 
-The Increase Ruby library provides convenient access to the Increase REST API from any Ruby 3.0+
+The Sam Ruby library provides convenient access to the Sam REST API from any Ruby 3.0+
 application.
+
+It is generated with [Stainless](https://www.stainlessapi.com/).
 
 ## Documentation
 
 Documentation for the most recent version of this gem can be found [on RubyDoc](https://rubydoc.info/github/DefinitelyATestOrg/sam-ruby).
 
-The underlying REST API documentation can be found on [increase.com](https://increase.com).
+The underlying REST API documentation can be found on [docs.sam.com](https://docs.sam.com).
 
 ## Installation
 
@@ -36,14 +38,11 @@ bundle update sam-ruby
 ```ruby
 require "sam-ruby"
 
-increase = SamRuby::Client.new(
-  api_key: "My API Key", # defaults to ENV["INCREASE_API_KEY"]
-  environment: "sandbox" # defaults to "production"
-)
+sam = SamRuby::Client.new
 
-account = increase.accounts.create(name: "My First Increase Account")
+order = sam.stores.create_order
 
-puts account.id
+puts order.id
 ```
 
 ### Errors
@@ -54,7 +53,7 @@ non-success status code (i.e., 4xx or 5xx response), a subclass of
 
 ```ruby
 begin
-  account = increase.accounts.create
+  store = sam.stores.create_order
 rescue SamRuby::HTTP::Error => e
   puts e.code # 400
 end
@@ -86,12 +85,12 @@ You can use the `max_retries` option to configure or disable this:
 
 ```ruby
 # Configure the default for all requests:
-increase = SamRuby::Client.new(
+sam = SamRuby::Client.new(
   max_retries: 0 # default is 2
 )
 
 # Or, configure per-request:
-increase.accounts.create(name: "Jack", max_retries: 5)
+sam.stores.create_order(max_retries: 5)
 ```
 
 ## Versioning

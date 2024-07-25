@@ -5,9 +5,9 @@ require_relative "lib/sam-ruby/version"
 Gem::Specification.new do |s|
   s.name = "sam-ruby"
   s.version = SamRuby::VERSION
-  s.summary = "Ruby library to access the Increase API"
-  s.authors = ["Increase"]
-  s.email = "dev-feedback@increase.com"
+  s.summary = "Ruby library to access the Sam API"
+  s.authors = ["Sam"]
+  s.email = "apiteam@swagger.io"
   s.files = Dir["lib/**/*.rb"]
   s.extra_rdoc_files = ["README.md"]
   s.required_ruby_version = ">= 3.0.0"
