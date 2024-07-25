@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2024-07-25)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/DefinitelyATestOrg/sam-ruby/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **api:** manual updates ([#28](https://github.com/DefinitelyATestOrg/sam-ruby/issues/28)) ([759dbff](https://github.com/DefinitelyATestOrg/sam-ruby/commit/759dbffcb2a316c5e435a286b6b986b9c17aab24))
+
 ## 0.1.0-alpha.1 (2024-07-25)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/DefinitelyATestOrg/sam-ruby/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
