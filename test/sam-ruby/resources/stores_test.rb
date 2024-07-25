@@ -7,6 +7,16 @@ class SamRuby::Test::Resources::StoresTest < Test::Unit::TestCase
     @sam = SamRuby::Client.new(base_url: "http://localhost:4010")
   end
 
+  def test_retrieve
+    response = @sam.stores.retrieve(0)
+    assert_kind_of(SamRuby::Models::Order, response)
+  end
+
+  def test_delete
+    response = @sam.stores.delete(0)
+    assert_nil(response)
+  end
+
   def test_create_order
     response = @sam.stores.create_order 
     assert_kind_of(SamRuby::Models::Order, response)
