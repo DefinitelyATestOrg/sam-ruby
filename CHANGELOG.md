@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2024-08-09)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/DefinitelyATestOrg/sam-ruby/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Chores
+
+* **ci:** bump prism mock server version ([#31](https://github.com/DefinitelyATestOrg/sam-ruby/issues/31)) ([284863f](https://github.com/DefinitelyATestOrg/sam-ruby/commit/284863fc8a2b79a28947a3c2f51c04c658154aef))
+
 ## 0.1.0-alpha.2 (2024-07-25)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/DefinitelyATestOrg/sam-ruby/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
