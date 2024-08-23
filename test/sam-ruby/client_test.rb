@@ -105,6 +105,52 @@ class SamRubyTest < Test::Unit::TestCase
     assert_equal(requester.attempts.last[:headers]["X-Stainless-Mock-Slept"], 1.3)
   end
 
+  def test_client_redirect_307
+    sam = SamRuby::Client.new(base_url: "http://localhost:4010")
+    requester = MockRequester.new(307, {}, {"location" => "/redirected"})
+    sam.requester = requester
+    assert_raise(SamRuby::HTTP::APIConnectionError) do
+      sam.stores.create_order(extra_headers: {})
+    end
+    assert_equal(requester.attempts[1][:path], "/redirected")
+    assert_equal(requester.attempts[1][:method], requester.attempts[0][:method])
+    assert_equal(requester.attempts[1][:body], requester.attempts[0][:body])
+    assert_equal(requester.attempts[1][:headers]["Content-Type"], requester.attempts[0][:headers]["Content-Type"])
+  end
+
+  def test_client_redirect_303
+    sam = SamRuby::Client.new(base_url: "http://localhost:4010")
+    requester = MockRequester.new(303, {}, {"location" => "/redirected"})
+    sam.requester = requester
+    assert_raise(SamRuby::HTTP::APIConnectionError) do
+      sam.stores.create_order(extra_headers: {})
+    end
+    assert_equal(requester.attempts[1][:path], "/redirected")
+    assert_equal(requester.attempts[1][:method], :get)
+    assert_equal(requester.attempts[1][:body], nil)
+    assert_equal(requester.attempts[1][:headers]["Content-Type"], nil)
+  end
+
+  def test_client_redirect_auth_keep_same_origin
+    sam = SamRuby::Client.new(base_url: "http://localhost:4010")
+    requester = MockRequester.new(307, {}, {"location" => "/redirected"})
+    sam.requester = requester
+    assert_raise(SamRuby::HTTP::APIConnectionError) do
+      sam.stores.create_order(extra_headers: {"Authorization" => "Bearer xyz"})
+    end
+    assert_equal(requester.attempts[1][:headers]["Authorization"], requester.attempts[0][:headers]["Authorization"])
+  end
+
+  def test_client_redirect_auth_strip_cross_origin
+    sam = SamRuby::Client.new(base_url: "http://localhost:4010")
+    requester = MockRequester.new(307, {}, {"location" => "https://example.com/redirected"})
+    sam.requester = requester
+    assert_raise(SamRuby::HTTP::APIConnectionError) do
+      sam.stores.create_order(extra_headers: {"Authorization" => "Bearer xyz"})
+    end
+    assert_equal(requester.attempts[1][:headers]["Authorization"], nil)
+  end
+
   def test_default_headers
     sam = SamRuby::Client.new(base_url: "http://localhost:4010")
     requester = MockRequester.new(200, {}, {"x-stainless-mock-sleep" => "true"})
