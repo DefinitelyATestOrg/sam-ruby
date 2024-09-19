@@ -25,8 +25,16 @@ module SamRuby
 
       # @!attribute [rw] status
       #   Order Status
+      #   One of the constants defined in {SamRuby::Models::Order::Status}
       #   @return [Symbol]
-      optional :status, SamRuby::Enum.new(:placed, :approved, :delivered)
+      optional :status, enum: -> { SamRuby::Models::Order::Status }
+
+      # Order Status
+      class Status < SamRuby::Enum
+        PLACED = :placed
+        APPROVED = :approved
+        DELIVERED = :delivered
+      end
     end
   end
 end
