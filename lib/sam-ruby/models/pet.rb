@@ -21,8 +21,9 @@ module SamRuby
 
       # @!attribute [rw] status
       #   pet status in the store
+      #   One of the constants defined in {SamRuby::Models::Pet::Status}
       #   @return [Symbol]
-      optional :status, SamRuby::Enum.new(:available, :pending, :sold)
+      optional :status, enum: -> { SamRuby::Models::Pet::Status }
 
       # @!attribute [rw] tags
       #   @return [Array<SamRuby::Models::Pet::Tag>]
@@ -36,6 +37,13 @@ module SamRuby
         # @!attribute [rw] name_
         #   @return [String]
         optional :name_, String
+      end
+
+      # pet status in the store
+      class Status < SamRuby::Enum
+        AVAILABLE = :available
+        PENDING = :pending
+        SOLD = :sold
       end
 
       class Tag < BaseModel
