@@ -20,8 +20,8 @@ module SamRuby
       optional :quantity, Integer
 
       # @!attribute [rw] ship_date
-      #   @return [String]
-      optional :ship_date, String
+      #   @return [DateTime]
+      optional :ship_date, DateTime
 
       # @!attribute [rw] status
       #   Order Status
