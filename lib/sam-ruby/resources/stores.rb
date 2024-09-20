@@ -48,7 +48,7 @@ module SamRuby
       # @option params [Boolean] :complete
       # @option params [Integer] :pet_id
       # @option params [Integer] :quantity
-      # @option params [String] :ship_date
+      # @option params [DateTime] :ship_date
       # @option params [Symbol] :status Order Status
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
