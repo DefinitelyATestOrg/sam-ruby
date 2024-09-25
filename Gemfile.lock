@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    sam-ruby (0.1.0.pre.alpha.2)
+      connection_pool
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -37,11 +43,12 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  connection_pool
   rake
   rubocop
-  syntax_tree
+  sam-ruby!
   test-unit
+  webrick
+  yard
 
 BUNDLED WITH
    2.4.10

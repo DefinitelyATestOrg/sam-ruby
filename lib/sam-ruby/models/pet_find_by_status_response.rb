@@ -2,6 +2,5 @@
 
 module SamRuby
   module Models
-
   end
 end

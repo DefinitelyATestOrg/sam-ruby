@@ -18,12 +18,12 @@ class SamRuby::Test::Resources::StoresTest < Test::Unit::TestCase
   end
 
   def test_create_order
-    response = @sam.stores.create_order 
+    response = @sam.stores.create_order
     assert_kind_of(SamRuby::Models::Order, response)
   end
 
   def test_inventory
-    response = @sam.stores.inventory 
+    response = @sam.stores.inventory
     assert_kind_of(Hash, response)
   end
 end
