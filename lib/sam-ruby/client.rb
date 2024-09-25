@@ -23,7 +23,7 @@ module SamRuby
 
       max_retries ||= DEFAULT_MAX_RETRIES
 
-      super(base_url: base_url, max_retries: max_retries)
+      super
 
       @pets = SamRuby::Resources::Pets.new(client: self)
       @stores = SamRuby::Resources::Stores.new(client: self)

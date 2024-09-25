@@ -8,7 +8,7 @@ module SamRuby
       end
 
       # This can only be done by the logged in user.
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Integer] :id
       # @option params [String] :email
@@ -18,9 +18,9 @@ module SamRuby
       # @option params [String] :phone
       # @option params [String] :username
       # @option params [Integer] :user_status User Status
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [nil]
       def create(params = {}, opts = {})
         req = {}
@@ -32,10 +32,10 @@ module SamRuby
       end
 
       # Get user by user name
-      # 
+      #
       # @param username [String] The name that needs to be fetched. Use user1 for testing.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [SamRuby::Models::User]
       def retrieve(username, opts = {})
         req = {}
@@ -46,7 +46,7 @@ module SamRuby
       end
 
       # This can only be done by the logged in user.
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :body_username Body param:
       # @option params [Integer] :id Body param:
@@ -56,9 +56,9 @@ module SamRuby
       # @option params [String] :password Body param:
       # @option params [String] :phone Body param:
       # @option params [Integer] :user_status Body param: User Status
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [nil]
       def update(params = {}, opts = {})
         req = {}
@@ -70,10 +70,10 @@ module SamRuby
       end
 
       # This can only be done by the logged in user.
-      # 
+      #
       # @param username [String] The name that needs to be deleted
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [nil]
       def delete(username, opts = {})
         req = {}
@@ -84,12 +84,12 @@ module SamRuby
       end
 
       # Creates list of users with given input array
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Array<SamRuby::Models::User>] :body
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [SamRuby::Models::User]
       def create_with_list(params = {}, opts = {})
         req = {}
@@ -101,13 +101,13 @@ module SamRuby
       end
 
       # Logs user into the system
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :password The password for login in clear text
       # @option params [String] :username The user name for login
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [String]
       def login(params = {}, opts = {})
         req = {}
@@ -119,9 +119,9 @@ module SamRuby
       end
 
       # Logs out current logged in user session
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [nil]
       def logout(opts = {})
         req = {}
