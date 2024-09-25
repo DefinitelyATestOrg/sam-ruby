@@ -37,7 +37,7 @@ class SamRubyTest < Test::Unit::TestCase
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     sam.requester = requester
     assert_raise(SamRuby::HTTP::InternalServerError) do
-      sam.stores.create_order 
+      sam.stores.create_order
     end
     assert_equal(3, requester.attempts.length)
   end
@@ -47,7 +47,7 @@ class SamRubyTest < Test::Unit::TestCase
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     sam.requester = requester
     assert_raise(SamRuby::HTTP::InternalServerError) do
-      sam.stores.create_order 
+      sam.stores.create_order
     end
     assert_equal(4, requester.attempts.length)
   end
@@ -77,7 +77,7 @@ class SamRubyTest < Test::Unit::TestCase
     requester = MockRequester.new(500, {}, {"retry-after" => "1.3", "x-stainless-mock-sleep" => "true"})
     sam.requester = requester
     assert_raise(SamRuby::HTTP::InternalServerError) do
-      sam.stores.create_order 
+      sam.stores.create_order
     end
     assert_equal(2, requester.attempts.length)
     assert_equal(requester.attempts.last[:headers]["X-Stainless-Mock-Slept"], 1.3)
@@ -85,10 +85,18 @@ class SamRubyTest < Test::Unit::TestCase
 
   def test_client_retry_after_date
     sam = SamRuby::Client.new(base_url: "http://localhost:4010", max_retries: 1)
-    requester = MockRequester.new(500, {}, {"retry-after" => (Time.now + 2).httpdate, "x-stainless-mock-sleep" => "true", "x-stainless-mock-sleep-base" => (Time.now).httpdate})
+    requester = MockRequester.new(
+      500,
+      {},
+      {
+        "retry-after" => (Time.now + 2).httpdate,
+        "x-stainless-mock-sleep" => "true",
+        "x-stainless-mock-sleep-base" => Time.now.httpdate
+      }
+    )
     sam.requester = requester
     assert_raise(SamRuby::HTTP::InternalServerError) do
-      sam.stores.create_order 
+      sam.stores.create_order
     end
     assert_equal(2, requester.attempts.length)
     assert_equal(requester.attempts.last[:headers]["X-Stainless-Mock-Slept"], 2)
@@ -99,7 +107,7 @@ class SamRubyTest < Test::Unit::TestCase
     requester = MockRequester.new(500, {}, {"retry-after-ms" => "1300", "x-stainless-mock-sleep" => "true"})
     sam.requester = requester
     assert_raise(SamRuby::HTTP::InternalServerError) do
-      sam.stores.create_order 
+      sam.stores.create_order
     end
     assert_equal(2, requester.attempts.length)
     assert_equal(requester.attempts.last[:headers]["X-Stainless-Mock-Slept"], 1.3)
@@ -115,7 +123,10 @@ class SamRubyTest < Test::Unit::TestCase
     assert_equal(requester.attempts[1][:path], "/redirected")
     assert_equal(requester.attempts[1][:method], requester.attempts[0][:method])
     assert_equal(requester.attempts[1][:body], requester.attempts[0][:body])
-    assert_equal(requester.attempts[1][:headers]["Content-Type"], requester.attempts[0][:headers]["Content-Type"])
+    assert_equal(
+      requester.attempts[1][:headers]["Content-Type"],
+      requester.attempts[0][:headers]["Content-Type"]
+    )
   end
 
   def test_client_redirect_303
@@ -138,7 +149,10 @@ class SamRubyTest < Test::Unit::TestCase
     assert_raise(SamRuby::HTTP::APIConnectionError) do
       sam.stores.create_order(extra_headers: {"Authorization" => "Bearer xyz"})
     end
-    assert_equal(requester.attempts[1][:headers]["Authorization"], requester.attempts[0][:headers]["Authorization"])
+    assert_equal(
+      requester.attempts[1][:headers]["Authorization"],
+      requester.attempts[0][:headers]["Authorization"]
+    )
   end
 
   def test_client_redirect_auth_strip_cross_origin

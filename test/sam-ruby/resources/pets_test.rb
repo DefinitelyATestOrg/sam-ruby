@@ -18,7 +18,7 @@ class SamRuby::Test::Resources::PetsTest < Test::Unit::TestCase
   end
 
   def test_update_required_params
-    response = @sam.pets.update({name: "doggie", photoUrls: ["string", "string", "string"]})
+    response = @sam.pets.update({name: "doggie", photoUrls: %w[string string string]})
     assert_kind_of(SamRuby::Models::Pet, response)
   end
 
@@ -28,12 +28,12 @@ class SamRuby::Test::Resources::PetsTest < Test::Unit::TestCase
   end
 
   def test_find_by_status
-    response = @sam.pets.find_by_status 
+    response = @sam.pets.find_by_status
     assert_kind_of(Array, response)
   end
 
   def test_find_by_tags
-    response = @sam.pets.find_by_tags 
+    response = @sam.pets.find_by_tags
     assert_kind_of(Array, response)
   end
 
