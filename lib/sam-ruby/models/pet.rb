@@ -21,8 +21,7 @@ module SamRuby
 
       # @!attribute [rw] status
       #   pet status in the store
-      #   One of the constants defined in {SamRuby::Models::Pet::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, SamRuby::Models::Pet::Status]
       optional :status, enum: -> { SamRuby::Models::Pet::Status }
 
       # @!attribute [rw] tags
