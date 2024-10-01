@@ -5,9 +5,6 @@ module SamRuby
     # Default max number of retries to attempt after a failed retryable request.
     DEFAULT_MAX_RETRIES = 2
 
-    # Client options.
-    attr_reader
-
     # @return [SamRuby::Resources::Pets]
     attr_reader :pets
 
@@ -18,10 +15,13 @@ module SamRuby
     attr_reader :users
 
     # Creates and returns a new client for interacting with the API.
-    def initialize(base_url: nil, max_retries: nil)
+    #
+    # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
+    # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
+    #
+    # @return [SamRuby::Client]
+    def initialize(base_url: nil, max_retries: DEFAULT_MAX_RETRIES)
       base_url ||= "/api/v3"
-
-      max_retries ||= DEFAULT_MAX_RETRIES
 
       super
 

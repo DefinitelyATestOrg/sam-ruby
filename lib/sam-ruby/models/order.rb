@@ -25,8 +25,7 @@ module SamRuby
 
       # @!attribute [rw] status
       #   Order Status
-      #   One of the constants defined in {SamRuby::Models::Order::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, SamRuby::Models::Order::Status]
       optional :status, enum: -> { SamRuby::Models::Order::Status }
 
       # Order Status
