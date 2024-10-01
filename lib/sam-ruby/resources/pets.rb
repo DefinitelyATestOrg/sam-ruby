@@ -12,10 +12,10 @@ module SamRuby
       # @param pet_id [Integer] ID of pet that needs to be updated
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of pet that needs to be updated
-      # @option params [String] :status Status of pet that needs to be updated
+      # @option params [String, nil] :name Name of pet that needs to be updated
+      # @option params [String, nil] :status Status of pet that needs to be updated
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       def create(pet_id, params = {}, opts = {})
@@ -30,7 +30,7 @@ module SamRuby
       # Returns a single pet
       #
       # @param pet_id [Integer] ID of pet to return
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [SamRuby::Models::Pet]
       def retrieve(pet_id, opts = {})
@@ -46,12 +46,12 @@ module SamRuby
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :name
       # @option params [Array<String>] :photo_urls
-      # @option params [Integer] :id
-      # @option params [Category] :category
-      # @option params [Symbol] :status pet status in the store
-      # @option params [Array<Tag>] :tags
+      # @option params [Integer, nil] :id
+      # @option params [Category, nil] :category
+      # @option params [Symbol, Status, nil] :status pet status in the store
+      # @option params [Array<Tag>, nil] :tags
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [SamRuby::Models::Pet]
       def update(params = {}, opts = {})
@@ -68,9 +68,9 @@ module SamRuby
       # @param pet_id [Integer] Pet id to delete
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :api_key
+      # @option params [String, nil] :api_key
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       def delete(pet_id, _params = {}, opts = {})
@@ -84,9 +84,9 @@ module SamRuby
       # Multiple status values can be provided with comma separated strings
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Symbol] :status Status values that need to be considered for filter
+      # @option params [Symbol, Status, nil] :status Status values that need to be considered for filter
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Array<SamRuby::Models::Pet>]
       def find_by_status(params = {}, opts = {})
@@ -102,9 +102,9 @@ module SamRuby
       #   for testing.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<String>] :tags Tags to filter by
+      # @option params [Array<String>, nil] :tags Tags to filter by
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Array<SamRuby::Models::Pet>]
       def find_by_tags(params = {}, opts = {})
@@ -122,9 +122,9 @@ module SamRuby
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :body Body param:
-      # @option params [String] :additional_metadata Query param: Additional Metadata
+      # @option params [String, nil] :additional_metadata Query param: Additional Metadata
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [SamRuby::Models::APIResponse]
       def upload_image(pet_id, params = {}, opts = {})
