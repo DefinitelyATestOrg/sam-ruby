@@ -50,7 +50,7 @@ module SamRuby
       # @option params [Boolean, nil] :complete
       # @option params [Integer, nil] :pet_id
       # @option params [Integer, nil] :quantity
-      # @option params [DateTime, nil] :ship_date
+      # @option params [Time, nil] :ship_date
       # @option params [Symbol, Status, nil] :status Order Status
       #
       # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
