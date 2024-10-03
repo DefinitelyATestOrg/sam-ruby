@@ -38,7 +38,7 @@ class SamRuby::Test::Resources::PetsTest < Test::Unit::TestCase
   end
 
   def test_upload_image_required_params
-    response = @sam.pets.upload_image(0, {body: nil})
+    response = @sam.pets.upload_image(0, {body: [StringIO.new("some file contents"), {filename: "file.txt"}]})
     assert_kind_of(SamRuby::Models::APIResponse, response)
   end
 end

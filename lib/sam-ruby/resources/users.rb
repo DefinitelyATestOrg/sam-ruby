@@ -23,11 +23,13 @@ module SamRuby
       #
       # @return [nil]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/user"
-        req[:body] = params
-        req[:model] = NilClass
+        req = {
+          method: :post,
+          path: "/user",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: NilClass
+        }
         @client.request(req, opts)
       end
 
@@ -38,10 +40,11 @@ module SamRuby
       #
       # @return [SamRuby::Models::User]
       def retrieve(username, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/user/#{username}"
-        req[:model] = SamRuby::Models::User
+        req = {
+          method: :get,
+          path: "/user/#{username}",
+          model: SamRuby::Models::User
+        }
         @client.request(req, opts)
       end
 
@@ -61,11 +64,13 @@ module SamRuby
       #
       # @return [nil]
       def update(params = {}, opts = {})
-        req = {}
-        req[:method] = :put
-        req[:path] = "/user/#{params.fetch(:path_username)}"
-        req[:body] = params
-        req[:model] = NilClass
+        req = {
+          method: :put,
+          path: "/user/#{params.fetch(:path_username)}",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: NilClass
+        }
         @client.request(req, opts)
       end
 
@@ -76,10 +81,11 @@ module SamRuby
       #
       # @return [nil]
       def delete(username, opts = {})
-        req = {}
-        req[:method] = :delete
-        req[:path] = "/user/#{username}"
-        req[:model] = NilClass
+        req = {
+          method: :delete,
+          path: "/user/#{username}",
+          model: NilClass
+        }
         @client.request(req, opts)
       end
 
@@ -92,11 +98,13 @@ module SamRuby
       #
       # @return [SamRuby::Models::User]
       def create_with_list(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/user/createWithList"
-        req[:body] = params[:body]
-        req[:model] = SamRuby::Models::User
+        req = {
+          method: :post,
+          path: "/user/createWithList",
+          body: params[:body],
+          headers: {"Content-Type" => "application/json"},
+          model: SamRuby::Models::User
+        }
         @client.request(req, opts)
       end
 
@@ -110,11 +118,12 @@ module SamRuby
       #
       # @return [String]
       def login(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/user/login"
-        req[:query] = params
-        req[:model] = String
+        req = {
+          method: :get,
+          path: "/user/login",
+          query: params,
+          model: String
+        }
         @client.request(req, opts)
       end
 
@@ -124,10 +133,11 @@ module SamRuby
       #
       # @return [nil]
       def logout(opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/user/logout"
-        req[:model] = NilClass
+        req = {
+          method: :get,
+          path: "/user/logout",
+          model: NilClass
+        }
         @client.request(req, opts)
       end
     end
