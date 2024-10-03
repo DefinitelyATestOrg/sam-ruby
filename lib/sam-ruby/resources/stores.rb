@@ -19,10 +19,11 @@ module SamRuby
       #
       # @return [SamRuby::Models::Order]
       def retrieve(order_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/store/order/#{order_id}"
-        req[:model] = SamRuby::Models::Order
+        req = {
+          method: :get,
+          path: "/store/order/#{order_id}",
+          model: SamRuby::Models::Order
+        }
         @client.request(req, opts)
       end
 
@@ -34,10 +35,11 @@ module SamRuby
       #
       # @return [nil]
       def delete(order_id, opts = {})
-        req = {}
-        req[:method] = :delete
-        req[:path] = "/store/order/#{order_id}"
-        req[:model] = NilClass
+        req = {
+          method: :delete,
+          path: "/store/order/#{order_id}",
+          model: NilClass
+        }
         @client.request(req, opts)
       end
 
@@ -55,11 +57,13 @@ module SamRuby
       #
       # @return [SamRuby::Models::Order]
       def create_order(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/store/order"
-        req[:body] = params
-        req[:model] = SamRuby::Models::Order
+        req = {
+          method: :post,
+          path: "/store/order",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: SamRuby::Models::Order
+        }
         @client.request(req, opts)
       end
 
@@ -69,10 +73,11 @@ module SamRuby
       #
       # @return [Hash]
       def inventory(opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/store/inventory"
-        req[:model] = Hash
+        req = {
+          method: :get,
+          path: "/store/inventory",
+          model: Hash
+        }
         @client.request(req, opts)
       end
     end

@@ -19,11 +19,12 @@ module SamRuby
       #
       # @return [nil]
       def create(pet_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/pet/#{pet_id}"
-        req[:query] = params
-        req[:model] = NilClass
+        req = {
+          method: :post,
+          path: "/pet/#{pet_id}",
+          query: params,
+          model: NilClass
+        }
         @client.request(req, opts)
       end
 
@@ -34,10 +35,11 @@ module SamRuby
       #
       # @return [SamRuby::Models::Pet]
       def retrieve(pet_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/pet/#{pet_id}"
-        req[:model] = SamRuby::Models::Pet
+        req = {
+          method: :get,
+          path: "/pet/#{pet_id}",
+          model: SamRuby::Models::Pet
+        }
         @client.request(req, opts)
       end
 
@@ -55,11 +57,13 @@ module SamRuby
       #
       # @return [SamRuby::Models::Pet]
       def update(params = {}, opts = {})
-        req = {}
-        req[:method] = :put
-        req[:path] = "/pet"
-        req[:body] = params
-        req[:model] = SamRuby::Models::Pet
+        req = {
+          method: :put,
+          path: "/pet",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: SamRuby::Models::Pet
+        }
         @client.request(req, opts)
       end
 
@@ -74,10 +78,11 @@ module SamRuby
       #
       # @return [nil]
       def delete(pet_id, _params = {}, opts = {})
-        req = {}
-        req[:method] = :delete
-        req[:path] = "/pet/#{pet_id}"
-        req[:model] = NilClass
+        req = {
+          method: :delete,
+          path: "/pet/#{pet_id}",
+          model: NilClass
+        }
         @client.request(req, opts)
       end
 
@@ -90,11 +95,12 @@ module SamRuby
       #
       # @return [Array<SamRuby::Models::Pet>]
       def find_by_status(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/pet/findByStatus"
-        req[:query] = params
-        req[:model] = SamRuby::ArrayOf.new(SamRuby::Models::Pet)
+        req = {
+          method: :get,
+          path: "/pet/findByStatus",
+          query: params,
+          model: SamRuby::ArrayOf.new(SamRuby::Models::Pet)
+        }
         @client.request(req, opts)
       end
 
@@ -108,11 +114,12 @@ module SamRuby
       #
       # @return [Array<SamRuby::Models::Pet>]
       def find_by_tags(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/pet/findByTags"
-        req[:query] = params
-        req[:model] = SamRuby::ArrayOf.new(SamRuby::Models::Pet)
+        req = {
+          method: :get,
+          path: "/pet/findByTags",
+          query: params,
+          model: SamRuby::ArrayOf.new(SamRuby::Models::Pet)
+        }
         @client.request(req, opts)
       end
 
@@ -128,12 +135,14 @@ module SamRuby
       #
       # @return [SamRuby::Models::APIResponse]
       def upload_image(pet_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/pet/#{pet_id}/uploadImage"
-        req[:body] = params[:body]
-        req[:query] = params.except(:body)
-        req[:model] = SamRuby::Models::APIResponse
+        req = {
+          method: :post,
+          path: "/pet/#{pet_id}/uploadImage",
+          body: params[:body],
+          query: params.except(:body),
+          headers: {"Content-Type" => "application/octet-stream"},
+          model: SamRuby::Models::APIResponse
+        }
         @client.request(req, opts)
       end
     end

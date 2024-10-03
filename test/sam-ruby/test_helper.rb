@@ -9,6 +9,7 @@
 require "sam-ruby"
 
 require "test/unit"
+require "stringio"
 
 module SamRuby
   module Test
