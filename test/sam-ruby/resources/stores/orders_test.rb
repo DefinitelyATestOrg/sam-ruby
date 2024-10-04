@@ -2,7 +2,7 @@
 
 require_relative "../../test_helper"
 
-class SamRuby::Test::Resources::OrdersTest < Test::Unit::TestCase
+class SamRuby::Test::Resources::Stores::OrdersTest < Test::Unit::TestCase
   def setup
     @sam = SamRuby::Client.new(base_url: "http://localhost:4010")
   end
