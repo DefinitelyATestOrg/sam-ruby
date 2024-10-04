@@ -2,7 +2,9 @@
 
 require_relative "../test_helper"
 
-class SamRuby::Test::Resources::UsersTest < Test::Unit::TestCase
+class SamRuby::Test::Resources::UsersTest < Minitest::Test
+  parallelize_me!
+
   def setup
     @sam = SamRuby::Client.new(base_url: "http://localhost:4010")
   end

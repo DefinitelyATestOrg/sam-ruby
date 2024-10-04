@@ -2,9 +2,9 @@
 
 require_relative "test_helper"
 
-class SamRuby::Test::UtilTest < Test::Unit::TestCase
+class SamRuby::Test::UtilTest < Minitest::Test
   def test_left_map
-    assert_equal(SamRuby::Util.deep_merge({a: 1}, nil), nil)
+    assert_nil(SamRuby::Util.deep_merge({a: 1}, nil))
   end
 
   def test_right_map
