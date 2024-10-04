@@ -9,5 +9,5 @@
 require "sam-ruby"
 require_relative "test_namespaces"
 
-require "test/unit"
+require "minitest"
 require "stringio"
