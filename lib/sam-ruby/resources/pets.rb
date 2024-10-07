@@ -3,6 +3,7 @@
 module SamRuby
   module Resources
     class Pets
+      # @param client [SamRuby::Client]
       def initialize(client:)
         @client = client
       end
