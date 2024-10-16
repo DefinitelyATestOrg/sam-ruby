@@ -42,7 +42,7 @@ sam = SamRuby::Client.new
 
 order = sam.stores.create_order
 
-puts order.id
+puts(order.id)
 ```
 
 ### Errors
@@ -55,7 +55,7 @@ non-success status code (i.e., 4xx or 5xx response), a subclass of
 begin
   store = sam.stores.create_order
 rescue SamRuby::HTTP::Error => e
-  puts e.code # 400
+  puts(e.code) # 400
 end
 ```
 
