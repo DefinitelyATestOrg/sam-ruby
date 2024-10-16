@@ -36,20 +36,19 @@ module SamRuby
       #   @return [Integer]
       optional :user_status, Integer
 
-      # Create a new instance of User from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, email: nil, firstName: nil, lastName: nil, password: nil, phone: nil, username: nil, userStatus: nil)
-      # @param id [Integer]
-      # @param email [String]
-      # @param firstName [String]
-      # @param lastName [String]
-      # @param password [String]
-      # @param phone [String]
-      # @param username [String]
-      # @param userStatus [Integer] User Status
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of User from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Integer, nil] :id
+      #   #   @option data [String, nil] :email
+      #   #   @option data [String, nil] :firstName
+      #   #   @option data [String, nil] :lastName
+      #   #   @option data [String, nil] :password
+      #   #   @option data [String, nil] :phone
+      #   #   @option data [String, nil] :username
+      #   #   @option data [Integer, nil] :userStatus User Status
+      #   def initialize(data = {}) = super
     end
   end
 end

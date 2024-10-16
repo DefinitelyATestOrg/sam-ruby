@@ -35,18 +35,17 @@ module SamRuby
         DELIVERED = :delivered
       end
 
-      # Create a new instance of Order from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, complete: nil, petId: nil, quantity: nil, shipDate: nil, status: nil)
-      # @param id [Integer]
-      # @param complete [Hash]
-      # @param petId [Integer]
-      # @param quantity [Integer]
-      # @param shipDate [String]
-      # @param status [String] Order Status
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of Order from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Integer, nil] :id
+      #   #   @option data [Hash, nil] :complete
+      #   #   @option data [Integer, nil] :petId
+      #   #   @option data [Integer, nil] :quantity
+      #   #   @option data [String, nil] :shipDate
+      #   #   @option data [String, nil] :status Order Status
+      #   def initialize(data = {}) = super
     end
   end
 end
