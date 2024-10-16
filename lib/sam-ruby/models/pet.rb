@@ -36,6 +36,15 @@ module SamRuby
         # @!attribute [rw] name_
         #   @return [String]
         optional :name_, String
+
+        # Create a new instance of Category from a Hash of raw data.
+        #
+        # @overload initialize(id: nil, name: nil)
+        # @param id [Integer]
+        # @param name [String]
+        def initialize(data = {})
+          super
+        end
       end
 
       # pet status in the store
@@ -53,6 +62,28 @@ module SamRuby
         # @!attribute [rw] name_
         #   @return [String]
         optional :name_, String
+
+        # Create a new instance of Tag from a Hash of raw data.
+        #
+        # @overload initialize(id: nil, name: nil)
+        # @param id [Integer]
+        # @param name [String]
+        def initialize(data = {})
+          super
+        end
+      end
+
+      # Create a new instance of Pet from a Hash of raw data.
+      #
+      # @overload initialize(name: nil, photoUrls: nil, id: nil, category: nil, status: nil, tags: nil)
+      # @param name [String]
+      # @param photoUrls [Array<String>]
+      # @param id [Integer]
+      # @param category [Object]
+      # @param status [String] pet status in the store
+      # @param tags [Array<Object>]
+      def initialize(data = {})
+        super
       end
     end
   end
