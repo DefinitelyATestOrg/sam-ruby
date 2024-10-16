@@ -37,14 +37,13 @@ module SamRuby
         #   @return [String]
         optional :name_, String
 
-        # Create a new instance of Category from a Hash of raw data.
-        #
-        # @overload initialize(id: nil, name: nil)
-        # @param id [Integer]
-        # @param name [String]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Category from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Integer, nil] :id
+        #   #   @option data [String, nil] :name
+        #   def initialize(data = {}) = super
       end
 
       # pet status in the store
@@ -63,28 +62,26 @@ module SamRuby
         #   @return [String]
         optional :name_, String
 
-        # Create a new instance of Tag from a Hash of raw data.
-        #
-        # @overload initialize(id: nil, name: nil)
-        # @param id [Integer]
-        # @param name [String]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Tag from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Integer, nil] :id
+        #   #   @option data [String, nil] :name
+        #   def initialize(data = {}) = super
       end
 
-      # Create a new instance of Pet from a Hash of raw data.
-      #
-      # @overload initialize(name: nil, photoUrls: nil, id: nil, category: nil, status: nil, tags: nil)
-      # @param name [String]
-      # @param photoUrls [Array<String>]
-      # @param id [Integer]
-      # @param category [Object]
-      # @param status [String] pet status in the store
-      # @param tags [Array<Object>]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of Pet from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :name
+      #   #   @option data [Array<String>] :photoUrls
+      #   #   @option data [Integer, nil] :id
+      #   #   @option data [Object, nil] :category
+      #   #   @option data [String, nil] :status pet status in the store
+      #   #   @option data [Array<Object>, nil] :tags
+      #   def initialize(data = {}) = super
     end
   end
 end

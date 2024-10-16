@@ -11,14 +11,14 @@ module SamRuby
       # This can only be done by the logged in user.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Integer, nil] :id
-      # @option params [String, nil] :email
-      # @option params [String, nil] :first_name
-      # @option params [String, nil] :last_name
-      # @option params [String, nil] :password
-      # @option params [String, nil] :phone
-      # @option params [String, nil] :username
-      # @option params [Integer, nil] :user_status User Status
+      #   @option params [Integer, nil] :id
+      #   @option params [String, nil] :email
+      #   @option params [String, nil] :first_name
+      #   @option params [String, nil] :last_name
+      #   @option params [String, nil] :password
+      #   @option params [String, nil] :phone
+      #   @option params [String, nil] :username
+      #   @option params [Integer, nil] :user_status User Status
       #
       # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -52,14 +52,14 @@ module SamRuby
       # This can only be done by the logged in user.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String, nil] :body_username Body param:
-      # @option params [Integer, nil] :id Body param:
-      # @option params [String, nil] :email Body param:
-      # @option params [String, nil] :first_name Body param:
-      # @option params [String, nil] :last_name Body param:
-      # @option params [String, nil] :password Body param:
-      # @option params [String, nil] :phone Body param:
-      # @option params [Integer, nil] :user_status Body param: User Status
+      #   @option params [String, nil] :body_username Body param:
+      #   @option params [Integer, nil] :id Body param:
+      #   @option params [String, nil] :email Body param:
+      #   @option params [String, nil] :first_name Body param:
+      #   @option params [String, nil] :last_name Body param:
+      #   @option params [String, nil] :password Body param:
+      #   @option params [String, nil] :phone Body param:
+      #   @option params [Integer, nil] :user_status Body param: User Status
       #
       # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -93,7 +93,7 @@ module SamRuby
       # Creates list of users with given input array
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<SamRuby::Models::User>] :body
+      #   @option params [Array<SamRuby::Models::User>] :body
       #
       # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -112,8 +112,8 @@ module SamRuby
       # Logs user into the system
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String, nil] :password The password for login in clear text
-      # @option params [String, nil] :username The user name for login
+      #   @option params [String, nil] :password The password for login in clear text
+      #   @option params [String, nil] :username The user name for login
       #
       # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #

@@ -47,12 +47,12 @@ module SamRuby
       # Place a new order in the store
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Integer, nil] :id
-      # @option params [Boolean, nil] :complete
-      # @option params [Integer, nil] :pet_id
-      # @option params [Integer, nil] :quantity
-      # @option params [Time, nil] :ship_date
-      # @option params [Symbol, Status, nil] :status Order Status
+      #   @option params [Integer, nil] :id
+      #   @option params [Boolean, nil] :complete
+      #   @option params [Integer, nil] :pet_id
+      #   @option params [Integer, nil] :quantity
+      #   @option params [Time, nil] :ship_date
+      #   @option params [Symbol, Status, nil] :status Order Status
       #
       # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
