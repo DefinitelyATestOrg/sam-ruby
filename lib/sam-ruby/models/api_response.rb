@@ -14,6 +14,16 @@ module SamRuby
       # @!attribute [rw] type
       #   @return [String]
       optional :type, String
+
+      # Create a new instance of APIResponse from a Hash of raw data.
+      #
+      # @overload initialize(code: nil, message: nil, type: nil)
+      # @param code [Integer]
+      # @param message [String]
+      # @param type [String]
+      def initialize(data = {})
+        super
+      end
     end
   end
 end
