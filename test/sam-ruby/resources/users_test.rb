@@ -6,7 +6,7 @@ class SamRuby::Test::Resources::UsersTest < Minitest::Test
   parallelize_me!
 
   def setup
-    @sam = SamRuby::Client.new(base_url: "http://localhost:4010")
+    @sam = SamRuby::Client.new(base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"))
   end
 
   def test_create
