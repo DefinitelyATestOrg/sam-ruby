@@ -20,7 +20,7 @@ module SamRuby
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
     #
     # @return [SamRuby::Client]
-    def initialize(base_url: nil, max_retries: DEFAULT_MAX_RETRIES)
+    def initialize(base_url: nil, max_retries: DEFAULT_MAX_RETRIES, timeout: 60)
       base_url ||= "/api/v3"
 
       super
