@@ -13,11 +13,11 @@ module SamRuby
 
       # @!attribute [rw] first_name
       #   @return [String]
-      optional :first_name, String
+      optional :first_name, String, api_name: :firstName
 
       # @!attribute [rw] last_name
       #   @return [String]
-      optional :last_name, String
+      optional :last_name, String, api_name: :lastName
 
       # @!attribute [rw] password
       #   @return [String]
@@ -34,7 +34,7 @@ module SamRuby
       # @!attribute [rw] user_status
       #   User Status
       #   @return [Integer]
-      optional :user_status, Integer
+      optional :user_status, Integer, api_name: :userStatus
 
       # @!parse
       #   # Create a new instance of User from a Hash of raw data.
