@@ -13,7 +13,7 @@ module SamRuby
 
       # @!attribute [rw] pet_id
       #   @return [Integer]
-      optional :pet_id, Integer
+      optional :pet_id, Integer, api_name: :petId
 
       # @!attribute [rw] quantity
       #   @return [Integer]
@@ -21,7 +21,7 @@ module SamRuby
 
       # @!attribute [rw] ship_date
       #   @return [Time]
-      optional :ship_date, Time
+      optional :ship_date, Time, api_name: :shipDate
 
       # @!attribute [rw] status
       #   Order Status

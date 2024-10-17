@@ -5,11 +5,11 @@ module SamRuby
     class Pet < BaseModel
       # @!attribute [rw] name_
       #   @return [String]
-      required :name_, String
+      required :name_, String, api_name: :name
 
       # @!attribute [rw] photo_urls
       #   @return [Array<String>]
-      required :photo_urls, SamRuby::ArrayOf.new(String)
+      required :photo_urls, SamRuby::ArrayOf.new(String), api_name: :photoUrls
 
       # @!attribute [rw] id
       #   @return [Integer]
@@ -35,7 +35,7 @@ module SamRuby
 
         # @!attribute [rw] name_
         #   @return [String]
-        optional :name_, String
+        optional :name_, String, api_name: :name
 
         # @!parse
         #   # Create a new instance of Category from a Hash of raw data.
@@ -60,7 +60,7 @@ module SamRuby
 
         # @!attribute [rw] name_
         #   @return [String]
-        optional :name_, String
+        optional :name_, String, api_name: :name
 
         # @!parse
         #   # Create a new instance of Tag from a Hash of raw data.
