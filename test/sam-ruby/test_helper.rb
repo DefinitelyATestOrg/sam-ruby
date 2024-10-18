@@ -7,12 +7,7 @@
 # - Define shared testing namespace so that we don't need to indent test files as much
 
 require "sam-ruby"
+require_relative "test_namespaces"
 
-require "test/unit"
-
-module SamRuby
-  module Test
-    module Resources
-    end
-  end
-end
+require "minitest"
+require "stringio"
