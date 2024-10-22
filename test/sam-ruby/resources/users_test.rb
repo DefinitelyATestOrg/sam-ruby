@@ -2,13 +2,15 @@
 
 require_relative "../test_helper"
 
-class SamRuby::Test::Resources::UsersTest < Test::Unit::TestCase
+class SamRuby::Test::Resources::UsersTest < Minitest::Test
+  parallelize_me!
+
   def setup
-    @sam = SamRuby::Client.new(base_url: "http://localhost:4010")
+    @sam = SamRuby::Client.new(base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"))
   end
 
   def test_create
-    response = @sam.users.create 
+    response = @sam.users.create
     assert_nil(response)
   end
 
@@ -33,12 +35,12 @@ class SamRuby::Test::Resources::UsersTest < Test::Unit::TestCase
   end
 
   def test_login
-    response = @sam.users.login 
+    response = @sam.users.login
     assert_kind_of(String, response)
   end
 
   def test_logout
-    response = @sam.users.logout 
+    response = @sam.users.logout
     assert_nil(response)
   end
 end

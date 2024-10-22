@@ -55,6 +55,11 @@ module SamRuby
     # @return [Integer]
     option :max_retries
 
+    # @!attribute timeout
+    # Request timeout in seconds.
+    # @return [Integer]
+    option :timeout
+
     # Lookup an option previously set on this instance.
     #
     # @return [Object]
@@ -73,7 +78,7 @@ module SamRuby
 
     # @return [String]
     def inspect
-      "#<SamRuby::RequestOptions:0x#{object_id.to_s(16)} #{@_values.inspect}>"
+      "#<#{self.class}:0x#{object_id.to_s(16)} #{@_values.inspect}>"
     end
 
     # @return [String]
