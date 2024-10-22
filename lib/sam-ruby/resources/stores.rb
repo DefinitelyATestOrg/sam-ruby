@@ -46,7 +46,7 @@ module SamRuby
 
       # Place a new order in the store
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Integer, nil] :id
       #   @option params [Boolean, nil] :complete
       #   @option params [Integer, nil] :pet_id
