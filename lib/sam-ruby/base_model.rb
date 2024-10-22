@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require "date"
-require "time"
-
 module SamRuby
   # @!visibility private
   module Converter
