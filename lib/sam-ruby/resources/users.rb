@@ -20,7 +20,7 @@ module SamRuby
       #   @option params [String, nil] :username
       #   @option params [Integer, nil] :user_status User Status
       #
-      # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       def create(params = {}, opts = {})
@@ -37,7 +37,7 @@ module SamRuby
       # Get user by user name
       #
       # @param username [String] The name that needs to be fetched. Use user1 for testing.
-      # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [SamRuby::Models::User]
       def retrieve(username, opts = {})
@@ -61,7 +61,7 @@ module SamRuby
       #   @option params [String, nil] :phone Body param:
       #   @option params [Integer, nil] :user_status Body param: User Status
       #
-      # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       def update(params = {}, opts = {})
@@ -78,7 +78,7 @@ module SamRuby
       # This can only be done by the logged in user.
       #
       # @param username [String] The name that needs to be deleted
-      # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       def delete(username, opts = {})
@@ -95,7 +95,7 @@ module SamRuby
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Array<SamRuby::Models::User>] :body
       #
-      # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [SamRuby::Models::User]
       def create_with_list(params = {}, opts = {})
@@ -115,7 +115,7 @@ module SamRuby
       #   @option params [String, nil] :password The password for login in clear text
       #   @option params [String, nil] :username The user name for login
       #
-      # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [String]
       def login(params = {}, opts = {})
@@ -130,7 +130,7 @@ module SamRuby
 
       # Logs out current logged in user session
       #
-      # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       def logout(opts = {})

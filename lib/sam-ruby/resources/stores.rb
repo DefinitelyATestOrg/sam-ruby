@@ -16,7 +16,7 @@ module SamRuby
       #   generate exceptions.
       #
       # @param order_id [Integer] ID of order that needs to be fetched
-      # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [SamRuby::Models::Order]
       def retrieve(order_id, opts = {})
@@ -32,7 +32,7 @@ module SamRuby
       #   nonintegers will generate API errors
       #
       # @param order_id [Integer] ID of the order that needs to be deleted
-      # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       def delete(order_id, opts = {})
@@ -54,7 +54,7 @@ module SamRuby
       #   @option params [Time, nil] :ship_date
       #   @option params [Symbol, Status, nil] :status Order Status
       #
-      # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [SamRuby::Models::Order]
       def create_order(params = {}, opts = {})
@@ -70,7 +70,7 @@ module SamRuby
 
       # Returns a map of status codes to quantities
       #
-      # @param opts [Hash, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, SamRuby::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Hash]
       def inventory(opts = {})
