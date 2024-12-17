@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 module Sam
-  # rubocop:disable Metrics/ModuleLength
-
   # @private
   #
   module Util
@@ -273,6 +271,4 @@ module Sam
       end
     end
   end
-
-  # rubocop:enable Metrics/ModuleLength
 end
