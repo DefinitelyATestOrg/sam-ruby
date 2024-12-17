@@ -17,7 +17,7 @@ To use this gem during the beta, install directly from GitHub with Bundler by
 adding the following to your application's `Gemfile`:
 
 ```ruby
-gem "sam-ruby", git: "https://github.com/DefinitelyATestOrg/sam-ruby", branch: "main"
+gem "sam", git: "https://github.com/DefinitelyATestOrg/sam-ruby", branch: "main"
 ```
 
 To fetch an initial copy of the gem:
@@ -30,31 +30,31 @@ To update the version used by your application when updates are pushed to
 GitHub:
 
 ```sh
-bundle update sam-ruby
+bundle update sam
 ```
 
 ## Usage
 
 ```ruby
-require "sam-ruby"
+require "sam"
 
-sam = SamRuby::Client.new
+sam = Sam::Client.new
 
-order = sam.stores.create_order
+user = sam.users.create
 
-puts(order.id)
+puts(user.id)
 ```
 
 ### Errors
 
 When the library is unable to connect to the API, or if the API returns a
 non-success status code (i.e., 4xx or 5xx response), a subclass of
-`SamRuby::HTTP::Error` will be thrown:
+`Sam::Error` will be thrown:
 
 ```ruby
 begin
-  store = sam.stores.create_order
-rescue SamRuby::HTTP::Error => e
+  user = sam.users.create
+rescue Sam::Error => e
   puts(e.code) # 400
 end
 ```
@@ -86,12 +86,12 @@ You can use the `max_retries` option to configure or disable this:
 
 ```ruby
 # Configure the default for all requests:
-sam = SamRuby::Client.new(
+sam = Sam::Client.new(
   max_retries: 0 # default is 2
 )
 
 # Or, configure per-request:
-sam.stores.create_order(max_retries: 5)
+sam.users.create(max_retries: 5)
 ```
 
 ### Timeouts
@@ -104,12 +104,12 @@ You can use the `timeout` option to configure or disable this:
 
 ```ruby
 # Configure the default for all requests:
-sam = SamRuby::Client.new(
+sam = Sam::Client.new(
   timeout: nil # default is 60
 )
 
 # Or, configure per-request:
-sam.stores.create_order(timeout: 5)
+sam.users.create(timeout: 5)
 ```
 
 ## Versioning
