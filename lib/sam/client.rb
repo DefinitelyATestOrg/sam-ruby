@@ -25,16 +25,18 @@ module Sam
     # @return [Sam::Resources::Users]
     attr_reader :users
 
-    # @!visibility private
-    def auth_headers
+    # @private
+    private def auth_headers
       {"api_key" => @api_key}
     end
 
     # Creates and returns a new client for interacting with the API.
     #
     # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
+    #
     # @param api_key [String, nil] API key used for authenticating requests via the Authorization header Defaults
     #   to `ENV["API_KEY"]`
+    #
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
     def initialize(
       base_url: nil,

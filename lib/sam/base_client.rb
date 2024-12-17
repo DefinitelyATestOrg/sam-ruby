@@ -1,15 +1,20 @@
 # frozen_string_literal: true
 
 module Sam
-  # @!visibility private
+  # @private
   #
   class BaseClient
     MAX_REDIRECTS = 20 # from whatwg fetch spec
 
+    # @private
+    #
     # @!attribute requester
+    #
     #   @return [Sam::PooledNetRequester]
     attr_accessor :requester
 
+    # @private
+    #
     # @param base_url [String]
     # @param timeout [Float]
     # @param max_retries [Integer]
@@ -33,6 +38,7 @@ module Sam
           "X-Stainless-Package-Version" => Sam::VERSION,
           "X-Stainless-Runtime" => RUBY_ENGINE,
           "X-Stainless-Runtime-Version" => RUBY_ENGINE_VERSION,
+          "Content-Type" => "application/json",
           "Accept" => "application/json"
         },
         headers
@@ -45,61 +51,18 @@ module Sam
       @max_retry_delay = max_retry_delay
     end
 
+    # @private
+    #
     # @return [Hash{String => String}]
-    def auth_headers
-      {}
-    end
+    private def auth_headers = {}
 
+    # @private
+    #
     # @return [String]
-    def generate_idempotency_key
-      "stainless-ruby-retry-#{SecureRandom.uuid}"
-    end
+    private def generate_idempotency_key = "stainless-ruby-retry-#{SecureRandom.uuid}"
 
-    # @param req [Hash{Symbol => Object}]
-    #   @option req [Hash{Symbol => Object}, Array, Object, nil] :body
+    # @private
     #
-    # @raise [ArgumentError]
-    private def validate_request!(req)
-      case (body = req[:body])
-      in Hash
-        body.each_key do |k|
-          unless k.is_a?(Symbol)
-            raise ArgumentError.new("Request body keys must be Symbols, got #{k.inspect}")
-          end
-        end
-      else
-        # Body can be at least a Hash or Array, just check for Hash shape for now.
-      end
-    end
-
-    # @param req [Hash{Symbol => Object}]
-    #   @option req [String] :host
-    #   @option req [String] :scheme
-    #   @option req [String] :path
-    #   @option req [String] :port
-    #   @option req [Hash{String => Array<String>}] :query
-    #   @option req [Hash{String => Array<String>}] :extra_query
-    #
-    # @return [URI::Generic]
-    def resolve_url(req)
-      base_path, base_query = @base_url.fetch_values(:path, :query)
-      slashed = base_path.end_with?("/") ? base_path : "#{base_path}/"
-
-      req_path, req_query = Sam::Util.parse_uri(req.fetch(:path)).fetch_values(:path, :query)
-      override = URI::Generic.build(**req.slice(:scheme, :host, :port), path: req_path)
-
-      joined = URI.join(URI::Generic.build(@base_url.except(:path, :query)), slashed, override)
-
-      query = Sam::Util.deep_merge(
-        joined.path == base_path ? base_query : {},
-        req_query,
-        *req.values_at(:query, :extra_query).compact,
-        concat: true
-      )
-      joined.query = Sam::Util.encode_query(query)
-      joined
-    end
-
     # @param req [Hash{Symbol => Object}]
     # @param opts [Sam::RequestOptions, Hash{Symbol => Object}]
     #
@@ -107,42 +70,49 @@ module Sam
     private def build_request(req, opts)
       options = Sam::Util.deep_merge(req, opts)
       method = options.fetch(:method)
-      body, extra_body = options.values_at(:body, :extra_body)
 
       headers = Sam::Util.normalized_headers(
         @headers,
         auth_headers,
         *options.values_at(:headers, :extra_headers)
       )
+
       if @idempotency_header &&
          !headers.key?(@idempotency_header) &&
-         ![:get, :head, :options].include?(method)
+         !Net::HTTP::IDEMPOTENT_METHODS_.include?(method.to_s.upcase)
         headers[@idempotency_header] = options.fetch(:idempotency_key) { generate_idempotency_key }
       end
 
       unless headers.key?("x-stainless-retry-count")
         headers["x-stainless-retry-count"] = "0"
       end
+
       headers.reject! { |_, v| v.to_s.empty? }
 
-      if [:get, :head, :options].include?(method)
-        body = nil
-      elsif extra_body
-        body = Sam::Util.deep_merge(body, extra_body)
-      end
-
       body =
-        case headers["content-type"]
-        in "application/json"
-          JSON.dump(body)
+        case method
+        in :get | :head | :options | :trace
+          nil
+        else
+          values = options.values_at(:body, :extra_body).compact
+          Sam::Util.deep_merge(*values)
+        end
+
+      encoded =
+        case [headers["content-type"], body]
+        in ["application/json", Hash | Array]
+          JSON.fast_generate(body)
         else
           body
         end
 
-      url = resolve_url(options)
-      {method: method, url: url, headers: headers, body: body}
+      url = Sam::Util.join_parsed_uri(@base_url, options)
+      timeout = options.fetch(:timeout, @timeout)
+      {method: method, url: url, headers: headers, body: encoded, timeout: timeout}
     end
 
+    # @private
+    #
     # @param response [Net::HTTPResponse]
     # @param suppress_error [Boolean]
     #
@@ -163,6 +133,8 @@ module Sam
       end
     end
 
+    # @private
+    #
     # @param status [Integer]
     # @param headers [Hash{String => String}]
     #
@@ -184,16 +156,18 @@ module Sam
       end
     end
 
-    # @param response [Net::HTTPResponse]
+    # @private
+    #
+    # @param headers [Hash{String => String}]
     # @param retry_count [Integer]
     #
     # @return [Float]
-    private def retry_delay(response, retry_count:)
+    private def retry_delay(headers, retry_count:)
       # Note the `retry-after-ms` header may not be standard, but is a good idea and we'd like proactive support for it.
-      span = Float(response["retry-after-ms"], exception: false)&.then { |v| v / 1000 }
+      span = Float(headers["retry-after-ms"], exception: false)&.then { _1 / 1000 }
       return span if span
 
-      retry_header = response["retry-after"]
+      retry_header = headers["retry-after"]
       return span if (span = Float(retry_header, exception: false))
 
       span = retry_header && Sam::Util.suppress(ArgumentError) do
@@ -206,6 +180,8 @@ module Sam
       (@initial_retry_delay * scale * jitter).clamp(0, @max_retry_delay)
     end
 
+    # @private
+    #
     # @param request [Hash{Symbol => Object}]
     #   @option options [Symbol] :method
     #   @option options [Hash{String => String}] :headers
@@ -261,13 +237,16 @@ module Sam
       request
     end
 
+    # @private
+    #
     # @param request [Hash{Symbol => Object}]
     #   @option options [Symbol] :method
+    #   @option options [URI::Generic] :url
     #   @option options [Hash{String => String}] :headers
     #   @option options [String, nil] :body
+    #   @option options [Float] :timeout
     #
     # @param max_retries [Integer]
-    # @param timeout [Float]
     # @param redirect_count [Integer]
     # @param retry_count [Integer]
     # @param send_retry_header [Boolean]
@@ -277,7 +256,6 @@ module Sam
     private def send_request(
       request,
       max_retries:,
-      timeout:,
       redirect_count:,
       retry_count:,
       send_retry_header:
@@ -289,7 +267,7 @@ module Sam
       end
 
       begin
-        response = @requester.execute(request, timeout: timeout)
+        response = @requester.execute(request)
         status = Integer(response.code)
       rescue Sam::APIConnectionError => e
         status = e
@@ -306,7 +284,6 @@ module Sam
         send_request(
           request,
           max_retries: max_retries,
-          timeout: timeout,
           redirect_count: redirect_count + 1,
           retry_count: retry_count,
           send_retry_header: send_retry_header
@@ -325,17 +302,11 @@ module Sam
         )
       in 400.. | Sam::APIConnectionError
         delay = retry_delay(response, retry_count: retry_count)
-        # TODO: remove special testing-only header
-        if response&.key?("x-stainless-mock-sleep")
-          headers["x-stainless-mock-slept"] = delay
-        else
-          sleep(delay)
-        end
+        sleep(delay)
 
         send_request(
           request,
           max_retries: max_retries,
-          timeout: timeout,
           redirect_count: redirect_count,
           retry_count: retry_count + 1,
           send_retry_header: send_retry_header
@@ -343,6 +314,8 @@ module Sam
       end
     end
 
+    # @private
+    #
     # @param req [Hash{Symbol => Object}]
     # @param opts [Sam::RequestOptions, Hash{Symbol => Object}]
     #
@@ -354,10 +327,10 @@ module Sam
 
       page, model = req.values_at(:page, :model)
       case [page, model]
-      in [Class, _]
+      in [Class, Class | Sam::Converter | nil]
         page.new(client: self, model: model, req: req, opts: opts, response: response, raw_data: raw_data)
-      in [nil, _] unless model.nil?
-        Sam::Converter.convert(model, raw_data)
+      in [nil, Class | Sam::Converter]
+        Sam::Converter.coerce(model, raw_data)
       in [nil, nil]
         raw_data
       end
@@ -366,15 +339,13 @@ module Sam
     # Execute the request specified by req + opts. This is the method that all
     # resource methods call into.
     # Params req & opts are kept separate up until this point so that we can
-    # validate opts as it was given to us by the user.
-    # @param req [Hash{Symbol => Object}]
+    # @param req [Hash{Symbol => Object}, Array<Object>]
     # @param opts [Sam::RequestOptions, Hash{Symbol => Object}]
     #
     # @raise [Sam::APIError]
     # @return [Object]
     def request(req, opts)
       Sam::RequestOptions.validate!(opts)
-      validate_request!(req)
       request = build_request(req, opts)
 
       # Don't send the current retry count in the headers if the caller modified the header defaults.
@@ -382,7 +353,6 @@ module Sam
       response = send_request(
         request,
         max_retries: opts.fetch(:max_retries, @max_retries),
-        timeout: opts.fetch(:timeout, @timeout),
         redirect_count: 0,
         retry_count: 0,
         send_retry_header: send_retry_header
