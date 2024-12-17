@@ -53,6 +53,19 @@ module Sam
         # def initialize: (Hash | Sam::BaseModel) -> void
 
         # Order Status
+        #
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :placed
+        #   # ...
+        # in :approved
+        #   # ...
+        # in :delivered
+        #   # ...
+        # end
+        # ```
         class Status < Sam::Enum
           PLACED = :placed
           APPROVED = :approved
