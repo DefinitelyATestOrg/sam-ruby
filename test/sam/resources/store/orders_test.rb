@@ -12,17 +12,11 @@ class Sam::Test::Resources::Store::OrdersTest < Minitest::Test
 
   def test_retrieve
     response = @sam.store.orders.retrieve(0)
-
-    assert_pattern do
-      response => Sam::Models::Store::CoolOrder
-    end
+    assert_kind_of(Sam::Models::Store::CoolOrder, response)
   end
 
   def test_delete
     response = @sam.store.orders.delete(0)
-
-    assert_pattern do
-      response => nil
-    end
+    assert_nil(response)
   end
 end
