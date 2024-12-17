@@ -6,10 +6,10 @@ module Sam
       # @!attribute body
       #
       #   @return [Array<Sam::Models::User>]
-      required :body, Sam::ArrayOf.new(-> { Sam::Models::User })
+      required :body, Sam::ArrayOf[-> { Sam::Models::User }]
 
       # @!parse
-      #   # @param body [Array<Object>]
+      #   # @param body [Array<Sam::Models::User>]
       #   #
       #   def initialize(body:) = super
 
