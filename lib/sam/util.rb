@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 module Sam
-  # rubocop:disable Metrics/ModuleLength
-
   # @private
   #
   module Util
@@ -193,7 +191,9 @@ module Sam
 
     # @private
     #
-    # @param input [Hash, Object]
+    # @param url [String]
+    # @param url [URI::Generic, String]
+    # @param input [Object]
     #
     # @return [Hash, Object]
     def self.coerce_hash(input)
@@ -273,6 +273,4 @@ module Sam
       end
     end
   end
-
-  # rubocop:enable Metrics/ModuleLength
 end
