@@ -22,9 +22,9 @@ RuboCop::RakeTask.new(:format) do |t|
 end
 
 task(:build) do
-  sh(*%w[gem build -- sam-ruby.gemspec])
+  sh(*%w[gem build -- sam.gemspec])
 end
 
 task(release: [:build]) do
-  sh(*%w[gem push], *FileList["sam-ruby-*.gem"])
+  sh(*%w[gem push], *FileList["sam-*.gem"])
 end
