@@ -16,7 +16,6 @@ require "connection_pool"
 # Package files.
 require_relative "sam/base_client"
 require_relative "sam/base_model"
-require_relative "sam/base_page"
 require_relative "sam/errors"
 require_relative "sam/request_options"
 require_relative "sam/pooled_net_requester"

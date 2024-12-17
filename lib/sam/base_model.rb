@@ -58,8 +58,6 @@ module Sam
     include Sam::Converter
     # rubocop:disable Lint/UnusedMethodArgument
 
-    private_class_method :new
-
     # @param other [Object]
     #
     # @return [Boolean]
@@ -82,8 +80,6 @@ module Sam
   # Ruby has no Boolean class; this is something for models to refer to.
   class BooleanModel
     include Sam::Converter
-
-    private_class_method :new
 
     # @param other [Object]
     #
@@ -112,8 +108,6 @@ module Sam
   # values safely.
   class Enum
     include Sam::Converter
-
-    private_class_method :new
 
     # @param other [Object]
     #
@@ -147,10 +141,6 @@ module Sam
   # Array of items of a given type.
   class ArrayOf
     include Sam::Converter
-
-    private_class_method :new
-
-    def self.[](...) = new(...)
 
     # @param other [Object]
     #
