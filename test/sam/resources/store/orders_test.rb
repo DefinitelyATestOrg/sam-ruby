@@ -3,8 +3,6 @@
 require_relative "../../test_helper"
 
 class Sam::Test::Resources::Store::OrdersTest < Minitest::Test
-  parallelize_me!
-
   def setup
     @sam = Sam::Client.new(
       base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
