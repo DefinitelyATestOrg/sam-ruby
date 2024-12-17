@@ -12,36 +12,57 @@ class Sam::Test::Resources::UsersTest < Minitest::Test
 
   def test_create
     response = @sam.users.create
-    assert_kind_of(Sam::Models::User, response)
+
+    assert_pattern do
+      response => Sam::Models::User
+    end
   end
 
   def test_retrieve
     response = @sam.users.retrieve("username")
-    assert_kind_of(Sam::Models::User, response)
+
+    assert_pattern do
+      response => Sam::Models::User
+    end
   end
 
   def test_update_required_params
     response = @sam.users.update(path_username: "username")
-    assert_nil(response)
+
+    assert_pattern do
+      response => nil
+    end
   end
 
   def test_delete
     response = @sam.users.delete("username")
-    assert_nil(response)
+
+    assert_pattern do
+      response => nil
+    end
   end
 
   def test_create_with_list_required_params
     response = @sam.users.create_with_list(body: [{}])
-    assert_kind_of(Sam::Models::User, response)
+
+    assert_pattern do
+      response => Sam::Models::User
+    end
   end
 
   def test_login
     response = @sam.users.login
-    assert_kind_of(String, response)
+
+    assert_pattern do
+      response => String
+    end
   end
 
   def test_logout
     response = @sam.users.logout
-    assert_nil(response)
+
+    assert_pattern do
+      response => nil
+    end
   end
 end
