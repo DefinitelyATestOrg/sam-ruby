@@ -1,58 +1,72 @@
 # frozen_string_literal: true
 
 module Sam
-  # @!visibility private
-  class Util
+  # @private
+  #
+  module Util
+    # @private
+    #
     # Use this to indicate that a value should be explicitly removed from a data structure
     # when using `Sam::Util.deep_merge`.
     # E.g. merging `{a: 1}` and `{a: OMIT}` should produce `{}`, where merging `{a: 1}` and
     # `{}` would produce `{a: 1}`.
     OMIT = Object.new.freeze
 
+    # @private
+    #
     # Recursively merge one hash with another.
     # If the values at a given key are not both hashes, just take the new value.
     #
-    # @param value [Hash, Array, Symbol, String, Integer, Float, nil, Object]
     # @param values [Array<Hash, Array, Symbol, String, Integer, Float, nil, Object>]
+    # @param sentinel [nil, Object] the value to return if no values are provided
     # @param concat [true, false] whether to merge sequences by concatenation
     #
     # @return [Object]
-    def self.deep_merge(value, *values, concat: false)
-      values.reduce(value) do |acc, val|
-        _deep_merge(acc, val, concat: concat)
+    def self.deep_merge(*values, sentinel: nil, concat: false)
+      case values
+      in [value, *values]
+        values.reduce(value) do |acc, val|
+          _deep_merge(acc, val, concat: concat)
+        end
+      else
+        sentinel
       end
     end
 
-    # @param left [Hash, Array, Symbol, String, Integer, Float, nil, Object]
-    # @param right [Hash, Array, Symbol, String, Integer, Float, nil, Object]
+    # @private
+    #
+    # @param lhs [Hash, Array, Symbol, String, Integer, Float, nil, Object]
+    # @param rhs [Hash, Array, Symbol, String, Integer, Float, nil, Object]
     # @param concat [true, false]
     #
     # @return [Object]
-    private_class_method def self._deep_merge(left, right, concat: false)
-      right_cleaned =
-        case right
+    private_class_method def self._deep_merge(lhs, rhs, concat: false)
+      rhs_cleaned =
+        case rhs
         in Hash
-          right.reject { |_, value| value == OMIT }
+          rhs.reject { |_, value| value == OMIT }
         else
-          right
+          rhs
         end
 
-      case [left, right_cleaned, concat]
+      case [lhs, rhs_cleaned, concat]
       in [Hash, Hash, _]
-        left
-          .reject { |key, _| right[key] == OMIT }
-          .merge(right_cleaned) do |_, old_val, new_val|
+        lhs
+          .reject { |key, _| rhs[key] == OMIT }
+          .merge(rhs_cleaned) do |_, old_val, new_val|
             _deep_merge(old_val, new_val, concat: concat)
           end
       in [Array, Array, true]
-        left.concat(right_cleaned)
+        lhs.concat(rhs_cleaned)
       else
-        right_cleaned
+        rhs_cleaned
       end
     end
 
+    # @private
+    #
     # @param exceptions [Array<Exception>]
-    # @param sentinel [Object, nil]
+    # @param sentinel [nil, Object]
     # @param blk [Proc]
     #
     # @return [Object, nil]
@@ -62,6 +76,8 @@ module Sam
       sentinel
     end
 
+    # @private
+    #
     # @param data [Hash, Array, Object]
     # @param pick [Symbol, Integer, Array, nil]
     # @param default [Object, nil]
@@ -73,16 +89,25 @@ module Sam
       in [_, nil, nil]
         data
       in [Hash, Symbol, _] | [Array, Integer, _]
-        data[pick]
-      in [Hash | Array, Enumerable, _]
-        data.dig(*pick)
-      in [_, _, Proc]
-        blk.call(pick)
-      in [_, _, nil]
-        default
+        blk.nil? ? data.fetch(pick, default) : data.fetch(pick, &blk)
+      in [Hash | Array, Array, _]
+        pick.reduce(data) do |acc, key|
+          case acc
+          in Hash if acc.key?(key)
+            acc.fetch(key)
+          in Array if key.is_a?(Integer) && key < acc.length
+            acc[key]
+          else
+            return blk.nil? ? default : blk.call
+          end
+        end
+      in _
+        blk.nil? ? default : blk.call
       end
     end
 
+    # @private
+    #
     # @param input [String, Numeric, Boolean, nil]
     #
     # @return [Integer, String, nil]
@@ -97,6 +122,8 @@ module Sam
       end
     end
 
+    # @private
+    #
     # @param input [String, Numeric, Boolean, nil]
     #
     # @return [Float, String, nil]
@@ -111,6 +138,8 @@ module Sam
       end
     end
 
+    # @private
+    #
     # @param input [String, Numeric, Boolean, nil]
     #
     # @return [Boolean, String, Numeric, nil]
@@ -127,6 +156,8 @@ module Sam
       end
     end
 
+    # @private
+    #
     # @param input [String, Numeric, Boolean, nil]
     #
     # @raise [ArgumentError]
@@ -140,6 +171,8 @@ module Sam
       end
     end
 
+    # @private
+    #
     # @param query [Hash{String => String | Array<String>}]
     #
     # @return [String, nil]
@@ -147,6 +180,8 @@ module Sam
       query.empty? ? nil : URI.encode_www_form(query)
     end
 
+    # @private
+    #
     # @param query [String, nil]
     #
     # @return [Hash{String => Array<String>}]
@@ -154,7 +189,25 @@ module Sam
       CGI.parse(query.to_s)
     end
 
+    # @private
+    #
     # @param url [String]
+    # @param url [URI::Generic, String]
+    # @param input [Object]
+    #
+    # @return [Hash, Object]
+    def self.coerce_hash(input)
+      case input
+      in NilClass | Array | Set | Enumerator
+        input
+      else
+        input.respond_to?(:to_h) ? input.to_h : input
+      end
+    end
+
+    # @private
+    #
+    # @param url [URI::Generic, String]
     #
     # @return [Hash{Symbol => Object}]
     def self.parse_uri(url)
@@ -174,6 +227,34 @@ module Sam
       URI::Generic.build(**parsed, query: encode_query(parsed.fetch(:query)))
     end
 
+    # @private
+    #
+    # @param lhs [Hash{Symbol => String}]
+    # @param rhs [Hash{Symbol => String}] -
+    #   @option rhs [Hash{String => Array<String>}] :extra_query
+    #
+    # @return [URI::Generic]
+    def self.join_parsed_uri(lhs, rhs)
+      base_path, base_query = lhs.fetch_values(:path, :query)
+      slashed = base_path.end_with?("/") ? base_path : "#{base_path}/"
+
+      parsed_path, parsed_query = parse_uri(rhs.fetch(:path)).fetch_values(:path, :query)
+      override = URI::Generic.build(**rhs.slice(:scheme, :host, :port), path: parsed_path)
+
+      joined = URI.join(URI::Generic.build(lhs.except(:path, :query)), slashed, override)
+      query = deep_merge(
+        joined.path == base_path ? base_query : {},
+        parsed_query,
+        *rhs.values_at(:query, :extra_query).compact,
+        concat: true
+      )
+
+      joined.query = encode_query(query)
+      joined
+    end
+
+    # @private
+    #
     # @param uri [URI::Generic]
     #
     # @return [String]
@@ -181,6 +262,8 @@ module Sam
       "#{uri.scheme}://#{uri.host}#{uri.port == uri.default_port ? '' : ":#{uri.port}"}"
     end
 
+    # @private
+    #
     # @param headers [Array<Hash{String => String, Integer, nil}>]
     #
     # @return [Hash{String => String, nil}]

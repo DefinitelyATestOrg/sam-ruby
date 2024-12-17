@@ -7,23 +7,23 @@ module Sam
   # When making a request, you can pass an actual {RequestOptions} instance, or simply pass a Hash
   # with symbol keys matching the attributes on this class.
   class RequestOptions
-    # @!visibility private
+    # @private
     #
     # @return [Array<Symbol>]
     private_class_method def self.options
       @options ||= []
     end
 
-    # @!visibility private
+    # @private
     #
     # @param name [Symbol]
     private_class_method def self.option(name)
-      define_method("#{name}=") { |val| @_values[name] = val }
-      define_method(name) { @_values[name] }
+      define_method("#{name}=") { |val| @values[name] = val }
+      define_method(name) { @values[name] }
       options << name
     end
 
-    # @!visibility private
+    # @private
     #
     # @param opts [Sam::RequestOptions, Hash{Symbol => Object}]
     #
@@ -41,6 +41,46 @@ module Sam
       end
     end
 
+    # @!attribute idempotency_key
+    # Idempotency key to send with request and all associated retries. Will only be sent for write
+    #   requests.
+    #
+    #   @return [String]
+    option :idempotency_key
+
+    # @!attribute extra_headers
+    # Extra headers to send with the request. These are `.merged`’d into any `extra_headers` given at the
+    #  client level.
+    #
+    #   @return [Hash{String => String}]
+    option :extra_headers
+
+    # @!attribute extra_query
+    # Extra query params to send with the request. These are `.merge`’d into any `query` given at
+    #   the client level.
+    #
+    #   @return [Hash{Symbol => Array<String>}]
+    option :extra_query
+
+    # @!attribute extra_body
+    # Extra data to send with the request. These are deep merged into any data generated as part
+    #   of the normal request.
+    #
+    #   @return [Hash{Symbol => Object}]
+    option :extra_body
+
+    # @!attribute max_retries
+    # Maximum number of retries to attempt after a failed initial request.
+    #
+    #   @return [Integer]
+    option :max_retries
+
+    # @!attribute timeout
+    # Request timeout in seconds.
+    #
+    #   @return [Float]
+    option :timeout
+
     # Returns a new instance of RequestOptions.
     #
     # @param values [Hash{Symbol => Object}] initial option values to set on the instance.
@@ -51,74 +91,36 @@ module Sam
     #   @option values [Integer] :max_retries
     #   @option values [Integer] :timeout
     def initialize(values = {})
-      @_values = values
+      @values = values
     end
-
-    # @!attribute idempotency_key
-    # Idempotency key to send with request and all associated retries. Will only be sent for write
-    #   requests.
-    # @return [String]
-    option :idempotency_key
-
-    # @!attribute extra_headers
-    # Extra headers to send with the request. These are `.merged`’d into any `extra_headers` given at the
-    #  client level.
-    # @return [Hash{String => String}]
-    option :extra_headers
-
-    # @!attribute extra_query
-    # Extra query params to send with the request. These are `.merge`’d into any `query` given at
-    #   the client level.
-    # @return [Hash{Symbol => Array<String>}]
-    option :extra_query
-
-    # @!attribute extra_body
-    # Extra data to send with the request. These are deep merged into any data generated as part
-    #   of the normal request.
-    # @return [Hash{Symbol => Object}]
-    option :extra_body
-
-    # @!attribute max_retries
-    # Maximum number of retries to attempt after a failed initial request.
-    # @return [Integer]
-    option :max_retries
-
-    # @!attribute timeout
-    # Request timeout in seconds.
-    # @return [Integer]
-    option :timeout
 
     # Lookup an option previously set on this instance.
     #
+    # @param key [Symbol] Key to look up by.
+    #
     # @return [Object]
-    def [](key)
-      @_values[key]
-    end
+    def [](key) = @values[key]
 
     # Return a Hash containing the options set on this instance.
     #
     # @return [Hash{Symbol => Object}]
-    def to_h
-      @_values
-    end
+    def to_h = @values
 
     alias_method :to_hash, :to_h
-
-    # @return [String]
-    def inspect
-      "#<#{self.class}:0x#{object_id.to_s(16)} #{@_values.inspect}>"
-    end
-
-    # @return [String]
-    def to_s
-      @_values.to_s
-    end
 
     # @param keys [Array<Symbol>, nil]
     #
     # @return [Hash{Symbol => Object}]
     def deconstruct_keys(keys)
-      @_values.deconstruct_keys(keys)
+      @values.deconstruct_keys(keys)
+    end
+
+    # @return [String]
+    def to_s = @values.to_s
+
+    # @return [String]
+    def inspect
+      "#<#{self.class}:0x#{object_id.to_s(16)} #{@values.inspect}>"
     end
   end
 end

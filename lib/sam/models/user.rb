@@ -3,52 +3,78 @@
 module Sam
   module Models
     class User < Sam::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
+      #
       #   @return [Integer]
       optional :id, Integer
 
-      # @!attribute [rw] email
+      # @!attribute email
+      #
       #   @return [String]
       optional :email, String
 
-      # @!attribute [rw] first_name
+      # @!attribute first_name
+      #
       #   @return [String]
       optional :first_name, String, api_name: :firstName
 
-      # @!attribute [rw] last_name
+      # @!attribute last_name
+      #
       #   @return [String]
       optional :last_name, String, api_name: :lastName
 
-      # @!attribute [rw] password
+      # @!attribute password
+      #
       #   @return [String]
       optional :password, String
 
-      # @!attribute [rw] phone
+      # @!attribute phone
+      #
       #   @return [String]
       optional :phone, String
 
-      # @!attribute [rw] username
+      # @!attribute username
+      #
       #   @return [String]
       optional :username, String
 
-      # @!attribute [rw] user_status
+      # @!attribute user_status
       #   User Status
+      #
       #   @return [Integer]
       optional :user_status, Integer, api_name: :userStatus
 
       # @!parse
-      #   # Create a new instance of User from a Hash of raw data.
+      #   # @param id [Integer, nil]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Integer, nil] :id
-      #   #   @option data [String, nil] :email
-      #   #   @option data [String, nil] :firstName
-      #   #   @option data [String, nil] :lastName
-      #   #   @option data [String, nil] :password
-      #   #   @option data [String, nil] :phone
-      #   #   @option data [String, nil] :username
-      #   #   @option data [Integer, nil] :userStatus User Status
-      #   def initialize(data = {}) = super
+      #   # @param email [String, nil]
+      #   #
+      #   # @param first_name [String, nil]
+      #   #
+      #   # @param last_name [String, nil]
+      #   #
+      #   # @param password [String, nil]
+      #   #
+      #   # @param phone [String, nil]
+      #   #
+      #   # @param username [String, nil]
+      #   #
+      #   # @param user_status [Integer, nil] User Status
+      #   #
+      #   def initialize(
+      #     id: nil,
+      #     email: nil,
+      #     first_name: nil,
+      #     last_name: nil,
+      #     password: nil,
+      #     phone: nil,
+      #     username: nil,
+      #     user_status: nil
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Sam::BaseModel) -> void
     end
   end
 end

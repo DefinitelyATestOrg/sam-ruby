@@ -65,7 +65,7 @@ module Sam
   end
 
   class APIStatusError < Sam::APIError
-    # @!visibility private
+    # @private
     #
     # @param status [Integer]
     # @param body [Object, nil]
@@ -105,7 +105,7 @@ module Sam
     def initialize(url:, status:, body:, request:, response:, message: nil)
       message ||= {url: url, status: status, body: body}
       super(
-        url: url,
+        url: url.to_s,
         status: status,
         body: body,
         request: request,
