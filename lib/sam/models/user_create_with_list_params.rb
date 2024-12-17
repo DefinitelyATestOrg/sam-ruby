@@ -9,7 +9,7 @@ module Sam
       required :body, Sam::ArrayOf.new(-> { Sam::Models::User })
 
       # @!parse
-      #   # @param body [Array<Object>]
+      #   # @param body [Array<Sam::Models::User>]
       #   #
       #   def initialize(body:) = super
 
