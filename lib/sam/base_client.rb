@@ -323,16 +323,16 @@ module Sam
     # @return [Object]
     private def parse_response(req, opts, response)
       parsed = parse_body(response)
-      raw_data = Sam::Util.dig(parsed, req[:unwrap])
+      unwrapped = Sam::Util.dig(parsed, req[:unwrap])
 
       page, model = req.values_at(:page, :model)
       case [page, model]
       in [Class, Class | Sam::Converter | nil]
-        page.new(client: self, model: model, req: req, opts: opts, response: response, raw_data: raw_data)
+        page.new(client: self, req: req, opts: opts, headers: response, unwrapped: unwrapped)
       in [nil, Class | Sam::Converter]
-        Sam::Converter.coerce(model, raw_data)
+        Sam::Converter.coerce(model, unwrapped)
       in [nil, nil]
-        raw_data
+        unwrapped
       end
     end
 
