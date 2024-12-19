@@ -20,7 +20,7 @@ module Sam
         def retrieve(order_id, opts = {})
           req = {
             method: :get,
-            path: "/store/order/#{order_id}",
+            path: ["store/order/%0s", order_id],
             model: Sam::Models::Store::CoolOrder
           }
           @client.request(req, opts)
@@ -37,7 +37,7 @@ module Sam
         def delete(order_id, opts = {})
           req = {
             method: :delete,
-            path: "/store/order/#{order_id}",
+            path: ["store/order/%0s", order_id],
             model: NilClass
           }
           @client.request(req, opts)

@@ -69,7 +69,8 @@ module Sam
     # @return [Hash{Symbol => Object}]
     private def build_request(req, opts)
       options = Sam::Util.deep_merge(req, opts)
-      method = options.fetch(:method)
+      method, uninterpolated_path = options.fetch_values(:method, :path)
+      path = Sam::Util.interpolate_path(uninterpolated_path)
 
       headers = Sam::Util.normalized_headers(
         @headers,
@@ -106,7 +107,7 @@ module Sam
           body
         end
 
-      url = Sam::Util.join_parsed_uri(@base_url, options)
+      url = Sam::Util.join_parsed_uri(@base_url, {**options, path: path})
       timeout = options.fetch(:timeout, @timeout)
       {method: method, url: url, headers: headers, body: encoded, timeout: timeout}
     end
