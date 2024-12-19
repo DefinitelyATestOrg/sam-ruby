@@ -48,7 +48,7 @@ module Sam
         #   #
         #   # @param status [String, nil] Order Status
         #   #
-        #   def initialize(id: nil, complete: nil, pet_id: nil, quantity: nil, ship_date: nil, status: nil) = super
+        #   def initialize(id: nil, complete: nil, pet_id: nil, quantity: nil, ship_date: nil, status: nil, **) = super
 
         # def initialize: (Hash | Sam::BaseModel) -> void
 
