@@ -35,7 +35,7 @@ module Sam
         parsed = Sam::Models::UserCreateParams.dump(params)
         req = {
           method: :post,
-          path: "/user",
+          path: "user",
           body: parsed,
           model: Sam::Models::User
         }
@@ -52,7 +52,7 @@ module Sam
       def retrieve(username, opts = {})
         req = {
           method: :get,
-          path: "/user/#{username}",
+          path: ["user/%0s", username],
           model: Sam::Models::User
         }
         @client.request(req, opts)
@@ -84,11 +84,11 @@ module Sam
       def update(params = {}, opts = {})
         parsed = Sam::Models::UserUpdateParams.dump(params)
         path_username = parsed.fetch(:path_username) do
-          raise ArgumentError.new("missing required path argument :path_username")
+          raise ArgumentError.new("missing required path argument #{_1}")
         end
         req = {
           method: :put,
-          path: "/user/#{path_username}",
+          path: ["user/%0s", path_username],
           body: parsed.except(:path_username),
           model: NilClass
         }
@@ -105,7 +105,7 @@ module Sam
       def delete(username, opts = {})
         req = {
           method: :delete,
-          path: "/user/#{username}",
+          path: ["user/%0s", username],
           model: NilClass
         }
         @client.request(req, opts)
@@ -124,7 +124,7 @@ module Sam
         parsed = Sam::Models::UserCreateWithListParams.dump(params)
         req = {
           method: :post,
-          path: "/user/createWithList",
+          path: "user/createWithList",
           body: parsed[:body],
           model: Sam::Models::User
         }
@@ -146,7 +146,7 @@ module Sam
         parsed = Sam::Models::UserLoginParams.dump(params)
         req = {
           method: :get,
-          path: "/user/login",
+          path: "user/login",
           query: parsed,
           model: String
         }
@@ -161,7 +161,7 @@ module Sam
       def logout(opts = {})
         req = {
           method: :get,
-          path: "/user/logout",
+          path: "user/logout",
           model: NilClass
         }
         @client.request(req, opts)
