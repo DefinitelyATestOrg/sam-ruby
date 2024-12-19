@@ -69,7 +69,8 @@ module Sam
       #     password: nil,
       #     phone: nil,
       #     username: nil,
-      #     user_status: nil
+      #     user_status: nil,
+      #     **
       #   )
       #     super
       #   end

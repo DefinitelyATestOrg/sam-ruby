@@ -5,7 +5,7 @@ module Sam
     module Store
       class OrderRetrieveParams < Sam::BaseModel
         # @!parse
-        #   def initialize = super
+        #   def initialize(**) = super
 
         # def initialize: (Hash | Sam::BaseModel) -> void
       end
