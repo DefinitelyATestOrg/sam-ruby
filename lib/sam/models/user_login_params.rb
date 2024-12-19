@@ -20,7 +20,7 @@ module Sam
       #   #
       #   # @param username [String, nil] The user name for login
       #   #
-      #   def initialize(password: nil, username: nil) = super
+      #   def initialize(password: nil, username: nil, **) = super
 
       # def initialize: (Hash | Sam::BaseModel) -> void
     end

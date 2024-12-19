@@ -11,7 +11,7 @@ module Sam
       # @!parse
       #   # @param body [Array<Sam::Models::User>]
       #   #
-      #   def initialize(body:) = super
+      #   def initialize(body:, **) = super
 
       # def initialize: (Hash | Sam::BaseModel) -> void
     end

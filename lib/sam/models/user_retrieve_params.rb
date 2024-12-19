@@ -4,7 +4,7 @@ module Sam
   module Models
     class UserRetrieveParams < Sam::BaseModel
       # @!parse
-      #   def initialize = super
+      #   def initialize(**) = super
 
       # def initialize: (Hash | Sam::BaseModel) -> void
     end
