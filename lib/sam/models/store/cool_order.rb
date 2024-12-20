@@ -70,6 +70,8 @@ module Sam
           PLACED = :placed
           APPROVED = :approved
           DELIVERED = :delivered
+
+          finalize!
         end
       end
     end
