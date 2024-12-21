@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README.md"]
   s.required_ruby_version = ">= 3.0.0"
   s.add_dependency "connection_pool"
-  s.homepage = "https://rubydoc.info/github/DefinitelyATestOrg/sam-ruby"
+  s.homepage = "https://gemdocs.org/gems/sam/latest"
   s.metadata["homepage_uri"] = s.homepage
   s.metadata["source_code_uri"] = "https://github.com/DefinitelyATestOrg/sam-ruby"
   s.metadata["rubygems_mfa_required"] = "true"
