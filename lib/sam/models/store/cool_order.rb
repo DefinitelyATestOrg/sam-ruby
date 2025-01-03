@@ -36,17 +36,17 @@ module Sam
         optional :status, enum: -> { Sam::Models::Store::CoolOrder::Status }
 
         # @!parse
-        #   # @param id [Integer, nil]
+        #   # @param id [Integer]
         #   #
-        #   # @param complete [Boolean, nil]
+        #   # @param complete [Boolean]
         #   #
-        #   # @param pet_id [Integer, nil]
+        #   # @param pet_id [Integer]
         #   #
-        #   # @param quantity [Integer, nil]
+        #   # @param quantity [Integer]
         #   #
-        #   # @param ship_date [String, nil]
+        #   # @param ship_date [String]
         #   #
-        #   # @param status [String, nil] Order Status
+        #   # @param status [String] Order Status
         #   #
         #   def initialize(id: nil, complete: nil, pet_id: nil, quantity: nil, ship_date: nil, status: nil, **) = super
 

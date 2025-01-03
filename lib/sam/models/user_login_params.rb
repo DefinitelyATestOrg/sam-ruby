@@ -16,9 +16,9 @@ module Sam
       optional :username, String
 
       # @!parse
-      #   # @param password [String, nil] The password for login in clear text
+      #   # @param password [String] The password for login in clear text
       #   #
-      #   # @param username [String, nil] The user name for login
+      #   # @param username [String] The user name for login
       #   #
       #   def initialize(password: nil, username: nil, **) = super
 
