@@ -45,21 +45,21 @@ module Sam
       optional :user_status, Integer, api_name: :userStatus
 
       # @!parse
-      #   # @param id [Integer, nil]
+      #   # @param id [Integer]
       #   #
-      #   # @param email [String, nil]
+      #   # @param email [String]
       #   #
-      #   # @param first_name [String, nil]
+      #   # @param first_name [String]
       #   #
-      #   # @param last_name [String, nil]
+      #   # @param last_name [String]
       #   #
-      #   # @param password [String, nil]
+      #   # @param password [String]
       #   #
-      #   # @param phone [String, nil]
+      #   # @param phone [String]
       #   #
-      #   # @param username [String, nil]
+      #   # @param username [String]
       #   #
-      #   # @param user_status [Integer, nil] User Status
+      #   # @param user_status [Integer] User Status
       #   #
       #   def initialize(
       #     id: nil,
