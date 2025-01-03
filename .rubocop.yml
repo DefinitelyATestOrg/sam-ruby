@@ -23,8 +23,12 @@ Style/MethodCallWithArgsParentheses:
   Enabled: true
   Exclude:
     - '**/*.gemspec'
-  IgnoredMethods:
+  AllowedMethods:
     - raise
+
+# Nothing wrong with inline private methods
+Style/AccessModifierDeclarations:
+  Enabled: false
 
 # Nothing wrong with clear if statements.
 Style/IfUnlessModifier:
@@ -60,8 +64,25 @@ Style/ClassAndModuleChildren:
   Exclude:
     - test/**/*
 
+# Perfectly fine
+Style/MultipleComparison:
+  Enabled: false
+
 # Rubocop is pretty bad about mangling single line lambdas
 Style/Lambda:
+  Enabled: false
+
+# Not all parameters should be named
+Style/NumberedParameters:
+  Enabled: false
+
+# Fairly useful in tests for pattern matching
+Style/CaseEquality:
+  Exclude:
+    - test/**/*
+
+# Reasonable to use brackets for errors with long messages.
+Style/RaiseArgs:
   Enabled: false
 
 # Set a reasonable line length; rely on other cops to correct long lines.
@@ -69,8 +90,8 @@ Layout/LineLength:
   Max: 110
   AllowedPatterns:
     - '^(\s*#)' # Comments for YARD docs: @param and similar.
-    - '= SamRuby::Resources::\S+\.new\(client: (self|client)\)$' # Instantiating resources.
-    - '^\s*(-> { )?SamRuby::Models::[a-zA-Z0-9:]+( })?$' # Line is entirely a reference to a fully-qualified Model.
+    - '= Sam::Resources::\S+\.new\(client: (self|client)\)$' # Instantiating resources.
+    - '^\s*(-> { )?Sam::Models::[a-zA-Z0-9:]+( })?$' # Line is entirely a reference to a fully-qualified Model.
 
 # Start the assignment on the same line variable is mentioned.
 Layout/MultilineAssignmentLayout:
