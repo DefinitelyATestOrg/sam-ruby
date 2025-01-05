@@ -26,6 +26,9 @@ module Sam
     attr_reader :users
 
     # @private
+    #
+    # @return [Hash{String => String}]
+    #
     private def auth_headers
       {"api_key" => @api_key}
     end
@@ -38,6 +41,13 @@ module Sam
     #   to `ENV["API_KEY"]`
     #
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
+    #
+    # @param timeout [Float]
+    #
+    # @param initial_retry_delay [Float]
+    #
+    # @param max_retry_delay [Float]
+    #
     def initialize(
       base_url: nil,
       api_key: ENV["API_KEY"],

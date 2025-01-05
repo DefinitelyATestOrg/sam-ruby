@@ -5,6 +5,7 @@ module Sam
     class Store
       class Orders
         # @param client [Sam::Client]
+        #
         def initialize(client:)
           @client = client
         end
@@ -17,6 +18,7 @@ module Sam
         # @param opts [Hash{Symbol => Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Sam::Models::Store::CoolOrder]
+        #
         def retrieve(order_id, opts = {})
           req = {
             method: :get,
@@ -34,6 +36,7 @@ module Sam
         # @param opts [Hash{Symbol => Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [nil]
+        #
         def delete(order_id, opts = {})
           req = {
             method: :delete,
