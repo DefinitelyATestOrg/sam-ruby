@@ -4,6 +4,7 @@ module Sam
   module Resources
     class Users
       # @param client [Sam::Client]
+      #
       def initialize(client:)
         @client = client
       end
@@ -31,6 +32,7 @@ module Sam
       # @param opts [Hash{Symbol => Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Sam::Models::User]
+      #
       def create(params = {}, opts = {})
         parsed = Sam::Models::UserCreateParams.dump(params)
         req = {
@@ -49,6 +51,7 @@ module Sam
       # @param opts [Hash{Symbol => Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Sam::Models::User]
+      #
       def retrieve(username, opts = {})
         req = {
           method: :get,
@@ -81,6 +84,7 @@ module Sam
       # @param opts [Hash{Symbol => Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
+      #
       def update(params = {}, opts = {})
         parsed = Sam::Models::UserUpdateParams.dump(params)
         path_username = parsed.fetch(:path_username) do
@@ -102,6 +106,7 @@ module Sam
       # @param opts [Hash{Symbol => Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
+      #
       def delete(username, opts = {})
         req = {
           method: :delete,
@@ -120,6 +125,7 @@ module Sam
       # @param opts [Hash{Symbol => Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Sam::Models::User]
+      #
       def create_with_list(params = {}, opts = {})
         parsed = Sam::Models::UserCreateWithListParams.dump(params)
         req = {
@@ -142,6 +148,7 @@ module Sam
       # @param opts [Hash{Symbol => Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [String]
+      #
       def login(params = {}, opts = {})
         parsed = Sam::Models::UserLoginParams.dump(params)
         req = {
@@ -158,6 +165,7 @@ module Sam
       # @param opts [Hash{Symbol => Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
+      #
       def logout(opts = {})
         req = {
           method: :get,
