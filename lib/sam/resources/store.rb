@@ -7,6 +7,7 @@ module Sam
       attr_reader :orders
 
       # @param client [Sam::Client]
+      #
       def initialize(client:)
         @client = client
         @orders = Sam::Resources::Store::Orders.new(client: client)
