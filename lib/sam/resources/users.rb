@@ -11,7 +11,7 @@ module Sam
 
       # This can only be done by the logged in user.
       #
-      # @param params [Hash{Symbol => Object}, Sam::Models::UserCreateParams] Attributes to send in this request.
+      # @param params [Sam::Models::UserCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [Integer] :id
       #
@@ -63,7 +63,7 @@ module Sam
 
       # This can only be done by the logged in user.
       #
-      # @param params [Hash{Symbol => Object}, Sam::Models::UserUpdateParams] Attributes to send in this request.
+      # @param params [Sam::Models::UserUpdateParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :body_username Body param:
       #
@@ -118,7 +118,7 @@ module Sam
 
       # Creates list of users with given input array
       #
-      # @param params [Hash{Symbol => Object}, Sam::Models::UserCreateWithListParams] Attributes to send in this request.
+      # @param params [Sam::Models::UserCreateWithListParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [Array<Sam::Models::User>] :body
       #
@@ -139,7 +139,7 @@ module Sam
 
       # Logs user into the system
       #
-      # @param params [Hash{Symbol => Object}, Sam::Models::UserLoginParams] Attributes to send in this request.
+      # @param params [Sam::Models::UserLoginParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :password The password for login in clear text
       #
