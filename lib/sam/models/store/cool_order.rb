@@ -3,6 +3,17 @@
 module Sam
   module Models
     module Store
+      # @example
+      #
+      # ```ruby
+      # cool_order => {
+      #   id: Integer,
+      #   complete: Sam::BooleanModel,
+      #   pet_id: Integer,
+      #   quantity: Integer,
+      #   ship_date: Time
+      # }
+      # ```
       class CoolOrder < Sam::BaseModel
         # @!attribute id
         #
@@ -57,7 +68,7 @@ module Sam
         # @example
         #
         # ```ruby
-        # case enum
+        # case status
         # in :placed
         #   # ...
         # in :approved
