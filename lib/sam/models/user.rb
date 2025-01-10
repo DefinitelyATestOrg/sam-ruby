@@ -2,6 +2,18 @@
 
 module Sam
   module Models
+    # @example
+    #
+    # ```ruby
+    # user => {
+    #   id: Integer,
+    #   email: String,
+    #   first_name: String,
+    #   last_name: String,
+    #   password: String,
+    #   **_
+    # }
+    # ```
     class User < Sam::BaseModel
       # @!attribute id
       #
