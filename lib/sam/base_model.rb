@@ -559,8 +559,12 @@ module Sam
         case [enum, union, item_type]
         in [Proc, nil, nil]
           enum
+        in [Class | Sam::Converter, nil, nil]
+          -> { enum }
         in [nil, Proc, nil]
           union
+        in [nil, Class | Sam::Converter, nil]
+          -> { union }
         in [nil, nil, Proc]
           item_type
         in [nil, nil, Class | Sam::Converter]
@@ -688,8 +692,12 @@ module Sam
         case [enum, union, item_type]
         in [Proc, nil, nil]
           enum
+        in [Class | Sam::Converter, nil, nil]
+          -> { enum }
         in [nil, Proc, nil]
           union
+        in [nil, Class | Sam::Converter, nil]
+          -> { union }
         in [nil, nil, Proc]
           item_type
         in [nil, nil, Class | Sam::Converter]
