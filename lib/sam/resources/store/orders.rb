@@ -4,12 +4,6 @@ module Sam
   module Resources
     class Store
       class Orders
-        # @param client [Sam::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # For valid response try integer IDs with value <= 5 or > 10. Other values will
         #   generate exceptions.
         #
@@ -44,6 +38,12 @@ module Sam
             model: NilClass
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Sam::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end
