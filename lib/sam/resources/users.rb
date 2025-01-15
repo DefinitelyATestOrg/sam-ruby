@@ -3,12 +3,6 @@
 module Sam
   module Resources
     class Users
-      # @param client [Sam::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # This can only be done by the logged in user.
       #
       # @param params [Sam::Models::UserCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -173,6 +167,12 @@ module Sam
           model: NilClass
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Sam::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end
