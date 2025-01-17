@@ -26,8 +26,8 @@ class Sam::Test::Resources::UsersTest < Minitest::Test
     end
   end
 
-  def test_update_required_params
-    response = @sam.users.update(path_username: "username")
+  def test_update
+    response = @sam.users.update("username")
 
     assert_pattern do
       response => nil

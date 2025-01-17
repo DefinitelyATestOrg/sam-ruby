@@ -57,37 +57,36 @@ module Sam
 
       # This can only be done by the logged in user.
       #
+      # @param username_1 [String] name that needs to be updated
+      #
       # @param params [Sam::Models::UserUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
-      #   @option params [String] :body_username Body param:
+      #   @option params [Integer] :id
       #
-      #   @option params [Integer] :id Body param:
+      #   @option params [String] :email
       #
-      #   @option params [String] :email Body param:
+      #   @option params [String] :first_name
       #
-      #   @option params [String] :first_name Body param:
+      #   @option params [String] :last_name
       #
-      #   @option params [String] :last_name Body param:
+      #   @option params [String] :password
       #
-      #   @option params [String] :password Body param:
+      #   @option params [String] :phone
       #
-      #   @option params [String] :phone Body param:
+      #   @option params [String] :username_2
       #
-      #   @option params [Integer] :user_status Body param: User Status
+      #   @option params [Integer] :user_status User Status
       #
       # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       #
-      def update(params = {}, opts = {})
+      def update(username_1, params = {}, opts = {})
         parsed = Sam::Models::UserUpdateParams.dump(params)
-        path_username = parsed.fetch(:path_username) do
-          raise ArgumentError.new("missing required path argument #{_1}")
-        end
         req = {
           method: :put,
-          path: ["user/%0s", path_username],
-          body: parsed.except(:path_username),
+          path: ["user/%0s", username_1],
+          body: parsed,
           model: NilClass
         }
         @client.request(req, opts)
