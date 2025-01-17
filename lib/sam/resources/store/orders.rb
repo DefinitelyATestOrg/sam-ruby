@@ -9,7 +9,7 @@ module Sam
         #
         # @param order_id [Integer] ID of order that needs to be fetched
         #
-        # @param opts [Hash{Symbol => Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Sam::Models::Store::CoolOrder]
         #
@@ -27,7 +27,7 @@ module Sam
         #
         # @param order_id [Integer] ID of the order that needs to be deleted
         #
-        # @param opts [Hash{Symbol => Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [nil]
         #

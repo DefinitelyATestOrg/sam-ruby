@@ -27,7 +27,7 @@ module Sam
 
     # @private
     #
-    # @return [Hash{String => String}]
+    # @return [Hash{String=>String}]
     #
     private def auth_headers
       {"api_key" => @api_key}
