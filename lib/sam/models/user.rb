@@ -3,7 +3,6 @@
 module Sam
   module Models
     # @example
-    #
     # ```ruby
     # user => {
     #   id: Integer,

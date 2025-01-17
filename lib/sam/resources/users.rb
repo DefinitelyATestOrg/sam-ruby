@@ -5,7 +5,7 @@ module Sam
     class Users
       # This can only be done by the logged in user.
       #
-      # @param params [Sam::Models::UserCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Sam::Models::UserCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Integer] :id
       #
@@ -23,7 +23,7 @@ module Sam
       #
       #   @option params [Integer] :user_status User Status
       #
-      # @param opts [Hash{Symbol => Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Sam::Models::User]
       #
@@ -42,7 +42,7 @@ module Sam
       #
       # @param username [String] The name that needs to be fetched. Use user1 for testing.
       #
-      # @param opts [Hash{Symbol => Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Sam::Models::User]
       #
@@ -57,7 +57,7 @@ module Sam
 
       # This can only be done by the logged in user.
       #
-      # @param params [Sam::Models::UserUpdateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Sam::Models::UserUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :body_username Body param:
       #
@@ -75,7 +75,7 @@ module Sam
       #
       #   @option params [Integer] :user_status Body param: User Status
       #
-      # @param opts [Hash{Symbol => Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       #
@@ -97,7 +97,7 @@ module Sam
       #
       # @param username [String] The name that needs to be deleted
       #
-      # @param opts [Hash{Symbol => Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       #
@@ -112,11 +112,11 @@ module Sam
 
       # Creates list of users with given input array
       #
-      # @param params [Sam::Models::UserCreateWithListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Sam::Models::UserCreateWithListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Array<Sam::Models::User>] :body
       #
-      # @param opts [Hash{Symbol => Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Sam::Models::User]
       #
@@ -133,13 +133,13 @@ module Sam
 
       # Logs user into the system
       #
-      # @param params [Sam::Models::UserLoginParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Sam::Models::UserLoginParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :password The password for login in clear text
       #
       #   @option params [String] :username The user name for login
       #
-      # @param opts [Hash{Symbol => Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [String]
       #
@@ -156,7 +156,7 @@ module Sam
 
       # Logs out current logged in user session
       #
-      # @param opts [Hash{Symbol => Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       #
