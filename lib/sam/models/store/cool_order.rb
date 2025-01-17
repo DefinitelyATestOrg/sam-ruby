@@ -4,7 +4,6 @@ module Sam
   module Models
     module Store
       # @example
-      #
       # ```ruby
       # cool_order => {
       #   id: Integer,
@@ -66,7 +65,6 @@ module Sam
         # Order Status
         #
         # @example
-        #
         # ```ruby
         # case status
         # in :placed
