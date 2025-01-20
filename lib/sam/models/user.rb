@@ -14,46 +14,78 @@ module Sam
     # }
     # ```
     class User < Sam::BaseModel
-      # @!attribute id
+      # @!attribute [r] id
       #
-      #   @return [Integer]
+      #   @return [Integer, nil]
       optional :id, Integer
 
-      # @!attribute email
+      # @!parse
+      #   # @return [Integer]
+      #   attr_writer :id
+
+      # @!attribute [r] email
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :email, String
 
-      # @!attribute first_name
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :email
+
+      # @!attribute [r] first_name
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :first_name, String, api_name: :firstName
 
-      # @!attribute last_name
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :first_name
+
+      # @!attribute [r] last_name
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :last_name, String, api_name: :lastName
 
-      # @!attribute password
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :last_name
+
+      # @!attribute [r] password
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :password, String
 
-      # @!attribute phone
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :password
+
+      # @!attribute [r] phone
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :phone, String
 
-      # @!attribute username
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :phone
+
+      # @!attribute [r] username
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :username, String
 
-      # @!attribute user_status
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :username
+
+      # @!attribute [r] user_status
       #   User Status
       #
-      #   @return [Integer]
+      #   @return [Integer, nil]
       optional :user_status, Integer, api_name: :userStatus
+
+      # @!parse
+      #   # @return [Integer]
+      #   attr_writer :user_status
 
       # @!parse
       #   # @param id [Integer]
