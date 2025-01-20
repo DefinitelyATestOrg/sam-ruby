@@ -14,36 +14,60 @@ module Sam
       # }
       # ```
       class CoolOrder < Sam::BaseModel
-        # @!attribute id
+        # @!attribute [r] id
         #
-        #   @return [Integer]
+        #   @return [Integer, nil]
         optional :id, Integer
 
-        # @!attribute complete
+        # @!parse
+        #   # @return [Integer]
+        #   attr_writer :id
+
+        # @!attribute [r] complete
         #
-        #   @return [Boolean]
+        #   @return [Boolean, nil]
         optional :complete, Sam::BooleanModel
 
-        # @!attribute pet_id
+        # @!parse
+        #   # @return [Boolean]
+        #   attr_writer :complete
+
+        # @!attribute [r] pet_id
         #
-        #   @return [Integer]
+        #   @return [Integer, nil]
         optional :pet_id, Integer, api_name: :petId
 
-        # @!attribute quantity
+        # @!parse
+        #   # @return [Integer]
+        #   attr_writer :pet_id
+
+        # @!attribute [r] quantity
         #
-        #   @return [Integer]
+        #   @return [Integer, nil]
         optional :quantity, Integer
 
-        # @!attribute ship_date
+        # @!parse
+        #   # @return [Integer]
+        #   attr_writer :quantity
+
+        # @!attribute [r] ship_date
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :ship_date, Time, api_name: :shipDate
 
-        # @!attribute status
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :ship_date
+
+        # @!attribute [r] status
         #   Order Status
         #
-        #   @return [Symbol, Sam::Models::Store::CoolOrder::Status]
+        #   @return [Symbol, Sam::Models::Store::CoolOrder::Status, nil]
         optional :status, enum: -> { Sam::Models::Store::CoolOrder::Status }
+
+        # @!parse
+        #   # @return [Symbol, Sam::Models::Store::CoolOrder::Status]
+        #   attr_writer :status
 
         # @!parse
         #   # @param id [Integer]
