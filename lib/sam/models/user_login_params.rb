@@ -3,17 +3,25 @@
 module Sam
   module Models
     class UserLoginParams < Sam::BaseModel
-      # @!attribute password
+      # @!attribute [r] password
       #   The password for login in clear text
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :password, String
 
-      # @!attribute username
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :password
+
+      # @!attribute [r] username
       #   The user name for login
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :username, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :username
 
       # @!parse
       #   # @param password [String] The password for login in clear text
