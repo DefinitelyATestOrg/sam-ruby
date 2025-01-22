@@ -89,20 +89,13 @@ module Sam
 
       # @!parse
       #   # @param id [Integer]
-      #   #
       #   # @param email [String]
-      #   #
       #   # @param first_name [String]
-      #   #
       #   # @param last_name [String]
-      #   #
       #   # @param password [String]
-      #   #
       #   # @param phone [String]
-      #   #
       #   # @param username [String]
-      #   #
-      #   # @param user_status [Integer] User Status
+      #   # @param user_status [Integer]
       #   #
       #   def initialize(
       #     id: nil,

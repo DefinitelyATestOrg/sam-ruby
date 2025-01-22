@@ -71,16 +71,11 @@ module Sam
 
         # @!parse
         #   # @param id [Integer]
-        #   #
         #   # @param complete [Boolean]
-        #   #
         #   # @param pet_id [Integer]
-        #   #
         #   # @param quantity [Integer]
-        #   #
         #   # @param ship_date [String]
-        #   #
-        #   # @param status [String] Order Status
+        #   # @param status [String]
         #   #
         #   def initialize(id: nil, complete: nil, pet_id: nil, quantity: nil, ship_date: nil, status: nil, **) = super
 
