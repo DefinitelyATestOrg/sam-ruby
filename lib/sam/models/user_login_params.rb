@@ -24,9 +24,8 @@ module Sam
       #   attr_writer :username
 
       # @!parse
-      #   # @param password [String] The password for login in clear text
-      #   #
-      #   # @param username [String] The user name for login
+      #   # @param password [String]
+      #   # @param username [String]
       #   #
       #   def initialize(password: nil, username: nil, **) = super
 
