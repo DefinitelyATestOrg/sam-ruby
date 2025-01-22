@@ -79,7 +79,7 @@ module Sam
     #
     #   @option req [Class, nil] :page
     #
-    #   @option req [Class, Sam::Converter] :model
+    #   @option req [Class, Sam::Converter, Symbol, Boolean, Integer, Float] :model
     #
     # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] .
     #
@@ -374,7 +374,7 @@ module Sam
     #
     #   @option req [Class, nil] :page
     #
-    #   @option req [Class, Sam::Converter] :model
+    #   @option req [Class, Sam::Converter, Symbol, Boolean, Integer, Float] :model
     #
     # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] .
     #
@@ -427,7 +427,7 @@ module Sam
     #
     #   @option req [Class, nil] :page
     #
-    #   @option req [Class, Sam::Converter] :model
+    #   @option req [Class, Sam::Converter, Symbol, Boolean, Integer, Float] :model
     #
     # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] .
     #
