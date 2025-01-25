@@ -4,7 +4,13 @@ module Sam
   module Models
     class UserCreateParams < Sam::Models::User
       # @!parse
-      #   def initialize(**) = super
+      #   extend Sam::RequestParameters::Converter
+      include Sam::RequestParameters
+
+      # @!parse
+      #   # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
+      #   #
+      #   def initialize(request_options: {}, **) = super
 
       # def initialize: (Hash | Sam::BaseModel) -> void
     end

@@ -5,7 +5,7 @@ module Sam
     class Users
       # This can only be done by the logged in user.
       #
-      # @param params [Sam::Models::UserCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Sam::Models::UserCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Integer] :id
       #
@@ -23,43 +23,39 @@ module Sam
       #
       #   @option params [Integer] :user_status User Status
       #
-      # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Sam::Models::User]
       #
-      def create(params = {}, opts = {})
-        parsed = Sam::Models::UserCreateParams.dump(params)
-        req = {
-          method: :post,
-          path: "user",
-          body: parsed,
-          model: Sam::Models::User
-        }
-        @client.request(req, opts)
+      def create(params = {})
+        parsed, options = Sam::Models::UserCreateParams.dump_request(params)
+        @client.request(method: :post, path: "user", body: parsed, model: Sam::Models::User, options: options)
       end
 
       # Get user by user name
       #
       # @param username [String] The name that needs to be fetched. Use user1 for testing.
       #
-      # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Sam::Models::UserRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Sam::Models::User]
       #
-      def retrieve(username, opts = {})
-        req = {
+      def retrieve(username, params = {})
+        @client.request(
           method: :get,
           path: ["user/%0s", username],
-          model: Sam::Models::User
-        }
-        @client.request(req, opts)
+          model: Sam::Models::User,
+          options: params[:request_options]
+        )
       end
 
       # This can only be done by the logged in user.
       #
       # @param username_1 [String] name that needs to be updated
       #
-      # @param params [Sam::Models::UserUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Sam::Models::UserUpdateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Integer] :id
       #
@@ -77,95 +73,88 @@ module Sam
       #
       #   @option params [Integer] :user_status User Status
       #
-      # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [nil]
       #
-      def update(username_1, params = {}, opts = {})
-        parsed = Sam::Models::UserUpdateParams.dump(params)
-        req = {
+      def update(username_1, params = {})
+        parsed, options = Sam::Models::UserUpdateParams.dump_request(params)
+        @client.request(
           method: :put,
           path: ["user/%0s", username_1],
           body: parsed,
-          model: NilClass
-        }
-        @client.request(req, opts)
+          model: NilClass,
+          options: options
+        )
       end
 
       # This can only be done by the logged in user.
       #
       # @param username [String] The name that needs to be deleted
       #
-      # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Sam::Models::UserDeleteParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [nil]
       #
-      def delete(username, opts = {})
-        req = {
+      def delete(username, params = {})
+        @client.request(
           method: :delete,
           path: ["user/%0s", username],
-          model: NilClass
-        }
-        @client.request(req, opts)
+          model: NilClass,
+          options: params[:request_options]
+        )
       end
 
       # Creates list of users with given input array
       #
-      # @param params [Sam::Models::UserCreateWithListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Sam::Models::UserCreateWithListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Array<Sam::Models::User>] :body
       #
-      # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Sam::Models::User]
       #
-      def create_with_list(params = {}, opts = {})
-        parsed = Sam::Models::UserCreateWithListParams.dump(params)
-        req = {
+      def create_with_list(params)
+        parsed, options = Sam::Models::UserCreateWithListParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "user/createWithList",
           body: parsed[:body],
-          model: Sam::Models::User
-        }
-        @client.request(req, opts)
+          model: Sam::Models::User,
+          options: options
+        )
       end
 
       # Logs user into the system
       #
-      # @param params [Sam::Models::UserLoginParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Sam::Models::UserLoginParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :password The password for login in clear text
       #
       #   @option params [String] :username The user name for login
       #
-      # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [String]
       #
-      def login(params = {}, opts = {})
-        parsed = Sam::Models::UserLoginParams.dump(params)
-        req = {
-          method: :get,
-          path: "user/login",
-          query: parsed,
-          model: String
-        }
-        @client.request(req, opts)
+      def login(params = {})
+        parsed, options = Sam::Models::UserLoginParams.dump_request(params)
+        @client.request(method: :get, path: "user/login", query: parsed, model: String, options: options)
       end
 
       # Logs out current logged in user session
       #
-      # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Sam::Models::UserLogoutParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [nil]
       #
-      def logout(opts = {})
-        req = {
-          method: :get,
-          path: "user/logout",
-          model: NilClass
-        }
-        @client.request(req, opts)
+      def logout(params = {})
+        @client.request(method: :get, path: "user/logout", model: NilClass, options: params[:request_options])
       end
 
       # @param client [Sam::Client]
