@@ -119,7 +119,7 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::InternalServerError) do
-      sam.users.create(max_retries: 3)
+      sam.users.create(request_options: {max_retries: 3})
     end
 
     assert_equal(4, requester.attempts.length)
@@ -131,7 +131,7 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::InternalServerError) do
-      sam.users.create(max_retries: 4)
+      sam.users.create(request_options: {max_retries: 4})
     end
 
     assert_equal(5, requester.attempts.length)
@@ -197,7 +197,7 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::InternalServerError) do
-      sam.users.create(extra_headers: {"x-stainless-retry-count" => nil})
+      sam.users.create(request_options: {extra_headers: {"x-stainless-retry-count" => nil}})
     end
 
     retry_count_headers = requester.attempts.map { |a| a[:headers]["x-stainless-retry-count"] }
@@ -210,7 +210,7 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::InternalServerError) do
-      sam.users.create(extra_headers: {"x-stainless-retry-count" => "42"})
+      sam.users.create(request_options: {extra_headers: {"x-stainless-retry-count" => "42"}})
     end
 
     retry_count_headers = requester.attempts.map { |a| a[:headers]["x-stainless-retry-count"] }
@@ -223,7 +223,7 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::APIConnectionError) do
-      sam.users.create(extra_headers: {})
+      sam.users.create(request_options: {extra_headers: {}})
     end
 
     assert_equal("/redirected", requester.attempts.last[:url].path)
@@ -241,7 +241,7 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::APIConnectionError) do
-      sam.users.create(extra_headers: {})
+      sam.users.create(request_options: {extra_headers: {}})
     end
 
     assert_equal("/redirected", requester.attempts.last[:url].path)
@@ -256,7 +256,7 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::APIConnectionError) do
-      sam.users.create(extra_headers: {"Authorization" => "Bearer xyz"})
+      sam.users.create(request_options: {extra_headers: {"Authorization" => "Bearer xyz"}})
     end
 
     assert_equal(
@@ -271,7 +271,7 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::APIConnectionError) do
-      sam.users.create(extra_headers: {"Authorization" => "Bearer xyz"})
+      sam.users.create(request_options: {extra_headers: {"Authorization" => "Bearer xyz"}})
     end
 
     assert_nil(requester.attempts.last[:headers]["Authorization"])

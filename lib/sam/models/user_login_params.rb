@@ -3,6 +3,10 @@
 module Sam
   module Models
     class UserLoginParams < Sam::BaseModel
+      # @!parse
+      #   extend Sam::RequestParameters::Converter
+      include Sam::RequestParameters
+
       # @!attribute [r] password
       #   The password for login in clear text
       #
@@ -26,8 +30,9 @@ module Sam
       # @!parse
       #   # @param password [String]
       #   # @param username [String]
+      #   # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(password: nil, username: nil, **) = super
+      #   def initialize(password: nil, username: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Sam::BaseModel) -> void
     end

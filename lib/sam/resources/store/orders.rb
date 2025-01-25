@@ -9,17 +9,19 @@ module Sam
         #
         # @param order_id [Integer] ID of order that needs to be fetched
         #
-        # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param params [Sam::Models::Store::OrderRetrieveParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Sam::Models::Store::CoolOrder]
         #
-        def retrieve(order_id, opts = {})
-          req = {
+        def retrieve(order_id, params = {})
+          @client.request(
             method: :get,
             path: ["store/order/%0s", order_id],
-            model: Sam::Models::Store::CoolOrder
-          }
-          @client.request(req, opts)
+            model: Sam::Models::Store::CoolOrder,
+            options: params[:request_options]
+          )
         end
 
         # For valid response try integer IDs with value < 1000. Anything above 1000 or
@@ -27,17 +29,19 @@ module Sam
         #
         # @param order_id [Integer] ID of the order that needs to be deleted
         #
-        # @param opts [Hash{Symbol=>Object}, Sam::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param params [Sam::Models::Store::OrderDeleteParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [nil]
         #
-        def delete(order_id, opts = {})
-          req = {
+        def delete(order_id, params = {})
+          @client.request(
             method: :delete,
             path: ["store/order/%0s", order_id],
-            model: NilClass
-          }
-          @client.request(req, opts)
+            model: NilClass,
+            options: params[:request_options]
+          )
         end
 
         # @param client [Sam::Client]
