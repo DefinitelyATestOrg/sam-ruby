@@ -151,7 +151,7 @@ module Sam
         end
 
       url = Sam::Util.join_parsed_uri(@base_url, {**req, path: path})
-      encoded = Sam::Util.encode_body(headers, body)
+      headers, encoded = Sam::Util.encode_content(headers, body)
       max_retries = opts.fetch(:max_retries, @max_retries)
       timeout = opts.fetch(:timeout, @timeout)
       {method: method, url: url, headers: headers, body: encoded, max_retries: max_retries, timeout: timeout}
@@ -328,7 +328,7 @@ module Sam
       in Sam::APIConnectionError if retry_count >= max_retries
         raise status
       in (400..) if retry_count >= max_retries || (response && !should_retry?(status, headers: response))
-        body = Sam::Util.decode_body(response, suppress_error: true)
+        body = Sam::Util.decode_content(response, suppress_error: true)
 
         raise Sam::APIStatusError.for(
           url: url,
@@ -377,7 +377,7 @@ module Sam
     # @return [Object]
     #
     private def parse_response(req, response)
-      parsed = Sam::Util.decode_body(response)
+      parsed = Sam::Util.decode_content(response)
       unwrapped = Sam::Util.dig(parsed, req[:unwrap])
 
       page = req[:page]
