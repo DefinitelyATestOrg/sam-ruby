@@ -74,8 +74,8 @@ module Sam
         #   # @param complete [Boolean]
         #   # @param pet_id [Integer]
         #   # @param quantity [Integer]
-        #   # @param ship_date [String]
-        #   # @param status [String]
+        #   # @param ship_date [Time]
+        #   # @param status [Symbol, Sam::Models::Store::CoolOrder::Status]
         #   #
         #   def initialize(id: nil, complete: nil, pet_id: nil, quantity: nil, ship_date: nil, status: nil, **) = super
 
