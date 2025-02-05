@@ -34,27 +34,27 @@ module Sam
 
       sig do
         params(
-          username_1: String,
+          path_username: String,
           id: Integer,
           email: String,
           first_name: String,
           last_name: String,
           password: String,
           phone: String,
-          username_2: String,
+          body_username: String,
           user_status: Integer,
           request_options: Sam::RequestOpts
         ).void
       end
       def update(
-        username_1,
+        path_username,
         id:,
         email:,
         first_name:,
         last_name:,
         password:,
         phone:,
-        username_2:,
+        body_username:,
         user_status:,
         request_options: {}
       ); end
