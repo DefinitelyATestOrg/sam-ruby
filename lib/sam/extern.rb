@@ -3,6 +3,8 @@
 module Sam
   # @private
   #
+  # @abstract
+  #
   module Extern
     # @private
     #

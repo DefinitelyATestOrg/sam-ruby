@@ -3,6 +3,8 @@
 module Sam
   # @private
   #
+  # @abstract
+  #
   module BasePage
     # rubocop:disable Lint/UnusedMethodArgument
 

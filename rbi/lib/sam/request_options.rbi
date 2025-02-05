@@ -6,6 +6,8 @@ module Sam
   end
 
   module RequestParameters
+    abstract!
+
     Shape = T.type_alias { {request_options: Sam::RequestOpts} }
 
     sig { returns(Sam::RequestOpts) }
