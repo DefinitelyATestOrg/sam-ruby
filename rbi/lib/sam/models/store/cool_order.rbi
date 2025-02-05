@@ -73,7 +73,7 @@ module Sam
           APPROVED = :approved
           DELIVERED = :delivered
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end
