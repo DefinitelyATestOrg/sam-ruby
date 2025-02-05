@@ -2,7 +2,25 @@
 
 module Sam
   module Converter
+    abstract!
+
     Input = T.type_alias { T.any(Sam::Converter, T::Class[T.anything]) }
+
+    sig { overridable.params(value: T.anything).returns(T.anything) }
+    def coerce(value); end
+
+    sig { overridable.params(value: T.anything).returns(T.anything) }
+    def dump(value); end
+
+    sig do
+      overridable.params(value: T.anything).returns(
+        T.any(
+          [T::Boolean, T.anything, NilClass],
+          [T::Boolean, T::Boolean, Integer]
+        )
+      )
+    end
+    def try_strict_coerce(value); end
 
     sig do
       params(
@@ -27,25 +45,11 @@ module Sam
 
     sig { params(target: Sam::Converter::Input, value: T.anything).returns(T.anything) }
     def self.try_strict_coerce(target, value); end
-
-    sig { params(value: T.anything).returns(T.anything) }
-    def coerce(value); end
-
-    sig { params(value: T.anything).returns(T.anything) }
-    def dump(value); end
-
-    sig do
-      params(value: T.anything).returns(
-        T.any(
-          [T::Boolean, T.anything, NilClass],
-          [T::Boolean, T::Boolean, Integer]
-        )
-      )
-    end
-    def try_strict_coerce(value); end
   end
 
   class Unknown
+    abstract!
+
     extend Sam::Converter
 
     sig { params(other: T.anything).returns(T::Boolean) }
@@ -54,14 +58,14 @@ module Sam
     sig { params(other: T.anything).returns(T::Boolean) }
     def self.==(other); end
 
-    sig { params(value: T.anything).returns(T.anything) }
+    sig { override.params(value: T.anything).returns(T.anything) }
     def self.coerce(value); end
 
-    sig { params(value: T.anything).returns(T.anything) }
+    sig { override.params(value: T.anything).returns(T.anything) }
     def self.dump(value); end
 
     sig do
-      params(value: T.anything).returns(
+      override.params(value: T.anything).returns(
         T.any(
           [T::Boolean, T.anything, NilClass],
           [T::Boolean, T::Boolean, Integer]
@@ -72,6 +76,8 @@ module Sam
   end
 
   class BooleanModel
+    abstract!
+
     extend Sam::Converter
 
     sig { params(other: T.anything).returns(T::Boolean) }
@@ -80,14 +86,14 @@ module Sam
     sig { params(other: T.anything).returns(T::Boolean) }
     def self.==(other); end
 
-    sig { params(value: T.any(T::Boolean, T.anything)).returns(T.any(T::Boolean, T.anything)) }
+    sig { override.params(value: T.any(T::Boolean, T.anything)).returns(T.any(T::Boolean, T.anything)) }
     def self.coerce(value); end
 
-    sig { params(value: T.any(T::Boolean, T.anything)).returns(T.any(T::Boolean, T.anything)) }
+    sig { override.params(value: T.any(T::Boolean, T.anything)).returns(T.any(T::Boolean, T.anything)) }
     def self.dump(value); end
 
     sig do
-      params(value: T.anything).returns(
+      override.params(value: T.anything).returns(
         T.any(
           [T::Boolean, T.anything, NilClass],
           [T::Boolean, T::Boolean, Integer]
@@ -98,9 +104,11 @@ module Sam
   end
 
   class Enum
+    abstract!
+
     extend Sam::Converter
 
-    sig { returns(T::Array[T.any(NilClass, T::Boolean, Integer, Float, Symbol)]) }
+    sig { overridable.returns(T::Array[T.any(NilClass, T::Boolean, Integer, Float, Symbol)]) }
     def self.values; end
 
     sig { void }
@@ -112,14 +120,14 @@ module Sam
     sig { params(other: T.anything).returns(T::Boolean) }
     def self.==(other); end
 
-    sig { params(value: T.any(String, Symbol, T.anything)).returns(T.any(Symbol, T.anything)) }
+    sig { override.params(value: T.any(String, Symbol, T.anything)).returns(T.any(Symbol, T.anything)) }
     def self.coerce(value); end
 
-    sig { params(value: T.any(Symbol, T.anything)).returns(T.any(Symbol, T.anything)) }
+    sig { override.params(value: T.any(Symbol, T.anything)).returns(T.any(Symbol, T.anything)) }
     def self.dump(value); end
 
     sig do
-      params(value: T.anything).returns(
+      override.params(value: T.anything).returns(
         T.any(
           [T::Boolean, T.anything, NilClass],
           [T::Boolean, T::Boolean, Integer]
@@ -130,13 +138,15 @@ module Sam
   end
 
   class Union
+    abstract!
+
     extend Sam::Extern
     extend Sam::Converter
 
     sig { returns(T::Array[[T.nilable(Symbol), Proc]]) }
     private_class_method def self.known_variants; end
 
-    sig { returns(T::Array[[T.nilable(Symbol), T.anything]]) }
+    sig { overridable.returns(T::Array[[T.nilable(Symbol), T.anything]]) }
     private_class_method def self.variants; end
 
     sig { params(property: Symbol).void }
@@ -164,14 +174,14 @@ module Sam
     sig { params(other: T.anything).returns(T::Boolean) }
     def self.==(other); end
 
-    sig { params(value: T.anything).returns(T.anything) }
+    sig { override.params(value: T.anything).returns(T.anything) }
     def self.coerce(value); end
 
-    sig { params(value: T.anything).returns(T.anything) }
+    sig { override.params(value: T.anything).returns(T.anything) }
     def self.dump(value); end
 
     sig do
-      params(value: T.anything).returns(
+      override.params(value: T.anything).returns(
         T.any(
           [T::Boolean, T.anything, NilClass],
           [T::Boolean, T::Boolean, Integer]
@@ -193,7 +203,7 @@ module Sam
     def ==(other); end
 
     sig do
-      params(
+      override.params(
         value: T.any(
           T::Enumerable[T.anything],
           T.anything
@@ -203,7 +213,7 @@ module Sam
     def coerce(value); end
 
     sig do
-      params(
+      override.params(
         value: T.any(
           T::Enumerable[T.anything],
           T.anything
@@ -213,7 +223,7 @@ module Sam
     def dump(value); end
 
     sig do
-      params(value: T.anything).returns(
+      override.params(value: T.anything).returns(
         T.any(
           [T::Boolean, T.anything, NilClass],
           [T::Boolean, T::Boolean, Integer]
@@ -250,7 +260,7 @@ module Sam
     def ==(other); end
 
     sig do
-      params(
+      override.params(
         value: T.any(
           T::Hash[T.anything, T.anything],
           T.anything
@@ -260,7 +270,7 @@ module Sam
     def coerce(value); end
 
     sig do
-      params(
+      override.params(
         value: T.any(
           T::Hash[T.anything, T.anything],
           T.anything
@@ -270,7 +280,7 @@ module Sam
     def dump(value); end
 
     sig do
-      params(value: T.anything).returns(
+      override.params(value: T.anything).returns(
         T.any(
           [T::Boolean, T.anything, NilClass],
           [T::Boolean, T::Boolean, Integer]
@@ -296,6 +306,8 @@ module Sam
   end
 
   class BaseModel
+    abstract!
+
     extend Sam::Extern
     extend Sam::Converter
 
@@ -371,7 +383,7 @@ module Sam
     def ==(other); end
 
     sig do
-      params(
+      override.params(
         value: T.any(
           Sam::BaseModel,
           T::Hash[T.anything, T.anything],
@@ -382,7 +394,7 @@ module Sam
     def self.coerce(value); end
 
     sig do
-      params(
+      override.params(
         value: T.any(
           T.attached_class,
           T.anything
@@ -392,7 +404,7 @@ module Sam
     def self.dump(value); end
 
     sig do
-      params(value: T.anything).returns(
+      override.params(value: T.anything).returns(
         T.any(
           [T::Boolean, T.anything, NilClass],
           [T::Boolean, T::Boolean, Integer]

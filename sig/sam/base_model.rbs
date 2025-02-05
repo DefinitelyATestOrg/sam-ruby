@@ -2,6 +2,14 @@ module Sam
   module Converter
     type input = Sam::Converter | Class
 
+    def coerce: (top value) -> top
+
+    def dump: (top value) -> top
+
+    def try_strict_coerce: (
+      top value
+    ) -> ([true, top, nil] | [false, bool, Integer])
+
     def self.type_info: (
       {
         const: (nil | bool | Integer | Float | Symbol)?,
@@ -17,14 +25,6 @@ module Sam
     def self.dump: (Sam::Converter::input target, top value) -> top
 
     def self.try_strict_coerce: (Sam::Converter::input target, top value) -> top
-
-    def coerce: (top value) -> top
-
-    def dump: (top value) -> top
-
-    def try_strict_coerce: (
-      top value
-    ) -> ([true, top, nil] | [false, bool, Integer])
   end
 
   class Unknown
