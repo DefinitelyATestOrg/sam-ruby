@@ -29,18 +29,18 @@ module Sam
 
       def update:
         (
-          String username_1,
+          String path_username,
           ?Sam::Models::UserUpdateParams | Hash[Symbol, top] params
         ) -> nil
         | (
-          String username_1,
+          String path_username,
           id: Integer,
           email: String,
           first_name: String,
           last_name: String,
           password: String,
           phone: String,
-          username_2: String,
+          body_username: String,
           user_status: Integer,
           request_options: Sam::request_opts
         ) -> nil
