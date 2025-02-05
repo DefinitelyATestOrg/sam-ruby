@@ -1,0 +1,80 @@
+module Sam
+  module Resources
+    class Users
+      def create:
+        (
+          ?Sam::Models::UserCreateParams | Hash[Symbol, top] params
+        ) -> Sam::Models::User
+        | (
+          id: Integer,
+          email: String,
+          first_name: String,
+          last_name: String,
+          password: String,
+          phone: String,
+          username: String,
+          user_status: Integer,
+          request_options: Sam::request_opts
+        ) -> Sam::Models::User
+
+      def retrieve:
+        (
+          String username,
+          ?Sam::Models::UserRetrieveParams | Hash[Symbol, top] params
+        ) -> Sam::Models::User
+        | (
+          String username,
+          request_options: Sam::request_opts
+        ) -> Sam::Models::User
+
+      def update:
+        (
+          String username_1,
+          ?Sam::Models::UserUpdateParams | Hash[Symbol, top] params
+        ) -> nil
+        | (
+          String username_1,
+          id: Integer,
+          email: String,
+          first_name: String,
+          last_name: String,
+          password: String,
+          phone: String,
+          username_2: String,
+          user_status: Integer,
+          request_options: Sam::request_opts
+        ) -> nil
+
+      def delete:
+        (
+          String username,
+          ?Sam::Models::UserDeleteParams | Hash[Symbol, top] params
+        ) -> nil
+        | (String username, request_options: Sam::request_opts) -> nil
+
+      def create_with_list:
+        (
+          Sam::Models::UserCreateWithListParams | Hash[Symbol, top] params
+        ) -> Sam::Models::User
+        | (
+          Sam::Models::UserCreateWithListParams | Hash[Symbol, top] params,
+          body: Array[Sam::Models::User],
+          request_options: Sam::request_opts
+        ) -> Sam::Models::User
+
+      def login:
+        (?Sam::Models::UserLoginParams | Hash[Symbol, top] params) -> String
+        | (
+          password: String,
+          username: String,
+          request_options: Sam::request_opts
+        ) -> String
+
+      def logout:
+        (?Sam::Models::UserLogoutParams | Hash[Symbol, top] params) -> nil
+        | (request_options: Sam::request_opts) -> nil
+
+      def initialize: (client: Sam::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,24 @@
+module Sam
+  module Models
+    type user_create_with_list_params =
+      { body: Array[Sam::Models::User] } & Sam::request_parameters
+
+    class UserCreateWithListParams < Sam::BaseModel
+      extend Sam::RequestParameters::Converter
+      include Sam::RequestParameters
+
+      attr_accessor body: Array[Sam::Models::User]
+
+      def initialize:
+        (
+          body: Array[Sam::Models::User],
+          request_options: Sam::request_opts
+        ) -> void
+        | (
+          ?Sam::Models::user_create_with_list_params | Sam::BaseModel data
+        ) -> void
+
+      def to_h: -> Sam::Models::user_create_with_list_params
+    end
+  end
+end

@@ -1,0 +1,16 @@
+module Sam
+  module Models
+    type user_delete_params = {  } & Sam::request_parameters
+
+    class UserDeleteParams < Sam::BaseModel
+      extend Sam::RequestParameters::Converter
+      include Sam::RequestParameters
+
+      def initialize:
+        (request_options: Sam::request_opts) -> void
+        | (?Sam::Models::user_delete_params | Sam::BaseModel data) -> void
+
+      def to_h: -> Sam::Models::user_delete_params
+    end
+  end
+end
