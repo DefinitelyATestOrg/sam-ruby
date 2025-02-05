@@ -9,7 +9,7 @@ module Sam
         end
         def retrieve(order_id, request_options: {}); end
 
-        sig { params(order_id: Integer, request_options: Sam::RequestOpts).returns(NilClass) }
+        sig { params(order_id: Integer, request_options: Sam::RequestOpts).void }
         def delete(order_id, request_options: {}); end
 
         sig { params(client: Sam::Client).void }
