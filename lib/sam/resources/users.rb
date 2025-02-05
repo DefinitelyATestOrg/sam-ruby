@@ -53,7 +53,7 @@ module Sam
 
       # This can only be done by the logged in user.
       #
-      # @param username_1 [String] name that needs to be updated
+      # @param path_username [String] name that needs to be updated
       #
       # @param params [Sam::Models::UserUpdateParams, Hash{Symbol=>Object}] .
       #
@@ -69,7 +69,7 @@ module Sam
       #
       #   @option params [String] :phone
       #
-      #   @option params [String] :username_2
+      #   @option params [String] :body_username
       #
       #   @option params [Integer] :user_status User Status
       #
@@ -77,11 +77,11 @@ module Sam
       #
       # @return [nil]
       #
-      def update(username_1, params = {})
+      def update(path_username, params = {})
         parsed, options = Sam::Models::UserUpdateParams.dump_request(params)
         @client.request(
           method: :put,
-          path: ["user/%0s", username_1],
+          path: ["user/%0s", path_username],
           body: parsed,
           model: NilClass,
           options: options
