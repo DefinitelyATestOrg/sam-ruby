@@ -1,0 +1,16 @@
+module Sam
+  module Models
+    type user_update_params = {  } & Sam::request_parameters
+
+    class UserUpdateParams < Sam::Models::User
+      extend Sam::RequestParameters::Converter
+      include Sam::RequestParameters
+
+      def initialize:
+        (request_options: Sam::request_opts) -> void
+        | (?Sam::Models::user_update_params | Sam::BaseModel data) -> void
+
+      def to_h: -> Sam::Models::user_update_params
+    end
+  end
+end
