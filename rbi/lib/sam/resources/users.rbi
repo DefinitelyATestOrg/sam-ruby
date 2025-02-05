@@ -64,12 +64,11 @@ module Sam
 
       sig do
         params(
-          params: T.any(Sam::Models::UserCreateWithListParams, T::Hash[Symbol, T.anything]),
           body: T::Array[Sam::Models::User],
           request_options: Sam::RequestOpts
         ).returns(Sam::Models::User)
       end
-      def create_with_list(params, body:, request_options: {}); end
+      def create_with_list(body:, request_options: {}); end
 
       sig { params(password: String, username: String, request_options: Sam::RequestOpts).returns(String) }
       def login(password:, username:, request_options: {}); end

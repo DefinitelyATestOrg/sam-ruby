@@ -36,6 +36,7 @@ bundle update sam
 ## Usage
 
 ```ruby
+require "bundler/setup"
 require "sam"
 
 sam = Sam::Client.new
