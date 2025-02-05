@@ -44,7 +44,7 @@ module Sam
           username_2: String,
           user_status: Integer,
           request_options: Sam::RequestOpts
-        ).returns(NilClass)
+        ).void
       end
       def update(
         username_1,
@@ -59,7 +59,7 @@ module Sam
         request_options: {}
       ); end
 
-      sig { params(username: String, request_options: Sam::RequestOpts).returns(NilClass) }
+      sig { params(username: String, request_options: Sam::RequestOpts).void }
       def delete(username, request_options: {}); end
 
       sig do
@@ -74,7 +74,7 @@ module Sam
       sig { params(password: String, username: String, request_options: Sam::RequestOpts).returns(String) }
       def login(password:, username:, request_options: {}); end
 
-      sig { params(request_options: Sam::RequestOpts).returns(NilClass) }
+      sig { params(request_options: Sam::RequestOpts).void }
       def logout(request_options: {}); end
 
       sig { params(client: Sam::Client).void }
