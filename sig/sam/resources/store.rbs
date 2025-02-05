@@ -1,0 +1,9 @@
+module Sam
+  module Resources
+    class Store
+      attr_reader orders: Sam::Resources::Store::Orders
+
+      def initialize: (client: Sam::Client) -> void
+    end
+  end
+end
