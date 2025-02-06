@@ -37,7 +37,7 @@ module Sam
 
     MAX_REDIRECTS = 20
 
-    sig { params(req: RequestShape).void }
+    sig { params(req: Sam::BaseClient::RequestShape).void }
     def self.validate!(req); end
 
     # @private
