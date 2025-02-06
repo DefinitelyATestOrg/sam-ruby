@@ -56,7 +56,7 @@ non-success status code (i.e., 4xx or 5xx response), a subclass of
 begin
   user = sam.users.create
 rescue Sam::Error => e
-  puts(e.code) # 400
+  puts(e.status) # 400
 end
 ```
 
@@ -92,7 +92,7 @@ sam = Sam::Client.new(
 )
 
 # Or, configure per-request:
-sam.users.create(max_retries: 5)
+sam.users.create(request_options: {max_retries: 5})
 ```
 
 ### Timeouts
@@ -110,7 +110,7 @@ sam = Sam::Client.new(
 )
 
 # Or, configure per-request:
-sam.users.create(timeout: 5)
+sam.users.create(request_options: {timeout: 5})
 ```
 
 ## Versioning
