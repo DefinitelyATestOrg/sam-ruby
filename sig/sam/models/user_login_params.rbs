@@ -23,7 +23,7 @@ module Sam
         ) -> void
         | (?Sam::Models::user_login_params | Sam::BaseModel data) -> void
 
-      def to_h: -> Sam::Models::user_login_params
+      def to_hash: -> Sam::Models::user_login_params
     end
   end
 end

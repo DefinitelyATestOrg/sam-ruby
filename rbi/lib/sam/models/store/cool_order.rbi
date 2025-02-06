@@ -4,17 +4,6 @@ module Sam
   module Models
     module Store
       class CoolOrder < Sam::BaseModel
-        Shape = T.type_alias do
-          {
-            id: Integer,
-            complete: T::Boolean,
-            pet_id: Integer,
-            quantity: Integer,
-            ship_date: Time,
-            status: Symbol
-          }
-        end
-
         sig { returns(T.nilable(Integer)) }
         attr_reader :id
 
@@ -63,8 +52,19 @@ module Sam
         end
         def initialize(id: nil, complete: nil, pet_id: nil, quantity: nil, ship_date: nil, status: nil); end
 
-        sig { returns(Sam::Models::Store::CoolOrder::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              id: Integer,
+              complete: T::Boolean,
+              pet_id: Integer,
+              quantity: Integer,
+              ship_date: Time,
+              status: Symbol
+            }
+          )
+        end
+        def to_hash; end
 
         class Status < Sam::Enum
           abstract!

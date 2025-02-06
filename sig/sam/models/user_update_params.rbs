@@ -10,7 +10,7 @@ module Sam
         (request_options: Sam::request_opts) -> void
         | (?Sam::Models::user_update_params | Sam::BaseModel data) -> void
 
-      def to_h: -> Sam::Models::user_update_params
+      def to_hash: -> Sam::Models::user_update_params
     end
   end
 end
