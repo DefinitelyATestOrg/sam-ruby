@@ -17,17 +17,16 @@ module Sam
         ).returns(Sam::Models::User)
       end
       def create(
-        id:,
-        email:,
-        first_name:,
-        last_name:,
-        password:,
-        phone:,
-        username:,
-        user_status:,
+        id: nil,
+        email: nil,
+        first_name: nil,
+        last_name: nil,
+        password: nil,
+        phone: nil,
+        username: nil,
+        user_status: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig { params(username: String, request_options: Sam::RequestOpts).returns(Sam::Models::User) }
       def retrieve(username, request_options: {}); end
@@ -48,14 +47,14 @@ module Sam
       end
       def update(
         path_username,
-        id:,
-        email:,
-        first_name:,
-        last_name:,
-        password:,
-        phone:,
-        body_username:,
-        user_status:,
+        id: nil,
+        email: nil,
+        first_name: nil,
+        last_name: nil,
+        password: nil,
+        phone: nil,
+        body_username: nil,
+        user_status: nil,
         request_options: {}
       ); end
 
@@ -71,7 +70,7 @@ module Sam
       def create_with_list(body:, request_options: {}); end
 
       sig { params(password: String, username: String, request_options: Sam::RequestOpts).returns(String) }
-      def login(password:, username:, request_options: {}); end
+      def login(password: nil, username: nil, request_options: {}); end
 
       sig { params(request_options: Sam::RequestOpts).void }
       def logout(request_options: {}); end
