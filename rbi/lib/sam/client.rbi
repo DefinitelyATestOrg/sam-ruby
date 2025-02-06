@@ -20,7 +20,8 @@ module Sam
     attr_reader :users
 
     sig { returns(T::Hash[String, String]) }
-    private def auth_headers; end
+    private def auth_headers
+    end
 
     sig do
       params(
@@ -39,6 +40,7 @@ module Sam
       timeout: DEFAULT_TIMEOUT_IN_SECONDS,
       initial_retry_delay: DEFAULT_INITIAL_RETRY_DELAY,
       max_retry_delay: DEFAULT_MAX_RETRY_DELAY
-    ); end
+    )
+    end
   end
 end

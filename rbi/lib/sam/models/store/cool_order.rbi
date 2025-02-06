@@ -50,7 +50,8 @@ module Sam
             status: Symbol
           ).void
         end
-        def initialize(id: nil, complete: nil, pet_id: nil, quantity: nil, ship_date: nil, status: nil); end
+        def initialize(id: nil, complete: nil, pet_id: nil, quantity: nil, ship_date: nil, status: nil)
+        end
 
         sig do
           override.returns(
@@ -64,7 +65,8 @@ module Sam
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Status < Sam::Enum
           abstract!
@@ -74,7 +76,8 @@ module Sam
           DELIVERED = :delivered
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end
