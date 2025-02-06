@@ -26,7 +26,8 @@ module Sam
         username: nil,
         user_status: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -34,7 +35,8 @@ module Sam
           request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Sam::Models::User)
       end
-      def retrieve(username, request_options: {}); end
+      def retrieve(username, request_options: {})
+      end
 
       sig do
         params(
@@ -61,7 +63,8 @@ module Sam
         body_username: nil,
         user_status: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -69,7 +72,8 @@ module Sam
           request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
         ).void
       end
-      def delete(username, request_options: {}); end
+      def delete(username, request_options: {})
+      end
 
       sig do
         params(
@@ -77,7 +81,8 @@ module Sam
           request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Sam::Models::User)
       end
-      def create_with_list(body:, request_options: {}); end
+      def create_with_list(body:, request_options: {})
+      end
 
       sig do
         params(
@@ -86,13 +91,16 @@ module Sam
           request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(String)
       end
-      def login(password: nil, username: nil, request_options: {}); end
+      def login(password: nil, username: nil, request_options: {})
+      end
 
       sig { params(request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))).void }
-      def logout(request_options: {}); end
+      def logout(request_options: {})
+      end
 
       sig { params(client: Sam::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

@@ -72,7 +72,8 @@ module Sam
         phone: nil,
         username: nil,
         user_status: nil
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -88,7 +89,8 @@ module Sam
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end
