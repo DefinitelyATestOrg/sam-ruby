@@ -11,7 +11,7 @@ module Sam
 
     # @private
     #
-    # @param req [RequestShape]
+    # @param req [Hash{Symbol=>Object}]
     #
     # @raise [ArgumentError]
     #
