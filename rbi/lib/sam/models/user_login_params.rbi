@@ -25,10 +25,12 @@ module Sam
           request_options: T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(password: nil, username: nil, request_options: {}); end
+      def initialize(password: nil, username: nil, request_options: {})
+      end
 
       sig { override.returns({password: String, username: String, request_options: Sam::RequestOptions}) }
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end
