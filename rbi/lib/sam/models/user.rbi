@@ -3,19 +3,6 @@
 module Sam
   module Models
     class User < Sam::BaseModel
-      Shape = T.type_alias do
-        {
-          id: Integer,
-          email: String,
-          first_name: String,
-          last_name: String,
-          password: String,
-          phone: String,
-          username: String,
-          user_status: Integer
-        }
-      end
-
       sig { returns(T.nilable(Integer)) }
       attr_reader :id
 
@@ -87,8 +74,21 @@ module Sam
         user_status: nil
       ); end
 
-      sig { returns(Sam::Models::User::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: Integer,
+            email: String,
+            first_name: String,
+            last_name: String,
+            password: String,
+            phone: String,
+            username: String,
+            user_status: Integer
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

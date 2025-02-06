@@ -6,13 +6,11 @@ module Sam
       extend Sam::RequestParameters::Converter
       include Sam::RequestParameters
 
-      Shape = T.type_alias { T.all({}, Sam::RequestParameters::Shape) }
-
-      sig { params(request_options: Sam::RequestOpts).void }
+      sig { params(request_options: T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything])).void }
       def initialize(request_options: {}); end
 
-      sig { returns(Sam::Models::UserLogoutParams::Shape) }
-      def to_h; end
+      sig { override.returns({request_options: Sam::RequestOptions}) }
+      def to_hash; end
     end
   end
 end

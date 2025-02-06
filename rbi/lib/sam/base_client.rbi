@@ -14,13 +14,7 @@ module Sam
         unwrap: T.nilable(Symbol),
         page: T.nilable(T::Class[Sam::BaseModel]),
         model: T.nilable(Sam::Converter::Input),
-        options: T.nilable(
-          T.any(
-            Sam::RequestOptions,
-            Sam::RequestOptions::Shape,
-            T::Hash[Symbol, T.anything]
-          )
-        )
+        options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
       }
     end
 
@@ -75,7 +69,7 @@ module Sam
     sig do
       params(
         req: Sam::BaseClient::RequestShape,
-        opts: Sam::RequestOptions::Shape
+        opts: T::Hash[Symbol, T.anything]
       ).returns(Sam::BaseClient::NormalizedRequestShape)
     end
     private def build_request(req, opts); end
@@ -118,13 +112,7 @@ module Sam
         unwrap: T.nilable(Symbol),
         page: T.nilable(T::Class[Sam::BaseModel]),
         model: T.nilable(Sam::Converter::Input),
-        options: T.nilable(
-          T.any(
-            Sam::RequestOptions,
-            Sam::RequestOptions::Shape,
-            T::Hash[Symbol, T.anything]
-          )
-        )
+        options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
       ).returns(T.anything)
     end
     def request(

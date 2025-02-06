@@ -13,7 +13,7 @@ module Sam
             ?Sam::Models::Store::order_delete_params | Sam::BaseModel data
           ) -> void
 
-        def to_h: -> Sam::Models::Store::order_delete_params
+        def to_hash: -> Sam::Models::Store::order_delete_params
       end
     end
   end

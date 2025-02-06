@@ -23,7 +23,7 @@ module Sam
       #
       #   @option params [Integer] :user_status User Status
       #
-      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Sam::Models::User]
       #
@@ -38,7 +38,7 @@ module Sam
       #
       # @param params [Sam::Models::UserRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Sam::Models::User]
       #
@@ -73,7 +73,7 @@ module Sam
       #
       #   @option params [Integer] :user_status User Status
       #
-      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
       #
@@ -94,7 +94,7 @@ module Sam
       #
       # @param params [Sam::Models::UserDeleteParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
       #
@@ -113,7 +113,7 @@ module Sam
       #
       #   @option params [Array<Sam::Models::User>] :body
       #
-      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Sam::Models::User]
       #
@@ -136,7 +136,7 @@ module Sam
       #
       #   @option params [String] :username The user name for login
       #
-      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [String]
       #
@@ -149,7 +149,7 @@ module Sam
       #
       # @param params [Sam::Models::UserLogoutParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
       #

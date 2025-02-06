@@ -6,8 +6,6 @@ module Sam
       extend Sam::RequestParameters::Converter
       include Sam::RequestParameters
 
-      Shape = T.type_alias { T.all({password: String, username: String}, Sam::RequestParameters::Shape) }
-
       sig { returns(T.nilable(String)) }
       attr_reader :password
 
@@ -20,11 +18,17 @@ module Sam
       sig { params(username: String).void }
       attr_writer :username
 
-      sig { params(password: String, username: String, request_options: Sam::RequestOpts).void }
+      sig do
+        params(
+          password: String,
+          username: String,
+          request_options: T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything])
+        ).void
+      end
       def initialize(password: nil, username: nil, request_options: {}); end
 
-      sig { returns(Sam::Models::UserLoginParams::Shape) }
-      def to_h; end
+      sig { override.returns({password: String, username: String, request_options: Sam::RequestOptions}) }
+      def to_hash; end
     end
   end
 end
