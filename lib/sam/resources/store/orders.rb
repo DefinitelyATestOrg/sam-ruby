@@ -11,7 +11,7 @@ module Sam
         #
         # @param params [Sam::Models::Store::OrderRetrieveParams, Hash{Symbol=>Object}] .
         #
-        #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Sam::Models::Store::CoolOrder]
         #
@@ -31,7 +31,7 @@ module Sam
         #
         # @param params [Sam::Models::Store::OrderDeleteParams, Hash{Symbol=>Object}] .
         #
-        #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [nil]
         #

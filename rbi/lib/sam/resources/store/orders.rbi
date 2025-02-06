@@ -5,11 +5,19 @@ module Sam
     class Store
       class Orders
         sig do
-          params(order_id: Integer, request_options: Sam::RequestOpts).returns(Sam::Models::Store::CoolOrder)
+          params(
+            order_id: Integer,
+            request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
+          ).returns(Sam::Models::Store::CoolOrder)
         end
         def retrieve(order_id, request_options: {}); end
 
-        sig { params(order_id: Integer, request_options: Sam::RequestOpts).void }
+        sig do
+          params(
+            order_id: Integer,
+            request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
+          ).void
+        end
         def delete(order_id, request_options: {}); end
 
         sig { params(client: Sam::Client).void }

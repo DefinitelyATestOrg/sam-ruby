@@ -18,7 +18,7 @@ module Sam
           ?Sam::Models::user_create_with_list_params | Sam::BaseModel data
         ) -> void
 
-      def to_h: -> Sam::Models::user_create_with_list_params
+      def to_hash: -> Sam::Models::user_create_with_list_params
     end
   end
 end

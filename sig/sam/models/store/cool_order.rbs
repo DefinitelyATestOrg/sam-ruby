@@ -47,7 +47,7 @@ module Sam
           ) -> void
           | (?Sam::Models::Store::cool_order | Sam::BaseModel data) -> void
 
-        def to_h: -> Sam::Models::Store::cool_order
+        def to_hash: -> Sam::Models::Store::cool_order
 
         type status = :placed | :approved | :delivered
 
