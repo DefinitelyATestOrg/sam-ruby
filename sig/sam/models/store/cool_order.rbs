@@ -56,7 +56,7 @@ module Sam
           APPROVED: :approved
           DELIVERED: :delivered
 
-          def self.values: -> Array[Sam::Models::Store::CoolOrder::status]
+          def self.values: -> ::Array[Sam::Models::Store::CoolOrder::status]
         end
       end
     end
