@@ -5,7 +5,8 @@ module Sam
         def retrieve:
           (
             Integer order_id,
-            ?Sam::Models::Store::OrderRetrieveParams | Hash[Symbol, top] params
+            ?Sam::Models::Store::OrderRetrieveParams
+            | ::Hash[Symbol, top] params
           ) -> Sam::Models::Store::CoolOrder
           | (
             Integer order_id,
@@ -15,7 +16,7 @@ module Sam
         def delete:
           (
             Integer order_id,
-            ?Sam::Models::Store::OrderDeleteParams | Hash[Symbol, top] params
+            ?Sam::Models::Store::OrderDeleteParams | ::Hash[Symbol, top] params
           ) -> nil
           | (Integer order_id, request_options: Sam::request_opts) -> nil
 

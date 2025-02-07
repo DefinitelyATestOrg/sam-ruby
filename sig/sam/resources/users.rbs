@@ -3,7 +3,7 @@ module Sam
     class Users
       def create:
         (
-          ?Sam::Models::UserCreateParams | Hash[Symbol, top] params
+          ?Sam::Models::UserCreateParams | ::Hash[Symbol, top] params
         ) -> Sam::Models::User
         | (
           id: Integer,
@@ -20,7 +20,7 @@ module Sam
       def retrieve:
         (
           String username,
-          ?Sam::Models::UserRetrieveParams | Hash[Symbol, top] params
+          ?Sam::Models::UserRetrieveParams | ::Hash[Symbol, top] params
         ) -> Sam::Models::User
         | (
           String username,
@@ -30,7 +30,7 @@ module Sam
       def update:
         (
           String path_username,
-          ?Sam::Models::UserUpdateParams | Hash[Symbol, top] params
+          ?Sam::Models::UserUpdateParams | ::Hash[Symbol, top] params
         ) -> nil
         | (
           String path_username,
@@ -48,21 +48,21 @@ module Sam
       def delete:
         (
           String username,
-          ?Sam::Models::UserDeleteParams | Hash[Symbol, top] params
+          ?Sam::Models::UserDeleteParams | ::Hash[Symbol, top] params
         ) -> nil
         | (String username, request_options: Sam::request_opts) -> nil
 
       def create_with_list:
         (
-          Sam::Models::UserCreateWithListParams | Hash[Symbol, top] params
+          Sam::Models::UserCreateWithListParams | ::Hash[Symbol, top] params
         ) -> Sam::Models::User
         | (
-          body: Array[Sam::Models::User],
+          body: ::Array[Sam::Models::User],
           request_options: Sam::request_opts
         ) -> Sam::Models::User
 
       def login:
-        (?Sam::Models::UserLoginParams | Hash[Symbol, top] params) -> String
+        (?Sam::Models::UserLoginParams | ::Hash[Symbol, top] params) -> String
         | (
           password: String,
           username: String,
@@ -70,7 +70,7 @@ module Sam
         ) -> String
 
       def logout:
-        (?Sam::Models::UserLogoutParams | Hash[Symbol, top] params) -> nil
+        (?Sam::Models::UserLogoutParams | ::Hash[Symbol, top] params) -> nil
         | (request_options: Sam::request_opts) -> nil
 
       def initialize: (client: Sam::Client) -> void
