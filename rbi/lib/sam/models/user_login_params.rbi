@@ -7,16 +7,20 @@ module Sam
       include Sam::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_reader :password
+      def password
+      end
 
-      sig { params(password: String).void }
-      attr_writer :password
+      sig { params(_: String).returns(String) }
+      def password=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :username
+      def username
+      end
 
-      sig { params(username: String).void }
-      attr_writer :username
+      sig { params(_: String).returns(String) }
+      def username=(_)
+      end
 
       sig do
         params(

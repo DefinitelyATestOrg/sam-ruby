@@ -15,35 +15,35 @@ module Sam
     class UserAPI < Sam::BaseModel
       attr_reader id: Integer?
 
-      def id=: (Integer) -> void
+      def id=: (Integer) -> Integer
 
       attr_reader email: String?
 
-      def email=: (String) -> void
+      def email=: (String) -> String
 
       attr_reader first_name: String?
 
-      def first_name=: (String) -> void
+      def first_name=: (String) -> String
 
       attr_reader last_name: String?
 
-      def last_name=: (String) -> void
+      def last_name=: (String) -> String
 
       attr_reader password: String?
 
-      def password=: (String) -> void
+      def password=: (String) -> String
 
       attr_reader phone: String?
 
-      def phone=: (String) -> void
+      def phone=: (String) -> String
 
       attr_reader username: String?
 
-      def username=: (String) -> void
+      def username=: (String) -> String
 
       attr_reader user_status: Integer?
 
-      def user_status=: (Integer) -> void
+      def user_status=: (Integer) -> Integer
 
       def initialize:
         (
