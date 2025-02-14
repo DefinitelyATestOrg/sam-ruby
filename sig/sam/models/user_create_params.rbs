@@ -2,7 +2,7 @@ module Sam
   module Models
     type user_create_params = {  } & Sam::request_parameters
 
-    class UserCreateParams < Sam::Models::User
+    class UserCreateParams < Sam::Models::UserAPI
       extend Sam::RequestParameters::Converter
       include Sam::RequestParameters
 

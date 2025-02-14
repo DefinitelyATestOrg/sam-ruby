@@ -2,7 +2,7 @@
 
 module Sam
   module Models
-    class UserUpdateParams < Sam::Models::User
+    class UserUpdateParams < Sam::Models::UserAPI
       # @!parse
       #   extend Sam::RequestParameters::Converter
       include Sam::RequestParameters

@@ -41,7 +41,7 @@ require "sam"
 
 sam = Sam::Client.new
 
-user = sam.users.create
+user = sam.user.create
 
 puts(user.id)
 ```
@@ -54,7 +54,7 @@ non-success status code (i.e., 4xx or 5xx response), a subclass of
 
 ```ruby
 begin
-  user = sam.users.create
+  user = sam.user.create
 rescue Sam::Error => e
   puts(e.status) # 400
 end
@@ -92,7 +92,7 @@ sam = Sam::Client.new(
 )
 
 # Or, configure per-request:
-sam.users.create(request_options: {max_retries: 5})
+sam.user.create(request_options: {max_retries: 5})
 ```
 
 ### Timeouts
@@ -110,7 +110,7 @@ sam = Sam::Client.new(
 )
 
 # Or, configure per-request:
-sam.users.create(request_options: {timeout: 5})
+sam.user.create(request_options: {timeout: 5})
 ```
 
 ## Versioning

@@ -1,10 +1,10 @@
 module Sam
   module Resources
-    class Users
+    class User
       def create:
         (
           ?Sam::Models::UserCreateParams | ::Hash[Symbol, top] params
-        ) -> Sam::Models::User
+        ) -> Sam::Models::UserAPI
         | (
           id: Integer,
           email: String,
@@ -15,17 +15,17 @@ module Sam
           username: String,
           user_status: Integer,
           request_options: Sam::request_opts
-        ) -> Sam::Models::User
+        ) -> Sam::Models::UserAPI
 
       def retrieve:
         (
           String username,
           ?Sam::Models::UserRetrieveParams | ::Hash[Symbol, top] params
-        ) -> Sam::Models::User
+        ) -> Sam::Models::UserAPI
         | (
           String username,
           request_options: Sam::request_opts
-        ) -> Sam::Models::User
+        ) -> Sam::Models::UserAPI
 
       def update:
         (
@@ -52,14 +52,14 @@ module Sam
         ) -> nil
         | (String username, request_options: Sam::request_opts) -> nil
 
-      def create_with_list:
+      def create_list:
         (
-          Sam::Models::UserCreateWithListParams | ::Hash[Symbol, top] params
-        ) -> Sam::Models::User
+          Sam::Models::UserCreateListParams | ::Hash[Symbol, top] params
+        ) -> Sam::Models::UserAPI
         | (
-          body: ::Array[Sam::Models::User],
+          body: ::Array[Sam::Models::UserAPI],
           request_options: Sam::request_opts
-        ) -> Sam::Models::User
+        ) -> Sam::Models::UserAPI
 
       def login:
         (?Sam::Models::UserLoginParams | ::Hash[Symbol, top] params) -> String

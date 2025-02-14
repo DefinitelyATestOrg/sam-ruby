@@ -7,11 +7,11 @@ module Sam
             Integer order_id,
             ?Sam::Models::Store::OrderRetrieveParams
             | ::Hash[Symbol, top] params
-          ) -> Sam::Models::Store::CoolOrder
+          ) -> Sam::Models::Order
           | (
             Integer order_id,
             request_options: Sam::request_opts
-          ) -> Sam::Models::Store::CoolOrder
+          ) -> Sam::Models::Order
 
         def delete:
           (

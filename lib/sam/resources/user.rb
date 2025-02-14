@@ -2,7 +2,7 @@
 
 module Sam
   module Resources
-    class Users
+    class User
       # This can only be done by the logged in user.
       #
       # @param params [Sam::Models::UserCreateParams, Hash{Symbol=>Object}] .
@@ -25,11 +25,17 @@ module Sam
       #
       #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Sam::Models::User]
+      # @return [Sam::Models::UserAPI]
       #
       def create(params = {})
         parsed, options = Sam::Models::UserCreateParams.dump_request(params)
-        @client.request(method: :post, path: "user", body: parsed, model: Sam::Models::User, options: options)
+        @client.request(
+          method: :post,
+          path: "user",
+          body: parsed,
+          model: Sam::Models::UserAPI,
+          options: options
+        )
       end
 
       # Get user by user name
@@ -40,13 +46,13 @@ module Sam
       #
       #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Sam::Models::User]
+      # @return [Sam::Models::UserAPI]
       #
       def retrieve(username, params = {})
         @client.request(
           method: :get,
           path: ["user/%0s", username],
-          model: Sam::Models::User,
+          model: Sam::Models::UserAPI,
           options: params[:request_options]
         )
       end
@@ -109,21 +115,21 @@ module Sam
 
       # Creates list of users with given input array
       #
-      # @param params [Sam::Models::UserCreateWithListParams, Hash{Symbol=>Object}] .
+      # @param params [Sam::Models::UserCreateListParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Array<Sam::Models::User>] :body
+      #   @option params [Array<Sam::Models::UserAPI>] :body
       #
       #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Sam::Models::User]
+      # @return [Sam::Models::UserAPI]
       #
-      def create_with_list(params)
-        parsed, options = Sam::Models::UserCreateWithListParams.dump_request(params)
+      def create_list(params)
+        parsed, options = Sam::Models::UserCreateListParams.dump_request(params)
         @client.request(
           method: :post,
           path: "user/createWithList",
           body: parsed[:body],
-          model: Sam::Models::User,
+          model: Sam::Models::UserAPI,
           options: options
         )
       end

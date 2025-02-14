@@ -1,0 +1,22 @@
+module Sam
+  module Models
+    type user_create_list_params =
+      { body: ::Array[Sam::Models::UserAPI] } & Sam::request_parameters
+
+    class UserCreateListParams < Sam::BaseModel
+      extend Sam::RequestParameters::Converter
+      include Sam::RequestParameters
+
+      attr_accessor body: ::Array[Sam::Models::UserAPI]
+
+      def initialize:
+        (
+          body: ::Array[Sam::Models::UserAPI],
+          request_options: Sam::request_opts
+        ) -> void
+        | (?Sam::Models::user_create_list_params | Sam::BaseModel data) -> void
+
+      def to_hash: -> Sam::Models::user_create_list_params
+    end
+  end
+end
