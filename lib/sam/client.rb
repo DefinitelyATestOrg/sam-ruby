@@ -22,8 +22,8 @@ module Sam
     # @return [Sam::Resources::Store]
     attr_reader :store
 
-    # @return [Sam::Resources::Users]
-    attr_reader :users
+    # @return [Sam::Resources::User]
+    attr_reader :user
 
     # @private
     #
@@ -73,7 +73,7 @@ module Sam
       )
 
       @store = Sam::Resources::Store.new(client: self)
-      @users = Sam::Resources::Users.new(client: self)
+      @user = Sam::Resources::User.new(client: self)
     end
   end
 end

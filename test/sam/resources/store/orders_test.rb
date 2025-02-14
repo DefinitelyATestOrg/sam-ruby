@@ -14,7 +14,7 @@ class Sam::Test::Resources::Store::OrdersTest < Minitest::Test
     response = @sam.store.orders.retrieve(0)
 
     assert_pattern do
-      response => Sam::Models::Store::CoolOrder
+      response => Sam::Models::Order
     end
   end
 

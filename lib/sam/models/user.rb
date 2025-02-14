@@ -4,7 +4,7 @@ module Sam
   module Models
     # @example
     # ```ruby
-    # user => {
+    # user_api => {
     #   id: Integer,
     #   email: String,
     #   first_name: String,
@@ -13,7 +13,7 @@ module Sam
     #   **_
     # }
     # ```
-    class User < Sam::BaseModel
+    class UserAPI < Sam::BaseModel
       # @!attribute [r] id
       #
       #   @return [Integer, nil]

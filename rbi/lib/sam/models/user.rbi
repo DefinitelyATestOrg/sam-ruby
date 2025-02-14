@@ -2,7 +2,7 @@
 
 module Sam
   module Models
-    class User < Sam::BaseModel
+    class UserAPI < Sam::BaseModel
       sig { returns(T.nilable(Integer)) }
       attr_reader :id
 

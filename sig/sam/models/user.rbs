@@ -1,6 +1,6 @@
 module Sam
   module Models
-    type user =
+    type user_api =
       {
         id: Integer,
         email: String,
@@ -12,7 +12,7 @@ module Sam
         user_status: Integer
       }
 
-    class User < Sam::BaseModel
+    class UserAPI < Sam::BaseModel
       attr_reader id: Integer?
 
       def id=: (Integer) -> void
@@ -56,9 +56,9 @@ module Sam
           username: String,
           user_status: Integer
         ) -> void
-        | (?Sam::Models::user | Sam::BaseModel data) -> void
+        | (?Sam::Models::user_api | Sam::BaseModel data) -> void
 
-      def to_hash: -> Sam::Models::user
+      def to_hash: -> Sam::Models::user_api
     end
   end
 end

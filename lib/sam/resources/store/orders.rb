@@ -13,13 +13,13 @@ module Sam
         #
         #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
-        # @return [Sam::Models::Store::CoolOrder]
+        # @return [Sam::Models::Order]
         #
         def retrieve(order_id, params = {})
           @client.request(
             method: :get,
             path: ["store/order/%0s", order_id],
-            model: Sam::Models::Store::CoolOrder,
+            model: Sam::Models::Order,
             options: params[:request_options]
           )
         end

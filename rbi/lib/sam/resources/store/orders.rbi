@@ -8,7 +8,7 @@ module Sam
           params(
             order_id: Integer,
             request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Sam::Models::Store::CoolOrder)
+          ).returns(Sam::Models::Order)
         end
         def retrieve(order_id, request_options: {})
         end

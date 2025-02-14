@@ -2,7 +2,7 @@
 
 module Sam
   module Resources
-    class Users
+    class User
       sig do
         params(
           id: Integer,
@@ -14,7 +14,7 @@ module Sam
           username: String,
           user_status: Integer,
           request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Sam::Models::User)
+        ).returns(Sam::Models::UserAPI)
       end
       def create(
         id: nil,
@@ -33,7 +33,7 @@ module Sam
         params(
           username: String,
           request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Sam::Models::User)
+        ).returns(Sam::Models::UserAPI)
       end
       def retrieve(username, request_options: {})
       end
@@ -77,11 +77,11 @@ module Sam
 
       sig do
         params(
-          body: T::Array[Sam::Models::User],
+          body: T::Array[Sam::Models::UserAPI],
           request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Sam::Models::User)
+        ).returns(Sam::Models::UserAPI)
       end
-      def create_with_list(body:, request_options: {})
+      def create_list(body:, request_options: {})
       end
 
       sig do
