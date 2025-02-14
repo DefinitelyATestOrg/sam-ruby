@@ -4,52 +4,68 @@ module Sam
   module Models
     class UserAPI < Sam::BaseModel
       sig { returns(T.nilable(Integer)) }
-      attr_reader :id
+      def id
+      end
 
-      sig { params(id: Integer).void }
-      attr_writer :id
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :email
-
-      sig { params(email: String).void }
-      attr_writer :email
+      sig { params(_: Integer).returns(Integer) }
+      def id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :first_name
+      def email
+      end
 
-      sig { params(first_name: String).void }
-      attr_writer :first_name
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :last_name
-
-      sig { params(last_name: String).void }
-      attr_writer :last_name
+      sig { params(_: String).returns(String) }
+      def email=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :password
+      def first_name
+      end
 
-      sig { params(password: String).void }
-      attr_writer :password
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :phone
-
-      sig { params(phone: String).void }
-      attr_writer :phone
+      sig { params(_: String).returns(String) }
+      def first_name=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :username
+      def last_name
+      end
 
-      sig { params(username: String).void }
-      attr_writer :username
+      sig { params(_: String).returns(String) }
+      def last_name=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def password
+      end
+
+      sig { params(_: String).returns(String) }
+      def password=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def phone
+      end
+
+      sig { params(_: String).returns(String) }
+      def phone=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def username
+      end
+
+      sig { params(_: String).returns(String) }
+      def username=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :user_status
+      def user_status
+      end
 
-      sig { params(user_status: Integer).void }
-      attr_writer :user_status
+      sig { params(_: Integer).returns(Integer) }
+      def user_status=(_)
+      end
 
       sig do
         params(

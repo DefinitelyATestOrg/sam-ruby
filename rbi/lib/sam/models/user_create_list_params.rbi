@@ -7,7 +7,12 @@ module Sam
       include Sam::RequestParameters
 
       sig { returns(T::Array[Sam::Models::UserAPI]) }
-      attr_accessor :body
+      def body
+      end
+
+      sig { params(_: T::Array[Sam::Models::UserAPI]).returns(T::Array[Sam::Models::UserAPI]) }
+      def body=(_)
+      end
 
       sig do
         params(

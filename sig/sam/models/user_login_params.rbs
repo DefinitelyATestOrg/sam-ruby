@@ -9,11 +9,11 @@ module Sam
 
       attr_reader password: String?
 
-      def password=: (String) -> void
+      def password=: (String) -> String
 
       attr_reader username: String?
 
-      def username=: (String) -> void
+      def username=: (String) -> String
 
       def initialize:
         (
