@@ -11,13 +11,16 @@ module Sam
     DEFAULT_MAX_RETRY_DELAY = T.let(8.0, Float)
 
     sig { returns(String) }
-    attr_reader :api_key
+    def api_key
+    end
 
     sig { returns(Sam::Resources::Store) }
-    attr_reader :store
+    def store
+    end
 
     sig { returns(Sam::Resources::User) }
-    attr_reader :user
+    def user
+    end
 
     sig { returns(T::Hash[String, String]) }
     private def auth_headers

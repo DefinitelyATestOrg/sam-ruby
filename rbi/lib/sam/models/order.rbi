@@ -4,40 +4,52 @@ module Sam
   module Models
     class Order < Sam::BaseModel
       sig { returns(T.nilable(Integer)) }
-      attr_reader :id
+      def id
+      end
 
-      sig { params(id: Integer).void }
-      attr_writer :id
+      sig { params(_: Integer).returns(Integer) }
+      def id=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :complete
+      def complete
+      end
 
-      sig { params(complete: T::Boolean).void }
-      attr_writer :complete
-
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :pet_id
-
-      sig { params(pet_id: Integer).void }
-      attr_writer :pet_id
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def complete=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :quantity
+      def pet_id
+      end
 
-      sig { params(quantity: Integer).void }
-      attr_writer :quantity
+      sig { params(_: Integer).returns(Integer) }
+      def pet_id=(_)
+      end
+
+      sig { returns(T.nilable(Integer)) }
+      def quantity
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def quantity=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :ship_date
+      def ship_date
+      end
 
-      sig { params(ship_date: Time).void }
-      attr_writer :ship_date
+      sig { params(_: Time).returns(Time) }
+      def ship_date=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :status
+      def status
+      end
 
-      sig { params(status: Symbol).void }
-      attr_writer :status
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig do
         params(

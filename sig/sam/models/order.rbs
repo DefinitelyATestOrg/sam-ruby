@@ -13,27 +13,27 @@ module Sam
     class Order < Sam::BaseModel
       attr_reader id: Integer?
 
-      def id=: (Integer) -> void
+      def id=: (Integer) -> Integer
 
       attr_reader complete: bool?
 
-      def complete=: (bool) -> void
+      def complete=: (bool) -> bool
 
       attr_reader pet_id: Integer?
 
-      def pet_id=: (Integer) -> void
+      def pet_id=: (Integer) -> Integer
 
       attr_reader quantity: Integer?
 
-      def quantity=: (Integer) -> void
+      def quantity=: (Integer) -> Integer
 
       attr_reader ship_date: Time?
 
-      def ship_date=: (Time) -> void
+      def ship_date=: (Time) -> Time
 
       attr_reader status: Sam::Models::Order::status?
 
-      def status=: (Sam::Models::Order::status) -> void
+      def status=: (Sam::Models::Order::status) -> Sam::Models::Order::status
 
       def initialize:
         (
