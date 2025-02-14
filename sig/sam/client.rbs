@@ -12,7 +12,7 @@ module Sam
 
     attr_reader store: Sam::Resources::Store
 
-    attr_reader users: Sam::Resources::Users
+    attr_reader user: Sam::Resources::User
 
     private def auth_headers: -> ::Hash[String, String]
 

@@ -16,8 +16,8 @@ module Sam
     sig { returns(Sam::Resources::Store) }
     attr_reader :store
 
-    sig { returns(Sam::Resources::Users) }
-    attr_reader :users
+    sig { returns(Sam::Resources::User) }
+    attr_reader :user
 
     sig { returns(T::Hash[String, String]) }
     private def auth_headers
