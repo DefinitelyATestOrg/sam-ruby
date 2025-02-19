@@ -59,22 +59,24 @@ module Sam
           quantity: Integer,
           ship_date: Time,
           status: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(id: nil, complete: nil, pet_id: nil, quantity: nil, ship_date: nil, status: nil)
       end
 
       sig do
-        override.returns(
-          {
-            id: Integer,
-            complete: T::Boolean,
-            pet_id: Integer,
-            quantity: Integer,
-            ship_date: Time,
-            status: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: Integer,
+              complete: T::Boolean,
+              pet_id: Integer,
+              quantity: Integer,
+              ship_date: Time,
+              status: Symbol
+            }
+          )
       end
       def to_hash
       end

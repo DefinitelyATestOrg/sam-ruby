@@ -52,7 +52,8 @@ module Sam
         max_retry_delay: Float,
         headers: T::Hash[String, T.nilable(String)],
         idempotency_header: T.nilable(String)
-      ).void
+      )
+        .void
     end
     def initialize(
       base_url:,
@@ -74,10 +75,8 @@ module Sam
     end
 
     sig do
-      params(
-        req: Sam::BaseClient::RequestShape,
-        opts: T::Hash[Symbol, T.anything]
-      ).returns(Sam::BaseClient::NormalizedRequestShape)
+      params(req: Sam::BaseClient::RequestShape, opts: T::Hash[Symbol, T.anything])
+        .returns(Sam::BaseClient::NormalizedRequestShape)
     end
     private def build_request(req, opts)
     end
@@ -91,11 +90,8 @@ module Sam
     end
 
     sig do
-      params(
-        request: Sam::BaseClient::NormalizedRequestShape,
-        status: Integer,
-        location_header: String
-      ).returns(Sam::BaseClient::NormalizedRequestShape)
+      params(request: Sam::BaseClient::NormalizedRequestShape, status: Integer, location_header: String)
+        .returns(Sam::BaseClient::NormalizedRequestShape)
     end
     private def follow_redirect(request, status:, location_header:)
     end
@@ -106,7 +102,8 @@ module Sam
         redirect_count: Integer,
         retry_count: Integer,
         send_retry_header: T::Boolean
-      ).returns(Net::HTTPResponse)
+      )
+        .returns(Net::HTTPResponse)
     end
     private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
     end
@@ -126,7 +123,8 @@ module Sam
         page: T.nilable(T::Class[Sam::BaseModel]),
         model: T.nilable(Sam::Converter::Input),
         options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
-      ).returns(T.anything)
+      )
+        .returns(T.anything)
     end
     def request(
       method,
