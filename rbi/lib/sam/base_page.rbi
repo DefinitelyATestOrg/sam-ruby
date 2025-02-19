@@ -27,7 +27,7 @@ module Sam
     sig do
       params(
         client: Sam::BaseClient,
-        req: Sam::BaseClient::RequestShape,
+        req: Sam::BaseClient::RequestComponentsShape,
         headers: T::Hash[String, String],
         unwrapped: T.anything
       )
