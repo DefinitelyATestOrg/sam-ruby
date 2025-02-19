@@ -18,7 +18,8 @@ module Sam
         params(
           body: T::Array[Sam::Models::UserAPI],
           request_options: T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(body:, request_options: {})
       end
