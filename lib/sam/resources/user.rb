@@ -29,13 +29,7 @@ module Sam
       #
       def create(params = {})
         parsed, options = Sam::Models::UserCreateParams.dump_request(params)
-        @client.request(
-          method: :post,
-          path: "user",
-          body: parsed,
-          model: Sam::Models::UserAPI,
-          options: options
-        )
+        @client.request(method: :post, path: "user", body: parsed, model: Sam::Models::UserAPI, options: options)
       end
 
       # Get user by user name

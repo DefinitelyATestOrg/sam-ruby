@@ -27,7 +27,8 @@ module Sam
           password: String,
           username: String,
           request_options: T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(password: nil, username: nil, request_options: {})
       end

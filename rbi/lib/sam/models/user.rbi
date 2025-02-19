@@ -77,7 +77,8 @@ module Sam
           phone: String,
           username: String,
           user_status: Integer
-        ).void
+        )
+          .void
       end
       def initialize(
         id: nil,
@@ -92,18 +93,19 @@ module Sam
       end
 
       sig do
-        override.returns(
-          {
-            id: Integer,
-            email: String,
-            first_name: String,
-            last_name: String,
-            password: String,
-            phone: String,
-            username: String,
-            user_status: Integer
-          }
-        )
+        override
+          .returns(
+            {
+              id: Integer,
+              email: String,
+              first_name: String,
+              last_name: String,
+              password: String,
+              phone: String,
+              username: String,
+              user_status: Integer
+            }
+          )
       end
       def to_hash
       end

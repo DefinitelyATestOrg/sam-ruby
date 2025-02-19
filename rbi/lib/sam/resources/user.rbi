@@ -14,7 +14,8 @@ module Sam
           username: String,
           user_status: Integer,
           request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Sam::Models::UserAPI)
+        )
+          .returns(Sam::Models::UserAPI)
       end
       def create(
         id: nil,
@@ -33,7 +34,8 @@ module Sam
         params(
           username: String,
           request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Sam::Models::UserAPI)
+        )
+          .returns(Sam::Models::UserAPI)
       end
       def retrieve(username, request_options: {})
       end
@@ -50,7 +52,8 @@ module Sam
           body_username: String,
           user_status: Integer,
           request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).void
+        )
+          .void
       end
       def update(
         path_username,
@@ -70,7 +73,8 @@ module Sam
         params(
           username: String,
           request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).void
+        )
+          .void
       end
       def delete(username, request_options: {})
       end
@@ -79,7 +83,8 @@ module Sam
         params(
           body: T::Array[Sam::Models::UserAPI],
           request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Sam::Models::UserAPI)
+        )
+          .returns(Sam::Models::UserAPI)
       end
       def create_list(body:, request_options: {})
       end
@@ -89,7 +94,8 @@ module Sam
           password: String,
           username: String,
           request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(String)
+        )
+          .returns(String)
       end
       def login(password: nil, username: nil, request_options: {})
       end
