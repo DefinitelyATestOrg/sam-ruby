@@ -28,7 +28,7 @@ module Sam
       params(
         client: Sam::BaseClient,
         req: Sam::BaseClient::RequestComponentsShape,
-        headers: T::Hash[String, String],
+        headers: T.any(T::Hash[String, String], Net::HTTPHeader),
         unwrapped: T.anything
       )
         .void
