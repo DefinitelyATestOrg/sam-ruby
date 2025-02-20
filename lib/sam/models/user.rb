@@ -2,17 +2,6 @@
 
 module Sam
   module Models
-    # @example
-    # ```ruby
-    # user_api => {
-    #   id: Integer,
-    #   email: String,
-    #   first_name: String,
-    #   last_name: String,
-    #   password: String,
-    #   **_
-    # }
-    # ```
     class UserAPI < Sam::BaseModel
       # @!attribute [r] id
       #

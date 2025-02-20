@@ -16,6 +16,19 @@ class Sam::Test::Resources::UserTest < Minitest::Test
     assert_pattern do
       response => Sam::Models::UserAPI
     end
+
+    assert_pattern do
+      response => {
+        id: Integer | nil,
+        email: String | nil,
+        first_name: String | nil,
+        last_name: String | nil,
+        password: String | nil,
+        phone: String | nil,
+        username: String | nil,
+        user_status: Integer | nil
+      }
+    end
   end
 
   def test_retrieve
@@ -23,6 +36,19 @@ class Sam::Test::Resources::UserTest < Minitest::Test
 
     assert_pattern do
       response => Sam::Models::UserAPI
+    end
+
+    assert_pattern do
+      response => {
+        id: Integer | nil,
+        email: String | nil,
+        first_name: String | nil,
+        last_name: String | nil,
+        password: String | nil,
+        phone: String | nil,
+        username: String | nil,
+        user_status: Integer | nil
+      }
     end
   end
 
@@ -47,6 +73,19 @@ class Sam::Test::Resources::UserTest < Minitest::Test
 
     assert_pattern do
       response => Sam::Models::UserAPI
+    end
+
+    assert_pattern do
+      response => {
+        id: Integer | nil,
+        email: String | nil,
+        first_name: String | nil,
+        last_name: String | nil,
+        password: String | nil,
+        phone: String | nil,
+        username: String | nil,
+        user_status: Integer | nil
+      }
     end
   end
 
