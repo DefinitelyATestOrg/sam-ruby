@@ -16,6 +16,17 @@ class Sam::Test::Resources::Store::OrdersTest < Minitest::Test
     assert_pattern do
       response => Sam::Models::Order
     end
+
+    assert_pattern do
+      response => {
+        id: Integer | nil,
+        complete: Sam::BooleanModel | nil,
+        pet_id: Integer | nil,
+        quantity: Integer | nil,
+        ship_date: Time | nil,
+        status: Sam::Models::Order::Status | nil
+      }
+    end
   end
 
   def test_delete

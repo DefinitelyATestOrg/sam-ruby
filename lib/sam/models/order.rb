@@ -2,16 +2,6 @@
 
 module Sam
   module Models
-    # @example
-    # ```ruby
-    # order => {
-    #   id: Integer,
-    #   complete: Sam::BooleanModel,
-    #   pet_id: Integer,
-    #   quantity: Integer,
-    #   ship_date: Time
-    # }
-    # ```
     class Order < Sam::BaseModel
       # @!attribute [r] id
       #
