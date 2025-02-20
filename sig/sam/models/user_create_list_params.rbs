@@ -7,7 +7,11 @@ module Sam
       extend Sam::RequestParameters::Converter
       include Sam::RequestParameters
 
-      attr_accessor body: ::Array[Sam::Models::UserAPI]
+      attr_reader body: ::Array[Sam::Models::UserAPI]?
+
+      def body=: (
+        ::Array[Sam::Models::UserAPI]
+      ) -> ::Array[Sam::Models::UserAPI]
 
       def initialize:
         (

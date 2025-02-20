@@ -54,7 +54,7 @@ module Sam
 
       def create_list:
         (
-          Sam::Models::UserCreateListParams | ::Hash[Symbol, top] params
+          ?Sam::Models::UserCreateListParams | ::Hash[Symbol, top] params
         ) -> Sam::Models::UserAPI
         | (
           body: ::Array[Sam::Models::UserAPI],
