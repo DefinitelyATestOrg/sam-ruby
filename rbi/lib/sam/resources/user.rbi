@@ -86,7 +86,7 @@ module Sam
         )
           .returns(Sam::Models::UserAPI)
       end
-      def create_list(body:, request_options: {})
+      def create_list(body: nil, request_options: {})
       end
 
       sig do

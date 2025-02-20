@@ -6,7 +6,7 @@ module Sam
       extend Sam::RequestParameters::Converter
       include Sam::RequestParameters
 
-      sig { returns(T::Array[Sam::Models::UserAPI]) }
+      sig { returns(T.nilable(T::Array[Sam::Models::UserAPI])) }
       def body
       end
 
@@ -21,7 +21,7 @@ module Sam
         )
           .void
       end
-      def initialize(body:, request_options: {})
+      def initialize(body: nil, request_options: {})
       end
 
       sig { override.returns({body: T::Array[Sam::Models::UserAPI], request_options: Sam::RequestOptions}) }

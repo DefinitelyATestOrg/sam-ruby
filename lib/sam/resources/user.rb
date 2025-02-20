@@ -117,7 +117,7 @@ module Sam
       #
       # @return [Sam::Models::UserAPI]
       #
-      def create_list(params)
+      def create_list(params = {})
         parsed, options = Sam::Models::UserCreateListParams.dump_request(params)
         @client.request(
           method: :post,
