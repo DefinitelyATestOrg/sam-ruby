@@ -93,7 +93,8 @@ module Sam
     end
 
     sig do
-      params(req: Sam::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
+      overridable
+        .params(req: Sam::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
         .returns(Sam::BaseClient::RequestInputShape)
     end
     private def build_request(req, opts)
