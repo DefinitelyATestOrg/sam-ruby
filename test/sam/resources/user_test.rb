@@ -68,8 +68,8 @@ class Sam::Test::Resources::UserTest < Minitest::Test
     end
   end
 
-  def test_create_list_required_params
-    response = @sam.user.create_list(body: [{}])
+  def test_create_list
+    response = @sam.user.create_list
 
     assert_pattern do
       response => Sam::Models::UserAPI
