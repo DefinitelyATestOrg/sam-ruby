@@ -369,7 +369,6 @@ module Sam
   # @abstract
   #
   class Union
-    extend Sam::Extern
     extend Sam::Converter
 
     # @private
@@ -842,7 +841,6 @@ module Sam
   # @abstract
   #
   class BaseModel
-    extend Sam::Extern
     extend Sam::Converter
 
     # @private

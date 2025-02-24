@@ -153,7 +153,6 @@ module Sam
   class Union
     abstract!
 
-    extend Sam::Extern
     extend Sam::Converter
 
     sig { returns(T::Array[[T.nilable(Symbol), Proc]]) }
@@ -331,7 +330,6 @@ module Sam
   class BaseModel
     abstract!
 
-    extend Sam::Extern
     extend Sam::Converter
 
     KnownFieldShape = T.type_alias { {mode: T.nilable(Symbol), required: T::Boolean} }
