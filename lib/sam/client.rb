@@ -15,7 +15,7 @@ module Sam
     # Default max retry delay in seconds.
     DEFAULT_MAX_RETRY_DELAY = 8.0
 
-    # Client option
+    # API key used for authenticating requests via the Authorization header
     # @return [String]
     attr_reader :api_key
 
