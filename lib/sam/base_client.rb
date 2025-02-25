@@ -9,6 +9,17 @@ module Sam
     # from whatwg fetch spec
     MAX_REDIRECTS = 20
 
+    # rubocop:disable Style/MutableConstant
+    PLATFORM_HEADERS = {
+      "x-stainless-arch" => Sam::Util.arch,
+      "x-stainless-lang" => "ruby",
+      "x-stainless-os" => Sam::Util.os,
+      "x-stainless-package-version" => Sam::VERSION,
+      "x-stainless-runtime" => ::RUBY_ENGINE,
+      "x-stainless-runtime-version" => ::RUBY_ENGINE_VERSION
+    }
+    # rubocop:enable Style/MutableConstant
+
     class << self
       # @private
       #
@@ -149,13 +160,10 @@ module Sam
     )
       @requester = Sam::PooledNetRequester.new
       @headers = Sam::Util.normalized_headers(
+        self.class::PLATFORM_HEADERS,
         {
-          "X-Stainless-Lang" => "ruby",
-          "X-Stainless-Package-Version" => Sam::VERSION,
-          "X-Stainless-Runtime" => RUBY_ENGINE,
-          "X-Stainless-Runtime-Version" => RUBY_ENGINE_VERSION,
-          "Content-Type" => "application/json",
-          "Accept" => "application/json"
+          "accept" => "application/json",
+          "content-type" => "application/json"
         },
         headers
       )
@@ -220,10 +228,7 @@ module Sam
 
       path = Sam::Util.interpolate_path(uninterpolated_path)
 
-      query = Sam::Util.deep_merge(
-        req[:query].to_h,
-        opts[:extra_query].to_h
-      )
+      query = Sam::Util.deep_merge(req[:query].to_h, opts[:extra_query].to_h)
 
       headers = Sam::Util.normalized_headers(
         @headers,
@@ -339,8 +344,8 @@ module Sam
       case status
       in ..299
         [response, stream]
-      in 300..399 if redirect_count >= MAX_REDIRECTS
-        message = "Failed to complete the request within #{MAX_REDIRECTS} redirects."
+      in 300..399 if redirect_count >= self.class::MAX_REDIRECTS
+        message = "Failed to complete the request within #{self.class::MAX_REDIRECTS} redirects."
         raise Sam::APIConnectionError.new(url: url, message: message)
       in 300..399
         request = self.class.follow_redirect(request, status: status, response_headers: response)
