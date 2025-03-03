@@ -3,7 +3,7 @@
 The Sam Ruby library provides convenient access to the Sam REST API from any Ruby 3.0.0+
 application.
 
-It is generated with [Stainless](https://www.stainlessapi.com/).
+It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
