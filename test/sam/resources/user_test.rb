@@ -2,14 +2,7 @@
 
 require_relative "../test_helper"
 
-class Sam::Test::Resources::UserTest < Minitest::Test
-  def before_all
-    @sam = Sam::Client.new(
-      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
-      api_key: "My API Key"
-    )
-  end
-
+class Sam::Test::Resources::UserTest < Sam::Test::ResourceTest
   def test_create
     response = @sam.user.create
 
