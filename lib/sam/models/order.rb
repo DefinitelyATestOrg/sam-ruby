@@ -73,18 +73,6 @@ module Sam
       # @abstract
       #
       # Order Status
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :placed
-      #   # ...
-      # in :approved
-      #   # ...
-      # in :delivered
-      #   # ...
-      # end
-      # ```
       class Status < Sam::Enum
         PLACED = :placed
         APPROVED = :approved

@@ -839,6 +839,15 @@ module Sam
   #
   # @abstract
   #
+  # @example
+  # ```ruby
+  # # `order` is a `Sam::Models::Order`
+  # order => {
+  #   id: id,
+  #   complete: complete,
+  #   pet_id: pet_id
+  # }
+  # ```
   class BaseModel
     extend Sam::Converter
 
