@@ -28,9 +28,9 @@ module Sam
           username: String,
           request_options: T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(password: nil, username: nil, request_options: {})
+      def self.new(password: nil, username: nil, request_options: {})
       end
 
       sig { override.returns({password: String, username: String, request_options: Sam::RequestOptions}) }

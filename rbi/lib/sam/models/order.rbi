@@ -60,9 +60,9 @@ module Sam
           ship_date: Time,
           status: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(id: nil, complete: nil, pet_id: nil, quantity: nil, ship_date: nil, status: nil)
+      def self.new(id: nil, complete: nil, pet_id: nil, quantity: nil, ship_date: nil, status: nil)
       end
 
       sig do

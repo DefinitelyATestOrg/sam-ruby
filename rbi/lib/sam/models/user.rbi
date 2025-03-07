@@ -78,9 +78,9 @@ module Sam
           username: String,
           user_status: Integer
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id: nil,
         email: nil,
         first_name: nil,
