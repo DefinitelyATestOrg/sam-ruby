@@ -19,9 +19,9 @@ module Sam
           body: T::Array[Sam::Models::UserAPI],
           request_options: T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(body: nil, request_options: {})
+      def self.new(body: nil, request_options: {})
       end
 
       sig { override.returns({body: T::Array[Sam::Models::UserAPI], request_options: Sam::RequestOptions}) }
