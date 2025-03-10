@@ -86,7 +86,11 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::InternalServerError) do
-      sam.user.create
+      sam.messages.create(
+        max_tokens: 1024,
+        messages: [{content: "Hello, world", role: :user}],
+        model: "claude-3-7-sonnet-20250219"
+      )
     end
 
     assert_equal(3, requester.attempts.length)
@@ -98,7 +102,11 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::InternalServerError) do
-      sam.user.create
+      sam.messages.create(
+        max_tokens: 1024,
+        messages: [{content: "Hello, world", role: :user}],
+        model: "claude-3-7-sonnet-20250219"
+      )
     end
 
     assert_equal(4, requester.attempts.length)
@@ -110,7 +118,12 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::InternalServerError) do
-      sam.user.create(request_options: {max_retries: 3})
+      sam.messages.create(
+        max_tokens: 1024,
+        messages: [{content: "Hello, world", role: :user}],
+        model: "claude-3-7-sonnet-20250219",
+        request_options: {max_retries: 3}
+      )
     end
 
     assert_equal(4, requester.attempts.length)
@@ -122,7 +135,12 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::InternalServerError) do
-      sam.user.create(request_options: {max_retries: 4})
+      sam.messages.create(
+        max_tokens: 1024,
+        messages: [{content: "Hello, world", role: :user}],
+        model: "claude-3-7-sonnet-20250219",
+        request_options: {max_retries: 4}
+      )
     end
 
     assert_equal(5, requester.attempts.length)
@@ -134,7 +152,11 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::InternalServerError) do
-      sam.user.create
+      sam.messages.create(
+        max_tokens: 1024,
+        messages: [{content: "Hello, world", role: :user}],
+        model: "claude-3-7-sonnet-20250219"
+      )
     end
 
     assert_equal(2, requester.attempts.length)
@@ -148,7 +170,11 @@ class SamTest < Minitest::Test
 
     assert_raises(Sam::InternalServerError) do
       Thread.current.thread_variable_set(:time_now, Time.now)
-      sam.user.create
+      sam.messages.create(
+        max_tokens: 1024,
+        messages: [{content: "Hello, world", role: :user}],
+        model: "claude-3-7-sonnet-20250219"
+      )
       Thread.current.thread_variable_set(:time_now, nil)
     end
 
@@ -162,7 +188,11 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::InternalServerError) do
-      sam.user.create
+      sam.messages.create(
+        max_tokens: 1024,
+        messages: [{content: "Hello, world", role: :user}],
+        model: "claude-3-7-sonnet-20250219"
+      )
     end
 
     assert_equal(2, requester.attempts.length)
@@ -175,7 +205,11 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::InternalServerError) do
-      sam.user.create
+      sam.messages.create(
+        max_tokens: 1024,
+        messages: [{content: "Hello, world", role: :user}],
+        model: "claude-3-7-sonnet-20250219"
+      )
     end
 
     retry_count_headers = requester.attempts.map { _1[:headers]["x-stainless-retry-count"] }
@@ -188,7 +222,12 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::InternalServerError) do
-      sam.user.create(request_options: {extra_headers: {"x-stainless-retry-count" => nil}})
+      sam.messages.create(
+        max_tokens: 1024,
+        messages: [{content: "Hello, world", role: :user}],
+        model: "claude-3-7-sonnet-20250219",
+        request_options: {extra_headers: {"x-stainless-retry-count" => nil}}
+      )
     end
 
     retry_count_headers = requester.attempts.map { _1[:headers]["x-stainless-retry-count"] }
@@ -201,7 +240,12 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::InternalServerError) do
-      sam.user.create(request_options: {extra_headers: {"x-stainless-retry-count" => "42"}})
+      sam.messages.create(
+        max_tokens: 1024,
+        messages: [{content: "Hello, world", role: :user}],
+        model: "claude-3-7-sonnet-20250219",
+        request_options: {extra_headers: {"x-stainless-retry-count" => "42"}}
+      )
     end
 
     retry_count_headers = requester.attempts.map { _1[:headers]["x-stainless-retry-count"] }
@@ -214,7 +258,12 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::APIConnectionError) do
-      sam.user.create(request_options: {extra_headers: {}})
+      sam.messages.create(
+        max_tokens: 1024,
+        messages: [{content: "Hello, world", role: :user}],
+        model: "claude-3-7-sonnet-20250219",
+        request_options: {extra_headers: {}}
+      )
     end
 
     assert_equal("/redirected", requester.attempts.last[:url].path)
@@ -232,7 +281,12 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::APIConnectionError) do
-      sam.user.create(request_options: {extra_headers: {}})
+      sam.messages.create(
+        max_tokens: 1024,
+        messages: [{content: "Hello, world", role: :user}],
+        model: "claude-3-7-sonnet-20250219",
+        request_options: {extra_headers: {}}
+      )
     end
 
     assert_equal("/redirected", requester.attempts.last[:url].path)
@@ -247,7 +301,12 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::APIConnectionError) do
-      sam.user.create(request_options: {extra_headers: {"Authorization" => "Bearer xyz"}})
+      sam.messages.create(
+        max_tokens: 1024,
+        messages: [{content: "Hello, world", role: :user}],
+        model: "claude-3-7-sonnet-20250219",
+        request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
+      )
     end
 
     assert_equal(
@@ -262,7 +321,12 @@ class SamTest < Minitest::Test
     sam.requester = requester
 
     assert_raises(Sam::APIConnectionError) do
-      sam.user.create(request_options: {extra_headers: {"Authorization" => "Bearer xyz"}})
+      sam.messages.create(
+        max_tokens: 1024,
+        messages: [{content: "Hello, world", role: :user}],
+        model: "claude-3-7-sonnet-20250219",
+        request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
+      )
     end
 
     assert_nil(requester.attempts.last[:headers]["Authorization"])
@@ -272,7 +336,11 @@ class SamTest < Minitest::Test
     sam = Sam::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
     requester = MockRequester.new(200, {}, {})
     sam.requester = requester
-    sam.user.create
+    sam.messages.create(
+      max_tokens: 1024,
+      messages: [{content: "Hello, world", role: :user}],
+      model: "claude-3-7-sonnet-20250219"
+    )
     headers = requester.attempts.first[:headers]
 
     refute_empty(headers["accept"])

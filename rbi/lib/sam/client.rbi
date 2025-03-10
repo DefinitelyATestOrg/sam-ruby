@@ -22,8 +22,24 @@ module Sam
     def user
     end
 
-    sig { override.returns(T::Hash[String, String]) }
-    private def auth_headers
+    sig { returns(Sam::Resources::Messages) }
+    def messages
+    end
+
+    sig { returns(Sam::Resources::Complete) }
+    def complete
+    end
+
+    sig { returns(Sam::Resources::Models) }
+    def models
+    end
+
+    sig { returns(Sam::Resources::MessagesBetaTrue) }
+    def messages_beta_true
+    end
+
+    sig { returns(Sam::Resources::ModelsBetaTrue) }
+    def models_beta_true
     end
 
     sig do

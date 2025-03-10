@@ -1,0 +1,21 @@
+module Sam
+  module Models
+    module Messages
+      type batch_delete_response = { id: String, type: :message_batch_deleted }
+
+      class BatchDeleteResponse < Sam::BaseModel
+        attr_accessor id: String
+
+        attr_accessor type: :message_batch_deleted
+
+        def initialize:
+          (id: String, type: :message_batch_deleted) -> void
+          | (
+            ?Sam::Models::Messages::batch_delete_response | Sam::BaseModel data
+          ) -> void
+
+        def to_hash: -> Sam::Models::Messages::batch_delete_response
+      end
+    end
+  end
+end

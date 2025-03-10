@@ -851,11 +851,11 @@ module Sam
   #
   # @example
   # ```ruby
-  # # `order` is a `Sam::Models::Order`
-  # order => {
+  # # `message_create_response` is a `Sam::Models::MessageCreateResponse`
+  # message_create_response => {
   #   id: id,
-  #   complete: complete,
-  #   pet_id: pet_id
+  #   content: content,
+  #   model: model
   # }
   # ```
   class BaseModel

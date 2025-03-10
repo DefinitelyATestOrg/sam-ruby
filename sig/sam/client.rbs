@@ -14,7 +14,15 @@ module Sam
 
     attr_reader user: Sam::Resources::User
 
-    private def auth_headers: -> ::Hash[String, String]
+    attr_reader messages: Sam::Resources::Messages
+
+    attr_reader complete: Sam::Resources::Complete
+
+    attr_reader models: Sam::Resources::Models
+
+    attr_reader messages_beta_true: Sam::Resources::MessagesBetaTrue
+
+    attr_reader models_beta_true: Sam::Resources::ModelsBetaTrue
 
     def initialize: (
       base_url: String?,
