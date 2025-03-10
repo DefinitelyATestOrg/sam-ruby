@@ -1,0 +1,26 @@
+module Sam
+  module Resources
+    class Complete
+      def create:
+        (
+          Sam::Models::CompleteCreateParams | ::Hash[Symbol, top] params
+        ) -> Sam::Models::CompleteCreateResponse
+        | (
+          max_tokens_to_sample: Integer,
+          model: String,
+          prompt: String,
+          metadata: Sam::Models::CompleteCreateParams::Metadata,
+          stop_sequences: ::Array[String],
+          stream: bool,
+          temperature: Float,
+          top_k: Integer,
+          top_p: Float,
+          anthropic_version: String,
+          x_api_key: String,
+          request_options: Sam::request_opts
+        ) -> Sam::Models::CompleteCreateResponse
+
+      def initialize: (client: Sam::Client) -> void
+    end
+  end
+end

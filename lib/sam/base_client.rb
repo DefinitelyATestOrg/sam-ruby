@@ -173,12 +173,6 @@ module Sam
 
     # @private
     #
-    # @return [Hash{String=>String}]
-    #
-    private def auth_headers = {}
-
-    # @private
-    #
     # @return [String]
     #
     private def generate_idempotency_key = "stainless-ruby-retry-#{SecureRandom.uuid}"
@@ -228,12 +222,7 @@ module Sam
 
       query = Sam::Util.deep_merge(req[:query].to_h, opts[:extra_query].to_h)
 
-      headers = Sam::Util.normalized_headers(
-        @headers,
-        auth_headers,
-        req[:headers].to_h,
-        opts[:extra_headers].to_h
-      )
+      headers = Sam::Util.normalized_headers(@headers, req[:headers].to_h, opts[:extra_headers].to_h)
 
       if @idempotency_header &&
          !headers.key?(@idempotency_header) &&

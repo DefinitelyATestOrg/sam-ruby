@@ -1,0 +1,645 @@
+module Sam
+  module Models
+    module Messages
+      type batch_results_beta_response =
+        {
+          custom_id: String,
+          result: Sam::Models::Messages::BatchResultsBetaResponse::result
+        }
+
+      class BatchResultsBetaResponse < Sam::BaseModel
+        attr_accessor custom_id: String
+
+        attr_accessor result: Sam::Models::Messages::BatchResultsBetaResponse::result
+
+        def initialize:
+          (
+            custom_id: String,
+            result: Sam::Models::Messages::BatchResultsBetaResponse::result
+          ) -> void
+          | (
+            ?Sam::Models::Messages::batch_results_beta_response
+            | Sam::BaseModel data
+          ) -> void
+
+        def to_hash: -> Sam::Models::Messages::batch_results_beta_response
+
+        type result =
+          Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult
+          | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult
+          | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaCanceledResult
+          | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaExpiredResult
+
+        class Result < Sam::Union
+          type beta_succeeded_result =
+            {
+              message: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message,
+              type: :succeeded
+            }
+
+          class BetaSucceededResult < Sam::BaseModel
+            attr_accessor message: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message
+
+            attr_accessor type: :succeeded
+
+            def initialize:
+              (
+                message: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message,
+                type: :succeeded
+              ) -> void
+              | (
+                ?Sam::Models::Messages::BatchResultsBetaResponse::Result::beta_succeeded_result
+                | Sam::BaseModel data
+              ) -> void
+
+            def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::beta_succeeded_result
+
+            type message =
+              {
+                id: String,
+                content: ::Array[Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::content],
+                model: String,
+                role: :assistant,
+                stop_reason: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::stop_reason?,
+                stop_sequence: String?,
+                type: :message,
+                usage: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage
+              }
+
+            class Message < Sam::BaseModel
+              attr_accessor id: String
+
+              attr_accessor content: ::Array[Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::content]
+
+              attr_accessor model: String
+
+              attr_accessor role: :assistant
+
+              attr_accessor stop_reason: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::stop_reason?
+
+              attr_accessor stop_sequence: String?
+
+              attr_accessor type: :message
+
+              attr_accessor usage: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage
+
+              def initialize:
+                (
+                  id: String,
+                  content: ::Array[Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::content],
+                  model: String,
+                  stop_reason: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::stop_reason?,
+                  stop_sequence: String?,
+                  usage: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage,
+                  role: :assistant,
+                  type: :message
+                ) -> void
+                | (
+                  ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::message
+                  | Sam::BaseModel data
+                ) -> void
+
+              def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::message
+
+              type content =
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock
+                | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock
+                | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock
+                | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock
+
+              class Content < Sam::Union
+                type beta_response_text_block =
+                  {
+                    citations: ::Array[Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::citation]?,
+                    text: String,
+                    type: :text
+                  }
+
+                class BetaResponseTextBlock < Sam::BaseModel
+                  attr_accessor citations: ::Array[Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::citation]?
+
+                  attr_accessor text: String
+
+                  attr_accessor type: :text
+
+                  def initialize:
+                    (
+                      citations: ::Array[Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::citation]?,
+                      text: String,
+                      type: :text
+                    ) -> void
+                    | (
+                      ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::beta_response_text_block
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::beta_response_text_block
+
+                  type citation =
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation
+                    | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation
+                    | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
+
+                  class Citation < Sam::Union
+                    type beta_response_char_location_citation =
+                      {
+                        cited_text: String,
+                        document_index: Integer,
+                        document_title: String?,
+                        end_char_index: Integer,
+                        start_char_index: Integer,
+                        type: :char_location
+                      }
+
+                    class BetaResponseCharLocationCitation < Sam::BaseModel
+                      attr_accessor cited_text: String
+
+                      attr_accessor document_index: Integer
+
+                      attr_accessor document_title: String?
+
+                      attr_accessor end_char_index: Integer
+
+                      attr_accessor start_char_index: Integer
+
+                      attr_accessor type: :char_location
+
+                      def initialize:
+                        (
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: String?,
+                          end_char_index: Integer,
+                          start_char_index: Integer,
+                          type: :char_location
+                        ) -> void
+                        | (
+                          ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::beta_response_char_location_citation
+                          | Sam::BaseModel data
+                        ) -> void
+
+                      def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::beta_response_char_location_citation
+                    end
+
+                    type beta_response_page_location_citation =
+                      {
+                        cited_text: String,
+                        document_index: Integer,
+                        document_title: String?,
+                        end_page_number: Integer,
+                        start_page_number: Integer,
+                        type: :page_location
+                      }
+
+                    class BetaResponsePageLocationCitation < Sam::BaseModel
+                      attr_accessor cited_text: String
+
+                      attr_accessor document_index: Integer
+
+                      attr_accessor document_title: String?
+
+                      attr_accessor end_page_number: Integer
+
+                      attr_accessor start_page_number: Integer
+
+                      attr_accessor type: :page_location
+
+                      def initialize:
+                        (
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: String?,
+                          end_page_number: Integer,
+                          start_page_number: Integer,
+                          type: :page_location
+                        ) -> void
+                        | (
+                          ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::beta_response_page_location_citation
+                          | Sam::BaseModel data
+                        ) -> void
+
+                      def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::beta_response_page_location_citation
+                    end
+
+                    type beta_response_content_block_location_citation =
+                      {
+                        cited_text: String,
+                        document_index: Integer,
+                        document_title: String?,
+                        end_block_index: Integer,
+                        start_block_index: Integer,
+                        type: :content_block_location
+                      }
+
+                    class BetaResponseContentBlockLocationCitation < Sam::BaseModel
+                      attr_accessor cited_text: String
+
+                      attr_accessor document_index: Integer
+
+                      attr_accessor document_title: String?
+
+                      attr_accessor end_block_index: Integer
+
+                      attr_accessor start_block_index: Integer
+
+                      attr_accessor type: :content_block_location
+
+                      def initialize:
+                        (
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: String?,
+                          end_block_index: Integer,
+                          start_block_index: Integer,
+                          type: :content_block_location
+                        ) -> void
+                        | (
+                          ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::beta_response_content_block_location_citation
+                          | Sam::BaseModel data
+                        ) -> void
+
+                      def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::beta_response_content_block_location_citation
+                    end
+
+                    private def self.variants: -> [[:char_location, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation], [:page_location, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation], [:content_block_location, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation]]
+                  end
+                end
+
+                type beta_response_tool_use_block =
+                  { id: String, input: top, name: String, type: :tool_use }
+
+                class BetaResponseToolUseBlock < Sam::BaseModel
+                  attr_accessor id: String
+
+                  attr_accessor input: top
+
+                  attr_accessor name: String
+
+                  attr_accessor type: :tool_use
+
+                  def initialize:
+                    (
+                      id: String,
+                      input: top,
+                      name: String,
+                      type: :tool_use
+                    ) -> void
+                    | (
+                      ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::beta_response_tool_use_block
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::beta_response_tool_use_block
+                end
+
+                type beta_response_thinking_block =
+                  { signature: String, thinking: String, type: :thinking }
+
+                class BetaResponseThinkingBlock < Sam::BaseModel
+                  attr_accessor signature: String
+
+                  attr_accessor thinking: String
+
+                  attr_accessor type: :thinking
+
+                  def initialize:
+                    (
+                      signature: String,
+                      thinking: String,
+                      type: :thinking
+                    ) -> void
+                    | (
+                      ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::beta_response_thinking_block
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::beta_response_thinking_block
+                end
+
+                type beta_response_redacted_thinking_block =
+                  { data: String, type: :redacted_thinking }
+
+                class BetaResponseRedactedThinkingBlock < Sam::BaseModel
+                  attr_accessor data: String
+
+                  attr_accessor type: :redacted_thinking
+
+                  def initialize:
+                    (data: String, type: :redacted_thinking) -> void
+                    | (
+                      ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::beta_response_redacted_thinking_block
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::beta_response_redacted_thinking_block
+                end
+
+                private def self.variants: -> [[:text, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock], [:tool_use, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock], [:thinking, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock], [:redacted_thinking, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock]]
+              end
+
+              type stop_reason =
+                :end_turn | :max_tokens | :stop_sequence | :tool_use
+
+              class StopReason < Sam::Enum
+                END_TURN: :end_turn
+                MAX_TOKENS: :max_tokens
+                STOP_SEQUENCE: :stop_sequence
+                TOOL_USE: :tool_use
+
+                def self.values: -> ::Array[Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::stop_reason]
+              end
+
+              type usage =
+                {
+                  cache_creation_input_tokens: Integer?,
+                  cache_read_input_tokens: Integer?,
+                  input_tokens: Integer,
+                  output_tokens: Integer
+                }
+
+              class Usage < Sam::BaseModel
+                attr_accessor cache_creation_input_tokens: Integer?
+
+                attr_accessor cache_read_input_tokens: Integer?
+
+                attr_accessor input_tokens: Integer
+
+                attr_accessor output_tokens: Integer
+
+                def initialize:
+                  (
+                    cache_creation_input_tokens: Integer?,
+                    cache_read_input_tokens: Integer?,
+                    input_tokens: Integer,
+                    output_tokens: Integer
+                  ) -> void
+                  | (
+                    ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::usage
+                    | Sam::BaseModel data
+                  ) -> void
+
+                def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::usage
+              end
+            end
+          end
+
+          type beta_errored_result =
+            {
+              error: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error,
+              type: :errored
+            }
+
+          class BetaErroredResult < Sam::BaseModel
+            attr_accessor error: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error
+
+            attr_accessor type: :errored
+
+            def initialize:
+              (
+                error: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error,
+                type: :errored
+              ) -> void
+              | (
+                ?Sam::Models::Messages::BatchResultsBetaResponse::Result::beta_errored_result
+                | Sam::BaseModel data
+              ) -> void
+
+            def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::beta_errored_result
+
+            type error =
+              {
+                error: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::error,
+                type: :error
+              }
+
+            class Error < Sam::BaseModel
+              attr_accessor error: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::error
+
+              attr_accessor type: :error
+
+              def initialize:
+                (
+                  error: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::error,
+                  type: :error
+                ) -> void
+                | (
+                  ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::error
+                  | Sam::BaseModel data
+                ) -> void
+
+              def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::error
+
+              type error =
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaInvalidRequestError
+                | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAuthenticationError
+                | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaBillingError
+                | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaPermissionError
+                | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaNotFoundError
+                | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaRateLimitError
+                | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaGatewayTimeoutError
+                | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAPIError
+                | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaOverloadedError
+
+              class Error < Sam::Union
+                type beta_invalid_request_error =
+                  { message: String, type: :invalid_request_error }
+
+                class BetaInvalidRequestError < Sam::BaseModel
+                  attr_accessor message: String
+
+                  attr_accessor type: :invalid_request_error
+
+                  def initialize:
+                    (message: String, type: :invalid_request_error) -> void
+                    | (
+                      ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_invalid_request_error
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_invalid_request_error
+                end
+
+                type beta_authentication_error =
+                  { message: String, type: :authentication_error }
+
+                class BetaAuthenticationError < Sam::BaseModel
+                  attr_accessor message: String
+
+                  attr_accessor type: :authentication_error
+
+                  def initialize:
+                    (message: String, type: :authentication_error) -> void
+                    | (
+                      ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_authentication_error
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_authentication_error
+                end
+
+                type beta_billing_error =
+                  { message: String, type: :billing_error }
+
+                class BetaBillingError < Sam::BaseModel
+                  attr_accessor message: String
+
+                  attr_accessor type: :billing_error
+
+                  def initialize:
+                    (message: String, type: :billing_error) -> void
+                    | (
+                      ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_billing_error
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_billing_error
+                end
+
+                type beta_permission_error =
+                  { message: String, type: :permission_error }
+
+                class BetaPermissionError < Sam::BaseModel
+                  attr_accessor message: String
+
+                  attr_accessor type: :permission_error
+
+                  def initialize:
+                    (message: String, type: :permission_error) -> void
+                    | (
+                      ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_permission_error
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_permission_error
+                end
+
+                type beta_not_found_error =
+                  { message: String, type: :not_found_error }
+
+                class BetaNotFoundError < Sam::BaseModel
+                  attr_accessor message: String
+
+                  attr_accessor type: :not_found_error
+
+                  def initialize:
+                    (message: String, type: :not_found_error) -> void
+                    | (
+                      ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_not_found_error
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_not_found_error
+                end
+
+                type beta_rate_limit_error =
+                  { message: String, type: :rate_limit_error }
+
+                class BetaRateLimitError < Sam::BaseModel
+                  attr_accessor message: String
+
+                  attr_accessor type: :rate_limit_error
+
+                  def initialize:
+                    (message: String, type: :rate_limit_error) -> void
+                    | (
+                      ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_rate_limit_error
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_rate_limit_error
+                end
+
+                type beta_gateway_timeout_error =
+                  { message: String, type: :timeout_error }
+
+                class BetaGatewayTimeoutError < Sam::BaseModel
+                  attr_accessor message: String
+
+                  attr_accessor type: :timeout_error
+
+                  def initialize:
+                    (message: String, type: :timeout_error) -> void
+                    | (
+                      ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_gateway_timeout_error
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_gateway_timeout_error
+                end
+
+                type beta_api_error = { message: String, type: :api_error }
+
+                class BetaAPIError < Sam::BaseModel
+                  attr_accessor message: String
+
+                  attr_accessor type: :api_error
+
+                  def initialize:
+                    (message: String, type: :api_error) -> void
+                    | (
+                      ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_api_error
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_api_error
+                end
+
+                type beta_overloaded_error =
+                  { message: String, type: :overloaded_error }
+
+                class BetaOverloadedError < Sam::BaseModel
+                  attr_accessor message: String
+
+                  attr_accessor type: :overloaded_error
+
+                  def initialize:
+                    (message: String, type: :overloaded_error) -> void
+                    | (
+                      ?Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_overloaded_error
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_overloaded_error
+                end
+
+                private def self.variants: -> [[:invalid_request_error, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaInvalidRequestError], [:authentication_error, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAuthenticationError], [:billing_error, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaBillingError], [:permission_error, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaPermissionError], [:not_found_error, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaNotFoundError], [:rate_limit_error, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaRateLimitError], [:timeout_error, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaGatewayTimeoutError], [:api_error, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAPIError], [:overloaded_error, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaOverloadedError]]
+              end
+            end
+          end
+
+          type beta_canceled_result = { type: :canceled }
+
+          class BetaCanceledResult < Sam::BaseModel
+            attr_accessor type: :canceled
+
+            def initialize:
+              (type: :canceled) -> void
+              | (
+                ?Sam::Models::Messages::BatchResultsBetaResponse::Result::beta_canceled_result
+                | Sam::BaseModel data
+              ) -> void
+
+            def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::beta_canceled_result
+          end
+
+          type beta_expired_result = { type: :expired }
+
+          class BetaExpiredResult < Sam::BaseModel
+            attr_accessor type: :expired
+
+            def initialize:
+              (type: :expired) -> void
+              | (
+                ?Sam::Models::Messages::BatchResultsBetaResponse::Result::beta_expired_result
+                | Sam::BaseModel data
+              ) -> void
+
+            def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::beta_expired_result
+          end
+
+          private def self.variants: -> [[:succeeded, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult], [:errored, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult], [:canceled, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaCanceledResult], [:expired, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaExpiredResult]]
+        end
+      end
+    end
+  end
+end

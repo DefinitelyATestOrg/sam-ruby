@@ -1,0 +1,39 @@
+module Sam
+  module Resources
+    class Messages
+      class Batches
+        class BetaTrue
+          def retrieve:
+            (
+              String message_batch_id,
+              ?Sam::Models::Messages::Batches::BetaTrueRetrieveParams
+              | ::Hash[Symbol, top] params
+            ) -> Sam::Models::Messages::Batches::BetaTrueRetrieveResponse
+            | (
+              String message_batch_id,
+              anthropic_beta: ::Array[String],
+              anthropic_version: String,
+              x_api_key: String,
+              request_options: Sam::request_opts
+            ) -> Sam::Models::Messages::Batches::BetaTrueRetrieveResponse
+
+          def delete:
+            (
+              String message_batch_id,
+              ?Sam::Models::Messages::Batches::BetaTrueDeleteParams
+              | ::Hash[Symbol, top] params
+            ) -> Sam::Models::Messages::Batches::BetaTrueDeleteResponse
+            | (
+              String message_batch_id,
+              anthropic_beta: ::Array[String],
+              anthropic_version: String,
+              x_api_key: String,
+              request_options: Sam::request_opts
+            ) -> Sam::Models::Messages::Batches::BetaTrueDeleteResponse
+
+          def initialize: (client: Sam::Client) -> void
+        end
+      end
+    end
+  end
+end

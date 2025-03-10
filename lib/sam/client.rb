@@ -25,13 +25,20 @@ module Sam
     # @return [Sam::Resources::User]
     attr_reader :user
 
-    # @private
-    #
-    # @return [Hash{String=>String}]
-    #
-    private def auth_headers
-      {"api_key" => @api_key}
-    end
+    # @return [Sam::Resources::Messages]
+    attr_reader :messages
+
+    # @return [Sam::Resources::Complete]
+    attr_reader :complete
+
+    # @return [Sam::Resources::Models]
+    attr_reader :models
+
+    # @return [Sam::Resources::MessagesBetaTrue]
+    attr_reader :messages_beta_true
+
+    # @return [Sam::Resources::ModelsBetaTrue]
+    attr_reader :models_beta_true
 
     # Creates and returns a new client for interacting with the API.
     #
@@ -74,6 +81,11 @@ module Sam
 
       @store = Sam::Resources::Store.new(client: self)
       @user = Sam::Resources::User.new(client: self)
+      @messages = Sam::Resources::Messages.new(client: self)
+      @complete = Sam::Resources::Complete.new(client: self)
+      @models = Sam::Resources::Models.new(client: self)
+      @messages_beta_true = Sam::Resources::MessagesBetaTrue.new(client: self)
+      @models_beta_true = Sam::Resources::ModelsBetaTrue.new(client: self)
     end
   end
 end

@@ -1,0 +1,69 @@
+module Sam
+  module Resources
+    class Messages
+      attr_reader batches: Sam::Resources::Messages::Batches
+
+      attr_reader batches_beta_true: Sam::Resources::Messages::BatchesBetaTrue
+
+      def create:
+        (
+          Sam::Models::MessageCreateParams | ::Hash[Symbol, top] params
+        ) -> Sam::Models::MessageCreateResponse
+        | (
+          max_tokens: Integer,
+          messages: ::Array[Sam::Models::MessageCreateParams::Message],
+          model: String,
+          metadata: Sam::Models::MessageCreateParams::Metadata,
+          stop_sequences: ::Array[String],
+          stream: bool,
+          system_: Sam::Models::MessageCreateParams::system_,
+          temperature: Float,
+          thinking: Sam::Models::MessageCreateParams::thinking,
+          tool_choice: Sam::Models::MessageCreateParams::tool_choice,
+          tools: ::Array[Sam::Models::MessageCreateParams::tool],
+          top_k: Integer,
+          top_p: Float,
+          anthropic_beta: ::Array[String],
+          anthropic_version: String,
+          x_api_key: String,
+          request_options: Sam::request_opts
+        ) -> Sam::Models::MessageCreateResponse
+
+      def count_tokens:
+        (
+          Sam::Models::MessageCountTokensParams | ::Hash[Symbol, top] params
+        ) -> Sam::Models::MessageCountTokensResponse
+        | (
+          messages: ::Array[Sam::Models::MessageCountTokensParams::Message],
+          model: String,
+          system_: Sam::Models::MessageCountTokensParams::system_,
+          thinking: Sam::Models::MessageCountTokensParams::thinking,
+          tool_choice: Sam::Models::MessageCountTokensParams::tool_choice,
+          tools: ::Array[Sam::Models::MessageCountTokensParams::tool],
+          anthropic_beta: ::Array[String],
+          anthropic_version: String,
+          x_api_key: String,
+          request_options: Sam::request_opts
+        ) -> Sam::Models::MessageCountTokensResponse
+
+      def count_tokens_beta:
+        (
+          Sam::Models::MessageCountTokensBetaParams | ::Hash[Symbol, top] params
+        ) -> Sam::Models::MessageCountTokensBetaResponse
+        | (
+          messages: ::Array[Sam::Models::MessageCountTokensBetaParams::Message],
+          model: String,
+          system_: Sam::Models::MessageCountTokensBetaParams::system_,
+          thinking: Sam::Models::MessageCountTokensBetaParams::thinking,
+          tool_choice: Sam::Models::MessageCountTokensBetaParams::tool_choice,
+          tools: ::Array[Sam::Models::MessageCountTokensBetaParams::tool],
+          anthropic_beta: ::Array[String],
+          anthropic_version: String,
+          x_api_key: String,
+          request_options: Sam::request_opts
+        ) -> Sam::Models::MessageCountTokensBetaResponse
+
+      def initialize: (client: Sam::Client) -> void
+    end
+  end
+end

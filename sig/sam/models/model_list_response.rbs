@@ -1,0 +1,58 @@
+module Sam
+  module Models
+    type model_list_response =
+      {
+        data: ::Array[Sam::Models::ModelListResponse::Data],
+        first_id: String?,
+        has_more: bool,
+        last_id: String?
+      }
+
+    class ModelListResponse < Sam::BaseModel
+      attr_accessor data: ::Array[Sam::Models::ModelListResponse::Data]
+
+      attr_accessor first_id: String?
+
+      attr_accessor has_more: bool
+
+      attr_accessor last_id: String?
+
+      def initialize:
+        (
+          data: ::Array[Sam::Models::ModelListResponse::Data],
+          first_id: String?,
+          has_more: bool,
+          last_id: String?
+        ) -> void
+        | (?Sam::Models::model_list_response | Sam::BaseModel data) -> void
+
+      def to_hash: -> Sam::Models::model_list_response
+
+      type data =
+        { id: String, created_at: Time, display_name: String, type: :model }
+
+      class Data < Sam::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor display_name: String
+
+        attr_accessor type: :model
+
+        def initialize:
+          (
+            id: String,
+            created_at: Time,
+            display_name: String,
+            type: :model
+          ) -> void
+          | (
+            ?Sam::Models::ModelListResponse::data | Sam::BaseModel data
+          ) -> void
+
+        def to_hash: -> Sam::Models::ModelListResponse::data
+      end
+    end
+  end
+end

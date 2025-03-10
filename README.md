@@ -36,11 +36,11 @@ bundle update sam
 require "bundler/setup"
 require "sam"
 
-sam = Sam::Client.new
+sam = Sam::Client.new(api_key: "My API Key")
 
-user = sam.user.create
+message = sam.messages.create
 
-puts(user.id)
+puts(message.id)
 ```
 
 ### Errors
@@ -49,7 +49,7 @@ When the library is unable to connect to the API, or if the API returns a non-su
 
 ```ruby
 begin
-  user = sam.user.create
+  message = sam.messages.create
 rescue Sam::Error => e
   puts(e.status) # 400
 end
@@ -82,11 +82,12 @@ You can use the `max_retries` option to configure or disable this:
 ```ruby
 # Configure the default for all requests:
 sam = Sam::Client.new(
-  max_retries: 0 # default is 2
+  max_retries: 0, # default is 2
+  api_key: "My API Key"
 )
 
 # Or, configure per-request:
-sam.user.create(request_options: {max_retries: 5})
+sam.messages.create(request_options: {max_retries: 5})
 ```
 
 ### Timeouts
@@ -100,11 +101,12 @@ You can use the `timeout` option to configure or disable this:
 ```ruby
 # Configure the default for all requests:
 sam = Sam::Client.new(
-  timeout: nil # default is 60
+  timeout: nil, # default is 60
+  api_key: "My API Key"
 )
 
 # Or, configure per-request:
-sam.user.create(request_options: {timeout: 5})
+sam.messages.create(request_options: {timeout: 5})
 ```
 
 ## Sorbet Support
@@ -116,9 +118,9 @@ What this means is that while you can use Sorbet to type check your code statica
 Due to limitations with the Sorbet type system, where a method otherwise can take an instance of `Sam::BaseModel` class, you will need to use the `**` splat operator to pass the arguments:
 
 ```ruby
-model = UserCreateParams.new
+model = MessageCreateParams.new
 
-sam.user.create(**model)
+sam.messages.create(**model)
 ```
 
 ## Versioning
