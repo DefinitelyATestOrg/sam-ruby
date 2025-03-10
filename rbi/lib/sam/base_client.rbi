@@ -22,7 +22,7 @@ module Sam
         body: T.nilable(T.anything),
         unwrap: T.nilable(Symbol),
         page: T.nilable(T::Class[Sam::BasePage[Sam::BaseModel]]),
-        stream: T.nilable(T::Class[T.anything]),
+        stream: T.nilable(T::Class[Sam::BaseStream[Sam::BaseModel]]),
         model: T.nilable(Sam::Converter::Input),
         options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
       }
@@ -98,10 +98,6 @@ module Sam
     )
     end
 
-    sig { overridable.returns(T::Hash[String, String]) }
-    private def auth_headers
-    end
-
     sig { returns(String) }
     private def generate_idempotency_key
     end
@@ -148,7 +144,7 @@ module Sam
         body: T.nilable(T.anything),
         unwrap: T.nilable(Symbol),
         page: T.nilable(T::Class[Sam::BasePage[Sam::BaseModel]]),
-        stream: T.nilable(T::Class[T.anything]),
+        stream: T.nilable(T::Class[Sam::BaseStream[Sam::BaseModel]]),
         model: T.nilable(Sam::Converter::Input),
         options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
       )

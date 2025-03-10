@@ -1,0 +1,107 @@
+module Sam
+  module Models
+    module Messages
+      type batch_retrieve_response =
+        {
+          id: String,
+          archived_at: Time?,
+          cancel_initiated_at: Time?,
+          created_at: Time,
+          ended_at: Time?,
+          expires_at: Time,
+          processing_status: Sam::Models::Messages::BatchRetrieveResponse::processing_status,
+          request_counts: Sam::Models::Messages::BatchRetrieveResponse::RequestCounts,
+          results_url: String?,
+          type: :message_batch
+        }
+
+      class BatchRetrieveResponse < Sam::BaseModel
+        attr_accessor id: String
+
+        attr_accessor archived_at: Time?
+
+        attr_accessor cancel_initiated_at: Time?
+
+        attr_accessor created_at: Time
+
+        attr_accessor ended_at: Time?
+
+        attr_accessor expires_at: Time
+
+        attr_accessor processing_status: Sam::Models::Messages::BatchRetrieveResponse::processing_status
+
+        attr_accessor request_counts: Sam::Models::Messages::BatchRetrieveResponse::RequestCounts
+
+        attr_accessor results_url: String?
+
+        attr_accessor type: :message_batch
+
+        def initialize:
+          (
+            id: String,
+            archived_at: Time?,
+            cancel_initiated_at: Time?,
+            created_at: Time,
+            ended_at: Time?,
+            expires_at: Time,
+            processing_status: Sam::Models::Messages::BatchRetrieveResponse::processing_status,
+            request_counts: Sam::Models::Messages::BatchRetrieveResponse::RequestCounts,
+            results_url: String?,
+            type: :message_batch
+          ) -> void
+          | (
+            ?Sam::Models::Messages::batch_retrieve_response
+            | Sam::BaseModel data
+          ) -> void
+
+        def to_hash: -> Sam::Models::Messages::batch_retrieve_response
+
+        type processing_status = :in_progress | :canceling | :ended
+
+        class ProcessingStatus < Sam::Enum
+          IN_PROGRESS: :in_progress
+          CANCELING: :canceling
+          ENDED: :ended
+
+          def self.values: -> ::Array[Sam::Models::Messages::BatchRetrieveResponse::processing_status]
+        end
+
+        type request_counts =
+          {
+            canceled: Integer,
+            errored: Integer,
+            expired: Integer,
+            processing: Integer,
+            succeeded: Integer
+          }
+
+        class RequestCounts < Sam::BaseModel
+          attr_accessor canceled: Integer
+
+          attr_accessor errored: Integer
+
+          attr_accessor expired: Integer
+
+          attr_accessor processing: Integer
+
+          attr_accessor succeeded: Integer
+
+          def initialize:
+            (
+              canceled: Integer,
+              errored: Integer,
+              expired: Integer,
+              processing: Integer,
+              succeeded: Integer
+            ) -> void
+            | (
+              ?Sam::Models::Messages::BatchRetrieveResponse::request_counts
+              | Sam::BaseModel data
+            ) -> void
+
+          def to_hash: -> Sam::Models::Messages::BatchRetrieveResponse::request_counts
+        end
+      end
+    end
+  end
+end

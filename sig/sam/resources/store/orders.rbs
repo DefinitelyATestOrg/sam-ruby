@@ -2,24 +2,6 @@ module Sam
   module Resources
     class Store
       class Orders
-        def retrieve:
-          (
-            Integer order_id,
-            ?Sam::Models::Store::OrderRetrieveParams
-            | ::Hash[Symbol, top] params
-          ) -> Sam::Models::Order
-          | (
-            Integer order_id,
-            request_options: Sam::request_opts
-          ) -> Sam::Models::Order
-
-        def delete:
-          (
-            Integer order_id,
-            ?Sam::Models::Store::OrderDeleteParams | ::Hash[Symbol, top] params
-          ) -> nil
-          | (Integer order_id, request_options: Sam::request_opts) -> nil
-
         def initialize: (client: Sam::Client) -> void
       end
     end

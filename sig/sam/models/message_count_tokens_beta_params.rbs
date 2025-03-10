@@ -1,0 +1,2056 @@
+module Sam
+  module Models
+    type message_count_tokens_beta_params =
+      {
+        messages: ::Array[Sam::Models::MessageCountTokensBetaParams::Message],
+        model: String,
+        system_: Sam::Models::MessageCountTokensBetaParams::system_,
+        thinking: Sam::Models::MessageCountTokensBetaParams::thinking,
+        tool_choice: Sam::Models::MessageCountTokensBetaParams::tool_choice,
+        tools: ::Array[Sam::Models::MessageCountTokensBetaParams::tool],
+        anthropic_beta: ::Array[String],
+        anthropic_version: String,
+        x_api_key: String
+      }
+      & Sam::request_parameters
+
+    class MessageCountTokensBetaParams < Sam::BaseModel
+      extend Sam::RequestParameters::Converter
+      include Sam::RequestParameters
+
+      attr_accessor messages: ::Array[Sam::Models::MessageCountTokensBetaParams::Message]
+
+      attr_accessor model: String
+
+      attr_reader system_: Sam::Models::MessageCountTokensBetaParams::system_?
+
+      def system_=: (
+        Sam::Models::MessageCountTokensBetaParams::system_
+      ) -> Sam::Models::MessageCountTokensBetaParams::system_
+
+      attr_reader thinking: Sam::Models::MessageCountTokensBetaParams::thinking?
+
+      def thinking=: (
+        Sam::Models::MessageCountTokensBetaParams::thinking
+      ) -> Sam::Models::MessageCountTokensBetaParams::thinking
+
+      attr_reader tool_choice: Sam::Models::MessageCountTokensBetaParams::tool_choice?
+
+      def tool_choice=: (
+        Sam::Models::MessageCountTokensBetaParams::tool_choice
+      ) -> Sam::Models::MessageCountTokensBetaParams::tool_choice
+
+      attr_reader tools: ::Array[Sam::Models::MessageCountTokensBetaParams::tool]?
+
+      def tools=: (
+        ::Array[Sam::Models::MessageCountTokensBetaParams::tool]
+      ) -> ::Array[Sam::Models::MessageCountTokensBetaParams::tool]
+
+      attr_reader anthropic_beta: ::Array[String]?
+
+      def anthropic_beta=: (::Array[String]) -> ::Array[String]
+
+      attr_reader anthropic_version: String?
+
+      def anthropic_version=: (String) -> String
+
+      attr_reader x_api_key: String?
+
+      def x_api_key=: (String) -> String
+
+      def initialize:
+        (
+          messages: ::Array[Sam::Models::MessageCountTokensBetaParams::Message],
+          model: String,
+          system_: Sam::Models::MessageCountTokensBetaParams::system_,
+          thinking: Sam::Models::MessageCountTokensBetaParams::thinking,
+          tool_choice: Sam::Models::MessageCountTokensBetaParams::tool_choice,
+          tools: ::Array[Sam::Models::MessageCountTokensBetaParams::tool],
+          anthropic_beta: ::Array[String],
+          anthropic_version: String,
+          x_api_key: String,
+          request_options: Sam::request_opts
+        ) -> void
+        | (
+          ?Sam::Models::message_count_tokens_beta_params | Sam::BaseModel data
+        ) -> void
+
+      def to_hash: -> Sam::Models::message_count_tokens_beta_params
+
+      type message =
+        {
+          content: Sam::Models::MessageCountTokensBetaParams::Message::content,
+          role: Sam::Models::MessageCountTokensBetaParams::Message::role
+        }
+
+      class Message < Sam::BaseModel
+        attr_accessor content: Sam::Models::MessageCountTokensBetaParams::Message::content
+
+        attr_accessor role: Sam::Models::MessageCountTokensBetaParams::Message::role
+
+        def initialize:
+          (
+            content: Sam::Models::MessageCountTokensBetaParams::Message::content,
+            role: Sam::Models::MessageCountTokensBetaParams::Message::role
+          ) -> void
+          | (
+            ?Sam::Models::MessageCountTokensBetaParams::message
+            | Sam::BaseModel data
+          ) -> void
+
+        def to_hash: -> Sam::Models::MessageCountTokensBetaParams::message
+
+        type content =
+          String
+          | ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::union_member1]
+
+        class Content < Sam::Union
+          type union_member1_array =
+            ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::union_member1]
+
+          UnionMember1Array: union_member1_array
+
+          type union_member1 =
+            Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock
+            | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock
+            | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock
+            | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock
+            | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock
+            | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestThinkingBlock
+            | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock
+
+          class UnionMember1 < Sam::Union
+            type beta_request_text_block =
+              {
+                text: String,
+                type: :text,
+                cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl?,
+                citations: ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::citation]?
+              }
+
+            class BetaRequestTextBlock < Sam::BaseModel
+              attr_accessor text: String
+
+              attr_accessor type: :text
+
+              attr_accessor cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl?
+
+              attr_accessor citations: ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::citation]?
+
+              def initialize:
+                (
+                  text: String,
+                  cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl?,
+                  citations: ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::citation]?,
+                  type: :text
+                ) -> void
+                | (
+                  ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::beta_request_text_block
+                  | Sam::BaseModel data
+                ) -> void
+
+              def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::beta_request_text_block
+
+              type cache_control = { type: :ephemeral }
+
+              class CacheControl < Sam::BaseModel
+                attr_accessor type: :ephemeral
+
+                def initialize:
+                  (type: :ephemeral) -> void
+                  | (
+                    ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::cache_control
+                    | Sam::BaseModel data
+                  ) -> void
+
+                def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::cache_control
+              end
+
+              type citation =
+                Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation
+                | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation
+                | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
+
+              class Citation < Sam::Union
+                type beta_request_char_location_citation =
+                  {
+                    cited_text: String,
+                    document_index: Integer,
+                    document_title: String?,
+                    end_char_index: Integer,
+                    start_char_index: Integer,
+                    type: :char_location
+                  }
+
+                class BetaRequestCharLocationCitation < Sam::BaseModel
+                  attr_accessor cited_text: String
+
+                  attr_accessor document_index: Integer
+
+                  attr_accessor document_title: String?
+
+                  attr_accessor end_char_index: Integer
+
+                  attr_accessor start_char_index: Integer
+
+                  attr_accessor type: :char_location
+
+                  def initialize:
+                    (
+                      cited_text: String,
+                      document_index: Integer,
+                      document_title: String?,
+                      end_char_index: Integer,
+                      start_char_index: Integer,
+                      type: :char_location
+                    ) -> void
+                    | (
+                      ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_char_location_citation
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_char_location_citation
+                end
+
+                type beta_request_page_location_citation =
+                  {
+                    cited_text: String,
+                    document_index: Integer,
+                    document_title: String?,
+                    end_page_number: Integer,
+                    start_page_number: Integer,
+                    type: :page_location
+                  }
+
+                class BetaRequestPageLocationCitation < Sam::BaseModel
+                  attr_accessor cited_text: String
+
+                  attr_accessor document_index: Integer
+
+                  attr_accessor document_title: String?
+
+                  attr_accessor end_page_number: Integer
+
+                  attr_accessor start_page_number: Integer
+
+                  attr_accessor type: :page_location
+
+                  def initialize:
+                    (
+                      cited_text: String,
+                      document_index: Integer,
+                      document_title: String?,
+                      end_page_number: Integer,
+                      start_page_number: Integer,
+                      type: :page_location
+                    ) -> void
+                    | (
+                      ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_page_location_citation
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_page_location_citation
+                end
+
+                type beta_request_content_block_location_citation =
+                  {
+                    cited_text: String,
+                    document_index: Integer,
+                    document_title: String?,
+                    end_block_index: Integer,
+                    start_block_index: Integer,
+                    type: :content_block_location
+                  }
+
+                class BetaRequestContentBlockLocationCitation < Sam::BaseModel
+                  attr_accessor cited_text: String
+
+                  attr_accessor document_index: Integer
+
+                  attr_accessor document_title: String?
+
+                  attr_accessor end_block_index: Integer
+
+                  attr_accessor start_block_index: Integer
+
+                  attr_accessor type: :content_block_location
+
+                  def initialize:
+                    (
+                      cited_text: String,
+                      document_index: Integer,
+                      document_title: String?,
+                      end_block_index: Integer,
+                      start_block_index: Integer,
+                      type: :content_block_location
+                    ) -> void
+                    | (
+                      ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_content_block_location_citation
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_content_block_location_citation
+                end
+
+                private def self.variants: -> [[:char_location, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation], [:page_location, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation], [:content_block_location, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]]
+              end
+            end
+
+            type beta_request_image_block =
+              {
+                source: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::source,
+                type: :image,
+                cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl?
+              }
+
+            class BetaRequestImageBlock < Sam::BaseModel
+              attr_accessor source: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::source
+
+              attr_accessor type: :image
+
+              attr_accessor cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl?
+
+              def initialize:
+                (
+                  source: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::source,
+                  cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl?,
+                  type: :image
+                ) -> void
+                | (
+                  ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::beta_request_image_block
+                  | Sam::BaseModel data
+                ) -> void
+
+              def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::beta_request_image_block
+
+              type source =
+                Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource
+                | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
+
+              class Source < Sam::Union
+                type beta_base64_image_source =
+                  {
+                    data: String,
+                    media_type: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type,
+                    type: :base64
+                  }
+
+                class BetaBase64ImageSource < Sam::BaseModel
+                  attr_accessor data: String
+
+                  attr_accessor media_type: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type
+
+                  attr_accessor type: :base64
+
+                  def initialize:
+                    (
+                      data: String,
+                      media_type: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type,
+                      type: :base64
+                    ) -> void
+                    | (
+                      ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::beta_base64_image_source
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::beta_base64_image_source
+
+                  type media_type =
+                    :"image/jpeg" | :"image/png" | :"image/gif" | :"image/webp"
+
+                  class MediaType < Sam::Enum
+                    IMAGE_JPEG: :"image/jpeg"
+                    IMAGE_PNG: :"image/png"
+                    IMAGE_GIF: :"image/gif"
+                    IMAGE_WEBP: :"image/webp"
+
+                    def self.values: -> ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type]
+                  end
+                end
+
+                type beta_url_image_source = { type: :url, url: String }
+
+                class BetaURLImageSource < Sam::BaseModel
+                  attr_accessor type: :url
+
+                  attr_accessor url: String
+
+                  def initialize:
+                    (url: String, type: :url) -> void
+                    | (
+                      ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::beta_url_image_source
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::beta_url_image_source
+                end
+
+                private def self.variants: -> [[:base64, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource], [:url, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]]
+              end
+
+              type cache_control = { type: :ephemeral }
+
+              class CacheControl < Sam::BaseModel
+                attr_accessor type: :ephemeral
+
+                def initialize:
+                  (type: :ephemeral) -> void
+                  | (
+                    ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::cache_control
+                    | Sam::BaseModel data
+                  ) -> void
+
+                def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::cache_control
+              end
+            end
+
+            type beta_request_tool_use_block =
+              {
+                id: String,
+                input: top,
+                name: String,
+                type: :tool_use,
+                cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl?
+              }
+
+            class BetaRequestToolUseBlock < Sam::BaseModel
+              attr_accessor id: String
+
+              attr_accessor input: top
+
+              attr_accessor name: String
+
+              attr_accessor type: :tool_use
+
+              attr_accessor cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl?
+
+              def initialize:
+                (
+                  id: String,
+                  input: top,
+                  name: String,
+                  cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl?,
+                  type: :tool_use
+                ) -> void
+                | (
+                  ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::beta_request_tool_use_block
+                  | Sam::BaseModel data
+                ) -> void
+
+              def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::beta_request_tool_use_block
+
+              type cache_control = { type: :ephemeral }
+
+              class CacheControl < Sam::BaseModel
+                attr_accessor type: :ephemeral
+
+                def initialize:
+                  (type: :ephemeral) -> void
+                  | (
+                    ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::cache_control
+                    | Sam::BaseModel data
+                  ) -> void
+
+                def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::cache_control
+              end
+            end
+
+            type beta_request_tool_result_block =
+              {
+                tool_use_id: String,
+                type: :tool_result,
+                cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl?,
+                content: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::content,
+                is_error: bool
+              }
+
+            class BetaRequestToolResultBlock < Sam::BaseModel
+              attr_accessor tool_use_id: String
+
+              attr_accessor type: :tool_result
+
+              attr_accessor cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl?
+
+              attr_reader content: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::content?
+
+              def content=: (
+                Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::content
+              ) -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::content
+
+              attr_reader is_error: bool?
+
+              def is_error=: (bool) -> bool
+
+              def initialize:
+                (
+                  tool_use_id: String,
+                  cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl?,
+                  content: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::content,
+                  is_error: bool,
+                  type: :tool_result
+                ) -> void
+                | (
+                  ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::beta_request_tool_result_block
+                  | Sam::BaseModel data
+                ) -> void
+
+              def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::beta_request_tool_result_block
+
+              type cache_control = { type: :ephemeral }
+
+              class CacheControl < Sam::BaseModel
+                attr_accessor type: :ephemeral
+
+                def initialize:
+                  (type: :ephemeral) -> void
+                  | (
+                    ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::cache_control
+                    | Sam::BaseModel data
+                  ) -> void
+
+                def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::cache_control
+              end
+
+              type content =
+                String
+                | ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::union_member1]
+
+              class Content < Sam::Union
+                type union_member1_array =
+                  ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::union_member1]
+
+                UnionMember1Array: union_member1_array
+
+                type union_member1 =
+                  Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock
+                  | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
+
+                class UnionMember1 < Sam::Union
+                  type beta_request_text_block =
+                    {
+                      text: String,
+                      type: :text,
+                      cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl?,
+                      citations: ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::citation]?
+                    }
+
+                  class BetaRequestTextBlock < Sam::BaseModel
+                    attr_accessor text: String
+
+                    attr_accessor type: :text
+
+                    attr_accessor cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl?
+
+                    attr_accessor citations: ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::citation]?
+
+                    def initialize:
+                      (
+                        text: String,
+                        cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl?,
+                        citations: ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::citation]?,
+                        type: :text
+                      ) -> void
+                      | (
+                        ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::beta_request_text_block
+                        | Sam::BaseModel data
+                      ) -> void
+
+                    def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::beta_request_text_block
+
+                    type cache_control = { type: :ephemeral }
+
+                    class CacheControl < Sam::BaseModel
+                      attr_accessor type: :ephemeral
+
+                      def initialize:
+                        (type: :ephemeral) -> void
+                        | (
+                          ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::cache_control
+                          | Sam::BaseModel data
+                        ) -> void
+
+                      def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::cache_control
+                    end
+
+                    type citation =
+                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation
+                      | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation
+                      | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
+
+                    class Citation < Sam::Union
+                      type beta_request_char_location_citation =
+                        {
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: String?,
+                          end_char_index: Integer,
+                          start_char_index: Integer,
+                          type: :char_location
+                        }
+
+                      class BetaRequestCharLocationCitation < Sam::BaseModel
+                        attr_accessor cited_text: String
+
+                        attr_accessor document_index: Integer
+
+                        attr_accessor document_title: String?
+
+                        attr_accessor end_char_index: Integer
+
+                        attr_accessor start_char_index: Integer
+
+                        attr_accessor type: :char_location
+
+                        def initialize:
+                          (
+                            cited_text: String,
+                            document_index: Integer,
+                            document_title: String?,
+                            end_char_index: Integer,
+                            start_char_index: Integer,
+                            type: :char_location
+                          ) -> void
+                          | (
+                            ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_char_location_citation
+                            | Sam::BaseModel data
+                          ) -> void
+
+                        def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_char_location_citation
+                      end
+
+                      type beta_request_page_location_citation =
+                        {
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: String?,
+                          end_page_number: Integer,
+                          start_page_number: Integer,
+                          type: :page_location
+                        }
+
+                      class BetaRequestPageLocationCitation < Sam::BaseModel
+                        attr_accessor cited_text: String
+
+                        attr_accessor document_index: Integer
+
+                        attr_accessor document_title: String?
+
+                        attr_accessor end_page_number: Integer
+
+                        attr_accessor start_page_number: Integer
+
+                        attr_accessor type: :page_location
+
+                        def initialize:
+                          (
+                            cited_text: String,
+                            document_index: Integer,
+                            document_title: String?,
+                            end_page_number: Integer,
+                            start_page_number: Integer,
+                            type: :page_location
+                          ) -> void
+                          | (
+                            ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_page_location_citation
+                            | Sam::BaseModel data
+                          ) -> void
+
+                        def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_page_location_citation
+                      end
+
+                      type beta_request_content_block_location_citation =
+                        {
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: String?,
+                          end_block_index: Integer,
+                          start_block_index: Integer,
+                          type: :content_block_location
+                        }
+
+                      class BetaRequestContentBlockLocationCitation < Sam::BaseModel
+                        attr_accessor cited_text: String
+
+                        attr_accessor document_index: Integer
+
+                        attr_accessor document_title: String?
+
+                        attr_accessor end_block_index: Integer
+
+                        attr_accessor start_block_index: Integer
+
+                        attr_accessor type: :content_block_location
+
+                        def initialize:
+                          (
+                            cited_text: String,
+                            document_index: Integer,
+                            document_title: String?,
+                            end_block_index: Integer,
+                            start_block_index: Integer,
+                            type: :content_block_location
+                          ) -> void
+                          | (
+                            ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_content_block_location_citation
+                            | Sam::BaseModel data
+                          ) -> void
+
+                        def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_content_block_location_citation
+                      end
+
+                      private def self.variants: -> [[:char_location, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation], [:page_location, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation], [:content_block_location, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]]
+                    end
+                  end
+
+                  type beta_request_image_block =
+                    {
+                      source: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::source,
+                      type: :image,
+                      cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl?
+                    }
+
+                  class BetaRequestImageBlock < Sam::BaseModel
+                    attr_accessor source: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::source
+
+                    attr_accessor type: :image
+
+                    attr_accessor cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl?
+
+                    def initialize:
+                      (
+                        source: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::source,
+                        cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl?,
+                        type: :image
+                      ) -> void
+                      | (
+                        ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::beta_request_image_block
+                        | Sam::BaseModel data
+                      ) -> void
+
+                    def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::beta_request_image_block
+
+                    type source =
+                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource
+                      | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
+
+                    class Source < Sam::Union
+                      type beta_base64_image_source =
+                        {
+                          data: String,
+                          media_type: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type,
+                          type: :base64
+                        }
+
+                      class BetaBase64ImageSource < Sam::BaseModel
+                        attr_accessor data: String
+
+                        attr_accessor media_type: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type
+
+                        attr_accessor type: :base64
+
+                        def initialize:
+                          (
+                            data: String,
+                            media_type: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type,
+                            type: :base64
+                          ) -> void
+                          | (
+                            ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::beta_base64_image_source
+                            | Sam::BaseModel data
+                          ) -> void
+
+                        def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::beta_base64_image_source
+
+                        type media_type =
+                          :"image/jpeg"
+                          | :"image/png"
+                          | :"image/gif"
+                          | :"image/webp"
+
+                        class MediaType < Sam::Enum
+                          IMAGE_JPEG: :"image/jpeg"
+                          IMAGE_PNG: :"image/png"
+                          IMAGE_GIF: :"image/gif"
+                          IMAGE_WEBP: :"image/webp"
+
+                          def self.values: -> ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type]
+                        end
+                      end
+
+                      type beta_url_image_source = { type: :url, url: String }
+
+                      class BetaURLImageSource < Sam::BaseModel
+                        attr_accessor type: :url
+
+                        attr_accessor url: String
+
+                        def initialize:
+                          (url: String, type: :url) -> void
+                          | (
+                            ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::beta_url_image_source
+                            | Sam::BaseModel data
+                          ) -> void
+
+                        def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::beta_url_image_source
+                      end
+
+                      private def self.variants: -> [[:base64, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource], [:url, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]]
+                    end
+
+                    type cache_control = { type: :ephemeral }
+
+                    class CacheControl < Sam::BaseModel
+                      attr_accessor type: :ephemeral
+
+                      def initialize:
+                        (type: :ephemeral) -> void
+                        | (
+                          ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::cache_control
+                          | Sam::BaseModel data
+                        ) -> void
+
+                      def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::cache_control
+                    end
+                  end
+
+                  private def self.variants: -> [[:text, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock], [:image, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock]]
+                end
+
+                private def self.variants: -> [[nil, String], [nil, ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::union_member1]]]
+              end
+            end
+
+            type beta_request_document_block =
+              {
+                source: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::source,
+                type: :document,
+                cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl?,
+                citations: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations,
+                context: String?,
+                title: String?
+              }
+
+            class BetaRequestDocumentBlock < Sam::BaseModel
+              attr_accessor source: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::source
+
+              attr_accessor type: :document
+
+              attr_accessor cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl?
+
+              attr_reader citations: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations?
+
+              def citations=: (
+                Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations
+              ) -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations
+
+              attr_accessor context: String?
+
+              attr_accessor title: String?
+
+              def initialize:
+                (
+                  source: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::source,
+                  cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl?,
+                  citations: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations,
+                  context: String?,
+                  title: String?,
+                  type: :document
+                ) -> void
+                | (
+                  ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::beta_request_document_block
+                  | Sam::BaseModel data
+                ) -> void
+
+              def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::beta_request_document_block
+
+              type source =
+                Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource
+                | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource
+                | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource
+                | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource
+
+              class Source < Sam::Union
+                type beta_base64_pdf_source =
+                  {
+                    data: String,
+                    media_type: :"application/pdf",
+                    type: :base64
+                  }
+
+                class BetaBase64PdfSource < Sam::BaseModel
+                  attr_accessor data: String
+
+                  attr_accessor media_type: :"application/pdf"
+
+                  attr_accessor type: :base64
+
+                  def initialize:
+                    (
+                      data: String,
+                      media_type: :"application/pdf",
+                      type: :base64
+                    ) -> void
+                    | (
+                      ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_base64_pdf_source
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_base64_pdf_source
+                end
+
+                type beta_plain_text_source =
+                  { data: String, media_type: :"text/plain", type: :text }
+
+                class BetaPlainTextSource < Sam::BaseModel
+                  attr_accessor data: String
+
+                  attr_accessor media_type: :"text/plain"
+
+                  attr_accessor type: :text
+
+                  def initialize:
+                    (
+                      data: String,
+                      media_type: :"text/plain",
+                      type: :text
+                    ) -> void
+                    | (
+                      ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_plain_text_source
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_plain_text_source
+                end
+
+                type beta_content_block_source =
+                  {
+                    content: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::content,
+                    type: :content
+                  }
+
+                class BetaContentBlockSource < Sam::BaseModel
+                  attr_accessor content: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::content
+
+                  attr_accessor type: :content
+
+                  def initialize:
+                    (
+                      content: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::content,
+                      type: :content
+                    ) -> void
+                    | (
+                      ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_content_block_source
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_content_block_source
+
+                  type content =
+                    String
+                    | ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::union_member1]
+
+                  class Content < Sam::Union
+                    type union_member1_array =
+                      ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::union_member1]
+
+                    UnionMember1Array: union_member1_array
+
+                    type union_member1 =
+                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock
+                      | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock
+
+                    class UnionMember1 < Sam::Union
+                      type beta_request_text_block =
+                        {
+                          text: String,
+                          type: :text,
+                          cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl?,
+                          citations: ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::citation]?
+                        }
+
+                      class BetaRequestTextBlock < Sam::BaseModel
+                        attr_accessor text: String
+
+                        attr_accessor type: :text
+
+                        attr_accessor cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl?
+
+                        attr_accessor citations: ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::citation]?
+
+                        def initialize:
+                          (
+                            text: String,
+                            cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl?,
+                            citations: ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::citation]?,
+                            type: :text
+                          ) -> void
+                          | (
+                            ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::beta_request_text_block
+                            | Sam::BaseModel data
+                          ) -> void
+
+                        def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::beta_request_text_block
+
+                        type cache_control = { type: :ephemeral }
+
+                        class CacheControl < Sam::BaseModel
+                          attr_accessor type: :ephemeral
+
+                          def initialize:
+                            (type: :ephemeral) -> void
+                            | (
+                              ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::cache_control
+                              | Sam::BaseModel data
+                            ) -> void
+
+                          def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::cache_control
+                        end
+
+                        type citation =
+                          Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation
+                          | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation
+                          | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
+
+                        class Citation < Sam::Union
+                          type beta_request_char_location_citation =
+                            {
+                              cited_text: String,
+                              document_index: Integer,
+                              document_title: String?,
+                              end_char_index: Integer,
+                              start_char_index: Integer,
+                              type: :char_location
+                            }
+
+                          class BetaRequestCharLocationCitation < Sam::BaseModel
+                            attr_accessor cited_text: String
+
+                            attr_accessor document_index: Integer
+
+                            attr_accessor document_title: String?
+
+                            attr_accessor end_char_index: Integer
+
+                            attr_accessor start_char_index: Integer
+
+                            attr_accessor type: :char_location
+
+                            def initialize:
+                              (
+                                cited_text: String,
+                                document_index: Integer,
+                                document_title: String?,
+                                end_char_index: Integer,
+                                start_char_index: Integer,
+                                type: :char_location
+                              ) -> void
+                              | (
+                                ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_char_location_citation
+                                | Sam::BaseModel data
+                              ) -> void
+
+                            def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_char_location_citation
+                          end
+
+                          type beta_request_page_location_citation =
+                            {
+                              cited_text: String,
+                              document_index: Integer,
+                              document_title: String?,
+                              end_page_number: Integer,
+                              start_page_number: Integer,
+                              type: :page_location
+                            }
+
+                          class BetaRequestPageLocationCitation < Sam::BaseModel
+                            attr_accessor cited_text: String
+
+                            attr_accessor document_index: Integer
+
+                            attr_accessor document_title: String?
+
+                            attr_accessor end_page_number: Integer
+
+                            attr_accessor start_page_number: Integer
+
+                            attr_accessor type: :page_location
+
+                            def initialize:
+                              (
+                                cited_text: String,
+                                document_index: Integer,
+                                document_title: String?,
+                                end_page_number: Integer,
+                                start_page_number: Integer,
+                                type: :page_location
+                              ) -> void
+                              | (
+                                ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_page_location_citation
+                                | Sam::BaseModel data
+                              ) -> void
+
+                            def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_page_location_citation
+                          end
+
+                          type beta_request_content_block_location_citation =
+                            {
+                              cited_text: String,
+                              document_index: Integer,
+                              document_title: String?,
+                              end_block_index: Integer,
+                              start_block_index: Integer,
+                              type: :content_block_location
+                            }
+
+                          class BetaRequestContentBlockLocationCitation < Sam::BaseModel
+                            attr_accessor cited_text: String
+
+                            attr_accessor document_index: Integer
+
+                            attr_accessor document_title: String?
+
+                            attr_accessor end_block_index: Integer
+
+                            attr_accessor start_block_index: Integer
+
+                            attr_accessor type: :content_block_location
+
+                            def initialize:
+                              (
+                                cited_text: String,
+                                document_index: Integer,
+                                document_title: String?,
+                                end_block_index: Integer,
+                                start_block_index: Integer,
+                                type: :content_block_location
+                              ) -> void
+                              | (
+                                ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_content_block_location_citation
+                                | Sam::BaseModel data
+                              ) -> void
+
+                            def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_content_block_location_citation
+                          end
+
+                          private def self.variants: -> [[:char_location, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation], [:page_location, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation], [:content_block_location, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]]
+                        end
+                      end
+
+                      type beta_request_image_block =
+                        {
+                          source: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::source,
+                          type: :image,
+                          cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl?
+                        }
+
+                      class BetaRequestImageBlock < Sam::BaseModel
+                        attr_accessor source: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::source
+
+                        attr_accessor type: :image
+
+                        attr_accessor cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl?
+
+                        def initialize:
+                          (
+                            source: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::source,
+                            cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl?,
+                            type: :image
+                          ) -> void
+                          | (
+                            ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::beta_request_image_block
+                            | Sam::BaseModel data
+                          ) -> void
+
+                        def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::beta_request_image_block
+
+                        type source =
+                          Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource
+                          | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
+
+                        class Source < Sam::Union
+                          type beta_base64_image_source =
+                            {
+                              data: String,
+                              media_type: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type,
+                              type: :base64
+                            }
+
+                          class BetaBase64ImageSource < Sam::BaseModel
+                            attr_accessor data: String
+
+                            attr_accessor media_type: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type
+
+                            attr_accessor type: :base64
+
+                            def initialize:
+                              (
+                                data: String,
+                                media_type: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type,
+                                type: :base64
+                              ) -> void
+                              | (
+                                ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::beta_base64_image_source
+                                | Sam::BaseModel data
+                              ) -> void
+
+                            def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::beta_base64_image_source
+
+                            type media_type =
+                              :"image/jpeg"
+                              | :"image/png"
+                              | :"image/gif"
+                              | :"image/webp"
+
+                            class MediaType < Sam::Enum
+                              IMAGE_JPEG: :"image/jpeg"
+                              IMAGE_PNG: :"image/png"
+                              IMAGE_GIF: :"image/gif"
+                              IMAGE_WEBP: :"image/webp"
+
+                              def self.values: -> ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type]
+                            end
+                          end
+
+                          type beta_url_image_source =
+                            { type: :url, url: String }
+
+                          class BetaURLImageSource < Sam::BaseModel
+                            attr_accessor type: :url
+
+                            attr_accessor url: String
+
+                            def initialize:
+                              (url: String, type: :url) -> void
+                              | (
+                                ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::beta_url_image_source
+                                | Sam::BaseModel data
+                              ) -> void
+
+                            def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::beta_url_image_source
+                          end
+
+                          private def self.variants: -> [[:base64, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource], [:url, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]]
+                        end
+
+                        type cache_control = { type: :ephemeral }
+
+                        class CacheControl < Sam::BaseModel
+                          attr_accessor type: :ephemeral
+
+                          def initialize:
+                            (type: :ephemeral) -> void
+                            | (
+                              ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::cache_control
+                              | Sam::BaseModel data
+                            ) -> void
+
+                          def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::cache_control
+                        end
+                      end
+
+                      private def self.variants: -> [[:text, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock], [:image, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock]]
+                    end
+
+                    private def self.variants: -> [[nil, String], [nil, ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::union_member1]]]
+                  end
+                end
+
+                type beta_urlpdf_source = { type: :url, url: String }
+
+                class BetaUrlpdfSource < Sam::BaseModel
+                  attr_accessor type: :url
+
+                  attr_accessor url: String
+
+                  def initialize:
+                    (url: String, type: :url) -> void
+                    | (
+                      ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_urlpdf_source
+                      | Sam::BaseModel data
+                    ) -> void
+
+                  def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_urlpdf_source
+                end
+
+                private def self.variants: -> [[:base64, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource], [:text, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource], [:content, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource], [:url, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource]]
+              end
+
+              type cache_control = { type: :ephemeral }
+
+              class CacheControl < Sam::BaseModel
+                attr_accessor type: :ephemeral
+
+                def initialize:
+                  (type: :ephemeral) -> void
+                  | (
+                    ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::cache_control
+                    | Sam::BaseModel data
+                  ) -> void
+
+                def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::cache_control
+              end
+
+              type citations = { enabled: bool }
+
+              class Citations < Sam::BaseModel
+                attr_reader enabled: bool?
+
+                def enabled=: (bool) -> bool
+
+                def initialize:
+                  (enabled: bool) -> void
+                  | (
+                    ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::citations
+                    | Sam::BaseModel data
+                  ) -> void
+
+                def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::citations
+              end
+            end
+
+            type beta_request_thinking_block =
+              { signature: String, thinking: String, type: :thinking }
+
+            class BetaRequestThinkingBlock < Sam::BaseModel
+              attr_accessor signature: String
+
+              attr_accessor thinking: String
+
+              attr_accessor type: :thinking
+
+              def initialize:
+                (signature: String, thinking: String, type: :thinking) -> void
+                | (
+                  ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::beta_request_thinking_block
+                  | Sam::BaseModel data
+                ) -> void
+
+              def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::beta_request_thinking_block
+            end
+
+            type beta_request_redacted_thinking_block =
+              { data: String, type: :redacted_thinking }
+
+            class BetaRequestRedactedThinkingBlock < Sam::BaseModel
+              attr_accessor data: String
+
+              attr_accessor type: :redacted_thinking
+
+              def initialize:
+                (data: String, type: :redacted_thinking) -> void
+                | (
+                  ?Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::beta_request_redacted_thinking_block
+                  | Sam::BaseModel data
+                ) -> void
+
+              def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::beta_request_redacted_thinking_block
+            end
+
+            private def self.variants: -> [[:text, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock], [:image, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock], [:tool_use, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock], [:tool_result, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock], [:document, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock], [:thinking, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestThinkingBlock], [:redacted_thinking, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock]]
+          end
+
+          private def self.variants: -> [[nil, String], [nil, ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::union_member1]]]
+        end
+
+        type role = :user | :assistant
+
+        class Role < Sam::Enum
+          USER: :user
+          ASSISTANT: :assistant
+
+          def self.values: -> ::Array[Sam::Models::MessageCountTokensBetaParams::Message::role]
+        end
+      end
+
+      type system_ =
+        String
+        | ::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1]
+
+      class System < Sam::Union
+        type union_member1_array =
+          ::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1]
+
+        UnionMember1Array: union_member1_array
+
+        type union_member1 =
+          {
+            text: String,
+            type: :text,
+            cache_control: Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::CacheControl?,
+            citations: ::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::citation]?
+          }
+
+        class UnionMember1 < Sam::BaseModel
+          attr_accessor text: String
+
+          attr_accessor type: :text
+
+          attr_accessor cache_control: Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::CacheControl?
+
+          attr_accessor citations: ::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::citation]?
+
+          def initialize:
+            (
+              text: String,
+              cache_control: Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::CacheControl?,
+              citations: ::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::citation]?,
+              type: :text
+            ) -> void
+            | (
+              ?Sam::Models::MessageCountTokensBetaParams::System::union_member1
+              | Sam::BaseModel data
+            ) -> void
+
+          def to_hash: -> Sam::Models::MessageCountTokensBetaParams::System::union_member1
+
+          type cache_control = { type: :ephemeral }
+
+          class CacheControl < Sam::BaseModel
+            attr_accessor type: :ephemeral
+
+            def initialize:
+              (type: :ephemeral) -> void
+              | (
+                ?Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::cache_control
+                | Sam::BaseModel data
+              ) -> void
+
+            def to_hash: -> Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::cache_control
+          end
+
+          type citation =
+            Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestCharLocationCitation
+            | Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestPageLocationCitation
+            | Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation
+
+          class Citation < Sam::Union
+            type beta_request_char_location_citation =
+              {
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_char_index: Integer,
+                start_char_index: Integer,
+                type: :char_location
+              }
+
+            class BetaRequestCharLocationCitation < Sam::BaseModel
+              attr_accessor cited_text: String
+
+              attr_accessor document_index: Integer
+
+              attr_accessor document_title: String?
+
+              attr_accessor end_char_index: Integer
+
+              attr_accessor start_char_index: Integer
+
+              attr_accessor type: :char_location
+
+              def initialize:
+                (
+                  cited_text: String,
+                  document_index: Integer,
+                  document_title: String?,
+                  end_char_index: Integer,
+                  start_char_index: Integer,
+                  type: :char_location
+                ) -> void
+                | (
+                  ?Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::beta_request_char_location_citation
+                  | Sam::BaseModel data
+                ) -> void
+
+              def to_hash: -> Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::beta_request_char_location_citation
+            end
+
+            type beta_request_page_location_citation =
+              {
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_page_number: Integer,
+                start_page_number: Integer,
+                type: :page_location
+              }
+
+            class BetaRequestPageLocationCitation < Sam::BaseModel
+              attr_accessor cited_text: String
+
+              attr_accessor document_index: Integer
+
+              attr_accessor document_title: String?
+
+              attr_accessor end_page_number: Integer
+
+              attr_accessor start_page_number: Integer
+
+              attr_accessor type: :page_location
+
+              def initialize:
+                (
+                  cited_text: String,
+                  document_index: Integer,
+                  document_title: String?,
+                  end_page_number: Integer,
+                  start_page_number: Integer,
+                  type: :page_location
+                ) -> void
+                | (
+                  ?Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::beta_request_page_location_citation
+                  | Sam::BaseModel data
+                ) -> void
+
+              def to_hash: -> Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::beta_request_page_location_citation
+            end
+
+            type beta_request_content_block_location_citation =
+              {
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_block_index: Integer,
+                start_block_index: Integer,
+                type: :content_block_location
+              }
+
+            class BetaRequestContentBlockLocationCitation < Sam::BaseModel
+              attr_accessor cited_text: String
+
+              attr_accessor document_index: Integer
+
+              attr_accessor document_title: String?
+
+              attr_accessor end_block_index: Integer
+
+              attr_accessor start_block_index: Integer
+
+              attr_accessor type: :content_block_location
+
+              def initialize:
+                (
+                  cited_text: String,
+                  document_index: Integer,
+                  document_title: String?,
+                  end_block_index: Integer,
+                  start_block_index: Integer,
+                  type: :content_block_location
+                ) -> void
+                | (
+                  ?Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::beta_request_content_block_location_citation
+                  | Sam::BaseModel data
+                ) -> void
+
+              def to_hash: -> Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::beta_request_content_block_location_citation
+            end
+
+            private def self.variants: -> [[:char_location, Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestCharLocationCitation], [:page_location, Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestPageLocationCitation], [:content_block_location, Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation]]
+          end
+        end
+
+        private def self.variants: -> [[nil, String], [nil, ::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1]]]
+      end
+
+      type thinking =
+        Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigEnabled
+        | Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigDisabled
+
+      class Thinking < Sam::Union
+        type beta_thinking_config_enabled =
+          { budget_tokens: Integer, type: :enabled }
+
+        class BetaThinkingConfigEnabled < Sam::BaseModel
+          attr_accessor budget_tokens: Integer
+
+          attr_accessor type: :enabled
+
+          def initialize:
+            (budget_tokens: Integer, type: :enabled) -> void
+            | (
+              ?Sam::Models::MessageCountTokensBetaParams::Thinking::beta_thinking_config_enabled
+              | Sam::BaseModel data
+            ) -> void
+
+          def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Thinking::beta_thinking_config_enabled
+        end
+
+        type beta_thinking_config_disabled = { type: :disabled }
+
+        class BetaThinkingConfigDisabled < Sam::BaseModel
+          attr_accessor type: :disabled
+
+          def initialize:
+            (type: :disabled) -> void
+            | (
+              ?Sam::Models::MessageCountTokensBetaParams::Thinking::beta_thinking_config_disabled
+              | Sam::BaseModel data
+            ) -> void
+
+          def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Thinking::beta_thinking_config_disabled
+        end
+
+        private def self.variants: -> [[:enabled, Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigEnabled], [:disabled, Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigDisabled]]
+      end
+
+      type tool_choice =
+        Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAuto
+        | Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAny
+        | Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceTool
+        | Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceNone
+
+      class ToolChoice < Sam::Union
+        type beta_tool_choice_auto =
+          { type: :auto, disable_parallel_tool_use: bool }
+
+        class BetaToolChoiceAuto < Sam::BaseModel
+          attr_accessor type: :auto
+
+          attr_reader disable_parallel_tool_use: bool?
+
+          def disable_parallel_tool_use=: (bool) -> bool
+
+          def initialize:
+            (disable_parallel_tool_use: bool, type: :auto) -> void
+            | (
+              ?Sam::Models::MessageCountTokensBetaParams::ToolChoice::beta_tool_choice_auto
+              | Sam::BaseModel data
+            ) -> void
+
+          def to_hash: -> Sam::Models::MessageCountTokensBetaParams::ToolChoice::beta_tool_choice_auto
+        end
+
+        type beta_tool_choice_any =
+          { type: :any, disable_parallel_tool_use: bool }
+
+        class BetaToolChoiceAny < Sam::BaseModel
+          attr_accessor type: :any
+
+          attr_reader disable_parallel_tool_use: bool?
+
+          def disable_parallel_tool_use=: (bool) -> bool
+
+          def initialize:
+            (disable_parallel_tool_use: bool, type: :any) -> void
+            | (
+              ?Sam::Models::MessageCountTokensBetaParams::ToolChoice::beta_tool_choice_any
+              | Sam::BaseModel data
+            ) -> void
+
+          def to_hash: -> Sam::Models::MessageCountTokensBetaParams::ToolChoice::beta_tool_choice_any
+        end
+
+        type beta_tool_choice_tool =
+          { name: String, type: :tool, disable_parallel_tool_use: bool }
+
+        class BetaToolChoiceTool < Sam::BaseModel
+          attr_accessor name: String
+
+          attr_accessor type: :tool
+
+          attr_reader disable_parallel_tool_use: bool?
+
+          def disable_parallel_tool_use=: (bool) -> bool
+
+          def initialize:
+            (name: String, disable_parallel_tool_use: bool, type: :tool) -> void
+            | (
+              ?Sam::Models::MessageCountTokensBetaParams::ToolChoice::beta_tool_choice_tool
+              | Sam::BaseModel data
+            ) -> void
+
+          def to_hash: -> Sam::Models::MessageCountTokensBetaParams::ToolChoice::beta_tool_choice_tool
+        end
+
+        type beta_tool_choice_none = { type: :none }
+
+        class BetaToolChoiceNone < Sam::BaseModel
+          attr_accessor type: :none
+
+          def initialize:
+            (type: :none) -> void
+            | (
+              ?Sam::Models::MessageCountTokensBetaParams::ToolChoice::beta_tool_choice_none
+              | Sam::BaseModel data
+            ) -> void
+
+          def to_hash: -> Sam::Models::MessageCountTokensBetaParams::ToolChoice::beta_tool_choice_none
+        end
+
+        private def self.variants: -> [[:auto, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAuto], [:any, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAny], [:tool, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceTool], [:none, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceNone]]
+      end
+
+      type tool =
+        Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool
+        | Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022
+        | Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022
+        | Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022
+        | Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124
+        | Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124
+        | Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124
+
+      class Tool < Sam::Union
+        type beta_tool =
+          {
+            input_schema: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::InputSchema,
+            name: String,
+            cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::CacheControl?,
+            description: String,
+            type: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::type_?
+          }
+
+        class BetaTool < Sam::BaseModel
+          attr_accessor input_schema: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::InputSchema
+
+          attr_accessor name: String
+
+          attr_accessor cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::CacheControl?
+
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
+          attr_accessor type: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::type_?
+
+          def initialize:
+            (
+              input_schema: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::InputSchema,
+              name: String,
+              cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::CacheControl?,
+              description: String,
+              type: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::type_?
+            ) -> void
+            | (
+              ?Sam::Models::MessageCountTokensBetaParams::Tool::beta_tool
+              | Sam::BaseModel data
+            ) -> void
+
+          def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Tool::beta_tool
+
+          type input_schema = { type: :object, properties: top? }
+
+          class InputSchema < Sam::BaseModel
+            attr_accessor type: :object
+
+            attr_accessor properties: top?
+
+            def initialize:
+              (properties: top?, type: :object) -> void
+              | (
+                ?Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::input_schema
+                | Sam::BaseModel data
+              ) -> void
+
+            def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::input_schema
+          end
+
+          type cache_control = { type: :ephemeral }
+
+          class CacheControl < Sam::BaseModel
+            attr_accessor type: :ephemeral
+
+            def initialize:
+              (type: :ephemeral) -> void
+              | (
+                ?Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::cache_control
+                | Sam::BaseModel data
+              ) -> void
+
+            def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::cache_control
+          end
+
+          type type_ = :custom
+
+          class Type < Sam::Enum
+            CUSTOM: :custom
+
+            def self.values: -> ::Array[Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::type_]
+          end
+        end
+
+        type beta_computer_use_tool20241022 =
+          {
+            display_height_px: Integer,
+            display_width_px: Integer,
+            name: :computer,
+            type: :computer_20241022,
+            cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022::CacheControl?,
+            display_number: Integer?
+          }
+
+        class BetaComputerUseTool20241022 < Sam::BaseModel
+          attr_accessor display_height_px: Integer
+
+          attr_accessor display_width_px: Integer
+
+          attr_accessor name: :computer
+
+          attr_accessor type: :computer_20241022
+
+          attr_accessor cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022::CacheControl?
+
+          attr_accessor display_number: Integer?
+
+          def initialize:
+            (
+              display_height_px: Integer,
+              display_width_px: Integer,
+              cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022::CacheControl?,
+              display_number: Integer?,
+              name: :computer,
+              type: :computer_20241022
+            ) -> void
+            | (
+              ?Sam::Models::MessageCountTokensBetaParams::Tool::beta_computer_use_tool20241022
+              | Sam::BaseModel data
+            ) -> void
+
+          def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Tool::beta_computer_use_tool20241022
+
+          type cache_control = { type: :ephemeral }
+
+          class CacheControl < Sam::BaseModel
+            attr_accessor type: :ephemeral
+
+            def initialize:
+              (type: :ephemeral) -> void
+              | (
+                ?Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022::cache_control
+                | Sam::BaseModel data
+              ) -> void
+
+            def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022::cache_control
+          end
+        end
+
+        type beta_bash_tool20241022 =
+          {
+            name: :bash,
+            type: :bash_20241022,
+            cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022::CacheControl?
+          }
+
+        class BetaBashTool20241022 < Sam::BaseModel
+          attr_accessor name: :bash
+
+          attr_accessor type: :bash_20241022
+
+          attr_accessor cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022::CacheControl?
+
+          def initialize:
+            (
+              cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022::CacheControl?,
+              name: :bash,
+              type: :bash_20241022
+            ) -> void
+            | (
+              ?Sam::Models::MessageCountTokensBetaParams::Tool::beta_bash_tool20241022
+              | Sam::BaseModel data
+            ) -> void
+
+          def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Tool::beta_bash_tool20241022
+
+          type cache_control = { type: :ephemeral }
+
+          class CacheControl < Sam::BaseModel
+            attr_accessor type: :ephemeral
+
+            def initialize:
+              (type: :ephemeral) -> void
+              | (
+                ?Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022::cache_control
+                | Sam::BaseModel data
+              ) -> void
+
+            def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022::cache_control
+          end
+        end
+
+        type beta_text_editor20241022 =
+          {
+            name: :str_replace_editor,
+            type: :text_editor_20241022,
+            cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022::CacheControl?
+          }
+
+        class BetaTextEditor20241022 < Sam::BaseModel
+          attr_accessor name: :str_replace_editor
+
+          attr_accessor type: :text_editor_20241022
+
+          attr_accessor cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022::CacheControl?
+
+          def initialize:
+            (
+              cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022::CacheControl?,
+              name: :str_replace_editor,
+              type: :text_editor_20241022
+            ) -> void
+            | (
+              ?Sam::Models::MessageCountTokensBetaParams::Tool::beta_text_editor20241022
+              | Sam::BaseModel data
+            ) -> void
+
+          def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Tool::beta_text_editor20241022
+
+          type cache_control = { type: :ephemeral }
+
+          class CacheControl < Sam::BaseModel
+            attr_accessor type: :ephemeral
+
+            def initialize:
+              (type: :ephemeral) -> void
+              | (
+                ?Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022::cache_control
+                | Sam::BaseModel data
+              ) -> void
+
+            def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022::cache_control
+          end
+        end
+
+        type beta_computer_use_tool20250124 =
+          {
+            display_height_px: Integer,
+            display_width_px: Integer,
+            name: :computer,
+            type: :computer_20250124,
+            cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124::CacheControl?,
+            display_number: Integer?
+          }
+
+        class BetaComputerUseTool20250124 < Sam::BaseModel
+          attr_accessor display_height_px: Integer
+
+          attr_accessor display_width_px: Integer
+
+          attr_accessor name: :computer
+
+          attr_accessor type: :computer_20250124
+
+          attr_accessor cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124::CacheControl?
+
+          attr_accessor display_number: Integer?
+
+          def initialize:
+            (
+              display_height_px: Integer,
+              display_width_px: Integer,
+              cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124::CacheControl?,
+              display_number: Integer?,
+              name: :computer,
+              type: :computer_20250124
+            ) -> void
+            | (
+              ?Sam::Models::MessageCountTokensBetaParams::Tool::beta_computer_use_tool20250124
+              | Sam::BaseModel data
+            ) -> void
+
+          def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Tool::beta_computer_use_tool20250124
+
+          type cache_control = { type: :ephemeral }
+
+          class CacheControl < Sam::BaseModel
+            attr_accessor type: :ephemeral
+
+            def initialize:
+              (type: :ephemeral) -> void
+              | (
+                ?Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124::cache_control
+                | Sam::BaseModel data
+              ) -> void
+
+            def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124::cache_control
+          end
+        end
+
+        type beta_bash_tool20250124 =
+          {
+            name: :bash,
+            type: :bash_20250124,
+            cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124::CacheControl?
+          }
+
+        class BetaBashTool20250124 < Sam::BaseModel
+          attr_accessor name: :bash
+
+          attr_accessor type: :bash_20250124
+
+          attr_accessor cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124::CacheControl?
+
+          def initialize:
+            (
+              cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124::CacheControl?,
+              name: :bash,
+              type: :bash_20250124
+            ) -> void
+            | (
+              ?Sam::Models::MessageCountTokensBetaParams::Tool::beta_bash_tool20250124
+              | Sam::BaseModel data
+            ) -> void
+
+          def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Tool::beta_bash_tool20250124
+
+          type cache_control = { type: :ephemeral }
+
+          class CacheControl < Sam::BaseModel
+            attr_accessor type: :ephemeral
+
+            def initialize:
+              (type: :ephemeral) -> void
+              | (
+                ?Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124::cache_control
+                | Sam::BaseModel data
+              ) -> void
+
+            def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124::cache_control
+          end
+        end
+
+        type beta_text_editor20250124 =
+          {
+            name: :str_replace_editor,
+            type: :text_editor_20250124,
+            cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124::CacheControl?
+          }
+
+        class BetaTextEditor20250124 < Sam::BaseModel
+          attr_accessor name: :str_replace_editor
+
+          attr_accessor type: :text_editor_20250124
+
+          attr_accessor cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124::CacheControl?
+
+          def initialize:
+            (
+              cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124::CacheControl?,
+              name: :str_replace_editor,
+              type: :text_editor_20250124
+            ) -> void
+            | (
+              ?Sam::Models::MessageCountTokensBetaParams::Tool::beta_text_editor20250124
+              | Sam::BaseModel data
+            ) -> void
+
+          def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Tool::beta_text_editor20250124
+
+          type cache_control = { type: :ephemeral }
+
+          class CacheControl < Sam::BaseModel
+            attr_accessor type: :ephemeral
+
+            def initialize:
+              (type: :ephemeral) -> void
+              | (
+                ?Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124::cache_control
+                | Sam::BaseModel data
+              ) -> void
+
+            def to_hash: -> Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124::cache_control
+          end
+        end
+
+        private def self.variants: -> [[nil, Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool], [nil, Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022], [nil, Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022], [nil, Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022], [nil, Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124], [nil, Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124], [nil, Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124]]
+      end
+    end
+  end
+end

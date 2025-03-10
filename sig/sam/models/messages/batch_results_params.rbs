@@ -1,0 +1,43 @@
+module Sam
+  module Models
+    module Messages
+      type batch_results_params =
+        {
+          anthropic_beta: ::Array[String],
+          anthropic_version: String,
+          x_api_key: String
+        }
+        & Sam::request_parameters
+
+      class BatchResultsParams < Sam::BaseModel
+        extend Sam::RequestParameters::Converter
+        include Sam::RequestParameters
+
+        attr_reader anthropic_beta: ::Array[String]?
+
+        def anthropic_beta=: (::Array[String]) -> ::Array[String]
+
+        attr_reader anthropic_version: String?
+
+        def anthropic_version=: (String) -> String
+
+        attr_reader x_api_key: String?
+
+        def x_api_key=: (String) -> String
+
+        def initialize:
+          (
+            anthropic_beta: ::Array[String],
+            anthropic_version: String,
+            x_api_key: String,
+            request_options: Sam::request_opts
+          ) -> void
+          | (
+            ?Sam::Models::Messages::batch_results_params | Sam::BaseModel data
+          ) -> void
+
+        def to_hash: -> Sam::Models::Messages::batch_results_params
+      end
+    end
+  end
+end
