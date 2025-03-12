@@ -3,6 +3,19 @@
 module Sam
   # @private
   #
+  # @example
+  # ```ruby
+  # stream.for_each do |event|
+  #   puts(event)
+  # end
+  # ```
+  #
+  # @example
+  # ```ruby
+  # events = stream.to_enum.take(2)
+  #
+  # events => Array
+  # ```
   class JsonLStream < Sam::BaseStream
     # @private
     #
