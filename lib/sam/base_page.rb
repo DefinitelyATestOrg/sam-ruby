@@ -5,6 +5,26 @@ module Sam
   #
   # @abstract
   #
+  # @example
+  # ```ruby
+  # if page.has_next?
+  #   page = page.next_page
+  # end
+  # ```
+  #
+  # @example
+  # ```ruby
+  # page.auto_paging_each do |message|
+  #   puts(message)
+  # end
+  # ```
+  #
+  # @example
+  # ```ruby
+  # messages = page.to_enum.take(2)
+  #
+  # messages => Array
+  # ```
   module BasePage
     # @return [Boolean]
     #
