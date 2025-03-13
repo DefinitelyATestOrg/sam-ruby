@@ -16,7 +16,9 @@ module Sam
   #
   # events => Array
   # ```
-  class JsonLStream < Sam::BaseStream
+  class JsonLStream
+    include Sam::BaseStream
+
     # @private
     #
     # @return [Enumerable]

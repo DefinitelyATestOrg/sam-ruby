@@ -1,5 +1,15 @@
 module Sam
-  class JsonLStream[Elem] < Sam::BaseStream[Elem]
+  class JsonLStream[Elem]
+    include Sam::BaseStream[top, Elem]
+
     private def iterator: -> Enumerable[Elem]
+
+    def initialize: (
+      model: Class | Sam::Converter,
+      url: URI::Generic,
+      status: Integer,
+      response: top,
+      messages: Enumerable[top]
+    ) -> void
   end
 end
