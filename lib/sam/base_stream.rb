@@ -16,7 +16,7 @@ module Sam
   #
   # messages => Array
   # ```
-  class BaseStream
+  module BaseStream
     # @return [void]
     #
     def close = Sam::Util.close_fused!(@iterator)

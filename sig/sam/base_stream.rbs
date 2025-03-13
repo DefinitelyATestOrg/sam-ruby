@@ -1,5 +1,5 @@
 module Sam
-  class BaseStream[Elem]
+  module BaseStream[Message, Elem]
     def close: -> void
 
     private def iterator: -> Enumerable[Elem]
@@ -15,7 +15,7 @@ module Sam
       url: URI::Generic,
       status: Integer,
       response: top,
-      messages: Enumerable[Sam::Util::sse_message]
+      messages: Enumerable[Message]
     ) -> void
   end
 end

@@ -22,7 +22,7 @@ module Sam
         body: T.nilable(T.anything),
         unwrap: T.nilable(Symbol),
         page: T.nilable(T::Class[Sam::BasePage[Sam::BaseModel]]),
-        stream: T.nilable(T::Class[Sam::BaseStream[Sam::BaseModel]]),
+        stream: T.nilable(T::Class[Sam::BaseStream[T.anything, Sam::BaseModel]]),
         model: T.nilable(Sam::Converter::Input),
         options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
       }
@@ -144,7 +144,7 @@ module Sam
         body: T.nilable(T.anything),
         unwrap: T.nilable(Symbol),
         page: T.nilable(T::Class[Sam::BasePage[Sam::BaseModel]]),
-        stream: T.nilable(T::Class[Sam::BaseStream[Sam::BaseModel]]),
+        stream: T.nilable(T::Class[Sam::BaseStream[T.anything, Sam::BaseModel]]),
         model: T.nilable(Sam::Converter::Input),
         options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
       )
