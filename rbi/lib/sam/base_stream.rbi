@@ -1,7 +1,8 @@
 # typed: strong
 
 module Sam
-  class BaseStream
+  module BaseStream
+    Message = type_member(:in)
     Elem = type_member(:out)
 
     sig { void }
@@ -28,11 +29,11 @@ module Sam
         url: URI::Generic,
         status: Integer,
         response: Net::HTTPResponse,
-        messages: T::Enumerable[Sam::Util::SSEMessage]
+        messages: T::Enumerable[Message]
       )
-        .returns(T.attached_class)
+        .void
     end
-    def self.new(model:, url:, status:, response:, messages:)
+    def initialize(model:, url:, status:, response:, messages:)
     end
   end
 end
