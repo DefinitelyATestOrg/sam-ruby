@@ -378,7 +378,7 @@ module Sam
                         def to_hash: -> Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_content_block_location_citation
                       end
 
-                      private def self.variants: -> [[:char_location, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation], [:page_location, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation], [:content_block_location, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]]
+                      def self.variants: -> [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]
                     end
                   end
 
@@ -474,7 +474,7 @@ module Sam
                         def to_hash: -> Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::beta_url_image_source
                       end
 
-                      private def self.variants: -> [[:base64, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource], [:url, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]]
+                      def self.variants: -> [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
                     end
 
                     type cache_control = { type: :ephemeral }
@@ -787,7 +787,7 @@ module Sam
                               def to_hash: -> Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_content_block_location_citation
                             end
 
-                            private def self.variants: -> [[:char_location, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation], [:page_location, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation], [:content_block_location, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]]
+                            def self.variants: -> [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]
                           end
                         end
 
@@ -884,7 +884,7 @@ module Sam
                               def to_hash: -> Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::beta_url_image_source
                             end
 
-                            private def self.variants: -> [[:base64, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource], [:url, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]]
+                            def self.variants: -> [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
                           end
 
                           type cache_control = { type: :ephemeral }
@@ -903,10 +903,10 @@ module Sam
                           end
                         end
 
-                        private def self.variants: -> [[:text, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock], [:image, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock]]
+                        def self.variants: -> [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock]
                       end
 
-                      private def self.variants: -> [[nil, String], [nil, ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::union_member1]]]
+                      def self.variants: -> [String, ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::union_member1]]
                     end
                   end
 
@@ -1222,7 +1222,7 @@ module Sam
                                   def to_hash: -> Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_content_block_location_citation
                                 end
 
-                                private def self.variants: -> [[:char_location, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation], [:page_location, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation], [:content_block_location, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]]
+                                def self.variants: -> [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]
                               end
                             end
 
@@ -1319,7 +1319,7 @@ module Sam
                                   def to_hash: -> Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::beta_url_image_source
                                 end
 
-                                private def self.variants: -> [[:base64, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource], [:url, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]]
+                                def self.variants: -> [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
                               end
 
                               type cache_control = { type: :ephemeral }
@@ -1338,10 +1338,10 @@ module Sam
                               end
                             end
 
-                            private def self.variants: -> [[:text, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock], [:image, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock]]
+                            def self.variants: -> [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock]
                           end
 
-                          private def self.variants: -> [[nil, String], [nil, ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::union_member1]]]
+                          def self.variants: -> [String, ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::union_member1]]
                         end
                       end
 
@@ -1362,7 +1362,7 @@ module Sam
                         def to_hash: -> Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_urlpdf_source
                       end
 
-                      private def self.variants: -> [[:base64, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource], [:text, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource], [:content, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource], [:url, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource]]
+                      def self.variants: -> [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource]
                     end
 
                     type cache_control = { type: :ephemeral }
@@ -1440,10 +1440,10 @@ module Sam
                     def to_hash: -> Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::beta_request_redacted_thinking_block
                   end
 
-                  private def self.variants: -> [[:text, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock], [:image, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock], [:tool_use, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolUseBlock], [:tool_result, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock], [:document, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock], [:thinking, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestThinkingBlock], [:redacted_thinking, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock]]
+                  def self.variants: -> [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolUseBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestThinkingBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock]
                 end
 
-                private def self.variants: -> [[nil, String], [nil, ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::union_member1]]]
+                def self.variants: -> [String, ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::union_member1]]
               end
 
               type role = :user | :assistant
@@ -1653,11 +1653,11 @@ module Sam
                     def to_hash: -> Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::beta_request_content_block_location_citation
                   end
 
-                  private def self.variants: -> [[:char_location, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestCharLocationCitation], [:page_location, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestPageLocationCitation], [:content_block_location, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation]]
+                  def self.variants: -> [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestCharLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestPageLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation]
                 end
               end
 
-              private def self.variants: -> [[nil, String], [nil, ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1]]]
+              def self.variants: -> [String, ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1]]
             end
 
             type thinking =
@@ -1698,7 +1698,7 @@ module Sam
                 def to_hash: -> Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::beta_thinking_config_disabled
               end
 
-              private def self.variants: -> [[:enabled, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::BetaThinkingConfigEnabled], [:disabled, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::BetaThinkingConfigDisabled]]
+              def self.variants: -> [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::BetaThinkingConfigEnabled, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::BetaThinkingConfigDisabled]
             end
 
             type tool_choice =
@@ -1789,7 +1789,7 @@ module Sam
                 def to_hash: -> Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::beta_tool_choice_none
               end
 
-              private def self.variants: -> [[:auto, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceAuto], [:any, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceAny], [:tool, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceTool], [:none, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceNone]]
+              def self.variants: -> [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceAuto, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceAny, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceTool, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceNone]
             end
 
             type tool =
@@ -2162,7 +2162,7 @@ module Sam
                 end
               end
 
-              private def self.variants: -> [[nil, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool], [nil, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022], [nil, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022], [nil, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022], [nil, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124], [nil, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124], [nil, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124]]
+              def self.variants: -> [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124]
             end
           end
         end

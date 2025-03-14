@@ -574,6 +574,12 @@ module Sam
 
                   # def initialize: (Hash | Sam::BaseModel) -> void
                 end
+
+                # @!parse
+                #   class << self
+                #     # @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation)]
+                #     def variants; end
+                #   end
               end
             end
 
@@ -671,6 +677,12 @@ module Sam
 
                   # def initialize: (Hash | Sam::BaseModel) -> void
                 end
+
+                # @!parse
+                #   class << self
+                #     # @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource)]
+                #     def variants; end
+                #   end
               end
 
               class CacheControl < Sam::BaseModel
@@ -1051,6 +1063,12 @@ module Sam
 
                         # def initialize: (Hash | Sam::BaseModel) -> void
                       end
+
+                      # @!parse
+                      #   class << self
+                      #     # @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation)]
+                      #     def variants; end
+                      #   end
                     end
                   end
 
@@ -1148,6 +1166,12 @@ module Sam
 
                         # def initialize: (Hash | Sam::BaseModel) -> void
                       end
+
+                      # @!parse
+                      #   class << self
+                      #     # @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource)]
+                      #     def variants; end
+                      #   end
                     end
 
                     class CacheControl < Sam::BaseModel
@@ -1164,7 +1188,19 @@ module Sam
                       # def initialize: (Hash | Sam::BaseModel) -> void
                     end
                   end
+
+                  # @!parse
+                  #   class << self
+                  #     # @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock)]
+                  #     def variants; end
+                  #   end
                 end
+
+                # @!parse
+                #   class << self
+                #     # @return [Array(String, Array<Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock>)]
+                #     def variants; end
+                #   end
               end
             end
 
@@ -1554,6 +1590,12 @@ module Sam
 
                             # def initialize: (Hash | Sam::BaseModel) -> void
                           end
+
+                          # @!parse
+                          #   class << self
+                          #     # @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation)]
+                          #     def variants; end
+                          #   end
                         end
                       end
 
@@ -1651,6 +1693,12 @@ module Sam
 
                             # def initialize: (Hash | Sam::BaseModel) -> void
                           end
+
+                          # @!parse
+                          #   class << self
+                          #     # @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource)]
+                          #     def variants; end
+                          #   end
                         end
 
                         class CacheControl < Sam::BaseModel
@@ -1667,7 +1715,19 @@ module Sam
                           # def initialize: (Hash | Sam::BaseModel) -> void
                         end
                       end
+
+                      # @!parse
+                      #   class << self
+                      #     # @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock)]
+                      #     def variants; end
+                      #   end
                     end
+
+                    # @!parse
+                    #   class << self
+                    #     # @return [Array(String, Array<Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock>)]
+                    #     def variants; end
+                    #   end
                   end
                 end
 
@@ -1690,6 +1750,12 @@ module Sam
 
                   # def initialize: (Hash | Sam::BaseModel) -> void
                 end
+
+                # @!parse
+                #   class << self
+                #     # @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource)]
+                #     def variants; end
+                #   end
               end
 
               class CacheControl < Sam::BaseModel
@@ -1770,7 +1836,19 @@ module Sam
 
               # def initialize: (Hash | Sam::BaseModel) -> void
             end
+
+            # @!parse
+            #   class << self
+            #     # @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestThinkingBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock)]
+            #     def variants; end
+            #   end
           end
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(String, Array<Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestThinkingBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock>)]
+          #     def variants; end
+          #   end
         end
 
         # @abstract
@@ -2019,8 +2097,20 @@ module Sam
 
               # def initialize: (Hash | Sam::BaseModel) -> void
             end
+
+            # @!parse
+            #   class << self
+            #     # @return [Array(Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestCharLocationCitation, Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestPageLocationCitation, Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation)]
+            #     def variants; end
+            #   end
           end
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(String, Array<Sam::Models::MessageCountTokensParams::System::UnionMember1>)]
+        #     def variants; end
+        #   end
       end
 
       # @abstract
@@ -2083,6 +2173,12 @@ module Sam
 
           # def initialize: (Hash | Sam::BaseModel) -> void
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigEnabled, Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigDisabled)]
+        #     def variants; end
+        #   end
       end
 
       # @abstract
@@ -2216,6 +2312,12 @@ module Sam
 
           # def initialize: (Hash | Sam::BaseModel) -> void
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceAuto, Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceAny, Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceTool, Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceNone)]
+        #     def variants; end
+        #   end
       end
 
       # @abstract
@@ -2405,6 +2507,12 @@ module Sam
             # def initialize: (Hash | Sam::BaseModel) -> void
           end
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Sam::Models::MessageCountTokensParams::Tool::Tool, Sam::Models::MessageCountTokensParams::Tool::BashTool20250124, Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124)]
+        #     def variants; end
+        #   end
       end
     end
   end

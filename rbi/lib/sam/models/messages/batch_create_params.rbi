@@ -1175,14 +1175,13 @@ module Sam
                       end
 
                       class << self
-                        # @api private
                         sig do
                           override
                             .returns(
-                              [[Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]]
+                              [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]
                             )
                         end
-                        private def variants
+                        def variants
                         end
                       end
                     end
@@ -1365,14 +1364,13 @@ module Sam
                       end
 
                       class << self
-                        # @api private
                         sig do
                           override
                             .returns(
-                              [[Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]]
+                              [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
                             )
                         end
-                        private def variants
+                        def variants
                         end
                       end
                     end
@@ -2081,14 +2079,13 @@ module Sam
                             end
 
                             class << self
-                              # @api private
                               sig do
                                 override
                                   .returns(
-                                    [[Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]]
+                                    [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]
                                   )
                               end
-                              private def variants
+                              def variants
                               end
                             end
                           end
@@ -2275,14 +2272,13 @@ module Sam
                             end
 
                             class << self
-                              # @api private
                               sig do
                                 override
                                   .returns(
-                                    [[Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]]
+                                    [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
                                   )
                               end
-                              private def variants
+                              def variants
                               end
                             end
                           end
@@ -2307,38 +2303,33 @@ module Sam
                         end
 
                         class << self
-                          # @api private
                           sig do
                             override
                               .returns(
-                                [[Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock]]
+                                [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock]
                               )
                           end
-                          private def variants
+                          def variants
                           end
                         end
                       end
 
                       class << self
-                        # @api private
                         sig do
                           override
                             .returns(
                               [
-                                [NilClass, String],
-                                [
-                                  NilClass,
-                                  T::Array[
-                                                                T.any(
-                                                                  Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
-                                                                  Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
-                                                                )
-                                                                ]
-                                ]
+                                String,
+                                T::Array[
+                                                              T.any(
+                                                                Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
+                                                                Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
+                                                              )
+                                                              ]
                               ]
                             )
                         end
-                        private def variants
+                        def variants
                         end
                       end
                     end
@@ -3073,14 +3064,13 @@ module Sam
                                 end
 
                                 class << self
-                                  # @api private
                                   sig do
                                     override
                                       .returns(
-                                        [[Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]]
+                                        [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]
                                       )
                                   end
-                                  private def variants
+                                  def variants
                                   end
                                 end
                               end
@@ -3267,14 +3257,13 @@ module Sam
                                 end
 
                                 class << self
-                                  # @api private
                                   sig do
                                     override
                                       .returns(
-                                        [[Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]]
+                                        [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
                                       )
                                   end
-                                  private def variants
+                                  def variants
                                   end
                                 end
                               end
@@ -3299,38 +3288,33 @@ module Sam
                             end
 
                             class << self
-                              # @api private
                               sig do
                                 override
                                   .returns(
-                                    [[Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock]]
+                                    [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock]
                                   )
                               end
-                              private def variants
+                              def variants
                               end
                             end
                           end
 
                           class << self
-                            # @api private
                             sig do
                               override
                                 .returns(
                                   [
-                                    [NilClass, String],
-                                    [
-                                      NilClass,
-                                      T::Array[
-                                                                        T.any(
-                                                                          Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
-                                                                          Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
-                                                                        )
-                                                                        ]
-                                    ]
+                                    String,
+                                    T::Array[
+                                                                      T.any(
+                                                                        Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
+                                                                        Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
+                                                                      )
+                                                                      ]
                                   ]
                                 )
                             end
-                            private def variants
+                            def variants
                             end
                           end
                         end
@@ -3363,14 +3347,13 @@ module Sam
                       end
 
                       class << self
-                        # @api private
                         sig do
                           override
                             .returns(
-                              [[Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource]]
+                              [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource]
                             )
                         end
-                        private def variants
+                        def variants
                         end
                       end
                     end
@@ -3475,43 +3458,38 @@ module Sam
                   end
 
                   class << self
-                    # @api private
                     sig do
                       override
                         .returns(
-                          [[Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolUseBlock], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestThinkingBlock], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestRedactedThinkingBlock]]
+                          [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolUseBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestThinkingBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestRedactedThinkingBlock]
                         )
                     end
-                    private def variants
+                    def variants
                     end
                   end
                 end
 
                 class << self
-                  # @api private
                   sig do
                     override
                       .returns(
                         [
-                          [NilClass, String],
-                          [
-                            NilClass,
-                            T::Array[
-                                                    T.any(
-                                                      Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock,
-                                                      Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock,
-                                                      Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolUseBlock,
-                                                      Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock,
-                                                      Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock,
-                                                      Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestThinkingBlock,
-                                                      Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestRedactedThinkingBlock
-                                                    )
-                                                    ]
-                          ]
+                          String,
+                          T::Array[
+                                                  T.any(
+                                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock,
+                                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock,
+                                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolUseBlock,
+                                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock,
+                                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock,
+                                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestThinkingBlock,
+                                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestRedactedThinkingBlock
+                                                  )
+                                                  ]
                         ]
                       )
                   end
-                  private def variants
+                  def variants
                   end
                 end
               end
@@ -3954,28 +3932,26 @@ module Sam
                   end
 
                   class << self
-                    # @api private
                     sig do
                       override
                         .returns(
-                          [[Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestCharLocationCitation], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestPageLocationCitation], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestContentBlockLocationCitation]]
+                          [Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestCharLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestPageLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestContentBlockLocationCitation]
                         )
                     end
-                    private def variants
+                    def variants
                     end
                   end
                 end
               end
 
               class << self
-                # @api private
                 sig do
                   override
                     .returns(
-                      [[NilClass, String], [NilClass, T::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1]]]
+                      [String, T::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1]]
                     )
                 end
-                private def variants
+                def variants
                 end
               end
             end
@@ -4046,14 +4022,13 @@ module Sam
               end
 
               class << self
-                # @api private
                 sig do
                   override
                     .returns(
-                      [[Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigEnabled], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigDisabled]]
+                      [Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigEnabled, Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigDisabled]
                     )
                 end
-                private def variants
+                def variants
                 end
               end
             end
@@ -4191,14 +4166,13 @@ module Sam
               end
 
               class << self
-                # @api private
                 sig do
                   override
                     .returns(
-                      [[Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAuto], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAny], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceTool], [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceNone]]
+                      [Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAuto, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAny, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceTool, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceNone]
                     )
                 end
-                private def variants
+                def variants
                 end
               end
             end
@@ -4508,14 +4482,13 @@ module Sam
               end
 
               class << self
-                # @api private
                 sig do
                   override
                     .returns(
-                      [[NilClass, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool], [NilClass, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124], [NilClass, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124]]
+                      [Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124]
                     )
                 end
-                private def variants
+                def variants
                 end
               end
             end

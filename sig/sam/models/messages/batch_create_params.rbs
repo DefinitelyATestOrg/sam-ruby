@@ -377,7 +377,7 @@ module Sam
                         def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::request_content_block_location_citation
                       end
 
-                      private def self.variants: -> [[:char_location, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation], [:page_location, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation], [:content_block_location, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]]
+                      def self.variants: -> [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]
                     end
                   end
 
@@ -473,7 +473,7 @@ module Sam
                         def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::url_image_source
                       end
 
-                      private def self.variants: -> [[:base64, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource], [:url, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]]
+                      def self.variants: -> [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
                     end
 
                     type cache_control = { type: :ephemeral }
@@ -786,7 +786,7 @@ module Sam
                               def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::request_content_block_location_citation
                             end
 
-                            private def self.variants: -> [[:char_location, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation], [:page_location, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation], [:content_block_location, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]]
+                            def self.variants: -> [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]
                           end
                         end
 
@@ -882,7 +882,7 @@ module Sam
                               def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::url_image_source
                             end
 
-                            private def self.variants: -> [[:base64, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource], [:url, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]]
+                            def self.variants: -> [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
                           end
 
                           type cache_control = { type: :ephemeral }
@@ -901,10 +901,10 @@ module Sam
                           end
                         end
 
-                        private def self.variants: -> [[:text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock], [:image, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock]]
+                        def self.variants: -> [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock]
                       end
 
-                      private def self.variants: -> [[nil, String], [nil, ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::union_member1]]]
+                      def self.variants: -> [String, ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::union_member1]]
                     end
                   end
 
@@ -1220,7 +1220,7 @@ module Sam
                                   def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::request_content_block_location_citation
                                 end
 
-                                private def self.variants: -> [[:char_location, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation], [:page_location, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation], [:content_block_location, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]]
+                                def self.variants: -> [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]
                               end
                             end
 
@@ -1317,7 +1317,7 @@ module Sam
                                   def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::url_image_source
                                 end
 
-                                private def self.variants: -> [[:base64, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource], [:url, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]]
+                                def self.variants: -> [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
                               end
 
                               type cache_control = { type: :ephemeral }
@@ -1336,10 +1336,10 @@ module Sam
                               end
                             end
 
-                            private def self.variants: -> [[:text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock], [:image, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock]]
+                            def self.variants: -> [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock]
                           end
 
-                          private def self.variants: -> [[nil, String], [nil, ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::union_member1]]]
+                          def self.variants: -> [String, ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::union_member1]]
                         end
                       end
 
@@ -1360,7 +1360,7 @@ module Sam
                         def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::urlpdf_source
                       end
 
-                      private def self.variants: -> [[:base64, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource], [:text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource], [:content, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource], [:url, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource]]
+                      def self.variants: -> [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource]
                     end
 
                     type cache_control = { type: :ephemeral }
@@ -1438,10 +1438,10 @@ module Sam
                     def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::request_redacted_thinking_block
                   end
 
-                  private def self.variants: -> [[:text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock], [:image, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock], [:tool_use, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolUseBlock], [:tool_result, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock], [:document, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock], [:thinking, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestThinkingBlock], [:redacted_thinking, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestRedactedThinkingBlock]]
+                  def self.variants: -> [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolUseBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestThinkingBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestRedactedThinkingBlock]
                 end
 
-                private def self.variants: -> [[nil, String], [nil, ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::union_member1]]]
+                def self.variants: -> [String, ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::union_member1]]
               end
 
               type role = :user | :assistant
@@ -1651,11 +1651,11 @@ module Sam
                     def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::request_content_block_location_citation
                   end
 
-                  private def self.variants: -> [[:char_location, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestCharLocationCitation], [:page_location, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestPageLocationCitation], [:content_block_location, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestContentBlockLocationCitation]]
+                  def self.variants: -> [Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestCharLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestPageLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestContentBlockLocationCitation]
                 end
               end
 
-              private def self.variants: -> [[nil, String], [nil, ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1]]]
+              def self.variants: -> [String, ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1]]
             end
 
             type thinking =
@@ -1696,7 +1696,7 @@ module Sam
                 def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::thinking_config_disabled
               end
 
-              private def self.variants: -> [[:enabled, Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigEnabled], [:disabled, Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigDisabled]]
+              def self.variants: -> [Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigEnabled, Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigDisabled]
             end
 
             type tool_choice =
@@ -1787,7 +1787,7 @@ module Sam
                 def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::tool_choice_none
               end
 
-              private def self.variants: -> [[:auto, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAuto], [:any, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAny], [:tool, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceTool], [:none, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceNone]]
+              def self.variants: -> [Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAuto, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAny, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceTool, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceNone]
             end
 
             type tool =
@@ -1948,7 +1948,7 @@ module Sam
                 end
               end
 
-              private def self.variants: -> [[nil, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool], [nil, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124], [nil, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124]]
+              def self.variants: -> [Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124]
             end
           end
         end

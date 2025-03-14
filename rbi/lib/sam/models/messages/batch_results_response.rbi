@@ -715,14 +715,13 @@ module Sam
                     end
 
                     class << self
-                      # @api private
                       sig do
                         override
                           .returns(
-                            [[Symbol, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation], [Symbol, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation], [Symbol, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation]]
+                            [Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation]
                           )
                       end
-                      private def variants
+                      def variants
                       end
                     end
                   end
@@ -838,14 +837,13 @@ module Sam
                 end
 
                 class << self
-                  # @api private
                   sig do
                     override
                       .returns(
-                        [[Symbol, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock], [Symbol, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseToolUseBlock], [Symbol, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseThinkingBlock], [Symbol, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseRedactedThinkingBlock]]
+                        [Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseToolUseBlock, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseThinkingBlock, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseRedactedThinkingBlock]
                       )
                   end
-                  private def variants
+                  def variants
                   end
                 end
               end
@@ -1329,14 +1327,13 @@ module Sam
                 end
 
                 class << self
-                  # @api private
                   sig do
                     override
                       .returns(
-                        [[Symbol, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::InvalidRequestError], [Symbol, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::AuthenticationError], [Symbol, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::BillingError], [Symbol, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::PermissionError], [Symbol, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::NotFoundError], [Symbol, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::RateLimitError], [Symbol, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::GatewayTimeoutError], [Symbol, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::APIError], [Symbol, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::OverloadedError]]
+                        [Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::InvalidRequestError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::AuthenticationError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::BillingError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::PermissionError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::NotFoundError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::RateLimitError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::GatewayTimeoutError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::APIError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::OverloadedError]
                       )
                   end
-                  private def variants
+                  def variants
                   end
                 end
               end
@@ -1380,14 +1377,13 @@ module Sam
           end
 
           class << self
-            # @api private
             sig do
               override
                 .returns(
-                  [[Symbol, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult], [Symbol, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult], [Symbol, Sam::Models::Messages::BatchResultsResponse::Result::CanceledResult], [Symbol, Sam::Models::Messages::BatchResultsResponse::Result::ExpiredResult]]
+                  [Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult, Sam::Models::Messages::BatchResultsResponse::Result::CanceledResult, Sam::Models::Messages::BatchResultsResponse::Result::ExpiredResult]
                 )
             end
-            private def variants
+            def variants
             end
           end
         end

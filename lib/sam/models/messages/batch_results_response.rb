@@ -428,6 +428,12 @@ module Sam
 
                       # def initialize: (Hash | Sam::BaseModel) -> void
                     end
+
+                    # @!parse
+                    #   class << self
+                    #     # @return [Array(Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation)]
+                    #     def variants; end
+                    #   end
                   end
                 end
 
@@ -508,6 +514,12 @@ module Sam
 
                   # def initialize: (Hash | Sam::BaseModel) -> void
                 end
+
+                # @!parse
+                #   class << self
+                #     # @return [Array(Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseToolUseBlock, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseThinkingBlock, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseRedactedThinkingBlock)]
+                #     def variants; end
+                #   end
               end
 
               # @abstract
@@ -835,6 +847,12 @@ module Sam
 
                   # def initialize: (Hash | Sam::BaseModel) -> void
                 end
+
+                # @!parse
+                #   class << self
+                #     # @return [Array(Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::InvalidRequestError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::AuthenticationError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::BillingError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::PermissionError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::NotFoundError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::RateLimitError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::GatewayTimeoutError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::APIError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::OverloadedError)]
+                #     def variants; end
+                #   end
               end
             end
           end
@@ -866,6 +884,12 @@ module Sam
 
             # def initialize: (Hash | Sam::BaseModel) -> void
           end
+
+          # @!parse
+          #   class << self
+          #     # @return [Array(Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult, Sam::Models::Messages::BatchResultsResponse::Result::CanceledResult, Sam::Models::Messages::BatchResultsResponse::Result::ExpiredResult)]
+          #     def variants; end
+          #   end
         end
       end
     end

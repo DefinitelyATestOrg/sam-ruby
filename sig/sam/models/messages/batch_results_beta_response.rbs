@@ -261,7 +261,7 @@ module Sam
                       def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::beta_response_content_block_location_citation
                     end
 
-                    private def self.variants: -> [[:char_location, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation], [:page_location, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation], [:content_block_location, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation]]
+                    def self.variants: -> [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation]
                   end
                 end
 
@@ -334,7 +334,7 @@ module Sam
                   def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::beta_response_redacted_thinking_block
                 end
 
-                private def self.variants: -> [[:text, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock], [:tool_use, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock], [:thinking, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock], [:redacted_thinking, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock]]
+                def self.variants: -> [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock]
               end
 
               type stop_reason =
@@ -602,7 +602,7 @@ module Sam
                   def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::beta_overloaded_error
                 end
 
-                private def self.variants: -> [[:invalid_request_error, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaInvalidRequestError], [:authentication_error, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAuthenticationError], [:billing_error, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaBillingError], [:permission_error, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaPermissionError], [:not_found_error, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaNotFoundError], [:rate_limit_error, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaRateLimitError], [:timeout_error, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaGatewayTimeoutError], [:api_error, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAPIError], [:overloaded_error, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaOverloadedError]]
+                def self.variants: -> [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaInvalidRequestError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAuthenticationError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaBillingError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaPermissionError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaNotFoundError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaRateLimitError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaGatewayTimeoutError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAPIError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaOverloadedError]
               end
             end
           end
@@ -637,7 +637,7 @@ module Sam
             def to_hash: -> Sam::Models::Messages::BatchResultsBetaResponse::Result::beta_expired_result
           end
 
-          private def self.variants: -> [[:succeeded, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult], [:errored, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult], [:canceled, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaCanceledResult], [:expired, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaExpiredResult]]
+          def self.variants: -> [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaCanceledResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaExpiredResult]
         end
       end
     end

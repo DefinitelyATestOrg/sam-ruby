@@ -990,14 +990,13 @@ module Sam
                 end
 
                 class << self
-                  # @api private
                   sig do
                     override
                       .returns(
-                        [[Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]]
+                        [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]
                       )
                   end
-                  private def variants
+                  def variants
                   end
                 end
               end
@@ -1178,14 +1177,13 @@ module Sam
                 end
 
                 class << self
-                  # @api private
                   sig do
                     override
                       .returns(
-                        [[Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]]
+                        [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
                       )
                   end
-                  private def variants
+                  def variants
                   end
                 end
               end
@@ -1894,14 +1892,13 @@ module Sam
                       end
 
                       class << self
-                        # @api private
                         sig do
                           override
                             .returns(
-                              [[Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]]
+                              [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]
                             )
                         end
-                        private def variants
+                        def variants
                         end
                       end
                     end
@@ -2084,14 +2081,13 @@ module Sam
                       end
 
                       class << self
-                        # @api private
                         sig do
                           override
                             .returns(
-                              [[Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]]
+                              [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
                             )
                         end
-                        private def variants
+                        def variants
                         end
                       end
                     end
@@ -2116,38 +2112,33 @@ module Sam
                   end
 
                   class << self
-                    # @api private
                     sig do
                       override
                         .returns(
-                          [[Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock]]
+                          [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock]
                         )
                     end
-                    private def variants
+                    def variants
                     end
                   end
                 end
 
                 class << self
-                  # @api private
                   sig do
                     override
                       .returns(
                         [
-                          [NilClass, String],
-                          [
-                            NilClass,
-                            T::Array[
-                                                    T.any(
-                                                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock,
-                                                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
-                                                    )
-                                                    ]
-                          ]
+                          String,
+                          T::Array[
+                                                  T.any(
+                                                    Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock,
+                                                    Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
+                                                  )
+                                                  ]
                         ]
                       )
                   end
-                  private def variants
+                  def variants
                   end
                 end
               end
@@ -2878,14 +2869,13 @@ module Sam
                           end
 
                           class << self
-                            # @api private
                             sig do
                               override
                                 .returns(
-                                  [[Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]]
+                                  [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]
                                 )
                             end
-                            private def variants
+                            def variants
                             end
                           end
                         end
@@ -3068,14 +3058,13 @@ module Sam
                           end
 
                           class << self
-                            # @api private
                             sig do
                               override
                                 .returns(
-                                  [[Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]]
+                                  [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
                                 )
                             end
-                            private def variants
+                            def variants
                             end
                           end
                         end
@@ -3100,38 +3089,33 @@ module Sam
                       end
 
                       class << self
-                        # @api private
                         sig do
                           override
                             .returns(
-                              [[Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock]]
+                              [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock]
                             )
                         end
-                        private def variants
+                        def variants
                         end
                       end
                     end
 
                     class << self
-                      # @api private
                       sig do
                         override
                           .returns(
                             [
-                              [NilClass, String],
-                              [
-                                NilClass,
-                                T::Array[
-                                                            T.any(
-                                                              Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock,
-                                                              Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock
-                                                            )
-                                                            ]
-                              ]
+                              String,
+                              T::Array[
+                                                          T.any(
+                                                            Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock,
+                                                            Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock
+                                                          )
+                                                          ]
                             ]
                           )
                       end
-                      private def variants
+                      def variants
                       end
                     end
                   end
@@ -3164,14 +3148,13 @@ module Sam
                 end
 
                 class << self
-                  # @api private
                   sig do
                     override
                       .returns(
-                        [[Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource]]
+                        [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource]
                       )
                   end
-                  private def variants
+                  def variants
                   end
                 end
               end
@@ -3274,43 +3257,38 @@ module Sam
             end
 
             class << self
-              # @api private
               sig do
                 override
                   .returns(
-                    [[Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestThinkingBlock], [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock]]
+                    [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestThinkingBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock]
                   )
               end
-              private def variants
+              def variants
               end
             end
           end
 
           class << self
-            # @api private
             sig do
               override
                 .returns(
                   [
-                    [NilClass, String],
-                    [
-                      NilClass,
-                      T::Array[
-                                        T.any(
-                                          Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock,
-                                          Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock,
-                                          Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock,
-                                          Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock,
-                                          Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock,
-                                          Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestThinkingBlock,
-                                          Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock
-                                        )
-                                        ]
-                    ]
+                    String,
+                    T::Array[
+                                      T.any(
+                                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock,
+                                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock,
+                                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock,
+                                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock,
+                                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock,
+                                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestThinkingBlock,
+                                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock
+                                      )
+                                      ]
                   ]
                 )
             end
-            private def variants
+            def variants
             end
           end
         end
@@ -3721,28 +3699,21 @@ module Sam
             end
 
             class << self
-              # @api private
               sig do
                 override
                   .returns(
-                    [[Symbol, Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestCharLocationCitation], [Symbol, Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestPageLocationCitation], [Symbol, Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation]]
+                    [Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestCharLocationCitation, Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestPageLocationCitation, Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation]
                   )
               end
-              private def variants
+              def variants
               end
             end
           end
         end
 
         class << self
-          # @api private
-          sig do
-            override
-              .returns(
-                [[NilClass, String], [NilClass, T::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1]]]
-              )
-          end
-          private def variants
+          sig { override.returns([String, T::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1]]) }
+          def variants
           end
         end
       end
@@ -3813,14 +3784,13 @@ module Sam
         end
 
         class << self
-          # @api private
           sig do
             override
               .returns(
-                [[Symbol, Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigEnabled], [Symbol, Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigDisabled]]
+                [Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigEnabled, Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigDisabled]
               )
           end
-          private def variants
+          def variants
           end
         end
       end
@@ -3958,14 +3928,13 @@ module Sam
         end
 
         class << self
-          # @api private
           sig do
             override
               .returns(
-                [[Symbol, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAuto], [Symbol, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAny], [Symbol, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceTool], [Symbol, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceNone]]
+                [Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAuto, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAny, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceTool, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceNone]
               )
           end
-          private def variants
+          def variants
           end
         end
       end
@@ -4667,14 +4636,13 @@ module Sam
         end
 
         class << self
-          # @api private
           sig do
             override
               .returns(
-                [[NilClass, Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool], [NilClass, Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022], [NilClass, Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022], [NilClass, Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022], [NilClass, Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124], [NilClass, Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124], [NilClass, Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124]]
+                [Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool, Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022, Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022, Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022, Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124, Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124, Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124]
               )
           end
-          private def variants
+          def variants
           end
         end
       end
