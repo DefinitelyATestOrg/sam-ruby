@@ -35,7 +35,6 @@ module Sam
       #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Sam::Models::ModelsBetaTrueListResponse]
-      #
       def list(params = {})
         parsed, options = Sam::Models::ModelsBetaTrueListParams.dump_request(params)
         query_params = [:after_id, :before_id, :limit]
@@ -50,7 +49,6 @@ module Sam
       end
 
       # @param client [Sam::Client]
-      #
       def initialize(client:)
         @client = client
       end

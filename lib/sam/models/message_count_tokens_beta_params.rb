@@ -319,7 +319,6 @@ module Sam
         # def initialize: (Hash | Sam::BaseModel) -> void
 
         # @abstract
-        #
         class Content < Sam::Union
           UnionMember1Array = Sam::ArrayOf[union: -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1 }]
 
@@ -328,7 +327,6 @@ module Sam
           variant Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1Array
 
           # @abstract
-          #
           class UnionMember1 < Sam::Union
             discriminator :type
 
@@ -407,7 +405,6 @@ module Sam
               end
 
               # @abstract
-              #
               class Citation < Sam::Union
                 discriminator :type
 
@@ -613,7 +610,6 @@ module Sam
               # def initialize: (Hash | Sam::BaseModel) -> void
 
               # @abstract
-              #
               class Source < Sam::Union
                 discriminator :type
 
@@ -650,7 +646,6 @@ module Sam
                   # def initialize: (Hash | Sam::BaseModel) -> void
 
                   # @abstract
-                  #
                   class MediaType < Sam::Enum
                     IMAGE_JPEG = :"image/jpeg"
                     IMAGE_PNG = :"image/png"
@@ -814,7 +809,6 @@ module Sam
               end
 
               # @abstract
-              #
               class Content < Sam::Union
                 UnionMember1Array = Sam::ArrayOf[
                 union: -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1 }
@@ -825,7 +819,6 @@ module Sam
                 variant Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1Array
 
                 # @abstract
-                #
                 class UnionMember1 < Sam::Union
                   discriminator :type
 
@@ -889,7 +882,6 @@ module Sam
                     end
 
                     # @abstract
-                    #
                     class Citation < Sam::Union
                       discriminator :type
 
@@ -1095,7 +1087,6 @@ module Sam
                     # def initialize: (Hash | Sam::BaseModel) -> void
 
                     # @abstract
-                    #
                     class Source < Sam::Union
                       discriminator :type
 
@@ -1132,7 +1123,6 @@ module Sam
                         # def initialize: (Hash | Sam::BaseModel) -> void
 
                         # @abstract
-                        #
                         class MediaType < Sam::Enum
                           IMAGE_JPEG = :"image/jpeg"
                           IMAGE_PNG = :"image/png"
@@ -1234,7 +1224,6 @@ module Sam
               # def initialize: (Hash | Sam::BaseModel) -> void
 
               # @abstract
-              #
               class Source < Sam::Union
                 discriminator :type
 
@@ -1323,7 +1312,6 @@ module Sam
                   # def initialize: (Hash | Sam::BaseModel) -> void
 
                   # @abstract
-                  #
                   class Content < Sam::Union
                     UnionMember1Array = Sam::ArrayOf[
                     union: -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1 }
@@ -1334,7 +1322,6 @@ module Sam
                     variant Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1Array
 
                     # @abstract
-                    #
                     class UnionMember1 < Sam::Union
                       discriminator :type
 
@@ -1398,7 +1385,6 @@ module Sam
                         end
 
                         # @abstract
-                        #
                         class Citation < Sam::Union
                           discriminator :type
 
@@ -1604,7 +1590,6 @@ module Sam
                         # def initialize: (Hash | Sam::BaseModel) -> void
 
                         # @abstract
-                        #
                         class Source < Sam::Union
                           discriminator :type
 
@@ -1641,7 +1626,6 @@ module Sam
                             # def initialize: (Hash | Sam::BaseModel) -> void
 
                             # @abstract
-                            #
                             class MediaType < Sam::Enum
                               IMAGE_JPEG = :"image/jpeg"
                               IMAGE_PNG = :"image/png"
@@ -1794,7 +1778,6 @@ module Sam
         end
 
         # @abstract
-        #
         class Role < Sam::Enum
           USER = :user
           ASSISTANT = :assistant
@@ -1867,7 +1850,6 @@ module Sam
           end
 
           # @abstract
-          #
           class Citation < Sam::Union
             discriminator :type
 
@@ -2241,7 +2223,6 @@ module Sam
       end
 
       # @abstract
-      #
       class Tool < Sam::Union
         variant -> { Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool }
 
@@ -2353,7 +2334,6 @@ module Sam
           end
 
           # @abstract
-          #
           class Type < Sam::Enum
             CUSTOM = :custom
 

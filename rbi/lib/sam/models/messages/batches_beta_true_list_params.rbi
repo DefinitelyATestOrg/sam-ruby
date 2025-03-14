@@ -7,6 +7,8 @@ module Sam
         extend Sam::RequestParameters::Converter
         include Sam::RequestParameters
 
+        # ID of the object to use as a cursor for pagination. When provided, returns the
+        #   page of results immediately after this object.
         sig { returns(T.nilable(String)) }
         def after_id
         end
@@ -15,6 +17,8 @@ module Sam
         def after_id=(_)
         end
 
+        # ID of the object to use as a cursor for pagination. When provided, returns the
+        #   page of results immediately before this object.
         sig { returns(T.nilable(String)) }
         def before_id
         end
@@ -23,6 +27,9 @@ module Sam
         def before_id=(_)
         end
 
+        # Number of items to return per page.
+        #
+        #   Defaults to `20`. Ranges from `1` to `1000`.
         sig { returns(T.nilable(Integer)) }
         def limit
         end
@@ -31,6 +38,10 @@ module Sam
         def limit=(_)
         end
 
+        # Optional header to specify the beta version(s) you want to use.
+        #
+        #   To use multiple betas, use a comma separated list like `beta1,beta2` or specify
+        #   the header multiple times for each beta.
         sig { returns(T.nilable(T::Array[String])) }
         def anthropic_beta
         end
@@ -39,6 +50,10 @@ module Sam
         def anthropic_beta=(_)
         end
 
+        # The version of the Anthropic API you want to use.
+        #
+        #   Read more about versioning and our version history
+        #   [here](https://docs.anthropic.com/en/api/versioning).
         sig { returns(T.nilable(String)) }
         def anthropic_version
         end
@@ -47,6 +62,12 @@ module Sam
         def anthropic_version=(_)
         end
 
+        # Your unique API key for authentication.
+        #
+        #   This key is required in the header of all API requests, to authenticate your
+        #   account and access Anthropic's services. Get your API key through the
+        #   [Console](https://console.anthropic.com/settings/keys). Each key is scoped to a
+        #   Workspace.
         sig { returns(T.nilable(String)) }
         def x_api_key
         end

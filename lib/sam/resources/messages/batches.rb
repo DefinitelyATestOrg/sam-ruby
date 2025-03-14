@@ -41,7 +41,6 @@ module Sam
         #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Sam::Models::Messages::BatchCreateResponse]
-        #
         def create(params)
           parsed, options = Sam::Models::Messages::BatchCreateParams.dump_request(params)
           header_params = [:"anthropic-beta", :"anthropic-version", :"x-api-key"]
@@ -86,7 +85,6 @@ module Sam
         #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Sam::Models::Messages::BatchRetrieveResponse]
-        #
         def retrieve(message_batch_id, params = {})
           parsed, options = Sam::Models::Messages::BatchRetrieveParams.dump_request(params)
           @client.request(
@@ -136,7 +134,6 @@ module Sam
         #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Sam::Models::Messages::BatchListResponse]
-        #
         def list(params = {})
           parsed, options = Sam::Models::Messages::BatchListParams.dump_request(params)
           query_params = [:after_id, :before_id, :limit]
@@ -182,7 +179,6 @@ module Sam
         #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Sam::Models::Messages::BatchDeleteResponse]
-        #
         def delete(message_batch_id, params = {})
           parsed, options = Sam::Models::Messages::BatchDeleteParams.dump_request(params)
           @client.request(
@@ -231,7 +227,6 @@ module Sam
         #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Sam::Models::Messages::BatchCancelResponse]
-        #
         def cancel(message_batch_id, params = {})
           parsed, options = Sam::Models::Messages::BatchCancelParams.dump_request(params)
           @client.request(
@@ -280,7 +275,6 @@ module Sam
         #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Sam::Models::Messages::BatchCancelBetaResponse]
-        #
         def cancel_beta(message_batch_id, params = {})
           parsed, options = Sam::Models::Messages::BatchCancelBetaParams.dump_request(params)
           @client.request(
@@ -325,7 +319,6 @@ module Sam
         #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Sam::JsonLStream<Sam::Models::Messages::BatchResultsResponse>]
-        #
         def results(message_batch_id, params = {})
           parsed, options = Sam::Models::Messages::BatchResultsParams.dump_request(params)
           @client.request(
@@ -371,7 +364,6 @@ module Sam
         #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Sam::JsonLStream<Sam::Models::Messages::BatchResultsBetaResponse>]
-        #
         def results_beta(message_batch_id, params = {})
           parsed, options = Sam::Models::Messages::BatchResultsBetaParams.dump_request(params)
           @client.request(
@@ -385,7 +377,6 @@ module Sam
         end
 
         # @param client [Sam::Client]
-        #
         def initialize(client:)
           @client = client
           @beta_true = Sam::Resources::Messages::Batches::BetaTrue.new(client: client)

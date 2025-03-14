@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 module Sam
-  # @private
+  # @api private
   #
   # @abstract
-  #
   module RequestParameters
     # @!parse
     #   # Options to specify HTTP behaviour for this request.
@@ -12,7 +11,6 @@ module Sam
     #   attr_accessor :request_options
 
     # @param mod [Module]
-    #
     def self.included(mod)
       return unless mod <= Sam::BaseModel
 
@@ -20,15 +18,13 @@ module Sam
       mod.optional(:request_options, Sam::RequestOptions)
     end
 
-    # @private
-    #
+    # @api private
     module Converter
-      # @private
+      # @api private
       #
       # @param params [Object]
       #
       # @return [Array(Object, Hash{Symbol=>Object})]
-      #
       def dump_request(params)
         case (dumped = dump(params))
         in Hash
@@ -46,12 +42,11 @@ module Sam
   #   When making a request, you can pass an actual {RequestOptions} instance, or
   #   simply pass a Hash with symbol keys matching the attributes on this class.
   class RequestOptions < Sam::BaseModel
-    # @private
+    # @api private
     #
     # @param opts [Sam::RequestOptions, Hash{Symbol=>Object}]
     #
     # @raise [ArgumentError]
-    #
     def self.validate!(opts)
       case opts
       in Sam::RequestOptions | Hash

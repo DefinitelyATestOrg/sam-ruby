@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Sam
-  # @private
+  # @api private
   #
   # @example
   # ```ruby
@@ -19,10 +19,9 @@ module Sam
   class JsonLStream
     include Sam::BaseStream
 
-    # @private
+    # @api private
     #
     # @return [Enumerable]
-    #
     private def iterator
       @iterator ||= Sam::Util.chain_fused(@messages) do |y|
         @messages.each do
