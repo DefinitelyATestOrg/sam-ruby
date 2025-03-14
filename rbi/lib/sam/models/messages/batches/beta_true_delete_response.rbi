@@ -5,6 +5,7 @@ module Sam
     module Messages
       module Batches
         class BetaTrueDeleteResponse < Sam::BaseModel
+          # ID of the Message Batch.
           sig { returns(String) }
           def id
           end
@@ -13,6 +14,9 @@ module Sam
           def id=(_)
           end
 
+          # Deleted object type.
+          #
+          #   For Message Batches, this is always `"message_batch_deleted"`.
           sig { returns(Symbol) }
           def type
           end

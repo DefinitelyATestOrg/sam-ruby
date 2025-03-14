@@ -1,6 +1,7 @@
 # typed: strong
 
 module Sam
+  # @api private
   module BasePage
     abstract!
 
@@ -24,6 +25,7 @@ module Sam
 
     alias_method :enum_for, :to_enum
 
+    # @api private
     sig do
       params(
         client: Sam::BaseClient,

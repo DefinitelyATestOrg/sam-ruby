@@ -54,7 +54,6 @@ module Sam
     # @param initial_retry_delay [Float]
     #
     # @param max_retry_delay [Float]
-    #
     def initialize(
       base_url: nil,
       api_key: ENV["API_KEY"],

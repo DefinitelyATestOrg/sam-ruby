@@ -4,6 +4,9 @@ module Sam
   module Models
     module Messages
       class BatchCreateResponse < Sam::BaseModel
+        # Unique object identifier.
+        #
+        #   The format and length of IDs may change over time.
         sig { returns(String) }
         def id
         end
@@ -12,6 +15,8 @@ module Sam
         def id=(_)
         end
 
+        # RFC 3339 datetime string representing the time at which the Message Batch was
+        #   archived and its results became unavailable.
         sig { returns(T.nilable(Time)) }
         def archived_at
         end
@@ -20,6 +25,8 @@ module Sam
         def archived_at=(_)
         end
 
+        # RFC 3339 datetime string representing the time at which cancellation was
+        #   initiated for the Message Batch. Specified only if cancellation was initiated.
         sig { returns(T.nilable(Time)) }
         def cancel_initiated_at
         end
@@ -28,6 +35,8 @@ module Sam
         def cancel_initiated_at=(_)
         end
 
+        # RFC 3339 datetime string representing the time at which the Message Batch was
+        #   created.
         sig { returns(Time) }
         def created_at
         end
@@ -36,6 +45,11 @@ module Sam
         def created_at=(_)
         end
 
+        # RFC 3339 datetime string representing the time at which processing for the
+        #   Message Batch ended. Specified only once processing ends.
+        #
+        #   Processing ends when every request in a Message Batch has either succeeded,
+        #   errored, canceled, or expired.
         sig { returns(T.nilable(Time)) }
         def ended_at
         end
@@ -44,6 +58,8 @@ module Sam
         def ended_at=(_)
         end
 
+        # RFC 3339 datetime string representing the time at which the Message Batch will
+        #   expire and end processing, which is 24 hours after creation.
         sig { returns(Time) }
         def expires_at
         end
@@ -52,6 +68,7 @@ module Sam
         def expires_at=(_)
         end
 
+        # Processing status of the Message Batch.
         sig { returns(Symbol) }
         def processing_status
         end
@@ -60,6 +77,11 @@ module Sam
         def processing_status=(_)
         end
 
+        # Tallies requests within the Message Batch, categorized by their status.
+        #
+        #   Requests start as `processing` and move to one of the other statuses only once
+        #   processing of the entire batch ends. The sum of all values always matches the
+        #   total number of requests in the batch.
         sig { returns(Sam::Models::Messages::BatchCreateResponse::RequestCounts) }
         def request_counts
         end
@@ -71,6 +93,11 @@ module Sam
         def request_counts=(_)
         end
 
+        # URL to a `.jsonl` file containing the results of the Message Batch requests.
+        #   Specified only once processing ends.
+        #
+        #   Results in the file are not guaranteed to be in the same order as requests. Use
+        #   the `custom_id` field to match results to requests.
         sig { returns(T.nilable(String)) }
         def results_url
         end
@@ -79,6 +106,9 @@ module Sam
         def results_url=(_)
         end
 
+        # Object type.
+        #
+        #   For Message Batches, this is always `"message_batch"`.
         sig { returns(Symbol) }
         def type
         end
@@ -136,6 +166,7 @@ module Sam
         def to_hash
         end
 
+        # Processing status of the Message Batch.
         class ProcessingStatus < Sam::Enum
           abstract!
 
@@ -151,6 +182,9 @@ module Sam
         end
 
         class RequestCounts < Sam::BaseModel
+          # Number of requests in the Message Batch that have been canceled.
+          #
+          #   This is zero until processing of the entire Message Batch has ended.
           sig { returns(Integer) }
           def canceled
           end
@@ -159,6 +193,9 @@ module Sam
           def canceled=(_)
           end
 
+          # Number of requests in the Message Batch that encountered an error.
+          #
+          #   This is zero until processing of the entire Message Batch has ended.
           sig { returns(Integer) }
           def errored
           end
@@ -167,6 +204,9 @@ module Sam
           def errored=(_)
           end
 
+          # Number of requests in the Message Batch that have expired.
+          #
+          #   This is zero until processing of the entire Message Batch has ended.
           sig { returns(Integer) }
           def expired
           end
@@ -175,6 +215,7 @@ module Sam
           def expired=(_)
           end
 
+          # Number of requests in the Message Batch that are processing.
           sig { returns(Integer) }
           def processing
           end
@@ -183,6 +224,9 @@ module Sam
           def processing=(_)
           end
 
+          # Number of requests in the Message Batch that have completed successfully.
+          #
+          #   This is zero until processing of the entire Message Batch has ended.
           sig { returns(Integer) }
           def succeeded
           end
@@ -191,6 +235,11 @@ module Sam
           def succeeded=(_)
           end
 
+          # Tallies requests within the Message Batch, categorized by their status.
+          #
+          #   Requests start as `processing` and move to one of the other statuses only once
+          #   processing of the entire batch ends. The sum of all values always matches the
+          #   total number of requests in the batch.
           sig do
             params(
               canceled: Integer,

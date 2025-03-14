@@ -43,7 +43,7 @@ module Sam
       response_headers: ::Hash[String, String]
     ) -> Sam::BaseClient::request_input
 
-    # @private
+    # @api private
     attr_accessor requester: top
 
     def initialize: (

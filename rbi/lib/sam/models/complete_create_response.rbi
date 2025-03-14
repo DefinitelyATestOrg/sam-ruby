@@ -3,6 +3,9 @@
 module Sam
   module Models
     class CompleteCreateResponse < Sam::BaseModel
+      # Unique object identifier.
+      #
+      #   The format and length of IDs may change over time.
       sig { returns(String) }
       def id
       end
@@ -11,6 +14,7 @@ module Sam
       def id=(_)
       end
 
+      # The resulting completion up to and excluding the stop sequences.
       sig { returns(String) }
       def completion
       end
@@ -19,6 +23,7 @@ module Sam
       def completion=(_)
       end
 
+      # The model that handled the request.
       sig { returns(String) }
       def model
       end
@@ -27,6 +32,13 @@ module Sam
       def model=(_)
       end
 
+      # The reason that we stopped.
+      #
+      #   This may be one the following values:
+      #
+      #   - `"stop_sequence"`: we reached a stop sequence — either provided by you via the
+      #     `stop_sequences` parameter, or a stop sequence built into the model
+      #   - `"max_tokens"`: we exceeded `max_tokens_to_sample` or the model's maximum
       sig { returns(T.nilable(String)) }
       def stop_reason
       end
@@ -35,6 +47,9 @@ module Sam
       def stop_reason=(_)
       end
 
+      # Object type.
+      #
+      #   For Text Completions, this is always `"completion"`.
       sig { returns(Symbol) }
       def type
       end

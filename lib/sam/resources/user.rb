@@ -4,7 +4,6 @@ module Sam
   module Resources
     class User
       # @param client [Sam::Client]
-      #
       def initialize(client:)
         @client = client
       end
