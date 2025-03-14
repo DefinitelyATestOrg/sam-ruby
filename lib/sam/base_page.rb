@@ -19,7 +19,13 @@ module Sam
   #
   # @example
   # ```ruby
-  # messages = page.to_enum.take(2)
+  # messages = page
+  #   .to_enum
+  #   .lazy
+  #   .select { _1.object_id.even? }
+  #   .map(&:itself)
+  #   .take(2)
+  #   .to_a
   #
   # messages => Array
   # ```
