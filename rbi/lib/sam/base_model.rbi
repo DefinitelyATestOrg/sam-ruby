@@ -435,6 +435,7 @@ module Sam
       def known_fields
       end
 
+      # @api private
       sig { returns(T::Hash[Symbol, T.all(Sam::BaseModel::KnownFieldShape, {type: Sam::Converter::Input})]) }
       def fields
       end
