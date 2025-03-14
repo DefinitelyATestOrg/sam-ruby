@@ -1,7 +1,6 @@
 # typed: strong
 
 module Sam
-  # @api private
   module BasePage
     abstract!
 

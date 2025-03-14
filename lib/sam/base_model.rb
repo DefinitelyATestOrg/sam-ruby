@@ -816,8 +816,6 @@ module Sam
     end
   end
 
-  # @api private
-  #
   # @abstract
   #
   # @example
@@ -843,6 +841,8 @@ module Sam
         @known_fields ||= (self < Sam::BaseModel ? superclass.known_fields.dup : {})
       end
 
+      # @api private
+      #
       # @return [Hash{Symbol=>Hash{Symbol=>Object}}]
       def fields
         known_fields.transform_values do |field|
