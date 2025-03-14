@@ -130,7 +130,6 @@ module Sam
       # def initialize: (Hash | Sam::BaseModel) -> void
 
       # @abstract
-      #
       class Content < Sam::Union
         discriminator :type
 
@@ -176,7 +175,6 @@ module Sam
           # def initialize: (Hash | Sam::BaseModel) -> void
 
           # @abstract
-          #
           class Citation < Sam::Union
             discriminator :type
 

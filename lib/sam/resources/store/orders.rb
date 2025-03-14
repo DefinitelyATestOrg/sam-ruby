@@ -5,7 +5,6 @@ module Sam
     class Store
       class Orders
         # @param client [Sam::Client]
-        #
         def initialize(client:)
           @client = client
         end

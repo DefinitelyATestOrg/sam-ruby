@@ -10,6 +10,7 @@ module Sam
 
     DEFAULT_MAX_RETRY_DELAY = T.let(8.0, Float)
 
+    # API key used for authenticating requests via the Authorization header
     sig { returns(String) }
     def api_key
     end
@@ -42,6 +43,7 @@ module Sam
     def models_beta_true
     end
 
+    # Creates and returns a new client for interacting with the API.
     sig do
       params(
         base_url: T.nilable(String),

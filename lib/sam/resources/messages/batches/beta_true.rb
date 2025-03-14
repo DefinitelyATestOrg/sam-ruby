@@ -36,7 +36,6 @@ module Sam
           #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Sam::Models::Messages::Batches::BetaTrueRetrieveResponse]
-          #
           def retrieve(message_batch_id, params = {})
             parsed, options = Sam::Models::Messages::Batches::BetaTrueRetrieveParams.dump_request(params)
             @client.request(
@@ -80,7 +79,6 @@ module Sam
           #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Sam::Models::Messages::Batches::BetaTrueDeleteResponse]
-          #
           def delete(message_batch_id, params = {})
             parsed, options = Sam::Models::Messages::Batches::BetaTrueDeleteParams.dump_request(params)
             @client.request(
@@ -93,7 +91,6 @@ module Sam
           end
 
           # @param client [Sam::Client]
-          #
           def initialize(client:)
             @client = client
           end

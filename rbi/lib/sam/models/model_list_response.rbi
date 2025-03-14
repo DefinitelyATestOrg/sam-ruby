@@ -14,6 +14,8 @@ module Sam
       def data=(_)
       end
 
+      # First ID in the `data` list. Can be used as the `before_id` for the previous
+      #   page.
       sig { returns(T.nilable(String)) }
       def first_id
       end
@@ -22,6 +24,7 @@ module Sam
       def first_id=(_)
       end
 
+      # Indicates if there are more results in the requested page direction.
       sig { returns(T::Boolean) }
       def has_more
       end
@@ -30,6 +33,7 @@ module Sam
       def has_more=(_)
       end
 
+      # Last ID in the `data` list. Can be used as the `after_id` for the next page.
       sig { returns(T.nilable(String)) }
       def last_id
       end
@@ -65,6 +69,7 @@ module Sam
       end
 
       class Data < Sam::BaseModel
+        # Unique model identifier.
         sig { returns(String) }
         def id
         end
@@ -73,6 +78,8 @@ module Sam
         def id=(_)
         end
 
+        # RFC 3339 datetime string representing the time at which the model was released.
+        #   May be set to an epoch value if the release date is unknown.
         sig { returns(Time) }
         def created_at
         end
@@ -81,6 +88,7 @@ module Sam
         def created_at=(_)
         end
 
+        # A human-readable name for the model.
         sig { returns(String) }
         def display_name
         end
@@ -89,6 +97,9 @@ module Sam
         def display_name=(_)
         end
 
+        # Object type.
+        #
+        #   For Models, this is always `"model"`.
         sig { returns(Symbol) }
         def type
         end
