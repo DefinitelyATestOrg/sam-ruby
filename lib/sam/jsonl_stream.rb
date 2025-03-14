@@ -3,16 +3,22 @@
 module Sam
   # @example
   # ```ruby
-  # stream.for_each do |event|
-  #   puts(event)
+  # stream.for_each do |batch|
+  #   puts(batch)
   # end
   # ```
   #
   # @example
   # ```ruby
-  # events = stream.to_enum.take(2)
+  # batches = stream
+  #   .to_enum
+  #   .lazy
+  #   .select { _1.object_id.even? }
+  #   .map(&:itself)
+  #   .take(2)
+  #   .to_a
   #
-  # events => Array
+  # batches => Array
   # ```
   class JsonLStream
     include Sam::BaseStream
