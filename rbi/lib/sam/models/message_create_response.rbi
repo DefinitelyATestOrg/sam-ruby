@@ -578,14 +578,13 @@ module Sam
             end
 
             class << self
-              # @api private
               sig do
                 override
                   .returns(
-                    [[Symbol, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation], [Symbol, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation], [Symbol, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation]]
+                    [Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation]
                   )
               end
-              private def variants
+              def variants
               end
             end
           end
@@ -694,14 +693,13 @@ module Sam
         end
 
         class << self
-          # @api private
           sig do
             override
               .returns(
-                [[Symbol, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock], [Symbol, Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock], [Symbol, Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock], [Symbol, Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock]]
+                [Sam::Models::MessageCreateResponse::Content::ResponseTextBlock, Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock, Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock, Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock]
               )
           end
-          private def variants
+          def variants
           end
         end
       end
