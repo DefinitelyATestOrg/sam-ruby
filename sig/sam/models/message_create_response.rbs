@@ -204,7 +204,7 @@ module Sam
               def to_hash: -> Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::response_content_block_location_citation
             end
 
-            private def self.variants: -> [[:char_location, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation], [:page_location, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation], [:content_block_location, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation]]
+            def self.variants: -> [Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation]
           end
         end
 
@@ -268,7 +268,7 @@ module Sam
           def to_hash: -> Sam::Models::MessageCreateResponse::Content::response_redacted_thinking_block
         end
 
-        private def self.variants: -> [[:text, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock], [:tool_use, Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock], [:thinking, Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock], [:redacted_thinking, Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock]]
+        def self.variants: -> [Sam::Models::MessageCreateResponse::Content::ResponseTextBlock, Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock, Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock, Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock]
       end
 
       type stop_reason = :end_turn | :max_tokens | :stop_sequence | :tool_use

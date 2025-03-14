@@ -348,6 +348,12 @@ module Sam
 
               # def initialize: (Hash | Sam::BaseModel) -> void
             end
+
+            # @!parse
+            #   class << self
+            #     # @return [Array(Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation)]
+            #     def variants; end
+            #   end
           end
         end
 
@@ -428,6 +434,12 @@ module Sam
 
           # def initialize: (Hash | Sam::BaseModel) -> void
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Sam::Models::MessageCreateResponse::Content::ResponseTextBlock, Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock, Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock, Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock)]
+        #     def variants; end
+        #   end
       end
 
       # @abstract

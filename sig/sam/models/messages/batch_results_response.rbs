@@ -260,7 +260,7 @@ module Sam
                       def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::response_content_block_location_citation
                     end
 
-                    private def self.variants: -> [[:char_location, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation], [:page_location, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation], [:content_block_location, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation]]
+                    def self.variants: -> [Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation]
                   end
                 end
 
@@ -333,7 +333,7 @@ module Sam
                   def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::response_redacted_thinking_block
                 end
 
-                private def self.variants: -> [[:text, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock], [:tool_use, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseToolUseBlock], [:thinking, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseThinkingBlock], [:redacted_thinking, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseRedactedThinkingBlock]]
+                def self.variants: -> [Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseToolUseBlock, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseThinkingBlock, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseRedactedThinkingBlock]
               end
 
               type stop_reason =
@@ -600,7 +600,7 @@ module Sam
                   def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::overloaded_error
                 end
 
-                private def self.variants: -> [[:invalid_request_error, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::InvalidRequestError], [:authentication_error, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::AuthenticationError], [:billing_error, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::BillingError], [:permission_error, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::PermissionError], [:not_found_error, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::NotFoundError], [:rate_limit_error, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::RateLimitError], [:timeout_error, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::GatewayTimeoutError], [:api_error, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::APIError], [:overloaded_error, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::OverloadedError]]
+                def self.variants: -> [Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::InvalidRequestError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::AuthenticationError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::BillingError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::PermissionError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::NotFoundError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::RateLimitError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::GatewayTimeoutError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::APIError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::OverloadedError]
               end
             end
           end
@@ -635,7 +635,7 @@ module Sam
             def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::expired_result
           end
 
-          private def self.variants: -> [[:succeeded, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult], [:errored, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult], [:canceled, Sam::Models::Messages::BatchResultsResponse::Result::CanceledResult], [:expired, Sam::Models::Messages::BatchResultsResponse::Result::ExpiredResult]]
+          def self.variants: -> [Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult, Sam::Models::Messages::BatchResultsResponse::Result::CanceledResult, Sam::Models::Messages::BatchResultsResponse::Result::ExpiredResult]
         end
       end
     end

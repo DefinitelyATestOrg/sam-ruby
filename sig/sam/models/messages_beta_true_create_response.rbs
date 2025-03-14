@@ -206,7 +206,7 @@ module Sam
               def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::beta_response_content_block_location_citation
             end
 
-            private def self.variants: -> [[:char_location, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation], [:page_location, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation], [:content_block_location, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation]]
+            def self.variants: -> [Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation]
           end
         end
 
@@ -270,7 +270,7 @@ module Sam
           def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::beta_response_redacted_thinking_block
         end
 
-        private def self.variants: -> [[:text, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock], [:tool_use, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseToolUseBlock], [:thinking, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseThinkingBlock], [:redacted_thinking, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseRedactedThinkingBlock]]
+        def self.variants: -> [Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseToolUseBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseThinkingBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseRedactedThinkingBlock]
       end
 
       type stop_reason = :end_turn | :max_tokens | :stop_sequence | :tool_use

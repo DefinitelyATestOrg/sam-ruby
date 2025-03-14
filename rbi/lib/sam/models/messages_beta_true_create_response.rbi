@@ -581,14 +581,13 @@ module Sam
             end
 
             class << self
-              # @api private
               sig do
                 override
                   .returns(
-                    [[Symbol, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation], [Symbol, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation], [Symbol, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation]]
+                    [Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation]
                   )
               end
-              private def variants
+              def variants
               end
             end
           end
@@ -697,14 +696,13 @@ module Sam
         end
 
         class << self
-          # @api private
           sig do
             override
               .returns(
-                [[Symbol, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock], [Symbol, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseToolUseBlock], [Symbol, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseThinkingBlock], [Symbol, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseRedactedThinkingBlock]]
+                [Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseToolUseBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseThinkingBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseRedactedThinkingBlock]
               )
           end
-          private def variants
+          def variants
           end
         end
       end
