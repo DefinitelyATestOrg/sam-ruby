@@ -222,6 +222,17 @@ module Sam
       class Content < Sam::Union
         abstract!
 
+        Variants = type_template(:out) do
+          {
+            fixed: T.any(
+              Sam::Models::MessageCreateResponse::Content::ResponseTextBlock,
+              Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock,
+              Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock,
+              Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock
+            )
+          }
+        end
+
         class ResponseTextBlock < Sam::BaseModel
           # Citations supporting the text block.
           #
@@ -329,6 +340,16 @@ module Sam
 
           class Citation < Sam::Union
             abstract!
+
+            Variants = type_template(:out) do
+              {
+                fixed: T.any(
+                  Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
+                  Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
+                  Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
+                )
+              }
+            end
 
             class ResponseCharLocationCitation < Sam::BaseModel
               sig { returns(String) }
@@ -576,17 +597,6 @@ module Sam
               def to_hash
               end
             end
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    [Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation]
-                  )
-              end
-              def variants
-              end
-            end
           end
         end
 
@@ -691,17 +701,6 @@ module Sam
           def to_hash
           end
         end
-
-        class << self
-          sig do
-            override
-              .returns(
-                [Sam::Models::MessageCreateResponse::Content::ResponseTextBlock, Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock, Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock, Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock]
-              )
-          end
-          def variants
-          end
-        end
       end
 
       # The reason that we stopped.
@@ -718,16 +717,12 @@ module Sam
       class StopReason < Sam::Enum
         abstract!
 
-        END_TURN = T.let(:end_turn, T.nilable(Symbol))
-        MAX_TOKENS = T.let(:max_tokens, T.nilable(Symbol))
-        STOP_SEQUENCE = T.let(:stop_sequence, T.nilable(Symbol))
-        TOOL_USE = T.let(:tool_use, T.nilable(Symbol))
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        END_TURN = :end_turn
+        MAX_TOKENS = :max_tokens
+        STOP_SEQUENCE = :stop_sequence
+        TOOL_USE = :tool_use
       end
 
       class Usage < Sam::BaseModel
