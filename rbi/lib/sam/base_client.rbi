@@ -1,6 +1,7 @@
 # typed: strong
 
 module Sam
+  # @api private
   class BaseClient
     abstract!
 
