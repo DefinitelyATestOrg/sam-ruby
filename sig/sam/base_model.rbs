@@ -82,7 +82,7 @@ module Sam
   class Union
     extend Sam::Converter
 
-    private def self.known_variants: -> ::Array[[Symbol?, Proc]]
+    private def self.known_variants: -> ::Array[[Symbol?, (^-> Sam::Converter::input)]]
 
     def self.derefed_variants: -> ::Array[[Symbol?, top]]
 

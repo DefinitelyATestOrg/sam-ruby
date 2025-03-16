@@ -27,18 +27,14 @@ module Sam
     end
 
     # @api private
-    sig { params(url: URI::Generic, blk: T.proc.params(arg0: Net::HTTP).void).void }
-    private def with_pool(url, &blk)
+    sig { params(url: URI::Generic, deadline: Float, blk: T.proc.params(arg0: Net::HTTP).void).void }
+    private def with_pool(url, deadline:, &blk)
     end
 
     # @api private
     sig do
-      params(request: Sam::PooledNetRequester::RequestShape).returns(
-        [
-          Net::HTTPResponse,
-          T::Enumerable[String]
-        ]
-      )
+      params(request: Sam::PooledNetRequester::RequestShape)
+        .returns([Integer, Net::HTTPResponse, T::Enumerable[String]])
     end
     def execute(request)
     end
