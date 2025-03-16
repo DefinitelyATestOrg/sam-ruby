@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 module Sam
-  # @abstract
-  #
   # @example
   # ```ruby
   # if page.has_next?

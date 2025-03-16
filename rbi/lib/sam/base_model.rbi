@@ -3,8 +3,6 @@
 module Sam
   # @api private
   module Converter
-    abstract!
-
     Input = T.type_alias { T.any(Sam::Converter, T::Class[T.anything]) }
 
     # @api private
@@ -78,6 +76,8 @@ module Sam
     end
   end
 
+  # @api private
+  #
   # When we don't know what to expect for the value.
   class Unknown
     extend Sam::Converter
@@ -115,6 +115,8 @@ module Sam
     end
   end
 
+  # @api private
+  #
   # Ruby has no Boolean class; this is something for models to refer to.
   class BooleanModel
     extend Sam::Converter
@@ -156,6 +158,8 @@ module Sam
     end
   end
 
+  # @api private
+  #
   # A value from among a specified list of options. OpenAPI enum values map to Ruby
   #   values in the SDK as follows:
   #
@@ -217,6 +221,7 @@ module Sam
     end
   end
 
+  # @api private
   class Union
     extend Sam::Converter
 
@@ -294,6 +299,8 @@ module Sam
     end
   end
 
+  # @api private
+  #
   # Array of items of a given type.
   class ArrayOf
     include Sam::Converter
@@ -359,6 +366,8 @@ module Sam
     end
   end
 
+  # @api private
+  #
   # Hash of items of a given type.
   class HashOf
     include Sam::Converter

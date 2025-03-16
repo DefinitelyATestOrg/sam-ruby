@@ -2,8 +2,6 @@
 
 module Sam
   # @api private
-  #
-  # @abstract
   module Extern
   end
 end
