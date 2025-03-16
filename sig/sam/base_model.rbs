@@ -115,7 +115,7 @@ module Sam
     ) -> ([true, top, nil] | [false, bool, Integer])
   end
 
-  class ArrayOf
+  class ArrayOf[Elem]
     include Sam::Converter
 
     def ===: (top other) -> bool
@@ -130,7 +130,7 @@ module Sam
       top value
     ) -> ([true, top, nil] | [false, bool, Integer])
 
-    def item_type: -> Sam::Converter::input
+    def item_type: -> Elem
 
     def initialize: (
       ::Hash[Symbol, top]
@@ -140,7 +140,7 @@ module Sam
     ) -> void
   end
 
-  class HashOf
+  class HashOf[Elem]
     include Sam::Converter
 
     def ===: (top other) -> bool
@@ -155,7 +155,7 @@ module Sam
       top value
     ) -> ([true, top, nil] | [false, bool, Integer])
 
-    def item_type: -> Sam::Converter::input
+    def item_type: -> Elem
 
     def initialize: (
       ::Hash[Symbol, top]
