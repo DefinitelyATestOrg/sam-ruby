@@ -173,6 +173,8 @@ module Sam
     def self.known_fields: -> ::Hash[Symbol, (Sam::BaseModel::known_field
     & { type_fn: (^-> Sam::Converter::input) })]
 
+    def self.reverse_map: -> ::Hash[Symbol, Symbol]
+
     def self.fields: -> ::Hash[Symbol, (Sam::BaseModel::known_field
     & { type: Sam::Converter::input })]
 
