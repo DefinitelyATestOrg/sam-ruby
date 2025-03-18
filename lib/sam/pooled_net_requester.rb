@@ -51,6 +51,7 @@ module Sam
       #
       # @param blk [Proc]
       #
+      # @yieldparam [String]
       # @return [Net::HTTPGenericRequest]
       def build_request(request, &)
         method, url, headers, body = request.fetch_values(:method, :url, :headers, :body)
@@ -86,6 +87,9 @@ module Sam
     # @param url [URI::Generic]
     # @param deadline [Float]
     # @param blk [Proc]
+    #
+    # @raise [Timeout::Error]
+    # @yieldparam [Net::HTTP]
     private def with_pool(url, deadline:, &blk)
       origin = Sam::Util.uri_origin(url)
       timeout = deadline - Sam::Util.monotonic_secs
