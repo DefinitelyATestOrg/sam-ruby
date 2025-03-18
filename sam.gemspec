@@ -15,5 +15,5 @@ Gem::Specification.new do |s|
   s.homepage = "https://gemdocs.org/gems/sam"
   s.metadata["homepage_uri"] = s.homepage
   s.metadata["source_code_uri"] = "https://github.com/DefinitelyATestOrg/sam-ruby"
-  s.metadata["rubygems_mfa_required"] = "false"
+  s.metadata["rubygems_mfa_required"] = false.to_s
 end

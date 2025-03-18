@@ -118,6 +118,13 @@ module Sam
   class ArrayOf[Elem]
     include Sam::Converter
 
+    def self.[]: (
+      ::Hash[Symbol, top]
+      | ^-> Sam::Converter::input
+      | Sam::Converter::input type_info,
+      ?::Hash[Symbol, top] spec
+    ) -> instance
+
     def ===: (top other) -> bool
 
     def ==: (top other) -> bool
@@ -142,6 +149,13 @@ module Sam
 
   class HashOf[Elem]
     include Sam::Converter
+
+    def self.[]: (
+      ::Hash[Symbol, top]
+      | ^-> Sam::Converter::input
+      | Sam::Converter::input type_info,
+      ?::Hash[Symbol, top] spec
+    ) -> instance
 
     def ===: (top other) -> bool
 
