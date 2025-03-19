@@ -29,18 +29,16 @@ module Sam
 
       attr_accessor usage: Sam::Models::MessageCreateResponse::Usage
 
-      def initialize:
-        (
-          id: String,
-          content: ::Array[Sam::Models::MessageCreateResponse::content],
-          model: String,
-          stop_reason: Sam::Models::MessageCreateResponse::stop_reason?,
-          stop_sequence: String?,
-          usage: Sam::Models::MessageCreateResponse::Usage,
-          ?role: :assistant,
-          ?type: :message
-        ) -> void
-        | (?Sam::Models::message_create_response | Sam::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        content: ::Array[Sam::Models::MessageCreateResponse::content],
+        model: String,
+        stop_reason: Sam::Models::MessageCreateResponse::stop_reason?,
+        stop_sequence: String?,
+        usage: Sam::Models::MessageCreateResponse::Usage,
+        ?role: :assistant,
+        ?type: :message
+      ) -> void
 
       def to_hash: -> Sam::Models::message_create_response
 
@@ -65,16 +63,11 @@ module Sam
 
           attr_accessor type: :text
 
-          def initialize:
-            (
-              citations: ::Array[Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::citation]?,
-              text: String,
-              ?type: :text
-            ) -> void
-            | (
-              ?Sam::Models::MessageCreateResponse::Content::response_text_block
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (
+            citations: ::Array[Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::citation]?,
+            text: String,
+            ?type: :text
+          ) -> void
 
           def to_hash: -> Sam::Models::MessageCreateResponse::Content::response_text_block
 
@@ -107,19 +100,14 @@ module Sam
 
               attr_accessor type: :char_location
 
-              def initialize:
-                (
-                  cited_text: String,
-                  document_index: Integer,
-                  document_title: String?,
-                  end_char_index: Integer,
-                  start_char_index: Integer,
-                  ?type: :char_location
-                ) -> void
-                | (
-                  ?Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::response_char_location_citation
-                  | Sam::BaseModel data
-                ) -> void
+              def initialize: (
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_char_index: Integer,
+                start_char_index: Integer,
+                ?type: :char_location
+              ) -> void
 
               def to_hash: -> Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::response_char_location_citation
             end
@@ -147,19 +135,14 @@ module Sam
 
               attr_accessor type: :page_location
 
-              def initialize:
-                (
-                  cited_text: String,
-                  document_index: Integer,
-                  document_title: String?,
-                  end_page_number: Integer,
-                  start_page_number: Integer,
-                  ?type: :page_location
-                ) -> void
-                | (
-                  ?Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::response_page_location_citation
-                  | Sam::BaseModel data
-                ) -> void
+              def initialize: (
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_page_number: Integer,
+                start_page_number: Integer,
+                ?type: :page_location
+              ) -> void
 
               def to_hash: -> Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::response_page_location_citation
             end
@@ -187,19 +170,14 @@ module Sam
 
               attr_accessor type: :content_block_location
 
-              def initialize:
-                (
-                  cited_text: String,
-                  document_index: Integer,
-                  document_title: String?,
-                  end_block_index: Integer,
-                  start_block_index: Integer,
-                  ?type: :content_block_location
-                ) -> void
-                | (
-                  ?Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::response_content_block_location_citation
-                  | Sam::BaseModel data
-                ) -> void
+              def initialize: (
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_block_index: Integer,
+                start_block_index: Integer,
+                ?type: :content_block_location
+              ) -> void
 
               def to_hash: -> Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::response_content_block_location_citation
             end
@@ -220,12 +198,12 @@ module Sam
 
           attr_accessor type: :tool_use
 
-          def initialize:
-            (id: String, input: top, name: String, ?type: :tool_use) -> void
-            | (
-              ?Sam::Models::MessageCreateResponse::Content::response_tool_use_block
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            input: top,
+            name: String,
+            ?type: :tool_use
+          ) -> void
 
           def to_hash: -> Sam::Models::MessageCreateResponse::Content::response_tool_use_block
         end
@@ -240,12 +218,11 @@ module Sam
 
           attr_accessor type: :thinking
 
-          def initialize:
-            (signature: String, thinking: String, ?type: :thinking) -> void
-            | (
-              ?Sam::Models::MessageCreateResponse::Content::response_thinking_block
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (
+            signature: String,
+            thinking: String,
+            ?type: :thinking
+          ) -> void
 
           def to_hash: -> Sam::Models::MessageCreateResponse::Content::response_thinking_block
         end
@@ -258,12 +235,7 @@ module Sam
 
           attr_accessor type: :redacted_thinking
 
-          def initialize:
-            (data: String, ?type: :redacted_thinking) -> void
-            | (
-              ?Sam::Models::MessageCreateResponse::Content::response_redacted_thinking_block
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (data: String, ?type: :redacted_thinking) -> void
 
           def to_hash: -> Sam::Models::MessageCreateResponse::Content::response_redacted_thinking_block
         end
@@ -299,16 +271,12 @@ module Sam
 
         attr_accessor output_tokens: Integer
 
-        def initialize:
-          (
-            cache_creation_input_tokens: Integer?,
-            cache_read_input_tokens: Integer?,
-            input_tokens: Integer,
-            output_tokens: Integer
-          ) -> void
-          | (
-            ?Sam::Models::MessageCreateResponse::usage | Sam::BaseModel data
-          ) -> void
+        def initialize: (
+          cache_creation_input_tokens: Integer?,
+          cache_read_input_tokens: Integer?,
+          input_tokens: Integer,
+          output_tokens: Integer
+        ) -> void
 
         def to_hash: -> Sam::Models::MessageCreateResponse::usage
       end

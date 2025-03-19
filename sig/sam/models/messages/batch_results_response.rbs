@@ -12,14 +12,10 @@ module Sam
 
         attr_accessor result: Sam::Models::Messages::BatchResultsResponse::result
 
-        def initialize:
-          (
-            custom_id: String,
-            result: Sam::Models::Messages::BatchResultsResponse::result
-          ) -> void
-          | (
-            ?Sam::Models::Messages::batch_results_response | Sam::BaseModel data
-          ) -> void
+        def initialize: (
+          custom_id: String,
+          result: Sam::Models::Messages::BatchResultsResponse::result
+        ) -> void
 
         def to_hash: -> Sam::Models::Messages::batch_results_response
 
@@ -41,15 +37,10 @@ module Sam
 
             attr_accessor type: :succeeded
 
-            def initialize:
-              (
-                message: Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message,
-                ?type: :succeeded
-              ) -> void
-              | (
-                ?Sam::Models::Messages::BatchResultsResponse::Result::succeeded_result
-                | Sam::BaseModel data
-              ) -> void
+            def initialize: (
+              message: Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message,
+              ?type: :succeeded
+            ) -> void
 
             def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::succeeded_result
 
@@ -82,21 +73,16 @@ module Sam
 
               attr_accessor usage: Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Usage
 
-              def initialize:
-                (
-                  id: String,
-                  content: ::Array[Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::content],
-                  model: String,
-                  stop_reason: Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::stop_reason?,
-                  stop_sequence: String?,
-                  usage: Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Usage,
-                  ?role: :assistant,
-                  ?type: :message
-                ) -> void
-                | (
-                  ?Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::message
-                  | Sam::BaseModel data
-                ) -> void
+              def initialize: (
+                id: String,
+                content: ::Array[Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::content],
+                model: String,
+                stop_reason: Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::stop_reason?,
+                stop_sequence: String?,
+                usage: Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Usage,
+                ?role: :assistant,
+                ?type: :message
+              ) -> void
 
               def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::message
 
@@ -121,16 +107,11 @@ module Sam
 
                   attr_accessor type: :text
 
-                  def initialize:
-                    (
-                      citations: ::Array[Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::citation]?,
-                      text: String,
-                      ?type: :text
-                    ) -> void
-                    | (
-                      ?Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::response_text_block
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    citations: ::Array[Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::citation]?,
+                    text: String,
+                    ?type: :text
+                  ) -> void
 
                   def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::response_text_block
 
@@ -163,19 +144,14 @@ module Sam
 
                       attr_accessor type: :char_location
 
-                      def initialize:
-                        (
-                          cited_text: String,
-                          document_index: Integer,
-                          document_title: String?,
-                          end_char_index: Integer,
-                          start_char_index: Integer,
-                          ?type: :char_location
-                        ) -> void
-                        | (
-                          ?Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::response_char_location_citation
-                          | Sam::BaseModel data
-                        ) -> void
+                      def initialize: (
+                        cited_text: String,
+                        document_index: Integer,
+                        document_title: String?,
+                        end_char_index: Integer,
+                        start_char_index: Integer,
+                        ?type: :char_location
+                      ) -> void
 
                       def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::response_char_location_citation
                     end
@@ -203,19 +179,14 @@ module Sam
 
                       attr_accessor type: :page_location
 
-                      def initialize:
-                        (
-                          cited_text: String,
-                          document_index: Integer,
-                          document_title: String?,
-                          end_page_number: Integer,
-                          start_page_number: Integer,
-                          ?type: :page_location
-                        ) -> void
-                        | (
-                          ?Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::response_page_location_citation
-                          | Sam::BaseModel data
-                        ) -> void
+                      def initialize: (
+                        cited_text: String,
+                        document_index: Integer,
+                        document_title: String?,
+                        end_page_number: Integer,
+                        start_page_number: Integer,
+                        ?type: :page_location
+                      ) -> void
 
                       def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::response_page_location_citation
                     end
@@ -243,19 +214,14 @@ module Sam
 
                       attr_accessor type: :content_block_location
 
-                      def initialize:
-                        (
-                          cited_text: String,
-                          document_index: Integer,
-                          document_title: String?,
-                          end_block_index: Integer,
-                          start_block_index: Integer,
-                          ?type: :content_block_location
-                        ) -> void
-                        | (
-                          ?Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::response_content_block_location_citation
-                          | Sam::BaseModel data
-                        ) -> void
+                      def initialize: (
+                        cited_text: String,
+                        document_index: Integer,
+                        document_title: String?,
+                        end_block_index: Integer,
+                        start_block_index: Integer,
+                        ?type: :content_block_location
+                      ) -> void
 
                       def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::response_content_block_location_citation
                     end
@@ -276,17 +242,12 @@ module Sam
 
                   attr_accessor type: :tool_use
 
-                  def initialize:
-                    (
-                      id: String,
-                      input: top,
-                      name: String,
-                      ?type: :tool_use
-                    ) -> void
-                    | (
-                      ?Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::response_tool_use_block
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    id: String,
+                    input: top,
+                    name: String,
+                    ?type: :tool_use
+                  ) -> void
 
                   def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::response_tool_use_block
                 end
@@ -301,16 +262,11 @@ module Sam
 
                   attr_accessor type: :thinking
 
-                  def initialize:
-                    (
-                      signature: String,
-                      thinking: String,
-                      ?type: :thinking
-                    ) -> void
-                    | (
-                      ?Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::response_thinking_block
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    signature: String,
+                    thinking: String,
+                    ?type: :thinking
+                  ) -> void
 
                   def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::response_thinking_block
                 end
@@ -323,12 +279,10 @@ module Sam
 
                   attr_accessor type: :redacted_thinking
 
-                  def initialize:
-                    (data: String, ?type: :redacted_thinking) -> void
-                    | (
-                      ?Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::response_redacted_thinking_block
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    data: String,
+                    ?type: :redacted_thinking
+                  ) -> void
 
                   def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::response_redacted_thinking_block
                 end
@@ -365,17 +319,12 @@ module Sam
 
                 attr_accessor output_tokens: Integer
 
-                def initialize:
-                  (
-                    cache_creation_input_tokens: Integer?,
-                    cache_read_input_tokens: Integer?,
-                    input_tokens: Integer,
-                    output_tokens: Integer
-                  ) -> void
-                  | (
-                    ?Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::usage
-                    | Sam::BaseModel data
-                  ) -> void
+                def initialize: (
+                  cache_creation_input_tokens: Integer?,
+                  cache_read_input_tokens: Integer?,
+                  input_tokens: Integer,
+                  output_tokens: Integer
+                ) -> void
 
                 def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::usage
               end
@@ -393,15 +342,10 @@ module Sam
 
             attr_accessor type: :errored
 
-            def initialize:
-              (
-                error: Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error,
-                ?type: :errored
-              ) -> void
-              | (
-                ?Sam::Models::Messages::BatchResultsResponse::Result::errored_result
-                | Sam::BaseModel data
-              ) -> void
+            def initialize: (
+              error: Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error,
+              ?type: :errored
+            ) -> void
 
             def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::errored_result
 
@@ -416,15 +360,10 @@ module Sam
 
               attr_accessor type: :error
 
-              def initialize:
-                (
-                  error: Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::error,
-                  ?type: :error
-                ) -> void
-                | (
-                  ?Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::error
-                  | Sam::BaseModel data
-                ) -> void
+              def initialize: (
+                error: Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::error,
+                ?type: :error
+              ) -> void
 
               def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::error
 
@@ -448,12 +387,10 @@ module Sam
 
                   attr_accessor type: :invalid_request_error
 
-                  def initialize:
-                    (message: String, ?type: :invalid_request_error) -> void
-                    | (
-                      ?Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::invalid_request_error
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    message: String,
+                    ?type: :invalid_request_error
+                  ) -> void
 
                   def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::invalid_request_error
                 end
@@ -466,12 +403,10 @@ module Sam
 
                   attr_accessor type: :authentication_error
 
-                  def initialize:
-                    (message: String, ?type: :authentication_error) -> void
-                    | (
-                      ?Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::authentication_error
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    message: String,
+                    ?type: :authentication_error
+                  ) -> void
 
                   def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::authentication_error
                 end
@@ -483,12 +418,10 @@ module Sam
 
                   attr_accessor type: :billing_error
 
-                  def initialize:
-                    (message: String, ?type: :billing_error) -> void
-                    | (
-                      ?Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::billing_error
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    message: String,
+                    ?type: :billing_error
+                  ) -> void
 
                   def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::billing_error
                 end
@@ -501,12 +434,10 @@ module Sam
 
                   attr_accessor type: :permission_error
 
-                  def initialize:
-                    (message: String, ?type: :permission_error) -> void
-                    | (
-                      ?Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::permission_error
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    message: String,
+                    ?type: :permission_error
+                  ) -> void
 
                   def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::permission_error
                 end
@@ -519,12 +450,10 @@ module Sam
 
                   attr_accessor type: :not_found_error
 
-                  def initialize:
-                    (message: String, ?type: :not_found_error) -> void
-                    | (
-                      ?Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::not_found_error
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    message: String,
+                    ?type: :not_found_error
+                  ) -> void
 
                   def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::not_found_error
                 end
@@ -537,12 +466,10 @@ module Sam
 
                   attr_accessor type: :rate_limit_error
 
-                  def initialize:
-                    (message: String, ?type: :rate_limit_error) -> void
-                    | (
-                      ?Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::rate_limit_error
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    message: String,
+                    ?type: :rate_limit_error
+                  ) -> void
 
                   def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::rate_limit_error
                 end
@@ -555,12 +482,10 @@ module Sam
 
                   attr_accessor type: :timeout_error
 
-                  def initialize:
-                    (message: String, ?type: :timeout_error) -> void
-                    | (
-                      ?Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::gateway_timeout_error
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    message: String,
+                    ?type: :timeout_error
+                  ) -> void
 
                   def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::gateway_timeout_error
                 end
@@ -572,12 +497,7 @@ module Sam
 
                   attr_accessor type: :api_error
 
-                  def initialize:
-                    (message: String, ?type: :api_error) -> void
-                    | (
-                      ?Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::api_error
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (message: String, ?type: :api_error) -> void
 
                   def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::api_error
                 end
@@ -590,12 +510,10 @@ module Sam
 
                   attr_accessor type: :overloaded_error
 
-                  def initialize:
-                    (message: String, ?type: :overloaded_error) -> void
-                    | (
-                      ?Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::overloaded_error
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    message: String,
+                    ?type: :overloaded_error
+                  ) -> void
 
                   def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::overloaded_error
                 end
@@ -610,12 +528,7 @@ module Sam
           class CanceledResult < Sam::BaseModel
             attr_accessor type: :canceled
 
-            def initialize:
-              (?type: :canceled) -> void
-              | (
-                ?Sam::Models::Messages::BatchResultsResponse::Result::canceled_result
-                | Sam::BaseModel data
-              ) -> void
+            def initialize: (?type: :canceled) -> void
 
             def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::canceled_result
           end
@@ -625,12 +538,7 @@ module Sam
           class ExpiredResult < Sam::BaseModel
             attr_accessor type: :expired
 
-            def initialize:
-              (?type: :expired) -> void
-              | (
-                ?Sam::Models::Messages::BatchResultsResponse::Result::expired_result
-                | Sam::BaseModel data
-              ) -> void
+            def initialize: (?type: :expired) -> void
 
             def to_hash: -> Sam::Models::Messages::BatchResultsResponse::Result::expired_result
           end

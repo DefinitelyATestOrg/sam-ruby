@@ -5,11 +5,7 @@ module Sam
     class MessageCountTokensBetaResponse < Sam::BaseModel
       attr_accessor input_tokens: Integer
 
-      def initialize:
-        (input_tokens: Integer) -> void
-        | (
-          ?Sam::Models::message_count_tokens_beta_response | Sam::BaseModel data
-        ) -> void
+      def initialize: (input_tokens: Integer) -> void
 
       def to_hash: -> Sam::Models::message_count_tokens_beta_response
     end

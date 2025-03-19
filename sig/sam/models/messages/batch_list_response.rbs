@@ -18,16 +18,12 @@ module Sam
 
         attr_accessor last_id: String?
 
-        def initialize:
-          (
-            data: ::Array[Sam::Models::Messages::BatchListResponse::Data],
-            first_id: String?,
-            has_more: bool,
-            last_id: String?
-          ) -> void
-          | (
-            ?Sam::Models::Messages::batch_list_response | Sam::BaseModel data
-          ) -> void
+        def initialize: (
+          data: ::Array[Sam::Models::Messages::BatchListResponse::Data],
+          first_id: String?,
+          has_more: bool,
+          last_id: String?
+        ) -> void
 
         def to_hash: -> Sam::Models::Messages::batch_list_response
 
@@ -66,23 +62,18 @@ module Sam
 
           attr_accessor type: :message_batch
 
-          def initialize:
-            (
-              id: String,
-              archived_at: Time?,
-              cancel_initiated_at: Time?,
-              created_at: Time,
-              ended_at: Time?,
-              expires_at: Time,
-              processing_status: Sam::Models::Messages::BatchListResponse::Data::processing_status,
-              request_counts: Sam::Models::Messages::BatchListResponse::Data::RequestCounts,
-              results_url: String?,
-              ?type: :message_batch
-            ) -> void
-            | (
-              ?Sam::Models::Messages::BatchListResponse::data
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            archived_at: Time?,
+            cancel_initiated_at: Time?,
+            created_at: Time,
+            ended_at: Time?,
+            expires_at: Time,
+            processing_status: Sam::Models::Messages::BatchListResponse::Data::processing_status,
+            request_counts: Sam::Models::Messages::BatchListResponse::Data::RequestCounts,
+            results_url: String?,
+            ?type: :message_batch
+          ) -> void
 
           def to_hash: -> Sam::Models::Messages::BatchListResponse::data
 
@@ -116,18 +107,13 @@ module Sam
 
             attr_accessor succeeded: Integer
 
-            def initialize:
-              (
-                canceled: Integer,
-                errored: Integer,
-                expired: Integer,
-                processing: Integer,
-                succeeded: Integer
-              ) -> void
-              | (
-                ?Sam::Models::Messages::BatchListResponse::Data::request_counts
-                | Sam::BaseModel data
-              ) -> void
+            def initialize: (
+              canceled: Integer,
+              errored: Integer,
+              expired: Integer,
+              processing: Integer,
+              succeeded: Integer
+            ) -> void
 
             def to_hash: -> Sam::Models::Messages::BatchListResponse::Data::request_counts
           end
