@@ -47,7 +47,7 @@ module Sam
             id: String,
             created_at: Time,
             display_name: String,
-            type: :model
+            ?type: :model
           ) -> void
           | (
             ?Sam::Models::ModelsBetaTrueListResponse::data | Sam::BaseModel data

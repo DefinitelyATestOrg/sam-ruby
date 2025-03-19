@@ -11,7 +11,7 @@ module Sam
           attr_accessor type: :message_batch_deleted
 
           def initialize:
-            (id: String, type: :message_batch_deleted) -> void
+            (id: String, ?type: :message_batch_deleted) -> void
             | (
               ?Sam::Models::Messages::Batches::beta_true_delete_response
               | Sam::BaseModel data

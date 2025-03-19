@@ -65,15 +65,15 @@ module Sam
           max_tokens_to_sample: Integer,
           model: String,
           prompt: String,
-          metadata: Sam::Models::CompleteCreateParams::Metadata,
-          stop_sequences: ::Array[String],
-          stream: bool,
-          temperature: Float,
-          top_k: Integer,
-          top_p: Float,
-          anthropic_version: String,
-          x_api_key: String,
-          request_options: Sam::request_opts
+          ?metadata: Sam::Models::CompleteCreateParams::Metadata,
+          ?stop_sequences: ::Array[String],
+          ?stream: bool,
+          ?temperature: Float,
+          ?top_k: Integer,
+          ?top_p: Float,
+          ?anthropic_version: String,
+          ?x_api_key: String,
+          ?request_options: Sam::request_opts
         ) -> void
         | (?Sam::Models::complete_create_params | Sam::BaseModel data) -> void
 
@@ -85,7 +85,7 @@ module Sam
         attr_accessor user_id: String?
 
         def initialize:
-          (user_id: String?) -> void
+          (?user_id: String?) -> void
           | (
             ?Sam::Models::CompleteCreateParams::metadata | Sam::BaseModel data
           ) -> void

@@ -6,12 +6,12 @@ module Sam
           ?Sam::Models::ModelsBetaTrueListParams | ::Hash[Symbol, top] params
         ) -> Sam::Models::ModelsBetaTrueListResponse
         | (
-          after_id: String,
-          before_id: String,
-          limit: Integer,
-          anthropic_version: String,
-          x_api_key: String,
-          request_options: Sam::request_opts
+          ?after_id: String,
+          ?before_id: String,
+          ?limit: Integer,
+          ?anthropic_version: String,
+          ?x_api_key: String,
+          ?request_options: Sam::request_opts
         ) -> Sam::Models::ModelsBetaTrueListResponse
 
       def initialize: (client: Sam::Client) -> void

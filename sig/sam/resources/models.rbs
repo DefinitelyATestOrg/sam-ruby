@@ -8,9 +8,9 @@ module Sam
         ) -> Sam::Models::ModelRetrieveResponse
         | (
           String model_id,
-          anthropic_version: String,
-          x_api_key: String,
-          request_options: Sam::request_opts
+          ?anthropic_version: String,
+          ?x_api_key: String,
+          ?request_options: Sam::request_opts
         ) -> Sam::Models::ModelRetrieveResponse
 
       def list:
@@ -18,12 +18,12 @@ module Sam
           ?Sam::Models::ModelListParams | ::Hash[Symbol, top] params
         ) -> Sam::Models::ModelListResponse
         | (
-          after_id: String,
-          before_id: String,
-          limit: Integer,
-          anthropic_version: String,
-          x_api_key: String,
-          request_options: Sam::request_opts
+          ?after_id: String,
+          ?before_id: String,
+          ?limit: Integer,
+          ?anthropic_version: String,
+          ?x_api_key: String,
+          ?request_options: Sam::request_opts
         ) -> Sam::Models::ModelListResponse
 
       def retrieve_beta:
@@ -33,9 +33,9 @@ module Sam
         ) -> Sam::Models::ModelRetrieveBetaResponse
         | (
           String model_id,
-          anthropic_version: String,
-          x_api_key: String,
-          request_options: Sam::request_opts
+          ?anthropic_version: String,
+          ?x_api_key: String,
+          ?request_options: Sam::request_opts
         ) -> Sam::Models::ModelRetrieveBetaResponse
 
       def initialize: (client: Sam::Client) -> void

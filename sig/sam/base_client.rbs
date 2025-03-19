@@ -53,14 +53,14 @@ module Sam
 
     def initialize: (
       base_url: String,
-      timeout: Float,
-      max_retries: Integer,
-      initial_retry_delay: Float,
-      max_retry_delay: Float,
-      headers: ::Hash[String, (String
+      ?timeout: Float,
+      ?max_retries: Integer,
+      ?initial_retry_delay: Float,
+      ?max_retry_delay: Float,
+      ?headers: ::Hash[String, (String
       | Integer
       | ::Array[(String | Integer)?])?],
-      idempotency_header: String?
+      ?idempotency_header: String?
     ) -> void
 
     private def generate_idempotency_key: -> String
@@ -86,16 +86,16 @@ module Sam
       (
         Symbol method,
         String | ::Array[String] path,
-        query: ::Hash[String, (::Array[String] | String)?]?,
-        headers: ::Hash[String, (String
+        ?query: ::Hash[String, (::Array[String] | String)?]?,
+        ?headers: ::Hash[String, (String
         | Integer
         | ::Array[(String | Integer)?])?]?,
-        body: top?,
-        unwrap: Symbol?,
-        page: Class?,
-        stream: Class?,
-        model: Sam::Converter::input?,
-        options: Sam::request_opts?
+        ?body: top?,
+        ?unwrap: Symbol?,
+        ?page: Class?,
+        ?stream: Class?,
+        ?model: Sam::Converter::input?,
+        ?options: Sam::request_opts?
       ) -> top
       | (Sam::BaseClient::request_components req) -> top
 

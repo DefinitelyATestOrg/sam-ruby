@@ -17,7 +17,7 @@ module Sam
           id: String,
           created_at: Time,
           display_name: String,
-          type: :model
+          ?type: :model
         ) -> void
         | (
           ?Sam::Models::model_retrieve_beta_response | Sam::BaseModel data

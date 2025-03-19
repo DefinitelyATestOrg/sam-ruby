@@ -37,8 +37,8 @@ module Sam
           stop_reason: Sam::Models::MessageCreateResponse::stop_reason?,
           stop_sequence: String?,
           usage: Sam::Models::MessageCreateResponse::Usage,
-          role: :assistant,
-          type: :message
+          ?role: :assistant,
+          ?type: :message
         ) -> void
         | (?Sam::Models::message_create_response | Sam::BaseModel data) -> void
 
@@ -69,7 +69,7 @@ module Sam
             (
               citations: ::Array[Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::citation]?,
               text: String,
-              type: :text
+              ?type: :text
             ) -> void
             | (
               ?Sam::Models::MessageCreateResponse::Content::response_text_block
@@ -114,7 +114,7 @@ module Sam
                   document_title: String?,
                   end_char_index: Integer,
                   start_char_index: Integer,
-                  type: :char_location
+                  ?type: :char_location
                 ) -> void
                 | (
                   ?Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::response_char_location_citation
@@ -154,7 +154,7 @@ module Sam
                   document_title: String?,
                   end_page_number: Integer,
                   start_page_number: Integer,
-                  type: :page_location
+                  ?type: :page_location
                 ) -> void
                 | (
                   ?Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::response_page_location_citation
@@ -194,7 +194,7 @@ module Sam
                   document_title: String?,
                   end_block_index: Integer,
                   start_block_index: Integer,
-                  type: :content_block_location
+                  ?type: :content_block_location
                 ) -> void
                 | (
                   ?Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::response_content_block_location_citation
@@ -221,7 +221,7 @@ module Sam
           attr_accessor type: :tool_use
 
           def initialize:
-            (id: String, input: top, name: String, type: :tool_use) -> void
+            (id: String, input: top, name: String, ?type: :tool_use) -> void
             | (
               ?Sam::Models::MessageCreateResponse::Content::response_tool_use_block
               | Sam::BaseModel data
@@ -241,7 +241,7 @@ module Sam
           attr_accessor type: :thinking
 
           def initialize:
-            (signature: String, thinking: String, type: :thinking) -> void
+            (signature: String, thinking: String, ?type: :thinking) -> void
             | (
               ?Sam::Models::MessageCreateResponse::Content::response_thinking_block
               | Sam::BaseModel data
@@ -259,7 +259,7 @@ module Sam
           attr_accessor type: :redacted_thinking
 
           def initialize:
-            (data: String, type: :redacted_thinking) -> void
+            (data: String, ?type: :redacted_thinking) -> void
             | (
               ?Sam::Models::MessageCreateResponse::Content::response_redacted_thinking_block
               | Sam::BaseModel data
