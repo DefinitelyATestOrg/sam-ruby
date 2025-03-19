@@ -9,10 +9,10 @@ module Sam
           ) -> Sam::Models::Messages::BatchesBetaTrueCreateResponse
           | (
             requests: ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request],
-            anthropic_beta: ::Array[String],
-            anthropic_version: String,
-            x_api_key: String,
-            request_options: Sam::request_opts
+            ?anthropic_beta: ::Array[String],
+            ?anthropic_version: String,
+            ?x_api_key: String,
+            ?request_options: Sam::request_opts
           ) -> Sam::Models::Messages::BatchesBetaTrueCreateResponse
 
         def list:
@@ -21,13 +21,13 @@ module Sam
             | ::Hash[Symbol, top] params
           ) -> Sam::Models::Messages::BatchesBetaTrueListResponse
           | (
-            after_id: String,
-            before_id: String,
-            limit: Integer,
-            anthropic_beta: ::Array[String],
-            anthropic_version: String,
-            x_api_key: String,
-            request_options: Sam::request_opts
+            ?after_id: String,
+            ?before_id: String,
+            ?limit: Integer,
+            ?anthropic_beta: ::Array[String],
+            ?anthropic_version: String,
+            ?x_api_key: String,
+            ?request_options: Sam::request_opts
           ) -> Sam::Models::Messages::BatchesBetaTrueListResponse
 
         def initialize: (client: Sam::Client) -> void

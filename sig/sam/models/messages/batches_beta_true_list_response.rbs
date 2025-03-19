@@ -78,7 +78,7 @@ module Sam
               processing_status: Sam::Models::Messages::BatchesBetaTrueListResponse::Data::processing_status,
               request_counts: Sam::Models::Messages::BatchesBetaTrueListResponse::Data::RequestCounts,
               results_url: String?,
-              type: :message_batch
+              ?type: :message_batch
             ) -> void
             | (
               ?Sam::Models::Messages::BatchesBetaTrueListResponse::data

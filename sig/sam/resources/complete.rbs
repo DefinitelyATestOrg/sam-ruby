@@ -9,15 +9,15 @@ module Sam
           max_tokens_to_sample: Integer,
           model: String,
           prompt: String,
-          metadata: Sam::Models::CompleteCreateParams::Metadata,
-          stop_sequences: ::Array[String],
-          stream: bool,
-          temperature: Float,
-          top_k: Integer,
-          top_p: Float,
-          anthropic_version: String,
-          x_api_key: String,
-          request_options: Sam::request_opts
+          ?metadata: Sam::Models::CompleteCreateParams::Metadata,
+          ?stop_sequences: ::Array[String],
+          ?stream: bool,
+          ?temperature: Float,
+          ?top_k: Integer,
+          ?top_p: Float,
+          ?anthropic_version: String,
+          ?x_api_key: String,
+          ?request_options: Sam::request_opts
         ) -> Sam::Models::CompleteCreateResponse
 
       def initialize: (client: Sam::Client) -> void

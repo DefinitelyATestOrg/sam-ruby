@@ -42,13 +42,13 @@ module Sam
 
         def initialize:
           (
-            after_id: String,
-            before_id: String,
-            limit: Integer,
-            anthropic_beta: ::Array[String],
-            anthropic_version: String,
-            x_api_key: String,
-            request_options: Sam::request_opts
+            ?after_id: String,
+            ?before_id: String,
+            ?limit: Integer,
+            ?anthropic_beta: ::Array[String],
+            ?anthropic_version: String,
+            ?x_api_key: String,
+            ?request_options: Sam::request_opts
           ) -> void
           | (
             ?Sam::Models::Messages::batches_beta_true_list_params

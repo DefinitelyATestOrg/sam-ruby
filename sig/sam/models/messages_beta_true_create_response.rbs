@@ -37,8 +37,8 @@ module Sam
           stop_reason: Sam::Models::MessagesBetaTrueCreateResponse::stop_reason?,
           stop_sequence: String?,
           usage: Sam::Models::MessagesBetaTrueCreateResponse::Usage,
-          role: :assistant,
-          type: :message
+          ?role: :assistant,
+          ?type: :message
         ) -> void
         | (
           ?Sam::Models::messages_beta_true_create_response | Sam::BaseModel data
@@ -71,7 +71,7 @@ module Sam
             (
               citations: ::Array[Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::citation]?,
               text: String,
-              type: :text
+              ?type: :text
             ) -> void
             | (
               ?Sam::Models::MessagesBetaTrueCreateResponse::Content::beta_response_text_block
@@ -116,7 +116,7 @@ module Sam
                   document_title: String?,
                   end_char_index: Integer,
                   start_char_index: Integer,
-                  type: :char_location
+                  ?type: :char_location
                 ) -> void
                 | (
                   ?Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::beta_response_char_location_citation
@@ -156,7 +156,7 @@ module Sam
                   document_title: String?,
                   end_page_number: Integer,
                   start_page_number: Integer,
-                  type: :page_location
+                  ?type: :page_location
                 ) -> void
                 | (
                   ?Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::beta_response_page_location_citation
@@ -196,7 +196,7 @@ module Sam
                   document_title: String?,
                   end_block_index: Integer,
                   start_block_index: Integer,
-                  type: :content_block_location
+                  ?type: :content_block_location
                 ) -> void
                 | (
                   ?Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::beta_response_content_block_location_citation
@@ -223,7 +223,7 @@ module Sam
           attr_accessor type: :tool_use
 
           def initialize:
-            (id: String, input: top, name: String, type: :tool_use) -> void
+            (id: String, input: top, name: String, ?type: :tool_use) -> void
             | (
               ?Sam::Models::MessagesBetaTrueCreateResponse::Content::beta_response_tool_use_block
               | Sam::BaseModel data
@@ -243,7 +243,7 @@ module Sam
           attr_accessor type: :thinking
 
           def initialize:
-            (signature: String, thinking: String, type: :thinking) -> void
+            (signature: String, thinking: String, ?type: :thinking) -> void
             | (
               ?Sam::Models::MessagesBetaTrueCreateResponse::Content::beta_response_thinking_block
               | Sam::BaseModel data
@@ -261,7 +261,7 @@ module Sam
           attr_accessor type: :redacted_thinking
 
           def initialize:
-            (data: String, type: :redacted_thinking) -> void
+            (data: String, ?type: :redacted_thinking) -> void
             | (
               ?Sam::Models::MessagesBetaTrueCreateResponse::Content::beta_response_redacted_thinking_block
               | Sam::BaseModel data

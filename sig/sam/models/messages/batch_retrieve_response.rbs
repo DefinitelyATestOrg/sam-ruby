@@ -47,7 +47,7 @@ module Sam
             processing_status: Sam::Models::Messages::BatchRetrieveResponse::processing_status,
             request_counts: Sam::Models::Messages::BatchRetrieveResponse::RequestCounts,
             results_url: String?,
-            type: :message_batch
+            ?type: :message_batch
           ) -> void
           | (
             ?Sam::Models::Messages::batch_retrieve_response
