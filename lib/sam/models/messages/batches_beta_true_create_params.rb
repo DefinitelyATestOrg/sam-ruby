@@ -490,7 +490,8 @@ module Sam
 
               # @abstract
               class Content < Sam::Union
-                UnionMember1Array = Sam::ArrayOf[
+                UnionMember1Array =
+                  Sam::ArrayOf[
                 union: -> { Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1 }
                 ]
 
@@ -994,7 +995,8 @@ module Sam
 
                     # @abstract
                     class Content < Sam::Union
-                      UnionMember1Array = Sam::ArrayOf[
+                      UnionMember1Array =
+                        Sam::ArrayOf[
                       union: -> { Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1 }
                       ]
 
@@ -1521,7 +1523,8 @@ module Sam
 
                         # @abstract
                         class Content < Sam::Union
-                          UnionMember1Array = Sam::ArrayOf[
+                          UnionMember1Array =
+                            Sam::ArrayOf[
                           union: -> { Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1 }
                           ]
 
@@ -2065,7 +2068,8 @@ module Sam
             #   as specifying a particular goal or role. See our
             #   [guide to system prompts](https://docs.anthropic.com/en/docs/system-prompts).
             class System < Sam::Union
-              UnionMember1Array = Sam::ArrayOf[-> { Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1 }]
+              UnionMember1Array =
+                Sam::ArrayOf[-> { Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1 }]
 
               variant String
 

@@ -10,7 +10,8 @@ module Sam
   #
   # @example
   # ```ruby
-  # batches = stream
+  # batches =
+  #   stream
   #   .to_enum
   #   .lazy
   #   .select { _1.object_id.even? }

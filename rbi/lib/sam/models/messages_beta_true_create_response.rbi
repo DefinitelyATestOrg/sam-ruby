@@ -225,16 +225,17 @@ module Sam
       class Content < Sam::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock,
-              Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseToolUseBlock,
-              Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseThinkingBlock,
-              Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseRedactedThinkingBlock
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock,
+                Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseToolUseBlock,
+                Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseThinkingBlock,
+                Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseRedactedThinkingBlock
+              )
+            }
+          end
 
         class BetaResponseTextBlock < Sam::BaseModel
           # Citations supporting the text block.
@@ -344,15 +345,16 @@ module Sam
           class Citation < Sam::Union
             abstract!
 
-            Variants = type_template(:out) do
-              {
-                fixed: T.any(
-                  Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation,
-                  Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation,
-                  Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
-                )
-              }
-            end
+            Variants =
+              type_template(:out) do
+                {
+                  fixed: T.any(
+                    Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation,
+                    Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation,
+                    Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
+                  )
+                }
+              end
 
             class BetaResponseCharLocationCitation < Sam::BaseModel
               sig { returns(String) }
