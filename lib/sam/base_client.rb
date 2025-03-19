@@ -427,7 +427,7 @@ module Sam
       decoded = Sam::Util.decode_content(response, stream: stream)
       case req
       in { stream: Class => st }
-        st.new(model: model, url: url, status: status, response: response, messages: decoded)
+        st.new(model: model, url: url, status: status, response: response, stream: decoded)
       in { page: Class => page }
         page.new(client: self, req: req, headers: response, page_data: decoded)
       else
