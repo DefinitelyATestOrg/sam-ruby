@@ -222,16 +222,17 @@ module Sam
       class Content < Sam::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Sam::Models::MessageCreateResponse::Content::ResponseTextBlock,
-              Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock,
-              Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock,
-              Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Sam::Models::MessageCreateResponse::Content::ResponseTextBlock,
+                Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock,
+                Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock,
+                Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock
+              )
+            }
+          end
 
         class ResponseTextBlock < Sam::BaseModel
           # Citations supporting the text block.
@@ -341,15 +342,16 @@ module Sam
           class Citation < Sam::Union
             abstract!
 
-            Variants = type_template(:out) do
-              {
-                fixed: T.any(
-                  Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
-                  Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
-                  Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
-                )
-              }
-            end
+            Variants =
+              type_template(:out) do
+                {
+                  fixed: T.any(
+                    Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
+                    Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
+                    Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
+                  )
+                }
+              end
 
             class ResponseCharLocationCitation < Sam::BaseModel
               sig { returns(String) }

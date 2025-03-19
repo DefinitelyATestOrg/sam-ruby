@@ -671,55 +671,58 @@ module Sam
         class Content < Sam::Union
           abstract!
 
-          Variants = type_template(:out) do
-            {
-              fixed: T.any(
-                String,
-                T::Array[
-                T.any(
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock,
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock,
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolUseBlock,
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock,
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock,
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestThinkingBlock,
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
+          Variants =
+            type_template(:out) do
+              {
+                fixed: T.any(
+                  String,
+                  T::Array[
+                  T.any(
+                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock,
+                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock,
+                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolUseBlock,
+                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock,
+                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock,
+                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestThinkingBlock,
+                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
+                  )
+                  ]
                 )
-                ]
-              )
-            }
-          end
+              }
+            end
 
-          UnionMember1Array = T.type_alias do
-            T::Array[
-            T.any(
-              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock,
-              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock,
-              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolUseBlock,
-              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock,
-              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock,
-              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestThinkingBlock,
-              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
-            )
-            ]
-          end
+          UnionMember1Array =
+            T.type_alias do
+              T::Array[
+              T.any(
+                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock,
+                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock,
+                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolUseBlock,
+                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock,
+                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock,
+                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestThinkingBlock,
+                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
+              )
+              ]
+            end
 
           class UnionMember1 < Sam::Union
             abstract!
 
-            Variants = type_template(:out) do
-              {
-                fixed: T.any(
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock,
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock,
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolUseBlock,
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock,
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock,
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestThinkingBlock,
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
-                )
-              }
-            end
+            Variants =
+              type_template(:out) do
+                {
+                  fixed: T.any(
+                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock,
+                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock,
+                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolUseBlock,
+                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock,
+                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock,
+                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestThinkingBlock,
+                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
+                  )
+                }
+              end
 
             class RequestTextBlock < Sam::BaseModel
               sig { returns(String) }
@@ -873,15 +876,16 @@ module Sam
               class Citation < Sam::Union
                 abstract!
 
-                Variants = type_template(:out) do
-                  {
-                    fixed: T.any(
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                    )
-                  }
-                end
+                Variants =
+                  type_template(:out) do
+                    {
+                      fixed: T.any(
+                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
+                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
+                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
+                      )
+                    }
+                  end
 
                 class RequestCharLocationCitation < Sam::BaseModel
                   sig { returns(String) }
@@ -1231,14 +1235,15 @@ module Sam
               class Source < Sam::Union
                 abstract!
 
-                Variants = type_template(:out) do
-                  {
-                    fixed: T.any(
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
-                    )
-                  }
-                end
+                Variants =
+                  type_template(:out) do
+                    {
+                      fixed: T.any(
+                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
+                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
+                      )
+                    }
+                  end
 
                 class Base64ImageSource < Sam::BaseModel
                   sig { returns(String) }
@@ -1604,40 +1609,43 @@ module Sam
               class Content < Sam::Union
                 abstract!
 
-                Variants = type_template(:out) do
-                  {
-                    fixed: T.any(
-                      String,
-                      T::Array[
-                      T.any(
-                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
-                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
+                Variants =
+                  type_template(:out) do
+                    {
+                      fixed: T.any(
+                        String,
+                        T::Array[
+                        T.any(
+                          Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
+                          Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
+                        )
+                        ]
                       )
-                      ]
-                    )
-                  }
-                end
+                    }
+                  end
 
-                UnionMember1Array = T.type_alias do
-                  T::Array[
-                  T.any(
-                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
-                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
-                  )
-                  ]
-                end
+                UnionMember1Array =
+                  T.type_alias do
+                    T::Array[
+                    T.any(
+                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
+                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
+                    )
+                    ]
+                  end
 
                 class UnionMember1 < Sam::Union
                   abstract!
 
-                  Variants = type_template(:out) do
-                    {
-                      fixed: T.any(
-                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
-                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
-                      )
-                    }
-                  end
+                  Variants =
+                    type_template(:out) do
+                      {
+                        fixed: T.any(
+                          Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
+                          Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
+                        )
+                      }
+                    end
 
                   class RequestTextBlock < Sam::BaseModel
                     sig { returns(String) }
@@ -1791,15 +1799,16 @@ module Sam
                     class Citation < Sam::Union
                       abstract!
 
-                      Variants = type_template(:out) do
-                        {
-                          fixed: T.any(
-                            Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                            Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                            Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                          )
-                        }
-                      end
+                      Variants =
+                        type_template(:out) do
+                          {
+                            fixed: T.any(
+                              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
+                              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
+                              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
+                            )
+                          }
+                        end
 
                       class RequestCharLocationCitation < Sam::BaseModel
                         sig { returns(String) }
@@ -2149,14 +2158,15 @@ module Sam
                     class Source < Sam::Union
                       abstract!
 
-                      Variants = type_template(:out) do
-                        {
-                          fixed: T.any(
-                            Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
-                            Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
-                          )
-                        }
-                      end
+                      Variants =
+                        type_template(:out) do
+                          {
+                            fixed: T.any(
+                              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
+                              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
+                            )
+                          }
+                        end
 
                       class Base64ImageSource < Sam::BaseModel
                         sig { returns(String) }
@@ -2404,16 +2414,17 @@ module Sam
               class Source < Sam::Union
                 abstract!
 
-                Variants = type_template(:out) do
-                  {
-                    fixed: T.any(
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource,
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource,
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource,
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource
-                    )
-                  }
-                end
+                Variants =
+                  type_template(:out) do
+                    {
+                      fixed: T.any(
+                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource,
+                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource,
+                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource,
+                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource
+                      )
+                    }
+                  end
 
                 class Base64PdfSource < Sam::BaseModel
                   sig { returns(String) }
@@ -2576,40 +2587,43 @@ module Sam
                   class Content < Sam::Union
                     abstract!
 
-                    Variants = type_template(:out) do
-                      {
-                        fixed: T.any(
-                          String,
-                          T::Array[
-                          T.any(
-                            Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
-                            Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
+                    Variants =
+                      type_template(:out) do
+                        {
+                          fixed: T.any(
+                            String,
+                            T::Array[
+                            T.any(
+                              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
+                              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
+                            )
+                            ]
                           )
-                          ]
-                        )
-                      }
-                    end
+                        }
+                      end
 
-                    UnionMember1Array = T.type_alias do
-                      T::Array[
-                      T.any(
-                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
-                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
-                      )
-                      ]
-                    end
+                    UnionMember1Array =
+                      T.type_alias do
+                        T::Array[
+                        T.any(
+                          Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
+                          Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
+                        )
+                        ]
+                      end
 
                     class UnionMember1 < Sam::Union
                       abstract!
 
-                      Variants = type_template(:out) do
-                        {
-                          fixed: T.any(
-                            Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
-                            Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
-                          )
-                        }
-                      end
+                      Variants =
+                        type_template(:out) do
+                          {
+                            fixed: T.any(
+                              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
+                              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
+                            )
+                          }
+                        end
 
                       class RequestTextBlock < Sam::BaseModel
                         sig { returns(String) }
@@ -2763,15 +2777,16 @@ module Sam
                         class Citation < Sam::Union
                           abstract!
 
-                          Variants = type_template(:out) do
-                            {
-                              fixed: T.any(
-                                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                              )
-                            }
-                          end
+                          Variants =
+                            type_template(:out) do
+                              {
+                                fixed: T.any(
+                                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
+                                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
+                                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
+                                )
+                              }
+                            end
 
                           class RequestCharLocationCitation < Sam::BaseModel
                             sig { returns(String) }
@@ -3121,14 +3136,15 @@ module Sam
                         class Source < Sam::Union
                           abstract!
 
-                          Variants = type_template(:out) do
-                            {
-                              fixed: T.any(
-                                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
-                                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
-                              )
-                            }
-                          end
+                          Variants =
+                            type_template(:out) do
+                              {
+                                fixed: T.any(
+                                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
+                                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
+                                )
+                              }
+                            end
 
                           class Base64ImageSource < Sam::BaseModel
                             sig { returns(String) }
@@ -3394,7 +3410,8 @@ module Sam
       class System < Sam::Union
         abstract!
 
-        Variants = type_template(:out) { {fixed: T.any(String, T::Array[Sam::Models::MessageCreateParams::System::UnionMember1])} }
+        Variants =
+          type_template(:out) { {fixed: T.any(String, T::Array[Sam::Models::MessageCreateParams::System::UnionMember1])} }
 
         UnionMember1Array = T.type_alias { T::Array[Sam::Models::MessageCreateParams::System::UnionMember1] }
 
@@ -3532,15 +3549,16 @@ module Sam
           class Citation < Sam::Union
             abstract!
 
-            Variants = type_template(:out) do
-              {
-                fixed: T.any(
-                  Sam::Models::MessageCreateParams::System::UnionMember1::Citation::RequestCharLocationCitation,
-                  Sam::Models::MessageCreateParams::System::UnionMember1::Citation::RequestPageLocationCitation,
-                  Sam::Models::MessageCreateParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation
-                )
-              }
-            end
+            Variants =
+              type_template(:out) do
+                {
+                  fixed: T.any(
+                    Sam::Models::MessageCreateParams::System::UnionMember1::Citation::RequestCharLocationCitation,
+                    Sam::Models::MessageCreateParams::System::UnionMember1::Citation::RequestPageLocationCitation,
+                    Sam::Models::MessageCreateParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation
+                  )
+                }
+              end
 
             class RequestCharLocationCitation < Sam::BaseModel
               sig { returns(String) }
@@ -3804,14 +3822,15 @@ module Sam
       class Thinking < Sam::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Sam::Models::MessageCreateParams::Thinking::ThinkingConfigEnabled,
-              Sam::Models::MessageCreateParams::Thinking::ThinkingConfigDisabled
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Sam::Models::MessageCreateParams::Thinking::ThinkingConfigEnabled,
+                Sam::Models::MessageCreateParams::Thinking::ThinkingConfigDisabled
+              )
+            }
+          end
 
         class ThinkingConfigEnabled < Sam::BaseModel
           # Determines how many tokens Claude can use for its internal reasoning process.
@@ -3872,16 +3891,17 @@ module Sam
       class ToolChoice < Sam::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAuto,
-              Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAny,
-              Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceTool,
-              Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceNone
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAuto,
+                Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAny,
+                Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceTool,
+                Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceNone
+              )
+            }
+          end
 
         class ToolChoiceAuto < Sam::BaseModel
           sig { returns(Symbol) }
@@ -4014,15 +4034,16 @@ module Sam
       class Tool < Sam::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Sam::Models::MessageCreateParams::Tool::Tool,
-              Sam::Models::MessageCreateParams::Tool::BashTool20250124,
-              Sam::Models::MessageCreateParams::Tool::TextEditor20250124
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Sam::Models::MessageCreateParams::Tool::Tool,
+                Sam::Models::MessageCreateParams::Tool::BashTool20250124,
+                Sam::Models::MessageCreateParams::Tool::TextEditor20250124
+              )
+            }
+          end
 
         class Tool < Sam::BaseModel
           # [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input.

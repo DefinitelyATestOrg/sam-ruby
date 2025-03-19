@@ -97,16 +97,17 @@ module Sam
         class Result < Sam::Union
           abstract!
 
-          Variants = type_template(:out) do
-            {
-              fixed: T.any(
-                Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult,
-                Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult,
-                Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaCanceledResult,
-                Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaExpiredResult
-              )
-            }
-          end
+          Variants =
+            type_template(:out) do
+              {
+                fixed: T.any(
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult,
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult,
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaCanceledResult,
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaExpiredResult
+                )
+              }
+            end
 
           class BetaSucceededResult < Sam::BaseModel
             sig { returns(Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message) }
@@ -370,16 +371,17 @@ module Sam
               class Content < Sam::Union
                 abstract!
 
-                Variants = type_template(:out) do
-                  {
-                    fixed: T.any(
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock
-                    )
-                  }
-                end
+                Variants =
+                  type_template(:out) do
+                    {
+                      fixed: T.any(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock,
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock,
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock,
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock
+                      )
+                    }
+                  end
 
                 class BetaResponseTextBlock < Sam::BaseModel
                   # Citations supporting the text block.
@@ -489,15 +491,16 @@ module Sam
                   class Citation < Sam::Union
                     abstract!
 
-                    Variants = type_template(:out) do
-                      {
-                        fixed: T.any(
-                          Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation,
-                          Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation,
-                          Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
-                        )
-                      }
-                    end
+                    Variants =
+                      type_template(:out) do
+                        {
+                          fixed: T.any(
+                            Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation,
+                            Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation,
+                            Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
+                          )
+                        }
+                      end
 
                     class BetaResponseCharLocationCitation < Sam::BaseModel
                       sig { returns(String) }
@@ -1103,21 +1106,22 @@ module Sam
               class Error < Sam::Union
                 abstract!
 
-                Variants = type_template(:out) do
-                  {
-                    fixed: T.any(
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaInvalidRequestError,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAuthenticationError,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaBillingError,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaPermissionError,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaNotFoundError,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaRateLimitError,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaGatewayTimeoutError,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAPIError,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaOverloadedError
-                    )
-                  }
-                end
+                Variants =
+                  type_template(:out) do
+                    {
+                      fixed: T.any(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaInvalidRequestError,
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAuthenticationError,
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaBillingError,
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaPermissionError,
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaNotFoundError,
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaRateLimitError,
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaGatewayTimeoutError,
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAPIError,
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaOverloadedError
+                      )
+                    }
+                  end
 
                 class BetaInvalidRequestError < Sam::BaseModel
                   sig { returns(String) }
