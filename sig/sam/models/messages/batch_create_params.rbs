@@ -28,17 +28,13 @@ module Sam
 
         def x_api_key=: (String) -> String
 
-        def initialize:
-          (
-            requests: ::Array[Sam::Models::Messages::BatchCreateParams::Request],
-            ?anthropic_beta: ::Array[String],
-            ?anthropic_version: String,
-            ?x_api_key: String,
-            ?request_options: Sam::request_opts
-          ) -> void
-          | (
-            ?Sam::Models::Messages::batch_create_params | Sam::BaseModel data
-          ) -> void
+        def initialize: (
+          requests: ::Array[Sam::Models::Messages::BatchCreateParams::Request],
+          ?anthropic_beta: ::Array[String],
+          ?anthropic_version: String,
+          ?x_api_key: String,
+          ?request_options: Sam::request_opts
+        ) -> void
 
         def to_hash: -> Sam::Models::Messages::batch_create_params
 
@@ -53,15 +49,10 @@ module Sam
 
           attr_accessor params: Sam::Models::Messages::BatchCreateParams::Request::Params
 
-          def initialize:
-            (
-              custom_id: String,
-              params: Sam::Models::Messages::BatchCreateParams::Request::Params
-            ) -> void
-            | (
-              ?Sam::Models::Messages::BatchCreateParams::request
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (
+            custom_id: String,
+            params: Sam::Models::Messages::BatchCreateParams::Request::Params
+          ) -> void
 
           def to_hash: -> Sam::Models::Messages::BatchCreateParams::request
 
@@ -139,26 +130,21 @@ module Sam
 
             def top_p=: (Float) -> Float
 
-            def initialize:
-              (
-                max_tokens: Integer,
-                messages: ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::Message],
-                model: String,
-                ?metadata: Sam::Models::Messages::BatchCreateParams::Request::Params::Metadata,
-                ?stop_sequences: ::Array[String],
-                ?stream: bool,
-                ?system_: Sam::Models::Messages::BatchCreateParams::Request::Params::system_,
-                ?temperature: Float,
-                ?thinking: Sam::Models::Messages::BatchCreateParams::Request::Params::thinking,
-                ?tool_choice: Sam::Models::Messages::BatchCreateParams::Request::Params::tool_choice,
-                ?tools: ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::tool],
-                ?top_k: Integer,
-                ?top_p: Float
-              ) -> void
-              | (
-                ?Sam::Models::Messages::BatchCreateParams::Request::params
-                | Sam::BaseModel data
-              ) -> void
+            def initialize: (
+              max_tokens: Integer,
+              messages: ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::Message],
+              model: String,
+              ?metadata: Sam::Models::Messages::BatchCreateParams::Request::Params::Metadata,
+              ?stop_sequences: ::Array[String],
+              ?stream: bool,
+              ?system_: Sam::Models::Messages::BatchCreateParams::Request::Params::system_,
+              ?temperature: Float,
+              ?thinking: Sam::Models::Messages::BatchCreateParams::Request::Params::thinking,
+              ?tool_choice: Sam::Models::Messages::BatchCreateParams::Request::Params::tool_choice,
+              ?tools: ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::tool],
+              ?top_k: Integer,
+              ?top_p: Float
+            ) -> void
 
             def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::params
 
@@ -173,15 +159,10 @@ module Sam
 
               attr_accessor role: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::role
 
-              def initialize:
-                (
-                  content: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::content,
-                  role: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::role
-                ) -> void
-                | (
-                  ?Sam::Models::Messages::BatchCreateParams::Request::Params::message
-                  | Sam::BaseModel data
-                ) -> void
+              def initialize: (
+                content: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::content,
+                role: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::role
+              ) -> void
 
               def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::message
 
@@ -222,17 +203,12 @@ module Sam
 
                     attr_accessor citations: ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::citation]?
 
-                    def initialize:
-                      (
-                        text: String,
-                        ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::CacheControl?,
-                        ?citations: ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::citation]?,
-                        ?type: :text
-                      ) -> void
-                      | (
-                        ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::request_text_block
-                        | Sam::BaseModel data
-                      ) -> void
+                    def initialize: (
+                      text: String,
+                      ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::CacheControl?,
+                      ?citations: ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::citation]?,
+                      ?type: :text
+                    ) -> void
 
                     def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::request_text_block
 
@@ -241,12 +217,7 @@ module Sam
                     class CacheControl < Sam::BaseModel
                       attr_accessor type: :ephemeral
 
-                      def initialize:
-                        (?type: :ephemeral) -> void
-                        | (
-                          ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::cache_control
-                          | Sam::BaseModel data
-                        ) -> void
+                      def initialize: (?type: :ephemeral) -> void
 
                       def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::cache_control
                     end
@@ -280,19 +251,14 @@ module Sam
 
                         attr_accessor type: :char_location
 
-                        def initialize:
-                          (
-                            cited_text: String,
-                            document_index: Integer,
-                            document_title: String?,
-                            end_char_index: Integer,
-                            start_char_index: Integer,
-                            ?type: :char_location
-                          ) -> void
-                          | (
-                            ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::request_char_location_citation
-                            | Sam::BaseModel data
-                          ) -> void
+                        def initialize: (
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: String?,
+                          end_char_index: Integer,
+                          start_char_index: Integer,
+                          ?type: :char_location
+                        ) -> void
 
                         def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::request_char_location_citation
                       end
@@ -320,19 +286,14 @@ module Sam
 
                         attr_accessor type: :page_location
 
-                        def initialize:
-                          (
-                            cited_text: String,
-                            document_index: Integer,
-                            document_title: String?,
-                            end_page_number: Integer,
-                            start_page_number: Integer,
-                            ?type: :page_location
-                          ) -> void
-                          | (
-                            ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::request_page_location_citation
-                            | Sam::BaseModel data
-                          ) -> void
+                        def initialize: (
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: String?,
+                          end_page_number: Integer,
+                          start_page_number: Integer,
+                          ?type: :page_location
+                        ) -> void
 
                         def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::request_page_location_citation
                       end
@@ -360,19 +321,14 @@ module Sam
 
                         attr_accessor type: :content_block_location
 
-                        def initialize:
-                          (
-                            cited_text: String,
-                            document_index: Integer,
-                            document_title: String?,
-                            end_block_index: Integer,
-                            start_block_index: Integer,
-                            ?type: :content_block_location
-                          ) -> void
-                          | (
-                            ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::request_content_block_location_citation
-                            | Sam::BaseModel data
-                          ) -> void
+                        def initialize: (
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: String?,
+                          end_block_index: Integer,
+                          start_block_index: Integer,
+                          ?type: :content_block_location
+                        ) -> void
 
                         def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::request_content_block_location_citation
                       end
@@ -395,16 +351,11 @@ module Sam
 
                     attr_accessor cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::CacheControl?
 
-                    def initialize:
-                      (
-                        source: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::source,
-                        ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::CacheControl?,
-                        ?type: :image
-                      ) -> void
-                      | (
-                        ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::request_image_block
-                        | Sam::BaseModel data
-                      ) -> void
+                    def initialize: (
+                      source: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::source,
+                      ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::CacheControl?,
+                      ?type: :image
+                    ) -> void
 
                     def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::request_image_block
 
@@ -427,16 +378,11 @@ module Sam
 
                         attr_accessor type: :base64
 
-                        def initialize:
-                          (
-                            data: String,
-                            media_type: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::media_type,
-                            ?type: :base64
-                          ) -> void
-                          | (
-                            ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::base64_image_source
-                            | Sam::BaseModel data
-                          ) -> void
+                        def initialize: (
+                          data: String,
+                          media_type: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::media_type,
+                          ?type: :base64
+                        ) -> void
 
                         def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::base64_image_source
 
@@ -463,12 +409,7 @@ module Sam
 
                         attr_accessor url: String
 
-                        def initialize:
-                          (url: String, ?type: :url) -> void
-                          | (
-                            ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::url_image_source
-                            | Sam::BaseModel data
-                          ) -> void
+                        def initialize: (url: String, ?type: :url) -> void
 
                         def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::url_image_source
                       end
@@ -481,12 +422,7 @@ module Sam
                     class CacheControl < Sam::BaseModel
                       attr_accessor type: :ephemeral
 
-                      def initialize:
-                        (?type: :ephemeral) -> void
-                        | (
-                          ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::cache_control
-                          | Sam::BaseModel data
-                        ) -> void
+                      def initialize: (?type: :ephemeral) -> void
 
                       def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::cache_control
                     end
@@ -512,18 +448,13 @@ module Sam
 
                     attr_accessor cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolUseBlock::CacheControl?
 
-                    def initialize:
-                      (
-                        id: String,
-                        input: top,
-                        name: String,
-                        ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolUseBlock::CacheControl?,
-                        ?type: :tool_use
-                      ) -> void
-                      | (
-                        ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::request_tool_use_block
-                        | Sam::BaseModel data
-                      ) -> void
+                    def initialize: (
+                      id: String,
+                      input: top,
+                      name: String,
+                      ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolUseBlock::CacheControl?,
+                      ?type: :tool_use
+                    ) -> void
 
                     def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::request_tool_use_block
 
@@ -532,12 +463,7 @@ module Sam
                     class CacheControl < Sam::BaseModel
                       attr_accessor type: :ephemeral
 
-                      def initialize:
-                        (?type: :ephemeral) -> void
-                        | (
-                          ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolUseBlock::cache_control
-                          | Sam::BaseModel data
-                        ) -> void
+                      def initialize: (?type: :ephemeral) -> void
 
                       def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolUseBlock::cache_control
                     end
@@ -569,18 +495,13 @@ module Sam
 
                     def is_error=: (bool) -> bool
 
-                    def initialize:
-                      (
-                        tool_use_id: String,
-                        ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::CacheControl?,
-                        ?content: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::content,
-                        ?is_error: bool,
-                        ?type: :tool_result
-                      ) -> void
-                      | (
-                        ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::request_tool_result_block
-                        | Sam::BaseModel data
-                      ) -> void
+                    def initialize: (
+                      tool_use_id: String,
+                      ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::CacheControl?,
+                      ?content: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::content,
+                      ?is_error: bool,
+                      ?type: :tool_result
+                    ) -> void
 
                     def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::request_tool_result_block
 
@@ -589,12 +510,7 @@ module Sam
                     class CacheControl < Sam::BaseModel
                       attr_accessor type: :ephemeral
 
-                      def initialize:
-                        (?type: :ephemeral) -> void
-                        | (
-                          ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::cache_control
-                          | Sam::BaseModel data
-                        ) -> void
+                      def initialize: (?type: :ephemeral) -> void
 
                       def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::cache_control
                     end
@@ -631,17 +547,12 @@ module Sam
 
                           attr_accessor citations: ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::citation]?
 
-                          def initialize:
-                            (
-                              text: String,
-                              ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::CacheControl?,
-                              ?citations: ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::citation]?,
-                              ?type: :text
-                            ) -> void
-                            | (
-                              ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::request_text_block
-                              | Sam::BaseModel data
-                            ) -> void
+                          def initialize: (
+                            text: String,
+                            ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::CacheControl?,
+                            ?citations: ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::citation]?,
+                            ?type: :text
+                          ) -> void
 
                           def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::request_text_block
 
@@ -650,12 +561,7 @@ module Sam
                           class CacheControl < Sam::BaseModel
                             attr_accessor type: :ephemeral
 
-                            def initialize:
-                              (?type: :ephemeral) -> void
-                              | (
-                                ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::cache_control
-                                | Sam::BaseModel data
-                              ) -> void
+                            def initialize: (?type: :ephemeral) -> void
 
                             def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::cache_control
                           end
@@ -689,19 +595,14 @@ module Sam
 
                               attr_accessor type: :char_location
 
-                              def initialize:
-                                (
-                                  cited_text: String,
-                                  document_index: Integer,
-                                  document_title: String?,
-                                  end_char_index: Integer,
-                                  start_char_index: Integer,
-                                  ?type: :char_location
-                                ) -> void
-                                | (
-                                  ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::request_char_location_citation
-                                  | Sam::BaseModel data
-                                ) -> void
+                              def initialize: (
+                                cited_text: String,
+                                document_index: Integer,
+                                document_title: String?,
+                                end_char_index: Integer,
+                                start_char_index: Integer,
+                                ?type: :char_location
+                              ) -> void
 
                               def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::request_char_location_citation
                             end
@@ -729,19 +630,14 @@ module Sam
 
                               attr_accessor type: :page_location
 
-                              def initialize:
-                                (
-                                  cited_text: String,
-                                  document_index: Integer,
-                                  document_title: String?,
-                                  end_page_number: Integer,
-                                  start_page_number: Integer,
-                                  ?type: :page_location
-                                ) -> void
-                                | (
-                                  ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::request_page_location_citation
-                                  | Sam::BaseModel data
-                                ) -> void
+                              def initialize: (
+                                cited_text: String,
+                                document_index: Integer,
+                                document_title: String?,
+                                end_page_number: Integer,
+                                start_page_number: Integer,
+                                ?type: :page_location
+                              ) -> void
 
                               def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::request_page_location_citation
                             end
@@ -769,19 +665,14 @@ module Sam
 
                               attr_accessor type: :content_block_location
 
-                              def initialize:
-                                (
-                                  cited_text: String,
-                                  document_index: Integer,
-                                  document_title: String?,
-                                  end_block_index: Integer,
-                                  start_block_index: Integer,
-                                  ?type: :content_block_location
-                                ) -> void
-                                | (
-                                  ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::request_content_block_location_citation
-                                  | Sam::BaseModel data
-                                ) -> void
+                              def initialize: (
+                                cited_text: String,
+                                document_index: Integer,
+                                document_title: String?,
+                                end_block_index: Integer,
+                                start_block_index: Integer,
+                                ?type: :content_block_location
+                              ) -> void
 
                               def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::request_content_block_location_citation
                             end
@@ -804,16 +695,11 @@ module Sam
 
                           attr_accessor cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::CacheControl?
 
-                          def initialize:
-                            (
-                              source: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::source,
-                              ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::CacheControl?,
-                              ?type: :image
-                            ) -> void
-                            | (
-                              ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::request_image_block
-                              | Sam::BaseModel data
-                            ) -> void
+                          def initialize: (
+                            source: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::source,
+                            ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::CacheControl?,
+                            ?type: :image
+                          ) -> void
 
                           def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::request_image_block
 
@@ -836,16 +722,11 @@ module Sam
 
                               attr_accessor type: :base64
 
-                              def initialize:
-                                (
-                                  data: String,
-                                  media_type: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::media_type,
-                                  ?type: :base64
-                                ) -> void
-                                | (
-                                  ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::base64_image_source
-                                  | Sam::BaseModel data
-                                ) -> void
+                              def initialize: (
+                                data: String,
+                                media_type: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::media_type,
+                                ?type: :base64
+                              ) -> void
 
                               def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::base64_image_source
 
@@ -872,12 +753,7 @@ module Sam
 
                               attr_accessor url: String
 
-                              def initialize:
-                                (url: String, ?type: :url) -> void
-                                | (
-                                  ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::url_image_source
-                                  | Sam::BaseModel data
-                                ) -> void
+                              def initialize: (url: String, ?type: :url) -> void
 
                               def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::url_image_source
                             end
@@ -890,12 +766,7 @@ module Sam
                           class CacheControl < Sam::BaseModel
                             attr_accessor type: :ephemeral
 
-                            def initialize:
-                              (?type: :ephemeral) -> void
-                              | (
-                                ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::cache_control
-                                | Sam::BaseModel data
-                              ) -> void
+                            def initialize: (?type: :ephemeral) -> void
 
                             def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::cache_control
                           end
@@ -935,19 +806,14 @@ module Sam
 
                     attr_accessor title: String?
 
-                    def initialize:
-                      (
-                        source: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::source,
-                        ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::CacheControl?,
-                        ?citations: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Citations,
-                        ?context: String?,
-                        ?title: String?,
-                        ?type: :document
-                      ) -> void
-                      | (
-                        ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::request_document_block
-                        | Sam::BaseModel data
-                      ) -> void
+                    def initialize: (
+                      source: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::source,
+                      ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::CacheControl?,
+                      ?citations: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Citations,
+                      ?context: String?,
+                      ?title: String?,
+                      ?type: :document
+                    ) -> void
 
                     def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::request_document_block
 
@@ -972,16 +838,11 @@ module Sam
 
                         attr_accessor type: :base64
 
-                        def initialize:
-                          (
-                            data: String,
-                            ?media_type: :"application/pdf",
-                            ?type: :base64
-                          ) -> void
-                          | (
-                            ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::base64_pdf_source
-                            | Sam::BaseModel data
-                          ) -> void
+                        def initialize: (
+                          data: String,
+                          ?media_type: :"application/pdf",
+                          ?type: :base64
+                        ) -> void
 
                         def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::base64_pdf_source
                       end
@@ -996,16 +857,11 @@ module Sam
 
                         attr_accessor type: :text
 
-                        def initialize:
-                          (
-                            data: String,
-                            ?media_type: :"text/plain",
-                            ?type: :text
-                          ) -> void
-                          | (
-                            ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::plain_text_source
-                            | Sam::BaseModel data
-                          ) -> void
+                        def initialize: (
+                          data: String,
+                          ?media_type: :"text/plain",
+                          ?type: :text
+                        ) -> void
 
                         def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::plain_text_source
                       end
@@ -1021,15 +877,10 @@ module Sam
 
                         attr_accessor type: :content
 
-                        def initialize:
-                          (
-                            content: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::content,
-                            ?type: :content
-                          ) -> void
-                          | (
-                            ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::content_block_source
-                            | Sam::BaseModel data
-                          ) -> void
+                        def initialize: (
+                          content: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::content,
+                          ?type: :content
+                        ) -> void
 
                         def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::content_block_source
 
@@ -1065,17 +916,12 @@ module Sam
 
                               attr_accessor citations: ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::citation]?
 
-                              def initialize:
-                                (
-                                  text: String,
-                                  ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::CacheControl?,
-                                  ?citations: ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::citation]?,
-                                  ?type: :text
-                                ) -> void
-                                | (
-                                  ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::request_text_block
-                                  | Sam::BaseModel data
-                                ) -> void
+                              def initialize: (
+                                text: String,
+                                ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::CacheControl?,
+                                ?citations: ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::citation]?,
+                                ?type: :text
+                              ) -> void
 
                               def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::request_text_block
 
@@ -1084,12 +930,7 @@ module Sam
                               class CacheControl < Sam::BaseModel
                                 attr_accessor type: :ephemeral
 
-                                def initialize:
-                                  (?type: :ephemeral) -> void
-                                  | (
-                                    ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::cache_control
-                                    | Sam::BaseModel data
-                                  ) -> void
+                                def initialize: (?type: :ephemeral) -> void
 
                                 def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::cache_control
                               end
@@ -1123,19 +964,14 @@ module Sam
 
                                   attr_accessor type: :char_location
 
-                                  def initialize:
-                                    (
-                                      cited_text: String,
-                                      document_index: Integer,
-                                      document_title: String?,
-                                      end_char_index: Integer,
-                                      start_char_index: Integer,
-                                      ?type: :char_location
-                                    ) -> void
-                                    | (
-                                      ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::request_char_location_citation
-                                      | Sam::BaseModel data
-                                    ) -> void
+                                  def initialize: (
+                                    cited_text: String,
+                                    document_index: Integer,
+                                    document_title: String?,
+                                    end_char_index: Integer,
+                                    start_char_index: Integer,
+                                    ?type: :char_location
+                                  ) -> void
 
                                   def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::request_char_location_citation
                                 end
@@ -1163,19 +999,14 @@ module Sam
 
                                   attr_accessor type: :page_location
 
-                                  def initialize:
-                                    (
-                                      cited_text: String,
-                                      document_index: Integer,
-                                      document_title: String?,
-                                      end_page_number: Integer,
-                                      start_page_number: Integer,
-                                      ?type: :page_location
-                                    ) -> void
-                                    | (
-                                      ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::request_page_location_citation
-                                      | Sam::BaseModel data
-                                    ) -> void
+                                  def initialize: (
+                                    cited_text: String,
+                                    document_index: Integer,
+                                    document_title: String?,
+                                    end_page_number: Integer,
+                                    start_page_number: Integer,
+                                    ?type: :page_location
+                                  ) -> void
 
                                   def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::request_page_location_citation
                                 end
@@ -1203,19 +1034,14 @@ module Sam
 
                                   attr_accessor type: :content_block_location
 
-                                  def initialize:
-                                    (
-                                      cited_text: String,
-                                      document_index: Integer,
-                                      document_title: String?,
-                                      end_block_index: Integer,
-                                      start_block_index: Integer,
-                                      ?type: :content_block_location
-                                    ) -> void
-                                    | (
-                                      ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::request_content_block_location_citation
-                                      | Sam::BaseModel data
-                                    ) -> void
+                                  def initialize: (
+                                    cited_text: String,
+                                    document_index: Integer,
+                                    document_title: String?,
+                                    end_block_index: Integer,
+                                    start_block_index: Integer,
+                                    ?type: :content_block_location
+                                  ) -> void
 
                                   def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::request_content_block_location_citation
                                 end
@@ -1238,16 +1064,11 @@ module Sam
 
                               attr_accessor cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::CacheControl?
 
-                              def initialize:
-                                (
-                                  source: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::source,
-                                  ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::CacheControl?,
-                                  ?type: :image
-                                ) -> void
-                                | (
-                                  ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::request_image_block
-                                  | Sam::BaseModel data
-                                ) -> void
+                              def initialize: (
+                                source: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::source,
+                                ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::CacheControl?,
+                                ?type: :image
+                              ) -> void
 
                               def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::request_image_block
 
@@ -1270,16 +1091,11 @@ module Sam
 
                                   attr_accessor type: :base64
 
-                                  def initialize:
-                                    (
-                                      data: String,
-                                      media_type: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::media_type,
-                                      ?type: :base64
-                                    ) -> void
-                                    | (
-                                      ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::base64_image_source
-                                      | Sam::BaseModel data
-                                    ) -> void
+                                  def initialize: (
+                                    data: String,
+                                    media_type: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::media_type,
+                                    ?type: :base64
+                                  ) -> void
 
                                   def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::base64_image_source
 
@@ -1307,12 +1123,10 @@ module Sam
 
                                   attr_accessor url: String
 
-                                  def initialize:
-                                    (url: String, ?type: :url) -> void
-                                    | (
-                                      ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::url_image_source
-                                      | Sam::BaseModel data
-                                    ) -> void
+                                  def initialize: (
+                                    url: String,
+                                    ?type: :url
+                                  ) -> void
 
                                   def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::url_image_source
                                 end
@@ -1325,12 +1139,7 @@ module Sam
                               class CacheControl < Sam::BaseModel
                                 attr_accessor type: :ephemeral
 
-                                def initialize:
-                                  (?type: :ephemeral) -> void
-                                  | (
-                                    ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::cache_control
-                                    | Sam::BaseModel data
-                                  ) -> void
+                                def initialize: (?type: :ephemeral) -> void
 
                                 def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::cache_control
                               end
@@ -1350,12 +1159,7 @@ module Sam
 
                         attr_accessor url: String
 
-                        def initialize:
-                          (url: String, ?type: :url) -> void
-                          | (
-                            ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::urlpdf_source
-                            | Sam::BaseModel data
-                          ) -> void
+                        def initialize: (url: String, ?type: :url) -> void
 
                         def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::urlpdf_source
                       end
@@ -1368,12 +1172,7 @@ module Sam
                     class CacheControl < Sam::BaseModel
                       attr_accessor type: :ephemeral
 
-                      def initialize:
-                        (?type: :ephemeral) -> void
-                        | (
-                          ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::cache_control
-                          | Sam::BaseModel data
-                        ) -> void
+                      def initialize: (?type: :ephemeral) -> void
 
                       def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::cache_control
                     end
@@ -1385,12 +1184,7 @@ module Sam
 
                       def enabled=: (bool) -> bool
 
-                      def initialize:
-                        (?enabled: bool) -> void
-                        | (
-                          ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::citations
-                          | Sam::BaseModel data
-                        ) -> void
+                      def initialize: (?enabled: bool) -> void
 
                       def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::citations
                     end
@@ -1406,16 +1200,11 @@ module Sam
 
                     attr_accessor type: :thinking
 
-                    def initialize:
-                      (
-                        signature: String,
-                        thinking: String,
-                        ?type: :thinking
-                      ) -> void
-                      | (
-                        ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::request_thinking_block
-                        | Sam::BaseModel data
-                      ) -> void
+                    def initialize: (
+                      signature: String,
+                      thinking: String,
+                      ?type: :thinking
+                    ) -> void
 
                     def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::request_thinking_block
                   end
@@ -1428,12 +1217,10 @@ module Sam
 
                     attr_accessor type: :redacted_thinking
 
-                    def initialize:
-                      (data: String, ?type: :redacted_thinking) -> void
-                      | (
-                        ?Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::request_redacted_thinking_block
-                        | Sam::BaseModel data
-                      ) -> void
+                    def initialize: (
+                      data: String,
+                      ?type: :redacted_thinking
+                    ) -> void
 
                     def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::request_redacted_thinking_block
                   end
@@ -1459,12 +1246,7 @@ module Sam
             class Metadata < Sam::BaseModel
               attr_accessor user_id: String?
 
-              def initialize:
-                (?user_id: String?) -> void
-                | (
-                  ?Sam::Models::Messages::BatchCreateParams::Request::Params::metadata
-                  | Sam::BaseModel data
-                ) -> void
+              def initialize: (?user_id: String?) -> void
 
               def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::metadata
             end
@@ -1496,17 +1278,12 @@ module Sam
 
                 attr_accessor citations: ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::citation]?
 
-                def initialize:
-                  (
-                    text: String,
-                    ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::CacheControl?,
-                    ?citations: ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::citation]?,
-                    ?type: :text
-                  ) -> void
-                  | (
-                    ?Sam::Models::Messages::BatchCreateParams::Request::Params::System::union_member1
-                    | Sam::BaseModel data
-                  ) -> void
+                def initialize: (
+                  text: String,
+                  ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::CacheControl?,
+                  ?citations: ::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::citation]?,
+                  ?type: :text
+                ) -> void
 
                 def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::System::union_member1
 
@@ -1515,12 +1292,7 @@ module Sam
                 class CacheControl < Sam::BaseModel
                   attr_accessor type: :ephemeral
 
-                  def initialize:
-                    (?type: :ephemeral) -> void
-                    | (
-                      ?Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::cache_control
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (?type: :ephemeral) -> void
 
                   def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::cache_control
                 end
@@ -1554,19 +1326,14 @@ module Sam
 
                     attr_accessor type: :char_location
 
-                    def initialize:
-                      (
-                        cited_text: String,
-                        document_index: Integer,
-                        document_title: String?,
-                        end_char_index: Integer,
-                        start_char_index: Integer,
-                        ?type: :char_location
-                      ) -> void
-                      | (
-                        ?Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::request_char_location_citation
-                        | Sam::BaseModel data
-                      ) -> void
+                    def initialize: (
+                      cited_text: String,
+                      document_index: Integer,
+                      document_title: String?,
+                      end_char_index: Integer,
+                      start_char_index: Integer,
+                      ?type: :char_location
+                    ) -> void
 
                     def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::request_char_location_citation
                   end
@@ -1594,19 +1361,14 @@ module Sam
 
                     attr_accessor type: :page_location
 
-                    def initialize:
-                      (
-                        cited_text: String,
-                        document_index: Integer,
-                        document_title: String?,
-                        end_page_number: Integer,
-                        start_page_number: Integer,
-                        ?type: :page_location
-                      ) -> void
-                      | (
-                        ?Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::request_page_location_citation
-                        | Sam::BaseModel data
-                      ) -> void
+                    def initialize: (
+                      cited_text: String,
+                      document_index: Integer,
+                      document_title: String?,
+                      end_page_number: Integer,
+                      start_page_number: Integer,
+                      ?type: :page_location
+                    ) -> void
 
                     def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::request_page_location_citation
                   end
@@ -1634,19 +1396,14 @@ module Sam
 
                     attr_accessor type: :content_block_location
 
-                    def initialize:
-                      (
-                        cited_text: String,
-                        document_index: Integer,
-                        document_title: String?,
-                        end_block_index: Integer,
-                        start_block_index: Integer,
-                        ?type: :content_block_location
-                      ) -> void
-                      | (
-                        ?Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::request_content_block_location_citation
-                        | Sam::BaseModel data
-                      ) -> void
+                    def initialize: (
+                      cited_text: String,
+                      document_index: Integer,
+                      document_title: String?,
+                      end_block_index: Integer,
+                      start_block_index: Integer,
+                      ?type: :content_block_location
+                    ) -> void
 
                     def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::request_content_block_location_citation
                   end
@@ -1671,12 +1428,10 @@ module Sam
 
                 attr_accessor type: :enabled
 
-                def initialize:
-                  (budget_tokens: Integer, ?type: :enabled) -> void
-                  | (
-                    ?Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::thinking_config_enabled
-                    | Sam::BaseModel data
-                  ) -> void
+                def initialize: (
+                  budget_tokens: Integer,
+                  ?type: :enabled
+                ) -> void
 
                 def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::thinking_config_enabled
               end
@@ -1686,12 +1441,7 @@ module Sam
               class ThinkingConfigDisabled < Sam::BaseModel
                 attr_accessor type: :disabled
 
-                def initialize:
-                  (?type: :disabled) -> void
-                  | (
-                    ?Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::thinking_config_disabled
-                    | Sam::BaseModel data
-                  ) -> void
+                def initialize: (?type: :disabled) -> void
 
                 def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::thinking_config_disabled
               end
@@ -1716,12 +1466,10 @@ module Sam
 
                 def disable_parallel_tool_use=: (bool) -> bool
 
-                def initialize:
-                  (?disable_parallel_tool_use: bool, ?type: :auto) -> void
-                  | (
-                    ?Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::tool_choice_auto
-                    | Sam::BaseModel data
-                  ) -> void
+                def initialize: (
+                  ?disable_parallel_tool_use: bool,
+                  ?type: :auto
+                ) -> void
 
                 def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::tool_choice_auto
               end
@@ -1736,12 +1484,10 @@ module Sam
 
                 def disable_parallel_tool_use=: (bool) -> bool
 
-                def initialize:
-                  (?disable_parallel_tool_use: bool, ?type: :any) -> void
-                  | (
-                    ?Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::tool_choice_any
-                    | Sam::BaseModel data
-                  ) -> void
+                def initialize: (
+                  ?disable_parallel_tool_use: bool,
+                  ?type: :any
+                ) -> void
 
                 def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::tool_choice_any
               end
@@ -1758,16 +1504,11 @@ module Sam
 
                 def disable_parallel_tool_use=: (bool) -> bool
 
-                def initialize:
-                  (
-                    name: String,
-                    ?disable_parallel_tool_use: bool,
-                    ?type: :tool
-                  ) -> void
-                  | (
-                    ?Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::tool_choice_tool
-                    | Sam::BaseModel data
-                  ) -> void
+                def initialize: (
+                  name: String,
+                  ?disable_parallel_tool_use: bool,
+                  ?type: :tool
+                ) -> void
 
                 def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::tool_choice_tool
               end
@@ -1777,12 +1518,7 @@ module Sam
               class ToolChoiceNone < Sam::BaseModel
                 attr_accessor type: :none
 
-                def initialize:
-                  (?type: :none) -> void
-                  | (
-                    ?Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::tool_choice_none
-                    | Sam::BaseModel data
-                  ) -> void
+                def initialize: (?type: :none) -> void
 
                 def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::tool_choice_none
               end
@@ -1815,17 +1551,12 @@ module Sam
 
                 def description=: (String) -> String
 
-                def initialize:
-                  (
-                    input_schema: Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::InputSchema,
-                    name: String,
-                    ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::CacheControl?,
-                    ?description: String
-                  ) -> void
-                  | (
-                    ?Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::tool
-                    | Sam::BaseModel data
-                  ) -> void
+                def initialize: (
+                  input_schema: Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::InputSchema,
+                  name: String,
+                  ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::CacheControl?,
+                  ?description: String
+                ) -> void
 
                 def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::tool
 
@@ -1836,12 +1567,7 @@ module Sam
 
                   attr_accessor properties: top?
 
-                  def initialize:
-                    (?properties: top?, ?type: :object) -> void
-                    | (
-                      ?Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::input_schema
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (?properties: top?, ?type: :object) -> void
 
                   def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::input_schema
                 end
@@ -1851,12 +1577,7 @@ module Sam
                 class CacheControl < Sam::BaseModel
                   attr_accessor type: :ephemeral
 
-                  def initialize:
-                    (?type: :ephemeral) -> void
-                    | (
-                      ?Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::cache_control
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (?type: :ephemeral) -> void
 
                   def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::cache_control
                 end
@@ -1876,16 +1597,11 @@ module Sam
 
                 attr_accessor cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124::CacheControl?
 
-                def initialize:
-                  (
-                    ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124::CacheControl?,
-                    ?name: :bash,
-                    ?type: :bash_20250124
-                  ) -> void
-                  | (
-                    ?Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::bash_tool20250124
-                    | Sam::BaseModel data
-                  ) -> void
+                def initialize: (
+                  ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124::CacheControl?,
+                  ?name: :bash,
+                  ?type: :bash_20250124
+                ) -> void
 
                 def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::bash_tool20250124
 
@@ -1894,12 +1610,7 @@ module Sam
                 class CacheControl < Sam::BaseModel
                   attr_accessor type: :ephemeral
 
-                  def initialize:
-                    (?type: :ephemeral) -> void
-                    | (
-                      ?Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124::cache_control
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (?type: :ephemeral) -> void
 
                   def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124::cache_control
                 end
@@ -1919,16 +1630,11 @@ module Sam
 
                 attr_accessor cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124::CacheControl?
 
-                def initialize:
-                  (
-                    ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124::CacheControl?,
-                    ?name: :str_replace_editor,
-                    ?type: :text_editor_20250124
-                  ) -> void
-                  | (
-                    ?Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::text_editor20250124
-                    | Sam::BaseModel data
-                  ) -> void
+                def initialize: (
+                  ?cache_control: Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124::CacheControl?,
+                  ?name: :str_replace_editor,
+                  ?type: :text_editor_20250124
+                ) -> void
 
                 def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::text_editor20250124
 
@@ -1937,12 +1643,7 @@ module Sam
                 class CacheControl < Sam::BaseModel
                   attr_accessor type: :ephemeral
 
-                  def initialize:
-                    (?type: :ephemeral) -> void
-                    | (
-                      ?Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124::cache_control
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (?type: :ephemeral) -> void
 
                   def to_hash: -> Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124::cache_control
                 end
