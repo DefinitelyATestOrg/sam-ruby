@@ -17,7 +17,8 @@ module Sam
   #
   # @example
   # ```ruby
-  # messages = page
+  # messages =
+  #   page
   #   .to_enum
   #   .lazy
   #   .select { _1.object_id.even? }

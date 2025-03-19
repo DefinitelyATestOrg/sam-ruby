@@ -97,16 +97,17 @@ module Sam
         class Result < Sam::Union
           abstract!
 
-          Variants = type_template(:out) do
-            {
-              fixed: T.any(
-                Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult,
-                Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult,
-                Sam::Models::Messages::BatchResultsResponse::Result::CanceledResult,
-                Sam::Models::Messages::BatchResultsResponse::Result::ExpiredResult
-              )
-            }
-          end
+          Variants =
+            type_template(:out) do
+              {
+                fixed: T.any(
+                  Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult,
+                  Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult,
+                  Sam::Models::Messages::BatchResultsResponse::Result::CanceledResult,
+                  Sam::Models::Messages::BatchResultsResponse::Result::ExpiredResult
+                )
+              }
+            end
 
           class SucceededResult < Sam::BaseModel
             sig { returns(Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message) }
@@ -370,16 +371,17 @@ module Sam
               class Content < Sam::Union
                 abstract!
 
-                Variants = type_template(:out) do
-                  {
-                    fixed: T.any(
-                      Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock,
-                      Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseToolUseBlock,
-                      Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseThinkingBlock,
-                      Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseRedactedThinkingBlock
-                    )
-                  }
-                end
+                Variants =
+                  type_template(:out) do
+                    {
+                      fixed: T.any(
+                        Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock,
+                        Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseToolUseBlock,
+                        Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseThinkingBlock,
+                        Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseRedactedThinkingBlock
+                      )
+                    }
+                  end
 
                 class ResponseTextBlock < Sam::BaseModel
                   # Citations supporting the text block.
@@ -489,15 +491,16 @@ module Sam
                   class Citation < Sam::Union
                     abstract!
 
-                    Variants = type_template(:out) do
-                      {
-                        fixed: T.any(
-                          Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
-                          Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
-                          Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
-                        )
-                      }
-                    end
+                    Variants =
+                      type_template(:out) do
+                        {
+                          fixed: T.any(
+                            Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
+                            Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
+                            Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
+                          )
+                        }
+                      end
 
                     class ResponseCharLocationCitation < Sam::BaseModel
                       sig { returns(String) }
@@ -1098,21 +1101,22 @@ module Sam
               class Error < Sam::Union
                 abstract!
 
-                Variants = type_template(:out) do
-                  {
-                    fixed: T.any(
-                      Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::InvalidRequestError,
-                      Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::AuthenticationError,
-                      Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::BillingError,
-                      Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::PermissionError,
-                      Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::NotFoundError,
-                      Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::RateLimitError,
-                      Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::GatewayTimeoutError,
-                      Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::APIError,
-                      Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::OverloadedError
-                    )
-                  }
-                end
+                Variants =
+                  type_template(:out) do
+                    {
+                      fixed: T.any(
+                        Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::InvalidRequestError,
+                        Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::AuthenticationError,
+                        Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::BillingError,
+                        Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::PermissionError,
+                        Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::NotFoundError,
+                        Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::RateLimitError,
+                        Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::GatewayTimeoutError,
+                        Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::APIError,
+                        Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::OverloadedError
+                      )
+                    }
+                  end
 
                 class InvalidRequestError < Sam::BaseModel
                   sig { returns(String) }

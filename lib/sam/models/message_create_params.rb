@@ -438,7 +438,8 @@ module Sam
 
         # @abstract
         class Content < Sam::Union
-          UnionMember1Array = Sam::ArrayOf[union: -> { Sam::Models::MessageCreateParams::Message::Content::UnionMember1 }]
+          UnionMember1Array =
+            Sam::ArrayOf[union: -> { Sam::Models::MessageCreateParams::Message::Content::UnionMember1 }]
 
           variant String
 
@@ -934,7 +935,8 @@ module Sam
 
               # @abstract
               class Content < Sam::Union
-                UnionMember1Array = Sam::ArrayOf[
+                UnionMember1Array =
+                  Sam::ArrayOf[
                 union: -> { Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1 }
                 ]
 
@@ -1461,7 +1463,8 @@ module Sam
 
                   # @abstract
                   class Content < Sam::Union
-                    UnionMember1Array = Sam::ArrayOf[
+                    UnionMember1Array =
+                      Sam::ArrayOf[
                     union: -> { Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1 }
                     ]
 

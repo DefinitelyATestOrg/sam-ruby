@@ -4,18 +4,19 @@ require_relative "../../test_helper"
 
 class Sam::Test::Resources::Messages::BatchesBetaTrueTest < Sam::Test::ResourceTest
   def test_create_required_params
-    response = @sam.messages.batches_beta_true.create(
-      requests: [
-        {
-          custom_id: "my-custom-id-1",
-          params: {
-            max_tokens: 1024,
-            messages: [{content: "Hello, world", role: :user}],
-            model: "claude-3-7-sonnet-20250219"
+    response =
+      @sam.messages.batches_beta_true.create(
+        requests: [
+          {
+            custom_id: "my-custom-id-1",
+            params: {
+              max_tokens: 1024,
+              messages: [{content: "Hello, world", role: :user}],
+              model: "claude-3-7-sonnet-20250219"
+            }
           }
-        }
-      ]
-    )
+        ]
+      )
 
     assert_pattern do
       response => Sam::Models::Messages::BatchesBetaTrueCreateResponse
