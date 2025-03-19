@@ -45,7 +45,7 @@ module Sam
             id: String,
             created_at: Time,
             display_name: String,
-            type: :model
+            ?type: :model
           ) -> void
           | (
             ?Sam::Models::ModelListResponse::data | Sam::BaseModel data

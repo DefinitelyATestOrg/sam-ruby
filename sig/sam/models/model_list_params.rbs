@@ -36,12 +36,12 @@ module Sam
 
       def initialize:
         (
-          after_id: String,
-          before_id: String,
-          limit: Integer,
-          anthropic_version: String,
-          x_api_key: String,
-          request_options: Sam::request_opts
+          ?after_id: String,
+          ?before_id: String,
+          ?limit: Integer,
+          ?anthropic_version: String,
+          ?x_api_key: String,
+          ?request_options: Sam::request_opts
         ) -> void
         | (?Sam::Models::model_list_params | Sam::BaseModel data) -> void
 

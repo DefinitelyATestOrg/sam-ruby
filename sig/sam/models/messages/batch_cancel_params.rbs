@@ -27,10 +27,10 @@ module Sam
 
         def initialize:
           (
-            anthropic_beta: ::Array[String],
-            anthropic_version: String,
-            x_api_key: String,
-            request_options: Sam::request_opts
+            ?anthropic_beta: ::Array[String],
+            ?anthropic_version: String,
+            ?x_api_key: String,
+            ?request_options: Sam::request_opts
           ) -> void
           | (
             ?Sam::Models::Messages::batch_cancel_params | Sam::BaseModel data

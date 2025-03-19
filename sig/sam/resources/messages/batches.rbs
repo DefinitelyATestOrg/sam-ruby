@@ -11,10 +11,10 @@ module Sam
           ) -> Sam::Models::Messages::BatchCreateResponse
           | (
             requests: ::Array[Sam::Models::Messages::BatchCreateParams::Request],
-            anthropic_beta: ::Array[String],
-            anthropic_version: String,
-            x_api_key: String,
-            request_options: Sam::request_opts
+            ?anthropic_beta: ::Array[String],
+            ?anthropic_version: String,
+            ?x_api_key: String,
+            ?request_options: Sam::request_opts
           ) -> Sam::Models::Messages::BatchCreateResponse
 
         def retrieve:
@@ -25,10 +25,10 @@ module Sam
           ) -> Sam::Models::Messages::BatchRetrieveResponse
           | (
             String message_batch_id,
-            anthropic_beta: ::Array[String],
-            anthropic_version: String,
-            x_api_key: String,
-            request_options: Sam::request_opts
+            ?anthropic_beta: ::Array[String],
+            ?anthropic_version: String,
+            ?x_api_key: String,
+            ?request_options: Sam::request_opts
           ) -> Sam::Models::Messages::BatchRetrieveResponse
 
         def list:
@@ -36,13 +36,13 @@ module Sam
             ?Sam::Models::Messages::BatchListParams | ::Hash[Symbol, top] params
           ) -> Sam::Models::Messages::BatchListResponse
           | (
-            after_id: String,
-            before_id: String,
-            limit: Integer,
-            anthropic_beta: ::Array[String],
-            anthropic_version: String,
-            x_api_key: String,
-            request_options: Sam::request_opts
+            ?after_id: String,
+            ?before_id: String,
+            ?limit: Integer,
+            ?anthropic_beta: ::Array[String],
+            ?anthropic_version: String,
+            ?x_api_key: String,
+            ?request_options: Sam::request_opts
           ) -> Sam::Models::Messages::BatchListResponse
 
         def delete:
@@ -53,10 +53,10 @@ module Sam
           ) -> Sam::Models::Messages::BatchDeleteResponse
           | (
             String message_batch_id,
-            anthropic_beta: ::Array[String],
-            anthropic_version: String,
-            x_api_key: String,
-            request_options: Sam::request_opts
+            ?anthropic_beta: ::Array[String],
+            ?anthropic_version: String,
+            ?x_api_key: String,
+            ?request_options: Sam::request_opts
           ) -> Sam::Models::Messages::BatchDeleteResponse
 
         def cancel:
@@ -67,10 +67,10 @@ module Sam
           ) -> Sam::Models::Messages::BatchCancelResponse
           | (
             String message_batch_id,
-            anthropic_beta: ::Array[String],
-            anthropic_version: String,
-            x_api_key: String,
-            request_options: Sam::request_opts
+            ?anthropic_beta: ::Array[String],
+            ?anthropic_version: String,
+            ?x_api_key: String,
+            ?request_options: Sam::request_opts
           ) -> Sam::Models::Messages::BatchCancelResponse
 
         def cancel_beta:
@@ -81,10 +81,10 @@ module Sam
           ) -> Sam::Models::Messages::BatchCancelBetaResponse
           | (
             String message_batch_id,
-            anthropic_beta: ::Array[String],
-            anthropic_version: String,
-            x_api_key: String,
-            request_options: Sam::request_opts
+            ?anthropic_beta: ::Array[String],
+            ?anthropic_version: String,
+            ?x_api_key: String,
+            ?request_options: Sam::request_opts
           ) -> Sam::Models::Messages::BatchCancelBetaResponse
 
         def results:
@@ -95,10 +95,10 @@ module Sam
           ) -> Sam::JsonLStream[Sam::Models::Messages::BatchResultsResponse]
           | (
             String message_batch_id,
-            anthropic_beta: ::Array[String],
-            anthropic_version: String,
-            x_api_key: String,
-            request_options: Sam::request_opts
+            ?anthropic_beta: ::Array[String],
+            ?anthropic_version: String,
+            ?x_api_key: String,
+            ?request_options: Sam::request_opts
           ) -> Sam::JsonLStream[Sam::Models::Messages::BatchResultsResponse]
 
         def results_beta:
@@ -109,10 +109,10 @@ module Sam
           ) -> Sam::JsonLStream[Sam::Models::Messages::BatchResultsBetaResponse]
           | (
             String message_batch_id,
-            anthropic_beta: ::Array[String],
-            anthropic_version: String,
-            x_api_key: String,
-            request_options: Sam::request_opts
+            ?anthropic_beta: ::Array[String],
+            ?anthropic_version: String,
+            ?x_api_key: String,
+            ?request_options: Sam::request_opts
           ) -> Sam::JsonLStream[Sam::Models::Messages::BatchResultsBetaResponse]
 
         def initialize: (client: Sam::Client) -> void
