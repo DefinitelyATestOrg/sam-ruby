@@ -34,18 +34,14 @@ module Sam
 
       def x_api_key=: (String) -> String
 
-      def initialize:
-        (
-          ?after_id: String,
-          ?before_id: String,
-          ?limit: Integer,
-          ?anthropic_version: String,
-          ?x_api_key: String,
-          ?request_options: Sam::request_opts
-        ) -> void
-        | (
-          ?Sam::Models::models_beta_true_list_params | Sam::BaseModel data
-        ) -> void
+      def initialize: (
+        ?after_id: String,
+        ?before_id: String,
+        ?limit: Integer,
+        ?anthropic_version: String,
+        ?x_api_key: String,
+        ?request_options: Sam::request_opts
+      ) -> void
 
       def to_hash: -> Sam::Models::models_beta_true_list_params
     end

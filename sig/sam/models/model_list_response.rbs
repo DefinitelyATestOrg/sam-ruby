@@ -17,14 +17,12 @@ module Sam
 
       attr_accessor last_id: String?
 
-      def initialize:
-        (
-          data: ::Array[Sam::Models::ModelListResponse::Data],
-          first_id: String?,
-          has_more: bool,
-          last_id: String?
-        ) -> void
-        | (?Sam::Models::model_list_response | Sam::BaseModel data) -> void
+      def initialize: (
+        data: ::Array[Sam::Models::ModelListResponse::Data],
+        first_id: String?,
+        has_more: bool,
+        last_id: String?
+      ) -> void
 
       def to_hash: -> Sam::Models::model_list_response
 
@@ -40,16 +38,12 @@ module Sam
 
         attr_accessor type: :model
 
-        def initialize:
-          (
-            id: String,
-            created_at: Time,
-            display_name: String,
-            ?type: :model
-          ) -> void
-          | (
-            ?Sam::Models::ModelListResponse::data | Sam::BaseModel data
-          ) -> void
+        def initialize: (
+          id: String,
+          created_at: Time,
+          display_name: String,
+          ?type: :model
+        ) -> void
 
         def to_hash: -> Sam::Models::ModelListResponse::data
       end

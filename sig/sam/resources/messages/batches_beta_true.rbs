@@ -2,33 +2,23 @@ module Sam
   module Resources
     class Messages
       class BatchesBetaTrue
-        def create:
-          (
-            Sam::Models::Messages::BatchesBetaTrueCreateParams
-            | ::Hash[Symbol, top] params
-          ) -> Sam::Models::Messages::BatchesBetaTrueCreateResponse
-          | (
-            requests: ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request],
-            ?anthropic_beta: ::Array[String],
-            ?anthropic_version: String,
-            ?x_api_key: String,
-            ?request_options: Sam::request_opts
-          ) -> Sam::Models::Messages::BatchesBetaTrueCreateResponse
+        def create: (
+          requests: ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request],
+          ?anthropic_beta: ::Array[String],
+          ?anthropic_version: String,
+          ?x_api_key: String,
+          ?request_options: Sam::request_opts
+        ) -> Sam::Models::Messages::BatchesBetaTrueCreateResponse
 
-        def list:
-          (
-            ?Sam::Models::Messages::BatchesBetaTrueListParams
-            | ::Hash[Symbol, top] params
-          ) -> Sam::Models::Messages::BatchesBetaTrueListResponse
-          | (
-            ?after_id: String,
-            ?before_id: String,
-            ?limit: Integer,
-            ?anthropic_beta: ::Array[String],
-            ?anthropic_version: String,
-            ?x_api_key: String,
-            ?request_options: Sam::request_opts
-          ) -> Sam::Models::Messages::BatchesBetaTrueListResponse
+        def list: (
+          ?after_id: String,
+          ?before_id: String,
+          ?limit: Integer,
+          ?anthropic_beta: ::Array[String],
+          ?anthropic_version: String,
+          ?x_api_key: String,
+          ?request_options: Sam::request_opts
+        ) -> Sam::Models::Messages::BatchesBetaTrueListResponse
 
         def initialize: (client: Sam::Client) -> void
       end

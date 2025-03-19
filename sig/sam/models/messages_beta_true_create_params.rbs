@@ -93,29 +93,25 @@ module Sam
 
       def x_api_key=: (String) -> String
 
-      def initialize:
-        (
-          max_tokens: Integer,
-          messages: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message],
-          model: String,
-          ?metadata: Sam::Models::MessagesBetaTrueCreateParams::Metadata,
-          ?stop_sequences: ::Array[String],
-          ?stream: bool,
-          ?system_: Sam::Models::MessagesBetaTrueCreateParams::system_,
-          ?temperature: Float,
-          ?thinking: Sam::Models::MessagesBetaTrueCreateParams::thinking,
-          ?tool_choice: Sam::Models::MessagesBetaTrueCreateParams::tool_choice,
-          ?tools: ::Array[Sam::Models::MessagesBetaTrueCreateParams::tool],
-          ?top_k: Integer,
-          ?top_p: Float,
-          ?anthropic_beta: ::Array[String],
-          ?anthropic_version: String,
-          ?x_api_key: String,
-          ?request_options: Sam::request_opts
-        ) -> void
-        | (
-          ?Sam::Models::messages_beta_true_create_params | Sam::BaseModel data
-        ) -> void
+      def initialize: (
+        max_tokens: Integer,
+        messages: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message],
+        model: String,
+        ?metadata: Sam::Models::MessagesBetaTrueCreateParams::Metadata,
+        ?stop_sequences: ::Array[String],
+        ?stream: bool,
+        ?system_: Sam::Models::MessagesBetaTrueCreateParams::system_,
+        ?temperature: Float,
+        ?thinking: Sam::Models::MessagesBetaTrueCreateParams::thinking,
+        ?tool_choice: Sam::Models::MessagesBetaTrueCreateParams::tool_choice,
+        ?tools: ::Array[Sam::Models::MessagesBetaTrueCreateParams::tool],
+        ?top_k: Integer,
+        ?top_p: Float,
+        ?anthropic_beta: ::Array[String],
+        ?anthropic_version: String,
+        ?x_api_key: String,
+        ?request_options: Sam::request_opts
+      ) -> void
 
       def to_hash: -> Sam::Models::messages_beta_true_create_params
 
@@ -130,15 +126,10 @@ module Sam
 
         attr_accessor role: Sam::Models::MessagesBetaTrueCreateParams::Message::role
 
-        def initialize:
-          (
-            content: Sam::Models::MessagesBetaTrueCreateParams::Message::content,
-            role: Sam::Models::MessagesBetaTrueCreateParams::Message::role
-          ) -> void
-          | (
-            ?Sam::Models::MessagesBetaTrueCreateParams::message
-            | Sam::BaseModel data
-          ) -> void
+        def initialize: (
+          content: Sam::Models::MessagesBetaTrueCreateParams::Message::content,
+          role: Sam::Models::MessagesBetaTrueCreateParams::Message::role
+        ) -> void
 
         def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::message
 
@@ -179,17 +170,12 @@ module Sam
 
               attr_accessor citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::citation]?
 
-              def initialize:
-                (
-                  text: String,
-                  ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl?,
-                  ?citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::citation]?,
-                  ?type: :text
-                ) -> void
-                | (
-                  ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_text_block
-                  | Sam::BaseModel data
-                ) -> void
+              def initialize: (
+                text: String,
+                ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl?,
+                ?citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::citation]?,
+                ?type: :text
+              ) -> void
 
               def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_text_block
 
@@ -198,12 +184,7 @@ module Sam
               class CacheControl < Sam::BaseModel
                 attr_accessor type: :ephemeral
 
-                def initialize:
-                  (?type: :ephemeral) -> void
-                  | (
-                    ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::cache_control
-                    | Sam::BaseModel data
-                  ) -> void
+                def initialize: (?type: :ephemeral) -> void
 
                 def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::cache_control
               end
@@ -237,19 +218,14 @@ module Sam
 
                   attr_accessor type: :char_location
 
-                  def initialize:
-                    (
-                      cited_text: String,
-                      document_index: Integer,
-                      document_title: String?,
-                      end_char_index: Integer,
-                      start_char_index: Integer,
-                      ?type: :char_location
-                    ) -> void
-                    | (
-                      ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_char_location_citation
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    cited_text: String,
+                    document_index: Integer,
+                    document_title: String?,
+                    end_char_index: Integer,
+                    start_char_index: Integer,
+                    ?type: :char_location
+                  ) -> void
 
                   def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_char_location_citation
                 end
@@ -277,19 +253,14 @@ module Sam
 
                   attr_accessor type: :page_location
 
-                  def initialize:
-                    (
-                      cited_text: String,
-                      document_index: Integer,
-                      document_title: String?,
-                      end_page_number: Integer,
-                      start_page_number: Integer,
-                      ?type: :page_location
-                    ) -> void
-                    | (
-                      ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_page_location_citation
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    cited_text: String,
+                    document_index: Integer,
+                    document_title: String?,
+                    end_page_number: Integer,
+                    start_page_number: Integer,
+                    ?type: :page_location
+                  ) -> void
 
                   def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_page_location_citation
                 end
@@ -317,19 +288,14 @@ module Sam
 
                   attr_accessor type: :content_block_location
 
-                  def initialize:
-                    (
-                      cited_text: String,
-                      document_index: Integer,
-                      document_title: String?,
-                      end_block_index: Integer,
-                      start_block_index: Integer,
-                      ?type: :content_block_location
-                    ) -> void
-                    | (
-                      ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_content_block_location_citation
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    cited_text: String,
+                    document_index: Integer,
+                    document_title: String?,
+                    end_block_index: Integer,
+                    start_block_index: Integer,
+                    ?type: :content_block_location
+                  ) -> void
 
                   def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_content_block_location_citation
                 end
@@ -352,16 +318,11 @@ module Sam
 
               attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl?
 
-              def initialize:
-                (
-                  source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::source,
-                  ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl?,
-                  ?type: :image
-                ) -> void
-                | (
-                  ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_image_block
-                  | Sam::BaseModel data
-                ) -> void
+              def initialize: (
+                source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::source,
+                ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl?,
+                ?type: :image
+              ) -> void
 
               def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_image_block
 
@@ -384,16 +345,11 @@ module Sam
 
                   attr_accessor type: :base64
 
-                  def initialize:
-                    (
-                      data: String,
-                      media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type,
-                      ?type: :base64
-                    ) -> void
-                    | (
-                      ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::beta_base64_image_source
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    data: String,
+                    media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type,
+                    ?type: :base64
+                  ) -> void
 
                   def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::beta_base64_image_source
 
@@ -417,12 +373,7 @@ module Sam
 
                   attr_accessor url: String
 
-                  def initialize:
-                    (url: String, ?type: :url) -> void
-                    | (
-                      ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::beta_url_image_source
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (url: String, ?type: :url) -> void
 
                   def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::beta_url_image_source
                 end
@@ -435,12 +386,7 @@ module Sam
               class CacheControl < Sam::BaseModel
                 attr_accessor type: :ephemeral
 
-                def initialize:
-                  (?type: :ephemeral) -> void
-                  | (
-                    ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::cache_control
-                    | Sam::BaseModel data
-                  ) -> void
+                def initialize: (?type: :ephemeral) -> void
 
                 def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::cache_control
               end
@@ -466,18 +412,13 @@ module Sam
 
               attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl?
 
-              def initialize:
-                (
-                  id: String,
-                  input: top,
-                  name: String,
-                  ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl?,
-                  ?type: :tool_use
-                ) -> void
-                | (
-                  ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_tool_use_block
-                  | Sam::BaseModel data
-                ) -> void
+              def initialize: (
+                id: String,
+                input: top,
+                name: String,
+                ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl?,
+                ?type: :tool_use
+              ) -> void
 
               def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_tool_use_block
 
@@ -486,12 +427,7 @@ module Sam
               class CacheControl < Sam::BaseModel
                 attr_accessor type: :ephemeral
 
-                def initialize:
-                  (?type: :ephemeral) -> void
-                  | (
-                    ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::cache_control
-                    | Sam::BaseModel data
-                  ) -> void
+                def initialize: (?type: :ephemeral) -> void
 
                 def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::cache_control
               end
@@ -523,18 +459,13 @@ module Sam
 
               def is_error=: (bool) -> bool
 
-              def initialize:
-                (
-                  tool_use_id: String,
-                  ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl?,
-                  ?content: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::content,
-                  ?is_error: bool,
-                  ?type: :tool_result
-                ) -> void
-                | (
-                  ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_tool_result_block
-                  | Sam::BaseModel data
-                ) -> void
+              def initialize: (
+                tool_use_id: String,
+                ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl?,
+                ?content: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::content,
+                ?is_error: bool,
+                ?type: :tool_result
+              ) -> void
 
               def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_tool_result_block
 
@@ -543,12 +474,7 @@ module Sam
               class CacheControl < Sam::BaseModel
                 attr_accessor type: :ephemeral
 
-                def initialize:
-                  (?type: :ephemeral) -> void
-                  | (
-                    ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::cache_control
-                    | Sam::BaseModel data
-                  ) -> void
+                def initialize: (?type: :ephemeral) -> void
 
                 def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::cache_control
               end
@@ -585,17 +511,12 @@ module Sam
 
                     attr_accessor citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::citation]?
 
-                    def initialize:
-                      (
-                        text: String,
-                        ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl?,
-                        ?citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::citation]?,
-                        ?type: :text
-                      ) -> void
-                      | (
-                        ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::beta_request_text_block
-                        | Sam::BaseModel data
-                      ) -> void
+                    def initialize: (
+                      text: String,
+                      ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl?,
+                      ?citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::citation]?,
+                      ?type: :text
+                    ) -> void
 
                     def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::beta_request_text_block
 
@@ -604,12 +525,7 @@ module Sam
                     class CacheControl < Sam::BaseModel
                       attr_accessor type: :ephemeral
 
-                      def initialize:
-                        (?type: :ephemeral) -> void
-                        | (
-                          ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::cache_control
-                          | Sam::BaseModel data
-                        ) -> void
+                      def initialize: (?type: :ephemeral) -> void
 
                       def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::cache_control
                     end
@@ -643,19 +559,14 @@ module Sam
 
                         attr_accessor type: :char_location
 
-                        def initialize:
-                          (
-                            cited_text: String,
-                            document_index: Integer,
-                            document_title: String?,
-                            end_char_index: Integer,
-                            start_char_index: Integer,
-                            ?type: :char_location
-                          ) -> void
-                          | (
-                            ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_char_location_citation
-                            | Sam::BaseModel data
-                          ) -> void
+                        def initialize: (
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: String?,
+                          end_char_index: Integer,
+                          start_char_index: Integer,
+                          ?type: :char_location
+                        ) -> void
 
                         def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_char_location_citation
                       end
@@ -683,19 +594,14 @@ module Sam
 
                         attr_accessor type: :page_location
 
-                        def initialize:
-                          (
-                            cited_text: String,
-                            document_index: Integer,
-                            document_title: String?,
-                            end_page_number: Integer,
-                            start_page_number: Integer,
-                            ?type: :page_location
-                          ) -> void
-                          | (
-                            ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_page_location_citation
-                            | Sam::BaseModel data
-                          ) -> void
+                        def initialize: (
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: String?,
+                          end_page_number: Integer,
+                          start_page_number: Integer,
+                          ?type: :page_location
+                        ) -> void
 
                         def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_page_location_citation
                       end
@@ -723,19 +629,14 @@ module Sam
 
                         attr_accessor type: :content_block_location
 
-                        def initialize:
-                          (
-                            cited_text: String,
-                            document_index: Integer,
-                            document_title: String?,
-                            end_block_index: Integer,
-                            start_block_index: Integer,
-                            ?type: :content_block_location
-                          ) -> void
-                          | (
-                            ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_content_block_location_citation
-                            | Sam::BaseModel data
-                          ) -> void
+                        def initialize: (
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: String?,
+                          end_block_index: Integer,
+                          start_block_index: Integer,
+                          ?type: :content_block_location
+                        ) -> void
 
                         def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_content_block_location_citation
                       end
@@ -758,16 +659,11 @@ module Sam
 
                     attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl?
 
-                    def initialize:
-                      (
-                        source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::source,
-                        ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl?,
-                        ?type: :image
-                      ) -> void
-                      | (
-                        ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::beta_request_image_block
-                        | Sam::BaseModel data
-                      ) -> void
+                    def initialize: (
+                      source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::source,
+                      ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl?,
+                      ?type: :image
+                    ) -> void
 
                     def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::beta_request_image_block
 
@@ -790,16 +686,11 @@ module Sam
 
                         attr_accessor type: :base64
 
-                        def initialize:
-                          (
-                            data: String,
-                            media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type,
-                            ?type: :base64
-                          ) -> void
-                          | (
-                            ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::beta_base64_image_source
-                            | Sam::BaseModel data
-                          ) -> void
+                        def initialize: (
+                          data: String,
+                          media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type,
+                          ?type: :base64
+                        ) -> void
 
                         def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::beta_base64_image_source
 
@@ -826,12 +717,7 @@ module Sam
 
                         attr_accessor url: String
 
-                        def initialize:
-                          (url: String, ?type: :url) -> void
-                          | (
-                            ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::beta_url_image_source
-                            | Sam::BaseModel data
-                          ) -> void
+                        def initialize: (url: String, ?type: :url) -> void
 
                         def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::beta_url_image_source
                       end
@@ -844,12 +730,7 @@ module Sam
                     class CacheControl < Sam::BaseModel
                       attr_accessor type: :ephemeral
 
-                      def initialize:
-                        (?type: :ephemeral) -> void
-                        | (
-                          ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::cache_control
-                          | Sam::BaseModel data
-                        ) -> void
+                      def initialize: (?type: :ephemeral) -> void
 
                       def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::cache_control
                     end
@@ -889,19 +770,14 @@ module Sam
 
               attr_accessor title: String?
 
-              def initialize:
-                (
-                  source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::source,
-                  ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl?,
-                  ?citations: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations,
-                  ?context: String?,
-                  ?title: String?,
-                  ?type: :document
-                ) -> void
-                | (
-                  ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_document_block
-                  | Sam::BaseModel data
-                ) -> void
+              def initialize: (
+                source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::source,
+                ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl?,
+                ?citations: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations,
+                ?context: String?,
+                ?title: String?,
+                ?type: :document
+              ) -> void
 
               def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_document_block
 
@@ -926,16 +802,11 @@ module Sam
 
                   attr_accessor type: :base64
 
-                  def initialize:
-                    (
-                      data: String,
-                      ?media_type: :"application/pdf",
-                      ?type: :base64
-                    ) -> void
-                    | (
-                      ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_base64_pdf_source
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    data: String,
+                    ?media_type: :"application/pdf",
+                    ?type: :base64
+                  ) -> void
 
                   def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_base64_pdf_source
                 end
@@ -950,16 +821,11 @@ module Sam
 
                   attr_accessor type: :text
 
-                  def initialize:
-                    (
-                      data: String,
-                      ?media_type: :"text/plain",
-                      ?type: :text
-                    ) -> void
-                    | (
-                      ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_plain_text_source
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    data: String,
+                    ?media_type: :"text/plain",
+                    ?type: :text
+                  ) -> void
 
                   def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_plain_text_source
                 end
@@ -975,15 +841,10 @@ module Sam
 
                   attr_accessor type: :content
 
-                  def initialize:
-                    (
-                      content: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::content,
-                      ?type: :content
-                    ) -> void
-                    | (
-                      ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_content_block_source
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    content: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::content,
+                    ?type: :content
+                  ) -> void
 
                   def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_content_block_source
 
@@ -1019,17 +880,12 @@ module Sam
 
                         attr_accessor citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::citation]?
 
-                        def initialize:
-                          (
-                            text: String,
-                            ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl?,
-                            ?citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::citation]?,
-                            ?type: :text
-                          ) -> void
-                          | (
-                            ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::beta_request_text_block
-                            | Sam::BaseModel data
-                          ) -> void
+                        def initialize: (
+                          text: String,
+                          ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl?,
+                          ?citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::citation]?,
+                          ?type: :text
+                        ) -> void
 
                         def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::beta_request_text_block
 
@@ -1038,12 +894,7 @@ module Sam
                         class CacheControl < Sam::BaseModel
                           attr_accessor type: :ephemeral
 
-                          def initialize:
-                            (?type: :ephemeral) -> void
-                            | (
-                              ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::cache_control
-                              | Sam::BaseModel data
-                            ) -> void
+                          def initialize: (?type: :ephemeral) -> void
 
                           def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::cache_control
                         end
@@ -1077,19 +928,14 @@ module Sam
 
                             attr_accessor type: :char_location
 
-                            def initialize:
-                              (
-                                cited_text: String,
-                                document_index: Integer,
-                                document_title: String?,
-                                end_char_index: Integer,
-                                start_char_index: Integer,
-                                ?type: :char_location
-                              ) -> void
-                              | (
-                                ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_char_location_citation
-                                | Sam::BaseModel data
-                              ) -> void
+                            def initialize: (
+                              cited_text: String,
+                              document_index: Integer,
+                              document_title: String?,
+                              end_char_index: Integer,
+                              start_char_index: Integer,
+                              ?type: :char_location
+                            ) -> void
 
                             def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_char_location_citation
                           end
@@ -1117,19 +963,14 @@ module Sam
 
                             attr_accessor type: :page_location
 
-                            def initialize:
-                              (
-                                cited_text: String,
-                                document_index: Integer,
-                                document_title: String?,
-                                end_page_number: Integer,
-                                start_page_number: Integer,
-                                ?type: :page_location
-                              ) -> void
-                              | (
-                                ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_page_location_citation
-                                | Sam::BaseModel data
-                              ) -> void
+                            def initialize: (
+                              cited_text: String,
+                              document_index: Integer,
+                              document_title: String?,
+                              end_page_number: Integer,
+                              start_page_number: Integer,
+                              ?type: :page_location
+                            ) -> void
 
                             def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_page_location_citation
                           end
@@ -1157,19 +998,14 @@ module Sam
 
                             attr_accessor type: :content_block_location
 
-                            def initialize:
-                              (
-                                cited_text: String,
-                                document_index: Integer,
-                                document_title: String?,
-                                end_block_index: Integer,
-                                start_block_index: Integer,
-                                ?type: :content_block_location
-                              ) -> void
-                              | (
-                                ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_content_block_location_citation
-                                | Sam::BaseModel data
-                              ) -> void
+                            def initialize: (
+                              cited_text: String,
+                              document_index: Integer,
+                              document_title: String?,
+                              end_block_index: Integer,
+                              start_block_index: Integer,
+                              ?type: :content_block_location
+                            ) -> void
 
                             def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_content_block_location_citation
                           end
@@ -1192,16 +1028,11 @@ module Sam
 
                         attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl?
 
-                        def initialize:
-                          (
-                            source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::source,
-                            ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl?,
-                            ?type: :image
-                          ) -> void
-                          | (
-                            ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::beta_request_image_block
-                            | Sam::BaseModel data
-                          ) -> void
+                        def initialize: (
+                          source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::source,
+                          ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl?,
+                          ?type: :image
+                        ) -> void
 
                         def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::beta_request_image_block
 
@@ -1224,16 +1055,11 @@ module Sam
 
                             attr_accessor type: :base64
 
-                            def initialize:
-                              (
-                                data: String,
-                                media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type,
-                                ?type: :base64
-                              ) -> void
-                              | (
-                                ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::beta_base64_image_source
-                                | Sam::BaseModel data
-                              ) -> void
+                            def initialize: (
+                              data: String,
+                              media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type,
+                              ?type: :base64
+                            ) -> void
 
                             def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::beta_base64_image_source
 
@@ -1261,12 +1087,7 @@ module Sam
 
                             attr_accessor url: String
 
-                            def initialize:
-                              (url: String, ?type: :url) -> void
-                              | (
-                                ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::beta_url_image_source
-                                | Sam::BaseModel data
-                              ) -> void
+                            def initialize: (url: String, ?type: :url) -> void
 
                             def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::beta_url_image_source
                           end
@@ -1279,12 +1100,7 @@ module Sam
                         class CacheControl < Sam::BaseModel
                           attr_accessor type: :ephemeral
 
-                          def initialize:
-                            (?type: :ephemeral) -> void
-                            | (
-                              ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::cache_control
-                              | Sam::BaseModel data
-                            ) -> void
+                          def initialize: (?type: :ephemeral) -> void
 
                           def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::cache_control
                         end
@@ -1304,12 +1120,7 @@ module Sam
 
                   attr_accessor url: String
 
-                  def initialize:
-                    (url: String, ?type: :url) -> void
-                    | (
-                      ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_urlpdf_source
-                      | Sam::BaseModel data
-                    ) -> void
+                  def initialize: (url: String, ?type: :url) -> void
 
                   def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_urlpdf_source
                 end
@@ -1322,12 +1133,7 @@ module Sam
               class CacheControl < Sam::BaseModel
                 attr_accessor type: :ephemeral
 
-                def initialize:
-                  (?type: :ephemeral) -> void
-                  | (
-                    ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::cache_control
-                    | Sam::BaseModel data
-                  ) -> void
+                def initialize: (?type: :ephemeral) -> void
 
                 def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::cache_control
               end
@@ -1339,12 +1145,7 @@ module Sam
 
                 def enabled=: (bool) -> bool
 
-                def initialize:
-                  (?enabled: bool) -> void
-                  | (
-                    ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::citations
-                    | Sam::BaseModel data
-                  ) -> void
+                def initialize: (?enabled: bool) -> void
 
                 def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::citations
               end
@@ -1360,12 +1161,11 @@ module Sam
 
               attr_accessor type: :thinking
 
-              def initialize:
-                (signature: String, thinking: String, ?type: :thinking) -> void
-                | (
-                  ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_thinking_block
-                  | Sam::BaseModel data
-                ) -> void
+              def initialize: (
+                signature: String,
+                thinking: String,
+                ?type: :thinking
+              ) -> void
 
               def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_thinking_block
             end
@@ -1378,12 +1178,7 @@ module Sam
 
               attr_accessor type: :redacted_thinking
 
-              def initialize:
-                (data: String, ?type: :redacted_thinking) -> void
-                | (
-                  ?Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_redacted_thinking_block
-                  | Sam::BaseModel data
-                ) -> void
+              def initialize: (data: String, ?type: :redacted_thinking) -> void
 
               def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_redacted_thinking_block
             end
@@ -1409,12 +1204,7 @@ module Sam
       class Metadata < Sam::BaseModel
         attr_accessor user_id: String?
 
-        def initialize:
-          (?user_id: String?) -> void
-          | (
-            ?Sam::Models::MessagesBetaTrueCreateParams::metadata
-            | Sam::BaseModel data
-          ) -> void
+        def initialize: (?user_id: String?) -> void
 
         def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::metadata
       end
@@ -1446,17 +1236,12 @@ module Sam
 
           attr_accessor citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::citation]?
 
-          def initialize:
-            (
-              text: String,
-              ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::CacheControl?,
-              ?citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::citation]?,
-              ?type: :text
-            ) -> void
-            | (
-              ?Sam::Models::MessagesBetaTrueCreateParams::System::union_member1
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (
+            text: String,
+            ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::CacheControl?,
+            ?citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::citation]?,
+            ?type: :text
+          ) -> void
 
           def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::System::union_member1
 
@@ -1465,12 +1250,7 @@ module Sam
           class CacheControl < Sam::BaseModel
             attr_accessor type: :ephemeral
 
-            def initialize:
-              (?type: :ephemeral) -> void
-              | (
-                ?Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::cache_control
-                | Sam::BaseModel data
-              ) -> void
+            def initialize: (?type: :ephemeral) -> void
 
             def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::cache_control
           end
@@ -1504,19 +1284,14 @@ module Sam
 
               attr_accessor type: :char_location
 
-              def initialize:
-                (
-                  cited_text: String,
-                  document_index: Integer,
-                  document_title: String?,
-                  end_char_index: Integer,
-                  start_char_index: Integer,
-                  ?type: :char_location
-                ) -> void
-                | (
-                  ?Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::beta_request_char_location_citation
-                  | Sam::BaseModel data
-                ) -> void
+              def initialize: (
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_char_index: Integer,
+                start_char_index: Integer,
+                ?type: :char_location
+              ) -> void
 
               def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::beta_request_char_location_citation
             end
@@ -1544,19 +1319,14 @@ module Sam
 
               attr_accessor type: :page_location
 
-              def initialize:
-                (
-                  cited_text: String,
-                  document_index: Integer,
-                  document_title: String?,
-                  end_page_number: Integer,
-                  start_page_number: Integer,
-                  ?type: :page_location
-                ) -> void
-                | (
-                  ?Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::beta_request_page_location_citation
-                  | Sam::BaseModel data
-                ) -> void
+              def initialize: (
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_page_number: Integer,
+                start_page_number: Integer,
+                ?type: :page_location
+              ) -> void
 
               def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::beta_request_page_location_citation
             end
@@ -1584,19 +1354,14 @@ module Sam
 
               attr_accessor type: :content_block_location
 
-              def initialize:
-                (
-                  cited_text: String,
-                  document_index: Integer,
-                  document_title: String?,
-                  end_block_index: Integer,
-                  start_block_index: Integer,
-                  ?type: :content_block_location
-                ) -> void
-                | (
-                  ?Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::beta_request_content_block_location_citation
-                  | Sam::BaseModel data
-                ) -> void
+              def initialize: (
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_block_index: Integer,
+                start_block_index: Integer,
+                ?type: :content_block_location
+              ) -> void
 
               def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::beta_request_content_block_location_citation
             end
@@ -1621,12 +1386,7 @@ module Sam
 
           attr_accessor type: :enabled
 
-          def initialize:
-            (budget_tokens: Integer, ?type: :enabled) -> void
-            | (
-              ?Sam::Models::MessagesBetaTrueCreateParams::Thinking::beta_thinking_config_enabled
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (budget_tokens: Integer, ?type: :enabled) -> void
 
           def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Thinking::beta_thinking_config_enabled
         end
@@ -1636,12 +1396,7 @@ module Sam
         class BetaThinkingConfigDisabled < Sam::BaseModel
           attr_accessor type: :disabled
 
-          def initialize:
-            (?type: :disabled) -> void
-            | (
-              ?Sam::Models::MessagesBetaTrueCreateParams::Thinking::beta_thinking_config_disabled
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (?type: :disabled) -> void
 
           def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Thinking::beta_thinking_config_disabled
         end
@@ -1666,12 +1421,10 @@ module Sam
 
           def disable_parallel_tool_use=: (bool) -> bool
 
-          def initialize:
-            (?disable_parallel_tool_use: bool, ?type: :auto) -> void
-            | (
-              ?Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::beta_tool_choice_auto
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (
+            ?disable_parallel_tool_use: bool,
+            ?type: :auto
+          ) -> void
 
           def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::beta_tool_choice_auto
         end
@@ -1686,12 +1439,10 @@ module Sam
 
           def disable_parallel_tool_use=: (bool) -> bool
 
-          def initialize:
-            (?disable_parallel_tool_use: bool, ?type: :any) -> void
-            | (
-              ?Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::beta_tool_choice_any
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (
+            ?disable_parallel_tool_use: bool,
+            ?type: :any
+          ) -> void
 
           def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::beta_tool_choice_any
         end
@@ -1708,16 +1459,11 @@ module Sam
 
           def disable_parallel_tool_use=: (bool) -> bool
 
-          def initialize:
-            (
-              name: String,
-              ?disable_parallel_tool_use: bool,
-              ?type: :tool
-            ) -> void
-            | (
-              ?Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::beta_tool_choice_tool
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (
+            name: String,
+            ?disable_parallel_tool_use: bool,
+            ?type: :tool
+          ) -> void
 
           def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::beta_tool_choice_tool
         end
@@ -1727,12 +1473,7 @@ module Sam
         class BetaToolChoiceNone < Sam::BaseModel
           attr_accessor type: :none
 
-          def initialize:
-            (?type: :none) -> void
-            | (
-              ?Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::beta_tool_choice_none
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (?type: :none) -> void
 
           def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::beta_tool_choice_none
         end
@@ -1772,18 +1513,13 @@ module Sam
 
           attr_accessor type: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::type_?
 
-          def initialize:
-            (
-              input_schema: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::InputSchema,
-              name: String,
-              ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::CacheControl?,
-              ?description: String,
-              ?type: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::type_?
-            ) -> void
-            | (
-              ?Sam::Models::MessagesBetaTrueCreateParams::Tool::beta_tool
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (
+            input_schema: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::InputSchema,
+            name: String,
+            ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::CacheControl?,
+            ?description: String,
+            ?type: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::type_?
+          ) -> void
 
           def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Tool::beta_tool
 
@@ -1794,12 +1530,7 @@ module Sam
 
             attr_accessor properties: top?
 
-            def initialize:
-              (?properties: top?, ?type: :object) -> void
-              | (
-                ?Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::input_schema
-                | Sam::BaseModel data
-              ) -> void
+            def initialize: (?properties: top?, ?type: :object) -> void
 
             def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::input_schema
           end
@@ -1809,12 +1540,7 @@ module Sam
           class CacheControl < Sam::BaseModel
             attr_accessor type: :ephemeral
 
-            def initialize:
-              (?type: :ephemeral) -> void
-              | (
-                ?Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::cache_control
-                | Sam::BaseModel data
-              ) -> void
+            def initialize: (?type: :ephemeral) -> void
 
             def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::cache_control
           end
@@ -1851,19 +1577,14 @@ module Sam
 
           attr_accessor display_number: Integer?
 
-          def initialize:
-            (
-              display_height_px: Integer,
-              display_width_px: Integer,
-              ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022::CacheControl?,
-              ?display_number: Integer?,
-              ?name: :computer,
-              ?type: :computer_20241022
-            ) -> void
-            | (
-              ?Sam::Models::MessagesBetaTrueCreateParams::Tool::beta_computer_use_tool20241022
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (
+            display_height_px: Integer,
+            display_width_px: Integer,
+            ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022::CacheControl?,
+            ?display_number: Integer?,
+            ?name: :computer,
+            ?type: :computer_20241022
+          ) -> void
 
           def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Tool::beta_computer_use_tool20241022
 
@@ -1872,12 +1593,7 @@ module Sam
           class CacheControl < Sam::BaseModel
             attr_accessor type: :ephemeral
 
-            def initialize:
-              (?type: :ephemeral) -> void
-              | (
-                ?Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022::cache_control
-                | Sam::BaseModel data
-              ) -> void
+            def initialize: (?type: :ephemeral) -> void
 
             def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022::cache_control
           end
@@ -1897,16 +1613,11 @@ module Sam
 
           attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022::CacheControl?
 
-          def initialize:
-            (
-              ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022::CacheControl?,
-              ?name: :bash,
-              ?type: :bash_20241022
-            ) -> void
-            | (
-              ?Sam::Models::MessagesBetaTrueCreateParams::Tool::beta_bash_tool20241022
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (
+            ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022::CacheControl?,
+            ?name: :bash,
+            ?type: :bash_20241022
+          ) -> void
 
           def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Tool::beta_bash_tool20241022
 
@@ -1915,12 +1626,7 @@ module Sam
           class CacheControl < Sam::BaseModel
             attr_accessor type: :ephemeral
 
-            def initialize:
-              (?type: :ephemeral) -> void
-              | (
-                ?Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022::cache_control
-                | Sam::BaseModel data
-              ) -> void
+            def initialize: (?type: :ephemeral) -> void
 
             def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022::cache_control
           end
@@ -1940,16 +1646,11 @@ module Sam
 
           attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022::CacheControl?
 
-          def initialize:
-            (
-              ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022::CacheControl?,
-              ?name: :str_replace_editor,
-              ?type: :text_editor_20241022
-            ) -> void
-            | (
-              ?Sam::Models::MessagesBetaTrueCreateParams::Tool::beta_text_editor20241022
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (
+            ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022::CacheControl?,
+            ?name: :str_replace_editor,
+            ?type: :text_editor_20241022
+          ) -> void
 
           def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Tool::beta_text_editor20241022
 
@@ -1958,12 +1659,7 @@ module Sam
           class CacheControl < Sam::BaseModel
             attr_accessor type: :ephemeral
 
-            def initialize:
-              (?type: :ephemeral) -> void
-              | (
-                ?Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022::cache_control
-                | Sam::BaseModel data
-              ) -> void
+            def initialize: (?type: :ephemeral) -> void
 
             def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022::cache_control
           end
@@ -1992,19 +1688,14 @@ module Sam
 
           attr_accessor display_number: Integer?
 
-          def initialize:
-            (
-              display_height_px: Integer,
-              display_width_px: Integer,
-              ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124::CacheControl?,
-              ?display_number: Integer?,
-              ?name: :computer,
-              ?type: :computer_20250124
-            ) -> void
-            | (
-              ?Sam::Models::MessagesBetaTrueCreateParams::Tool::beta_computer_use_tool20250124
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (
+            display_height_px: Integer,
+            display_width_px: Integer,
+            ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124::CacheControl?,
+            ?display_number: Integer?,
+            ?name: :computer,
+            ?type: :computer_20250124
+          ) -> void
 
           def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Tool::beta_computer_use_tool20250124
 
@@ -2013,12 +1704,7 @@ module Sam
           class CacheControl < Sam::BaseModel
             attr_accessor type: :ephemeral
 
-            def initialize:
-              (?type: :ephemeral) -> void
-              | (
-                ?Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124::cache_control
-                | Sam::BaseModel data
-              ) -> void
+            def initialize: (?type: :ephemeral) -> void
 
             def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124::cache_control
           end
@@ -2038,16 +1724,11 @@ module Sam
 
           attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124::CacheControl?
 
-          def initialize:
-            (
-              ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124::CacheControl?,
-              ?name: :bash,
-              ?type: :bash_20250124
-            ) -> void
-            | (
-              ?Sam::Models::MessagesBetaTrueCreateParams::Tool::beta_bash_tool20250124
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (
+            ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124::CacheControl?,
+            ?name: :bash,
+            ?type: :bash_20250124
+          ) -> void
 
           def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Tool::beta_bash_tool20250124
 
@@ -2056,12 +1737,7 @@ module Sam
           class CacheControl < Sam::BaseModel
             attr_accessor type: :ephemeral
 
-            def initialize:
-              (?type: :ephemeral) -> void
-              | (
-                ?Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124::cache_control
-                | Sam::BaseModel data
-              ) -> void
+            def initialize: (?type: :ephemeral) -> void
 
             def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124::cache_control
           end
@@ -2081,16 +1757,11 @@ module Sam
 
           attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124::CacheControl?
 
-          def initialize:
-            (
-              ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124::CacheControl?,
-              ?name: :str_replace_editor,
-              ?type: :text_editor_20250124
-            ) -> void
-            | (
-              ?Sam::Models::MessagesBetaTrueCreateParams::Tool::beta_text_editor20250124
-              | Sam::BaseModel data
-            ) -> void
+          def initialize: (
+            ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124::CacheControl?,
+            ?name: :str_replace_editor,
+            ?type: :text_editor_20250124
+          ) -> void
 
           def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Tool::beta_text_editor20250124
 
@@ -2099,12 +1770,7 @@ module Sam
           class CacheControl < Sam::BaseModel
             attr_accessor type: :ephemeral
 
-            def initialize:
-              (?type: :ephemeral) -> void
-              | (
-                ?Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124::cache_control
-                | Sam::BaseModel data
-              ) -> void
+            def initialize: (?type: :ephemeral) -> void
 
             def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124::cache_control
           end
