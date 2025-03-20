@@ -186,7 +186,7 @@ module Sam
               def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::beta_response_content_block_location_citation
             end
 
-            def self.variants: -> [Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation]
+            def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation]
           end
         end
 
@@ -244,7 +244,7 @@ module Sam
           def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::beta_response_redacted_thinking_block
         end
 
-        def self.variants: -> [Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseToolUseBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseThinkingBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseRedactedThinkingBlock]
+        def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseToolUseBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseThinkingBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseRedactedThinkingBlock]
       end
 
       type stop_reason = :end_turn | :max_tokens | :stop_sequence | :tool_use
@@ -257,7 +257,7 @@ module Sam
         STOP_SEQUENCE: :stop_sequence
         TOOL_USE: :tool_use
 
-        def self.values: -> ::Array[Sam::Models::MessagesBetaTrueCreateResponse::stop_reason]
+        def self?.values: -> ::Array[Sam::Models::MessagesBetaTrueCreateResponse::stop_reason]
       end
 
       type usage =

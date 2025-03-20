@@ -544,6 +544,12 @@ module Sam
                 TOOL_USE = :tool_use
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               class Usage < Sam::BaseModel

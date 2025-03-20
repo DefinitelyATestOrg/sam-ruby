@@ -1035,6 +1035,17 @@ module Sam
                   def to_hash
                   end
                 end
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]
+                      )
+                  end
+                  def variants
+                  end
+                end
               end
             end
 
@@ -1231,23 +1242,36 @@ module Sam
                     IMAGE_JPEG =
                       T.let(
                         :"image/jpeg",
-                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                       )
                     IMAGE_PNG =
                       T.let(
                         :"image/png",
-                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                       )
                     IMAGE_GIF =
                       T.let(
                         :"image/gif",
-                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                       )
                     IMAGE_WEBP =
                       T.let(
                         :"image/webp",
-                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                       )
+
+                    class << self
+                      sig do
+                        override
+                          .returns(
+                            T::Array[
+                            Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
+                            ]
+                          )
+                      end
+                      def values
+                      end
+                    end
                   end
                 end
 
@@ -1274,6 +1298,17 @@ module Sam
 
                   sig { override.returns({type: Symbol, url: String}) }
                   def to_hash
+                  end
+                end
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
+                      )
+                  end
+                  def variants
                   end
                 end
               end
@@ -2033,6 +2068,17 @@ module Sam
                         def to_hash
                         end
                       end
+
+                      class << self
+                        sig do
+                          override
+                            .returns(
+                              [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]
+                            )
+                        end
+                        def variants
+                        end
+                      end
                     end
                   end
 
@@ -2229,23 +2275,36 @@ module Sam
                           IMAGE_JPEG =
                             T.let(
                               :"image/jpeg",
-                              Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                              Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                             )
                           IMAGE_PNG =
                             T.let(
                               :"image/png",
-                              Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                              Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                             )
                           IMAGE_GIF =
                             T.let(
                               :"image/gif",
-                              Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                              Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                             )
                           IMAGE_WEBP =
                             T.let(
                               :"image/webp",
-                              Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                              Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                             )
+
+                          class << self
+                            sig do
+                              override
+                                .returns(
+                                  T::Array[
+                                  Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
+                                  ]
+                                )
+                            end
+                            def values
+                            end
+                          end
                         end
                       end
 
@@ -2274,6 +2333,17 @@ module Sam
                         def to_hash
                         end
                       end
+
+                      class << self
+                        sig do
+                          override
+                            .returns(
+                              [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
+                            )
+                        end
+                        def variants
+                        end
+                      end
                     end
 
                     class CacheControl < Sam::BaseModel
@@ -2293,6 +2363,36 @@ module Sam
                       def to_hash
                       end
                     end
+                  end
+
+                  class << self
+                    sig do
+                      override
+                        .returns(
+                          [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock]
+                        )
+                    end
+                    def variants
+                    end
+                  end
+                end
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        [
+                          String,
+                          T::Array[
+                                                  T.any(
+                                                    Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock,
+                                                    Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
+                                                  )
+                                                  ]
+                        ]
+                      )
+                  end
+                  def variants
                   end
                 end
               end
@@ -3086,6 +3186,17 @@ module Sam
                             def to_hash
                             end
                           end
+
+                          class << self
+                            sig do
+                              override
+                                .returns(
+                                  [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]
+                                )
+                            end
+                            def variants
+                            end
+                          end
                         end
                       end
 
@@ -3282,23 +3393,36 @@ module Sam
                               IMAGE_JPEG =
                                 T.let(
                                   :"image/jpeg",
-                                  Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                                  Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                                 )
                               IMAGE_PNG =
                                 T.let(
                                   :"image/png",
-                                  Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                                  Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                                 )
                               IMAGE_GIF =
                                 T.let(
                                   :"image/gif",
-                                  Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                                  Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                                 )
                               IMAGE_WEBP =
                                 T.let(
                                   :"image/webp",
-                                  Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                                  Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                                 )
+
+                              class << self
+                                sig do
+                                  override
+                                    .returns(
+                                      T::Array[
+                                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
+                                      ]
+                                    )
+                                end
+                                def values
+                                end
+                              end
                             end
                           end
 
@@ -3327,6 +3451,17 @@ module Sam
                             def to_hash
                             end
                           end
+
+                          class << self
+                            sig do
+                              override
+                                .returns(
+                                  [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
+                                )
+                            end
+                            def variants
+                            end
+                          end
                         end
 
                         class CacheControl < Sam::BaseModel
@@ -3346,6 +3481,36 @@ module Sam
                           def to_hash
                           end
                         end
+                      end
+
+                      class << self
+                        sig do
+                          override
+                            .returns(
+                              [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock]
+                            )
+                        end
+                        def variants
+                        end
+                      end
+                    end
+
+                    class << self
+                      sig do
+                        override
+                          .returns(
+                            [
+                              String,
+                              T::Array[
+                                                          T.any(
+                                                            Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock,
+                                                            Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock
+                                                          )
+                                                          ]
+                            ]
+                          )
+                      end
+                      def variants
                       end
                     end
                   end
@@ -3374,6 +3539,17 @@ module Sam
 
                   sig { override.returns({type: Symbol, url: String}) }
                   def to_hash
+                  end
+                end
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource]
+                      )
+                  end
+                  def variants
                   end
                 end
               end
@@ -3474,6 +3650,41 @@ module Sam
               def to_hash
               end
             end
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestThinkingBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock]
+                  )
+              end
+              def variants
+              end
+            end
+          end
+
+          class << self
+            sig do
+              override
+                .returns(
+                  [
+                    String,
+                    T::Array[
+                                      T.any(
+                                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock,
+                                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock,
+                                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock,
+                                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock,
+                                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock,
+                                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestThinkingBlock,
+                                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock
+                                      )
+                                      ]
+                  ]
+                )
+            end
+            def variants
+            end
           end
         end
 
@@ -3484,8 +3695,14 @@ module Sam
           OrSymbol =
             T.type_alias { T.any(Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Role::TaggedSymbol) }
 
-          USER = T.let(:user, Sam::Models::MessageCountTokensBetaParams::Message::Role::OrSymbol)
-          ASSISTANT = T.let(:assistant, Sam::Models::MessageCountTokensBetaParams::Message::Role::OrSymbol)
+          USER = T.let(:user, Sam::Models::MessageCountTokensBetaParams::Message::Role::TaggedSymbol)
+          ASSISTANT = T.let(:assistant, Sam::Models::MessageCountTokensBetaParams::Message::Role::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Sam::Models::MessageCountTokensBetaParams::Message::Role::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -3902,6 +4119,23 @@ module Sam
               def to_hash
               end
             end
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    [Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestCharLocationCitation, Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestPageLocationCitation, Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation]
+                  )
+              end
+              def variants
+              end
+            end
+          end
+        end
+
+        class << self
+          sig { override.returns([String, T::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1]]) }
+          def variants
           end
         end
       end
@@ -3978,6 +4212,17 @@ module Sam
 
           sig { override.returns({type: Symbol}) }
           def to_hash
+          end
+        end
+
+        class << self
+          sig do
+            override
+              .returns(
+                [Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigEnabled, Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigDisabled]
+              )
+          end
+          def variants
           end
         end
       end
@@ -4123,6 +4368,17 @@ module Sam
 
           sig { override.returns({type: Symbol}) }
           def to_hash
+          end
+        end
+
+        class << self
+          sig do
+            override
+              .returns(
+                [Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAuto, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAny, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceTool, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceNone]
+              )
+          end
+          def variants
           end
         end
       end
@@ -4302,7 +4558,13 @@ module Sam
             OrSymbol =
               T.type_alias { T.any(Symbol, Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::Type::TaggedSymbol) }
 
-            CUSTOM = T.let(:custom, Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::Type::OrSymbol)
+            CUSTOM = T.let(:custom, Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::Type::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -4919,6 +5181,17 @@ module Sam
             sig { override.returns({type: Symbol}) }
             def to_hash
             end
+          end
+        end
+
+        class << self
+          sig do
+            override
+              .returns(
+                [Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool, Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022, Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022, Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022, Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124, Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124, Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124]
+              )
+          end
+          def variants
           end
         end
       end
