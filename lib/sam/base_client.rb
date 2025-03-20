@@ -215,7 +215,7 @@ module Sam
     #
     #   @option opts [Hash{String=>String, nil}, nil] :extra_headers
     #
-    #   @option opts [Hash{Symbol=>Object}, nil] :extra_body
+    #   @option opts [Object, nil] :extra_body
     #
     #   @option opts [Integer, nil] :max_retries
     #

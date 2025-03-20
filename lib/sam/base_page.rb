@@ -2,32 +2,26 @@
 
 module Sam
   # @example
-  # ```ruby
-  # if page.has_next?
-  #   page = page.next_page
-  # end
-  # ```
+  #   if page.has_next?
+  #     page = page.next_page
+  #   end
   #
   # @example
-  # ```ruby
-  # page.auto_paging_each do |message|
-  #   puts(message)
-  # end
-  # ```
+  #   page.auto_paging_each do |message|
+  #     puts(message)
+  #   end
   #
   # @example
-  # ```ruby
-  # messages =
-  #   page
-  #   .to_enum
-  #   .lazy
-  #   .select { _1.object_id.even? }
-  #   .map(&:itself)
-  #   .take(2)
-  #   .to_a
+  #   messages =
+  #     page
+  #     .to_enum
+  #     .lazy
+  #     .select { _1.object_id.even? }
+  #     .map(&:itself)
+  #     .take(2)
+  #     .to_a
   #
-  # messages => Array
-  # ```
+  #   messages => Array
   module BasePage
     # rubocop:disable Lint/UnusedMethodArgument
 
