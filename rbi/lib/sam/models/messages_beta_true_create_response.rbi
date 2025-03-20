@@ -171,8 +171,8 @@ module Sam
       end
 
       sig do
-        params(_: Sam::Models::MessagesBetaTrueCreateResponse::Usage)
-          .returns(Sam::Models::MessagesBetaTrueCreateResponse::Usage)
+        params(_: T.any(Sam::Models::MessagesBetaTrueCreateResponse::Usage, Sam::Util::AnyHash))
+          .returns(T.any(Sam::Models::MessagesBetaTrueCreateResponse::Usage, Sam::Util::AnyHash))
       end
       def usage=(_)
       end

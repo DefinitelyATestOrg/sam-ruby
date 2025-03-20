@@ -170,7 +170,10 @@ module Sam
       def usage
       end
 
-      sig { params(_: Sam::Models::MessageCreateResponse::Usage).returns(Sam::Models::MessageCreateResponse::Usage) }
+      sig do
+        params(_: T.any(Sam::Models::MessageCreateResponse::Usage, Sam::Util::AnyHash))
+          .returns(T.any(Sam::Models::MessageCreateResponse::Usage, Sam::Util::AnyHash))
+      end
       def usage=(_)
       end
 
