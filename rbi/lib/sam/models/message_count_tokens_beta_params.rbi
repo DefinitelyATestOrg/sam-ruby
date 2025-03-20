@@ -650,12 +650,18 @@ module Sam
               sig do
                 params(
                   _: T.nilable(
-                    Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl
+                    T.any(
+                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl,
+                      Sam::Util::AnyHash
+                    )
                   )
                 )
                   .returns(
                     T.nilable(
-                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl
+                      T.any(
+                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl,
+                        Sam::Util::AnyHash
+                      )
                     )
                   )
               end
@@ -1082,12 +1088,18 @@ module Sam
               sig do
                 params(
                   _: T.nilable(
-                    Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl
+                    T.any(
+                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl,
+                      Sam::Util::AnyHash
+                    )
                   )
                 )
                   .returns(
                     T.nilable(
-                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl
+                      T.any(
+                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl,
+                        Sam::Util::AnyHash
+                      )
                     )
                   )
               end
@@ -1331,12 +1343,18 @@ module Sam
               sig do
                 params(
                   _: T.nilable(
-                    Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl
+                    T.any(
+                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl,
+                      Sam::Util::AnyHash
+                    )
                   )
                 )
                   .returns(
                     T.nilable(
-                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl
+                      T.any(
+                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl,
+                        Sam::Util::AnyHash
+                      )
                     )
                   )
               end
@@ -1424,12 +1442,18 @@ module Sam
               sig do
                 params(
                   _: T.nilable(
-                    Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl
+                    T.any(
+                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl,
+                      Sam::Util::AnyHash
+                    )
                   )
                 )
                   .returns(
                     T.nilable(
-                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl
+                      T.any(
+                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl,
+                        Sam::Util::AnyHash
+                      )
                     )
                   )
               end
@@ -1624,12 +1648,18 @@ module Sam
                     sig do
                       params(
                         _: T.nilable(
-                          Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl
+                          T.any(
+                            Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl,
+                            Sam::Util::AnyHash
+                          )
                         )
                       )
                         .returns(
                           T.nilable(
-                            Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl
+                            T.any(
+                              Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl,
+                              Sam::Util::AnyHash
+                            )
                           )
                         )
                     end
@@ -2056,12 +2086,18 @@ module Sam
                     sig do
                       params(
                         _: T.nilable(
-                          Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl
+                          T.any(
+                            Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl,
+                            Sam::Util::AnyHash
+                          )
                         )
                       )
                         .returns(
                           T.nilable(
-                            Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl
+                            T.any(
+                              Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl,
+                              Sam::Util::AnyHash
+                            )
                           )
                         )
                     end
@@ -2318,12 +2354,18 @@ module Sam
               sig do
                 params(
                   _: T.nilable(
-                    Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl
+                    T.any(
+                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl,
+                      Sam::Util::AnyHash
+                    )
                   )
                 )
                   .returns(
                     T.nilable(
-                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl
+                      T.any(
+                        Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl,
+                        Sam::Util::AnyHash
+                      )
                     )
                   )
               end
@@ -2342,10 +2384,16 @@ module Sam
 
               sig do
                 params(
-                  _: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations
+                  _: T.any(
+                    Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations,
+                    Sam::Util::AnyHash
+                  )
                 )
                   .returns(
-                    Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations
+                    T.any(
+                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations,
+                      Sam::Util::AnyHash
+                    )
                   )
               end
               def citations=(_)
@@ -2653,12 +2701,18 @@ module Sam
                         sig do
                           params(
                             _: T.nilable(
-                              Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl
+                              T.any(
+                                Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl,
+                                Sam::Util::AnyHash
+                              )
                             )
                           )
                             .returns(
                               T.nilable(
-                                Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl
+                                T.any(
+                                  Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl,
+                                  Sam::Util::AnyHash
+                                )
                               )
                             )
                         end
@@ -3085,12 +3139,18 @@ module Sam
                         sig do
                           params(
                             _: T.nilable(
-                              Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl
+                              T.any(
+                                Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl,
+                                Sam::Util::AnyHash
+                              )
                             )
                           )
                             .returns(
                               T.nilable(
-                                Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl
+                                T.any(
+                                  Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl,
+                                  Sam::Util::AnyHash
+                                )
                               )
                             )
                         end
@@ -3465,8 +3525,16 @@ module Sam
           end
 
           sig do
-            params(_: T.nilable(Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::CacheControl))
-              .returns(T.nilable(Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::CacheControl))
+            params(
+              _: T.nilable(
+                T.any(Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::CacheControl, Sam::Util::AnyHash)
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::CacheControl, Sam::Util::AnyHash)
+                )
+              )
           end
           def cache_control=(_)
           end
@@ -4087,8 +4155,10 @@ module Sam
           end
 
           sig do
-            params(_: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::InputSchema)
-              .returns(Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::InputSchema)
+            params(
+              _: T.any(Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::InputSchema, Sam::Util::AnyHash)
+            )
+              .returns(T.any(Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::InputSchema, Sam::Util::AnyHash))
           end
           def input_schema=(_)
           end
@@ -4109,8 +4179,16 @@ module Sam
           end
 
           sig do
-            params(_: T.nilable(Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::CacheControl))
-              .returns(T.nilable(Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::CacheControl))
+            params(
+              _: T.nilable(
+                T.any(Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::CacheControl, Sam::Util::AnyHash)
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::CacheControl, Sam::Util::AnyHash)
+                )
+              )
           end
           def cache_control=(_)
           end
@@ -4276,10 +4354,20 @@ module Sam
 
           sig do
             params(
-              _: T.nilable(Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022::CacheControl)
+              _: T.nilable(
+                T.any(
+                  Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022::CacheControl,
+                  Sam::Util::AnyHash
+                )
+              )
             )
               .returns(
-                T.nilable(Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022::CacheControl)
+                T.nilable(
+                  T.any(
+                    Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022::CacheControl,
+                    Sam::Util::AnyHash
+                  )
+                )
               )
           end
           def cache_control=(_)
@@ -4375,8 +4463,22 @@ module Sam
           end
 
           sig do
-            params(_: T.nilable(Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022::CacheControl))
-              .returns(T.nilable(Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022::CacheControl))
+            params(
+              _: T.nilable(
+                T.any(
+                  Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022::CacheControl,
+                  Sam::Util::AnyHash
+                )
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(
+                    Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022::CacheControl,
+                    Sam::Util::AnyHash
+                  )
+                )
+              )
           end
           def cache_control=(_)
           end
@@ -4450,9 +4552,21 @@ module Sam
 
           sig do
             params(
-              _: T.nilable(Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022::CacheControl)
+              _: T.nilable(
+                T.any(
+                  Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022::CacheControl,
+                  Sam::Util::AnyHash
+                )
+              )
             )
-              .returns(T.nilable(Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022::CacheControl))
+              .returns(
+                T.nilable(
+                  T.any(
+                    Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022::CacheControl,
+                    Sam::Util::AnyHash
+                  )
+                )
+              )
           end
           def cache_control=(_)
           end
@@ -4548,10 +4662,20 @@ module Sam
 
           sig do
             params(
-              _: T.nilable(Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124::CacheControl)
+              _: T.nilable(
+                T.any(
+                  Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124::CacheControl,
+                  Sam::Util::AnyHash
+                )
+              )
             )
               .returns(
-                T.nilable(Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124::CacheControl)
+                T.nilable(
+                  T.any(
+                    Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124::CacheControl,
+                    Sam::Util::AnyHash
+                  )
+                )
               )
           end
           def cache_control=(_)
@@ -4647,8 +4771,22 @@ module Sam
           end
 
           sig do
-            params(_: T.nilable(Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124::CacheControl))
-              .returns(T.nilable(Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124::CacheControl))
+            params(
+              _: T.nilable(
+                T.any(
+                  Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124::CacheControl,
+                  Sam::Util::AnyHash
+                )
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(
+                    Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124::CacheControl,
+                    Sam::Util::AnyHash
+                  )
+                )
+              )
           end
           def cache_control=(_)
           end
@@ -4722,9 +4860,21 @@ module Sam
 
           sig do
             params(
-              _: T.nilable(Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124::CacheControl)
+              _: T.nilable(
+                T.any(
+                  Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124::CacheControl,
+                  Sam::Util::AnyHash
+                )
+              )
             )
-              .returns(T.nilable(Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124::CacheControl))
+              .returns(
+                T.nilable(
+                  T.any(
+                    Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124::CacheControl,
+                    Sam::Util::AnyHash
+                  )
+                )
+              )
           end
           def cache_control=(_)
           end

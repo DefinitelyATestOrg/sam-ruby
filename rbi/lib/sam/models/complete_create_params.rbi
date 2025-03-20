@@ -57,7 +57,8 @@ module Sam
       end
 
       sig do
-        params(_: Sam::Models::CompleteCreateParams::Metadata).returns(Sam::Models::CompleteCreateParams::Metadata)
+        params(_: T.any(Sam::Models::CompleteCreateParams::Metadata, Sam::Util::AnyHash))
+          .returns(T.any(Sam::Models::CompleteCreateParams::Metadata, Sam::Util::AnyHash))
       end
       def metadata=(_)
       end

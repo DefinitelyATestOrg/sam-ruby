@@ -115,8 +115,18 @@ module Sam
             end
 
             sig do
-              params(_: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message)
-                .returns(Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message)
+              params(
+                _: T.any(
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message,
+                  Sam::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message,
+                    Sam::Util::AnyHash
+                  )
+                )
             end
             def message=(_)
             end
@@ -331,8 +341,18 @@ module Sam
               end
 
               sig do
-                params(_: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage)
-                  .returns(Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage)
+                params(
+                  _: T.any(
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage,
+                    Sam::Util::AnyHash
+                  )
+                )
+                  .returns(
+                    T.any(
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage,
+                      Sam::Util::AnyHash
+                    )
+                  )
               end
               def usage=(_)
               end
@@ -1017,8 +1037,18 @@ module Sam
             end
 
             sig do
-              params(_: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error)
-                .returns(Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error)
+              params(
+                _: T.any(
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error,
+                  Sam::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error,
+                    Sam::Util::AnyHash
+                  )
+                )
             end
             def error=(_)
             end
