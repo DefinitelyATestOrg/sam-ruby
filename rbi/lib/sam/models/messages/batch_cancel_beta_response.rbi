@@ -90,8 +90,8 @@ module Sam
         end
 
         sig do
-          params(_: Sam::Models::Messages::BatchCancelBetaResponse::RequestCounts)
-            .returns(Sam::Models::Messages::BatchCancelBetaResponse::RequestCounts)
+          params(_: T.any(Sam::Models::Messages::BatchCancelBetaResponse::RequestCounts, Sam::Util::AnyHash))
+            .returns(T.any(Sam::Models::Messages::BatchCancelBetaResponse::RequestCounts, Sam::Util::AnyHash))
         end
         def request_counts=(_)
         end
