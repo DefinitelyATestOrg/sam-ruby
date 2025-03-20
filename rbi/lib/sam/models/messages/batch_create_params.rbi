@@ -1220,6 +1220,17 @@ module Sam
                         def to_hash
                         end
                       end
+
+                      class << self
+                        sig do
+                          override
+                            .returns(
+                              [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]
+                            )
+                        end
+                        def variants
+                        end
+                      end
                     end
                   end
 
@@ -1416,23 +1427,36 @@ module Sam
                           IMAGE_JPEG =
                             T.let(
                               :"image/jpeg",
-                              Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
+                              Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                             )
                           IMAGE_PNG =
                             T.let(
                               :"image/png",
-                              Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
+                              Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                             )
                           IMAGE_GIF =
                             T.let(
                               :"image/gif",
-                              Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
+                              Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                             )
                           IMAGE_WEBP =
                             T.let(
                               :"image/webp",
-                              Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
+                              Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                             )
+
+                          class << self
+                            sig do
+                              override
+                                .returns(
+                                  T::Array[
+                                  Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
+                                  ]
+                                )
+                            end
+                            def values
+                            end
+                          end
                         end
                       end
 
@@ -1459,6 +1483,17 @@ module Sam
 
                         sig { override.returns({type: Symbol, url: String}) }
                         def to_hash
+                        end
+                      end
+
+                      class << self
+                        sig do
+                          override
+                            .returns(
+                              [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
+                            )
+                        end
+                        def variants
                         end
                       end
                     end
@@ -2218,6 +2253,17 @@ module Sam
                               def to_hash
                               end
                             end
+
+                            class << self
+                              sig do
+                                override
+                                  .returns(
+                                    [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]
+                                  )
+                              end
+                              def variants
+                              end
+                            end
                           end
                         end
 
@@ -2414,23 +2460,36 @@ module Sam
                                 IMAGE_JPEG =
                                   T.let(
                                     :"image/jpeg",
-                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
+                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                                   )
                                 IMAGE_PNG =
                                   T.let(
                                     :"image/png",
-                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
+                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                                   )
                                 IMAGE_GIF =
                                   T.let(
                                     :"image/gif",
-                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
+                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                                   )
                                 IMAGE_WEBP =
                                   T.let(
                                     :"image/webp",
-                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
+                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                                   )
+
+                                class << self
+                                  sig do
+                                    override
+                                      .returns(
+                                        T::Array[
+                                        Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
+                                        ]
+                                      )
+                                  end
+                                  def values
+                                  end
+                                end
                               end
                             end
 
@@ -2459,6 +2518,17 @@ module Sam
                               def to_hash
                               end
                             end
+
+                            class << self
+                              sig do
+                                override
+                                  .returns(
+                                    [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
+                                  )
+                              end
+                              def variants
+                              end
+                            end
                           end
 
                           class CacheControl < Sam::BaseModel
@@ -2478,6 +2548,36 @@ module Sam
                             def to_hash
                             end
                           end
+                        end
+
+                        class << self
+                          sig do
+                            override
+                              .returns(
+                                [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock]
+                              )
+                          end
+                          def variants
+                          end
+                        end
+                      end
+
+                      class << self
+                        sig do
+                          override
+                            .returns(
+                              [
+                                String,
+                                T::Array[
+                                                              T.any(
+                                                                Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
+                                                                Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
+                                                              )
+                                                              ]
+                              ]
+                            )
+                        end
+                        def variants
                         end
                       end
                     end
@@ -3275,6 +3375,17 @@ module Sam
                                   def to_hash
                                   end
                                 end
+
+                                class << self
+                                  sig do
+                                    override
+                                      .returns(
+                                        [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]
+                                      )
+                                  end
+                                  def variants
+                                  end
+                                end
                               end
                             end
 
@@ -3471,23 +3582,36 @@ module Sam
                                     IMAGE_JPEG =
                                       T.let(
                                         :"image/jpeg",
-                                        Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
+                                        Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                                       )
                                     IMAGE_PNG =
                                       T.let(
                                         :"image/png",
-                                        Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
+                                        Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                                       )
                                     IMAGE_GIF =
                                       T.let(
                                         :"image/gif",
-                                        Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
+                                        Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                                       )
                                     IMAGE_WEBP =
                                       T.let(
                                         :"image/webp",
-                                        Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
+                                        Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                                       )
+
+                                    class << self
+                                      sig do
+                                        override
+                                          .returns(
+                                            T::Array[
+                                            Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
+                                            ]
+                                          )
+                                      end
+                                      def values
+                                      end
+                                    end
                                   end
                                 end
 
@@ -3516,6 +3640,17 @@ module Sam
                                   def to_hash
                                   end
                                 end
+
+                                class << self
+                                  sig do
+                                    override
+                                      .returns(
+                                        [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
+                                      )
+                                  end
+                                  def variants
+                                  end
+                                end
                               end
 
                               class CacheControl < Sam::BaseModel
@@ -3535,6 +3670,36 @@ module Sam
                                 def to_hash
                                 end
                               end
+                            end
+
+                            class << self
+                              sig do
+                                override
+                                  .returns(
+                                    [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock]
+                                  )
+                              end
+                              def variants
+                              end
+                            end
+                          end
+
+                          class << self
+                            sig do
+                              override
+                                .returns(
+                                  [
+                                    String,
+                                    T::Array[
+                                                                      T.any(
+                                                                        Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
+                                                                        Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
+                                                                      )
+                                                                      ]
+                                  ]
+                                )
+                            end
+                            def variants
                             end
                           end
                         end
@@ -3563,6 +3728,17 @@ module Sam
 
                         sig { override.returns({type: Symbol, url: String}) }
                         def to_hash
+                        end
+                      end
+
+                      class << self
+                        sig do
+                          override
+                            .returns(
+                              [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource]
+                            )
+                        end
+                        def variants
                         end
                       end
                     end
@@ -3665,6 +3841,41 @@ module Sam
                     def to_hash
                     end
                   end
+
+                  class << self
+                    sig do
+                      override
+                        .returns(
+                          [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolUseBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestThinkingBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestRedactedThinkingBlock]
+                        )
+                    end
+                    def variants
+                    end
+                  end
+                end
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        [
+                          String,
+                          T::Array[
+                                                  T.any(
+                                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock,
+                                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock,
+                                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolUseBlock,
+                                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock,
+                                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock,
+                                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestThinkingBlock,
+                                                    Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestRedactedThinkingBlock
+                                                  )
+                                                  ]
+                        ]
+                      )
+                  end
+                  def variants
+                  end
                 end
               end
 
@@ -3676,9 +3887,19 @@ module Sam
                 OrSymbol =
                   T.type_alias { T.any(Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Role::TaggedSymbol) }
 
-                USER = T.let(:user, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Role::OrSymbol)
+                USER =
+                  T.let(:user, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Role::TaggedSymbol)
                 ASSISTANT =
-                  T.let(:assistant, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Role::OrSymbol)
+                  T.let(:assistant, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Role::TaggedSymbol)
+
+                class << self
+                  sig do
+                    override
+                      .returns(T::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Role::TaggedSymbol])
+                  end
+                  def values
+                  end
+                end
               end
             end
 
@@ -4136,6 +4357,28 @@ module Sam
                     def to_hash
                     end
                   end
+
+                  class << self
+                    sig do
+                      override
+                        .returns(
+                          [Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestCharLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestPageLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestContentBlockLocationCitation]
+                        )
+                    end
+                    def variants
+                    end
+                  end
+                end
+              end
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      [String, T::Array[Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1]]
+                    )
+                end
+                def variants
                 end
               end
             end
@@ -4212,6 +4455,17 @@ module Sam
 
                 sig { override.returns({type: Symbol}) }
                 def to_hash
+                end
+              end
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      [Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigEnabled, Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigDisabled]
+                    )
+                end
+                def variants
                 end
               end
             end
@@ -4357,6 +4611,17 @@ module Sam
 
                 sig { override.returns({type: Symbol}) }
                 def to_hash
+                end
+              end
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      [Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAuto, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAny, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceTool, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceNone]
+                    )
+                end
+                def variants
                 end
               end
             end
@@ -4713,6 +4978,17 @@ module Sam
                   sig { override.returns({type: Symbol}) }
                   def to_hash
                   end
+                end
+              end
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      [Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124]
+                    )
+                end
+                def variants
                 end
               end
             end

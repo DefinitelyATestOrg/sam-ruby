@@ -661,6 +661,12 @@ module Sam
                     IMAGE_WEBP = :"image/webp"
 
                     finalize!
+
+                    class << self
+                      # @!parse
+                      #   # @return [Array<Symbol>]
+                      #   def values; end
+                    end
                   end
                 end
 
@@ -1156,6 +1162,12 @@ module Sam
                           IMAGE_WEBP = :"image/webp"
 
                           finalize!
+
+                          class << self
+                            # @!parse
+                            #   # @return [Array<Symbol>]
+                            #   def values; end
+                          end
                         end
                       end
 
@@ -1690,6 +1702,12 @@ module Sam
                               IMAGE_WEBP = :"image/webp"
 
                               finalize!
+
+                              class << self
+                                # @!parse
+                                #   # @return [Array<Symbol>]
+                                #   def values; end
+                              end
                             end
                           end
 
@@ -1877,6 +1895,12 @@ module Sam
           ASSISTANT = :assistant
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
