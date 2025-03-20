@@ -594,19 +594,10 @@ module Sam
             end
 
           UnionMember1Array =
-            T.type_alias do
-              T::Array[
-              T.any(
-                Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock,
-                Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock,
-                Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock,
-                Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock,
-                Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock,
-                Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestThinkingBlock,
-                Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock
-              )
-              ]
-            end
+            T.let(
+              Sam::ArrayOf[union: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1],
+              Sam::Converter
+            )
 
           class UnionMember1 < Sam::Union
             abstract!
@@ -1527,14 +1518,12 @@ module Sam
                   end
 
                 UnionMember1Array =
-                  T.type_alias do
-                    T::Array[
-                    T.any(
-                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock,
-                      Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
-                    )
-                    ]
-                  end
+                  T.let(
+                    Sam::ArrayOf[
+                    union: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1
+                    ],
+                    Sam::Converter
+                  )
 
                 class UnionMember1 < Sam::Union
                   abstract!
@@ -2507,14 +2496,12 @@ module Sam
                       end
 
                     UnionMember1Array =
-                      T.type_alias do
-                        T::Array[
-                        T.any(
-                          Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock,
-                          Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock
-                        )
-                        ]
-                      end
+                      T.let(
+                        Sam::ArrayOf[
+                        union: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1
+                        ],
+                        Sam::Converter
+                      )
 
                     class UnionMember1 < Sam::Union
                       abstract!
@@ -3294,7 +3281,7 @@ module Sam
           type_template(:out) { {fixed: T.any(String, T::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1])} }
 
         UnionMember1Array =
-          T.type_alias { T::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1] }
+          T.let(Sam::ArrayOf[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1], Sam::Converter)
 
         class UnionMember1 < Sam::BaseModel
           sig { returns(String) }
