@@ -260,6 +260,17 @@ module Sam
               )
             ENDED =
               T.let(:ended, Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
 
           class RequestCounts < Sam::BaseModel

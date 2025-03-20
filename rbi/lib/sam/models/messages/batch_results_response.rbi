@@ -783,6 +783,17 @@ module Sam
                       def to_hash
                       end
                     end
+
+                    class << self
+                      sig do
+                        override
+                          .returns(
+                            [Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation]
+                          )
+                      end
+                      def variants
+                      end
+                    end
                   end
                 end
 
@@ -894,6 +905,17 @@ module Sam
                   def to_hash
                   end
                 end
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        [Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseToolUseBlock, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseThinkingBlock, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseRedactedThinkingBlock]
+                      )
+                  end
+                  def variants
+                  end
+                end
               end
 
               # The reason that we stopped.
@@ -940,6 +962,17 @@ module Sam
                     :tool_use,
                     Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::StopReason::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::StopReason::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
 
               class Usage < Sam::BaseModel
@@ -1414,6 +1447,17 @@ module Sam
                   def to_hash
                   end
                 end
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        [Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::InvalidRequestError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::AuthenticationError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::BillingError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::PermissionError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::NotFoundError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::RateLimitError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::GatewayTimeoutError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::APIError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::OverloadedError]
+                      )
+                  end
+                  def variants
+                  end
+                end
               end
             end
           end
@@ -1451,6 +1495,17 @@ module Sam
 
             sig { override.returns({type: Symbol}) }
             def to_hash
+            end
+          end
+
+          class << self
+            sig do
+              override
+                .returns(
+                  [Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult, Sam::Models::Messages::BatchResultsResponse::Result::CanceledResult, Sam::Models::Messages::BatchResultsResponse::Result::ExpiredResult]
+                )
+            end
+            def variants
             end
           end
         end

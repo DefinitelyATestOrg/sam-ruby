@@ -60,7 +60,7 @@ module Sam
           CANCELING: :canceling
           ENDED: :ended
 
-          def self.values: -> ::Array[Sam::Models::Messages::BatchCancelResponse::processing_status]
+          def self?.values: -> ::Array[Sam::Models::Messages::BatchCancelResponse::processing_status]
         end
 
         type request_counts =

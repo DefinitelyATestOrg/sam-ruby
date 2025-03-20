@@ -605,6 +605,17 @@ module Sam
               def to_hash
               end
             end
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    [Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation]
+                  )
+              end
+              def variants
+              end
+            end
           end
         end
 
@@ -709,6 +720,17 @@ module Sam
           def to_hash
           end
         end
+
+        class << self
+          sig do
+            override
+              .returns(
+                [Sam::Models::MessageCreateResponse::Content::ResponseTextBlock, Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock, Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock, Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock]
+              )
+          end
+          def variants
+          end
+        end
       end
 
       # The reason that we stopped.
@@ -732,6 +754,12 @@ module Sam
         MAX_TOKENS = T.let(:max_tokens, Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol)
         STOP_SEQUENCE = T.let(:stop_sequence, Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol)
         TOOL_USE = T.let(:tool_use, Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Usage < Sam::BaseModel

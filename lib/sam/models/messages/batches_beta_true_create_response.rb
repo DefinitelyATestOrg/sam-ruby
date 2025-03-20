@@ -124,6 +124,12 @@ module Sam
           ENDED = :ended
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class RequestCounts < Sam::BaseModel
