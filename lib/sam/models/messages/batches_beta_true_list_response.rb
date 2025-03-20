@@ -150,10 +150,10 @@ module Sam
 
           # def initialize: (Hash | Sam::BaseModel) -> void
 
-          # @abstract
-          #
           # Processing status of the Message Batch.
-          class ProcessingStatus < Sam::Enum
+          module ProcessingStatus
+            extend Sam::Enum
+
             IN_PROGRESS = :in_progress
             CANCELING = :canceling
             ENDED = :ended

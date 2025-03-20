@@ -3,7 +3,9 @@
 require_relative "test_helper"
 
 class Sam::Test::BaseModelTest < Minitest::Test
-  class E1 < Sam::Enum
+  module E1
+    extend Sam::Enum
+
     A = :a
     B = :b
   end
@@ -242,13 +244,17 @@ class Sam::Test::BaseModelTest < Minitest::Test
     optional :b, E1, api_name: :renamed_again
   end
 
-  class U1 < Sam::Union
+  module U1
+    extend Sam::Union
+
     discriminator :type
     variant :a, M1
     variant :b, M3
   end
 
-  class U2 < Sam::Union
+  module U2
+    extend Sam::Union
+
     variant A1
     variant A3
   end
@@ -330,12 +336,16 @@ class Sam::Test::BaseModelTest < Minitest::Test
     end
   end
 
-  class E2 < Sam::Enum
+  module E2
+    extend Sam::Enum
+
     A = :a
     B = :b
   end
 
-  class U3 < Sam::Union
+  module U3
+    extend Sam::Union
+
     discriminator :type
     variant :a, M1
     variant :b, M3
@@ -353,7 +363,9 @@ class Sam::Test::BaseModelTest < Minitest::Test
     assert_equal(U1, U3)
   end
 
-  class U4 < Sam::Union
+  module U4
+    extend Sam::Union
+
     variant :a, const: :a
     variant :b, const: :b
   end

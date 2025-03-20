@@ -318,8 +318,9 @@ module Sam
 
         # def initialize: (Hash | Sam::BaseModel) -> void
 
-        # @abstract
-        class Content < Sam::Union
+        module Content
+          extend Sam::Union
+
           UnionMember1Array =
             Sam::ArrayOf[union: -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1 }]
 
@@ -327,8 +328,9 @@ module Sam
 
           variant Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1Array
 
-          # @abstract
-          class UnionMember1 < Sam::Union
+          module UnionMember1
+            extend Sam::Union
+
             discriminator :type
 
             variant :text,
@@ -401,8 +403,9 @@ module Sam
                 # def initialize: (Hash | Sam::BaseModel) -> void
               end
 
-              # @abstract
-              class Citation < Sam::Union
+              module Citation
+                extend Sam::Union
+
                 discriminator :type
 
                 variant :char_location,
@@ -612,8 +615,9 @@ module Sam
 
               # def initialize: (Hash | Sam::BaseModel) -> void
 
-              # @abstract
-              class Source < Sam::Union
+              module Source
+                extend Sam::Union
+
                 discriminator :type
 
                 variant :base64,
@@ -648,8 +652,9 @@ module Sam
 
                   # def initialize: (Hash | Sam::BaseModel) -> void
 
-                  # @abstract
-                  class MediaType < Sam::Enum
+                  module MediaType
+                    extend Sam::Enum
+
                     IMAGE_JPEG = :"image/jpeg"
                     IMAGE_PNG = :"image/png"
                     IMAGE_GIF = :"image/gif"
@@ -817,8 +822,9 @@ module Sam
                 # def initialize: (Hash | Sam::BaseModel) -> void
               end
 
-              # @abstract
-              class Content < Sam::Union
+              module Content
+                extend Sam::Union
+
                 UnionMember1Array =
                   Sam::ArrayOf[
                 union: -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1 }
@@ -828,8 +834,9 @@ module Sam
 
                 variant Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1Array
 
-                # @abstract
-                class UnionMember1 < Sam::Union
+                module UnionMember1
+                  extend Sam::Union
+
                   discriminator :type
 
                   variant :text,
@@ -891,8 +898,9 @@ module Sam
                       # def initialize: (Hash | Sam::BaseModel) -> void
                     end
 
-                    # @abstract
-                    class Citation < Sam::Union
+                    module Citation
+                      extend Sam::Union
+
                       discriminator :type
 
                       variant :char_location,
@@ -1102,8 +1110,9 @@ module Sam
 
                     # def initialize: (Hash | Sam::BaseModel) -> void
 
-                    # @abstract
-                    class Source < Sam::Union
+                    module Source
+                      extend Sam::Union
+
                       discriminator :type
 
                       variant :base64,
@@ -1138,8 +1147,9 @@ module Sam
 
                         # def initialize: (Hash | Sam::BaseModel) -> void
 
-                        # @abstract
-                        class MediaType < Sam::Enum
+                        module MediaType
+                          extend Sam::Enum
+
                           IMAGE_JPEG = :"image/jpeg"
                           IMAGE_PNG = :"image/png"
                           IMAGE_GIF = :"image/gif"
@@ -1257,8 +1267,9 @@ module Sam
 
               # def initialize: (Hash | Sam::BaseModel) -> void
 
-              # @abstract
-              class Source < Sam::Union
+              module Source
+                extend Sam::Union
+
                 discriminator :type
 
                 variant :base64,
@@ -1345,8 +1356,9 @@ module Sam
 
                   # def initialize: (Hash | Sam::BaseModel) -> void
 
-                  # @abstract
-                  class Content < Sam::Union
+                  module Content
+                    extend Sam::Union
+
                     UnionMember1Array =
                       Sam::ArrayOf[
                     union: -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1 }
@@ -1356,8 +1368,9 @@ module Sam
 
                     variant Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1Array
 
-                    # @abstract
-                    class UnionMember1 < Sam::Union
+                    module UnionMember1
+                      extend Sam::Union
+
                       discriminator :type
 
                       variant :text,
@@ -1419,8 +1432,9 @@ module Sam
                           # def initialize: (Hash | Sam::BaseModel) -> void
                         end
 
-                        # @abstract
-                        class Citation < Sam::Union
+                        module Citation
+                          extend Sam::Union
+
                           discriminator :type
 
                           variant :char_location,
@@ -1630,8 +1644,9 @@ module Sam
 
                         # def initialize: (Hash | Sam::BaseModel) -> void
 
-                        # @abstract
-                        class Source < Sam::Union
+                        module Source
+                          extend Sam::Union
+
                           discriminator :type
 
                           variant :base64,
@@ -1666,8 +1681,9 @@ module Sam
 
                             # def initialize: (Hash | Sam::BaseModel) -> void
 
-                            # @abstract
-                            class MediaType < Sam::Enum
+                            module MediaType
+                              extend Sam::Enum
+
                               IMAGE_JPEG = :"image/jpeg"
                               IMAGE_PNG = :"image/png"
                               IMAGE_GIF = :"image/gif"
@@ -1854,8 +1870,9 @@ module Sam
           #   end
         end
 
-        # @abstract
-        class Role < Sam::Enum
+        module Role
+          extend Sam::Enum
+
           USER = :user
           ASSISTANT = :assistant
 
@@ -1863,14 +1880,14 @@ module Sam
         end
       end
 
-      # @abstract
-      #
       # System prompt.
       #
       #   A system prompt is a way of providing context and instructions to Claude, such
       #   as specifying a particular goal or role. See our
       #   [guide to system prompts](https://docs.anthropic.com/en/docs/system-prompts).
-      class System < Sam::Union
+      module System
+        extend Sam::Union
+
         UnionMember1Array = Sam::ArrayOf[-> { Sam::Models::MessageCountTokensParams::System::UnionMember1 }]
 
         variant String
@@ -1926,8 +1943,9 @@ module Sam
             # def initialize: (Hash | Sam::BaseModel) -> void
           end
 
-          # @abstract
-          class Citation < Sam::Union
+          module Citation
+            extend Sam::Union
+
             discriminator :type
 
             variant :char_location,
@@ -2116,8 +2134,6 @@ module Sam
         #   end
       end
 
-      # @abstract
-      #
       # Configuration for enabling Claude's extended thinking.
       #
       #   When enabled, responses include `thinking` content blocks showing Claude's
@@ -2127,7 +2143,9 @@ module Sam
       #   See
       #   [extended thinking](https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking)
       #   for details.
-      class Thinking < Sam::Union
+      module Thinking
+        extend Sam::Union
+
         discriminator :type
 
         variant :enabled, -> { Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigEnabled }
@@ -2184,11 +2202,11 @@ module Sam
         #   end
       end
 
-      # @abstract
-      #
       # How the model should use the provided tools. The model can use a specific tool,
       #   any available tool, decide by itself, or not use tools at all.
-      class ToolChoice < Sam::Union
+      module ToolChoice
+        extend Sam::Union
+
         discriminator :type
 
         # The model will automatically decide whether to use tools.
@@ -2323,8 +2341,9 @@ module Sam
         #   end
       end
 
-      # @abstract
-      class Tool < Sam::Union
+      module Tool
+        extend Sam::Union
+
         variant -> { Sam::Models::MessageCountTokensParams::Tool::Tool }
 
         variant -> { Sam::Models::MessageCountTokensParams::Tool::BashTool20250124 }

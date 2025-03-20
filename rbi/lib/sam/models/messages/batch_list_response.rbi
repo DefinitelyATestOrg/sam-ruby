@@ -135,11 +135,14 @@ module Sam
           end
 
           # Processing status of the Message Batch.
-          sig { returns(Symbol) }
+          sig { returns(Sam::Models::Messages::BatchListResponse::Data::ProcessingStatus::TaggedSymbol) }
           def processing_status
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Sam::Models::Messages::BatchListResponse::Data::ProcessingStatus::TaggedSymbol)
+              .returns(Sam::Models::Messages::BatchListResponse::Data::ProcessingStatus::TaggedSymbol)
+          end
           def processing_status=(_)
           end
 
@@ -191,7 +194,7 @@ module Sam
               created_at: Time,
               ended_at: T.nilable(Time),
               expires_at: Time,
-              processing_status: Symbol,
+              processing_status: Sam::Models::Messages::BatchListResponse::Data::ProcessingStatus::TaggedSymbol,
               request_counts: Sam::Models::Messages::BatchListResponse::Data::RequestCounts,
               results_url: T.nilable(String),
               type: Symbol
@@ -222,7 +225,7 @@ module Sam
                   created_at: Time,
                   ended_at: T.nilable(Time),
                   expires_at: Time,
-                  processing_status: Symbol,
+                  processing_status: Sam::Models::Messages::BatchListResponse::Data::ProcessingStatus::TaggedSymbol,
                   request_counts: Sam::Models::Messages::BatchListResponse::Data::RequestCounts,
                   results_url: T.nilable(String),
                   type: Symbol
@@ -233,14 +236,19 @@ module Sam
           end
 
           # Processing status of the Message Batch.
-          class ProcessingStatus < Sam::Enum
-            abstract!
+          module ProcessingStatus
+            extend Sam::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Sam::Models::Messages::BatchListResponse::Data::ProcessingStatus) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Sam::Models::Messages::BatchListResponse::Data::ProcessingStatus::TaggedSymbol) }
 
-            IN_PROGRESS = :in_progress
-            CANCELING = :canceling
-            ENDED = :ended
+            IN_PROGRESS =
+              T.let(:in_progress, Sam::Models::Messages::BatchListResponse::Data::ProcessingStatus::TaggedSymbol)
+            CANCELING =
+              T.let(:canceling, Sam::Models::Messages::BatchListResponse::Data::ProcessingStatus::TaggedSymbol)
+            ENDED = T.let(:ended, Sam::Models::Messages::BatchListResponse::Data::ProcessingStatus::TaggedSymbol)
           end
 
           class RequestCounts < Sam::BaseModel

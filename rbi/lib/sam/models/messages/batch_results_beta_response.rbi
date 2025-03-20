@@ -94,8 +94,8 @@ module Sam
         #   Contains a Message output if processing was successful, an error response if
         #   processing failed, or the reason why processing was not attempted, such as
         #   cancellation or expiration.
-        class Result < Sam::Union
-          abstract!
+        module Result
+          extend Sam::Union
 
           Variants =
             type_template(:out) do
@@ -263,11 +263,28 @@ module Sam
               #
               #   In non-streaming mode this value is always non-null. In streaming mode, it is
               #   null in the `message_start` event and non-null otherwise.
-              sig { returns(T.nilable(Symbol)) }
+              sig do
+                returns(
+                  T.nilable(
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
+                  )
+                )
+              end
               def stop_reason
               end
 
-              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              sig do
+                params(
+                  _: T.nilable(
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
+                  )
+                )
+                  .returns(
+                    T.nilable(
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
+                    )
+                  )
+              end
               def stop_reason=(_)
               end
 
@@ -332,7 +349,9 @@ module Sam
                   )
                   ],
                   model: String,
-                  stop_reason: T.nilable(Symbol),
+                  stop_reason: T.nilable(
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
+                  ),
                   stop_sequence: T.nilable(String),
                   usage: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage,
                   role: Symbol,
@@ -358,7 +377,9 @@ module Sam
                       ],
                       model: String,
                       role: Symbol,
-                      stop_reason: T.nilable(Symbol),
+                      stop_reason: T.nilable(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
+                      ),
                       stop_sequence: T.nilable(String),
                       type: Symbol,
                       usage: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage
@@ -368,8 +389,8 @@ module Sam
               def to_hash
               end
 
-              class Content < Sam::Union
-                abstract!
+              module Content
+                extend Sam::Union
 
                 Variants =
                   type_template(:out) do
@@ -488,8 +509,8 @@ module Sam
                   def to_hash
                   end
 
-                  class Citation < Sam::Union
-                    abstract!
+                  module Citation
+                    extend Sam::Union
 
                     Variants =
                       type_template(:out) do
@@ -872,15 +893,41 @@ module Sam
               #
               #   In non-streaming mode this value is always non-null. In streaming mode, it is
               #   null in the `message_start` event and non-null otherwise.
-              class StopReason < Sam::Enum
-                abstract!
+              module StopReason
+                extend Sam::Enum
 
-                Value = type_template(:out) { {fixed: Symbol} }
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(Symbol, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason)
+                  end
+                OrSymbol =
+                  T.type_alias do
+                    T.any(
+                      Symbol,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
+                    )
+                  end
 
-                END_TURN = :end_turn
-                MAX_TOKENS = :max_tokens
-                STOP_SEQUENCE = :stop_sequence
-                TOOL_USE = :tool_use
+                END_TURN =
+                  T.let(
+                    :end_turn,
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
+                  )
+                MAX_TOKENS =
+                  T.let(
+                    :max_tokens,
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
+                  )
+                STOP_SEQUENCE =
+                  T.let(
+                    :stop_sequence,
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
+                  )
+                TOOL_USE =
+                  T.let(
+                    :tool_use,
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
+                  )
               end
 
               class Usage < Sam::BaseModel
@@ -1103,8 +1150,8 @@ module Sam
               def to_hash
               end
 
-              class Error < Sam::Union
-                abstract!
+              module Error
+                extend Sam::Union
 
                 Variants =
                   type_template(:out) do

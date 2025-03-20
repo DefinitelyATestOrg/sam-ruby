@@ -117,11 +117,14 @@ module Sam
       #
       #   In non-streaming mode this value is always non-null. In streaming mode, it is
       #   null in the `message_start` event and non-null otherwise.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol)) }
       def stop_reason
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig do
+        params(_: T.nilable(Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol))
+          .returns(T.nilable(Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol))
+      end
       def stop_reason=(_)
       end
 
@@ -183,7 +186,7 @@ module Sam
           )
           ],
           model: String,
-          stop_reason: T.nilable(Symbol),
+          stop_reason: T.nilable(Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol),
           stop_sequence: T.nilable(String),
           usage: Sam::Models::MessageCreateResponse::Usage,
           role: Symbol,
@@ -209,7 +212,7 @@ module Sam
               ],
               model: String,
               role: Symbol,
-              stop_reason: T.nilable(Symbol),
+              stop_reason: T.nilable(Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol),
               stop_sequence: T.nilable(String),
               type: Symbol,
               usage: Sam::Models::MessageCreateResponse::Usage
@@ -219,8 +222,8 @@ module Sam
       def to_hash
       end
 
-      class Content < Sam::Union
-        abstract!
+      module Content
+        extend Sam::Union
 
         Variants =
           type_template(:out) do
@@ -339,8 +342,8 @@ module Sam
           def to_hash
           end
 
-          class Citation < Sam::Union
-            abstract!
+          module Citation
+            extend Sam::Union
 
             Variants =
               type_template(:out) do
@@ -716,15 +719,16 @@ module Sam
       #
       #   In non-streaming mode this value is always non-null. In streaming mode, it is
       #   null in the `message_start` event and non-null otherwise.
-      class StopReason < Sam::Enum
-        abstract!
+      module StopReason
+        extend Sam::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Sam::Models::MessageCreateResponse::StopReason) }
+        OrSymbol = T.type_alias { T.any(Symbol, Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol) }
 
-        END_TURN = :end_turn
-        MAX_TOKENS = :max_tokens
-        STOP_SEQUENCE = :stop_sequence
-        TOOL_USE = :tool_use
+        END_TURN = T.let(:end_turn, Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol)
+        MAX_TOKENS = T.let(:max_tokens, Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol)
+        STOP_SEQUENCE = T.let(:stop_sequence, Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol)
+        TOOL_USE = T.let(:tool_use, Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol)
       end
 
       class Usage < Sam::BaseModel

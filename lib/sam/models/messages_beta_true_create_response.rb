@@ -129,8 +129,9 @@ module Sam
 
       # def initialize: (Hash | Sam::BaseModel) -> void
 
-      # @abstract
-      class Content < Sam::Union
+      module Content
+        extend Sam::Union
+
         discriminator :type
 
         variant :text, -> { Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock }
@@ -174,8 +175,9 @@ module Sam
 
           # def initialize: (Hash | Sam::BaseModel) -> void
 
-          # @abstract
-          class Citation < Sam::Union
+          module Citation
+            extend Sam::Union
+
             discriminator :type
 
             variant :char_location,
@@ -442,8 +444,6 @@ module Sam
         #   end
       end
 
-      # @abstract
-      #
       # The reason that we stopped.
       #
       #   This may be one the following values:
@@ -455,7 +455,9 @@ module Sam
       #
       #   In non-streaming mode this value is always non-null. In streaming mode, it is
       #   null in the `message_start` event and non-null otherwise.
-      class StopReason < Sam::Enum
+      module StopReason
+        extend Sam::Enum
+
         END_TURN = :end_turn
         MAX_TOKENS = :max_tokens
         STOP_SEQUENCE = :stop_sequence

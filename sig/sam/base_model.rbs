@@ -59,28 +59,28 @@ module Sam
     ) -> ([true, top, nil] | [false, bool, Integer])
   end
 
-  class Enum
-    extend Sam::Converter
+  module Enum
+    include Sam::Converter
 
     def self.values: -> ::Array[(nil | bool | Integer | Float | Symbol)]
 
     private def self.finalize!: -> void
 
-    def self.===: (top other) -> bool
+    def ===: (top other) -> bool
 
-    def self.==: (top other) -> bool
+    def ==: (top other) -> bool
 
-    def self.coerce: (String | Symbol | top value) -> (Symbol | top)
+    def coerce: (String | Symbol | top value) -> (Symbol | top)
 
-    def self.dump: (Symbol | top value) -> (Symbol | top)
+    def dump: (Symbol | top value) -> (Symbol | top)
 
-    def self.try_strict_coerce: (
+    def try_strict_coerce: (
       top value
     ) -> ([true, top, nil] | [false, bool, Integer])
   end
 
-  class Union
-    extend Sam::Converter
+  module Union
+    include Sam::Converter
 
     private def self.known_variants: -> ::Array[[Symbol?, (^-> Sam::Converter::input)]]
 
@@ -102,15 +102,15 @@ module Sam
 
     private def self.resolve_variant: (top value) -> Sam::Converter::input?
 
-    def self.===: (top other) -> bool
+    def ===: (top other) -> bool
 
-    def self.==: (top other) -> bool
+    def ==: (top other) -> bool
 
-    def self.coerce: (top value) -> top
+    def coerce: (top value) -> top
 
-    def self.dump: (top value) -> top
+    def dump: (top value) -> top
 
-    def self.try_strict_coerce: (
+    def try_strict_coerce: (
       top value
     ) -> ([true, top, nil] | [false, bool, Integer])
   end

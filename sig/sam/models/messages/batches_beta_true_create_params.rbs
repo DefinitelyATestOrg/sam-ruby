@@ -170,7 +170,9 @@ module Sam
                 String
                 | ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::union_member1]
 
-              class Content < Sam::Union
+              module Content
+                extend Sam::Union
+
                 type union_member1_array =
                   ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::union_member1]
 
@@ -185,7 +187,9 @@ module Sam
                   | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestThinkingBlock
                   | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock
 
-                class UnionMember1 < Sam::Union
+                module UnionMember1
+                  extend Sam::Union
+
                   type beta_request_text_block =
                     {
                       text: String,
@@ -227,7 +231,9 @@ module Sam
                       | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation
                       | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
 
-                    class Citation < Sam::Union
+                    module Citation
+                      extend Sam::Union
+
                       type beta_request_char_location_citation =
                         {
                           cited_text: String,
@@ -363,7 +369,9 @@ module Sam
                       Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource
                       | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
 
-                    class Source < Sam::Union
+                    module Source
+                      extend Sam::Union
+
                       type beta_base64_image_source =
                         {
                           data: String,
@@ -392,7 +400,9 @@ module Sam
                           | :"image/gif"
                           | :"image/webp"
 
-                        class MediaType < Sam::Enum
+                        module MediaType
+                          extend Sam::Enum
+
                           IMAGE_JPEG: :"image/jpeg"
                           IMAGE_PNG: :"image/png"
                           IMAGE_GIF: :"image/gif"
@@ -519,7 +529,9 @@ module Sam
                       String
                       | ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::union_member1]
 
-                    class Content < Sam::Union
+                    module Content
+                      extend Sam::Union
+
                       type union_member1_array =
                         ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::union_member1]
 
@@ -529,7 +541,9 @@ module Sam
                         Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock
                         | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
 
-                      class UnionMember1 < Sam::Union
+                      module UnionMember1
+                        extend Sam::Union
+
                         type beta_request_text_block =
                           {
                             text: String,
@@ -571,7 +585,9 @@ module Sam
                             | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation
                             | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
 
-                          class Citation < Sam::Union
+                          module Citation
+                            extend Sam::Union
+
                             type beta_request_char_location_citation =
                               {
                                 cited_text: String,
@@ -707,7 +723,9 @@ module Sam
                             Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource
                             | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
 
-                          class Source < Sam::Union
+                          module Source
+                            extend Sam::Union
+
                             type beta_base64_image_source =
                               {
                                 data: String,
@@ -736,7 +754,9 @@ module Sam
                                 | :"image/gif"
                                 | :"image/webp"
 
-                              class MediaType < Sam::Enum
+                              module MediaType
+                                extend Sam::Enum
+
                                 IMAGE_JPEG: :"image/jpeg"
                                 IMAGE_PNG: :"image/png"
                                 IMAGE_GIF: :"image/gif"
@@ -824,7 +844,9 @@ module Sam
                       | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource
                       | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource
 
-                    class Source < Sam::Union
+                    module Source
+                      extend Sam::Union
+
                       type beta_base64_pdf_source =
                         {
                           data: String,
@@ -889,7 +911,9 @@ module Sam
                           String
                           | ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::union_member1]
 
-                        class Content < Sam::Union
+                        module Content
+                          extend Sam::Union
+
                           type union_member1_array =
                             ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::union_member1]
 
@@ -899,7 +923,9 @@ module Sam
                             Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock
                             | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock
 
-                          class UnionMember1 < Sam::Union
+                          module UnionMember1
+                            extend Sam::Union
+
                             type beta_request_text_block =
                               {
                                 text: String,
@@ -941,7 +967,9 @@ module Sam
                                 | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation
                                 | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
 
-                              class Citation < Sam::Union
+                              module Citation
+                                extend Sam::Union
+
                                 type beta_request_char_location_citation =
                                   {
                                     cited_text: String,
@@ -1077,7 +1105,9 @@ module Sam
                                 Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource
                                 | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
 
-                              class Source < Sam::Union
+                              module Source
+                                extend Sam::Union
+
                                 type beta_base64_image_source =
                                   {
                                     data: String,
@@ -1106,7 +1136,9 @@ module Sam
                                     | :"image/gif"
                                     | :"image/webp"
 
-                                  class MediaType < Sam::Enum
+                                  module MediaType
+                                    extend Sam::Enum
+
                                     IMAGE_JPEG: :"image/jpeg"
                                     IMAGE_PNG: :"image/png"
                                     IMAGE_GIF: :"image/gif"
@@ -1234,7 +1266,9 @@ module Sam
 
               type role = :user | :assistant
 
-              class Role < Sam::Enum
+              module Role
+                extend Sam::Enum
+
                 USER: :user
                 ASSISTANT: :assistant
 
@@ -1256,7 +1290,9 @@ module Sam
               String
               | ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1]
 
-            class System < Sam::Union
+            module System
+              extend Sam::Union
+
               type union_member1_array =
                 ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1]
 
@@ -1303,7 +1339,9 @@ module Sam
                   | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestPageLocationCitation
                   | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation
 
-                class Citation < Sam::Union
+                module Citation
+                  extend Sam::Union
+
                   type beta_request_char_location_citation =
                     {
                       cited_text: String,
@@ -1420,7 +1458,9 @@ module Sam
               Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::BetaThinkingConfigEnabled
               | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::BetaThinkingConfigDisabled
 
-            class Thinking < Sam::Union
+            module Thinking
+              extend Sam::Union
+
               type beta_thinking_config_enabled =
                 { budget_tokens: Integer, type: :enabled }
 
@@ -1456,7 +1496,9 @@ module Sam
               | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceTool
               | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceNone
 
-            class ToolChoice < Sam::Union
+            module ToolChoice
+              extend Sam::Union
+
               type beta_tool_choice_auto =
                 { type: :auto, disable_parallel_tool_use: bool }
 
@@ -1536,7 +1578,9 @@ module Sam
               | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124
               | Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124
 
-            class Tool < Sam::Union
+            module Tool
+              extend Sam::Union
+
               type beta_tool =
                 {
                   input_schema: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::InputSchema,
@@ -1593,7 +1637,9 @@ module Sam
 
                 type type_ = :custom
 
-                class Type < Sam::Enum
+                module Type
+                  extend Sam::Enum
+
                   CUSTOM: :custom
 
                   def self.values: -> ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::type_]
