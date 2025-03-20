@@ -817,19 +817,10 @@ module Sam
                   end
 
                 UnionMember1Array =
-                  T.type_alias do
-                    T::Array[
-                    T.any(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolUseBlock,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestThinkingBlock,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock
-                    )
-                    ]
-                  end
+                  T.let(
+                    Sam::ArrayOf[union: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1],
+                    Sam::Converter
+                  )
 
                 class UnionMember1 < Sam::Union
                   abstract!
@@ -1752,14 +1743,12 @@ module Sam
                         end
 
                       UnionMember1Array =
-                        T.type_alias do
-                          T::Array[
-                          T.any(
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock,
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
-                          )
-                          ]
-                        end
+                        T.let(
+                          Sam::ArrayOf[
+                          union: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1
+                          ],
+                          Sam::Converter
+                        )
 
                       class UnionMember1 < Sam::Union
                         abstract!
@@ -2740,14 +2729,12 @@ module Sam
                             end
 
                           UnionMember1Array =
-                            T.type_alias do
-                              T::Array[
-                              T.any(
-                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock,
-                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock
-                              )
-                              ]
-                            end
+                            T.let(
+                              Sam::ArrayOf[
+                              union: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1
+                              ],
+                              Sam::Converter
+                            )
 
                           class UnionMember1 < Sam::Union
                             abstract!
@@ -3564,7 +3551,10 @@ module Sam
                 end
 
               UnionMember1Array =
-                T.type_alias { T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1] }
+                T.let(
+                  Sam::ArrayOf[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1],
+                  Sam::Converter
+                )
 
               class UnionMember1 < Sam::BaseModel
                 sig { returns(String) }

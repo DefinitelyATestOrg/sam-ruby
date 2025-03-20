@@ -692,19 +692,10 @@ module Sam
             end
 
           UnionMember1Array =
-            T.type_alias do
-              T::Array[
-              T.any(
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock,
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock,
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolUseBlock,
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock,
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock,
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestThinkingBlock,
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
-              )
-              ]
-            end
+            T.let(
+              Sam::ArrayOf[union: Sam::Models::MessageCreateParams::Message::Content::UnionMember1],
+              Sam::Converter
+            )
 
           class UnionMember1 < Sam::Union
             abstract!
@@ -1625,14 +1616,12 @@ module Sam
                   end
 
                 UnionMember1Array =
-                  T.type_alias do
-                    T::Array[
-                    T.any(
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
-                    )
-                    ]
-                  end
+                  T.let(
+                    Sam::ArrayOf[
+                    union: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1
+                    ],
+                    Sam::Converter
+                  )
 
                 class UnionMember1 < Sam::Union
                   abstract!
@@ -2603,14 +2592,12 @@ module Sam
                       end
 
                     UnionMember1Array =
-                      T.type_alias do
-                        T::Array[
-                        T.any(
-                          Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
-                          Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
-                        )
-                        ]
-                      end
+                      T.let(
+                        Sam::ArrayOf[
+                        union: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1
+                        ],
+                        Sam::Converter
+                      )
 
                     class UnionMember1 < Sam::Union
                       abstract!
@@ -3413,7 +3400,8 @@ module Sam
         Variants =
           type_template(:out) { {fixed: T.any(String, T::Array[Sam::Models::MessageCreateParams::System::UnionMember1])} }
 
-        UnionMember1Array = T.type_alias { T::Array[Sam::Models::MessageCreateParams::System::UnionMember1] }
+        UnionMember1Array =
+          T.let(Sam::ArrayOf[Sam::Models::MessageCreateParams::System::UnionMember1], Sam::Converter)
 
         class UnionMember1 < Sam::BaseModel
           sig { returns(String) }
