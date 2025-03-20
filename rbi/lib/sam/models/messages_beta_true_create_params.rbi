@@ -639,11 +639,14 @@ module Sam
         def content=(_)
         end
 
-        sig { returns(Symbol) }
+        sig { returns(Sam::Models::MessagesBetaTrueCreateParams::Message::Role::OrSymbol) }
         def role
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Sam::Models::MessagesBetaTrueCreateParams::Message::Role::OrSymbol)
+            .returns(Sam::Models::MessagesBetaTrueCreateParams::Message::Role::OrSymbol)
+        end
         def role=(_)
         end
 
@@ -663,7 +666,7 @@ module Sam
               )
               ]
             ),
-            role: Symbol
+            role: Sam::Models::MessagesBetaTrueCreateParams::Message::Role::OrSymbol
           )
             .returns(T.attached_class)
         end
@@ -688,15 +691,15 @@ module Sam
                   )
                   ]
                 ),
-                role: Symbol
+                role: Sam::Models::MessagesBetaTrueCreateParams::Message::Role::OrSymbol
               }
             )
         end
         def to_hash
         end
 
-        class Content < Sam::Union
-          abstract!
+        module Content
+          extend Sam::Union
 
           Variants =
             type_template(:out) do
@@ -724,8 +727,8 @@ module Sam
               Sam::Converter
             )
 
-          class UnionMember1 < Sam::Union
-            abstract!
+          module UnionMember1
+            extend Sam::Union
 
             Variants =
               type_template(:out) do
@@ -891,8 +894,8 @@ module Sam
                 end
               end
 
-              class Citation < Sam::Union
-                abstract!
+              module Citation
+                extend Sam::Union
 
                 Variants =
                   type_template(:out) do
@@ -1250,8 +1253,8 @@ module Sam
               def to_hash
               end
 
-              class Source < Sam::Union
-                abstract!
+              module Source
+                extend Sam::Union
 
                 Variants =
                   type_template(:out) do
@@ -1272,11 +1275,22 @@ module Sam
                   def data=(_)
                   end
 
-                  sig { returns(Symbol) }
+                  sig do
+                    returns(
+                      Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                    )
+                  end
                   def media_type
                   end
 
-                  sig { params(_: Symbol).returns(Symbol) }
+                  sig do
+                    params(
+                      _: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                    )
+                      .returns(
+                        Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                      )
+                  end
                   def media_type=(_)
                   end
 
@@ -1288,23 +1302,65 @@ module Sam
                   def type=(_)
                   end
 
-                  sig { params(data: String, media_type: Symbol, type: Symbol).returns(T.attached_class) }
+                  sig do
+                    params(
+                      data: String,
+                      media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol,
+                      type: Symbol
+                    )
+                      .returns(T.attached_class)
+                  end
                   def self.new(data:, media_type:, type: :base64)
                   end
 
-                  sig { override.returns({data: String, media_type: Symbol, type: Symbol}) }
+                  sig do
+                    override
+                      .returns(
+                        {
+                          data: String,
+                          media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol,
+                          type: Symbol
+                        }
+                      )
+                  end
                   def to_hash
                   end
 
-                  class MediaType < Sam::Enum
-                    abstract!
+                  module MediaType
+                    extend Sam::Enum
 
-                    Value = type_template(:out) { {fixed: Symbol} }
+                    TaggedSymbol =
+                      T.type_alias do
+                        T.all(Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType)
+                      end
+                    OrSymbol =
+                      T.type_alias do
+                        T.any(
+                          Symbol,
+                          Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
+                        )
+                      end
 
-                    IMAGE_JPEG = :"image/jpeg"
-                    IMAGE_PNG = :"image/png"
-                    IMAGE_GIF = :"image/gif"
-                    IMAGE_WEBP = :"image/webp"
+                    IMAGE_JPEG =
+                      T.let(
+                        :"image/jpeg",
+                        Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                      )
+                    IMAGE_PNG =
+                      T.let(
+                        :"image/png",
+                        Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                      )
+                    IMAGE_GIF =
+                      T.let(
+                        :"image/gif",
+                        Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                      )
+                    IMAGE_WEBP =
+                      T.let(
+                        :"image/webp",
+                        Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                      )
                   end
                 end
 
@@ -1624,8 +1680,8 @@ module Sam
                 end
               end
 
-              class Content < Sam::Union
-                abstract!
+              module Content
+                extend Sam::Union
 
                 Variants =
                   type_template(:out) do
@@ -1650,8 +1706,8 @@ module Sam
                     Sam::Converter
                   )
 
-                class UnionMember1 < Sam::Union
-                  abstract!
+                module UnionMember1
+                  extend Sam::Union
 
                   Variants =
                     type_template(:out) do
@@ -1812,8 +1868,8 @@ module Sam
                       end
                     end
 
-                    class Citation < Sam::Union
-                      abstract!
+                    module Citation
+                      extend Sam::Union
 
                       Variants =
                         type_template(:out) do
@@ -2171,8 +2227,8 @@ module Sam
                     def to_hash
                     end
 
-                    class Source < Sam::Union
-                      abstract!
+                    module Source
+                      extend Sam::Union
 
                       Variants =
                         type_template(:out) do
@@ -2193,11 +2249,22 @@ module Sam
                         def data=(_)
                         end
 
-                        sig { returns(Symbol) }
+                        sig do
+                          returns(
+                            Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                          )
+                        end
                         def media_type
                         end
 
-                        sig { params(_: Symbol).returns(Symbol) }
+                        sig do
+                          params(
+                            _: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                          )
+                            .returns(
+                              Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                            )
+                        end
                         def media_type=(_)
                         end
 
@@ -2210,24 +2277,64 @@ module Sam
                         end
 
                         sig do
-                          params(data: String, media_type: Symbol, type: Symbol).returns(T.attached_class)
+                          params(
+                            data: String,
+                            media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol,
+                            type: Symbol
+                          )
+                            .returns(T.attached_class)
                         end
                         def self.new(data:, media_type:, type: :base64)
                         end
 
-                        sig { override.returns({data: String, media_type: Symbol, type: Symbol}) }
+                        sig do
+                          override
+                            .returns(
+                              {
+                                data: String,
+                                media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol,
+                                type: Symbol
+                              }
+                            )
+                        end
                         def to_hash
                         end
 
-                        class MediaType < Sam::Enum
-                          abstract!
+                        module MediaType
+                          extend Sam::Enum
 
-                          Value = type_template(:out) { {fixed: Symbol} }
+                          TaggedSymbol =
+                            T.type_alias do
+                              T.all(Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType)
+                            end
+                          OrSymbol =
+                            T.type_alias do
+                              T.any(
+                                Symbol,
+                                Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
+                              )
+                            end
 
-                          IMAGE_JPEG = :"image/jpeg"
-                          IMAGE_PNG = :"image/png"
-                          IMAGE_GIF = :"image/gif"
-                          IMAGE_WEBP = :"image/webp"
+                          IMAGE_JPEG =
+                            T.let(
+                              :"image/jpeg",
+                              Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                            )
+                          IMAGE_PNG =
+                            T.let(
+                              :"image/png",
+                              Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                            )
+                          IMAGE_GIF =
+                            T.let(
+                              :"image/gif",
+                              Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                            )
+                          IMAGE_WEBP =
+                            T.let(
+                              :"image/webp",
+                              Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                            )
                         end
                       end
 
@@ -2429,8 +2536,8 @@ module Sam
               def to_hash
               end
 
-              class Source < Sam::Union
-                abstract!
+              module Source
+                extend Sam::Union
 
                 Variants =
                   type_template(:out) do
@@ -2602,8 +2709,8 @@ module Sam
                   def to_hash
                   end
 
-                  class Content < Sam::Union
-                    abstract!
+                  module Content
+                    extend Sam::Union
 
                     Variants =
                       type_template(:out) do
@@ -2628,8 +2735,8 @@ module Sam
                         Sam::Converter
                       )
 
-                    class UnionMember1 < Sam::Union
-                      abstract!
+                    module UnionMember1
+                      extend Sam::Union
 
                       Variants =
                         type_template(:out) do
@@ -2790,8 +2897,8 @@ module Sam
                           end
                         end
 
-                        class Citation < Sam::Union
-                          abstract!
+                        module Citation
+                          extend Sam::Union
 
                           Variants =
                             type_template(:out) do
@@ -3149,8 +3256,8 @@ module Sam
                         def to_hash
                         end
 
-                        class Source < Sam::Union
-                          abstract!
+                        module Source
+                          extend Sam::Union
 
                           Variants =
                             type_template(:out) do
@@ -3171,11 +3278,22 @@ module Sam
                             def data=(_)
                             end
 
-                            sig { returns(Symbol) }
+                            sig do
+                              returns(
+                                Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                              )
+                            end
                             def media_type
                             end
 
-                            sig { params(_: Symbol).returns(Symbol) }
+                            sig do
+                              params(
+                                _: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                              )
+                                .returns(
+                                  Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                                )
+                            end
                             def media_type=(_)
                             end
 
@@ -3188,24 +3306,64 @@ module Sam
                             end
 
                             sig do
-                              params(data: String, media_type: Symbol, type: Symbol).returns(T.attached_class)
+                              params(
+                                data: String,
+                                media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol,
+                                type: Symbol
+                              )
+                                .returns(T.attached_class)
                             end
                             def self.new(data:, media_type:, type: :base64)
                             end
 
-                            sig { override.returns({data: String, media_type: Symbol, type: Symbol}) }
+                            sig do
+                              override
+                                .returns(
+                                  {
+                                    data: String,
+                                    media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol,
+                                    type: Symbol
+                                  }
+                                )
+                            end
                             def to_hash
                             end
 
-                            class MediaType < Sam::Enum
-                              abstract!
+                            module MediaType
+                              extend Sam::Enum
 
-                              Value = type_template(:out) { {fixed: Symbol} }
+                              TaggedSymbol =
+                                T.type_alias do
+                                  T.all(Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType)
+                                end
+                              OrSymbol =
+                                T.type_alias do
+                                  T.any(
+                                    Symbol,
+                                    Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
+                                  )
+                                end
 
-                              IMAGE_JPEG = :"image/jpeg"
-                              IMAGE_PNG = :"image/png"
-                              IMAGE_GIF = :"image/gif"
-                              IMAGE_WEBP = :"image/webp"
+                              IMAGE_JPEG =
+                                T.let(
+                                  :"image/jpeg",
+                                  Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                                )
+                              IMAGE_PNG =
+                                T.let(
+                                  :"image/png",
+                                  Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                                )
+                              IMAGE_GIF =
+                                T.let(
+                                  :"image/gif",
+                                  Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                                )
+                              IMAGE_WEBP =
+                                T.let(
+                                  :"image/webp",
+                                  Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::OrSymbol
+                                )
                             end
                           end
 
@@ -3384,13 +3542,15 @@ module Sam
           end
         end
 
-        class Role < Sam::Enum
-          abstract!
+        module Role
+          extend Sam::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Role) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Role::TaggedSymbol) }
 
-          USER = :user
-          ASSISTANT = :assistant
+          USER = T.let(:user, Sam::Models::MessagesBetaTrueCreateParams::Message::Role::OrSymbol)
+          ASSISTANT = T.let(:assistant, Sam::Models::MessagesBetaTrueCreateParams::Message::Role::OrSymbol)
         end
       end
 
@@ -3423,8 +3583,8 @@ module Sam
       #   A system prompt is a way of providing context and instructions to Claude, such
       #   as specifying a particular goal or role. See our
       #   [guide to system prompts](https://docs.anthropic.com/en/docs/system-prompts).
-      class System < Sam::Union
-        abstract!
+      module System
+        extend Sam::Union
 
         Variants =
           type_template(:out) { {fixed: T.any(String, T::Array[Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1])} }
@@ -3563,8 +3723,8 @@ module Sam
             end
           end
 
-          class Citation < Sam::Union
-            abstract!
+          module Citation
+            extend Sam::Union
 
             Variants =
               type_template(:out) do
@@ -3836,8 +3996,8 @@ module Sam
       #   See
       #   [extended thinking](https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking)
       #   for details.
-      class Thinking < Sam::Union
-        abstract!
+      module Thinking
+        extend Sam::Union
 
         Variants =
           type_template(:out) do
@@ -3905,8 +4065,8 @@ module Sam
 
       # How the model should use the provided tools. The model can use a specific tool,
       #   any available tool, decide by itself, or not use tools at all.
-      class ToolChoice < Sam::Union
-        abstract!
+      module ToolChoice
+        extend Sam::Union
 
         Variants =
           type_template(:out) do
@@ -4048,8 +4208,8 @@ module Sam
         end
       end
 
-      class Tool < Sam::Union
-        abstract!
+      module Tool
+        extend Sam::Union
 
         Variants =
           type_template(:out) do
@@ -4118,11 +4278,14 @@ module Sam
           def description=(_)
           end
 
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::Type::OrSymbol)) }
           def type
           end
 
-          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          sig do
+            params(_: T.nilable(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::Type::OrSymbol))
+              .returns(T.nilable(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::Type::OrSymbol))
+          end
           def type=(_)
           end
 
@@ -4132,7 +4295,7 @@ module Sam
               name: String,
               cache_control: T.nilable(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::CacheControl),
               description: String,
-              type: T.nilable(Symbol)
+              type: T.nilable(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::Type::OrSymbol)
             )
               .returns(T.attached_class)
           end
@@ -4147,7 +4310,7 @@ module Sam
                   name: String,
                   cache_control: T.nilable(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::CacheControl),
                   description: String,
-                  type: T.nilable(Symbol)
+                  type: T.nilable(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::Type::OrSymbol)
                 }
               )
           end
@@ -4202,12 +4365,15 @@ module Sam
             end
           end
 
-          class Type < Sam::Enum
-            abstract!
+          module Type
+            extend Sam::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::Type::TaggedSymbol) }
 
-            CUSTOM = :custom
+            CUSTOM = T.let(:custom, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::Type::OrSymbol)
           end
         end
 
