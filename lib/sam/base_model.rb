@@ -820,14 +820,12 @@ module Sam
   # @abstract
   #
   # @example
-  # ```ruby
-  # # `message_create_response` is a `Sam::Models::MessageCreateResponse`
-  # message_create_response => {
-  #   id: id,
-  #   content: content,
-  #   model: model
-  # }
-  # ```
+  #   # `message_create_response` is a `Sam::Models::MessageCreateResponse`
+  #   message_create_response => {
+  #     id: id,
+  #     content: content,
+  #     model: model
+  #   }
   class BaseModel
     extend Sam::Converter
 
