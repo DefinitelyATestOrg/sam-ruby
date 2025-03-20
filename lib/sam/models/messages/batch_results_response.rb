@@ -34,14 +34,14 @@ module Sam
 
         # def initialize: (Hash | Sam::BaseModel) -> void
 
-        # @abstract
-        #
         # Processing result for this request.
         #
         #   Contains a Message output if processing was successful, an error response if
         #   processing failed, or the reason why processing was not attempted, such as
         #   cancellation or expiration.
-        class Result < Sam::Union
+        module Result
+          extend Sam::Union
+
           discriminator :type
 
           variant :succeeded, -> { Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult }
@@ -202,8 +202,9 @@ module Sam
 
               # def initialize: (Hash | Sam::BaseModel) -> void
 
-              # @abstract
-              class Content < Sam::Union
+              module Content
+                extend Sam::Union
+
                 discriminator :type
 
                 variant :text,
@@ -254,8 +255,9 @@ module Sam
 
                   # def initialize: (Hash | Sam::BaseModel) -> void
 
-                  # @abstract
-                  class Citation < Sam::Union
+                  module Citation
+                    extend Sam::Union
+
                     discriminator :type
 
                     variant :char_location,
@@ -522,8 +524,6 @@ module Sam
                 #   end
               end
 
-              # @abstract
-              #
               # The reason that we stopped.
               #
               #   This may be one the following values:
@@ -535,7 +535,9 @@ module Sam
               #
               #   In non-streaming mode this value is always non-null. In streaming mode, it is
               #   null in the `message_start` event and non-null otherwise.
-              class StopReason < Sam::Enum
+              module StopReason
+                extend Sam::Enum
+
                 END_TURN = :end_turn
                 MAX_TOKENS = :max_tokens
                 STOP_SEQUENCE = :stop_sequence
@@ -637,8 +639,9 @@ module Sam
 
               # def initialize: (Hash | Sam::BaseModel) -> void
 
-              # @abstract
-              class Error < Sam::Union
+              module Error
+                extend Sam::Union
+
                 discriminator :type
 
                 variant :invalid_request_error,

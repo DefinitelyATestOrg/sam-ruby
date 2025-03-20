@@ -95,7 +95,9 @@ module Sam
           String
           | ::Array[Sam::Models::MessageCountTokensParams::Message::Content::union_member1]
 
-        class Content < Sam::Union
+        module Content
+          extend Sam::Union
+
           type union_member1_array =
             ::Array[Sam::Models::MessageCountTokensParams::Message::Content::union_member1]
 
@@ -110,7 +112,9 @@ module Sam
             | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestThinkingBlock
             | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
 
-          class UnionMember1 < Sam::Union
+          module UnionMember1
+            extend Sam::Union
+
             type request_text_block =
               {
                 text: String,
@@ -152,7 +156,9 @@ module Sam
                 | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation
                 | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
 
-              class Citation < Sam::Union
+              module Citation
+                extend Sam::Union
+
                 type request_char_location_citation =
                   {
                     cited_text: String,
@@ -288,7 +294,9 @@ module Sam
                 Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource
                 | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
 
-              class Source < Sam::Union
+              module Source
+                extend Sam::Union
+
                 type base64_image_source =
                   {
                     data: String,
@@ -314,7 +322,9 @@ module Sam
                   type media_type =
                     :"image/jpeg" | :"image/png" | :"image/gif" | :"image/webp"
 
-                  class MediaType < Sam::Enum
+                  module MediaType
+                    extend Sam::Enum
+
                     IMAGE_JPEG: :"image/jpeg"
                     IMAGE_PNG: :"image/png"
                     IMAGE_GIF: :"image/gif"
@@ -441,7 +451,9 @@ module Sam
                 String
                 | ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::union_member1]
 
-              class Content < Sam::Union
+              module Content
+                extend Sam::Union
+
                 type union_member1_array =
                   ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::union_member1]
 
@@ -451,7 +463,9 @@ module Sam
                   Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock
                   | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
 
-                class UnionMember1 < Sam::Union
+                module UnionMember1
+                  extend Sam::Union
+
                   type request_text_block =
                     {
                       text: String,
@@ -493,7 +507,9 @@ module Sam
                       | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation
                       | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
 
-                    class Citation < Sam::Union
+                    module Citation
+                      extend Sam::Union
+
                       type request_char_location_citation =
                         {
                           cited_text: String,
@@ -629,7 +645,9 @@ module Sam
                       Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource
                       | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
 
-                    class Source < Sam::Union
+                    module Source
+                      extend Sam::Union
+
                       type base64_image_source =
                         {
                           data: String,
@@ -658,7 +676,9 @@ module Sam
                           | :"image/gif"
                           | :"image/webp"
 
-                        class MediaType < Sam::Enum
+                        module MediaType
+                          extend Sam::Enum
+
                           IMAGE_JPEG: :"image/jpeg"
                           IMAGE_PNG: :"image/png"
                           IMAGE_GIF: :"image/gif"
@@ -745,7 +765,9 @@ module Sam
                 | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource
                 | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource
 
-              class Source < Sam::Union
+              module Source
+                extend Sam::Union
+
                 type base64_pdf_source =
                   {
                     data: String,
@@ -810,7 +832,9 @@ module Sam
                     String
                     | ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::union_member1]
 
-                  class Content < Sam::Union
+                  module Content
+                    extend Sam::Union
+
                     type union_member1_array =
                       ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::union_member1]
 
@@ -820,7 +844,9 @@ module Sam
                       Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock
                       | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
 
-                    class UnionMember1 < Sam::Union
+                    module UnionMember1
+                      extend Sam::Union
+
                       type request_text_block =
                         {
                           text: String,
@@ -862,7 +888,9 @@ module Sam
                           | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation
                           | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
 
-                        class Citation < Sam::Union
+                        module Citation
+                          extend Sam::Union
+
                           type request_char_location_citation =
                             {
                               cited_text: String,
@@ -998,7 +1026,9 @@ module Sam
                           Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource
                           | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
 
-                        class Source < Sam::Union
+                        module Source
+                          extend Sam::Union
+
                           type base64_image_source =
                             {
                               data: String,
@@ -1027,7 +1057,9 @@ module Sam
                               | :"image/gif"
                               | :"image/webp"
 
-                            class MediaType < Sam::Enum
+                            module MediaType
+                              extend Sam::Enum
+
                               IMAGE_JPEG: :"image/jpeg"
                               IMAGE_PNG: :"image/png"
                               IMAGE_GIF: :"image/gif"
@@ -1148,7 +1180,9 @@ module Sam
 
         type role = :user | :assistant
 
-        class Role < Sam::Enum
+        module Role
+          extend Sam::Enum
+
           USER: :user
           ASSISTANT: :assistant
 
@@ -1160,7 +1194,9 @@ module Sam
         String
         | ::Array[Sam::Models::MessageCountTokensParams::System::UnionMember1]
 
-      class System < Sam::Union
+      module System
+        extend Sam::Union
+
         type union_member1_array =
           ::Array[Sam::Models::MessageCountTokensParams::System::UnionMember1]
 
@@ -1207,7 +1243,9 @@ module Sam
             | Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestPageLocationCitation
             | Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation
 
-          class Citation < Sam::Union
+          module Citation
+            extend Sam::Union
+
             type request_char_location_citation =
               {
                 cited_text: String,
@@ -1324,7 +1362,9 @@ module Sam
         Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigEnabled
         | Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigDisabled
 
-      class Thinking < Sam::Union
+      module Thinking
+        extend Sam::Union
+
         type thinking_config_enabled =
           { budget_tokens: Integer, type: :enabled }
 
@@ -1357,7 +1397,9 @@ module Sam
         | Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceTool
         | Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceNone
 
-      class ToolChoice < Sam::Union
+      module ToolChoice
+        extend Sam::Union
+
         type tool_choice_auto = { type: :auto, disable_parallel_tool_use: bool }
 
         class ToolChoiceAuto < Sam::BaseModel
@@ -1431,7 +1473,9 @@ module Sam
         | Sam::Models::MessageCountTokensParams::Tool::BashTool20250124
         | Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124
 
-      class Tool < Sam::Union
+      module Tool
+        extend Sam::Union
+
         type tool =
           {
             input_schema: Sam::Models::MessageCountTokensParams::Tool::Tool::InputSchema,

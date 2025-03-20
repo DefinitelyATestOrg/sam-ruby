@@ -25,7 +25,9 @@ module Sam
           | Sam::Models::Messages::BatchResultsResponse::Result::CanceledResult
           | Sam::Models::Messages::BatchResultsResponse::Result::ExpiredResult
 
-        class Result < Sam::Union
+        module Result
+          extend Sam::Union
+
           type succeeded_result =
             {
               message: Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message,
@@ -92,7 +94,9 @@ module Sam
                 | Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseThinkingBlock
                 | Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseRedactedThinkingBlock
 
-              class Content < Sam::Union
+              module Content
+                extend Sam::Union
+
                 type response_text_block =
                   {
                     citations: ::Array[Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::citation]?,
@@ -120,7 +124,9 @@ module Sam
                     | Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation
                     | Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
 
-                  class Citation < Sam::Union
+                  module Citation
+                    extend Sam::Union
+
                     type response_char_location_citation =
                       {
                         cited_text: String,
@@ -293,7 +299,9 @@ module Sam
               type stop_reason =
                 :end_turn | :max_tokens | :stop_sequence | :tool_use
 
-              class StopReason < Sam::Enum
+              module StopReason
+                extend Sam::Enum
+
                 END_TURN: :end_turn
                 MAX_TOKENS: :max_tokens
                 STOP_SEQUENCE: :stop_sequence
@@ -378,7 +386,9 @@ module Sam
                 | Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::APIError
                 | Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::OverloadedError
 
-              class Error < Sam::Union
+              module Error
+                extend Sam::Union
+
                 type invalid_request_error =
                   { message: String, type: :invalid_request_error }
 
