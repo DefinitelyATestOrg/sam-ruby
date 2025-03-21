@@ -16,7 +16,7 @@ module Sam
           max_tokens_to_sample: Integer,
           model: String,
           prompt: String,
-          metadata: Sam::Models::CompleteCreateParams::Metadata,
+          metadata: T.any(Sam::Models::CompleteCreateParams::Metadata, Sam::Util::AnyHash),
           stop_sequences: T::Array[String],
           stream: T::Boolean,
           temperature: Float,

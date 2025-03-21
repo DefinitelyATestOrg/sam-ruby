@@ -62,6 +62,7 @@ module Sam
             custom_id: String,
             result: T.any(
               Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult,
+              Sam::Util::AnyHash,
               Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult,
               Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaCanceledResult,
               Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaExpiredResult
@@ -366,6 +367,7 @@ module Sam
                   content: T::Array[
                   T.any(
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock,
+                    Sam::Util::AnyHash,
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock,
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock,
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock
@@ -373,7 +375,7 @@ module Sam
                   ],
                   model: String,
                   stop_reason: T.nilable(
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::OrSymbol
                   ),
                   stop_sequence: T.nilable(String),
                   usage: T.any(
@@ -501,6 +503,7 @@ module Sam
                         T::Array[
                         T.any(
                           Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation,
+                          Sam::Util::AnyHash,
                           Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation,
                           Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
                         )
@@ -1186,6 +1189,7 @@ module Sam
                 params(
                   error: T.any(
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaInvalidRequestError,
+                    Sam::Util::AnyHash,
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAuthenticationError,
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaBillingError,
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaPermissionError,

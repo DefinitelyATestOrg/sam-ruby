@@ -183,13 +183,14 @@ module Sam
           content: T::Array[
           T.any(
             Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock,
+            Sam::Util::AnyHash,
             Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseToolUseBlock,
             Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseThinkingBlock,
             Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseRedactedThinkingBlock
           )
           ],
           model: String,
-          stop_reason: T.nilable(Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol),
+          stop_reason: T.nilable(Sam::Models::MessagesBetaTrueCreateResponse::StopReason::OrSymbol),
           stop_sequence: T.nilable(String),
           usage: T.any(Sam::Models::MessagesBetaTrueCreateResponse::Usage, Sam::Util::AnyHash),
           role: Symbol,
@@ -311,6 +312,7 @@ module Sam
                 T::Array[
                 T.any(
                   Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation,
+                  Sam::Util::AnyHash,
                   Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation,
                   Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
                 )
