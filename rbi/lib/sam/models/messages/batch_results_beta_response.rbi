@@ -141,7 +141,10 @@ module Sam
 
             sig do
               params(
-                message: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message,
+                message: T.any(
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message,
+                  Sam::Util::AnyHash
+                ),
                 type: Symbol
               )
                 .returns(T.attached_class)
@@ -373,7 +376,10 @@ module Sam
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
                   ),
                   stop_sequence: T.nilable(String),
-                  usage: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage,
+                  usage: T.any(
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage,
+                    Sam::Util::AnyHash
+                  ),
                   role: Symbol,
                   type: Symbol
                 )
@@ -1098,7 +1104,10 @@ module Sam
 
             sig do
               params(
-                error: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error,
+                error: T.any(
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error,
+                  Sam::Util::AnyHash
+                ),
                 type: Symbol
               )
                 .returns(T.attached_class)

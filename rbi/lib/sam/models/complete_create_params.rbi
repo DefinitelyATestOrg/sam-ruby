@@ -166,7 +166,7 @@ module Sam
           max_tokens_to_sample: Integer,
           model: String,
           prompt: String,
-          metadata: Sam::Models::CompleteCreateParams::Metadata,
+          metadata: T.any(Sam::Models::CompleteCreateParams::Metadata, Sam::Util::AnyHash),
           stop_sequences: T::Array[String],
           stream: T::Boolean,
           temperature: Float,
@@ -174,7 +174,7 @@ module Sam
           top_p: Float,
           anthropic_version: String,
           x_api_key: String,
-          request_options: T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Sam::RequestOptions, Sam::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
