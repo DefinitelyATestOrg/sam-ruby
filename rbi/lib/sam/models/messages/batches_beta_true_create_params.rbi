@@ -689,26 +689,6 @@ module Sam
               module Content
                 extend Sam::Union
 
-                Variants =
-                  type_template(:out) do
-                    {
-                      fixed: T.any(
-                        String,
-                        T::Array[
-                        T.any(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolUseBlock,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestThinkingBlock,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock
-                        )
-                        ]
-                      )
-                    }
-                  end
-
                 UnionMember1Array =
                   T.let(
                     Sam::ArrayOf[union: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1],
@@ -717,21 +697,6 @@ module Sam
 
                 module UnionMember1
                   extend Sam::Union
-
-                  Variants =
-                    type_template(:out) do
-                      {
-                        fixed: T.any(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolUseBlock,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestThinkingBlock,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock
-                        )
-                      }
-                    end
 
                   class BetaRequestTextBlock < Sam::BaseModel
                     sig { returns(String) }
@@ -842,17 +807,6 @@ module Sam
 
                     module Citation
                       extend Sam::Union
-
-                      Variants =
-                        type_template(:out) do
-                          {
-                            fixed: T.any(
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation,
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation,
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
-                            )
-                          }
-                        end
 
                       class BetaRequestCharLocationCitation < Sam::BaseModel
                         sig { returns(String) }
@@ -1011,15 +965,13 @@ module Sam
                         end
                       end
 
-                      class << self
-                        sig do
-                          override
-                            .returns(
-                              [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]
-                            )
-                        end
-                        def variants
-                        end
+                      sig do
+                        override
+                          .returns(
+                            [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]
+                          )
+                      end
+                      def self.variants
                       end
                     end
                   end
@@ -1101,16 +1053,6 @@ module Sam
                     module Source
                       extend Sam::Union
 
-                      Variants =
-                        type_template(:out) do
-                          {
-                            fixed: T.any(
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource,
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
-                            )
-                          }
-                        end
-
                       class BetaBase64ImageSource < Sam::BaseModel
                         sig { returns(String) }
                         attr_accessor :data
@@ -1185,17 +1127,15 @@ module Sam
                               Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                             )
 
-                          class << self
-                            sig do
-                              override
-                                .returns(
-                                  T::Array[
-                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
-                                  ]
-                                )
-                            end
-                            def values
-                            end
+                          sig do
+                            override
+                              .returns(
+                                T::Array[
+                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
+                                ]
+                              )
+                          end
+                          def self.values
                           end
                         end
                       end
@@ -1216,15 +1156,13 @@ module Sam
                         end
                       end
 
-                      class << self
-                        sig do
-                          override
-                            .returns(
-                              [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
-                            )
-                        end
-                        def variants
-                        end
+                      sig do
+                        override
+                          .returns(
+                            [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
+                          )
+                      end
+                      def self.variants
                       end
                     end
 
@@ -1463,21 +1401,6 @@ module Sam
                     module Content
                       extend Sam::Union
 
-                      Variants =
-                        type_template(:out) do
-                          {
-                            fixed: T.any(
-                              String,
-                              T::Array[
-                              T.any(
-                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock,
-                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
-                              )
-                              ]
-                            )
-                          }
-                        end
-
                       UnionMember1Array =
                         T.let(
                           Sam::ArrayOf[
@@ -1488,16 +1411,6 @@ module Sam
 
                       module UnionMember1
                         extend Sam::Union
-
-                        Variants =
-                          type_template(:out) do
-                            {
-                              fixed: T.any(
-                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock,
-                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
-                              )
-                            }
-                          end
 
                         class BetaRequestTextBlock < Sam::BaseModel
                           sig { returns(String) }
@@ -1608,17 +1521,6 @@ module Sam
 
                           module Citation
                             extend Sam::Union
-
-                            Variants =
-                              type_template(:out) do
-                                {
-                                  fixed: T.any(
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation,
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation,
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
-                                  )
-                                }
-                              end
 
                             class BetaRequestCharLocationCitation < Sam::BaseModel
                               sig { returns(String) }
@@ -1777,15 +1679,13 @@ module Sam
                               end
                             end
 
-                            class << self
-                              sig do
-                                override
-                                  .returns(
-                                    [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]
-                                  )
-                              end
-                              def variants
-                              end
+                            sig do
+                              override
+                                .returns(
+                                  [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]
+                                )
+                            end
+                            def self.variants
                             end
                           end
                         end
@@ -1867,16 +1767,6 @@ module Sam
                           module Source
                             extend Sam::Union
 
-                            Variants =
-                              type_template(:out) do
-                                {
-                                  fixed: T.any(
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource,
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
-                                  )
-                                }
-                              end
-
                             class BetaBase64ImageSource < Sam::BaseModel
                               sig { returns(String) }
                               attr_accessor :data
@@ -1951,17 +1841,15 @@ module Sam
                                     Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                                   )
 
-                                class << self
-                                  sig do
-                                    override
-                                      .returns(
-                                        T::Array[
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
-                                        ]
-                                      )
-                                  end
-                                  def values
-                                  end
+                                sig do
+                                  override
+                                    .returns(
+                                      T::Array[
+                                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
+                                      ]
+                                    )
+                                end
+                                def self.values
                                 end
                               end
                             end
@@ -1982,15 +1870,13 @@ module Sam
                               end
                             end
 
-                            class << self
-                              sig do
-                                override
-                                  .returns(
-                                    [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
-                                  )
-                              end
-                              def variants
-                              end
+                            sig do
+                              override
+                                .returns(
+                                  [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
+                                )
+                            end
+                            def self.variants
                             end
                           end
 
@@ -2008,35 +1894,31 @@ module Sam
                           end
                         end
 
-                        class << self
-                          sig do
-                            override
-                              .returns(
-                                [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock]
-                              )
-                          end
-                          def variants
-                          end
-                        end
-                      end
-
-                      class << self
                         sig do
                           override
                             .returns(
-                              [
-                                String,
-                                T::Array[
-                                                              T.any(
-                                                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock,
-                                                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
-                                                              )
-                                                              ]
-                              ]
+                              [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock]
                             )
                         end
-                        def variants
+                        def self.variants
                         end
+                      end
+
+                      sig do
+                        override
+                          .returns(
+                            [
+                              String,
+                              T::Array[
+                                                          T.any(
+                                                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock,
+                                                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
+                                                          )
+                                                          ]
+                            ]
+                          )
+                      end
+                      def self.variants
                       end
                     end
                   end
@@ -2159,18 +2041,6 @@ module Sam
                     module Source
                       extend Sam::Union
 
-                      Variants =
-                        type_template(:out) do
-                          {
-                            fixed: T.any(
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource,
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource,
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource,
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource
-                            )
-                          }
-                        end
-
                       class BetaBase64PdfSource < Sam::BaseModel
                         sig { returns(String) }
                         attr_accessor :data
@@ -2274,21 +2144,6 @@ module Sam
                         module Content
                           extend Sam::Union
 
-                          Variants =
-                            type_template(:out) do
-                              {
-                                fixed: T.any(
-                                  String,
-                                  T::Array[
-                                  T.any(
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock,
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock
-                                  )
-                                  ]
-                                )
-                              }
-                            end
-
                           UnionMember1Array =
                             T.let(
                               Sam::ArrayOf[
@@ -2299,16 +2154,6 @@ module Sam
 
                           module UnionMember1
                             extend Sam::Union
-
-                            Variants =
-                              type_template(:out) do
-                                {
-                                  fixed: T.any(
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock,
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock
-                                  )
-                                }
-                              end
 
                             class BetaRequestTextBlock < Sam::BaseModel
                               sig { returns(String) }
@@ -2419,17 +2264,6 @@ module Sam
 
                               module Citation
                                 extend Sam::Union
-
-                                Variants =
-                                  type_template(:out) do
-                                    {
-                                      fixed: T.any(
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation,
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation,
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
-                                      )
-                                    }
-                                  end
 
                                 class BetaRequestCharLocationCitation < Sam::BaseModel
                                   sig { returns(String) }
@@ -2588,15 +2422,13 @@ module Sam
                                   end
                                 end
 
-                                class << self
-                                  sig do
-                                    override
-                                      .returns(
-                                        [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]
-                                      )
-                                  end
-                                  def variants
-                                  end
+                                sig do
+                                  override
+                                    .returns(
+                                      [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]
+                                    )
+                                end
+                                def self.variants
                                 end
                               end
                             end
@@ -2678,16 +2510,6 @@ module Sam
                               module Source
                                 extend Sam::Union
 
-                                Variants =
-                                  type_template(:out) do
-                                    {
-                                      fixed: T.any(
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource,
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
-                                      )
-                                    }
-                                  end
-
                                 class BetaBase64ImageSource < Sam::BaseModel
                                   sig { returns(String) }
                                   attr_accessor :data
@@ -2762,17 +2584,15 @@ module Sam
                                         Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                                       )
 
-                                    class << self
-                                      sig do
-                                        override
-                                          .returns(
-                                            T::Array[
-                                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
-                                            ]
-                                          )
-                                      end
-                                      def values
-                                      end
+                                    sig do
+                                      override
+                                        .returns(
+                                          T::Array[
+                                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
+                                          ]
+                                        )
+                                    end
+                                    def self.values
                                     end
                                   end
                                 end
@@ -2793,15 +2613,13 @@ module Sam
                                   end
                                 end
 
-                                class << self
-                                  sig do
-                                    override
-                                      .returns(
-                                        [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
-                                      )
-                                  end
-                                  def variants
-                                  end
+                                sig do
+                                  override
+                                    .returns(
+                                      [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
+                                    )
+                                end
+                                def self.variants
                                 end
                               end
 
@@ -2819,35 +2637,31 @@ module Sam
                               end
                             end
 
-                            class << self
-                              sig do
-                                override
-                                  .returns(
-                                    [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock]
-                                  )
-                              end
-                              def variants
-                              end
-                            end
-                          end
-
-                          class << self
                             sig do
                               override
                                 .returns(
-                                  [
-                                    String,
-                                    T::Array[
-                                                                      T.any(
-                                                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock,
-                                                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock
-                                                                      )
-                                                                      ]
-                                  ]
+                                  [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock]
                                 )
                             end
-                            def variants
+                            def self.variants
                             end
+                          end
+
+                          sig do
+                            override
+                              .returns(
+                                [
+                                  String,
+                                  T::Array[
+                                                                  T.any(
+                                                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock,
+                                                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock
+                                                                  )
+                                                                  ]
+                                ]
+                              )
+                          end
+                          def self.variants
                           end
                         end
                       end
@@ -2868,15 +2682,13 @@ module Sam
                         end
                       end
 
-                      class << self
-                        sig do
-                          override
-                            .returns(
-                              [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource]
-                            )
-                        end
-                        def variants
-                        end
+                      sig do
+                        override
+                          .returns(
+                            [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource]
+                          )
+                      end
+                      def self.variants
                       end
                     end
 
@@ -2947,40 +2759,36 @@ module Sam
                     end
                   end
 
-                  class << self
-                    sig do
-                      override
-                        .returns(
-                          [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolUseBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestThinkingBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock]
-                        )
-                    end
-                    def variants
-                    end
-                  end
-                end
-
-                class << self
                   sig do
                     override
                       .returns(
-                        [
-                          String,
-                          T::Array[
-                                                  T.any(
-                                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock,
-                                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock,
-                                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolUseBlock,
-                                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock,
-                                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock,
-                                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestThinkingBlock,
-                                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock
-                                                  )
-                                                  ]
-                        ]
+                        [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolUseBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestThinkingBlock, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock]
                       )
                   end
-                  def variants
+                  def self.variants
                   end
+                end
+
+                sig do
+                  override
+                    .returns(
+                      [
+                        String,
+                        T::Array[
+                                              T.any(
+                                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock,
+                                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock,
+                                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolUseBlock,
+                                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock,
+                                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock,
+                                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestThinkingBlock,
+                                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock
+                                              )
+                                              ]
+                      ]
+                    )
+                end
+                def self.variants
                 end
               end
 
@@ -3008,15 +2816,13 @@ module Sam
                     Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role::TaggedSymbol]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role::TaggedSymbol]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -3047,16 +2853,6 @@ module Sam
             #   [guide to system prompts](https://docs.anthropic.com/en/docs/system-prompts).
             module System
               extend Sam::Union
-
-              Variants =
-                type_template(:out) do
-                  {
-                    fixed: T.any(
-                      String,
-                      T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1]
-                    )
-                  }
-                end
 
               UnionMember1Array =
                 T.let(
@@ -3173,17 +2969,6 @@ module Sam
 
                 module Citation
                   extend Sam::Union
-
-                  Variants =
-                    type_template(:out) do
-                      {
-                        fixed: T.any(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestCharLocationCitation,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestPageLocationCitation,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation
-                        )
-                      }
-                    end
 
                   class BetaRequestCharLocationCitation < Sam::BaseModel
                     sig { returns(String) }
@@ -3342,28 +3127,24 @@ module Sam
                     end
                   end
 
-                  class << self
-                    sig do
-                      override
-                        .returns(
-                          [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestCharLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestPageLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation]
-                        )
-                    end
-                    def variants
-                    end
+                  sig do
+                    override
+                      .returns(
+                        [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestCharLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestPageLocationCitation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation]
+                      )
+                  end
+                  def self.variants
                   end
                 end
               end
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      [String, T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1]]
-                    )
-                end
-                def variants
-                end
+              sig do
+                override
+                  .returns(
+                    [String, T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1]]
+                  )
+              end
+              def self.variants
               end
             end
 
@@ -3378,16 +3159,6 @@ module Sam
             #   for details.
             module Thinking
               extend Sam::Union
-
-              Variants =
-                type_template(:out) do
-                  {
-                    fixed: T.any(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::BetaThinkingConfigEnabled,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::BetaThinkingConfigDisabled
-                    )
-                  }
-                end
 
               class BetaThinkingConfigEnabled < Sam::BaseModel
                 # Determines how many tokens Claude can use for its internal reasoning process.
@@ -3427,15 +3198,13 @@ module Sam
                 end
               end
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::BetaThinkingConfigEnabled, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::BetaThinkingConfigDisabled]
-                    )
-                end
-                def variants
-                end
+              sig do
+                override
+                  .returns(
+                    [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::BetaThinkingConfigEnabled, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::BetaThinkingConfigDisabled]
+                  )
+              end
+              def self.variants
               end
             end
 
@@ -3443,18 +3212,6 @@ module Sam
             #   any available tool, decide by itself, or not use tools at all.
             module ToolChoice
               extend Sam::Union
-
-              Variants =
-                type_template(:out) do
-                  {
-                    fixed: T.any(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceAuto,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceAny,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceTool,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceNone
-                    )
-                  }
-                end
 
               class BetaToolChoiceAuto < Sam::BaseModel
                 sig { returns(Symbol) }
@@ -3552,35 +3309,18 @@ module Sam
                 end
               end
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceAuto, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceAny, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceTool, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceNone]
-                    )
-                end
-                def variants
-                end
+              sig do
+                override
+                  .returns(
+                    [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceAuto, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceAny, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceTool, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceNone]
+                  )
+              end
+              def self.variants
               end
             end
 
             module Tool
               extend Sam::Union
-
-              Variants =
-                type_template(:out) do
-                  {
-                    fixed: T.any(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124
-                    )
-                  }
-                end
 
               class BetaTool < Sam::BaseModel
                 # [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input.
@@ -3744,15 +3484,13 @@ module Sam
                       Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::Type::TaggedSymbol
                     )
 
-                  class << self
-                    sig do
-                      override
-                        .returns(
-                          T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::Type::TaggedSymbol]
-                        )
-                    end
-                    def values
-                    end
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::Type::TaggedSymbol]
+                      )
+                  end
+                  def self.values
                   end
                 end
               end
@@ -4269,15 +4007,13 @@ module Sam
                 end
               end
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124]
-                    )
-                end
-                def variants
-                end
+              sig do
+                override
+                  .returns(
+                    [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124]
+                  )
+              end
+              def self.variants
               end
             end
           end
