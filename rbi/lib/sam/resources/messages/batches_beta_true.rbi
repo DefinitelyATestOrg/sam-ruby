@@ -14,7 +14,7 @@ module Sam
         #   [user guide](/en/docs/build-with-claude/batch-processing)
         sig do
           params(
-            requests: T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request],
+            requests: T::Array[T.any(Sam::Models::Messages::BatchesBetaTrueCreateParams::Request, Sam::Util::AnyHash)],
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,

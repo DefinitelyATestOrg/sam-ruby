@@ -13,19 +13,24 @@ module Sam
       sig do
         params(
           max_tokens: Integer,
-          messages: T::Array[Sam::Models::MessagesBetaTrueCreateParams::Message],
+          messages: T::Array[T.any(Sam::Models::MessagesBetaTrueCreateParams::Message, Sam::Util::AnyHash)],
           model: String,
-          metadata: Sam::Models::MessagesBetaTrueCreateParams::Metadata,
+          metadata: T.any(Sam::Models::MessagesBetaTrueCreateParams::Metadata, Sam::Util::AnyHash),
           stop_sequences: T::Array[String],
           stream: T::Boolean,
-          system_: T.any(String, T::Array[Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1]),
+          system_: T.any(
+            String,
+            T::Array[T.any(Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1, Sam::Util::AnyHash)]
+          ),
           temperature: Float,
           thinking: T.any(
             Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigEnabled,
+            Sam::Util::AnyHash,
             Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigDisabled
           ),
           tool_choice: T.any(
             Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAuto,
+            Sam::Util::AnyHash,
             Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAny,
             Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceTool,
             Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceNone
@@ -33,6 +38,7 @@ module Sam
           tools: T::Array[
           T.any(
             Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool,
+            Sam::Util::AnyHash,
             Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022,
             Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022,
             Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022,

@@ -44,7 +44,7 @@ module Sam
 
       sig do
         params(
-          data: T::Array[Sam::Models::ModelsBetaTrueListResponse::Data],
+          data: T::Array[T.any(Sam::Models::ModelsBetaTrueListResponse::Data, Sam::Util::AnyHash)],
           first_id: T.nilable(String),
           has_more: T::Boolean,
           last_id: T.nilable(String)

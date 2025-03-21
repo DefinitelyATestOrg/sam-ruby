@@ -129,8 +129,18 @@ module Sam
       end
 
       sig do
-        params(_: T.any(String, T::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1]))
-          .returns(T.any(String, T::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1]))
+        params(
+          _: T.any(
+            String,
+            T::Array[T.any(Sam::Models::MessageCountTokensBetaParams::System::UnionMember1, Sam::Util::AnyHash)]
+          )
+        )
+          .returns(
+            T.any(
+              String,
+              T::Array[T.any(Sam::Models::MessageCountTokensBetaParams::System::UnionMember1, Sam::Util::AnyHash)]
+            )
+          )
       end
       def system_=(_)
       end
@@ -161,12 +171,14 @@ module Sam
         params(
           _: T.any(
             Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigEnabled,
+            Sam::Util::AnyHash,
             Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigDisabled
           )
         )
           .returns(
             T.any(
               Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigEnabled,
+              Sam::Util::AnyHash,
               Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigDisabled
             )
           )
@@ -195,6 +207,7 @@ module Sam
         params(
           _: T.any(
             Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAuto,
+            Sam::Util::AnyHash,
             Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAny,
             Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceTool,
             Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceNone
@@ -203,6 +216,7 @@ module Sam
           .returns(
             T.any(
               Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAuto,
+              Sam::Util::AnyHash,
               Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAny,
               Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceTool,
               Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceNone
@@ -306,6 +320,7 @@ module Sam
           _: T::Array[
           T.any(
             Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool,
+            Sam::Util::AnyHash,
             Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022,
             Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022,
             Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022,
@@ -319,6 +334,7 @@ module Sam
             T::Array[
             T.any(
               Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool,
+              Sam::Util::AnyHash,
               Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022,
               Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022,
               Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022,
@@ -372,15 +388,20 @@ module Sam
 
       sig do
         params(
-          messages: T::Array[Sam::Models::MessageCountTokensBetaParams::Message],
+          messages: T::Array[T.any(Sam::Models::MessageCountTokensBetaParams::Message, Sam::Util::AnyHash)],
           model: String,
-          system_: T.any(String, T::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1]),
+          system_: T.any(
+            String,
+            T::Array[T.any(Sam::Models::MessageCountTokensBetaParams::System::UnionMember1, Sam::Util::AnyHash)]
+          ),
           thinking: T.any(
             Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigEnabled,
+            Sam::Util::AnyHash,
             Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigDisabled
           ),
           tool_choice: T.any(
             Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAuto,
+            Sam::Util::AnyHash,
             Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAny,
             Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceTool,
             Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceNone
@@ -388,6 +409,7 @@ module Sam
           tools: T::Array[
           T.any(
             Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool,
+            Sam::Util::AnyHash,
             Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022,
             Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022,
             Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022,
@@ -532,6 +554,7 @@ module Sam
               T::Array[
               T.any(
                 Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock,
+                Sam::Util::AnyHash,
                 Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock,
                 Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock,
                 Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock,
@@ -724,6 +747,7 @@ module Sam
                     T::Array[
                     T.any(
                       Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation,
+                      Sam::Util::AnyHash,
                       Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation,
                       Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
                     )
@@ -1124,6 +1148,7 @@ module Sam
                 params(
                   source: T.any(
                     Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource,
+                    Sam::Util::AnyHash,
                     Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
                   ),
                   cache_control: T.nilable(
@@ -1529,6 +1554,7 @@ module Sam
                     T::Array[
                     T.any(
                       Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock,
+                      Sam::Util::AnyHash,
                       Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
                     )
                     ]
@@ -1540,6 +1566,7 @@ module Sam
                       T::Array[
                       T.any(
                         Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock,
+                        Sam::Util::AnyHash,
                         Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
                       )
                       ]
@@ -1571,6 +1598,7 @@ module Sam
                     T::Array[
                     T.any(
                       Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock,
+                      Sam::Util::AnyHash,
                       Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
                     )
                     ]
@@ -1769,6 +1797,7 @@ module Sam
                           T::Array[
                           T.any(
                             Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation,
+                            Sam::Util::AnyHash,
                             Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation,
                             Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
                           )
@@ -2169,6 +2198,7 @@ module Sam
                       params(
                         source: T.any(
                           Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource,
+                          Sam::Util::AnyHash,
                           Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
                         ),
                         cache_control: T.nilable(
@@ -2537,6 +2567,7 @@ module Sam
                 params(
                   source: T.any(
                     Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource,
+                    Sam::Util::AnyHash,
                     Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource,
                     Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource,
                     Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource
@@ -2725,6 +2756,7 @@ module Sam
                         T::Array[
                         T.any(
                           Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock,
+                          Sam::Util::AnyHash,
                           Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock
                         )
                         ]
@@ -2899,6 +2931,7 @@ module Sam
                               T::Array[
                               T.any(
                                 Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation,
+                                Sam::Util::AnyHash,
                                 Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation,
                                 Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
                               )
@@ -3299,6 +3332,7 @@ module Sam
                           params(
                             source: T.any(
                               Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource,
+                              Sam::Util::AnyHash,
                               Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
                             ),
                             cache_control: T.nilable(
@@ -3839,6 +3873,7 @@ module Sam
                 T::Array[
                 T.any(
                   Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestCharLocationCitation,
+                  Sam::Util::AnyHash,
                   Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestPageLocationCitation,
                   Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation
                 )
