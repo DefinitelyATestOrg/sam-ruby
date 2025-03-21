@@ -22,7 +22,7 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Util::AnyHash))
           )
             .returns(Sam::Models::Messages::BatchCreateResponse)
         end
@@ -63,7 +63,7 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Util::AnyHash))
           )
             .returns(Sam::Models::Messages::BatchRetrieveResponse)
         end
@@ -104,7 +104,7 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Util::AnyHash))
           )
             .returns(Sam::Models::Messages::BatchListResponse)
         end
@@ -153,7 +153,7 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Util::AnyHash))
           )
             .returns(Sam::Models::Messages::BatchDeleteResponse)
         end
@@ -199,7 +199,7 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Util::AnyHash))
           )
             .returns(Sam::Models::Messages::BatchCancelResponse)
         end
@@ -245,7 +245,7 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Util::AnyHash))
           )
             .returns(Sam::Models::Messages::BatchCancelBetaResponse)
         end
@@ -287,7 +287,7 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Util::AnyHash))
           )
             .returns(Sam::JsonLStream[Sam::Models::Messages::BatchResultsResponse])
         end
@@ -329,7 +329,7 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Util::AnyHash))
           )
             .returns(Sam::JsonLStream[Sam::Models::Messages::BatchResultsBetaResponse])
         end
