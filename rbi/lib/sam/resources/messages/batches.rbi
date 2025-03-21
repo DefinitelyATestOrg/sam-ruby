@@ -5,8 +5,7 @@ module Sam
     class Messages
       class Batches
         sig { returns(Sam::Resources::Messages::Batches::BetaTrue) }
-        def beta_true
-        end
+        attr_reader :beta_true
 
         # Send a batch of Message creation requests.
         #

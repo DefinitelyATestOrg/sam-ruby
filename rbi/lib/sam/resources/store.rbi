@@ -4,8 +4,7 @@ module Sam
   module Resources
     class Store
       sig { returns(Sam::Resources::Store::Orders) }
-      def orders
-      end
+      attr_reader :orders
 
       sig { params(client: Sam::Client).returns(T.attached_class) }
       def self.new(client:)

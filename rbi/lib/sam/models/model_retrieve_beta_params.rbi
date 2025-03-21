@@ -11,12 +11,10 @@ module Sam
       #   Read more about versioning and our version history
       #   [here](https://docs.anthropic.com/en/api/versioning).
       sig { returns(T.nilable(String)) }
-      def anthropic_version
-      end
+      attr_reader :anthropic_version
 
-      sig { params(_: String).returns(String) }
-      def anthropic_version=(_)
-      end
+      sig { params(anthropic_version: String).void }
+      attr_writer :anthropic_version
 
       # Your unique API key for authentication.
       #
@@ -25,12 +23,10 @@ module Sam
       #   [Console](https://console.anthropic.com/settings/keys). Each key is scoped to a
       #   Workspace.
       sig { returns(T.nilable(String)) }
-      def x_api_key
-      end
+      attr_reader :x_api_key
 
-      sig { params(_: String).returns(String) }
-      def x_api_key=(_)
-      end
+      sig { params(x_api_key: String).void }
+      attr_writer :x_api_key
 
       sig do
         params(
