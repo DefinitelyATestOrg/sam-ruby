@@ -14,12 +14,7 @@ module Sam
       #   Different models have different maximum values for this parameter. See
       #   [models](https://docs.anthropic.com/en/docs/models-overview) for details.
       sig { returns(Integer) }
-      def max_tokens
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def max_tokens=(_)
-      end
+      attr_accessor :max_tokens
 
       # Input messages.
       #
@@ -108,39 +103,21 @@ module Sam
       #   the top-level `system` parameter — there is no `"system"` role for input
       #   messages in the Messages API.
       sig { returns(T::Array[Sam::Models::MessageCreateParams::Message]) }
-      def messages
-      end
-
-      sig do
-        params(_: T::Array[Sam::Models::MessageCreateParams::Message])
-          .returns(T::Array[Sam::Models::MessageCreateParams::Message])
-      end
-      def messages=(_)
-      end
+      attr_accessor :messages
 
       # The model that will complete your prompt.
       #
       #   See [models](https://docs.anthropic.com/en/docs/models-overview) for additional
       #   details and options.
       sig { returns(String) }
-      def model
-      end
-
-      sig { params(_: String).returns(String) }
-      def model=(_)
-      end
+      attr_accessor :model
 
       # An object describing metadata about the request.
       sig { returns(T.nilable(Sam::Models::MessageCreateParams::Metadata)) }
-      def metadata
-      end
+      attr_reader :metadata
 
-      sig do
-        params(_: T.any(Sam::Models::MessageCreateParams::Metadata, Sam::Util::AnyHash))
-          .returns(T.any(Sam::Models::MessageCreateParams::Metadata, Sam::Util::AnyHash))
-      end
-      def metadata=(_)
-      end
+      sig { params(metadata: T.any(Sam::Models::MessageCreateParams::Metadata, Sam::Util::AnyHash)).void }
+      attr_writer :metadata
 
       # Custom text sequences that will cause the model to stop generating.
       #
@@ -152,24 +129,20 @@ module Sam
       #   the custom sequences, the response `stop_reason` value will be `"stop_sequence"`
       #   and the response `stop_sequence` value will contain the matched stop sequence.
       sig { returns(T.nilable(T::Array[String])) }
-      def stop_sequences
-      end
+      attr_reader :stop_sequences
 
-      sig { params(_: T::Array[String]).returns(T::Array[String]) }
-      def stop_sequences=(_)
-      end
+      sig { params(stop_sequences: T::Array[String]).void }
+      attr_writer :stop_sequences
 
       # Whether to incrementally stream the response using server-sent events.
       #
       #   See [streaming](https://docs.anthropic.com/en/api/messages-streaming) for
       #   details.
       sig { returns(T.nilable(T::Boolean)) }
-      def stream
-      end
+      attr_reader :stream
 
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def stream=(_)
-      end
+      sig { params(stream: T::Boolean).void }
+      attr_writer :stream
 
       # System prompt.
       #
@@ -177,19 +150,15 @@ module Sam
       #   as specifying a particular goal or role. See our
       #   [guide to system prompts](https://docs.anthropic.com/en/docs/system-prompts).
       sig { returns(T.nilable(T.any(String, T::Array[Sam::Models::MessageCreateParams::System::UnionMember1]))) }
-      def system_
-      end
+      attr_reader :system_
 
       sig do
         params(
-          _: T.any(String, T::Array[T.any(Sam::Models::MessageCreateParams::System::UnionMember1, Sam::Util::AnyHash)])
+          system_: T.any(String, T::Array[T.any(Sam::Models::MessageCreateParams::System::UnionMember1, Sam::Util::AnyHash)])
         )
-          .returns(
-            T.any(String, T::Array[T.any(Sam::Models::MessageCreateParams::System::UnionMember1, Sam::Util::AnyHash)])
-          )
+          .void
       end
-      def system_=(_)
-      end
+      attr_writer :system_
 
       # Amount of randomness injected into the response.
       #
@@ -200,12 +169,10 @@ module Sam
       #   Note that even with `temperature` of `0.0`, the results will not be fully
       #   deterministic.
       sig { returns(T.nilable(Float)) }
-      def temperature
-      end
+      attr_reader :temperature
 
-      sig { params(_: Float).returns(Float) }
-      def temperature=(_)
-      end
+      sig { params(temperature: Float).void }
+      attr_writer :temperature
 
       # Configuration for enabling Claude's extended thinking.
       #
@@ -226,27 +193,19 @@ module Sam
           )
         )
       end
-      def thinking
-      end
+      attr_reader :thinking
 
       sig do
         params(
-          _: T.any(
+          thinking: T.any(
             Sam::Models::MessageCreateParams::Thinking::ThinkingConfigEnabled,
             Sam::Util::AnyHash,
             Sam::Models::MessageCreateParams::Thinking::ThinkingConfigDisabled
           )
         )
-          .returns(
-            T.any(
-              Sam::Models::MessageCreateParams::Thinking::ThinkingConfigEnabled,
-              Sam::Util::AnyHash,
-              Sam::Models::MessageCreateParams::Thinking::ThinkingConfigDisabled
-            )
-          )
+          .void
       end
-      def thinking=(_)
-      end
+      attr_writer :thinking
 
       # How the model should use the provided tools. The model can use a specific tool,
       #   any available tool, decide by itself, or not use tools at all.
@@ -262,12 +221,11 @@ module Sam
           )
         )
       end
-      def tool_choice
-      end
+      attr_reader :tool_choice
 
       sig do
         params(
-          _: T.any(
+          tool_choice: T.any(
             Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAuto,
             Sam::Util::AnyHash,
             Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAny,
@@ -275,18 +233,9 @@ module Sam
             Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceNone
           )
         )
-          .returns(
-            T.any(
-              Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAuto,
-              Sam::Util::AnyHash,
-              Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAny,
-              Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceTool,
-              Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceNone
-            )
-          )
+          .void
       end
-      def tool_choice=(_)
-      end
+      attr_writer :tool_choice
 
       # Definitions of tools that the model may use.
       #
@@ -370,12 +319,11 @@ module Sam
           )
         )
       end
-      def tools
-      end
+      attr_reader :tools
 
       sig do
         params(
-          _: T::Array[
+          tools: T::Array[
           T.any(
             Sam::Models::MessageCreateParams::Tool::Tool,
             Sam::Util::AnyHash,
@@ -384,19 +332,9 @@ module Sam
           )
           ]
         )
-          .returns(
-            T::Array[
-            T.any(
-              Sam::Models::MessageCreateParams::Tool::Tool,
-              Sam::Util::AnyHash,
-              Sam::Models::MessageCreateParams::Tool::BashTool20250124,
-              Sam::Models::MessageCreateParams::Tool::TextEditor20250124
-            )
-            ]
-          )
+          .void
       end
-      def tools=(_)
-      end
+      attr_writer :tools
 
       # Only sample from the top K options for each subsequent token.
       #
@@ -406,12 +344,10 @@ module Sam
       #   Recommended for advanced use cases only. You usually only need to use
       #   `temperature`.
       sig { returns(T.nilable(Integer)) }
-      def top_k
-      end
+      attr_reader :top_k
 
-      sig { params(_: Integer).returns(Integer) }
-      def top_k=(_)
-      end
+      sig { params(top_k: Integer).void }
+      attr_writer :top_k
 
       # Use nucleus sampling.
       #
@@ -423,36 +359,30 @@ module Sam
       #   Recommended for advanced use cases only. You usually only need to use
       #   `temperature`.
       sig { returns(T.nilable(Float)) }
-      def top_p
-      end
+      attr_reader :top_p
 
-      sig { params(_: Float).returns(Float) }
-      def top_p=(_)
-      end
+      sig { params(top_p: Float).void }
+      attr_writer :top_p
 
       # Optional header to specify the beta version(s) you want to use.
       #
       #   To use multiple betas, use a comma separated list like `beta1,beta2` or specify
       #   the header multiple times for each beta.
       sig { returns(T.nilable(T::Array[String])) }
-      def anthropic_beta
-      end
+      attr_reader :anthropic_beta
 
-      sig { params(_: T::Array[String]).returns(T::Array[String]) }
-      def anthropic_beta=(_)
-      end
+      sig { params(anthropic_beta: T::Array[String]).void }
+      attr_writer :anthropic_beta
 
       # The version of the Anthropic API you want to use.
       #
       #   Read more about versioning and our version history
       #   [here](https://docs.anthropic.com/en/api/versioning).
       sig { returns(T.nilable(String)) }
-      def anthropic_version
-      end
+      attr_reader :anthropic_version
 
-      sig { params(_: String).returns(String) }
-      def anthropic_version=(_)
-      end
+      sig { params(anthropic_version: String).void }
+      attr_writer :anthropic_version
 
       # Your unique API key for authentication.
       #
@@ -461,12 +391,10 @@ module Sam
       #   [Console](https://console.anthropic.com/settings/keys). Each key is scoped to a
       #   Workspace.
       sig { returns(T.nilable(String)) }
-      def x_api_key
-      end
+      attr_reader :x_api_key
 
-      sig { params(_: String).returns(String) }
-      def x_api_key=(_)
-      end
+      sig { params(x_api_key: String).void }
+      attr_writer :x_api_key
 
       sig do
         params(
@@ -588,56 +516,10 @@ module Sam
             )
           )
         end
-        def content
-        end
-
-        sig do
-          params(
-            _: T.any(
-              String,
-              T::Array[
-              T.any(
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock,
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock,
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolUseBlock,
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock,
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock,
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestThinkingBlock,
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
-              )
-              ]
-            )
-          )
-            .returns(
-              T.any(
-                String,
-                T::Array[
-                T.any(
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock,
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock,
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolUseBlock,
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock,
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock,
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestThinkingBlock,
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
-                )
-                ]
-              )
-            )
-        end
-        def content=(_)
-        end
+        attr_accessor :content
 
         sig { returns(Sam::Models::MessageCreateParams::Message::Role::OrSymbol) }
-        def role
-        end
-
-        sig do
-          params(_: Sam::Models::MessageCreateParams::Message::Role::OrSymbol)
-            .returns(Sam::Models::MessageCreateParams::Message::Role::OrSymbol)
-        end
-        def role=(_)
-        end
+        attr_accessor :role
 
         sig do
           params(
@@ -737,20 +619,10 @@ module Sam
 
             class RequestTextBlock < Sam::BaseModel
               sig { returns(String) }
-              def text
-              end
-
-              sig { params(_: String).returns(String) }
-              def text=(_)
-              end
+              attr_accessor :text
 
               sig { returns(Symbol) }
-              def type
-              end
-
-              sig { params(_: Symbol).returns(Symbol) }
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig do
                 returns(
@@ -759,29 +631,20 @@ module Sam
                   )
                 )
               end
-              def cache_control
-              end
+              attr_reader :cache_control
 
               sig do
                 params(
-                  _: T.nilable(
+                  cache_control: T.nilable(
                     T.any(
                       Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::CacheControl,
                       Sam::Util::AnyHash
                     )
                   )
                 )
-                  .returns(
-                    T.nilable(
-                      T.any(
-                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::CacheControl,
-                        Sam::Util::AnyHash
-                      )
-                    )
-                  )
+                  .void
               end
-              def cache_control=(_)
-              end
+              attr_writer :cache_control
 
               sig do
                 returns(
@@ -796,35 +659,7 @@ module Sam
                   )
                 )
               end
-              def citations
-              end
-
-              sig do
-                params(
-                  _: T.nilable(
-                    T::Array[
-                    T.any(
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                    )
-                    ]
-                  )
-                )
-                  .returns(
-                    T.nilable(
-                      T::Array[
-                      T.any(
-                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                      )
-                      ]
-                    )
-                  )
-              end
-              def citations=(_)
-              end
+              attr_accessor :citations
 
               sig do
                 params(
@@ -878,12 +713,7 @@ module Sam
 
               class CacheControl < Sam::BaseModel
                 sig { returns(Symbol) }
-                def type
-                end
-
-                sig { params(_: Symbol).returns(Symbol) }
-                def type=(_)
-                end
+                attr_accessor :type
 
                 sig { params(type: Symbol).returns(T.attached_class) }
                 def self.new(type: :ephemeral)
@@ -910,52 +740,22 @@ module Sam
 
                 class RequestCharLocationCitation < Sam::BaseModel
                   sig { returns(String) }
-                  def cited_text
-                  end
-
-                  sig { params(_: String).returns(String) }
-                  def cited_text=(_)
-                  end
+                  attr_accessor :cited_text
 
                   sig { returns(Integer) }
-                  def document_index
-                  end
-
-                  sig { params(_: Integer).returns(Integer) }
-                  def document_index=(_)
-                  end
+                  attr_accessor :document_index
 
                   sig { returns(T.nilable(String)) }
-                  def document_title
-                  end
-
-                  sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-                  def document_title=(_)
-                  end
+                  attr_accessor :document_title
 
                   sig { returns(Integer) }
-                  def end_char_index
-                  end
-
-                  sig { params(_: Integer).returns(Integer) }
-                  def end_char_index=(_)
-                  end
+                  attr_accessor :end_char_index
 
                   sig { returns(Integer) }
-                  def start_char_index
-                  end
-
-                  sig { params(_: Integer).returns(Integer) }
-                  def start_char_index=(_)
-                  end
+                  attr_accessor :start_char_index
 
                   sig { returns(Symbol) }
-                  def type
-                  end
-
-                  sig { params(_: Symbol).returns(Symbol) }
-                  def type=(_)
-                  end
+                  attr_accessor :type
 
                   sig do
                     params(
@@ -990,52 +790,22 @@ module Sam
 
                 class RequestPageLocationCitation < Sam::BaseModel
                   sig { returns(String) }
-                  def cited_text
-                  end
-
-                  sig { params(_: String).returns(String) }
-                  def cited_text=(_)
-                  end
+                  attr_accessor :cited_text
 
                   sig { returns(Integer) }
-                  def document_index
-                  end
-
-                  sig { params(_: Integer).returns(Integer) }
-                  def document_index=(_)
-                  end
+                  attr_accessor :document_index
 
                   sig { returns(T.nilable(String)) }
-                  def document_title
-                  end
-
-                  sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-                  def document_title=(_)
-                  end
+                  attr_accessor :document_title
 
                   sig { returns(Integer) }
-                  def end_page_number
-                  end
-
-                  sig { params(_: Integer).returns(Integer) }
-                  def end_page_number=(_)
-                  end
+                  attr_accessor :end_page_number
 
                   sig { returns(Integer) }
-                  def start_page_number
-                  end
-
-                  sig { params(_: Integer).returns(Integer) }
-                  def start_page_number=(_)
-                  end
+                  attr_accessor :start_page_number
 
                   sig { returns(Symbol) }
-                  def type
-                  end
-
-                  sig { params(_: Symbol).returns(Symbol) }
-                  def type=(_)
-                  end
+                  attr_accessor :type
 
                   sig do
                     params(
@@ -1070,52 +840,22 @@ module Sam
 
                 class RequestContentBlockLocationCitation < Sam::BaseModel
                   sig { returns(String) }
-                  def cited_text
-                  end
-
-                  sig { params(_: String).returns(String) }
-                  def cited_text=(_)
-                  end
+                  attr_accessor :cited_text
 
                   sig { returns(Integer) }
-                  def document_index
-                  end
-
-                  sig { params(_: Integer).returns(Integer) }
-                  def document_index=(_)
-                  end
+                  attr_accessor :document_index
 
                   sig { returns(T.nilable(String)) }
-                  def document_title
-                  end
-
-                  sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-                  def document_title=(_)
-                  end
+                  attr_accessor :document_title
 
                   sig { returns(Integer) }
-                  def end_block_index
-                  end
-
-                  sig { params(_: Integer).returns(Integer) }
-                  def end_block_index=(_)
-                  end
+                  attr_accessor :end_block_index
 
                   sig { returns(Integer) }
-                  def start_block_index
-                  end
-
-                  sig { params(_: Integer).returns(Integer) }
-                  def start_block_index=(_)
-                  end
+                  attr_accessor :start_block_index
 
                   sig { returns(Symbol) }
-                  def type
-                  end
-
-                  sig { params(_: Symbol).returns(Symbol) }
-                  def type=(_)
-                  end
+                  attr_accessor :type
 
                   sig do
                     params(
@@ -1177,33 +917,10 @@ module Sam
                   )
                 )
               end
-              def source
-              end
-
-              sig do
-                params(
-                  _: T.any(
-                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
-                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
-                  )
-                )
-                  .returns(
-                    T.any(
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
-                    )
-                  )
-              end
-              def source=(_)
-              end
+              attr_accessor :source
 
               sig { returns(Symbol) }
-              def type
-              end
-
-              sig { params(_: Symbol).returns(Symbol) }
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig do
                 returns(
@@ -1212,29 +929,20 @@ module Sam
                   )
                 )
               end
-              def cache_control
-              end
+              attr_reader :cache_control
 
               sig do
                 params(
-                  _: T.nilable(
+                  cache_control: T.nilable(
                     T.any(
                       Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock::CacheControl,
                       Sam::Util::AnyHash
                     )
                   )
                 )
-                  .returns(
-                    T.nilable(
-                      T.any(
-                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock::CacheControl,
-                        Sam::Util::AnyHash
-                      )
-                    )
-                  )
+                  .void
               end
-              def cache_control=(_)
-              end
+              attr_writer :cache_control
 
               sig do
                 params(
@@ -1289,39 +997,17 @@ module Sam
 
                 class Base64ImageSource < Sam::BaseModel
                   sig { returns(String) }
-                  def data
-                  end
-
-                  sig { params(_: String).returns(String) }
-                  def data=(_)
-                  end
+                  attr_accessor :data
 
                   sig do
                     returns(
                       Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
                     )
                   end
-                  def media_type
-                  end
-
-                  sig do
-                    params(
-                      _: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
-                    )
-                      .returns(
-                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
-                      )
-                  end
-                  def media_type=(_)
-                  end
+                  attr_accessor :media_type
 
                   sig { returns(Symbol) }
-                  def type
-                  end
-
-                  sig { params(_: Symbol).returns(Symbol) }
-                  def type=(_)
-                  end
+                  attr_accessor :type
 
                   sig do
                     params(
@@ -1400,20 +1086,10 @@ module Sam
 
                 class URLImageSource < Sam::BaseModel
                   sig { returns(Symbol) }
-                  def type
-                  end
-
-                  sig { params(_: Symbol).returns(Symbol) }
-                  def type=(_)
-                  end
+                  attr_accessor :type
 
                   sig { returns(String) }
-                  def url
-                  end
-
-                  sig { params(_: String).returns(String) }
-                  def url=(_)
-                  end
+                  attr_accessor :url
 
                   sig { params(url: String, type: Symbol).returns(T.attached_class) }
                   def self.new(url:, type: :url)
@@ -1438,12 +1114,7 @@ module Sam
 
               class CacheControl < Sam::BaseModel
                 sig { returns(Symbol) }
-                def type
-                end
-
-                sig { params(_: Symbol).returns(Symbol) }
-                def type=(_)
-                end
+                attr_accessor :type
 
                 sig { params(type: Symbol).returns(T.attached_class) }
                 def self.new(type: :ephemeral)
@@ -1457,36 +1128,16 @@ module Sam
 
             class RequestToolUseBlock < Sam::BaseModel
               sig { returns(String) }
-              def id
-              end
-
-              sig { params(_: String).returns(String) }
-              def id=(_)
-              end
+              attr_accessor :id
 
               sig { returns(T.anything) }
-              def input
-              end
-
-              sig { params(_: T.anything).returns(T.anything) }
-              def input=(_)
-              end
+              attr_accessor :input
 
               sig { returns(String) }
-              def name
-              end
-
-              sig { params(_: String).returns(String) }
-              def name=(_)
-              end
+              attr_accessor :name
 
               sig { returns(Symbol) }
-              def type
-              end
-
-              sig { params(_: Symbol).returns(Symbol) }
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig do
                 returns(
@@ -1495,29 +1146,20 @@ module Sam
                   )
                 )
               end
-              def cache_control
-              end
+              attr_reader :cache_control
 
               sig do
                 params(
-                  _: T.nilable(
+                  cache_control: T.nilable(
                     T.any(
                       Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolUseBlock::CacheControl,
                       Sam::Util::AnyHash
                     )
                   )
                 )
-                  .returns(
-                    T.nilable(
-                      T.any(
-                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolUseBlock::CacheControl,
-                        Sam::Util::AnyHash
-                      )
-                    )
-                  )
+                  .void
               end
-              def cache_control=(_)
-              end
+              attr_writer :cache_control
 
               sig do
                 params(
@@ -1556,12 +1198,7 @@ module Sam
 
               class CacheControl < Sam::BaseModel
                 sig { returns(Symbol) }
-                def type
-                end
-
-                sig { params(_: Symbol).returns(Symbol) }
-                def type=(_)
-                end
+                attr_accessor :type
 
                 sig { params(type: Symbol).returns(T.attached_class) }
                 def self.new(type: :ephemeral)
@@ -1575,20 +1212,10 @@ module Sam
 
             class RequestToolResultBlock < Sam::BaseModel
               sig { returns(String) }
-              def tool_use_id
-              end
-
-              sig { params(_: String).returns(String) }
-              def tool_use_id=(_)
-              end
+              attr_accessor :tool_use_id
 
               sig { returns(Symbol) }
-              def type
-              end
-
-              sig { params(_: Symbol).returns(Symbol) }
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig do
                 returns(
@@ -1597,29 +1224,20 @@ module Sam
                   )
                 )
               end
-              def cache_control
-              end
+              attr_reader :cache_control
 
               sig do
                 params(
-                  _: T.nilable(
+                  cache_control: T.nilable(
                     T.any(
                       Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::CacheControl,
                       Sam::Util::AnyHash
                     )
                   )
                 )
-                  .returns(
-                    T.nilable(
-                      T.any(
-                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::CacheControl,
-                        Sam::Util::AnyHash
-                      )
-                    )
-                  )
+                  .void
               end
-              def cache_control=(_)
-              end
+              attr_writer :cache_control
 
               sig do
                 returns(
@@ -1636,12 +1254,11 @@ module Sam
                   )
                 )
               end
-              def content
-              end
+              attr_reader :content
 
               sig do
                 params(
-                  _: T.any(
+                  content: T.any(
                     String,
                     T::Array[
                     T.any(
@@ -1652,29 +1269,15 @@ module Sam
                     ]
                   )
                 )
-                  .returns(
-                    T.any(
-                      String,
-                      T::Array[
-                      T.any(
-                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
-                        Sam::Util::AnyHash,
-                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
-                      )
-                      ]
-                    )
-                  )
+                  .void
               end
-              def content=(_)
-              end
+              attr_writer :content
 
               sig { returns(T.nilable(T::Boolean)) }
-              def is_error
-              end
+              attr_reader :is_error
 
-              sig { params(_: T::Boolean).returns(T::Boolean) }
-              def is_error=(_)
-              end
+              sig { params(is_error: T::Boolean).void }
+              attr_writer :is_error
 
               sig do
                 params(
@@ -1730,12 +1333,7 @@ module Sam
 
               class CacheControl < Sam::BaseModel
                 sig { returns(Symbol) }
-                def type
-                end
-
-                sig { params(_: Symbol).returns(Symbol) }
-                def type=(_)
-                end
+                attr_accessor :type
 
                 sig { params(type: Symbol).returns(T.attached_class) }
                 def self.new(type: :ephemeral)
@@ -1787,20 +1385,10 @@ module Sam
 
                   class RequestTextBlock < Sam::BaseModel
                     sig { returns(String) }
-                    def text
-                    end
-
-                    sig { params(_: String).returns(String) }
-                    def text=(_)
-                    end
+                    attr_accessor :text
 
                     sig { returns(Symbol) }
-                    def type
-                    end
-
-                    sig { params(_: Symbol).returns(Symbol) }
-                    def type=(_)
-                    end
+                    attr_accessor :type
 
                     sig do
                       returns(
@@ -1809,29 +1397,20 @@ module Sam
                         )
                       )
                     end
-                    def cache_control
-                    end
+                    attr_reader :cache_control
 
                     sig do
                       params(
-                        _: T.nilable(
+                        cache_control: T.nilable(
                           T.any(
                             Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::CacheControl,
                             Sam::Util::AnyHash
                           )
                         )
                       )
-                        .returns(
-                          T.nilable(
-                            T.any(
-                              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::CacheControl,
-                              Sam::Util::AnyHash
-                            )
-                          )
-                        )
+                        .void
                     end
-                    def cache_control=(_)
-                    end
+                    attr_writer :cache_control
 
                     sig do
                       returns(
@@ -1846,35 +1425,7 @@ module Sam
                         )
                       )
                     end
-                    def citations
-                    end
-
-                    sig do
-                      params(
-                        _: T.nilable(
-                          T::Array[
-                          T.any(
-                            Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                            Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                            Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                          )
-                          ]
-                        )
-                      )
-                        .returns(
-                          T.nilable(
-                            T::Array[
-                            T.any(
-                              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                            )
-                            ]
-                          )
-                        )
-                    end
-                    def citations=(_)
-                    end
+                    attr_accessor :citations
 
                     sig do
                       params(
@@ -1928,12 +1479,7 @@ module Sam
 
                     class CacheControl < Sam::BaseModel
                       sig { returns(Symbol) }
-                      def type
-                      end
-
-                      sig { params(_: Symbol).returns(Symbol) }
-                      def type=(_)
-                      end
+                      attr_accessor :type
 
                       sig { params(type: Symbol).returns(T.attached_class) }
                       def self.new(type: :ephemeral)
@@ -1960,52 +1506,22 @@ module Sam
 
                       class RequestCharLocationCitation < Sam::BaseModel
                         sig { returns(String) }
-                        def cited_text
-                        end
-
-                        sig { params(_: String).returns(String) }
-                        def cited_text=(_)
-                        end
+                        attr_accessor :cited_text
 
                         sig { returns(Integer) }
-                        def document_index
-                        end
-
-                        sig { params(_: Integer).returns(Integer) }
-                        def document_index=(_)
-                        end
+                        attr_accessor :document_index
 
                         sig { returns(T.nilable(String)) }
-                        def document_title
-                        end
-
-                        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-                        def document_title=(_)
-                        end
+                        attr_accessor :document_title
 
                         sig { returns(Integer) }
-                        def end_char_index
-                        end
-
-                        sig { params(_: Integer).returns(Integer) }
-                        def end_char_index=(_)
-                        end
+                        attr_accessor :end_char_index
 
                         sig { returns(Integer) }
-                        def start_char_index
-                        end
-
-                        sig { params(_: Integer).returns(Integer) }
-                        def start_char_index=(_)
-                        end
+                        attr_accessor :start_char_index
 
                         sig { returns(Symbol) }
-                        def type
-                        end
-
-                        sig { params(_: Symbol).returns(Symbol) }
-                        def type=(_)
-                        end
+                        attr_accessor :type
 
                         sig do
                           params(
@@ -2040,52 +1556,22 @@ module Sam
 
                       class RequestPageLocationCitation < Sam::BaseModel
                         sig { returns(String) }
-                        def cited_text
-                        end
-
-                        sig { params(_: String).returns(String) }
-                        def cited_text=(_)
-                        end
+                        attr_accessor :cited_text
 
                         sig { returns(Integer) }
-                        def document_index
-                        end
-
-                        sig { params(_: Integer).returns(Integer) }
-                        def document_index=(_)
-                        end
+                        attr_accessor :document_index
 
                         sig { returns(T.nilable(String)) }
-                        def document_title
-                        end
-
-                        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-                        def document_title=(_)
-                        end
+                        attr_accessor :document_title
 
                         sig { returns(Integer) }
-                        def end_page_number
-                        end
-
-                        sig { params(_: Integer).returns(Integer) }
-                        def end_page_number=(_)
-                        end
+                        attr_accessor :end_page_number
 
                         sig { returns(Integer) }
-                        def start_page_number
-                        end
-
-                        sig { params(_: Integer).returns(Integer) }
-                        def start_page_number=(_)
-                        end
+                        attr_accessor :start_page_number
 
                         sig { returns(Symbol) }
-                        def type
-                        end
-
-                        sig { params(_: Symbol).returns(Symbol) }
-                        def type=(_)
-                        end
+                        attr_accessor :type
 
                         sig do
                           params(
@@ -2120,52 +1606,22 @@ module Sam
 
                       class RequestContentBlockLocationCitation < Sam::BaseModel
                         sig { returns(String) }
-                        def cited_text
-                        end
-
-                        sig { params(_: String).returns(String) }
-                        def cited_text=(_)
-                        end
+                        attr_accessor :cited_text
 
                         sig { returns(Integer) }
-                        def document_index
-                        end
-
-                        sig { params(_: Integer).returns(Integer) }
-                        def document_index=(_)
-                        end
+                        attr_accessor :document_index
 
                         sig { returns(T.nilable(String)) }
-                        def document_title
-                        end
-
-                        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-                        def document_title=(_)
-                        end
+                        attr_accessor :document_title
 
                         sig { returns(Integer) }
-                        def end_block_index
-                        end
-
-                        sig { params(_: Integer).returns(Integer) }
-                        def end_block_index=(_)
-                        end
+                        attr_accessor :end_block_index
 
                         sig { returns(Integer) }
-                        def start_block_index
-                        end
-
-                        sig { params(_: Integer).returns(Integer) }
-                        def start_block_index=(_)
-                        end
+                        attr_accessor :start_block_index
 
                         sig { returns(Symbol) }
-                        def type
-                        end
-
-                        sig { params(_: Symbol).returns(Symbol) }
-                        def type=(_)
-                        end
+                        attr_accessor :type
 
                         sig do
                           params(
@@ -2227,33 +1683,10 @@ module Sam
                         )
                       )
                     end
-                    def source
-                    end
-
-                    sig do
-                      params(
-                        _: T.any(
-                          Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
-                          Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
-                        )
-                      )
-                        .returns(
-                          T.any(
-                            Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
-                            Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
-                          )
-                        )
-                    end
-                    def source=(_)
-                    end
+                    attr_accessor :source
 
                     sig { returns(Symbol) }
-                    def type
-                    end
-
-                    sig { params(_: Symbol).returns(Symbol) }
-                    def type=(_)
-                    end
+                    attr_accessor :type
 
                     sig do
                       returns(
@@ -2262,29 +1695,20 @@ module Sam
                         )
                       )
                     end
-                    def cache_control
-                    end
+                    attr_reader :cache_control
 
                     sig do
                       params(
-                        _: T.nilable(
+                        cache_control: T.nilable(
                           T.any(
                             Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::CacheControl,
                             Sam::Util::AnyHash
                           )
                         )
                       )
-                        .returns(
-                          T.nilable(
-                            T.any(
-                              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::CacheControl,
-                              Sam::Util::AnyHash
-                            )
-                          )
-                        )
+                        .void
                     end
-                    def cache_control=(_)
-                    end
+                    attr_writer :cache_control
 
                     sig do
                       params(
@@ -2339,39 +1763,17 @@ module Sam
 
                       class Base64ImageSource < Sam::BaseModel
                         sig { returns(String) }
-                        def data
-                        end
-
-                        sig { params(_: String).returns(String) }
-                        def data=(_)
-                        end
+                        attr_accessor :data
 
                         sig do
                           returns(
                             Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
                           )
                         end
-                        def media_type
-                        end
-
-                        sig do
-                          params(
-                            _: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
-                          )
-                            .returns(
-                              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
-                            )
-                        end
-                        def media_type=(_)
-                        end
+                        attr_accessor :media_type
 
                         sig { returns(Symbol) }
-                        def type
-                        end
-
-                        sig { params(_: Symbol).returns(Symbol) }
-                        def type=(_)
-                        end
+                        attr_accessor :type
 
                         sig do
                           params(
@@ -2450,20 +1852,10 @@ module Sam
 
                       class URLImageSource < Sam::BaseModel
                         sig { returns(Symbol) }
-                        def type
-                        end
-
-                        sig { params(_: Symbol).returns(Symbol) }
-                        def type=(_)
-                        end
+                        attr_accessor :type
 
                         sig { returns(String) }
-                        def url
-                        end
-
-                        sig { params(_: String).returns(String) }
-                        def url=(_)
-                        end
+                        attr_accessor :url
 
                         sig { params(url: String, type: Symbol).returns(T.attached_class) }
                         def self.new(url:, type: :url)
@@ -2488,12 +1880,7 @@ module Sam
 
                     class CacheControl < Sam::BaseModel
                       sig { returns(Symbol) }
-                      def type
-                      end
-
-                      sig { params(_: Symbol).returns(Symbol) }
-                      def type=(_)
-                      end
+                      attr_accessor :type
 
                       sig { params(type: Symbol).returns(T.attached_class) }
                       def self.new(type: :ephemeral)
@@ -2549,37 +1936,10 @@ module Sam
                   )
                 )
               end
-              def source
-              end
-
-              sig do
-                params(
-                  _: T.any(
-                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource,
-                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource,
-                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource,
-                    Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource
-                  )
-                )
-                  .returns(
-                    T.any(
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource,
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource,
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource,
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource
-                    )
-                  )
-              end
-              def source=(_)
-              end
+              attr_accessor :source
 
               sig { returns(Symbol) }
-              def type
-              end
-
-              sig { params(_: Symbol).returns(Symbol) }
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig do
                 returns(
@@ -2588,29 +1948,20 @@ module Sam
                   )
                 )
               end
-              def cache_control
-              end
+              attr_reader :cache_control
 
               sig do
                 params(
-                  _: T.nilable(
+                  cache_control: T.nilable(
                     T.any(
                       Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::CacheControl,
                       Sam::Util::AnyHash
                     )
                   )
                 )
-                  .returns(
-                    T.nilable(
-                      T.any(
-                        Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::CacheControl,
-                        Sam::Util::AnyHash
-                      )
-                    )
-                  )
+                  .void
               end
-              def cache_control=(_)
-              end
+              attr_writer :cache_control
 
               sig do
                 returns(
@@ -2619,41 +1970,24 @@ module Sam
                   )
                 )
               end
-              def citations
-              end
+              attr_reader :citations
 
               sig do
                 params(
-                  _: T.any(
+                  citations: T.any(
                     Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Citations,
                     Sam::Util::AnyHash
                   )
                 )
-                  .returns(
-                    T.any(
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Citations,
-                      Sam::Util::AnyHash
-                    )
-                  )
+                  .void
               end
-              def citations=(_)
-              end
+              attr_writer :citations
 
               sig { returns(T.nilable(String)) }
-              def context
-              end
-
-              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-              def context=(_)
-              end
+              attr_accessor :context
 
               sig { returns(T.nilable(String)) }
-              def title
-              end
-
-              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-              def title=(_)
-              end
+              attr_accessor :title
 
               sig do
                 params(
@@ -2723,28 +2057,13 @@ module Sam
 
                 class Base64PdfSource < Sam::BaseModel
                   sig { returns(String) }
-                  def data
-                  end
-
-                  sig { params(_: String).returns(String) }
-                  def data=(_)
-                  end
+                  attr_accessor :data
 
                   sig { returns(Symbol) }
-                  def media_type
-                  end
-
-                  sig { params(_: Symbol).returns(Symbol) }
-                  def media_type=(_)
-                  end
+                  attr_accessor :media_type
 
                   sig { returns(Symbol) }
-                  def type
-                  end
-
-                  sig { params(_: Symbol).returns(Symbol) }
-                  def type=(_)
-                  end
+                  attr_accessor :type
 
                   sig { params(data: String, media_type: Symbol, type: Symbol).returns(T.attached_class) }
                   def self.new(data:, media_type: :"application/pdf", type: :base64)
@@ -2757,28 +2076,13 @@ module Sam
 
                 class PlainTextSource < Sam::BaseModel
                   sig { returns(String) }
-                  def data
-                  end
-
-                  sig { params(_: String).returns(String) }
-                  def data=(_)
-                  end
+                  attr_accessor :data
 
                   sig { returns(Symbol) }
-                  def media_type
-                  end
-
-                  sig { params(_: Symbol).returns(Symbol) }
-                  def media_type=(_)
-                  end
+                  attr_accessor :media_type
 
                   sig { returns(Symbol) }
-                  def type
-                  end
-
-                  sig { params(_: Symbol).returns(Symbol) }
-                  def type=(_)
-                  end
+                  attr_accessor :type
 
                   sig { params(data: String, media_type: Symbol, type: Symbol).returns(T.attached_class) }
                   def self.new(data:, media_type: :"text/plain", type: :text)
@@ -2803,43 +2107,10 @@ module Sam
                       )
                     )
                   end
-                  def content
-                  end
-
-                  sig do
-                    params(
-                      _: T.any(
-                        String,
-                        T::Array[
-                        T.any(
-                          Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
-                          Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
-                        )
-                        ]
-                      )
-                    )
-                      .returns(
-                        T.any(
-                          String,
-                          T::Array[
-                          T.any(
-                            Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
-                            Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
-                          )
-                          ]
-                        )
-                      )
-                  end
-                  def content=(_)
-                  end
+                  attr_accessor :content
 
                   sig { returns(Symbol) }
-                  def type
-                  end
-
-                  sig { params(_: Symbol).returns(Symbol) }
-                  def type=(_)
-                  end
+                  attr_accessor :type
 
                   sig do
                     params(
@@ -2921,20 +2192,10 @@ module Sam
 
                       class RequestTextBlock < Sam::BaseModel
                         sig { returns(String) }
-                        def text
-                        end
-
-                        sig { params(_: String).returns(String) }
-                        def text=(_)
-                        end
+                        attr_accessor :text
 
                         sig { returns(Symbol) }
-                        def type
-                        end
-
-                        sig { params(_: Symbol).returns(Symbol) }
-                        def type=(_)
-                        end
+                        attr_accessor :type
 
                         sig do
                           returns(
@@ -2943,29 +2204,20 @@ module Sam
                             )
                           )
                         end
-                        def cache_control
-                        end
+                        attr_reader :cache_control
 
                         sig do
                           params(
-                            _: T.nilable(
+                            cache_control: T.nilable(
                               T.any(
                                 Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::CacheControl,
                                 Sam::Util::AnyHash
                               )
                             )
                           )
-                            .returns(
-                              T.nilable(
-                                T.any(
-                                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::CacheControl,
-                                  Sam::Util::AnyHash
-                                )
-                              )
-                            )
+                            .void
                         end
-                        def cache_control=(_)
-                        end
+                        attr_writer :cache_control
 
                         sig do
                           returns(
@@ -2980,35 +2232,7 @@ module Sam
                             )
                           )
                         end
-                        def citations
-                        end
-
-                        sig do
-                          params(
-                            _: T.nilable(
-                              T::Array[
-                              T.any(
-                                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                              )
-                              ]
-                            )
-                          )
-                            .returns(
-                              T.nilable(
-                                T::Array[
-                                T.any(
-                                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                                )
-                                ]
-                              )
-                            )
-                        end
-                        def citations=(_)
-                        end
+                        attr_accessor :citations
 
                         sig do
                           params(
@@ -3062,12 +2286,7 @@ module Sam
 
                         class CacheControl < Sam::BaseModel
                           sig { returns(Symbol) }
-                          def type
-                          end
-
-                          sig { params(_: Symbol).returns(Symbol) }
-                          def type=(_)
-                          end
+                          attr_accessor :type
 
                           sig { params(type: Symbol).returns(T.attached_class) }
                           def self.new(type: :ephemeral)
@@ -3094,52 +2313,22 @@ module Sam
 
                           class RequestCharLocationCitation < Sam::BaseModel
                             sig { returns(String) }
-                            def cited_text
-                            end
-
-                            sig { params(_: String).returns(String) }
-                            def cited_text=(_)
-                            end
+                            attr_accessor :cited_text
 
                             sig { returns(Integer) }
-                            def document_index
-                            end
-
-                            sig { params(_: Integer).returns(Integer) }
-                            def document_index=(_)
-                            end
+                            attr_accessor :document_index
 
                             sig { returns(T.nilable(String)) }
-                            def document_title
-                            end
-
-                            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-                            def document_title=(_)
-                            end
+                            attr_accessor :document_title
 
                             sig { returns(Integer) }
-                            def end_char_index
-                            end
-
-                            sig { params(_: Integer).returns(Integer) }
-                            def end_char_index=(_)
-                            end
+                            attr_accessor :end_char_index
 
                             sig { returns(Integer) }
-                            def start_char_index
-                            end
-
-                            sig { params(_: Integer).returns(Integer) }
-                            def start_char_index=(_)
-                            end
+                            attr_accessor :start_char_index
 
                             sig { returns(Symbol) }
-                            def type
-                            end
-
-                            sig { params(_: Symbol).returns(Symbol) }
-                            def type=(_)
-                            end
+                            attr_accessor :type
 
                             sig do
                               params(
@@ -3174,52 +2363,22 @@ module Sam
 
                           class RequestPageLocationCitation < Sam::BaseModel
                             sig { returns(String) }
-                            def cited_text
-                            end
-
-                            sig { params(_: String).returns(String) }
-                            def cited_text=(_)
-                            end
+                            attr_accessor :cited_text
 
                             sig { returns(Integer) }
-                            def document_index
-                            end
-
-                            sig { params(_: Integer).returns(Integer) }
-                            def document_index=(_)
-                            end
+                            attr_accessor :document_index
 
                             sig { returns(T.nilable(String)) }
-                            def document_title
-                            end
-
-                            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-                            def document_title=(_)
-                            end
+                            attr_accessor :document_title
 
                             sig { returns(Integer) }
-                            def end_page_number
-                            end
-
-                            sig { params(_: Integer).returns(Integer) }
-                            def end_page_number=(_)
-                            end
+                            attr_accessor :end_page_number
 
                             sig { returns(Integer) }
-                            def start_page_number
-                            end
-
-                            sig { params(_: Integer).returns(Integer) }
-                            def start_page_number=(_)
-                            end
+                            attr_accessor :start_page_number
 
                             sig { returns(Symbol) }
-                            def type
-                            end
-
-                            sig { params(_: Symbol).returns(Symbol) }
-                            def type=(_)
-                            end
+                            attr_accessor :type
 
                             sig do
                               params(
@@ -3254,52 +2413,22 @@ module Sam
 
                           class RequestContentBlockLocationCitation < Sam::BaseModel
                             sig { returns(String) }
-                            def cited_text
-                            end
-
-                            sig { params(_: String).returns(String) }
-                            def cited_text=(_)
-                            end
+                            attr_accessor :cited_text
 
                             sig { returns(Integer) }
-                            def document_index
-                            end
-
-                            sig { params(_: Integer).returns(Integer) }
-                            def document_index=(_)
-                            end
+                            attr_accessor :document_index
 
                             sig { returns(T.nilable(String)) }
-                            def document_title
-                            end
-
-                            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-                            def document_title=(_)
-                            end
+                            attr_accessor :document_title
 
                             sig { returns(Integer) }
-                            def end_block_index
-                            end
-
-                            sig { params(_: Integer).returns(Integer) }
-                            def end_block_index=(_)
-                            end
+                            attr_accessor :end_block_index
 
                             sig { returns(Integer) }
-                            def start_block_index
-                            end
-
-                            sig { params(_: Integer).returns(Integer) }
-                            def start_block_index=(_)
-                            end
+                            attr_accessor :start_block_index
 
                             sig { returns(Symbol) }
-                            def type
-                            end
-
-                            sig { params(_: Symbol).returns(Symbol) }
-                            def type=(_)
-                            end
+                            attr_accessor :type
 
                             sig do
                               params(
@@ -3361,33 +2490,10 @@ module Sam
                             )
                           )
                         end
-                        def source
-                        end
-
-                        sig do
-                          params(
-                            _: T.any(
-                              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
-                              Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
-                            )
-                          )
-                            .returns(
-                              T.any(
-                                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
-                                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
-                              )
-                            )
-                        end
-                        def source=(_)
-                        end
+                        attr_accessor :source
 
                         sig { returns(Symbol) }
-                        def type
-                        end
-
-                        sig { params(_: Symbol).returns(Symbol) }
-                        def type=(_)
-                        end
+                        attr_accessor :type
 
                         sig do
                           returns(
@@ -3396,29 +2502,20 @@ module Sam
                             )
                           )
                         end
-                        def cache_control
-                        end
+                        attr_reader :cache_control
 
                         sig do
                           params(
-                            _: T.nilable(
+                            cache_control: T.nilable(
                               T.any(
                                 Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::CacheControl,
                                 Sam::Util::AnyHash
                               )
                             )
                           )
-                            .returns(
-                              T.nilable(
-                                T.any(
-                                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::CacheControl,
-                                  Sam::Util::AnyHash
-                                )
-                              )
-                            )
+                            .void
                         end
-                        def cache_control=(_)
-                        end
+                        attr_writer :cache_control
 
                         sig do
                           params(
@@ -3473,39 +2570,17 @@ module Sam
 
                           class Base64ImageSource < Sam::BaseModel
                             sig { returns(String) }
-                            def data
-                            end
-
-                            sig { params(_: String).returns(String) }
-                            def data=(_)
-                            end
+                            attr_accessor :data
 
                             sig do
                               returns(
                                 Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
                               )
                             end
-                            def media_type
-                            end
-
-                            sig do
-                              params(
-                                _: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
-                              )
-                                .returns(
-                                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::OrSymbol
-                                )
-                            end
-                            def media_type=(_)
-                            end
+                            attr_accessor :media_type
 
                             sig { returns(Symbol) }
-                            def type
-                            end
-
-                            sig { params(_: Symbol).returns(Symbol) }
-                            def type=(_)
-                            end
+                            attr_accessor :type
 
                             sig do
                               params(
@@ -3584,20 +2659,10 @@ module Sam
 
                           class URLImageSource < Sam::BaseModel
                             sig { returns(Symbol) }
-                            def type
-                            end
-
-                            sig { params(_: Symbol).returns(Symbol) }
-                            def type=(_)
-                            end
+                            attr_accessor :type
 
                             sig { returns(String) }
-                            def url
-                            end
-
-                            sig { params(_: String).returns(String) }
-                            def url=(_)
-                            end
+                            attr_accessor :url
 
                             sig { params(url: String, type: Symbol).returns(T.attached_class) }
                             def self.new(url:, type: :url)
@@ -3622,12 +2687,7 @@ module Sam
 
                         class CacheControl < Sam::BaseModel
                           sig { returns(Symbol) }
-                          def type
-                          end
-
-                          sig { params(_: Symbol).returns(Symbol) }
-                          def type=(_)
-                          end
+                          attr_accessor :type
 
                           sig { params(type: Symbol).returns(T.attached_class) }
                           def self.new(type: :ephemeral)
@@ -3674,20 +2734,10 @@ module Sam
 
                 class UrlpdfSource < Sam::BaseModel
                   sig { returns(Symbol) }
-                  def type
-                  end
-
-                  sig { params(_: Symbol).returns(Symbol) }
-                  def type=(_)
-                  end
+                  attr_accessor :type
 
                   sig { returns(String) }
-                  def url
-                  end
-
-                  sig { params(_: String).returns(String) }
-                  def url=(_)
-                  end
+                  attr_accessor :url
 
                   sig { params(url: String, type: Symbol).returns(T.attached_class) }
                   def self.new(url:, type: :url)
@@ -3712,12 +2762,7 @@ module Sam
 
               class CacheControl < Sam::BaseModel
                 sig { returns(Symbol) }
-                def type
-                end
-
-                sig { params(_: Symbol).returns(Symbol) }
-                def type=(_)
-                end
+                attr_accessor :type
 
                 sig { params(type: Symbol).returns(T.attached_class) }
                 def self.new(type: :ephemeral)
@@ -3730,12 +2775,10 @@ module Sam
 
               class Citations < Sam::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
-                def enabled
-                end
+                attr_reader :enabled
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def enabled=(_)
-                end
+                sig { params(enabled: T::Boolean).void }
+                attr_writer :enabled
 
                 sig { params(enabled: T::Boolean).returns(T.attached_class) }
                 def self.new(enabled: nil)
@@ -3749,28 +2792,13 @@ module Sam
 
             class RequestThinkingBlock < Sam::BaseModel
               sig { returns(String) }
-              def signature
-              end
-
-              sig { params(_: String).returns(String) }
-              def signature=(_)
-              end
+              attr_accessor :signature
 
               sig { returns(String) }
-              def thinking
-              end
-
-              sig { params(_: String).returns(String) }
-              def thinking=(_)
-              end
+              attr_accessor :thinking
 
               sig { returns(Symbol) }
-              def type
-              end
-
-              sig { params(_: Symbol).returns(Symbol) }
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig { params(signature: String, thinking: String, type: Symbol).returns(T.attached_class) }
               def self.new(signature:, thinking:, type: :thinking)
@@ -3783,20 +2811,10 @@ module Sam
 
             class RequestRedactedThinkingBlock < Sam::BaseModel
               sig { returns(String) }
-              def data
-              end
-
-              sig { params(_: String).returns(String) }
-              def data=(_)
-              end
+              attr_accessor :data
 
               sig { returns(Symbol) }
-              def type
-              end
-
-              sig { params(_: Symbol).returns(Symbol) }
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig { params(data: String, type: Symbol).returns(T.attached_class) }
               def self.new(data:, type: :redacted_thinking)
@@ -3868,12 +2886,7 @@ module Sam
         #   this id to help detect abuse. Do not include any identifying information such as
         #   name, email address, or phone number.
         sig { returns(T.nilable(String)) }
-        def user_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def user_id=(_)
-        end
+        attr_accessor :user_id
 
         # An object describing metadata about the request.
         sig { params(user_id: T.nilable(String)).returns(T.attached_class) }
@@ -3901,35 +2914,21 @@ module Sam
 
         class UnionMember1 < Sam::BaseModel
           sig { returns(String) }
-          def text
-          end
-
-          sig { params(_: String).returns(String) }
-          def text=(_)
-          end
+          attr_accessor :text
 
           sig { returns(Symbol) }
-          def type
-          end
-
-          sig { params(_: Symbol).returns(Symbol) }
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig { returns(T.nilable(Sam::Models::MessageCreateParams::System::UnionMember1::CacheControl)) }
-          def cache_control
-          end
+          attr_reader :cache_control
 
           sig do
             params(
-              _: T.nilable(T.any(Sam::Models::MessageCreateParams::System::UnionMember1::CacheControl, Sam::Util::AnyHash))
+              cache_control: T.nilable(T.any(Sam::Models::MessageCreateParams::System::UnionMember1::CacheControl, Sam::Util::AnyHash))
             )
-              .returns(
-                T.nilable(T.any(Sam::Models::MessageCreateParams::System::UnionMember1::CacheControl, Sam::Util::AnyHash))
-              )
+              .void
           end
-          def cache_control=(_)
-          end
+          attr_writer :cache_control
 
           sig do
             returns(
@@ -3944,35 +2943,7 @@ module Sam
               )
             )
           end
-          def citations
-          end
-
-          sig do
-            params(
-              _: T.nilable(
-                T::Array[
-                T.any(
-                  Sam::Models::MessageCreateParams::System::UnionMember1::Citation::RequestCharLocationCitation,
-                  Sam::Models::MessageCreateParams::System::UnionMember1::Citation::RequestPageLocationCitation,
-                  Sam::Models::MessageCreateParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation
-                )
-                ]
-              )
-            )
-              .returns(
-                T.nilable(
-                  T::Array[
-                  T.any(
-                    Sam::Models::MessageCreateParams::System::UnionMember1::Citation::RequestCharLocationCitation,
-                    Sam::Models::MessageCreateParams::System::UnionMember1::Citation::RequestPageLocationCitation,
-                    Sam::Models::MessageCreateParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation
-                  )
-                  ]
-                )
-              )
-          end
-          def citations=(_)
-          end
+          attr_accessor :citations
 
           sig do
             params(
@@ -4019,12 +2990,7 @@ module Sam
 
           class CacheControl < Sam::BaseModel
             sig { returns(Symbol) }
-            def type
-            end
-
-            sig { params(_: Symbol).returns(Symbol) }
-            def type=(_)
-            end
+            attr_accessor :type
 
             sig { params(type: Symbol).returns(T.attached_class) }
             def self.new(type: :ephemeral)
@@ -4051,52 +3017,22 @@ module Sam
 
             class RequestCharLocationCitation < Sam::BaseModel
               sig { returns(String) }
-              def cited_text
-              end
-
-              sig { params(_: String).returns(String) }
-              def cited_text=(_)
-              end
+              attr_accessor :cited_text
 
               sig { returns(Integer) }
-              def document_index
-              end
-
-              sig { params(_: Integer).returns(Integer) }
-              def document_index=(_)
-              end
+              attr_accessor :document_index
 
               sig { returns(T.nilable(String)) }
-              def document_title
-              end
-
-              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-              def document_title=(_)
-              end
+              attr_accessor :document_title
 
               sig { returns(Integer) }
-              def end_char_index
-              end
-
-              sig { params(_: Integer).returns(Integer) }
-              def end_char_index=(_)
-              end
+              attr_accessor :end_char_index
 
               sig { returns(Integer) }
-              def start_char_index
-              end
-
-              sig { params(_: Integer).returns(Integer) }
-              def start_char_index=(_)
-              end
+              attr_accessor :start_char_index
 
               sig { returns(Symbol) }
-              def type
-              end
-
-              sig { params(_: Symbol).returns(Symbol) }
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig do
                 params(
@@ -4131,52 +3067,22 @@ module Sam
 
             class RequestPageLocationCitation < Sam::BaseModel
               sig { returns(String) }
-              def cited_text
-              end
-
-              sig { params(_: String).returns(String) }
-              def cited_text=(_)
-              end
+              attr_accessor :cited_text
 
               sig { returns(Integer) }
-              def document_index
-              end
-
-              sig { params(_: Integer).returns(Integer) }
-              def document_index=(_)
-              end
+              attr_accessor :document_index
 
               sig { returns(T.nilable(String)) }
-              def document_title
-              end
-
-              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-              def document_title=(_)
-              end
+              attr_accessor :document_title
 
               sig { returns(Integer) }
-              def end_page_number
-              end
-
-              sig { params(_: Integer).returns(Integer) }
-              def end_page_number=(_)
-              end
+              attr_accessor :end_page_number
 
               sig { returns(Integer) }
-              def start_page_number
-              end
-
-              sig { params(_: Integer).returns(Integer) }
-              def start_page_number=(_)
-              end
+              attr_accessor :start_page_number
 
               sig { returns(Symbol) }
-              def type
-              end
-
-              sig { params(_: Symbol).returns(Symbol) }
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig do
                 params(
@@ -4211,52 +3117,22 @@ module Sam
 
             class RequestContentBlockLocationCitation < Sam::BaseModel
               sig { returns(String) }
-              def cited_text
-              end
-
-              sig { params(_: String).returns(String) }
-              def cited_text=(_)
-              end
+              attr_accessor :cited_text
 
               sig { returns(Integer) }
-              def document_index
-              end
-
-              sig { params(_: Integer).returns(Integer) }
-              def document_index=(_)
-              end
+              attr_accessor :document_index
 
               sig { returns(T.nilable(String)) }
-              def document_title
-              end
-
-              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-              def document_title=(_)
-              end
+              attr_accessor :document_title
 
               sig { returns(Integer) }
-              def end_block_index
-              end
-
-              sig { params(_: Integer).returns(Integer) }
-              def end_block_index=(_)
-              end
+              attr_accessor :end_block_index
 
               sig { returns(Integer) }
-              def start_block_index
-              end
-
-              sig { params(_: Integer).returns(Integer) }
-              def start_block_index=(_)
-              end
+              attr_accessor :start_block_index
 
               sig { returns(Symbol) }
-              def type
-              end
-
-              sig { params(_: Symbol).returns(Symbol) }
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig do
                 params(
@@ -4349,20 +3225,10 @@ module Sam
           #   [extended thinking](https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking)
           #   for details.
           sig { returns(Integer) }
-          def budget_tokens
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def budget_tokens=(_)
-          end
+          attr_accessor :budget_tokens
 
           sig { returns(Symbol) }
-          def type
-          end
-
-          sig { params(_: Symbol).returns(Symbol) }
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig { params(budget_tokens: Integer, type: Symbol).returns(T.attached_class) }
           def self.new(budget_tokens:, type: :enabled)
@@ -4375,12 +3241,7 @@ module Sam
 
         class ThinkingConfigDisabled < Sam::BaseModel
           sig { returns(Symbol) }
-          def type
-          end
-
-          sig { params(_: Symbol).returns(Symbol) }
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig { params(type: Symbol).returns(T.attached_class) }
           def self.new(type: :disabled)
@@ -4422,24 +3283,17 @@ module Sam
 
         class ToolChoiceAuto < Sam::BaseModel
           sig { returns(Symbol) }
-          def type
-          end
-
-          sig { params(_: Symbol).returns(Symbol) }
-          def type=(_)
-          end
+          attr_accessor :type
 
           # Whether to disable parallel tool use.
           #
           #   Defaults to `false`. If set to `true`, the model will output at most one tool
           #   use.
           sig { returns(T.nilable(T::Boolean)) }
-          def disable_parallel_tool_use
-          end
+          attr_reader :disable_parallel_tool_use
 
-          sig { params(_: T::Boolean).returns(T::Boolean) }
-          def disable_parallel_tool_use=(_)
-          end
+          sig { params(disable_parallel_tool_use: T::Boolean).void }
+          attr_writer :disable_parallel_tool_use
 
           # The model will automatically decide whether to use tools.
           sig { params(disable_parallel_tool_use: T::Boolean, type: Symbol).returns(T.attached_class) }
@@ -4453,24 +3307,17 @@ module Sam
 
         class ToolChoiceAny < Sam::BaseModel
           sig { returns(Symbol) }
-          def type
-          end
-
-          sig { params(_: Symbol).returns(Symbol) }
-          def type=(_)
-          end
+          attr_accessor :type
 
           # Whether to disable parallel tool use.
           #
           #   Defaults to `false`. If set to `true`, the model will output exactly one tool
           #   use.
           sig { returns(T.nilable(T::Boolean)) }
-          def disable_parallel_tool_use
-          end
+          attr_reader :disable_parallel_tool_use
 
-          sig { params(_: T::Boolean).returns(T::Boolean) }
-          def disable_parallel_tool_use=(_)
-          end
+          sig { params(disable_parallel_tool_use: T::Boolean).void }
+          attr_writer :disable_parallel_tool_use
 
           # The model will use any available tools.
           sig { params(disable_parallel_tool_use: T::Boolean, type: Symbol).returns(T.attached_class) }
@@ -4485,32 +3332,20 @@ module Sam
         class ToolChoiceTool < Sam::BaseModel
           # The name of the tool to use.
           sig { returns(String) }
-          def name
-          end
-
-          sig { params(_: String).returns(String) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           sig { returns(Symbol) }
-          def type
-          end
-
-          sig { params(_: Symbol).returns(Symbol) }
-          def type=(_)
-          end
+          attr_accessor :type
 
           # Whether to disable parallel tool use.
           #
           #   Defaults to `false`. If set to `true`, the model will output exactly one tool
           #   use.
           sig { returns(T.nilable(T::Boolean)) }
-          def disable_parallel_tool_use
-          end
+          attr_reader :disable_parallel_tool_use
 
-          sig { params(_: T::Boolean).returns(T::Boolean) }
-          def disable_parallel_tool_use=(_)
-          end
+          sig { params(disable_parallel_tool_use: T::Boolean).void }
+          attr_writer :disable_parallel_tool_use
 
           # The model will use the specified tool with `tool_choice.name`.
           sig do
@@ -4530,12 +3365,7 @@ module Sam
 
         class ToolChoiceNone < Sam::BaseModel
           sig { returns(Symbol) }
-          def type
-          end
-
-          sig { params(_: Symbol).returns(Symbol) }
-          def type=(_)
-          end
+          attr_accessor :type
 
           # The model will not be allowed to use tools.
           sig { params(type: Symbol).returns(T.attached_class) }
@@ -4579,39 +3409,30 @@ module Sam
           #   This defines the shape of the `input` that your tool accepts and that the model
           #   will produce.
           sig { returns(Sam::Models::MessageCreateParams::Tool::Tool::InputSchema) }
-          def input_schema
-          end
+          attr_reader :input_schema
 
           sig do
-            params(_: T.any(Sam::Models::MessageCreateParams::Tool::Tool::InputSchema, Sam::Util::AnyHash))
-              .returns(T.any(Sam::Models::MessageCreateParams::Tool::Tool::InputSchema, Sam::Util::AnyHash))
+            params(input_schema: T.any(Sam::Models::MessageCreateParams::Tool::Tool::InputSchema, Sam::Util::AnyHash))
+              .void
           end
-          def input_schema=(_)
-          end
+          attr_writer :input_schema
 
           # Name of the tool.
           #
           #   This is how the tool will be called by the model and in tool_use blocks.
           sig { returns(String) }
-          def name
-          end
-
-          sig { params(_: String).returns(String) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           sig { returns(T.nilable(Sam::Models::MessageCreateParams::Tool::Tool::CacheControl)) }
-          def cache_control
-          end
+          attr_reader :cache_control
 
           sig do
             params(
-              _: T.nilable(T.any(Sam::Models::MessageCreateParams::Tool::Tool::CacheControl, Sam::Util::AnyHash))
+              cache_control: T.nilable(T.any(Sam::Models::MessageCreateParams::Tool::Tool::CacheControl, Sam::Util::AnyHash))
             )
-              .returns(T.nilable(T.any(Sam::Models::MessageCreateParams::Tool::Tool::CacheControl, Sam::Util::AnyHash)))
+              .void
           end
-          def cache_control=(_)
-          end
+          attr_writer :cache_control
 
           # Description of what this tool does.
           #
@@ -4620,12 +3441,10 @@ module Sam
           #   perform. You can use natural language descriptions to reinforce important
           #   aspects of the tool input JSON schema.
           sig { returns(T.nilable(String)) }
-          def description
-          end
+          attr_reader :description
 
-          sig { params(_: String).returns(String) }
-          def description=(_)
-          end
+          sig { params(description: String).void }
+          attr_writer :description
 
           sig do
             params(
@@ -4655,20 +3474,10 @@ module Sam
 
           class InputSchema < Sam::BaseModel
             sig { returns(Symbol) }
-            def type
-            end
-
-            sig { params(_: Symbol).returns(Symbol) }
-            def type=(_)
-            end
+            attr_accessor :type
 
             sig { returns(T.nilable(T.anything)) }
-            def properties
-            end
-
-            sig { params(_: T.nilable(T.anything)).returns(T.nilable(T.anything)) }
-            def properties=(_)
-            end
+            attr_accessor :properties
 
             # [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input.
             #
@@ -4685,12 +3494,7 @@ module Sam
 
           class CacheControl < Sam::BaseModel
             sig { returns(Symbol) }
-            def type
-            end
-
-            sig { params(_: Symbol).returns(Symbol) }
-            def type=(_)
-            end
+            attr_accessor :type
 
             sig { params(type: Symbol).returns(T.attached_class) }
             def self.new(type: :ephemeral)
@@ -4707,39 +3511,23 @@ module Sam
           #
           #   This is how the tool will be called by the model and in tool_use blocks.
           sig { returns(Symbol) }
-          def name
-          end
-
-          sig { params(_: Symbol).returns(Symbol) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           sig { returns(Symbol) }
-          def type
-          end
-
-          sig { params(_: Symbol).returns(Symbol) }
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig { returns(T.nilable(Sam::Models::MessageCreateParams::Tool::BashTool20250124::CacheControl)) }
-          def cache_control
-          end
+          attr_reader :cache_control
 
           sig do
             params(
-              _: T.nilable(
+              cache_control: T.nilable(
                 T.any(Sam::Models::MessageCreateParams::Tool::BashTool20250124::CacheControl, Sam::Util::AnyHash)
               )
             )
-              .returns(
-                T.nilable(
-                  T.any(Sam::Models::MessageCreateParams::Tool::BashTool20250124::CacheControl, Sam::Util::AnyHash)
-                )
-              )
+              .void
           end
-          def cache_control=(_)
-          end
+          attr_writer :cache_control
 
           sig do
             params(
@@ -4769,12 +3557,7 @@ module Sam
 
           class CacheControl < Sam::BaseModel
             sig { returns(Symbol) }
-            def type
-            end
-
-            sig { params(_: Symbol).returns(Symbol) }
-            def type=(_)
-            end
+            attr_accessor :type
 
             sig { params(type: Symbol).returns(T.attached_class) }
             def self.new(type: :ephemeral)
@@ -4791,39 +3574,23 @@ module Sam
           #
           #   This is how the tool will be called by the model and in tool_use blocks.
           sig { returns(Symbol) }
-          def name
-          end
-
-          sig { params(_: Symbol).returns(Symbol) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           sig { returns(Symbol) }
-          def type
-          end
-
-          sig { params(_: Symbol).returns(Symbol) }
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig { returns(T.nilable(Sam::Models::MessageCreateParams::Tool::TextEditor20250124::CacheControl)) }
-          def cache_control
-          end
+          attr_reader :cache_control
 
           sig do
             params(
-              _: T.nilable(
+              cache_control: T.nilable(
                 T.any(Sam::Models::MessageCreateParams::Tool::TextEditor20250124::CacheControl, Sam::Util::AnyHash)
               )
             )
-              .returns(
-                T.nilable(
-                  T.any(Sam::Models::MessageCreateParams::Tool::TextEditor20250124::CacheControl, Sam::Util::AnyHash)
-                )
-              )
+              .void
           end
-          def cache_control=(_)
-          end
+          attr_writer :cache_control
 
           sig do
             params(
@@ -4853,12 +3620,7 @@ module Sam
 
           class CacheControl < Sam::BaseModel
             sig { returns(Symbol) }
-            def type
-            end
-
-            sig { params(_: Symbol).returns(Symbol) }
-            def type=(_)
-            end
+            attr_accessor :type
 
             sig { params(type: Symbol).returns(T.attached_class) }
             def self.new(type: :ephemeral)
