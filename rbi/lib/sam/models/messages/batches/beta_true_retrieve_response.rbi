@@ -144,15 +144,13 @@ module Sam
             ENDED =
               T.let(:ended, Sam::Models::Messages::Batches::BetaTrueRetrieveResponse::ProcessingStatus::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Sam::Models::Messages::Batches::BetaTrueRetrieveResponse::ProcessingStatus::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Sam::Models::Messages::Batches::BetaTrueRetrieveResponse::ProcessingStatus::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
 

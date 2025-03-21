@@ -165,18 +165,6 @@ module Sam
       module Content
         extend Sam::Union
 
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Sam::Models::MessageCreateResponse::Content::ResponseTextBlock,
-                Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock,
-                Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock,
-                Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock
-              )
-            }
-          end
-
         class ResponseTextBlock < Sam::BaseModel
           # Citations supporting the text block.
           #
@@ -247,17 +235,6 @@ module Sam
 
           module Citation
             extend Sam::Union
-
-            Variants =
-              type_template(:out) do
-                {
-                  fixed: T.any(
-                    Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
-                    Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
-                    Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
-                  )
-                }
-              end
 
             class ResponseCharLocationCitation < Sam::BaseModel
               sig { returns(String) }
@@ -416,15 +393,13 @@ module Sam
               end
             end
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    [Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation]
-                  )
-              end
-              def variants
-              end
+            sig do
+              override
+                .returns(
+                  [Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation]
+                )
+            end
+            def self.variants
             end
           end
         end
@@ -486,15 +461,13 @@ module Sam
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Sam::Models::MessageCreateResponse::Content::ResponseTextBlock, Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock, Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock, Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Sam::Models::MessageCreateResponse::Content::ResponseTextBlock, Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock, Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock, Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock]
+            )
+        end
+        def self.variants
         end
       end
 
@@ -520,10 +493,8 @@ module Sam
         STOP_SEQUENCE = T.let(:stop_sequence, Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol)
         TOOL_USE = T.let(:tool_use, Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol]) }
+        def self.values
         end
       end
 
