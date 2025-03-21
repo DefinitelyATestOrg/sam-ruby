@@ -696,10 +696,8 @@ module Sam
                 end
 
                 # @!parse
-                #   class << self
-                #     # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation)]
-                #     def variants; end
-                #   end
+                #   # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation)]
+                #   def self.variants; end
               end
             end
 
@@ -778,11 +776,9 @@ module Sam
 
                     finalize!
 
-                    class << self
-                      # @!parse
-                      #   # @return [Array<Symbol>]
-                      #   def values; end
-                    end
+                    # @!parse
+                    #   # @return [Array<Symbol>]
+                    #   def self.values; end
                   end
                 end
 
@@ -807,10 +803,8 @@ module Sam
                 end
 
                 # @!parse
-                #   class << self
-                #     # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource)]
-                #     def variants; end
-                #   end
+                #   # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource)]
+                #   def self.variants; end
               end
 
               class CacheControl < Sam::BaseModel
@@ -1197,10 +1191,8 @@ module Sam
                       end
 
                       # @!parse
-                      #   class << self
-                      #     # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation)]
-                      #     def variants; end
-                      #   end
+                      #   # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation)]
+                      #   def self.variants; end
                     end
                   end
 
@@ -1279,11 +1271,9 @@ module Sam
 
                           finalize!
 
-                          class << self
-                            # @!parse
-                            #   # @return [Array<Symbol>]
-                            #   def values; end
-                          end
+                          # @!parse
+                          #   # @return [Array<Symbol>]
+                          #   def self.values; end
                         end
                       end
 
@@ -1308,10 +1298,8 @@ module Sam
                       end
 
                       # @!parse
-                      #   class << self
-                      #     # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource)]
-                      #     def variants; end
-                      #   end
+                      #   # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource)]
+                      #   def self.variants; end
                     end
 
                     class CacheControl < Sam::BaseModel
@@ -1330,17 +1318,13 @@ module Sam
                   end
 
                   # @!parse
-                  #   class << self
-                  #     # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock)]
-                  #     def variants; end
-                  #   end
+                  #   # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock)]
+                  #   def self.variants; end
                 end
 
                 # @!parse
-                #   class << self
-                #     # @return [Array(String, Array<Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock>)]
-                #     def variants; end
-                #   end
+                #   # @return [Array(String, Array<Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock>)]
+                #   def self.variants; end
               end
             end
 
@@ -1737,10 +1721,8 @@ module Sam
                           end
 
                           # @!parse
-                          #   class << self
-                          #     # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation)]
-                          #     def variants; end
-                          #   end
+                          #   # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation)]
+                          #   def self.variants; end
                         end
                       end
 
@@ -1819,11 +1801,9 @@ module Sam
 
                               finalize!
 
-                              class << self
-                                # @!parse
-                                #   # @return [Array<Symbol>]
-                                #   def values; end
-                              end
+                              # @!parse
+                              #   # @return [Array<Symbol>]
+                              #   def self.values; end
                             end
                           end
 
@@ -1848,10 +1828,8 @@ module Sam
                           end
 
                           # @!parse
-                          #   class << self
-                          #     # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource)]
-                          #     def variants; end
-                          #   end
+                          #   # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource)]
+                          #   def self.variants; end
                         end
 
                         class CacheControl < Sam::BaseModel
@@ -1870,17 +1848,13 @@ module Sam
                       end
 
                       # @!parse
-                      #   class << self
-                      #     # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock)]
-                      #     def variants; end
-                      #   end
+                      #   # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock)]
+                      #   def self.variants; end
                     end
 
                     # @!parse
-                    #   class << self
-                    #     # @return [Array(String, Array<Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock>)]
-                    #     def variants; end
-                    #   end
+                    #   # @return [Array(String, Array<Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock>)]
+                    #   def self.variants; end
                   end
                 end
 
@@ -1905,10 +1879,8 @@ module Sam
                 end
 
                 # @!parse
-                #   class << self
-                #     # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource)]
-                #     def variants; end
-                #   end
+                #   # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource)]
+                #   def self.variants; end
               end
 
               class CacheControl < Sam::BaseModel
@@ -1991,17 +1963,13 @@ module Sam
             end
 
             # @!parse
-            #   class << self
-            #     # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolUseBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestThinkingBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock)]
-            #     def variants; end
-            #   end
+            #   # @return [Array(Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolUseBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestThinkingBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock)]
+            #   def self.variants; end
           end
 
           # @!parse
-          #   class << self
-          #     # @return [Array(String, Array<Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolUseBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestThinkingBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock>)]
-          #     def variants; end
-          #   end
+          #   # @return [Array(String, Array<Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolUseBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestThinkingBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock>)]
+          #   def self.variants; end
         end
 
         module Role
@@ -2012,11 +1980,9 @@ module Sam
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
 
@@ -2281,18 +2247,14 @@ module Sam
             end
 
             # @!parse
-            #   class << self
-            #     # @return [Array(Sam::Models::MessageCreateParams::System::UnionMember1::Citation::RequestCharLocationCitation, Sam::Models::MessageCreateParams::System::UnionMember1::Citation::RequestPageLocationCitation, Sam::Models::MessageCreateParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation)]
-            #     def variants; end
-            #   end
+            #   # @return [Array(Sam::Models::MessageCreateParams::System::UnionMember1::Citation::RequestCharLocationCitation, Sam::Models::MessageCreateParams::System::UnionMember1::Citation::RequestPageLocationCitation, Sam::Models::MessageCreateParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation)]
+            #   def self.variants; end
           end
         end
 
         # @!parse
-        #   class << self
-        #     # @return [Array(String, Array<Sam::Models::MessageCreateParams::System::UnionMember1>)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(String, Array<Sam::Models::MessageCreateParams::System::UnionMember1>)]
+        #   def self.variants; end
       end
 
       # Configuration for enabling Claude's extended thinking.
@@ -2357,10 +2319,8 @@ module Sam
         end
 
         # @!parse
-        #   class << self
-        #     # @return [Array(Sam::Models::MessageCreateParams::Thinking::ThinkingConfigEnabled, Sam::Models::MessageCreateParams::Thinking::ThinkingConfigDisabled)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(Sam::Models::MessageCreateParams::Thinking::ThinkingConfigEnabled, Sam::Models::MessageCreateParams::Thinking::ThinkingConfigDisabled)]
+        #   def self.variants; end
       end
 
       # How the model should use the provided tools. The model can use a specific tool,
@@ -2496,10 +2456,8 @@ module Sam
         end
 
         # @!parse
-        #   class << self
-        #     # @return [Array(Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAuto, Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAny, Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceTool, Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceNone)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAuto, Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAny, Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceTool, Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceNone)]
+        #   def self.variants; end
       end
 
       module Tool
@@ -2690,10 +2648,8 @@ module Sam
         end
 
         # @!parse
-        #   class << self
-        #     # @return [Array(Sam::Models::MessageCreateParams::Tool::Tool, Sam::Models::MessageCreateParams::Tool::BashTool20250124, Sam::Models::MessageCreateParams::Tool::TextEditor20250124)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(Sam::Models::MessageCreateParams::Tool::Tool, Sam::Models::MessageCreateParams::Tool::BashTool20250124, Sam::Models::MessageCreateParams::Tool::TextEditor20250124)]
+        #   def self.variants; end
       end
     end
   end

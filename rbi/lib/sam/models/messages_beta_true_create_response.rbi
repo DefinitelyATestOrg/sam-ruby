@@ -165,18 +165,6 @@ module Sam
       module Content
         extend Sam::Union
 
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock,
-                Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseToolUseBlock,
-                Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseThinkingBlock,
-                Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseRedactedThinkingBlock
-              )
-            }
-          end
-
         class BetaResponseTextBlock < Sam::BaseModel
           # Citations supporting the text block.
           #
@@ -247,17 +235,6 @@ module Sam
 
           module Citation
             extend Sam::Union
-
-            Variants =
-              type_template(:out) do
-                {
-                  fixed: T.any(
-                    Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation,
-                    Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation,
-                    Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
-                  )
-                }
-              end
 
             class BetaResponseCharLocationCitation < Sam::BaseModel
               sig { returns(String) }
@@ -416,15 +393,13 @@ module Sam
               end
             end
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    [Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation]
-                  )
-              end
-              def variants
-              end
+            sig do
+              override
+                .returns(
+                  [Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation]
+                )
+            end
+            def self.variants
             end
           end
         end
@@ -486,15 +461,13 @@ module Sam
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseToolUseBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseThinkingBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseRedactedThinkingBlock]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseToolUseBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseThinkingBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseRedactedThinkingBlock]
+            )
+        end
+        def self.variants
         end
       end
 
@@ -522,10 +495,8 @@ module Sam
           T.let(:stop_sequence, Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol)
         TOOL_USE = T.let(:tool_use, Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol]) }
+        def self.values
         end
       end
 

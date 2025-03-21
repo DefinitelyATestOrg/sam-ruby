@@ -71,18 +71,6 @@ module Sam
         module Result
           extend Sam::Union
 
-          Variants =
-            type_template(:out) do
-              {
-                fixed: T.any(
-                  Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult,
-                  Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult,
-                  Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaCanceledResult,
-                  Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaExpiredResult
-                )
-              }
-            end
-
           class BetaSucceededResult < Sam::BaseModel
             sig { returns(Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message) }
             attr_reader :message
@@ -307,18 +295,6 @@ module Sam
               module Content
                 extend Sam::Union
 
-                Variants =
-                  type_template(:out) do
-                    {
-                      fixed: T.any(
-                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock,
-                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock,
-                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock,
-                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock
-                      )
-                    }
-                  end
-
                 class BetaResponseTextBlock < Sam::BaseModel
                   # Citations supporting the text block.
                   #
@@ -389,17 +365,6 @@ module Sam
 
                   module Citation
                     extend Sam::Union
-
-                    Variants =
-                      type_template(:out) do
-                        {
-                          fixed: T.any(
-                            Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation,
-                            Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation,
-                            Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
-                          )
-                        }
-                      end
 
                     class BetaResponseCharLocationCitation < Sam::BaseModel
                       sig { returns(String) }
@@ -558,15 +523,13 @@ module Sam
                       end
                     end
 
-                    class << self
-                      sig do
-                        override
-                          .returns(
-                            [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation]
-                          )
-                      end
-                      def variants
-                      end
+                    sig do
+                      override
+                        .returns(
+                          [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation]
+                        )
+                    end
+                    def self.variants
                     end
                   end
                 end
@@ -635,15 +598,13 @@ module Sam
                   end
                 end
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock]
-                      )
-                  end
-                  def variants
-                  end
+                sig do
+                  override
+                    .returns(
+                      [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock]
+                    )
+                end
+                def self.variants
                 end
               end
 
@@ -694,17 +655,15 @@ module Sam
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
 
@@ -876,23 +835,6 @@ module Sam
               module Error
                 extend Sam::Union
 
-                Variants =
-                  type_template(:out) do
-                    {
-                      fixed: T.any(
-                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaInvalidRequestError,
-                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAuthenticationError,
-                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaBillingError,
-                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaPermissionError,
-                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaNotFoundError,
-                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaRateLimitError,
-                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaGatewayTimeoutError,
-                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAPIError,
-                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaOverloadedError
-                      )
-                    }
-                  end
-
                 class BetaInvalidRequestError < Sam::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
@@ -1037,15 +979,13 @@ module Sam
                   end
                 end
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaInvalidRequestError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAuthenticationError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaBillingError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaPermissionError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaNotFoundError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaRateLimitError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaGatewayTimeoutError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAPIError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaOverloadedError]
-                      )
-                  end
-                  def variants
-                  end
+                sig do
+                  override
+                    .returns(
+                      [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaInvalidRequestError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAuthenticationError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaBillingError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaPermissionError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaNotFoundError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaRateLimitError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaGatewayTimeoutError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAPIError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaOverloadedError]
+                    )
+                end
+                def self.variants
                 end
               end
             end
@@ -1077,15 +1017,13 @@ module Sam
             end
           end
 
-          class << self
-            sig do
-              override
-                .returns(
-                  [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaCanceledResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaExpiredResult]
-                )
-            end
-            def variants
-            end
+          sig do
+            override
+              .returns(
+                [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaCanceledResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaExpiredResult]
+              )
+          end
+          def self.variants
           end
         end
       end

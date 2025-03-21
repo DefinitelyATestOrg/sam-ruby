@@ -474,26 +474,6 @@ module Sam
         module Content
           extend Sam::Union
 
-          Variants =
-            type_template(:out) do
-              {
-                fixed: T.any(
-                  String,
-                  T::Array[
-                  T.any(
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock,
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock,
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock,
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock,
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock,
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestThinkingBlock,
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
-                  )
-                  ]
-                )
-              }
-            end
-
           UnionMember1Array =
             T.let(
               Sam::ArrayOf[union: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1],
@@ -502,21 +482,6 @@ module Sam
 
           module UnionMember1
             extend Sam::Union
-
-            Variants =
-              type_template(:out) do
-                {
-                  fixed: T.any(
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock,
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock,
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock,
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock,
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock,
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestThinkingBlock,
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
-                  )
-                }
-              end
 
             class RequestTextBlock < Sam::BaseModel
               sig { returns(String) }
@@ -627,17 +592,6 @@ module Sam
 
               module Citation
                 extend Sam::Union
-
-                Variants =
-                  type_template(:out) do
-                    {
-                      fixed: T.any(
-                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                      )
-                    }
-                  end
 
                 class RequestCharLocationCitation < Sam::BaseModel
                   sig { returns(String) }
@@ -796,15 +750,13 @@ module Sam
                   end
                 end
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]
-                      )
-                  end
-                  def variants
-                  end
+                sig do
+                  override
+                    .returns(
+                      [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]
+                    )
+                end
+                def self.variants
                 end
               end
             end
@@ -886,16 +838,6 @@ module Sam
               module Source
                 extend Sam::Union
 
-                Variants =
-                  type_template(:out) do
-                    {
-                      fixed: T.any(
-                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
-                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
-                      )
-                    }
-                  end
-
                 class Base64ImageSource < Sam::BaseModel
                   sig { returns(String) }
                   attr_accessor :data
@@ -970,17 +912,15 @@ module Sam
                         Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                       )
 
-                    class << self
-                      sig do
-                        override
-                          .returns(
-                            T::Array[
-                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
-                            ]
-                          )
-                      end
-                      def values
-                      end
+                    sig do
+                      override
+                        .returns(
+                          T::Array[
+                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
+                          ]
+                        )
+                    end
+                    def self.values
                     end
                   end
                 end
@@ -1001,15 +941,13 @@ module Sam
                   end
                 end
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
-                      )
-                  end
-                  def variants
-                  end
+                sig do
+                  override
+                    .returns(
+                      [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
+                    )
+                end
+                def self.variants
                 end
               end
 
@@ -1248,21 +1186,6 @@ module Sam
               module Content
                 extend Sam::Union
 
-                Variants =
-                  type_template(:out) do
-                    {
-                      fixed: T.any(
-                        String,
-                        T::Array[
-                        T.any(
-                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
-                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
-                        )
-                        ]
-                      )
-                    }
-                  end
-
                 UnionMember1Array =
                   T.let(
                     Sam::ArrayOf[
@@ -1273,16 +1196,6 @@ module Sam
 
                 module UnionMember1
                   extend Sam::Union
-
-                  Variants =
-                    type_template(:out) do
-                      {
-                        fixed: T.any(
-                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
-                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
-                        )
-                      }
-                    end
 
                   class RequestTextBlock < Sam::BaseModel
                     sig { returns(String) }
@@ -1393,17 +1306,6 @@ module Sam
 
                     module Citation
                       extend Sam::Union
-
-                      Variants =
-                        type_template(:out) do
-                          {
-                            fixed: T.any(
-                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                            )
-                          }
-                        end
 
                       class RequestCharLocationCitation < Sam::BaseModel
                         sig { returns(String) }
@@ -1562,15 +1464,13 @@ module Sam
                         end
                       end
 
-                      class << self
-                        sig do
-                          override
-                            .returns(
-                              [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]
-                            )
-                        end
-                        def variants
-                        end
+                      sig do
+                        override
+                          .returns(
+                            [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]
+                          )
+                      end
+                      def self.variants
                       end
                     end
                   end
@@ -1652,16 +1552,6 @@ module Sam
                     module Source
                       extend Sam::Union
 
-                      Variants =
-                        type_template(:out) do
-                          {
-                            fixed: T.any(
-                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
-                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
-                            )
-                          }
-                        end
-
                       class Base64ImageSource < Sam::BaseModel
                         sig { returns(String) }
                         attr_accessor :data
@@ -1736,17 +1626,15 @@ module Sam
                               Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                             )
 
-                          class << self
-                            sig do
-                              override
-                                .returns(
-                                  T::Array[
-                                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
-                                  ]
-                                )
-                            end
-                            def values
-                            end
+                          sig do
+                            override
+                              .returns(
+                                T::Array[
+                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
+                                ]
+                              )
+                          end
+                          def self.values
                           end
                         end
                       end
@@ -1767,15 +1655,13 @@ module Sam
                         end
                       end
 
-                      class << self
-                        sig do
-                          override
-                            .returns(
-                              [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
-                            )
-                        end
-                        def variants
-                        end
+                      sig do
+                        override
+                          .returns(
+                            [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
+                          )
+                      end
+                      def self.variants
                       end
                     end
 
@@ -1793,35 +1679,31 @@ module Sam
                     end
                   end
 
-                  class << self
-                    sig do
-                      override
-                        .returns(
-                          [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock]
-                        )
-                    end
-                    def variants
-                    end
-                  end
-                end
-
-                class << self
                   sig do
                     override
                       .returns(
-                        [
-                          String,
-                          T::Array[
-                                                  T.any(
-                                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
-                                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
-                                                  )
-                                                  ]
-                        ]
+                        [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock]
                       )
                   end
-                  def variants
+                  def self.variants
                   end
+                end
+
+                sig do
+                  override
+                    .returns(
+                      [
+                        String,
+                        T::Array[
+                                              T.any(
+                                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
+                                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
+                                              )
+                                              ]
+                      ]
+                    )
+                end
+                def self.variants
                 end
               end
             end
@@ -1944,18 +1826,6 @@ module Sam
               module Source
                 extend Sam::Union
 
-                Variants =
-                  type_template(:out) do
-                    {
-                      fixed: T.any(
-                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource,
-                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource,
-                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource,
-                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource
-                      )
-                    }
-                  end
-
                 class Base64PdfSource < Sam::BaseModel
                   sig { returns(String) }
                   attr_accessor :data
@@ -2055,21 +1925,6 @@ module Sam
                   module Content
                     extend Sam::Union
 
-                    Variants =
-                      type_template(:out) do
-                        {
-                          fixed: T.any(
-                            String,
-                            T::Array[
-                            T.any(
-                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
-                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
-                            )
-                            ]
-                          )
-                        }
-                      end
-
                     UnionMember1Array =
                       T.let(
                         Sam::ArrayOf[
@@ -2080,16 +1935,6 @@ module Sam
 
                     module UnionMember1
                       extend Sam::Union
-
-                      Variants =
-                        type_template(:out) do
-                          {
-                            fixed: T.any(
-                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
-                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
-                            )
-                          }
-                        end
 
                       class RequestTextBlock < Sam::BaseModel
                         sig { returns(String) }
@@ -2200,17 +2045,6 @@ module Sam
 
                         module Citation
                           extend Sam::Union
-
-                          Variants =
-                            type_template(:out) do
-                              {
-                                fixed: T.any(
-                                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                                )
-                              }
-                            end
 
                           class RequestCharLocationCitation < Sam::BaseModel
                             sig { returns(String) }
@@ -2369,15 +2203,13 @@ module Sam
                             end
                           end
 
-                          class << self
-                            sig do
-                              override
-                                .returns(
-                                  [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]
-                                )
-                            end
-                            def variants
-                            end
+                          sig do
+                            override
+                              .returns(
+                                [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]
+                              )
+                          end
+                          def self.variants
                           end
                         end
                       end
@@ -2459,16 +2291,6 @@ module Sam
                         module Source
                           extend Sam::Union
 
-                          Variants =
-                            type_template(:out) do
-                              {
-                                fixed: T.any(
-                                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
-                                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
-                                )
-                              }
-                            end
-
                           class Base64ImageSource < Sam::BaseModel
                             sig { returns(String) }
                             attr_accessor :data
@@ -2543,17 +2365,15 @@ module Sam
                                   Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                                 )
 
-                              class << self
-                                sig do
-                                  override
-                                    .returns(
-                                      T::Array[
-                                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
-                                      ]
-                                    )
-                                end
-                                def values
-                                end
+                              sig do
+                                override
+                                  .returns(
+                                    T::Array[
+                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
+                                    ]
+                                  )
+                              end
+                              def self.values
                               end
                             end
                           end
@@ -2574,15 +2394,13 @@ module Sam
                             end
                           end
 
-                          class << self
-                            sig do
-                              override
-                                .returns(
-                                  [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
-                                )
-                            end
-                            def variants
-                            end
+                          sig do
+                            override
+                              .returns(
+                                [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
+                              )
+                          end
+                          def self.variants
                           end
                         end
 
@@ -2600,35 +2418,31 @@ module Sam
                         end
                       end
 
-                      class << self
-                        sig do
-                          override
-                            .returns(
-                              [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock]
-                            )
-                        end
-                        def variants
-                        end
-                      end
-                    end
-
-                    class << self
                       sig do
                         override
                           .returns(
-                            [
-                              String,
-                              T::Array[
-                                                          T.any(
-                                                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
-                                                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
-                                                          )
-                                                          ]
-                            ]
+                            [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock]
                           )
                       end
-                      def variants
+                      def self.variants
                       end
+                    end
+
+                    sig do
+                      override
+                        .returns(
+                          [
+                            String,
+                            T::Array[
+                                                      T.any(
+                                                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
+                                                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
+                                                      )
+                                                      ]
+                          ]
+                        )
+                    end
+                    def self.variants
                     end
                   end
                 end
@@ -2649,15 +2463,13 @@ module Sam
                   end
                 end
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource]
-                      )
-                  end
-                  def variants
-                  end
+                sig do
+                  override
+                    .returns(
+                      [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource]
+                    )
+                end
+                def self.variants
                 end
               end
 
@@ -2726,40 +2538,36 @@ module Sam
               end
             end
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestThinkingBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock]
-                  )
-              end
-              def variants
-              end
-            end
-          end
-
-          class << self
             sig do
               override
                 .returns(
-                  [
-                    String,
-                    T::Array[
-                                      T.any(
-                                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock,
-                                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock,
-                                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock,
-                                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock,
-                                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock,
-                                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestThinkingBlock,
-                                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
-                                      )
-                                      ]
-                  ]
+                  [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestThinkingBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock]
                 )
             end
-            def variants
+            def self.variants
             end
+          end
+
+          sig do
+            override
+              .returns(
+                [
+                  String,
+                  T::Array[
+                                  T.any(
+                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock,
+                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock,
+                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock,
+                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock,
+                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock,
+                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestThinkingBlock,
+                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
+                                  )
+                                  ]
+                ]
+              )
+          end
+          def self.variants
           end
         end
 
@@ -2773,10 +2581,8 @@ module Sam
           USER = T.let(:user, Sam::Models::MessageCountTokensParams::Message::Role::TaggedSymbol)
           ASSISTANT = T.let(:assistant, Sam::Models::MessageCountTokensParams::Message::Role::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Sam::Models::MessageCountTokensParams::Message::Role::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Sam::Models::MessageCountTokensParams::Message::Role::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -2788,9 +2594,6 @@ module Sam
       #   [guide to system prompts](https://docs.anthropic.com/en/docs/system-prompts).
       module System
         extend Sam::Union
-
-        Variants =
-          type_template(:out) { {fixed: T.any(String, T::Array[Sam::Models::MessageCountTokensParams::System::UnionMember1])} }
 
         UnionMember1Array =
           T.let(Sam::ArrayOf[Sam::Models::MessageCountTokensParams::System::UnionMember1], Sam::Converter)
@@ -2890,17 +2693,6 @@ module Sam
 
           module Citation
             extend Sam::Union
-
-            Variants =
-              type_template(:out) do
-                {
-                  fixed: T.any(
-                    Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestCharLocationCitation,
-                    Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestPageLocationCitation,
-                    Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation
-                  )
-                }
-              end
 
             class RequestCharLocationCitation < Sam::BaseModel
               sig { returns(String) }
@@ -3059,23 +2851,19 @@ module Sam
               end
             end
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    [Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestCharLocationCitation, Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestPageLocationCitation, Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation]
-                  )
-              end
-              def variants
-              end
+            sig do
+              override
+                .returns(
+                  [Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestCharLocationCitation, Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestPageLocationCitation, Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation]
+                )
+            end
+            def self.variants
             end
           end
         end
 
-        class << self
-          sig { override.returns([String, T::Array[Sam::Models::MessageCountTokensParams::System::UnionMember1]]) }
-          def variants
-          end
+        sig { override.returns([String, T::Array[Sam::Models::MessageCountTokensParams::System::UnionMember1]]) }
+        def self.variants
         end
       end
 
@@ -3090,16 +2878,6 @@ module Sam
       #   for details.
       module Thinking
         extend Sam::Union
-
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigEnabled,
-                Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigDisabled
-              )
-            }
-          end
 
         class ThinkingConfigEnabled < Sam::BaseModel
           # Determines how many tokens Claude can use for its internal reasoning process.
@@ -3139,15 +2917,13 @@ module Sam
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigEnabled, Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigDisabled]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigEnabled, Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigDisabled]
+            )
+        end
+        def self.variants
         end
       end
 
@@ -3155,18 +2931,6 @@ module Sam
       #   any available tool, decide by itself, or not use tools at all.
       module ToolChoice
         extend Sam::Union
-
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceAuto,
-                Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceAny,
-                Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceTool,
-                Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceNone
-              )
-            }
-          end
 
         class ToolChoiceAuto < Sam::BaseModel
           sig { returns(Symbol) }
@@ -3264,31 +3028,18 @@ module Sam
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceAuto, Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceAny, Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceTool, Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceNone]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceAuto, Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceAny, Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceTool, Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceNone]
+            )
+        end
+        def self.variants
         end
       end
 
       module Tool
         extend Sam::Union
-
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Sam::Models::MessageCountTokensParams::Tool::Tool,
-                Sam::Models::MessageCountTokensParams::Tool::BashTool20250124,
-                Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124
-              )
-            }
-          end
 
         class Tool < Sam::BaseModel
           # [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input.
@@ -3521,15 +3272,13 @@ module Sam
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Sam::Models::MessageCountTokensParams::Tool::Tool, Sam::Models::MessageCountTokensParams::Tool::BashTool20250124, Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Sam::Models::MessageCountTokensParams::Tool::Tool, Sam::Models::MessageCountTokensParams::Tool::BashTool20250124, Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124]
+            )
+        end
+        def self.variants
         end
       end
     end

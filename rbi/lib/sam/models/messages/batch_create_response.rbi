@@ -135,10 +135,8 @@ module Sam
           CANCELING = T.let(:canceling, Sam::Models::Messages::BatchCreateResponse::ProcessingStatus::TaggedSymbol)
           ENDED = T.let(:ended, Sam::Models::Messages::BatchCreateResponse::ProcessingStatus::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Sam::Models::Messages::BatchCreateResponse::ProcessingStatus::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Sam::Models::Messages::BatchCreateResponse::ProcessingStatus::TaggedSymbol]) }
+          def self.values
           end
         end
 
