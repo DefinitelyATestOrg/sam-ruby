@@ -12,36 +12,28 @@ module Sam
 
     # API key used for authenticating requests via the Authorization header
     sig { returns(String) }
-    def api_key
-    end
+    attr_reader :api_key
 
     sig { returns(Sam::Resources::Store) }
-    def store
-    end
+    attr_reader :store
 
     sig { returns(Sam::Resources::User) }
-    def user
-    end
+    attr_reader :user
 
     sig { returns(Sam::Resources::Messages) }
-    def messages
-    end
+    attr_reader :messages
 
     sig { returns(Sam::Resources::Complete) }
-    def complete
-    end
+    attr_reader :complete
 
     sig { returns(Sam::Resources::Models) }
-    def models
-    end
+    attr_reader :models
 
     sig { returns(Sam::Resources::MessagesBetaTrue) }
-    def messages_beta_true
-    end
+    attr_reader :messages_beta_true
 
     sig { returns(Sam::Resources::ModelsBetaTrue) }
-    def models_beta_true
-    end
+    attr_reader :models_beta_true
 
     # Creates and returns a new client for interacting with the API.
     sig do

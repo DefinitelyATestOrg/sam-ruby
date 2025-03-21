@@ -4,12 +4,10 @@ module Sam
   module Resources
     class Messages
       sig { returns(Sam::Resources::Messages::Batches) }
-      def batches
-      end
+      attr_reader :batches
 
       sig { returns(Sam::Resources::Messages::BatchesBetaTrue) }
-      def batches_beta_true
-      end
+      attr_reader :batches_beta_true
 
       # Send a structured list of input messages with text and/or image content, and the
       #   model will generate the next message in the conversation.

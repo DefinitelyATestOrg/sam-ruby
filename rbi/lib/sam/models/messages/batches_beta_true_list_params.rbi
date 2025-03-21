@@ -10,57 +10,47 @@ module Sam
         # ID of the object to use as a cursor for pagination. When provided, returns the
         #   page of results immediately after this object.
         sig { returns(T.nilable(String)) }
-        def after_id
-        end
+        attr_reader :after_id
 
-        sig { params(_: String).returns(String) }
-        def after_id=(_)
-        end
+        sig { params(after_id: String).void }
+        attr_writer :after_id
 
         # ID of the object to use as a cursor for pagination. When provided, returns the
         #   page of results immediately before this object.
         sig { returns(T.nilable(String)) }
-        def before_id
-        end
+        attr_reader :before_id
 
-        sig { params(_: String).returns(String) }
-        def before_id=(_)
-        end
+        sig { params(before_id: String).void }
+        attr_writer :before_id
 
         # Number of items to return per page.
         #
         #   Defaults to `20`. Ranges from `1` to `1000`.
         sig { returns(T.nilable(Integer)) }
-        def limit
-        end
+        attr_reader :limit
 
-        sig { params(_: Integer).returns(Integer) }
-        def limit=(_)
-        end
+        sig { params(limit: Integer).void }
+        attr_writer :limit
 
         # Optional header to specify the beta version(s) you want to use.
         #
         #   To use multiple betas, use a comma separated list like `beta1,beta2` or specify
         #   the header multiple times for each beta.
         sig { returns(T.nilable(T::Array[String])) }
-        def anthropic_beta
-        end
+        attr_reader :anthropic_beta
 
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def anthropic_beta=(_)
-        end
+        sig { params(anthropic_beta: T::Array[String]).void }
+        attr_writer :anthropic_beta
 
         # The version of the Anthropic API you want to use.
         #
         #   Read more about versioning and our version history
         #   [here](https://docs.anthropic.com/en/api/versioning).
         sig { returns(T.nilable(String)) }
-        def anthropic_version
-        end
+        attr_reader :anthropic_version
 
-        sig { params(_: String).returns(String) }
-        def anthropic_version=(_)
-        end
+        sig { params(anthropic_version: String).void }
+        attr_writer :anthropic_version
 
         # Your unique API key for authentication.
         #
@@ -69,12 +59,10 @@ module Sam
         #   [Console](https://console.anthropic.com/settings/keys). Each key is scoped to a
         #   Workspace.
         sig { returns(T.nilable(String)) }
-        def x_api_key
-        end
+        attr_reader :x_api_key
 
-        sig { params(_: String).returns(String) }
-        def x_api_key=(_)
-        end
+        sig { params(x_api_key: String).void }
+        attr_writer :x_api_key
 
         sig do
           params(
