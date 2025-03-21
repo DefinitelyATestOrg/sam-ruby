@@ -62,6 +62,7 @@ module Sam
             custom_id: String,
             result: T.any(
               Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult,
+              Sam::Util::AnyHash,
               Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult,
               Sam::Models::Messages::BatchResultsResponse::Result::CanceledResult,
               Sam::Models::Messages::BatchResultsResponse::Result::ExpiredResult
@@ -357,6 +358,7 @@ module Sam
                   content: T::Array[
                   T.any(
                     Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock,
+                    Sam::Util::AnyHash,
                     Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseToolUseBlock,
                     Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseThinkingBlock,
                     Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseRedactedThinkingBlock
@@ -364,7 +366,7 @@ module Sam
                   ],
                   model: String,
                   stop_reason: T.nilable(
-                    Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::StopReason::TaggedSymbol
+                    Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::StopReason::OrSymbol
                   ),
                   stop_sequence: T.nilable(String),
                   usage: T.any(
@@ -492,6 +494,7 @@ module Sam
                         T::Array[
                         T.any(
                           Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
+                          Sam::Util::AnyHash,
                           Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
                           Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
                         )
@@ -1162,6 +1165,7 @@ module Sam
                 params(
                   error: T.any(
                     Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::InvalidRequestError,
+                    Sam::Util::AnyHash,
                     Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::AuthenticationError,
                     Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::BillingError,
                     Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::PermissionError,

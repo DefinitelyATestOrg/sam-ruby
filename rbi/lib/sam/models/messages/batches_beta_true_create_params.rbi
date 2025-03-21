@@ -60,7 +60,7 @@ module Sam
 
         sig do
           params(
-            requests: T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request],
+            requests: T::Array[T.any(Sam::Models::Messages::BatchesBetaTrueCreateParams::Request, Sam::Util::AnyHash)],
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
@@ -323,13 +323,23 @@ module Sam
               params(
                 _: T.any(
                   String,
-                  T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1]
+                  T::Array[
+                  T.any(
+                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1,
+                    Sam::Util::AnyHash
+                  )
+                  ]
                 )
               )
                 .returns(
                   T.any(
                     String,
-                    T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1]
+                    T::Array[
+                    T.any(
+                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1,
+                      Sam::Util::AnyHash
+                    )
+                    ]
                   )
                 )
             end
@@ -378,12 +388,14 @@ module Sam
               params(
                 _: T.any(
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::BetaThinkingConfigEnabled,
+                  Sam::Util::AnyHash,
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::BetaThinkingConfigDisabled
                 )
               )
                 .returns(
                   T.any(
                     Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::BetaThinkingConfigEnabled,
+                    Sam::Util::AnyHash,
                     Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::BetaThinkingConfigDisabled
                   )
                 )
@@ -412,6 +424,7 @@ module Sam
               params(
                 _: T.any(
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceAuto,
+                  Sam::Util::AnyHash,
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceAny,
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceTool,
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceNone
@@ -420,6 +433,7 @@ module Sam
                 .returns(
                   T.any(
                     Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceAuto,
+                    Sam::Util::AnyHash,
                     Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceAny,
                     Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceTool,
                     Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceNone
@@ -523,6 +537,7 @@ module Sam
                 _: T::Array[
                 T.any(
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool,
+                  Sam::Util::AnyHash,
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022,
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022,
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022,
@@ -536,6 +551,7 @@ module Sam
                   T::Array[
                   T.any(
                     Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool,
+                    Sam::Util::AnyHash,
                     Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022,
                     Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022,
                     Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022,
@@ -588,22 +604,29 @@ module Sam
             sig do
               params(
                 max_tokens: Integer,
-                messages: T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message],
+                messages: T::Array[T.any(Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message, Sam::Util::AnyHash)],
                 model: String,
                 metadata: T.any(Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Metadata, Sam::Util::AnyHash),
                 stop_sequences: T::Array[String],
                 stream: T::Boolean,
                 system_: T.any(
                   String,
-                  T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1]
+                  T::Array[
+                  T.any(
+                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1,
+                    Sam::Util::AnyHash
+                  )
+                  ]
                 ),
                 temperature: Float,
                 thinking: T.any(
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::BetaThinkingConfigEnabled,
+                  Sam::Util::AnyHash,
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::BetaThinkingConfigDisabled
                 ),
                 tool_choice: T.any(
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceAuto,
+                  Sam::Util::AnyHash,
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceAny,
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceTool,
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::BetaToolChoiceNone
@@ -611,6 +634,7 @@ module Sam
                 tools: T::Array[
                 T.any(
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool,
+                  Sam::Util::AnyHash,
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022,
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022,
                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022,
@@ -762,6 +786,7 @@ module Sam
                     T::Array[
                     T.any(
                       Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock,
+                      Sam::Util::AnyHash,
                       Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock,
                       Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolUseBlock,
                       Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock,
@@ -954,6 +979,7 @@ module Sam
                           T::Array[
                           T.any(
                             Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation,
+                            Sam::Util::AnyHash,
                             Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation,
                             Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
                           )
@@ -1354,6 +1380,7 @@ module Sam
                       params(
                         source: T.any(
                           Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource,
+                          Sam::Util::AnyHash,
                           Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
                         ),
                         cache_control: T.nilable(
@@ -1759,6 +1786,7 @@ module Sam
                           T::Array[
                           T.any(
                             Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock,
+                            Sam::Util::AnyHash,
                             Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
                           )
                           ]
@@ -1770,6 +1798,7 @@ module Sam
                             T::Array[
                             T.any(
                               Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock,
+                              Sam::Util::AnyHash,
                               Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
                             )
                             ]
@@ -1801,6 +1830,7 @@ module Sam
                           T::Array[
                           T.any(
                             Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock,
+                            Sam::Util::AnyHash,
                             Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
                           )
                           ]
@@ -1999,6 +2029,7 @@ module Sam
                                 T::Array[
                                 T.any(
                                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation,
+                                  Sam::Util::AnyHash,
                                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation,
                                   Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
                                 )
@@ -2399,6 +2430,7 @@ module Sam
                             params(
                               source: T.any(
                                 Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource,
+                                Sam::Util::AnyHash,
                                 Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
                               ),
                               cache_control: T.nilable(
@@ -2767,6 +2799,7 @@ module Sam
                       params(
                         source: T.any(
                           Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource,
+                          Sam::Util::AnyHash,
                           Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource,
                           Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource,
                           Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource
@@ -2959,6 +2992,7 @@ module Sam
                               T::Array[
                               T.any(
                                 Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock,
+                                Sam::Util::AnyHash,
                                 Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock
                               )
                               ]
@@ -3133,6 +3167,7 @@ module Sam
                                     T::Array[
                                     T.any(
                                       Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation,
+                                      Sam::Util::AnyHash,
                                       Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation,
                                       Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
                                     )
@@ -3533,6 +3568,7 @@ module Sam
                                 params(
                                   source: T.any(
                                     Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource,
+                                    Sam::Util::AnyHash,
                                     Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
                                   ),
                                   cache_control: T.nilable(
@@ -4143,6 +4179,7 @@ module Sam
                       T::Array[
                       T.any(
                         Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestCharLocationCitation,
+                        Sam::Util::AnyHash,
                         Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestPageLocationCitation,
                         Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation
                       )

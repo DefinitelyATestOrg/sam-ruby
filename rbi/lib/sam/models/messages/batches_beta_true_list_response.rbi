@@ -45,7 +45,7 @@ module Sam
 
         sig do
           params(
-            data: T::Array[Sam::Models::Messages::BatchesBetaTrueListResponse::Data],
+            data: T::Array[T.any(Sam::Models::Messages::BatchesBetaTrueListResponse::Data, Sam::Util::AnyHash)],
             first_id: T.nilable(String),
             has_more: T::Boolean,
             last_id: T.nilable(String)
@@ -198,7 +198,7 @@ module Sam
               created_at: Time,
               ended_at: T.nilable(Time),
               expires_at: Time,
-              processing_status: Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus::TaggedSymbol,
+              processing_status: Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus::OrSymbol,
               request_counts: T.any(Sam::Models::Messages::BatchesBetaTrueListResponse::Data::RequestCounts, Sam::Util::AnyHash),
               results_url: T.nilable(String),
               type: Symbol

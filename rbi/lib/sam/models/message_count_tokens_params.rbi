@@ -125,8 +125,18 @@ module Sam
       end
 
       sig do
-        params(_: T.any(String, T::Array[Sam::Models::MessageCountTokensParams::System::UnionMember1]))
-          .returns(T.any(String, T::Array[Sam::Models::MessageCountTokensParams::System::UnionMember1]))
+        params(
+          _: T.any(
+            String,
+            T::Array[T.any(Sam::Models::MessageCountTokensParams::System::UnionMember1, Sam::Util::AnyHash)]
+          )
+        )
+          .returns(
+            T.any(
+              String,
+              T::Array[T.any(Sam::Models::MessageCountTokensParams::System::UnionMember1, Sam::Util::AnyHash)]
+            )
+          )
       end
       def system_=(_)
       end
@@ -157,12 +167,14 @@ module Sam
         params(
           _: T.any(
             Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigEnabled,
+            Sam::Util::AnyHash,
             Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigDisabled
           )
         )
           .returns(
             T.any(
               Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigEnabled,
+              Sam::Util::AnyHash,
               Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigDisabled
             )
           )
@@ -191,6 +203,7 @@ module Sam
         params(
           _: T.any(
             Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceAuto,
+            Sam::Util::AnyHash,
             Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceAny,
             Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceTool,
             Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceNone
@@ -199,6 +212,7 @@ module Sam
           .returns(
             T.any(
               Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceAuto,
+              Sam::Util::AnyHash,
               Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceAny,
               Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceTool,
               Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceNone
@@ -298,6 +312,7 @@ module Sam
           _: T::Array[
           T.any(
             Sam::Models::MessageCountTokensParams::Tool::Tool,
+            Sam::Util::AnyHash,
             Sam::Models::MessageCountTokensParams::Tool::BashTool20250124,
             Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124
           )
@@ -307,6 +322,7 @@ module Sam
             T::Array[
             T.any(
               Sam::Models::MessageCountTokensParams::Tool::Tool,
+              Sam::Util::AnyHash,
               Sam::Models::MessageCountTokensParams::Tool::BashTool20250124,
               Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124
             )
@@ -356,15 +372,20 @@ module Sam
 
       sig do
         params(
-          messages: T::Array[Sam::Models::MessageCountTokensParams::Message],
+          messages: T::Array[T.any(Sam::Models::MessageCountTokensParams::Message, Sam::Util::AnyHash)],
           model: String,
-          system_: T.any(String, T::Array[Sam::Models::MessageCountTokensParams::System::UnionMember1]),
+          system_: T.any(
+            String,
+            T::Array[T.any(Sam::Models::MessageCountTokensParams::System::UnionMember1, Sam::Util::AnyHash)]
+          ),
           thinking: T.any(
             Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigEnabled,
+            Sam::Util::AnyHash,
             Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigDisabled
           ),
           tool_choice: T.any(
             Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceAuto,
+            Sam::Util::AnyHash,
             Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceAny,
             Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceTool,
             Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceNone
@@ -372,6 +393,7 @@ module Sam
           tools: T::Array[
           T.any(
             Sam::Models::MessageCountTokensParams::Tool::Tool,
+            Sam::Util::AnyHash,
             Sam::Models::MessageCountTokensParams::Tool::BashTool20250124,
             Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124
           )
@@ -508,6 +530,7 @@ module Sam
               T::Array[
               T.any(
                 Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock,
+                Sam::Util::AnyHash,
                 Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock,
                 Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock,
                 Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock,
@@ -700,6 +723,7 @@ module Sam
                     T::Array[
                     T.any(
                       Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
+                      Sam::Util::AnyHash,
                       Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
                       Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
                     )
@@ -1100,6 +1124,7 @@ module Sam
                 params(
                   source: T.any(
                     Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
+                    Sam::Util::AnyHash,
                     Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
                   ),
                   cache_control: T.nilable(
@@ -1505,6 +1530,7 @@ module Sam
                     T::Array[
                     T.any(
                       Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
+                      Sam::Util::AnyHash,
                       Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
                     )
                     ]
@@ -1516,6 +1542,7 @@ module Sam
                       T::Array[
                       T.any(
                         Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
+                        Sam::Util::AnyHash,
                         Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
                       )
                       ]
@@ -1547,6 +1574,7 @@ module Sam
                     T::Array[
                     T.any(
                       Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
+                      Sam::Util::AnyHash,
                       Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
                     )
                     ]
@@ -1745,6 +1773,7 @@ module Sam
                           T::Array[
                           T.any(
                             Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
+                            Sam::Util::AnyHash,
                             Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
                             Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
                           )
@@ -2145,6 +2174,7 @@ module Sam
                       params(
                         source: T.any(
                           Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
+                          Sam::Util::AnyHash,
                           Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
                         ),
                         cache_control: T.nilable(
@@ -2513,6 +2543,7 @@ module Sam
                 params(
                   source: T.any(
                     Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource,
+                    Sam::Util::AnyHash,
                     Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource,
                     Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource,
                     Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource
@@ -2701,6 +2732,7 @@ module Sam
                         T::Array[
                         T.any(
                           Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
+                          Sam::Util::AnyHash,
                           Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
                         )
                         ]
@@ -2875,6 +2907,7 @@ module Sam
                               T::Array[
                               T.any(
                                 Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
+                                Sam::Util::AnyHash,
                                 Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
                                 Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
                               )
@@ -3275,6 +3308,7 @@ module Sam
                           params(
                             source: T.any(
                               Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
+                              Sam::Util::AnyHash,
                               Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
                             ),
                             cache_control: T.nilable(
@@ -3815,6 +3849,7 @@ module Sam
                 T::Array[
                 T.any(
                   Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestCharLocationCitation,
+                  Sam::Util::AnyHash,
                   Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestPageLocationCitation,
                   Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation
                 )
