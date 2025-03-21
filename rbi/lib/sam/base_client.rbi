@@ -26,7 +26,7 @@ module Sam
           page: T.nilable(T::Class[Sam::BasePage[Sam::BaseModel]]),
           stream: T.nilable(T::Class[Sam::BaseStream[T.anything, Sam::BaseModel]]),
           model: T.nilable(Sam::Converter::Input),
-          options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
+          options: T.nilable(T.any(Sam::RequestOptions, Sam::Util::AnyHash))
         }
       end
 
@@ -121,7 +121,7 @@ module Sam
     # @api private
     sig do
       overridable
-        .params(req: Sam::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
+        .params(req: Sam::BaseClient::RequestComponentsShape, opts: Sam::Util::AnyHash)
         .returns(Sam::BaseClient::RequestInputShape)
     end
     private def build_request(req, opts)
@@ -167,7 +167,7 @@ module Sam
         page: T.nilable(T::Class[Sam::BasePage[Sam::BaseModel]]),
         stream: T.nilable(T::Class[Sam::BaseStream[T.anything, Sam::BaseModel]]),
         model: T.nilable(Sam::Converter::Input),
-        options: T.nilable(T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything]))
+        options: T.nilable(T.any(Sam::RequestOptions, Sam::Util::AnyHash))
       )
         .returns(T.anything)
     end

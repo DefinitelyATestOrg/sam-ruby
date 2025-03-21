@@ -129,7 +129,7 @@ module Sam
             ended_at: T.nilable(Time),
             expires_at: Time,
             processing_status: Sam::Models::Messages::BatchCreateResponse::ProcessingStatus::TaggedSymbol,
-            request_counts: Sam::Models::Messages::BatchCreateResponse::RequestCounts,
+            request_counts: T.any(Sam::Models::Messages::BatchCreateResponse::RequestCounts, Sam::Util::AnyHash),
             results_url: T.nilable(String),
             type: Symbol
           )

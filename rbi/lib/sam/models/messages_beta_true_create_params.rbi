@@ -479,7 +479,7 @@ module Sam
           max_tokens: Integer,
           messages: T::Array[Sam::Models::MessagesBetaTrueCreateParams::Message],
           model: String,
-          metadata: Sam::Models::MessagesBetaTrueCreateParams::Metadata,
+          metadata: T.any(Sam::Models::MessagesBetaTrueCreateParams::Metadata, Sam::Util::AnyHash),
           stop_sequences: T::Array[String],
           stream: T::Boolean,
           system_: T.any(String, T::Array[Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1]),
@@ -510,7 +510,7 @@ module Sam
           anthropic_beta: T::Array[String],
           anthropic_version: String,
           x_api_key: String,
-          request_options: T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Sam::RequestOptions, Sam::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -840,7 +840,10 @@ module Sam
                 params(
                   text: String,
                   cache_control: T.nilable(
-                    Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl
+                    T.any(
+                      Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl,
+                      Sam::Util::AnyHash
+                    )
                   ),
                   citations: T.nilable(
                     T::Array[
@@ -1249,7 +1252,10 @@ module Sam
                     Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
                   ),
                   cache_control: T.nilable(
-                    Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl
+                    T.any(
+                      Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl,
+                      Sam::Util::AnyHash
+                    )
                   ),
                   type: Symbol
                 )
@@ -1527,7 +1533,10 @@ module Sam
                   input: T.anything,
                   name: String,
                   cache_control: T.nilable(
-                    Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl
+                    T.any(
+                      Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl,
+                      Sam::Util::AnyHash
+                    )
                   ),
                   type: Symbol
                 )
@@ -1677,7 +1686,10 @@ module Sam
                 params(
                   tool_use_id: String,
                   cache_control: T.nilable(
-                    Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl
+                    T.any(
+                      Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl,
+                      Sam::Util::AnyHash
+                    )
                   ),
                   content: T.any(
                     String,
@@ -1873,7 +1885,10 @@ module Sam
                       params(
                         text: String,
                         cache_control: T.nilable(
-                          Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl
+                          T.any(
+                            Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl,
+                            Sam::Util::AnyHash
+                          )
                         ),
                         citations: T.nilable(
                           T::Array[
@@ -2282,7 +2297,10 @@ module Sam
                           Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
                         ),
                         cache_control: T.nilable(
-                          Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl
+                          T.any(
+                            Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl,
+                            Sam::Util::AnyHash
+                          )
                         ),
                         type: Symbol
                       )
@@ -2649,9 +2667,15 @@ module Sam
                     Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource
                   ),
                   cache_control: T.nilable(
-                    Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl
+                    T.any(
+                      Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl,
+                      Sam::Util::AnyHash
+                    )
                   ),
-                  citations: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations,
+                  citations: T.any(
+                    Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations,
+                    Sam::Util::AnyHash
+                  ),
                   context: T.nilable(String),
                   title: T.nilable(String),
                   type: Symbol
@@ -2991,7 +3015,10 @@ module Sam
                           params(
                             text: String,
                             cache_control: T.nilable(
-                              Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl
+                              T.any(
+                                Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl,
+                                Sam::Util::AnyHash
+                              )
                             ),
                             citations: T.nilable(
                               T::Array[
@@ -3400,7 +3427,10 @@ module Sam
                               Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
                             ),
                             cache_control: T.nilable(
-                              Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl
+                              T.any(
+                                Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl,
+                                Sam::Util::AnyHash
+                              )
                             ),
                             type: Symbol
                           )
@@ -3951,7 +3981,9 @@ module Sam
           sig do
             params(
               text: String,
-              cache_control: T.nilable(Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::CacheControl),
+              cache_control: T.nilable(
+                T.any(Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::CacheControl, Sam::Util::AnyHash)
+              ),
               citations: T.nilable(
                 T::Array[
                 T.any(
@@ -4625,9 +4657,11 @@ module Sam
 
           sig do
             params(
-              input_schema: Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::InputSchema,
+              input_schema: T.any(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::InputSchema, Sam::Util::AnyHash),
               name: String,
-              cache_control: T.nilable(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::CacheControl),
+              cache_control: T.nilable(
+                T.any(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::CacheControl, Sam::Util::AnyHash)
+              ),
               description: String,
               type: T.nilable(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::Type::OrSymbol)
             )
@@ -4797,7 +4831,12 @@ module Sam
             params(
               display_height_px: Integer,
               display_width_px: Integer,
-              cache_control: T.nilable(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022::CacheControl),
+              cache_control: T.nilable(
+                T.any(
+                  Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022::CacheControl,
+                  Sam::Util::AnyHash
+                )
+              ),
               display_number: T.nilable(Integer),
               name: Symbol,
               type: Symbol
@@ -4896,7 +4935,12 @@ module Sam
 
           sig do
             params(
-              cache_control: T.nilable(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022::CacheControl),
+              cache_control: T.nilable(
+                T.any(
+                  Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022::CacheControl,
+                  Sam::Util::AnyHash
+                )
+              ),
               name: Symbol,
               type: Symbol
             )
@@ -4984,7 +5028,12 @@ module Sam
 
           sig do
             params(
-              cache_control: T.nilable(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022::CacheControl),
+              cache_control: T.nilable(
+                T.any(
+                  Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022::CacheControl,
+                  Sam::Util::AnyHash
+                )
+              ),
               name: Symbol,
               type: Symbol
             )
@@ -5105,7 +5154,12 @@ module Sam
             params(
               display_height_px: Integer,
               display_width_px: Integer,
-              cache_control: T.nilable(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124::CacheControl),
+              cache_control: T.nilable(
+                T.any(
+                  Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124::CacheControl,
+                  Sam::Util::AnyHash
+                )
+              ),
               display_number: T.nilable(Integer),
               name: Symbol,
               type: Symbol
@@ -5204,7 +5258,12 @@ module Sam
 
           sig do
             params(
-              cache_control: T.nilable(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124::CacheControl),
+              cache_control: T.nilable(
+                T.any(
+                  Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124::CacheControl,
+                  Sam::Util::AnyHash
+                )
+              ),
               name: Symbol,
               type: Symbol
             )
@@ -5292,7 +5351,12 @@ module Sam
 
           sig do
             params(
-              cache_control: T.nilable(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124::CacheControl),
+              cache_control: T.nilable(
+                T.any(
+                  Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124::CacheControl,
+                  Sam::Util::AnyHash
+                )
+              ),
               name: Symbol,
               type: Symbol
             )

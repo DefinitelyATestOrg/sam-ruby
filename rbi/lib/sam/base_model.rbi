@@ -242,8 +242,8 @@ module Sam
     # @api private
     sig do
       params(
-        key: T.any(Symbol, T::Hash[Symbol, T.anything], T.proc.returns(T.anything), T.anything),
-        spec: T.any(T::Hash[Symbol, T.anything], T.proc.returns(T.anything), T.anything)
+        key: T.any(Symbol, Sam::Util::AnyHash, T.proc.returns(T.anything), T.anything),
+        spec: T.any(Sam::Util::AnyHash, T.proc.returns(T.anything), T.anything)
       )
         .void
     end
@@ -294,12 +294,8 @@ module Sam
 
     sig(:final) do
       params(
-        type_info: T.any(
-          T::Hash[Symbol, T.anything],
-          T.proc.returns(Sam::Converter::Input),
-          Sam::Converter::Input
-        ),
-        spec: T::Hash[Symbol, T.anything]
+        type_info: T.any(Sam::Util::AnyHash, T.proc.returns(Sam::Converter::Input), Sam::Converter::Input),
+        spec: Sam::Util::AnyHash
       )
         .returns(T.attached_class)
     end
@@ -349,12 +345,8 @@ module Sam
     # @api private
     sig(:final) do
       params(
-        type_info: T.any(
-          T::Hash[Symbol, T.anything],
-          T.proc.returns(Sam::Converter::Input),
-          Sam::Converter::Input
-        ),
-        spec: T::Hash[Symbol, T.anything]
+        type_info: T.any(Sam::Util::AnyHash, T.proc.returns(Sam::Converter::Input), Sam::Converter::Input),
+        spec: Sam::Util::AnyHash
       )
         .void
     end
@@ -373,12 +365,8 @@ module Sam
 
     sig(:final) do
       params(
-        type_info: T.any(
-          T::Hash[Symbol, T.anything],
-          T.proc.returns(Sam::Converter::Input),
-          Sam::Converter::Input
-        ),
-        spec: T::Hash[Symbol, T.anything]
+        type_info: T.any(Sam::Util::AnyHash, T.proc.returns(Sam::Converter::Input), Sam::Converter::Input),
+        spec: Sam::Util::AnyHash
       )
         .returns(T.attached_class)
     end
@@ -397,7 +385,7 @@ module Sam
     sig(:final) do
       override
         .params(value: T.any(T::Hash[T.anything, T.anything], T.anything))
-        .returns(T.any(T::Hash[Symbol, T.anything], T.anything))
+        .returns(T.any(Sam::Util::AnyHash, T.anything))
     end
     def coerce(value)
     end
@@ -406,7 +394,7 @@ module Sam
     sig(:final) do
       override
         .params(value: T.any(T::Hash[T.anything, T.anything], T.anything))
-        .returns(T.any(T::Hash[Symbol, T.anything], T.anything))
+        .returns(T.any(Sam::Util::AnyHash, T.anything))
     end
     def dump(value)
     end
@@ -428,12 +416,8 @@ module Sam
     # @api private
     sig(:final) do
       params(
-        type_info: T.any(
-          T::Hash[Symbol, T.anything],
-          T.proc.returns(Sam::Converter::Input),
-          Sam::Converter::Input
-        ),
-        spec: T::Hash[Symbol, T.anything]
+        type_info: T.any(Sam::Util::AnyHash, T.proc.returns(Sam::Converter::Input), Sam::Converter::Input),
+        spec: Sam::Util::AnyHash
       )
         .void
     end
@@ -493,7 +477,7 @@ module Sam
             T.proc.returns(Sam::Converter::Input),
             Sam::Converter::Input
           ),
-          spec: T::Hash[Symbol, T.anything]
+          spec: Sam::Util::AnyHash
         )
           .void
       end
@@ -505,11 +489,11 @@ module Sam
         params(
           name_sym: Symbol,
           type_info: T.any(
-            T::Hash[Symbol, T.anything],
+            Sam::Util::AnyHash,
             T.proc.returns(Sam::Converter::Input),
             Sam::Converter::Input
           ),
-          spec: T::Hash[Symbol, T.anything]
+          spec: Sam::Util::AnyHash
         )
           .void
       end
@@ -521,11 +505,11 @@ module Sam
         params(
           name_sym: Symbol,
           type_info: T.any(
-            T::Hash[Symbol, T.anything],
+            Sam::Util::AnyHash,
             T.proc.returns(Sam::Converter::Input),
             Sam::Converter::Input
           ),
-          spec: T::Hash[Symbol, T.anything]
+          spec: Sam::Util::AnyHash
         )
           .void
       end
@@ -599,7 +583,7 @@ module Sam
     #
     #   This method is not recursive. The returned value is shared by the object, so it
     #   should not be mutated.
-    sig { overridable.returns(T::Hash[Symbol, T.anything]) }
+    sig { overridable.returns(Sam::Util::AnyHash) }
     def to_h
     end
 
@@ -611,11 +595,11 @@ module Sam
     #
     #   This method is not recursive. The returned value is shared by the object, so it
     #   should not be mutated.
-    sig { overridable.returns(T::Hash[Symbol, T.anything]) }
+    sig { overridable.returns(Sam::Util::AnyHash) }
     def to_hash
     end
 
-    sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.anything]) }
+    sig { params(keys: T.nilable(T::Array[Symbol])).returns(Sam::Util::AnyHash) }
     def deconstruct_keys(keys)
     end
 

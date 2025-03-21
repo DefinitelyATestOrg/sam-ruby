@@ -379,7 +379,7 @@ module Sam
           anthropic_beta: T::Array[String],
           anthropic_version: String,
           x_api_key: String,
-          request_options: T.any(Sam::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Sam::RequestOptions, Sam::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -691,7 +691,10 @@ module Sam
                 params(
                   text: String,
                   cache_control: T.nilable(
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::CacheControl
+                    T.any(
+                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::CacheControl,
+                      Sam::Util::AnyHash
+                    )
                   ),
                   citations: T.nilable(
                     T::Array[
@@ -1100,7 +1103,10 @@ module Sam
                     Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
                   ),
                   cache_control: T.nilable(
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::CacheControl
+                    T.any(
+                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::CacheControl,
+                      Sam::Util::AnyHash
+                    )
                   ),
                   type: Symbol
                 )
@@ -1378,7 +1384,10 @@ module Sam
                   input: T.anything,
                   name: String,
                   cache_control: T.nilable(
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock::CacheControl
+                    T.any(
+                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock::CacheControl,
+                      Sam::Util::AnyHash
+                    )
                   ),
                   type: Symbol
                 )
@@ -1528,7 +1537,10 @@ module Sam
                 params(
                   tool_use_id: String,
                   cache_control: T.nilable(
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::CacheControl
+                    T.any(
+                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::CacheControl,
+                      Sam::Util::AnyHash
+                    )
                   ),
                   content: T.any(
                     String,
@@ -1724,7 +1736,10 @@ module Sam
                       params(
                         text: String,
                         cache_control: T.nilable(
-                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::CacheControl
+                          T.any(
+                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::CacheControl,
+                            Sam::Util::AnyHash
+                          )
                         ),
                         citations: T.nilable(
                           T::Array[
@@ -2133,7 +2148,10 @@ module Sam
                           Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
                         ),
                         cache_control: T.nilable(
-                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::CacheControl
+                          T.any(
+                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::CacheControl,
+                            Sam::Util::AnyHash
+                          )
                         ),
                         type: Symbol
                       )
@@ -2500,9 +2518,15 @@ module Sam
                     Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource
                   ),
                   cache_control: T.nilable(
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::CacheControl
+                    T.any(
+                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::CacheControl,
+                      Sam::Util::AnyHash
+                    )
                   ),
-                  citations: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Citations,
+                  citations: T.any(
+                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Citations,
+                    Sam::Util::AnyHash
+                  ),
                   context: T.nilable(String),
                   title: T.nilable(String),
                   type: Symbol
@@ -2842,7 +2866,10 @@ module Sam
                           params(
                             text: String,
                             cache_control: T.nilable(
-                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::CacheControl
+                              T.any(
+                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::CacheControl,
+                                Sam::Util::AnyHash
+                              )
                             ),
                             citations: T.nilable(
                               T::Array[
@@ -3251,7 +3278,10 @@ module Sam
                               Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
                             ),
                             cache_control: T.nilable(
-                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::CacheControl
+                              T.any(
+                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::CacheControl,
+                                Sam::Util::AnyHash
+                              )
                             ),
                             type: Symbol
                           )
@@ -3778,7 +3808,9 @@ module Sam
           sig do
             params(
               text: String,
-              cache_control: T.nilable(Sam::Models::MessageCountTokensParams::System::UnionMember1::CacheControl),
+              cache_control: T.nilable(
+                T.any(Sam::Models::MessageCountTokensParams::System::UnionMember1::CacheControl, Sam::Util::AnyHash)
+              ),
               citations: T.nilable(
                 T::Array[
                 T.any(
@@ -4431,9 +4463,9 @@ module Sam
 
           sig do
             params(
-              input_schema: Sam::Models::MessageCountTokensParams::Tool::Tool::InputSchema,
+              input_schema: T.any(Sam::Models::MessageCountTokensParams::Tool::Tool::InputSchema, Sam::Util::AnyHash),
               name: String,
-              cache_control: T.nilable(Sam::Models::MessageCountTokensParams::Tool::Tool::CacheControl),
+              cache_control: T.nilable(T.any(Sam::Models::MessageCountTokensParams::Tool::Tool::CacheControl, Sam::Util::AnyHash)),
               description: String
             )
               .returns(T.attached_class)
@@ -4545,7 +4577,9 @@ module Sam
 
           sig do
             params(
-              cache_control: T.nilable(Sam::Models::MessageCountTokensParams::Tool::BashTool20250124::CacheControl),
+              cache_control: T.nilable(
+                T.any(Sam::Models::MessageCountTokensParams::Tool::BashTool20250124::CacheControl, Sam::Util::AnyHash)
+              ),
               name: Symbol,
               type: Symbol
             )
@@ -4627,7 +4661,9 @@ module Sam
 
           sig do
             params(
-              cache_control: T.nilable(Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124::CacheControl),
+              cache_control: T.nilable(
+                T.any(Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124::CacheControl, Sam::Util::AnyHash)
+              ),
               name: Symbol,
               type: Symbol
             )

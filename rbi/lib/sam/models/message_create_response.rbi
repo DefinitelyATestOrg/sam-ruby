@@ -191,7 +191,7 @@ module Sam
           model: String,
           stop_reason: T.nilable(Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol),
           stop_sequence: T.nilable(String),
-          usage: Sam::Models::MessageCreateResponse::Usage,
+          usage: T.any(Sam::Models::MessageCreateResponse::Usage, Sam::Util::AnyHash),
           role: Symbol,
           type: Symbol
         )
