@@ -474,12 +474,6 @@ module Sam
         module Content
           extend Sam::Union
 
-          UnionMember1Array =
-            T.let(
-              Sam::ArrayOf[union: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1],
-              Sam::Converter
-            )
-
           module UnionMember1
             extend Sam::Union
 
@@ -1186,14 +1180,6 @@ module Sam
               module Content
                 extend Sam::Union
 
-                UnionMember1Array =
-                  T.let(
-                    Sam::ArrayOf[
-                    union: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1
-                    ],
-                    Sam::Converter
-                  )
-
                 module UnionMember1
                   extend Sam::Union
 
@@ -1705,6 +1691,14 @@ module Sam
                 end
                 def self.variants
                 end
+
+                UnionMember1Array =
+                  T.let(
+                    Sam::ArrayOf[
+                    union: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1
+                    ],
+                    Sam::Converter
+                  )
               end
             end
 
@@ -1924,14 +1918,6 @@ module Sam
 
                   module Content
                     extend Sam::Union
-
-                    UnionMember1Array =
-                      T.let(
-                        Sam::ArrayOf[
-                        union: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1
-                        ],
-                        Sam::Converter
-                      )
 
                     module UnionMember1
                       extend Sam::Union
@@ -2444,6 +2430,14 @@ module Sam
                     end
                     def self.variants
                     end
+
+                    UnionMember1Array =
+                      T.let(
+                        Sam::ArrayOf[
+                        union: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1
+                        ],
+                        Sam::Converter
+                      )
                   end
                 end
 
@@ -2569,6 +2563,12 @@ module Sam
           end
           def self.variants
           end
+
+          UnionMember1Array =
+            T.let(
+              Sam::ArrayOf[union: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1],
+              Sam::Converter
+            )
         end
 
         module Role
@@ -2594,9 +2594,6 @@ module Sam
       #   [guide to system prompts](https://docs.anthropic.com/en/docs/system-prompts).
       module System
         extend Sam::Union
-
-        UnionMember1Array =
-          T.let(Sam::ArrayOf[Sam::Models::MessageCountTokensParams::System::UnionMember1], Sam::Converter)
 
         class UnionMember1 < Sam::BaseModel
           sig { returns(String) }
@@ -2865,6 +2862,9 @@ module Sam
         sig { override.returns([String, T::Array[Sam::Models::MessageCountTokensParams::System::UnionMember1]]) }
         def self.variants
         end
+
+        UnionMember1Array =
+          T.let(Sam::ArrayOf[Sam::Models::MessageCountTokensParams::System::UnionMember1], Sam::Converter)
       end
 
       # Configuration for enabling Claude's extended thinking.
