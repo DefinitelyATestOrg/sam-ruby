@@ -439,12 +439,9 @@ module Sam
         module Content
           extend Sam::Union
 
-          UnionMember1Array =
-            Sam::ArrayOf[union: -> { Sam::Models::MessageCreateParams::Message::Content::UnionMember1 }]
-
           variant String
 
-          variant Sam::Models::MessageCreateParams::Message::Content::UnionMember1Array
+          variant -> { Sam::Models::MessageCreateParams::Message::Content::UnionMember1Array }
 
           module UnionMember1
             extend Sam::Union
@@ -941,14 +938,9 @@ module Sam
               module Content
                 extend Sam::Union
 
-                UnionMember1Array =
-                  Sam::ArrayOf[
-                union: -> { Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1 }
-                ]
-
                 variant String
 
-                variant Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1Array
+                variant -> { Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1Array }
 
                 module UnionMember1
                   extend Sam::Union
@@ -1325,6 +1317,11 @@ module Sam
                 # @!parse
                 #   # @return [Array(String, Array<Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock>)]
                 #   def self.variants; end
+
+                UnionMember1Array =
+                  Sam::ArrayOf[
+                union: -> { Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1 }
+                ]
               end
             end
 
@@ -1471,14 +1468,9 @@ module Sam
                   module Content
                     extend Sam::Union
 
-                    UnionMember1Array =
-                      Sam::ArrayOf[
-                    union: -> { Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1 }
-                    ]
-
                     variant String
 
-                    variant Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1Array
+                    variant -> { Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1Array }
 
                     module UnionMember1
                       extend Sam::Union
@@ -1855,6 +1847,11 @@ module Sam
                     # @!parse
                     #   # @return [Array(String, Array<Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock>)]
                     #   def self.variants; end
+
+                    UnionMember1Array =
+                      Sam::ArrayOf[
+                    union: -> { Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1 }
+                    ]
                   end
                 end
 
@@ -1970,6 +1967,9 @@ module Sam
           # @!parse
           #   # @return [Array(String, Array<Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolUseBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestThinkingBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock>)]
           #   def self.variants; end
+
+          UnionMember1Array =
+            Sam::ArrayOf[union: -> { Sam::Models::MessageCreateParams::Message::Content::UnionMember1 }]
         end
 
         module Role
@@ -2015,11 +2015,9 @@ module Sam
       module System
         extend Sam::Union
 
-        UnionMember1Array = Sam::ArrayOf[-> { Sam::Models::MessageCreateParams::System::UnionMember1 }]
-
         variant String
 
-        variant Sam::Models::MessageCreateParams::System::UnionMember1Array
+        variant -> { Sam::Models::MessageCreateParams::System::UnionMember1Array }
 
         class UnionMember1 < Sam::BaseModel
           # @!attribute text
@@ -2255,6 +2253,8 @@ module Sam
         # @!parse
         #   # @return [Array(String, Array<Sam::Models::MessageCreateParams::System::UnionMember1>)]
         #   def self.variants; end
+
+        UnionMember1Array = Sam::ArrayOf[-> { Sam::Models::MessageCreateParams::System::UnionMember1 }]
       end
 
       # Configuration for enabling Claude's extended thinking.

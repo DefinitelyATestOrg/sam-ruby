@@ -321,12 +321,9 @@ module Sam
         module Content
           extend Sam::Union
 
-          UnionMember1Array =
-            Sam::ArrayOf[union: -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1 }]
-
           variant String
 
-          variant Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1Array
+          variant -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1Array }
 
           module UnionMember1
             extend Sam::Union
@@ -829,14 +826,9 @@ module Sam
               module Content
                 extend Sam::Union
 
-                UnionMember1Array =
-                  Sam::ArrayOf[
-                union: -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1 }
-                ]
-
                 variant String
 
-                variant Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1Array
+                variant -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1Array }
 
                 module UnionMember1
                   extend Sam::Union
@@ -1213,6 +1205,11 @@ module Sam
                 # @!parse
                 #   # @return [Array(String, Array<Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock>)]
                 #   def self.variants; end
+
+                UnionMember1Array =
+                  Sam::ArrayOf[
+                union: -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1 }
+                ]
               end
             end
 
@@ -1359,14 +1356,9 @@ module Sam
                   module Content
                     extend Sam::Union
 
-                    UnionMember1Array =
-                      Sam::ArrayOf[
-                    union: -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1 }
-                    ]
-
                     variant String
 
-                    variant Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1Array
+                    variant -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1Array }
 
                     module UnionMember1
                       extend Sam::Union
@@ -1743,6 +1735,11 @@ module Sam
                     # @!parse
                     #   # @return [Array(String, Array<Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock>)]
                     #   def self.variants; end
+
+                    UnionMember1Array =
+                      Sam::ArrayOf[
+                    union: -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1 }
+                    ]
                   end
                 end
 
@@ -1858,6 +1855,9 @@ module Sam
           # @!parse
           #   # @return [Array(String, Array<Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestThinkingBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock>)]
           #   def self.variants; end
+
+          UnionMember1Array =
+            Sam::ArrayOf[union: -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1 }]
         end
 
         module Role
@@ -1882,11 +1882,9 @@ module Sam
       module System
         extend Sam::Union
 
-        UnionMember1Array = Sam::ArrayOf[-> { Sam::Models::MessageCountTokensBetaParams::System::UnionMember1 }]
-
         variant String
 
-        variant Sam::Models::MessageCountTokensBetaParams::System::UnionMember1Array
+        variant -> { Sam::Models::MessageCountTokensBetaParams::System::UnionMember1Array }
 
         class UnionMember1 < Sam::BaseModel
           # @!attribute text
@@ -2122,6 +2120,8 @@ module Sam
         # @!parse
         #   # @return [Array(String, Array<Sam::Models::MessageCountTokensBetaParams::System::UnionMember1>)]
         #   def self.variants; end
+
+        UnionMember1Array = Sam::ArrayOf[-> { Sam::Models::MessageCountTokensBetaParams::System::UnionMember1 }]
       end
 
       # Configuration for enabling Claude's extended thinking.
