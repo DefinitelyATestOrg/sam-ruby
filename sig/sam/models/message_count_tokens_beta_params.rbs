@@ -98,11 +98,6 @@ module Sam
         module Content
           extend Sam::Union
 
-          type union_member1_array =
-            ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::union_member1]
-
-          UnionMember1Array: union_member1_array
-
           type union_member1 =
             Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock
             | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock
@@ -454,11 +449,6 @@ module Sam
               module Content
                 extend Sam::Union
 
-                type union_member1_array =
-                  ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::union_member1]
-
-                UnionMember1Array: union_member1_array
-
                 type union_member1 =
                   Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock
                   | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
@@ -718,6 +708,11 @@ module Sam
                 end
 
                 def self?.variants: -> [String, ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::union_member1]]
+
+                type union_member1_array =
+                  ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::union_member1]
+
+                UnionMember1Array: union_member1_array
               end
             end
 
@@ -834,11 +829,6 @@ module Sam
 
                   module Content
                     extend Sam::Union
-
-                    type union_member1_array =
-                      ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::union_member1]
-
-                    UnionMember1Array: union_member1_array
 
                     type union_member1 =
                       Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock
@@ -1100,6 +1090,11 @@ module Sam
                     end
 
                     def self?.variants: -> [String, ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::union_member1]]
+
+                    type union_member1_array =
+                      ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::union_member1]
+
+                    UnionMember1Array: union_member1_array
                   end
                 end
 
@@ -1177,6 +1172,11 @@ module Sam
           end
 
           def self?.variants: -> [String, ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::union_member1]]
+
+          type union_member1_array =
+            ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::union_member1]
+
+          UnionMember1Array: union_member1_array
         end
 
         type role = :user | :assistant
@@ -1197,11 +1197,6 @@ module Sam
 
       module System
         extend Sam::Union
-
-        type union_member1_array =
-          ::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1]
-
-        UnionMember1Array: union_member1_array
 
         type union_member1 =
           {
@@ -1357,6 +1352,11 @@ module Sam
         end
 
         def self?.variants: -> [String, ::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1]]
+
+        type union_member1_array =
+          ::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1]
+
+        UnionMember1Array: union_member1_array
       end
 
       type thinking =

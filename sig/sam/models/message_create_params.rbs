@@ -140,11 +140,6 @@ module Sam
         module Content
           extend Sam::Union
 
-          type union_member1_array =
-            ::Array[Sam::Models::MessageCreateParams::Message::Content::union_member1]
-
-          UnionMember1Array: union_member1_array
-
           type union_member1 =
             Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock
             | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock
@@ -496,11 +491,6 @@ module Sam
               module Content
                 extend Sam::Union
 
-                type union_member1_array =
-                  ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::union_member1]
-
-                UnionMember1Array: union_member1_array
-
                 type union_member1 =
                   Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock
                   | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
@@ -760,6 +750,11 @@ module Sam
                 end
 
                 def self?.variants: -> [String, ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::union_member1]]
+
+                type union_member1_array =
+                  ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::union_member1]
+
+                UnionMember1Array: union_member1_array
               end
             end
 
@@ -876,11 +871,6 @@ module Sam
 
                   module Content
                     extend Sam::Union
-
-                    type union_member1_array =
-                      ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::union_member1]
-
-                    UnionMember1Array: union_member1_array
 
                     type union_member1 =
                       Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock
@@ -1141,6 +1131,11 @@ module Sam
                     end
 
                     def self?.variants: -> [String, ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::union_member1]]
+
+                    type union_member1_array =
+                      ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::union_member1]
+
+                    UnionMember1Array: union_member1_array
                   end
                 end
 
@@ -1218,6 +1213,11 @@ module Sam
           end
 
           def self?.variants: -> [String, ::Array[Sam::Models::MessageCreateParams::Message::Content::union_member1]]
+
+          type union_member1_array =
+            ::Array[Sam::Models::MessageCreateParams::Message::Content::union_member1]
+
+          UnionMember1Array: union_member1_array
         end
 
         type role = :user | :assistant
@@ -1247,11 +1247,6 @@ module Sam
 
       module System
         extend Sam::Union
-
-        type union_member1_array =
-          ::Array[Sam::Models::MessageCreateParams::System::UnionMember1]
-
-        UnionMember1Array: union_member1_array
 
         type union_member1 =
           {
@@ -1407,6 +1402,11 @@ module Sam
         end
 
         def self?.variants: -> [String, ::Array[Sam::Models::MessageCreateParams::System::UnionMember1]]
+
+        type union_member1_array =
+          ::Array[Sam::Models::MessageCreateParams::System::UnionMember1]
+
+        UnionMember1Array: union_member1_array
       end
 
       type thinking =
