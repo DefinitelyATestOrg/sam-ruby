@@ -36,7 +36,6 @@ require "connection_pool"
 # Package files.
 require_relative "sam/version"
 require_relative "sam/util"
-require_relative "sam/extern"
 require_relative "sam/base_model"
 require_relative "sam/base_page"
 require_relative "sam/base_stream"
