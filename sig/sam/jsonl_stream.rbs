@@ -1,6 +1,6 @@
 module Sam
   class JsonLStream[Elem]
-    include Sam::BaseStream[top, Elem]
+    include Sam::Type::BaseStream[top, Elem]
 
     private def iterator: -> Enumerable[Elem]
   end

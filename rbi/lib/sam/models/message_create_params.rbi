@@ -3,7 +3,7 @@
 module Sam
   module Models
     class MessageCreateParams < Sam::BaseModel
-      extend Sam::RequestParameters::Converter
+      extend Sam::Type::RequestParameters::Converter
       include Sam::RequestParameters
 
       # The maximum number of tokens to generate before stopping.
@@ -1796,7 +1796,7 @@ module Sam
                     Sam::ArrayOf[
                     union: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1
                     ],
-                    Sam::Converter
+                    Sam::Type::Converter
                   )
               end
             end
@@ -2535,7 +2535,7 @@ module Sam
                         Sam::ArrayOf[
                         union: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1
                         ],
-                        Sam::Converter
+                        Sam::Type::Converter
                       )
                   end
                 end
@@ -2666,7 +2666,7 @@ module Sam
           UnionMember1Array =
             T.let(
               Sam::ArrayOf[union: Sam::Models::MessageCreateParams::Message::Content::UnionMember1],
-              Sam::Converter
+              Sam::Type::Converter
             )
         end
 
@@ -2977,7 +2977,7 @@ module Sam
         end
 
         UnionMember1Array =
-          T.let(Sam::ArrayOf[Sam::Models::MessageCreateParams::System::UnionMember1], Sam::Converter)
+          T.let(Sam::ArrayOf[Sam::Models::MessageCreateParams::System::UnionMember1], Sam::Type::Converter)
       end
 
       # Configuration for enabling Claude's extended thinking.

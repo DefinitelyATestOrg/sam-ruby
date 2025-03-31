@@ -17,7 +17,7 @@ module Sam
   #
   #   batches => Array
   class JsonLStream
-    include Sam::BaseStream
+    include Sam::Type::BaseStream
 
     # @api private
     #
@@ -25,7 +25,7 @@ module Sam
     private def iterator
       @iterator ||= Sam::Util.chain_fused(@stream) do |y|
         @stream.each do
-          y << Sam::Converter.coerce(@model, _1)
+          y << Sam::Type::Converter.coerce(@model, _1)
         end
       end
     end

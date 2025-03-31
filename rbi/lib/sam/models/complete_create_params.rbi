@@ -3,7 +3,7 @@
 module Sam
   module Models
     class CompleteCreateParams < Sam::BaseModel
-      extend Sam::RequestParameters::Converter
+      extend Sam::Type::RequestParameters::Converter
       include Sam::RequestParameters
 
       # The maximum number of tokens to generate before stopping.

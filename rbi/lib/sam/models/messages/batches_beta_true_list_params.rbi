@@ -4,7 +4,7 @@ module Sam
   module Models
     module Messages
       class BatchesBetaTrueListParams < Sam::BaseModel
-        extend Sam::RequestParameters::Converter
+        extend Sam::Type::RequestParameters::Converter
         include Sam::RequestParameters
 
         # ID of the object to use as a cursor for pagination. When provided, returns the

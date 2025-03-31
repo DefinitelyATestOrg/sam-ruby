@@ -2,7 +2,7 @@
 
 module Sam
   class JsonLStream
-    include Sam::BaseStream
+    include Sam::Type::BaseStream
 
     Message = type_member(:in) { {fixed: T.anything} }
     Elem = type_member(:out)

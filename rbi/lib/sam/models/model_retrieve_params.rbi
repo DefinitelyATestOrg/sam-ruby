@@ -3,7 +3,7 @@
 module Sam
   module Models
     class ModelRetrieveParams < Sam::BaseModel
-      extend Sam::RequestParameters::Converter
+      extend Sam::Type::RequestParameters::Converter
       include Sam::RequestParameters
 
       # The version of the Anthropic API you want to use.
