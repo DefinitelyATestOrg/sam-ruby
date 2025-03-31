@@ -10,7 +10,7 @@ module Sam
         & Sam::request_parameters
 
       class BatchRetrieveParams < Sam::BaseModel
-        extend Sam::RequestParameters::Converter
+        extend Sam::Type::RequestParameters::Converter
         include Sam::RequestParameters
 
         attr_reader anthropic_beta: ::Array[String]?

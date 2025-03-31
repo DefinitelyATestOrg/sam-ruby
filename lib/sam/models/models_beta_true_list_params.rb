@@ -4,7 +4,7 @@ module Sam
   module Models
     class ModelsBetaTrueListParams < Sam::BaseModel
       # @!parse
-      #   extend Sam::RequestParameters::Converter
+      #   extend Sam::Type::RequestParameters::Converter
       include Sam::RequestParameters
 
       # @!attribute [r] after_id

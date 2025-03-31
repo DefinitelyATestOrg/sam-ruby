@@ -5,7 +5,7 @@ module Sam
     module Messages
       class BatchResultsParams < Sam::BaseModel
         # @!parse
-        #   extend Sam::RequestParameters::Converter
+        #   extend Sam::Type::RequestParameters::Converter
         include Sam::RequestParameters
 
         # @!attribute [r] anthropic_beta

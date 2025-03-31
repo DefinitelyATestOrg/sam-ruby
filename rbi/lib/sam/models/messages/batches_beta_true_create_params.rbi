@@ -4,7 +4,7 @@ module Sam
   module Models
     module Messages
       class BatchesBetaTrueCreateParams < Sam::BaseModel
-        extend Sam::RequestParameters::Converter
+        extend Sam::Type::RequestParameters::Converter
         include Sam::RequestParameters
 
         # List of requests for prompt completion. Each is an individual request to create
@@ -1912,7 +1912,7 @@ module Sam
                           Sam::ArrayOf[
                           union: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1
                           ],
-                          Sam::Converter
+                          Sam::Type::Converter
                         )
                     end
                   end
@@ -2655,7 +2655,7 @@ module Sam
                               Sam::ArrayOf[
                               union: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1
                               ],
-                              Sam::Converter
+                              Sam::Type::Converter
                             )
                         end
                       end
@@ -2788,7 +2788,7 @@ module Sam
                 UnionMember1Array =
                   T.let(
                     Sam::ArrayOf[union: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1],
-                    Sam::Converter
+                    Sam::Type::Converter
                   )
               end
 
@@ -3144,7 +3144,7 @@ module Sam
               UnionMember1Array =
                 T.let(
                   Sam::ArrayOf[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1],
-                  Sam::Converter
+                  Sam::Type::Converter
                 )
             end
 

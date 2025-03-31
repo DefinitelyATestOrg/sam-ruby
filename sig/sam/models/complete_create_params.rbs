@@ -17,7 +17,7 @@ module Sam
       & Sam::request_parameters
 
     class CompleteCreateParams < Sam::BaseModel
-      extend Sam::RequestParameters::Converter
+      extend Sam::Type::RequestParameters::Converter
       include Sam::RequestParameters
 
       attr_accessor max_tokens_to_sample: Integer

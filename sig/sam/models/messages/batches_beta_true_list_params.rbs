@@ -13,7 +13,7 @@ module Sam
         & Sam::request_parameters
 
       class BatchesBetaTrueListParams < Sam::BaseModel
-        extend Sam::RequestParameters::Converter
+        extend Sam::Type::RequestParameters::Converter
         include Sam::RequestParameters
 
         attr_reader after_id: String?
