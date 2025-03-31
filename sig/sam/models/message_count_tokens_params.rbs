@@ -15,7 +15,7 @@ module Sam
       & Sam::request_parameters
 
     class MessageCountTokensParams < Sam::BaseModel
-      extend Sam::RequestParameters::Converter
+      extend Sam::Type::RequestParameters::Converter
       include Sam::RequestParameters
 
       attr_accessor messages: ::Array[Sam::Models::MessageCountTokensParams::Message]

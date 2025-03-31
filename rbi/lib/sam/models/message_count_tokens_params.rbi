@@ -3,7 +3,7 @@
 module Sam
   module Models
     class MessageCountTokensParams < Sam::BaseModel
-      extend Sam::RequestParameters::Converter
+      extend Sam::Type::RequestParameters::Converter
       include Sam::RequestParameters
 
       # Input messages.
@@ -1697,7 +1697,7 @@ module Sam
                     Sam::ArrayOf[
                     union: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1
                     ],
-                    Sam::Converter
+                    Sam::Type::Converter
                   )
               end
             end
@@ -2436,7 +2436,7 @@ module Sam
                         Sam::ArrayOf[
                         union: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1
                         ],
-                        Sam::Converter
+                        Sam::Type::Converter
                       )
                   end
                 end
@@ -2567,7 +2567,7 @@ module Sam
           UnionMember1Array =
             T.let(
               Sam::ArrayOf[union: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1],
-              Sam::Converter
+              Sam::Type::Converter
             )
         end
 
@@ -2864,7 +2864,7 @@ module Sam
         end
 
         UnionMember1Array =
-          T.let(Sam::ArrayOf[Sam::Models::MessageCountTokensParams::System::UnionMember1], Sam::Converter)
+          T.let(Sam::ArrayOf[Sam::Models::MessageCountTokensParams::System::UnionMember1], Sam::Type::Converter)
       end
 
       # Configuration for enabling Claude's extended thinking.

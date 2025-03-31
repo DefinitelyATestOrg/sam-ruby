@@ -11,7 +11,7 @@ module Sam
         & Sam::request_parameters
 
       class BatchesBetaTrueCreateParams < Sam::BaseModel
-        extend Sam::RequestParameters::Converter
+        extend Sam::Type::RequestParameters::Converter
         include Sam::RequestParameters
 
         attr_accessor requests: ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request]

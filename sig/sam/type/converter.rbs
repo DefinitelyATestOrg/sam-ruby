@@ -1,0 +1,36 @@
+module Sam
+  module Type
+    module Converter
+      type input = Sam::Type::Converter | Class
+
+      type state =
+        {
+          strictness: bool | :strong,
+          exactness: { yes: Integer, no: Integer, maybe: Integer },
+          branched: Integer
+        }
+
+      def coerce: (top value, state: Sam::Type::Converter::state) -> top
+
+      def dump: (top value) -> top
+
+      def self.type_info: (
+        {
+          const: (nil | bool | Integer | Float | Symbol)?,
+          enum: ^-> Sam::Type::Converter::input?,
+          union: ^-> Sam::Type::Converter::input?
+        }
+        | ^-> Sam::Type::Converter::input
+        | Sam::Type::Converter::input spec
+      ) -> (^-> top)
+
+      def self.coerce: (
+        Sam::Type::Converter::input target,
+        top value,
+        ?state: Sam::Type::Converter::state
+      ) -> top
+
+      def self.dump: (Sam::Type::Converter::input target, top value) -> top
+    end
+  end
+end

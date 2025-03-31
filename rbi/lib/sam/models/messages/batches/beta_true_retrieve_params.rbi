@@ -5,7 +5,7 @@ module Sam
     module Messages
       module Batches
         class BetaTrueRetrieveParams < Sam::BaseModel
-          extend Sam::RequestParameters::Converter
+          extend Sam::Type::RequestParameters::Converter
           include Sam::RequestParameters
 
           # Optional header to specify the beta version(s) you want to use.
