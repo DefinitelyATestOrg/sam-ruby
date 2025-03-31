@@ -11,6 +11,8 @@ module Sam
       abstract!
       final!
 
+      Elem = type_member(:out)
+
       sig(:final) do
         params(
           type_info: T.any(
@@ -56,7 +58,7 @@ module Sam
       end
 
       # @api private
-      sig(:final) { returns(T.anything) }
+      sig(:final) { returns(Elem) }
       protected def item_type
       end
 
