@@ -64,7 +64,14 @@ module Sam
         )
           .returns(T.attached_class)
       end
-      def self.new(after_id: nil, before_id: nil, limit: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
+      def self.new(
+        after_id: nil,
+        before_id: nil,
+        limit: nil,
+        anthropic_version: nil,
+        x_api_key: nil,
+        request_options: {}
+      )
       end
 
       sig do
