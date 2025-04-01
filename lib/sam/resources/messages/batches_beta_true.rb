@@ -38,6 +38,8 @@ module Sam
         #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Sam::Models::Messages::BatchesBetaTrueCreateResponse]
+        #
+        # @see Sam::Models::Messages::BatchesBetaTrueCreateParams
         def create(params)
           parsed, options = Sam::Models::Messages::BatchesBetaTrueCreateParams.dump_request(params)
           header_params = [:"anthropic-beta", :"anthropic-version", :"x-api-key"]
@@ -89,6 +91,8 @@ module Sam
         #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Sam::Models::Messages::BatchesBetaTrueListResponse]
+        #
+        # @see Sam::Models::Messages::BatchesBetaTrueListParams
         def list(params = {})
           parsed, options = Sam::Models::Messages::BatchesBetaTrueListParams.dump_request(params)
           query_params = [:after_id, :before_id, :limit]
@@ -102,6 +106,8 @@ module Sam
           )
         end
 
+        # @api private
+        #
         # @param client [Sam::Client]
         def initialize(client:)
           @client = client

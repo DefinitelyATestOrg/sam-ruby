@@ -273,6 +273,8 @@ module Sam
       #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Sam::Models::MessageCreateResponse]
+      #
+      # @see Sam::Models::MessageCreateParams
       def create(params)
         parsed, options = Sam::Models::MessageCreateParams.dump_request(params)
         header_params = [:"anthropic-beta", :"anthropic-version", :"x-api-key"]
@@ -497,6 +499,8 @@ module Sam
       #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Sam::Models::MessageCountTokensResponse]
+      #
+      # @see Sam::Models::MessageCountTokensParams
       def count_tokens(params)
         parsed, options = Sam::Models::MessageCountTokensParams.dump_request(params)
         header_params = [:"anthropic-beta", :"anthropic-version", :"x-api-key"]
@@ -721,6 +725,8 @@ module Sam
       #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Sam::Models::MessageCountTokensBetaResponse]
+      #
+      # @see Sam::Models::MessageCountTokensBetaParams
       def count_tokens_beta(params)
         parsed, options = Sam::Models::MessageCountTokensBetaParams.dump_request(params)
         header_params = [:"anthropic-beta", :"anthropic-version", :"x-api-key"]
@@ -734,6 +740,8 @@ module Sam
         )
       end
 
+      # @api private
+      #
       # @param client [Sam::Client]
       def initialize(client:)
         @client = client

@@ -451,6 +451,8 @@ module Sam
       #
       #   In non-streaming mode this value is always non-null. In streaming mode, it is
       #   null in the `message_start` event and non-null otherwise.
+      #
+      # @see Sam::Models::MessageCreateResponse#stop_reason
       module StopReason
         extend Sam::Enum
 
@@ -466,6 +468,7 @@ module Sam
         #   def self.values; end
       end
 
+      # @see Sam::Models::MessageCreateResponse#usage
       class Usage < Sam::BaseModel
         # @!attribute cache_creation_input_tokens
         #   The number of input tokens used to create the cache entry.

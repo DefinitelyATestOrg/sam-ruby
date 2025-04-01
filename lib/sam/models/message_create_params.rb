@@ -2,6 +2,7 @@
 
 module Sam
   module Models
+    # @see Sam::Resources::Messages#create
     class MessageCreateParams < Sam::BaseModel
       # @!parse
       #   extend Sam::Type::RequestParameters::Converter
@@ -436,6 +437,7 @@ module Sam
 
         # def initialize: (Hash | Sam::BaseModel) -> void
 
+        # @see Sam::Models::MessageCreateParams::Message#content
         module Content
           extend Sam::Union
 
@@ -502,6 +504,7 @@ module Sam
 
               # def initialize: (Hash | Sam::BaseModel) -> void
 
+              # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock#cache_control
               class CacheControl < Sam::BaseModel
                 # @!attribute type
                 #
@@ -726,6 +729,7 @@ module Sam
 
               # def initialize: (Hash | Sam::BaseModel) -> void
 
+              # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock#source
               module Source
                 extend Sam::Union
 
@@ -763,6 +767,7 @@ module Sam
 
                   # def initialize: (Hash | Sam::BaseModel) -> void
 
+                  # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource#media_type
                   module MediaType
                     extend Sam::Enum
 
@@ -804,6 +809,7 @@ module Sam
                 #   def self.variants; end
               end
 
+              # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock#cache_control
               class CacheControl < Sam::BaseModel
                 # @!attribute type
                 #
@@ -858,6 +864,7 @@ module Sam
 
               # def initialize: (Hash | Sam::BaseModel) -> void
 
+              # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolUseBlock#cache_control
               class CacheControl < Sam::BaseModel
                 # @!attribute type
                 #
@@ -921,6 +928,7 @@ module Sam
 
               # def initialize: (Hash | Sam::BaseModel) -> void
 
+              # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock#cache_control
               class CacheControl < Sam::BaseModel
                 # @!attribute type
                 #
@@ -935,6 +943,7 @@ module Sam
                 # def initialize: (Hash | Sam::BaseModel) -> void
               end
 
+              # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock#content
               module Content
                 extend Sam::Union
 
@@ -992,6 +1001,7 @@ module Sam
 
                     # def initialize: (Hash | Sam::BaseModel) -> void
 
+                    # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock#cache_control
                     class CacheControl < Sam::BaseModel
                       # @!attribute type
                       #
@@ -1216,6 +1226,7 @@ module Sam
 
                     # def initialize: (Hash | Sam::BaseModel) -> void
 
+                    # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock#source
                     module Source
                       extend Sam::Union
 
@@ -1253,6 +1264,7 @@ module Sam
 
                         # def initialize: (Hash | Sam::BaseModel) -> void
 
+                        # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource#media_type
                         module MediaType
                           extend Sam::Enum
 
@@ -1294,6 +1306,7 @@ module Sam
                       #   def self.variants; end
                     end
 
+                    # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock#cache_control
                     class CacheControl < Sam::BaseModel
                       # @!attribute type
                       #
@@ -1376,6 +1389,7 @@ module Sam
 
               # def initialize: (Hash | Sam::BaseModel) -> void
 
+              # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock#source
               module Source
                 extend Sam::Union
 
@@ -1465,6 +1479,7 @@ module Sam
 
                   # def initialize: (Hash | Sam::BaseModel) -> void
 
+                  # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource#content
                   module Content
                     extend Sam::Union
 
@@ -1522,6 +1537,7 @@ module Sam
 
                         # def initialize: (Hash | Sam::BaseModel) -> void
 
+                        # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock#cache_control
                         class CacheControl < Sam::BaseModel
                           # @!attribute type
                           #
@@ -1746,6 +1762,7 @@ module Sam
 
                         # def initialize: (Hash | Sam::BaseModel) -> void
 
+                        # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock#source
                         module Source
                           extend Sam::Union
 
@@ -1783,6 +1800,7 @@ module Sam
 
                             # def initialize: (Hash | Sam::BaseModel) -> void
 
+                            # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource#media_type
                             module MediaType
                               extend Sam::Enum
 
@@ -1824,6 +1842,7 @@ module Sam
                           #   def self.variants; end
                         end
 
+                        # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock#cache_control
                         class CacheControl < Sam::BaseModel
                           # @!attribute type
                           #
@@ -1880,6 +1899,7 @@ module Sam
                 #   def self.variants; end
               end
 
+              # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock#cache_control
               class CacheControl < Sam::BaseModel
                 # @!attribute type
                 #
@@ -1894,6 +1914,7 @@ module Sam
                 # def initialize: (Hash | Sam::BaseModel) -> void
               end
 
+              # @see Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock#citations
               class Citations < Sam::BaseModel
                 # @!attribute [r] enabled
                 #
@@ -1972,6 +1993,7 @@ module Sam
             Sam::ArrayOf[union: -> { Sam::Models::MessageCreateParams::Message::Content::UnionMember1 }]
         end
 
+        # @see Sam::Models::MessageCreateParams::Message#role
         module Role
           extend Sam::Enum
 
@@ -2054,6 +2076,7 @@ module Sam
 
           # def initialize: (Hash | Sam::BaseModel) -> void
 
+          # @see Sam::Models::MessageCreateParams::System::UnionMember1#cache_control
           class CacheControl < Sam::BaseModel
             # @!attribute type
             #
@@ -2517,6 +2540,7 @@ module Sam
 
           # def initialize: (Hash | Sam::BaseModel) -> void
 
+          # @see Sam::Models::MessageCreateParams::Tool::Tool#input_schema
           class InputSchema < Sam::BaseModel
             # @!attribute type
             #
@@ -2542,6 +2566,7 @@ module Sam
             # def initialize: (Hash | Sam::BaseModel) -> void
           end
 
+          # @see Sam::Models::MessageCreateParams::Tool::Tool#cache_control
           class CacheControl < Sam::BaseModel
             # @!attribute type
             #
@@ -2587,6 +2612,7 @@ module Sam
 
           # def initialize: (Hash | Sam::BaseModel) -> void
 
+          # @see Sam::Models::MessageCreateParams::Tool::BashTool20250124#cache_control
           class CacheControl < Sam::BaseModel
             # @!attribute type
             #
@@ -2632,6 +2658,7 @@ module Sam
 
           # def initialize: (Hash | Sam::BaseModel) -> void
 
+          # @see Sam::Models::MessageCreateParams::Tool::TextEditor20250124#cache_control
           class CacheControl < Sam::BaseModel
             # @!attribute type
             #

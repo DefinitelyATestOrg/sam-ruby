@@ -117,6 +117,8 @@ module Sam
           # def initialize: (Hash | Sam::BaseModel) -> void
 
           # Processing status of the Message Batch.
+          #
+          # @see Sam::Models::Messages::Batches::BetaTrueRetrieveResponse#processing_status
           module ProcessingStatus
             extend Sam::Enum
 
@@ -131,6 +133,7 @@ module Sam
             #   def self.values; end
           end
 
+          # @see Sam::Models::Messages::Batches::BetaTrueRetrieveResponse#request_counts
           class RequestCounts < Sam::BaseModel
             # @!attribute canceled
             #   Number of requests in the Message Batch that have been canceled.
