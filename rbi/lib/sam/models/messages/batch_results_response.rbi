@@ -256,7 +256,16 @@ module Sam
                 )
                   .returns(T.attached_class)
               end
-              def self.new(id:, content:, model:, stop_reason:, stop_sequence:, usage:, role: :assistant, type: :message)
+              def self.new(
+                id:,
+                content:,
+                model:,
+                stop_reason:,
+                stop_sequence:,
+                usage:,
+                role: :assistant,
+                type: :message
+              )
               end
 
               sig do
@@ -390,7 +399,14 @@ module Sam
                         )
                           .returns(T.attached_class)
                       end
-                      def self.new(cited_text:, document_index:, document_title:, end_char_index:, start_char_index:, type: :char_location)
+                      def self.new(
+                        cited_text:,
+                        document_index:,
+                        document_title:,
+                        end_char_index:,
+                        start_char_index:,
+                        type: :char_location
+                      )
                       end
 
                       sig do
@@ -440,7 +456,14 @@ module Sam
                         )
                           .returns(T.attached_class)
                       end
-                      def self.new(cited_text:, document_index:, document_title:, end_page_number:, start_page_number:, type: :page_location)
+                      def self.new(
+                        cited_text:,
+                        document_index:,
+                        document_title:,
+                        end_page_number:,
+                        start_page_number:,
+                        type: :page_location
+                      )
                       end
 
                       sig do
@@ -698,7 +721,12 @@ module Sam
                   )
                     .returns(T.attached_class)
                 end
-                def self.new(cache_creation_input_tokens:, cache_read_input_tokens:, input_tokens:, output_tokens:)
+                def self.new(
+                  cache_creation_input_tokens:,
+                  cache_read_input_tokens:,
+                  input_tokens:,
+                  output_tokens:
+                )
                 end
 
                 sig do
