@@ -1020,6 +1020,7 @@ module Sam
                       T.type_alias do
                         T.any(
                           Symbol,
+                          String,
                           Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                         )
                       end
@@ -1740,6 +1741,7 @@ module Sam
                             T.type_alias do
                               T.any(
                                 Symbol,
+                                String,
                                 Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                               )
                             end
@@ -2500,6 +2502,7 @@ module Sam
                                 T.type_alias do
                                   T.any(
                                     Symbol,
+                                    String,
                                     Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                                   )
                                 end
@@ -2750,7 +2753,7 @@ module Sam
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Role) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Role::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Sam::Models::MessagesBetaTrueCreateParams::Message::Role::TaggedSymbol) }
 
           USER = T.let(:user, Sam::Models::MessagesBetaTrueCreateParams::Message::Role::TaggedSymbol)
           ASSISTANT = T.let(:assistant, Sam::Models::MessagesBetaTrueCreateParams::Message::Role::TaggedSymbol)
@@ -3367,7 +3370,7 @@ module Sam
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::Type::TaggedSymbol) }
 
             CUSTOM = T.let(:custom, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::Type::TaggedSymbol)
 

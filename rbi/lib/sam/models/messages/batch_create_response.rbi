@@ -128,7 +128,7 @@ module Sam
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Sam::Models::Messages::BatchCreateResponse::ProcessingStatus) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Sam::Models::Messages::BatchCreateResponse::ProcessingStatus::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Sam::Models::Messages::BatchCreateResponse::ProcessingStatus::TaggedSymbol) }
 
           IN_PROGRESS =
             T.let(:in_progress, Sam::Models::Messages::BatchCreateResponse::ProcessingStatus::TaggedSymbol)

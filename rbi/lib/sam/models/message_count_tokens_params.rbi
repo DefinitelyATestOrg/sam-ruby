@@ -895,6 +895,7 @@ module Sam
                       T.type_alias do
                         T.any(
                           Symbol,
+                          String,
                           Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                         )
                       end
@@ -1615,6 +1616,7 @@ module Sam
                             T.type_alias do
                               T.any(
                                 Symbol,
+                                String,
                                 Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                               )
                             end
@@ -2375,6 +2377,7 @@ module Sam
                                 T.type_alias do
                                   T.any(
                                     Symbol,
+                                    String,
                                     Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                                   )
                                 end
@@ -2625,7 +2628,7 @@ module Sam
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Sam::Models::MessageCountTokensParams::Message::Role) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Sam::Models::MessageCountTokensParams::Message::Role::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Sam::Models::MessageCountTokensParams::Message::Role::TaggedSymbol) }
 
           USER = T.let(:user, Sam::Models::MessageCountTokensParams::Message::Role::TaggedSymbol)
           ASSISTANT = T.let(:assistant, Sam::Models::MessageCountTokensParams::Message::Role::TaggedSymbol)
