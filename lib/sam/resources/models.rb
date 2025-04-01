@@ -31,7 +31,7 @@ module Sam
         parsed, options = Sam::Models::ModelRetrieveParams.dump_request(params)
         @client.request(
           method: :get,
-          path: ["v1/models/%0s", model_id],
+          path: ["v1/models/%1$s", model_id],
           headers: parsed,
           model: Sam::Models::ModelRetrieveResponse,
           options: options
@@ -111,7 +111,7 @@ module Sam
         parsed, options = Sam::Models::ModelRetrieveBetaParams.dump_request(params)
         @client.request(
           method: :get,
-          path: ["v1/models/%0s?beta=true", model_id],
+          path: ["v1/models/%1$s?beta=true", model_id],
           headers: parsed,
           model: Sam::Models::ModelRetrieveBetaResponse,
           options: options

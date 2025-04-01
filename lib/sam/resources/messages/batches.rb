@@ -89,7 +89,7 @@ module Sam
           parsed, options = Sam::Models::Messages::BatchRetrieveParams.dump_request(params)
           @client.request(
             method: :get,
-            path: ["v1/messages/batches/%0s", message_batch_id],
+            path: ["v1/messages/batches/%1$s", message_batch_id],
             headers: parsed,
             model: Sam::Models::Messages::BatchRetrieveResponse,
             options: options
@@ -183,7 +183,7 @@ module Sam
           parsed, options = Sam::Models::Messages::BatchDeleteParams.dump_request(params)
           @client.request(
             method: :delete,
-            path: ["v1/messages/batches/%0s", message_batch_id],
+            path: ["v1/messages/batches/%1$s", message_batch_id],
             headers: parsed,
             model: Sam::Models::Messages::BatchDeleteResponse,
             options: options
@@ -231,7 +231,7 @@ module Sam
           parsed, options = Sam::Models::Messages::BatchCancelParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["v1/messages/batches/%0s/cancel", message_batch_id],
+            path: ["v1/messages/batches/%1$s/cancel", message_batch_id],
             headers: parsed,
             model: Sam::Models::Messages::BatchCancelResponse,
             options: options
@@ -279,7 +279,7 @@ module Sam
           parsed, options = Sam::Models::Messages::BatchCancelBetaParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["v1/messages/batches/%0s/cancel?beta=true", message_batch_id],
+            path: ["v1/messages/batches/%1$s/cancel?beta=true", message_batch_id],
             headers: parsed,
             model: Sam::Models::Messages::BatchCancelBetaResponse,
             options: options
@@ -323,7 +323,7 @@ module Sam
           parsed, options = Sam::Models::Messages::BatchResultsParams.dump_request(params)
           @client.request(
             method: :get,
-            path: ["v1/messages/batches/%0s/results", message_batch_id],
+            path: ["v1/messages/batches/%1$s/results", message_batch_id],
             headers: {"accept" => "application/x-jsonl", **parsed},
             stream: Sam::JsonLStream,
             model: Sam::Models::Messages::BatchResultsResponse,
@@ -368,7 +368,7 @@ module Sam
           parsed, options = Sam::Models::Messages::BatchResultsBetaParams.dump_request(params)
           @client.request(
             method: :get,
-            path: ["v1/messages/batches/%0s/results?beta=true", message_batch_id],
+            path: ["v1/messages/batches/%1$s/results?beta=true", message_batch_id],
             headers: {"accept" => "application/x-jsonl", **parsed},
             stream: Sam::JsonLStream,
             model: Sam::Models::Messages::BatchResultsBetaResponse,
