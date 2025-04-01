@@ -40,7 +40,7 @@ module Sam
             parsed, options = Sam::Models::Messages::Batches::BetaTrueRetrieveParams.dump_request(params)
             @client.request(
               method: :get,
-              path: ["v1/messages/batches/%0s?beta=true", message_batch_id],
+              path: ["v1/messages/batches/%1$s?beta=true", message_batch_id],
               headers: parsed,
               model: Sam::Models::Messages::Batches::BetaTrueRetrieveResponse,
               options: options
@@ -83,7 +83,7 @@ module Sam
             parsed, options = Sam::Models::Messages::Batches::BetaTrueDeleteParams.dump_request(params)
             @client.request(
               method: :delete,
-              path: ["v1/messages/batches/%0s?beta=true", message_batch_id],
+              path: ["v1/messages/batches/%1$s?beta=true", message_batch_id],
               headers: parsed,
               model: Sam::Models::Messages::Batches::BetaTrueDeleteResponse,
               options: options
