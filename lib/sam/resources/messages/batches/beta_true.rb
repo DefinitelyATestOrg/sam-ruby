@@ -12,28 +12,13 @@ module Sam
           #   Learn more about the Message Batches API in our
           #   [user guide](/en/docs/build-with-claude/batch-processing)
           #
-          # @param message_batch_id [String] ID of the Message Batch.
+          # @overload retrieve(message_batch_id, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
           #
-          # @param params [Sam::Models::Messages::Batches::BetaTrueRetrieveParams, Hash{Symbol=>Object}] .
-          #
-          #   @option params [Array<String>] :anthropic_beta Optional header to specify the beta version(s) you want to use.
-          #
-          #     To use multiple betas, use a comma separated list like `beta1,beta2` or specify
-          #     the header multiple times for each beta.
-          #
-          #   @option params [String] :anthropic_version The version of the Anthropic API you want to use.
-          #
-          #     Read more about versioning and our version history
-          #     [here](https://docs.anthropic.com/en/api/versioning).
-          #
-          #   @option params [String] :x_api_key Your unique API key for authentication.
-          #
-          #     This key is required in the header of all API requests, to authenticate your
-          #     account and access Anthropic's services. Get your API key through the
-          #     [Console](https://console.anthropic.com/settings/keys). Each key is scoped to a
-          #     Workspace.
-          #
-          #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+          # @param message_batch_id [String]
+          # @param anthropic_beta [Array<String>]
+          # @param anthropic_version [String]
+          # @param x_api_key [String]
+          # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Sam::Models::Messages::Batches::BetaTrueRetrieveResponse]
           #
@@ -57,28 +42,13 @@ module Sam
           #   Learn more about the Message Batches API in our
           #   [user guide](/en/docs/build-with-claude/batch-processing)
           #
-          # @param message_batch_id [String] ID of the Message Batch.
+          # @overload delete(message_batch_id, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
           #
-          # @param params [Sam::Models::Messages::Batches::BetaTrueDeleteParams, Hash{Symbol=>Object}] .
-          #
-          #   @option params [Array<String>] :anthropic_beta Optional header to specify the beta version(s) you want to use.
-          #
-          #     To use multiple betas, use a comma separated list like `beta1,beta2` or specify
-          #     the header multiple times for each beta.
-          #
-          #   @option params [String] :anthropic_version The version of the Anthropic API you want to use.
-          #
-          #     Read more about versioning and our version history
-          #     [here](https://docs.anthropic.com/en/api/versioning).
-          #
-          #   @option params [String] :x_api_key Your unique API key for authentication.
-          #
-          #     This key is required in the header of all API requests, to authenticate your
-          #     account and access Anthropic's services. Get your API key through the
-          #     [Console](https://console.anthropic.com/settings/keys). Each key is scoped to a
-          #     Workspace.
-          #
-          #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+          # @param message_batch_id [String]
+          # @param anthropic_beta [Array<String>]
+          # @param anthropic_version [String]
+          # @param x_api_key [String]
+          # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Sam::Models::Messages::Batches::BetaTrueDeleteResponse]
           #
