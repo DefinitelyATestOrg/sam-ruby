@@ -3,6 +3,7 @@
 module Sam
   module Models
     module Messages
+      # @see Sam::Resources::Messages::Batches#retrieve
       class BatchRetrieveResponse < Sam::BaseModel
         # @!attribute id
         #   Unique object identifier.

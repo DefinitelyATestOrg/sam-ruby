@@ -3,6 +3,7 @@
 module Sam
   module Models
     module Messages
+      # @see Sam::Resources::Messages::Batches#cancel
       class BatchCancelResponse < Sam::BaseModel
         # @!attribute id
         #   Unique object identifier.

@@ -2,6 +2,7 @@
 
 module Sam
   module Models
+    # @see Sam::Resources::Models#retrieve_beta
     class ModelRetrieveBetaResponse < Sam::BaseModel
       # @!attribute id
       #   Unique model identifier.
