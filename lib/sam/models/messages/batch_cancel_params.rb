@@ -3,6 +3,7 @@
 module Sam
   module Models
     module Messages
+      # @see Sam::Resources::Messages::Batches#cancel
       class BatchCancelParams < Sam::BaseModel
         # @!parse
         #   extend Sam::Type::RequestParameters::Converter

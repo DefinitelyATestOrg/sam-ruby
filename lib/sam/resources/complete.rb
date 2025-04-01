@@ -93,6 +93,8 @@ module Sam
       #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Sam::Models::CompleteCreateResponse]
+      #
+      # @see Sam::Models::CompleteCreateParams
       def create(params)
         parsed, options = Sam::Models::CompleteCreateParams.dump_request(params)
         header_params = [:"anthropic-version", :"x-api-key"]
@@ -106,6 +108,8 @@ module Sam
         )
       end
 
+      # @api private
+      #
       # @param client [Sam::Client]
       def initialize(client:)
         @client = client

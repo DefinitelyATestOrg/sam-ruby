@@ -6,6 +6,8 @@ module Sam
       # @return [Sam::Resources::Store::Orders]
       attr_reader :orders
 
+      # @api private
+      #
       # @param client [Sam::Client]
       def initialize(client:)
         @client = client

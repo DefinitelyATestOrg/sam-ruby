@@ -4,6 +4,7 @@ module Sam
   module Models
     module Messages
       module Batches
+        # @see Sam::Resources::Messages::Batches::BetaTrue#retrieve
         class BetaTrueRetrieveParams < Sam::BaseModel
           # @!parse
           #   extend Sam::Type::RequestParameters::Converter

@@ -27,6 +27,8 @@ module Sam
       #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Sam::Models::ModelRetrieveResponse]
+      #
+      # @see Sam::Models::ModelRetrieveParams
       def retrieve(model_id, params = {})
         parsed, options = Sam::Models::ModelRetrieveParams.dump_request(params)
         @client.request(
@@ -70,6 +72,8 @@ module Sam
       #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Sam::Models::ModelListResponse]
+      #
+      # @see Sam::Models::ModelListParams
       def list(params = {})
         parsed, options = Sam::Models::ModelListParams.dump_request(params)
         query_params = [:after_id, :before_id, :limit]
@@ -107,6 +111,8 @@ module Sam
       #   @option params [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Sam::Models::ModelRetrieveBetaResponse]
+      #
+      # @see Sam::Models::ModelRetrieveBetaParams
       def retrieve_beta(model_id, params = {})
         parsed, options = Sam::Models::ModelRetrieveBetaParams.dump_request(params)
         @client.request(
@@ -118,6 +124,8 @@ module Sam
         )
       end
 
+      # @api private
+      #
       # @param client [Sam::Client]
       def initialize(client:)
         @client = client

@@ -2,6 +2,7 @@
 
 module Sam
   module Models
+    # @see Sam::Resources::ModelsBetaTrue#list
     class ModelsBetaTrueListParams < Sam::BaseModel
       # @!parse
       #   extend Sam::Type::RequestParameters::Converter

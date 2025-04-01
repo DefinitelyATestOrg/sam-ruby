@@ -39,6 +39,8 @@ module Sam
         #   Contains a Message output if processing was successful, an error response if
         #   processing failed, or the reason why processing was not attempted, such as
         #   cancellation or expiration.
+        #
+        # @see Sam::Models::Messages::BatchResultsResponse#result
         module Result
           extend Sam::Union
 
@@ -71,6 +73,7 @@ module Sam
 
             # def initialize: (Hash | Sam::BaseModel) -> void
 
+            # @see Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult#message
             class Message < Sam::BaseModel
               # @!attribute id
               #   Unique object identifier.
@@ -531,6 +534,8 @@ module Sam
               #
               #   In non-streaming mode this value is always non-null. In streaming mode, it is
               #   null in the `message_start` event and non-null otherwise.
+              #
+              # @see Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message#stop_reason
               module StopReason
                 extend Sam::Enum
 
@@ -546,6 +551,7 @@ module Sam
                 #   def self.values; end
               end
 
+              # @see Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message#usage
               class Usage < Sam::BaseModel
                 # @!attribute cache_creation_input_tokens
                 #   The number of input tokens used to create the cache entry.
@@ -619,6 +625,7 @@ module Sam
 
             # def initialize: (Hash | Sam::BaseModel) -> void
 
+            # @see Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult#error
             class Error < Sam::BaseModel
               # @!attribute error
               #
@@ -639,6 +646,7 @@ module Sam
 
               # def initialize: (Hash | Sam::BaseModel) -> void
 
+              # @see Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error#error
               module Error
                 extend Sam::Union
 
