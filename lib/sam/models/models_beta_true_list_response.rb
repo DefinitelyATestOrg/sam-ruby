@@ -2,6 +2,7 @@
 
 module Sam
   module Models
+    # @see Sam::Resources::ModelsBetaTrue#list
     class ModelsBetaTrueListResponse < Sam::BaseModel
       # @!attribute data
       #

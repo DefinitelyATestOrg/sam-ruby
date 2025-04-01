@@ -3,6 +3,7 @@
 module Sam
   module Models
     module Messages
+      # @see Sam::Resources::Messages::Batches#results
       class BatchResultsResponse < Sam::BaseModel
         # @!attribute custom_id
         #   Developer-provided ID created for each request in a Message Batch. Useful for

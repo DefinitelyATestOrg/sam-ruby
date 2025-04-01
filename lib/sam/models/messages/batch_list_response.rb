@@ -3,6 +3,7 @@
 module Sam
   module Models
     module Messages
+      # @see Sam::Resources::Messages::Batches#list
       class BatchListResponse < Sam::BaseModel
         # @!attribute data
         #

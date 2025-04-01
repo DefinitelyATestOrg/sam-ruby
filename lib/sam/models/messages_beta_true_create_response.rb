@@ -2,6 +2,7 @@
 
 module Sam
   module Models
+    # @see Sam::Resources::MessagesBetaTrue#create
     class MessagesBetaTrueCreateResponse < Sam::BaseModel
       # @!attribute id
       #   Unique object identifier.

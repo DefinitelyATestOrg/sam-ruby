@@ -2,6 +2,7 @@
 
 module Sam
   module Models
+    # @see Sam::Resources::Messages#count_tokens
     class MessageCountTokensResponse < Sam::BaseModel
       # @!attribute input_tokens
       #   The total number of tokens across the provided list of messages, system prompt,
