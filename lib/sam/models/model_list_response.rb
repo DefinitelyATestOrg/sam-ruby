@@ -2,6 +2,7 @@
 
 module Sam
   module Models
+    # @see Sam::Resources::Models#list
     class ModelListResponse < Sam::BaseModel
       # @!attribute data
       #

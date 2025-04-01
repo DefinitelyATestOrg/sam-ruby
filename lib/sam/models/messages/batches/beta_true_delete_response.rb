@@ -4,6 +4,7 @@ module Sam
   module Models
     module Messages
       module Batches
+        # @see Sam::Resources::Messages::Batches::BetaTrue#delete
         class BetaTrueDeleteResponse < Sam::BaseModel
           # @!attribute id
           #   ID of the Message Batch.

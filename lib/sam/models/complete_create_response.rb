@@ -2,6 +2,7 @@
 
 module Sam
   module Models
+    # @see Sam::Resources::Complete#create
     class CompleteCreateResponse < Sam::BaseModel
       # @!attribute id
       #   Unique object identifier.
