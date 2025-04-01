@@ -3,6 +3,7 @@
 module Sam
   module Models
     module Messages
+      # @see Sam::Resources::Messages::BatchesBetaTrue#create
       class BatchesBetaTrueCreateParams < Sam::BaseModel
         # @!parse
         #   extend Sam::Type::RequestParameters::Converter
@@ -94,6 +95,7 @@ module Sam
 
           # def initialize: (Hash | Sam::BaseModel) -> void
 
+          # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request#params
           class Params < Sam::BaseModel
             # @!attribute max_tokens
             #   The maximum number of tokens to generate before stopping.
@@ -488,6 +490,7 @@ module Sam
 
               # def initialize: (Hash | Sam::BaseModel) -> void
 
+              # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message#content
               module Content
                 extend Sam::Union
 
@@ -560,6 +563,7 @@ module Sam
 
                     # def initialize: (Hash | Sam::BaseModel) -> void
 
+                    # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock#cache_control
                     class CacheControl < Sam::BaseModel
                       # @!attribute type
                       #
@@ -784,6 +788,7 @@ module Sam
 
                     # def initialize: (Hash | Sam::BaseModel) -> void
 
+                    # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock#source
                     module Source
                       extend Sam::Union
 
@@ -821,6 +826,7 @@ module Sam
 
                         # def initialize: (Hash | Sam::BaseModel) -> void
 
+                        # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource#media_type
                         module MediaType
                           extend Sam::Enum
 
@@ -862,6 +868,7 @@ module Sam
                       #   def self.variants; end
                     end
 
+                    # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock#cache_control
                     class CacheControl < Sam::BaseModel
                       # @!attribute type
                       #
@@ -916,6 +923,7 @@ module Sam
 
                     # def initialize: (Hash | Sam::BaseModel) -> void
 
+                    # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolUseBlock#cache_control
                     class CacheControl < Sam::BaseModel
                       # @!attribute type
                       #
@@ -979,6 +987,7 @@ module Sam
 
                     # def initialize: (Hash | Sam::BaseModel) -> void
 
+                    # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock#cache_control
                     class CacheControl < Sam::BaseModel
                       # @!attribute type
                       #
@@ -993,6 +1002,7 @@ module Sam
                       # def initialize: (Hash | Sam::BaseModel) -> void
                     end
 
+                    # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock#content
                     module Content
                       extend Sam::Union
 
@@ -1050,6 +1060,7 @@ module Sam
 
                           # def initialize: (Hash | Sam::BaseModel) -> void
 
+                          # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock#cache_control
                           class CacheControl < Sam::BaseModel
                             # @!attribute type
                             #
@@ -1274,6 +1285,7 @@ module Sam
 
                           # def initialize: (Hash | Sam::BaseModel) -> void
 
+                          # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock#source
                           module Source
                             extend Sam::Union
 
@@ -1311,6 +1323,7 @@ module Sam
 
                               # def initialize: (Hash | Sam::BaseModel) -> void
 
+                              # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource#media_type
                               module MediaType
                                 extend Sam::Enum
 
@@ -1352,6 +1365,7 @@ module Sam
                             #   def self.variants; end
                           end
 
+                          # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock#cache_control
                           class CacheControl < Sam::BaseModel
                             # @!attribute type
                             #
@@ -1434,6 +1448,7 @@ module Sam
 
                     # def initialize: (Hash | Sam::BaseModel) -> void
 
+                    # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock#source
                     module Source
                       extend Sam::Union
 
@@ -1523,6 +1538,7 @@ module Sam
 
                         # def initialize: (Hash | Sam::BaseModel) -> void
 
+                        # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource#content
                         module Content
                           extend Sam::Union
 
@@ -1580,6 +1596,7 @@ module Sam
 
                               # def initialize: (Hash | Sam::BaseModel) -> void
 
+                              # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock#cache_control
                               class CacheControl < Sam::BaseModel
                                 # @!attribute type
                                 #
@@ -1804,6 +1821,7 @@ module Sam
 
                               # def initialize: (Hash | Sam::BaseModel) -> void
 
+                              # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock#source
                               module Source
                                 extend Sam::Union
 
@@ -1841,6 +1859,7 @@ module Sam
 
                                   # def initialize: (Hash | Sam::BaseModel) -> void
 
+                                  # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource#media_type
                                   module MediaType
                                     extend Sam::Enum
 
@@ -1882,6 +1901,7 @@ module Sam
                                 #   def self.variants; end
                               end
 
+                              # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock#cache_control
                               class CacheControl < Sam::BaseModel
                                 # @!attribute type
                                 #
@@ -1938,6 +1958,7 @@ module Sam
                       #   def self.variants; end
                     end
 
+                    # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock#cache_control
                     class CacheControl < Sam::BaseModel
                       # @!attribute type
                       #
@@ -1952,6 +1973,7 @@ module Sam
                       # def initialize: (Hash | Sam::BaseModel) -> void
                     end
 
+                    # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock#citations
                     class Citations < Sam::BaseModel
                       # @!attribute [r] enabled
                       #
@@ -2032,6 +2054,7 @@ module Sam
                 ]
               end
 
+              # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message#role
               module Role
                 extend Sam::Enum
 
@@ -2046,6 +2069,7 @@ module Sam
               end
             end
 
+            # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params#metadata
             class Metadata < Sam::BaseModel
               # @!attribute user_id
               #   An external identifier for the user who is associated with the request.
@@ -2072,6 +2096,8 @@ module Sam
             #   A system prompt is a way of providing context and instructions to Claude, such
             #   as specifying a particular goal or role. See our
             #   [guide to system prompts](https://docs.anthropic.com/en/docs/system-prompts).
+            #
+            # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params#system_
             module System
               extend Sam::Union
 
@@ -2114,6 +2140,7 @@ module Sam
 
                 # def initialize: (Hash | Sam::BaseModel) -> void
 
+                # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1#cache_control
                 class CacheControl < Sam::BaseModel
                   # @!attribute type
                   #
@@ -2327,6 +2354,8 @@ module Sam
             #   See
             #   [extended thinking](https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking)
             #   for details.
+            #
+            # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params#thinking
             module Thinking
               extend Sam::Union
 
@@ -2388,6 +2417,8 @@ module Sam
 
             # How the model should use the provided tools. The model can use a specific tool,
             #   any available tool, decide by itself, or not use tools at all.
+            #
+            # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params#tool_choice
             module ToolChoice
               extend Sam::Union
 
@@ -2603,6 +2634,7 @@ module Sam
 
                 # def initialize: (Hash | Sam::BaseModel) -> void
 
+                # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool#input_schema
                 class InputSchema < Sam::BaseModel
                   # @!attribute type
                   #
@@ -2628,6 +2660,7 @@ module Sam
                   # def initialize: (Hash | Sam::BaseModel) -> void
                 end
 
+                # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool#cache_control
                 class CacheControl < Sam::BaseModel
                   # @!attribute type
                   #
@@ -2642,6 +2675,7 @@ module Sam
                   # def initialize: (Hash | Sam::BaseModel) -> void
                 end
 
+                # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool#type
                 module Type
                   extend Sam::Enum
 
@@ -2716,6 +2750,7 @@ module Sam
 
                 # def initialize: (Hash | Sam::BaseModel) -> void
 
+                # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022#cache_control
                 class CacheControl < Sam::BaseModel
                   # @!attribute type
                   #
@@ -2761,6 +2796,7 @@ module Sam
 
                 # def initialize: (Hash | Sam::BaseModel) -> void
 
+                # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022#cache_control
                 class CacheControl < Sam::BaseModel
                   # @!attribute type
                   #
@@ -2806,6 +2842,7 @@ module Sam
 
                 # def initialize: (Hash | Sam::BaseModel) -> void
 
+                # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022#cache_control
                 class CacheControl < Sam::BaseModel
                   # @!attribute type
                   #
@@ -2882,6 +2919,7 @@ module Sam
 
                 # def initialize: (Hash | Sam::BaseModel) -> void
 
+                # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124#cache_control
                 class CacheControl < Sam::BaseModel
                   # @!attribute type
                   #
@@ -2927,6 +2965,7 @@ module Sam
 
                 # def initialize: (Hash | Sam::BaseModel) -> void
 
+                # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124#cache_control
                 class CacheControl < Sam::BaseModel
                   # @!attribute type
                   #
@@ -2972,6 +3011,7 @@ module Sam
 
                 # def initialize: (Hash | Sam::BaseModel) -> void
 
+                # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124#cache_control
                 class CacheControl < Sam::BaseModel
                   # @!attribute type
                   #

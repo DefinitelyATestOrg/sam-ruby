@@ -109,6 +109,7 @@ module Sam
       )
       end
 
+      # @api private
       sig { params(client: Sam::Client).returns(T.attached_class) }
       def self.new(client:)
       end

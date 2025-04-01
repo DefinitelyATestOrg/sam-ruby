@@ -3,6 +3,8 @@
 module Sam
   module Resources
     class User
+      # @api private
+      #
       # @param client [Sam::Client]
       def initialize(client:)
         @client = client
