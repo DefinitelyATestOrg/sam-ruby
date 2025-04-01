@@ -1076,6 +1076,7 @@ module Sam
                             T.type_alias do
                               T.any(
                                 Symbol,
+                                String,
                                 Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                               )
                             end
@@ -1802,6 +1803,7 @@ module Sam
                                   T.type_alias do
                                     T.any(
                                       Symbol,
+                                      String,
                                       Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                                     )
                                   end
@@ -2566,6 +2568,7 @@ module Sam
                                       T.type_alias do
                                         T.any(
                                           Symbol,
+                                          String,
                                           Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                                         )
                                       end
@@ -2819,7 +2822,13 @@ module Sam
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Role) }
                 OrSymbol =
-                  T.type_alias { T.any(Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Role::TaggedSymbol) }
+                  T.type_alias do
+                    T.any(
+                      Symbol,
+                      String,
+                      Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Role::TaggedSymbol
+                    )
+                  end
 
                 USER =
                   T.let(:user, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Role::TaggedSymbol)

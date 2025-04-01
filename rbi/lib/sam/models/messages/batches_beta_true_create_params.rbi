@@ -1116,6 +1116,7 @@ module Sam
                             T.type_alias do
                               T.any(
                                 Symbol,
+                                String,
                                 Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                               )
                             end
@@ -1842,6 +1843,7 @@ module Sam
                                   T.type_alias do
                                     T.any(
                                       Symbol,
+                                      String,
                                       Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                                     )
                                   end
@@ -2606,6 +2608,7 @@ module Sam
                                       T.type_alias do
                                         T.any(
                                           Symbol,
+                                          String,
                                           Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType::TaggedSymbol
                                         )
                                       end
@@ -2862,6 +2865,7 @@ module Sam
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role::TaggedSymbol
                     )
                   end
@@ -3549,6 +3553,7 @@ module Sam
                     T.type_alias do
                       T.any(
                         Symbol,
+                        String,
                         Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::Type::TaggedSymbol
                       )
                     end
