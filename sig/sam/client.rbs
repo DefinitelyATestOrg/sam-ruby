@@ -25,8 +25,8 @@ module Sam
     attr_reader models_beta_true: Sam::Resources::ModelsBetaTrue
 
     def initialize: (
-      ?base_url: String?,
       ?api_key: String?,
+      ?base_url: String?,
       ?max_retries: Integer,
       ?timeout: Float,
       ?initial_retry_delay: Float,
