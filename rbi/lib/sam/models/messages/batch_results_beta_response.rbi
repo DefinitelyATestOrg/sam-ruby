@@ -653,6 +653,7 @@ module Sam
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
                     )
                   end
