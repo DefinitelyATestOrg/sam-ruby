@@ -1,144 +1,174 @@
 # typed: strong
 
 module Sam
-  class Error < StandardError
-    sig { returns(T.nilable(StandardError)) }
-    attr_accessor :cause
-  end
-
-  class ConversionError < Sam::Error
-  end
-
-  class APIError < Sam::Error
-    sig { returns(URI::Generic) }
-    attr_accessor :url
-
-    sig { returns(T.nilable(Integer)) }
-    attr_accessor :status
-
-    sig { returns(T.nilable(T.anything)) }
-    attr_accessor :body
-
-    # @api private
-    sig do
-      params(
-        url: URI::Generic,
-        status: T.nilable(Integer),
-        body: T.nilable(Object),
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
-        .returns(T.attached_class)
-    end
-    def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: nil)
-    end
-  end
-
-  class APIConnectionError < Sam::APIError
-    sig { void }
-    attr_accessor :status
-
-    sig { void }
-    attr_accessor :body
-
-    # @api private
-    sig do
-      params(
-        url: URI::Generic,
-        status: NilClass,
-        body: NilClass,
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
-        .returns(T.attached_class)
-    end
-    def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Connection error.")
-    end
-  end
-
-  class APITimeoutError < Sam::APIConnectionError
-    # @api private
-    sig do
-      params(
-        url: URI::Generic,
-        status: NilClass,
-        body: NilClass,
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
-        .returns(T.attached_class)
-    end
-    def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Request timed out.")
-    end
-  end
-
-  class APIStatusError < Sam::APIError
-    # @api private
-    sig do
-      params(
-        url: URI::Generic,
-        status: Integer,
-        body: T.nilable(Object),
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
-        .returns(T.attached_class)
-    end
-    def self.for(url:, status:, body:, request:, response:, message: nil)
+  module Errors
+    class Error < StandardError
+      sig { returns(T.nilable(StandardError)) }
+      attr_accessor :cause
     end
 
-    sig { returns(Integer) }
-    attr_accessor :status
-
-    # @api private
-    sig do
-      params(
-        url: URI::Generic,
-        status: Integer,
-        body: T.nilable(Object),
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
-        .returns(T.attached_class)
+    class ConversionError < Sam::Errors::Error
     end
-    def self.new(url:, status:, body:, request:, response:, message: nil)
+
+    class APIError < Sam::Errors::Error
+      sig { returns(URI::Generic) }
+      attr_accessor :url
+
+      sig { returns(T.nilable(Integer)) }
+      attr_accessor :status
+
+      sig { returns(T.nilable(T.anything)) }
+      attr_accessor :body
+
+      # @api private
+      sig do
+        params(
+          url: URI::Generic,
+          status: T.nilable(Integer),
+          body: T.nilable(Object),
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
+          .returns(T.attached_class)
+      end
+      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: nil)
+      end
+    end
+
+    class APIConnectionError < Sam::Errors::APIError
+      sig { void }
+      attr_accessor :status
+
+      sig { void }
+      attr_accessor :body
+
+      # @api private
+      sig do
+        params(
+          url: URI::Generic,
+          status: NilClass,
+          body: NilClass,
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
+          .returns(T.attached_class)
+      end
+      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Connection error.")
+      end
+    end
+
+    class APITimeoutError < Sam::Errors::APIConnectionError
+      # @api private
+      sig do
+        params(
+          url: URI::Generic,
+          status: NilClass,
+          body: NilClass,
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
+          .returns(T.attached_class)
+      end
+      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Request timed out.")
+      end
+    end
+
+    class APIStatusError < Sam::Errors::APIError
+      # @api private
+      sig do
+        params(
+          url: URI::Generic,
+          status: Integer,
+          body: T.nilable(Object),
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
+          .returns(T.attached_class)
+      end
+      def self.for(url:, status:, body:, request:, response:, message: nil)
+      end
+
+      sig { returns(Integer) }
+      attr_accessor :status
+
+      # @api private
+      sig do
+        params(
+          url: URI::Generic,
+          status: Integer,
+          body: T.nilable(Object),
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
+          .returns(T.attached_class)
+      end
+      def self.new(url:, status:, body:, request:, response:, message: nil)
+      end
+    end
+
+    class BadRequestError < Sam::Errors::APIStatusError
+      HTTP_STATUS = 400
+    end
+
+    class AuthenticationError < Sam::Errors::APIStatusError
+      HTTP_STATUS = 401
+    end
+
+    class PermissionDeniedError < Sam::Errors::APIStatusError
+      HTTP_STATUS = 403
+    end
+
+    class NotFoundError < Sam::Errors::APIStatusError
+      HTTP_STATUS = 404
+    end
+
+    class ConflictError < Sam::Errors::APIStatusError
+      HTTP_STATUS = 409
+    end
+
+    class UnprocessableEntityError < Sam::Errors::APIStatusError
+      HTTP_STATUS = 422
+    end
+
+    class RateLimitError < Sam::Errors::APIStatusError
+      HTTP_STATUS = 429
+    end
+
+    class InternalServerError < Sam::Errors::APIStatusError
+      HTTP_STATUS = T.let((500..), T::Range[Integer])
     end
   end
 
-  class BadRequestError < Sam::APIStatusError
-    HTTP_STATUS = 400
-  end
+  Error = Sam::Errors::Error
 
-  class AuthenticationError < Sam::APIStatusError
-    HTTP_STATUS = 401
-  end
+  ConversionError = Sam::Errors::ConversionError
 
-  class PermissionDeniedError < Sam::APIStatusError
-    HTTP_STATUS = 403
-  end
+  APIError = Sam::Errors::APIError
 
-  class NotFoundError < Sam::APIStatusError
-    HTTP_STATUS = 404
-  end
+  APIStatusError = Sam::Errors::APIStatusError
 
-  class ConflictError < Sam::APIStatusError
-    HTTP_STATUS = 409
-  end
+  APIConnectionError = Sam::Errors::APIConnectionError
 
-  class UnprocessableEntityError < Sam::APIStatusError
-    HTTP_STATUS = 422
-  end
+  APITimeoutError = Sam::Errors::APITimeoutError
 
-  class RateLimitError < Sam::APIStatusError
-    HTTP_STATUS = 429
-  end
+  BadRequestError = Sam::Errors::BadRequestError
 
-  class InternalServerError < Sam::APIStatusError
-    HTTP_STATUS = T.let((500..), T::Range[Integer])
-  end
+  AuthenticationError = Sam::Errors::AuthenticationError
+
+  PermissionDeniedError = Sam::Errors::PermissionDeniedError
+
+  NotFoundError = Sam::Errors::NotFoundError
+
+  ConflictError = Sam::Errors::ConflictError
+
+  UnprocessableEntityError = Sam::Errors::UnprocessableEntityError
+
+  RateLimitError = Sam::Errors::RateLimitError
+
+  InternalServerError = Sam::Errors::InternalServerError
 end
