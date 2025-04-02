@@ -47,7 +47,7 @@ module Sam
       ) -> Sam::Transport::BaseClient::request_input
 
       def self.reap_connection!: (
-        Integer | Sam::APIConnectionError status,
+        Integer | Sam::Errors::APIConnectionError status,
         stream: Enumerable[String]?
       ) -> void
 

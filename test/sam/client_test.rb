@@ -227,7 +227,7 @@ class SamTest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "/redirected"}, {})
     sam.requester = requester
 
-    assert_raises(Sam::APIConnectionError) do
+    assert_raises(Sam::Errors::APIConnectionError) do
       sam.messages.create(
         max_tokens: 1024,
         messages: [{content: "Hello, world", role: :user}],
@@ -250,7 +250,7 @@ class SamTest < Minitest::Test
     requester = MockRequester.new(303, {"location" => "/redirected"}, {})
     sam.requester = requester
 
-    assert_raises(Sam::APIConnectionError) do
+    assert_raises(Sam::Errors::APIConnectionError) do
       sam.messages.create(
         max_tokens: 1024,
         messages: [{content: "Hello, world", role: :user}],
@@ -270,7 +270,7 @@ class SamTest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "/redirected"}, {})
     sam.requester = requester
 
-    assert_raises(Sam::APIConnectionError) do
+    assert_raises(Sam::Errors::APIConnectionError) do
       sam.messages.create(
         max_tokens: 1024,
         messages: [{content: "Hello, world", role: :user}],
@@ -290,7 +290,7 @@ class SamTest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "https://example.com/redirected"}, {})
     sam.requester = requester
 
-    assert_raises(Sam::APIConnectionError) do
+    assert_raises(Sam::Errors::APIConnectionError) do
       sam.messages.create(
         max_tokens: 1024,
         messages: [{content: "Hello, world", role: :user}],

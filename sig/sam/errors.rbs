@@ -1,99 +1,129 @@
 module Sam
-  class Error < StandardError
-    attr_accessor cause: StandardError?
+  module Errors
+    class Error < StandardError
+      attr_accessor cause: StandardError?
+    end
+
+    class ConversionError < Sam::Errors::Error
+    end
+
+    class APIError < Sam::Errors::Error
+      attr_accessor url: URI::Generic
+
+      attr_accessor status: Integer?
+
+      attr_accessor body: top?
+
+      def initialize: (
+        url: URI::Generic,
+        ?status: Integer?,
+        ?body: Object?,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APIConnectionError < Sam::Errors::APIError
+      def initialize: (
+        url: URI::Generic,
+        ?status: nil,
+        ?body: nil,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APITimeoutError < Sam::Errors::APIConnectionError
+      def initialize: (
+        url: URI::Generic,
+        ?status: nil,
+        ?body: nil,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APIStatusError < Sam::Errors::APIError
+      def self.for: (
+        url: URI::Generic,
+        status: Integer,
+        body: Object?,
+        request: nil,
+        response: nil,
+        ?message: String?
+      ) -> instance
+
+      def initialize: (
+        url: URI::Generic,
+        status: Integer,
+        body: Object?,
+        request: nil,
+        response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class BadRequestError < Sam::Errors::APIStatusError
+      HTTP_STATUS: 400
+    end
+
+    class AuthenticationError < Sam::Errors::APIStatusError
+      HTTP_STATUS: 401
+    end
+
+    class PermissionDeniedError < Sam::Errors::APIStatusError
+      HTTP_STATUS: 403
+    end
+
+    class NotFoundError < Sam::Errors::APIStatusError
+      HTTP_STATUS: 404
+    end
+
+    class ConflictError < Sam::Errors::APIStatusError
+      HTTP_STATUS: 409
+    end
+
+    class UnprocessableEntityError < Sam::Errors::APIStatusError
+      HTTP_STATUS: 422
+    end
+
+    class RateLimitError < Sam::Errors::APIStatusError
+      HTTP_STATUS: 429
+    end
+
+    class InternalServerError < Sam::Errors::APIStatusError
+      HTTP_STATUS: Range[Integer]
+    end
   end
 
-  class ConversionError < Sam::Error
-  end
+  class Error = Sam::Errors::Error
 
-  class APIError < Sam::Error
-    attr_accessor url: URI::Generic
+  class ConversionError = Sam::Errors::ConversionError
 
-    attr_accessor status: Integer?
+  class APIError = Sam::Errors::APIError
 
-    attr_accessor body: top?
+  class APIStatusError = Sam::Errors::APIStatusError
 
-    def initialize: (
-      url: URI::Generic,
-      ?status: Integer?,
-      ?body: Object?,
-      ?request: nil,
-      ?response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class APIConnectionError = Sam::Errors::APIConnectionError
 
-  class APIConnectionError < Sam::APIError
-    def initialize: (
-      url: URI::Generic,
-      ?status: nil,
-      ?body: nil,
-      ?request: nil,
-      ?response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class APITimeoutError = Sam::Errors::APITimeoutError
 
-  class APITimeoutError < Sam::APIConnectionError
-    def initialize: (
-      url: URI::Generic,
-      ?status: nil,
-      ?body: nil,
-      ?request: nil,
-      ?response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class BadRequestError = Sam::Errors::BadRequestError
 
-  class APIStatusError < Sam::APIError
-    def self.for: (
-      url: URI::Generic,
-      status: Integer,
-      body: Object?,
-      request: nil,
-      response: nil,
-      ?message: String?
-    ) -> instance
+  class AuthenticationError = Sam::Errors::AuthenticationError
 
-    def initialize: (
-      url: URI::Generic,
-      status: Integer,
-      body: Object?,
-      request: nil,
-      response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class PermissionDeniedError = Sam::Errors::PermissionDeniedError
 
-  class BadRequestError < Sam::APIStatusError
-    HTTP_STATUS: 400
-  end
+  class NotFoundError = Sam::Errors::NotFoundError
 
-  class AuthenticationError < Sam::APIStatusError
-    HTTP_STATUS: 401
-  end
+  class ConflictError = Sam::Errors::ConflictError
 
-  class PermissionDeniedError < Sam::APIStatusError
-    HTTP_STATUS: 403
-  end
+  class UnprocessableEntityError = Sam::Errors::UnprocessableEntityError
 
-  class NotFoundError < Sam::APIStatusError
-    HTTP_STATUS: 404
-  end
+  class RateLimitError = Sam::Errors::RateLimitError
 
-  class ConflictError < Sam::APIStatusError
-    HTTP_STATUS: 409
-  end
-
-  class UnprocessableEntityError < Sam::APIStatusError
-    HTTP_STATUS: 422
-  end
-
-  class RateLimitError < Sam::APIStatusError
-    HTTP_STATUS: 429
-  end
-
-  class InternalServerError < Sam::APIStatusError
-    HTTP_STATUS: Range[Integer]
-  end
+  class InternalServerError = Sam::Errors::InternalServerError
 end

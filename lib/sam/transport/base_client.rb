@@ -92,7 +92,7 @@ module Sam
               URI.join(url, response_headers["location"])
             rescue ArgumentError
               message = "Server responded with status #{status} but no valid location header."
-              raise Sam::APIConnectionError.new(url: url, message: message)
+              raise Sam::Errors::APIConnectionError.new(url: url, message: message)
             end
 
           request = {**request, url: location}
@@ -100,7 +100,7 @@ module Sam
           case [url.scheme, location.scheme]
           in ["https", "http"]
             message = "Tried to redirect to a insecure URL"
-            raise Sam::APIConnectionError.new(url: url, message: message)
+            raise Sam::Errors::APIConnectionError.new(url: url, message: message)
           else
             nil
           end
@@ -129,13 +129,13 @@ module Sam
 
         # @api private
         #
-        # @param status [Integer, Sam::APIConnectionError]
+        # @param status [Integer, Sam::Errors::APIConnectionError]
         # @param stream [Enumerable, nil]
         def reap_connection!(status, stream:)
           case status
           in (..199) | (300..499)
             stream&.each { next }
-          in Sam::APIConnectionError | (500..)
+          in Sam::Errors::APIConnectionError | (500..)
             Sam::Util.close_fused!(stream)
           else
           end
@@ -316,7 +316,7 @@ module Sam
       #
       # @param send_retry_header [Boolean]
       #
-      # @raise [Sam::APIError]
+      # @raise [Sam::Errors::APIError]
       # @return [Array(Integer, Net::HTTPResponse, Enumerable)]
       private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
         url, headers, max_retries, timeout = request.fetch_values(:url, :headers, :max_retries, :timeout)
@@ -339,7 +339,7 @@ module Sam
           self.class.reap_connection!(status, stream: stream)
 
           message = "Failed to complete the request within #{self.class::MAX_REDIRECTS} redirects."
-          raise Sam::APIConnectionError.new(url: url, message: message)
+          raise Sam::Errors::APIConnectionError.new(url: url, message: message)
         in 300..399
           self.class.reap_connection!(status, stream: stream)
 
@@ -359,14 +359,14 @@ module Sam
             self.class.reap_connection!(status, stream: stream)
           end
 
-          raise Sam::APIStatusError.for(
+          raise Sam::Errors::APIStatusError.for(
             url: url,
             status: status,
             body: decoded,
             request: nil,
             response: response
           )
-        in (400..) | Sam::APIConnectionError
+        in (400..) | Sam::Errors::APIConnectionError
           self.class.reap_connection!(status, stream: stream)
 
           delay = retry_delay(response, retry_count: retry_count)
@@ -406,7 +406,7 @@ module Sam
       #
       #   @option req [Sam::RequestOptions, Hash{Symbol=>Object}, nil] :options
       #
-      # @raise [Sam::APIError]
+      # @raise [Sam::Errors::APIError]
       # @return [Object]
       def request(req)
         self.class.validate!(req)
