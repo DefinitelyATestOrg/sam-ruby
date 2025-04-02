@@ -153,7 +153,7 @@ module Sam
             end
           end
         rescue Timeout::Error
-          raise Sam::APITimeoutError
+          raise Sam::Errors::APITimeoutError
         end
 
         conn, _, response = enum.next

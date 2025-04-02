@@ -29,7 +29,7 @@ module Sam
       # @return [Boolean]
       def next_page? = (raise NotImplementedError)
 
-      # @raise [Sam::APIError]
+      # @raise [Sam::Errors::APIError]
       # @return [Sam::Type::BasePage]
       def next_page = (raise NotImplementedError)
 

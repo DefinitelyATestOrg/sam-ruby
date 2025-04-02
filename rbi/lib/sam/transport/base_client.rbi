@@ -82,9 +82,10 @@ module Sam
         # @api private
         sig do
           params(
-            status: T.any(Integer, Sam::APIConnectionError),
+            status: T.any(Integer, Sam::Errors::APIConnectionError),
             stream: T.nilable(T::Enumerable[String])
-          ).void
+          )
+            .void
         end
         def reap_connection!(status, stream:)
         end

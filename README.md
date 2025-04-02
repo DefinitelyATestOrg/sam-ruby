@@ -44,7 +44,7 @@ When the library is unable to connect to the API, or if the API returns a non-su
 ```ruby
 begin
   message = sam.messages.create
-rescue Sam::Error => e
+rescue Sam::Errors::APIError => e
   puts(e.status) # 400
 end
 ```
@@ -60,7 +60,7 @@ Error codes are as followed:
 | HTTP 409         | `ConflictError`            |
 | HTTP 422         | `UnprocessableEntityError` |
 | HTTP 429         | `RateLimitError`           |
-| HTTP >=500       | `InternalServerError`      |
+| HTTP >= 500      | `InternalServerError`      |
 | Other HTTP error | `APIStatusError`           |
 | Timeout          | `APITimeoutError`          |
 | Network error    | `APIConnectionError`       |
