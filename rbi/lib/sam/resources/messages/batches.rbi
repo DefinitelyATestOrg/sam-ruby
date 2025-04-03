@@ -290,7 +290,7 @@ module Sam
           )
             .returns(Sam::Internal::JsonLStream[Sam::Models::Messages::BatchResultsResponse])
         end
-        def results(
+        def results_streaming(
           # ID of the Message Batch.
           message_batch_id,
           # Optional header to specify the beta version(s) you want to use.
@@ -332,7 +332,7 @@ module Sam
           )
             .returns(Sam::Internal::JsonLStream[Sam::Models::Messages::BatchResultsBetaResponse])
         end
-        def results_beta(
+        def results_beta_streaming(
           # ID of the Message Batch.
           message_batch_id,
           # Optional header to specify the beta version(s) you want to use.

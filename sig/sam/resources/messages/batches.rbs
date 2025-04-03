@@ -54,7 +54,7 @@ module Sam
           ?request_options: Sam::request_opts
         ) -> Sam::Models::Messages::BatchCancelBetaResponse
 
-        def results: (
+        def results_streaming: (
           String message_batch_id,
           ?anthropic_beta: ::Array[String],
           ?anthropic_version: String,
@@ -62,7 +62,7 @@ module Sam
           ?request_options: Sam::request_opts
         ) -> Sam::Internal::JsonLStream[Sam::Models::Messages::BatchResultsResponse]
 
-        def results_beta: (
+        def results_beta_streaming: (
           String message_batch_id,
           ?anthropic_beta: ::Array[String],
           ?anthropic_version: String,

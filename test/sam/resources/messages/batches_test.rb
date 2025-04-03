@@ -138,38 +138,4 @@ class Sam::Test::Resources::Messages::BatchesTest < Sam::Test::ResourceTest
       }
     end
   end
-
-  def test_results
-    skip("Prism doesn't support JSONL responses yet")
-
-    response = @sam.messages.batches.results("message_batch_id")
-
-    assert_pattern do
-      response => Sam::Models::Messages::BatchResultsResponse
-    end
-
-    assert_pattern do
-      response => {
-        custom_id: String,
-        result: Sam::Models::Messages::BatchResultsResponse::Result
-      }
-    end
-  end
-
-  def test_results_beta
-    skip("Prism doesn't support JSONL responses yet")
-
-    response = @sam.messages.batches.results_beta("message_batch_id")
-
-    assert_pattern do
-      response => Sam::Models::Messages::BatchResultsBetaResponse
-    end
-
-    assert_pattern do
-      response => {
-        custom_id: String,
-        result: Sam::Models::Messages::BatchResultsBetaResponse::Result
-      }
-    end
-  end
 end
