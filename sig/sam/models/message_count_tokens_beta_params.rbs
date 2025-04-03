@@ -12,11 +12,11 @@ module Sam
         anthropic_version: String,
         x_api_key: String
       }
-      & Sam::request_parameters
+      & Sam::Internal::Type::request_parameters
 
     class MessageCountTokensBetaParams < Sam::BaseModel
-      extend Sam::Type::RequestParameters::Converter
-      include Sam::RequestParameters
+      extend Sam::Internal::Type::RequestParameters::Converter
+      include Sam::Internal::Type::RequestParameters
 
       attr_accessor messages: ::Array[Sam::Models::MessageCountTokensBetaParams::Message]
 

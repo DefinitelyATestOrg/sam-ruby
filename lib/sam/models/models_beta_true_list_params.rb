@@ -5,8 +5,8 @@ module Sam
     # @see Sam::Resources::ModelsBetaTrue#list
     class ModelsBetaTrueListParams < Sam::BaseModel
       # @!parse
-      #   extend Sam::Type::RequestParameters::Converter
-      include Sam::RequestParameters
+      #   extend Sam::Internal::Type::RequestParameters::Converter
+      include Sam::Internal::Type::RequestParameters
 
       # @!attribute [r] after_id
       #   ID of the object to use as a cursor for pagination. When provided, returns the

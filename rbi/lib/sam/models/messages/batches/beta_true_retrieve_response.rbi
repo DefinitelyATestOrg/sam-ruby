@@ -53,7 +53,10 @@ module Sam
 
           sig do
             params(
-              request_counts: T.any(Sam::Models::Messages::Batches::BetaTrueRetrieveResponse::RequestCounts, Sam::Util::AnyHash)
+              request_counts: T.any(
+                Sam::Models::Messages::Batches::BetaTrueRetrieveResponse::RequestCounts,
+                Sam::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -82,7 +85,10 @@ module Sam
               ended_at: T.nilable(Time),
               expires_at: Time,
               processing_status: Sam::Models::Messages::Batches::BetaTrueRetrieveResponse::ProcessingStatus::OrSymbol,
-              request_counts: T.any(Sam::Models::Messages::Batches::BetaTrueRetrieveResponse::RequestCounts, Sam::Util::AnyHash),
+              request_counts: T.any(
+                Sam::Models::Messages::Batches::BetaTrueRetrieveResponse::RequestCounts,
+                Sam::Internal::Util::AnyHash
+              ),
               results_url: T.nilable(String),
               type: Symbol
             )

@@ -6,8 +6,8 @@ module Sam
       # @see Sam::Resources::Messages::BatchesBetaTrue#create
       class BatchesBetaTrueCreateParams < Sam::BaseModel
         # @!parse
-        #   extend Sam::Type::RequestParameters::Converter
-        include Sam::RequestParameters
+        #   extend Sam::Internal::Type::RequestParameters::Converter
+        include Sam::Internal::Type::RequestParameters
 
         # @!attribute requests
         #   List of requests for prompt completion. Each is an individual request to create
