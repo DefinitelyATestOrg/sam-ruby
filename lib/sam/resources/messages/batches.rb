@@ -210,7 +210,7 @@ module Sam
         #   Learn more about the Message Batches API in our
         #   [user guide](/en/docs/build-with-claude/batch-processing)
         #
-        # @overload results(message_batch_id, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
+        # @overload results_streaming(message_batch_id, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #
         # @param message_batch_id [String]
         # @param anthropic_beta [Array<String>]
@@ -221,7 +221,7 @@ module Sam
         # @return [Sam::Internal::JsonLStream<Sam::Models::Messages::BatchResultsResponse>]
         #
         # @see Sam::Models::Messages::BatchResultsParams
-        def results(message_batch_id, params = {})
+        def results_streaming(message_batch_id, params = {})
           parsed, options = Sam::Models::Messages::BatchResultsParams.dump_request(params)
           @client.request(
             method: :get,
@@ -242,7 +242,7 @@ module Sam
         #   Learn more about the Message Batches API in our
         #   [user guide](/en/docs/build-with-claude/batch-processing)
         #
-        # @overload results_beta(message_batch_id, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
+        # @overload results_beta_streaming(message_batch_id, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #
         # @param message_batch_id [String]
         # @param anthropic_beta [Array<String>]
@@ -253,7 +253,7 @@ module Sam
         # @return [Sam::Internal::JsonLStream<Sam::Models::Messages::BatchResultsBetaResponse>]
         #
         # @see Sam::Models::Messages::BatchResultsBetaParams
-        def results_beta(message_batch_id, params = {})
+        def results_beta_streaming(message_batch_id, params = {})
           parsed, options = Sam::Models::Messages::BatchResultsBetaParams.dump_request(params)
           @client.request(
             method: :get,
