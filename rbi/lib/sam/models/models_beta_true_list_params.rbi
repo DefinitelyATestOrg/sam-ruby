@@ -3,8 +3,8 @@
 module Sam
   module Models
     class ModelsBetaTrueListParams < Sam::BaseModel
-      extend Sam::Type::RequestParameters::Converter
-      include Sam::RequestParameters
+      extend Sam::Internal::Type::RequestParameters::Converter
+      include Sam::Internal::Type::RequestParameters
 
       # ID of the object to use as a cursor for pagination. When provided, returns the
       #   page of results immediately after this object.
@@ -60,7 +60,7 @@ module Sam
           limit: Integer,
           anthropic_version: String,
           x_api_key: String,
-          request_options: T.any(Sam::RequestOptions, Sam::Util::AnyHash)
+          request_options: T.any(Sam::RequestOptions, Sam::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

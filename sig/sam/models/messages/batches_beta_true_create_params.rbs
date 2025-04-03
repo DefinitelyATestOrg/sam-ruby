@@ -8,11 +8,11 @@ module Sam
           anthropic_version: String,
           x_api_key: String
         }
-        & Sam::request_parameters
+        & Sam::Internal::Type::request_parameters
 
       class BatchesBetaTrueCreateParams < Sam::BaseModel
-        extend Sam::Type::RequestParameters::Converter
-        include Sam::RequestParameters
+        extend Sam::Internal::Type::RequestParameters::Converter
+        include Sam::Internal::Type::RequestParameters
 
         attr_accessor requests: ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request]
 

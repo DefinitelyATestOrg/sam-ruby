@@ -5,8 +5,8 @@ module Sam
     # @see Sam::Resources::Messages#count_tokens
     class MessageCountTokensParams < Sam::BaseModel
       # @!parse
-      #   extend Sam::Type::RequestParameters::Converter
-      include Sam::RequestParameters
+      #   extend Sam::Internal::Type::RequestParameters::Converter
+      include Sam::Internal::Type::RequestParameters
 
       # @!attribute messages
       #   Input messages.

@@ -60,7 +60,7 @@ module Sam
           ?anthropic_version: String,
           ?x_api_key: String,
           ?request_options: Sam::request_opts
-        ) -> Sam::JsonLStream[Sam::Models::Messages::BatchResultsResponse]
+        ) -> Sam::Internal::JsonLStream[Sam::Models::Messages::BatchResultsResponse]
 
         def results_beta: (
           String message_batch_id,
@@ -68,7 +68,7 @@ module Sam
           ?anthropic_version: String,
           ?x_api_key: String,
           ?request_options: Sam::request_opts
-        ) -> Sam::JsonLStream[Sam::Models::Messages::BatchResultsBetaResponse]
+        ) -> Sam::Internal::JsonLStream[Sam::Models::Messages::BatchResultsBetaResponse]
 
         def initialize: (client: Sam::Client) -> void
       end

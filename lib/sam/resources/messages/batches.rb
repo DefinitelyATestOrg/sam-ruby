@@ -218,7 +218,7 @@ module Sam
         # @param x_api_key [String]
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Sam::JsonLStream<Sam::Models::Messages::BatchResultsResponse>]
+        # @return [Sam::Internal::JsonLStream<Sam::Models::Messages::BatchResultsResponse>]
         #
         # @see Sam::Models::Messages::BatchResultsParams
         def results(message_batch_id, params = {})
@@ -227,7 +227,7 @@ module Sam
             method: :get,
             path: ["v1/messages/batches/%1$s/results", message_batch_id],
             headers: {"accept" => "application/x-jsonl", **parsed},
-            stream: Sam::JsonLStream,
+            stream: Sam::Internal::JsonLStream,
             model: Sam::Models::Messages::BatchResultsResponse,
             options: options
           )
@@ -250,7 +250,7 @@ module Sam
         # @param x_api_key [String]
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Sam::JsonLStream<Sam::Models::Messages::BatchResultsBetaResponse>]
+        # @return [Sam::Internal::JsonLStream<Sam::Models::Messages::BatchResultsBetaResponse>]
         #
         # @see Sam::Models::Messages::BatchResultsBetaParams
         def results_beta(message_batch_id, params = {})
@@ -259,7 +259,7 @@ module Sam
             method: :get,
             path: ["v1/messages/batches/%1$s/results?beta=true", message_batch_id],
             headers: {"accept" => "application/x-jsonl", **parsed},
-            stream: Sam::JsonLStream,
+            stream: Sam::Internal::JsonLStream,
             model: Sam::Models::Messages::BatchResultsBetaResponse,
             options: options
           )

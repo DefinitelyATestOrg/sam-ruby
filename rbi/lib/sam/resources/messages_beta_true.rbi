@@ -13,24 +13,24 @@ module Sam
       sig do
         params(
           max_tokens: Integer,
-          messages: T::Array[T.any(Sam::Models::MessagesBetaTrueCreateParams::Message, Sam::Util::AnyHash)],
+          messages: T::Array[T.any(Sam::Models::MessagesBetaTrueCreateParams::Message, Sam::Internal::Util::AnyHash)],
           model: String,
-          metadata: T.any(Sam::Models::MessagesBetaTrueCreateParams::Metadata, Sam::Util::AnyHash),
+          metadata: T.any(Sam::Models::MessagesBetaTrueCreateParams::Metadata, Sam::Internal::Util::AnyHash),
           stop_sequences: T::Array[String],
           stream: T::Boolean,
           system_: T.any(
             String,
-            T::Array[T.any(Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1, Sam::Util::AnyHash)]
+            T::Array[T.any(Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1, Sam::Internal::Util::AnyHash)]
           ),
           temperature: Float,
           thinking: T.any(
             Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigEnabled,
-            Sam::Util::AnyHash,
+            Sam::Internal::Util::AnyHash,
             Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigDisabled
           ),
           tool_choice: T.any(
             Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAuto,
-            Sam::Util::AnyHash,
+            Sam::Internal::Util::AnyHash,
             Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAny,
             Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceTool,
             Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceNone
@@ -38,7 +38,7 @@ module Sam
           tools: T::Array[
           T.any(
             Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool,
-            Sam::Util::AnyHash,
+            Sam::Internal::Util::AnyHash,
             Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022,
             Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022,
             Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022,
@@ -52,7 +52,7 @@ module Sam
           anthropic_beta: T::Array[String],
           anthropic_version: String,
           x_api_key: String,
-          request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Util::AnyHash))
+          request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::Util::AnyHash))
         )
           .returns(Sam::Models::MessagesBetaTrueCreateResponse)
       end

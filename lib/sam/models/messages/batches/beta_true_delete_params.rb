@@ -7,8 +7,8 @@ module Sam
         # @see Sam::Resources::Messages::Batches::BetaTrue#delete
         class BetaTrueDeleteParams < Sam::BaseModel
           # @!parse
-          #   extend Sam::Type::RequestParameters::Converter
-          include Sam::RequestParameters
+          #   extend Sam::Internal::Type::RequestParameters::Converter
+          include Sam::Internal::Type::RequestParameters
 
           # @!attribute [r] anthropic_beta
           #   Optional header to specify the beta version(s) you want to use.

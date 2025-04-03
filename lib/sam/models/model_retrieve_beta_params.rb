@@ -5,8 +5,8 @@ module Sam
     # @see Sam::Resources::Models#retrieve_beta
     class ModelRetrieveBetaParams < Sam::BaseModel
       # @!parse
-      #   extend Sam::Type::RequestParameters::Converter
-      include Sam::RequestParameters
+      #   extend Sam::Internal::Type::RequestParameters::Converter
+      include Sam::Internal::Type::RequestParameters
 
       # @!attribute [r] anthropic_version
       #   The version of the Anthropic API you want to use.
