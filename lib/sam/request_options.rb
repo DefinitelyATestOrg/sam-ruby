@@ -6,7 +6,7 @@ module Sam
   #
   #   When making a request, you can pass an actual {RequestOptions} instance, or
   #   simply pass a Hash with symbol keys matching the attributes on this class.
-  class RequestOptions < Sam::BaseModel
+  class RequestOptions < Sam::Internal::Type::BaseModel
     # @api private
     #
     # @param opts [Sam::RequestOptions, Hash{Symbol=>Object}]
@@ -37,21 +37,21 @@ module Sam
     #     `query` given at the client level.
     #
     #   @return [Hash{String=>Array<String>, String, nil}, nil]
-    optional :extra_query, Sam::HashOf[Sam::ArrayOf[String]]
+    optional :extra_query, Sam::Internal::Type::HashOf[Sam::Internal::Type::ArrayOf[String]]
 
     # @!attribute extra_headers
     #   Extra headers to send with the request. These are `.merged`’d into any
     #     `extra_headers` given at the client level.
     #
     #   @return [Hash{String=>String, nil}, nil]
-    optional :extra_headers, Sam::HashOf[String, nil?: true]
+    optional :extra_headers, Sam::Internal::Type::HashOf[String, nil?: true]
 
     # @!attribute extra_body
     #   Extra data to send with the request. These are deep merged into any data
     #     generated as part of the normal request.
     #
     #   @return [Object, nil]
-    optional :extra_body, Sam::HashOf[Sam::Unknown]
+    optional :extra_body, Sam::Internal::Type::HashOf[Sam::Internal::Type::Unknown]
 
     # @!attribute max_retries
     #   Maximum number of retries to attempt after a failed initial request.

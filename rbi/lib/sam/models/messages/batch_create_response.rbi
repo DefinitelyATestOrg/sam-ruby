@@ -3,7 +3,7 @@
 module Sam
   module Models
     module Messages
-      class BatchCreateResponse < Sam::BaseModel
+      class BatchCreateResponse < Sam::Internal::Type::BaseModel
         # Unique object identifier.
         #
         #   The format and length of IDs may change over time.
@@ -52,7 +52,7 @@ module Sam
 
         sig do
           params(
-            request_counts: T.any(Sam::Models::Messages::BatchCreateResponse::RequestCounts, Sam::Internal::Util::AnyHash)
+            request_counts: T.any(Sam::Models::Messages::BatchCreateResponse::RequestCounts, Sam::Internal::AnyHash)
           )
             .void
         end
@@ -81,7 +81,7 @@ module Sam
             ended_at: T.nilable(Time),
             expires_at: Time,
             processing_status: Sam::Models::Messages::BatchCreateResponse::ProcessingStatus::OrSymbol,
-            request_counts: T.any(Sam::Models::Messages::BatchCreateResponse::RequestCounts, Sam::Internal::Util::AnyHash),
+            request_counts: T.any(Sam::Models::Messages::BatchCreateResponse::RequestCounts, Sam::Internal::AnyHash),
             results_url: T.nilable(String),
             type: Symbol
           )
@@ -123,7 +123,7 @@ module Sam
 
         # Processing status of the Message Batch.
         module ProcessingStatus
-          extend Sam::Enum
+          extend Sam::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Sam::Models::Messages::BatchCreateResponse::ProcessingStatus) }
@@ -140,7 +140,7 @@ module Sam
           end
         end
 
-        class RequestCounts < Sam::BaseModel
+        class RequestCounts < Sam::Internal::Type::BaseModel
           # Number of requests in the Message Batch that have been canceled.
           #
           #   This is zero until processing of the entire Message Batch has ended.

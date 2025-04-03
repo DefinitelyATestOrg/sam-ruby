@@ -7,7 +7,7 @@ module Sam
           result: Sam::Models::Messages::BatchResultsBetaResponse::result
         }
 
-      class BatchResultsBetaResponse < Sam::BaseModel
+      class BatchResultsBetaResponse < Sam::Internal::Type::BaseModel
         attr_accessor custom_id: String
 
         attr_accessor result: Sam::Models::Messages::BatchResultsBetaResponse::result
@@ -26,7 +26,7 @@ module Sam
           | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaExpiredResult
 
         module Result
-          extend Sam::Union
+          extend Sam::Internal::Type::Union
 
           type beta_succeeded_result =
             {
@@ -34,7 +34,7 @@ module Sam
               type: :succeeded
             }
 
-          class BetaSucceededResult < Sam::BaseModel
+          class BetaSucceededResult < Sam::Internal::Type::BaseModel
             attr_accessor message: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message
 
             attr_accessor type: :succeeded
@@ -58,7 +58,7 @@ module Sam
                 usage: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage
               }
 
-            class Message < Sam::BaseModel
+            class Message < Sam::Internal::Type::BaseModel
               attr_accessor id: String
 
               attr_accessor content: ::Array[Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::content]
@@ -95,7 +95,7 @@ module Sam
                 | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock
 
               module Content
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
                 type beta_response_text_block =
                   {
@@ -104,7 +104,7 @@ module Sam
                     type: :text
                   }
 
-                class BetaResponseTextBlock < Sam::BaseModel
+                class BetaResponseTextBlock < Sam::Internal::Type::BaseModel
                   attr_accessor citations: ::Array[Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::citation]?
 
                   attr_accessor text: String
@@ -125,7 +125,7 @@ module Sam
                     | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
 
                   module Citation
-                    extend Sam::Union
+                    extend Sam::Internal::Type::Union
 
                     type beta_response_char_location_citation =
                       {
@@ -137,7 +137,7 @@ module Sam
                         type: :char_location
                       }
 
-                    class BetaResponseCharLocationCitation < Sam::BaseModel
+                    class BetaResponseCharLocationCitation < Sam::Internal::Type::BaseModel
                       attr_accessor cited_text: String
 
                       attr_accessor document_index: Integer
@@ -172,7 +172,7 @@ module Sam
                         type: :page_location
                       }
 
-                    class BetaResponsePageLocationCitation < Sam::BaseModel
+                    class BetaResponsePageLocationCitation < Sam::Internal::Type::BaseModel
                       attr_accessor cited_text: String
 
                       attr_accessor document_index: Integer
@@ -207,7 +207,7 @@ module Sam
                         type: :content_block_location
                       }
 
-                    class BetaResponseContentBlockLocationCitation < Sam::BaseModel
+                    class BetaResponseContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                       attr_accessor cited_text: String
 
                       attr_accessor document_index: Integer
@@ -239,7 +239,7 @@ module Sam
                 type beta_response_tool_use_block =
                   { id: String, input: top, name: String, type: :tool_use }
 
-                class BetaResponseToolUseBlock < Sam::BaseModel
+                class BetaResponseToolUseBlock < Sam::Internal::Type::BaseModel
                   attr_accessor id: String
 
                   attr_accessor input: top
@@ -261,7 +261,7 @@ module Sam
                 type beta_response_thinking_block =
                   { signature: String, thinking: String, type: :thinking }
 
-                class BetaResponseThinkingBlock < Sam::BaseModel
+                class BetaResponseThinkingBlock < Sam::Internal::Type::BaseModel
                   attr_accessor signature: String
 
                   attr_accessor thinking: String
@@ -280,7 +280,7 @@ module Sam
                 type beta_response_redacted_thinking_block =
                   { data: String, type: :redacted_thinking }
 
-                class BetaResponseRedactedThinkingBlock < Sam::BaseModel
+                class BetaResponseRedactedThinkingBlock < Sam::Internal::Type::BaseModel
                   attr_accessor data: String
 
                   attr_accessor type: :redacted_thinking
@@ -300,7 +300,7 @@ module Sam
                 :end_turn | :max_tokens | :stop_sequence | :tool_use
 
               module StopReason
-                extend Sam::Enum
+                extend Sam::Internal::Type::Enum
 
                 END_TURN: :end_turn
                 MAX_TOKENS: :max_tokens
@@ -318,7 +318,7 @@ module Sam
                   output_tokens: Integer
                 }
 
-              class Usage < Sam::BaseModel
+              class Usage < Sam::Internal::Type::BaseModel
                 attr_accessor cache_creation_input_tokens: Integer?
 
                 attr_accessor cache_read_input_tokens: Integer?
@@ -345,7 +345,7 @@ module Sam
               type: :errored
             }
 
-          class BetaErroredResult < Sam::BaseModel
+          class BetaErroredResult < Sam::Internal::Type::BaseModel
             attr_accessor error: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error
 
             attr_accessor type: :errored
@@ -363,7 +363,7 @@ module Sam
                 type: :error
               }
 
-            class Error < Sam::BaseModel
+            class Error < Sam::Internal::Type::BaseModel
               attr_accessor error: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::error
 
               attr_accessor type: :error
@@ -387,12 +387,12 @@ module Sam
                 | Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaOverloadedError
 
               module Error
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
                 type beta_invalid_request_error =
                   { message: String, type: :invalid_request_error }
 
-                class BetaInvalidRequestError < Sam::BaseModel
+                class BetaInvalidRequestError < Sam::Internal::Type::BaseModel
                   attr_accessor message: String
 
                   attr_accessor type: :invalid_request_error
@@ -408,7 +408,7 @@ module Sam
                 type beta_authentication_error =
                   { message: String, type: :authentication_error }
 
-                class BetaAuthenticationError < Sam::BaseModel
+                class BetaAuthenticationError < Sam::Internal::Type::BaseModel
                   attr_accessor message: String
 
                   attr_accessor type: :authentication_error
@@ -424,7 +424,7 @@ module Sam
                 type beta_billing_error =
                   { message: String, type: :billing_error }
 
-                class BetaBillingError < Sam::BaseModel
+                class BetaBillingError < Sam::Internal::Type::BaseModel
                   attr_accessor message: String
 
                   attr_accessor type: :billing_error
@@ -440,7 +440,7 @@ module Sam
                 type beta_permission_error =
                   { message: String, type: :permission_error }
 
-                class BetaPermissionError < Sam::BaseModel
+                class BetaPermissionError < Sam::Internal::Type::BaseModel
                   attr_accessor message: String
 
                   attr_accessor type: :permission_error
@@ -456,7 +456,7 @@ module Sam
                 type beta_not_found_error =
                   { message: String, type: :not_found_error }
 
-                class BetaNotFoundError < Sam::BaseModel
+                class BetaNotFoundError < Sam::Internal::Type::BaseModel
                   attr_accessor message: String
 
                   attr_accessor type: :not_found_error
@@ -472,7 +472,7 @@ module Sam
                 type beta_rate_limit_error =
                   { message: String, type: :rate_limit_error }
 
-                class BetaRateLimitError < Sam::BaseModel
+                class BetaRateLimitError < Sam::Internal::Type::BaseModel
                   attr_accessor message: String
 
                   attr_accessor type: :rate_limit_error
@@ -488,7 +488,7 @@ module Sam
                 type beta_gateway_timeout_error =
                   { message: String, type: :timeout_error }
 
-                class BetaGatewayTimeoutError < Sam::BaseModel
+                class BetaGatewayTimeoutError < Sam::Internal::Type::BaseModel
                   attr_accessor message: String
 
                   attr_accessor type: :timeout_error
@@ -503,7 +503,7 @@ module Sam
 
                 type beta_api_error = { message: String, type: :api_error }
 
-                class BetaAPIError < Sam::BaseModel
+                class BetaAPIError < Sam::Internal::Type::BaseModel
                   attr_accessor message: String
 
                   attr_accessor type: :api_error
@@ -516,7 +516,7 @@ module Sam
                 type beta_overloaded_error =
                   { message: String, type: :overloaded_error }
 
-                class BetaOverloadedError < Sam::BaseModel
+                class BetaOverloadedError < Sam::Internal::Type::BaseModel
                   attr_accessor message: String
 
                   attr_accessor type: :overloaded_error
@@ -536,7 +536,7 @@ module Sam
 
           type beta_canceled_result = { type: :canceled }
 
-          class BetaCanceledResult < Sam::BaseModel
+          class BetaCanceledResult < Sam::Internal::Type::BaseModel
             attr_accessor type: :canceled
 
             def initialize: (?type: :canceled) -> void
@@ -546,7 +546,7 @@ module Sam
 
           type beta_expired_result = { type: :expired }
 
-          class BetaExpiredResult < Sam::BaseModel
+          class BetaExpiredResult < Sam::Internal::Type::BaseModel
             attr_accessor type: :expired
 
             def initialize: (?type: :expired) -> void

@@ -4,7 +4,7 @@ module Sam
   module Models
     module Messages
       # @see Sam::Resources::Messages::Batches#cancel_beta
-      class BatchCancelBetaParams < Sam::BaseModel
+      class BatchCancelBetaParams < Sam::Internal::Type::BaseModel
         # @!parse
         #   extend Sam::Internal::Type::RequestParameters::Converter
         include Sam::Internal::Type::RequestParameters
@@ -16,7 +16,7 @@ module Sam
         #     the header multiple times for each beta.
         #
         #   @return [Array<String>, nil]
-        optional :anthropic_beta, Sam::ArrayOf[String], api_name: :"anthropic-beta"
+        optional :anthropic_beta, Sam::Internal::Type::ArrayOf[String], api_name: :"anthropic-beta"
 
         # @!parse
         #   # @return [Array<String>]
@@ -58,7 +58,7 @@ module Sam
         #   #
         #   def initialize(anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Sam::BaseModel) -> void
+        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
       end
     end
   end

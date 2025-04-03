@@ -3,7 +3,7 @@
 module Sam
   module Models
     # @see Sam::Resources::Complete#create
-    class CompleteCreateParams < Sam::BaseModel
+    class CompleteCreateParams < Sam::Internal::Type::BaseModel
       # @!parse
       #   extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
@@ -62,7 +62,7 @@ module Sam
       #     include additional strings that will cause the model to stop generating.
       #
       #   @return [Array<String>, nil]
-      optional :stop_sequences, Sam::ArrayOf[String]
+      optional :stop_sequences, Sam::Internal::Type::ArrayOf[String]
 
       # @!parse
       #   # @return [Array<String>]
@@ -74,7 +74,7 @@ module Sam
       #     See [streaming](https://docs.anthropic.com/en/api/streaming) for details.
       #
       #   @return [Boolean, nil]
-      optional :stream, Sam::BooleanModel
+      optional :stream, Sam::Internal::Type::BooleanModel
 
       # @!parse
       #   # @return [Boolean]
@@ -191,9 +191,9 @@ module Sam
       #     super
       #   end
 
-      # def initialize: (Hash | Sam::BaseModel) -> void
+      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
-      class Metadata < Sam::BaseModel
+      class Metadata < Sam::Internal::Type::BaseModel
         # @!attribute user_id
         #   An external identifier for the user who is associated with the request.
         #
@@ -211,7 +211,7 @@ module Sam
         #   #
         #   def initialize(user_id: nil, **) = super
 
-        # def initialize: (Hash | Sam::BaseModel) -> void
+        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
       end
     end
   end

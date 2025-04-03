@@ -17,11 +17,11 @@ module Sam
         sig(:final) do
           params(
             type_info: T.any(
-              Sam::Internal::Util::AnyHash,
+              Sam::Internal::AnyHash,
               T.proc.returns(Sam::Internal::Type::Converter::Input),
               Sam::Internal::Type::Converter::Input
             ),
-            spec: Sam::Internal::Util::AnyHash
+            spec: Sam::Internal::AnyHash
           )
             .returns(T.attached_class)
         end
@@ -43,7 +43,7 @@ module Sam
               value: T.any(T::Hash[T.anything, T.anything], T.anything),
               state: Sam::Internal::Type::Converter::State
             )
-            .returns(T.any(Sam::Internal::Util::AnyHash, T.anything))
+            .returns(T.any(Sam::Internal::AnyHash, T.anything))
         end
         def coerce(value, state:)
         end
@@ -52,7 +52,7 @@ module Sam
         sig(:final) do
           override
             .params(value: T.any(T::Hash[T.anything, T.anything], T.anything))
-            .returns(T.any(Sam::Internal::Util::AnyHash, T.anything))
+            .returns(T.any(Sam::Internal::AnyHash, T.anything))
         end
         def dump(value)
         end
@@ -71,11 +71,11 @@ module Sam
         sig(:final) do
           params(
             type_info: T.any(
-              Sam::Internal::Util::AnyHash,
+              Sam::Internal::AnyHash,
               T.proc.returns(Sam::Internal::Type::Converter::Input),
               Sam::Internal::Type::Converter::Input
             ),
-            spec: Sam::Internal::Util::AnyHash
+            spec: Sam::Internal::AnyHash
           )
             .void
         end

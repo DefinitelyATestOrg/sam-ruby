@@ -19,7 +19,7 @@ module Sam
         # @param other [Object]
         #
         # @return [Boolean]
-        def self.==(other) = other.is_a?(Class) && other <= Sam::BooleanModel
+        def self.==(other) = other.is_a?(Class) && other <= Sam::Internal::Type::BooleanModel
 
         class << self
           # @api private

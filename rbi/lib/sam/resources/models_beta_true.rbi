@@ -14,7 +14,7 @@ module Sam
           limit: Integer,
           anthropic_version: String,
           x_api_key: String,
-          request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::AnyHash))
         )
           .returns(Sam::Models::ModelsBetaTrueListResponse)
       end

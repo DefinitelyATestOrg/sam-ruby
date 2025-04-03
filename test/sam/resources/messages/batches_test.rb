@@ -70,9 +70,9 @@ class Sam::Test::Resources::Messages::BatchesTest < Sam::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Sam::ArrayOf[Sam::Models::Messages::BatchListResponse::Data]),
+        data: ^(Sam::Internal::Type::ArrayOf[Sam::Models::Messages::BatchListResponse::Data]),
         first_id: String | nil,
-        has_more: Sam::BooleanModel,
+        has_more: Sam::Internal::Type::BooleanModel,
         last_id: String | nil
       }
     end

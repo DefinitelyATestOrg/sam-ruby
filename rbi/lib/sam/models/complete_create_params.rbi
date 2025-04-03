@@ -2,7 +2,7 @@
 
 module Sam
   module Models
-    class CompleteCreateParams < Sam::BaseModel
+    class CompleteCreateParams < Sam::Internal::Type::BaseModel
       extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
 
@@ -40,7 +40,7 @@ module Sam
       sig { returns(T.nilable(Sam::Models::CompleteCreateParams::Metadata)) }
       attr_reader :metadata
 
-      sig { params(metadata: T.any(Sam::Models::CompleteCreateParams::Metadata, Sam::Internal::Util::AnyHash)).void }
+      sig { params(metadata: T.any(Sam::Models::CompleteCreateParams::Metadata, Sam::Internal::AnyHash)).void }
       attr_writer :metadata
 
       # Sequences that will cause the model to stop generating.
@@ -132,7 +132,7 @@ module Sam
           max_tokens_to_sample: Integer,
           model: String,
           prompt: String,
-          metadata: T.any(Sam::Models::CompleteCreateParams::Metadata, Sam::Internal::Util::AnyHash),
+          metadata: T.any(Sam::Models::CompleteCreateParams::Metadata, Sam::Internal::AnyHash),
           stop_sequences: T::Array[String],
           stream: T::Boolean,
           temperature: Float,
@@ -140,7 +140,7 @@ module Sam
           top_p: Float,
           anthropic_version: String,
           x_api_key: String,
-          request_options: T.any(Sam::RequestOptions, Sam::Internal::Util::AnyHash)
+          request_options: T.any(Sam::RequestOptions, Sam::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -182,7 +182,7 @@ module Sam
       def to_hash
       end
 
-      class Metadata < Sam::BaseModel
+      class Metadata < Sam::Internal::Type::BaseModel
         # An external identifier for the user who is associated with the request.
         #
         #   This should be a uuid, hash value, or other opaque identifier. Anthropic may use

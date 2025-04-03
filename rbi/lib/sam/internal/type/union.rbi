@@ -32,8 +32,8 @@ module Sam
         # @api private
         sig do
           params(
-            key: T.any(Symbol, Sam::Internal::Util::AnyHash, T.proc.returns(T.anything), T.anything),
-            spec: T.any(Sam::Internal::Util::AnyHash, T.proc.returns(T.anything), T.anything)
+            key: T.any(Symbol, Sam::Internal::AnyHash, T.proc.returns(T.anything), T.anything),
+            spec: T.any(Sam::Internal::AnyHash, T.proc.returns(T.anything), T.anything)
           )
             .void
         end

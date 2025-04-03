@@ -2,7 +2,7 @@
 
 module Sam
   module Models
-    class MessageCountTokensBetaResponse < Sam::BaseModel
+    class MessageCountTokensBetaResponse < Sam::Internal::Type::BaseModel
       # The total number of tokens across the provided list of messages, system prompt,
       #   and tools.
       sig { returns(Integer) }

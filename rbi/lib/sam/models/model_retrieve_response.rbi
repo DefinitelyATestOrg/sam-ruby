@@ -2,7 +2,7 @@
 
 module Sam
   module Models
-    class ModelRetrieveResponse < Sam::BaseModel
+    class ModelRetrieveResponse < Sam::Internal::Type::BaseModel
       # Unique model identifier.
       sig { returns(String) }
       attr_accessor :id

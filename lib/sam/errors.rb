@@ -189,32 +189,4 @@ module Sam
       HTTP_STATUS = (500..)
     end
   end
-
-  Error = Sam::Errors::Error
-
-  ConversionError = Sam::Errors::ConversionError
-
-  APIError = Sam::Errors::APIError
-
-  APIStatusError = Sam::Errors::APIStatusError
-
-  APIConnectionError = Sam::Errors::APIConnectionError
-
-  APITimeoutError = Sam::Errors::APITimeoutError
-
-  BadRequestError = Sam::Errors::BadRequestError
-
-  AuthenticationError = Sam::Errors::AuthenticationError
-
-  PermissionDeniedError = Sam::Errors::PermissionDeniedError
-
-  NotFoundError = Sam::Errors::NotFoundError
-
-  ConflictError = Sam::Errors::ConflictError
-
-  UnprocessableEntityError = Sam::Errors::UnprocessableEntityError
-
-  RateLimitError = Sam::Errors::RateLimitError
-
-  InternalServerError = Sam::Errors::InternalServerError
 end

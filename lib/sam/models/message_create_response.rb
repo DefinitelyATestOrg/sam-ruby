@@ -3,7 +3,7 @@
 module Sam
   module Models
     # @see Sam::Resources::Messages#create
-    class MessageCreateResponse < Sam::BaseModel
+    class MessageCreateResponse < Sam::Internal::Type::BaseModel
       # @!attribute id
       #   Unique object identifier.
       #
@@ -47,7 +47,7 @@ module Sam
       #     ```
       #
       #   @return [Array<Sam::Models::MessageCreateResponse::Content::ResponseTextBlock, Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock, Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock, Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock>]
-      required :content, -> { Sam::ArrayOf[union: Sam::Models::MessageCreateResponse::Content] }
+      required :content, -> { Sam::Internal::Type::ArrayOf[union: Sam::Models::MessageCreateResponse::Content] }
 
       # @!attribute model
       #   The model that handled the request.
@@ -128,10 +128,10 @@ module Sam
       #   #
       #   def initialize(id:, content:, model:, stop_reason:, stop_sequence:, usage:, role: :assistant, type: :message, **) = super
 
-      # def initialize: (Hash | Sam::BaseModel) -> void
+      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
       module Content
-        extend Sam::Union
+        extend Sam::Internal::Type::Union
 
         discriminator :type
 
@@ -144,7 +144,7 @@ module Sam
         variant :redacted_thinking,
                 -> { Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock }
 
-        class ResponseTextBlock < Sam::BaseModel
+        class ResponseTextBlock < Sam::Internal::Type::BaseModel
           # @!attribute citations
           #   Citations supporting the text block.
           #
@@ -154,7 +154,7 @@ module Sam
           #
           #   @return [Array<Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation>, nil]
           required :citations,
-                   -> { Sam::ArrayOf[union: Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation] },
+                   -> { Sam::Internal::Type::ArrayOf[union: Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation] },
                    nil?: true
 
           # @!attribute text
@@ -174,10 +174,10 @@ module Sam
           #   #
           #   def initialize(citations:, text:, type: :text, **) = super
 
-          # def initialize: (Hash | Sam::BaseModel) -> void
+          # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
           module Citation
-            extend Sam::Union
+            extend Sam::Internal::Type::Union
 
             discriminator :type
 
@@ -190,7 +190,7 @@ module Sam
             variant :content_block_location,
                     -> { Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation }
 
-            class ResponseCharLocationCitation < Sam::BaseModel
+            class ResponseCharLocationCitation < Sam::Internal::Type::BaseModel
               # @!attribute cited_text
               #
               #   @return [String]
@@ -241,10 +241,10 @@ module Sam
               #     super
               #   end
 
-              # def initialize: (Hash | Sam::BaseModel) -> void
+              # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
             end
 
-            class ResponsePageLocationCitation < Sam::BaseModel
+            class ResponsePageLocationCitation < Sam::Internal::Type::BaseModel
               # @!attribute cited_text
               #
               #   @return [String]
@@ -295,10 +295,10 @@ module Sam
               #     super
               #   end
 
-              # def initialize: (Hash | Sam::BaseModel) -> void
+              # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
             end
 
-            class ResponseContentBlockLocationCitation < Sam::BaseModel
+            class ResponseContentBlockLocationCitation < Sam::Internal::Type::BaseModel
               # @!attribute cited_text
               #
               #   @return [String]
@@ -349,7 +349,7 @@ module Sam
               #     super
               #   end
 
-              # def initialize: (Hash | Sam::BaseModel) -> void
+              # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
             end
 
             # @!parse
@@ -358,7 +358,7 @@ module Sam
           end
         end
 
-        class ResponseToolUseBlock < Sam::BaseModel
+        class ResponseToolUseBlock < Sam::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -367,7 +367,7 @@ module Sam
           # @!attribute input
           #
           #   @return [Object]
-          required :input, Sam::Unknown
+          required :input, Sam::Internal::Type::Unknown
 
           # @!attribute name
           #
@@ -387,10 +387,10 @@ module Sam
           #   #
           #   def initialize(id:, input:, name:, type: :tool_use, **) = super
 
-          # def initialize: (Hash | Sam::BaseModel) -> void
+          # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
         end
 
-        class ResponseThinkingBlock < Sam::BaseModel
+        class ResponseThinkingBlock < Sam::Internal::Type::BaseModel
           # @!attribute signature
           #
           #   @return [String]
@@ -413,10 +413,10 @@ module Sam
           #   #
           #   def initialize(signature:, thinking:, type: :thinking, **) = super
 
-          # def initialize: (Hash | Sam::BaseModel) -> void
+          # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
         end
 
-        class ResponseRedactedThinkingBlock < Sam::BaseModel
+        class ResponseRedactedThinkingBlock < Sam::Internal::Type::BaseModel
           # @!attribute data
           #
           #   @return [String]
@@ -433,7 +433,7 @@ module Sam
           #   #
           #   def initialize(data:, type: :redacted_thinking, **) = super
 
-          # def initialize: (Hash | Sam::BaseModel) -> void
+          # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
         end
 
         # @!parse
@@ -455,7 +455,7 @@ module Sam
       #
       # @see Sam::Models::MessageCreateResponse#stop_reason
       module StopReason
-        extend Sam::Enum
+        extend Sam::Internal::Type::Enum
 
         END_TURN = :end_turn
         MAX_TOKENS = :max_tokens
@@ -470,7 +470,7 @@ module Sam
       end
 
       # @see Sam::Models::MessageCreateResponse#usage
-      class Usage < Sam::BaseModel
+      class Usage < Sam::Internal::Type::BaseModel
         # @!attribute cache_creation_input_tokens
         #   The number of input tokens used to create the cache entry.
         #
@@ -519,7 +519,7 @@ module Sam
         #   #
         #   def initialize(cache_creation_input_tokens:, cache_read_input_tokens:, input_tokens:, output_tokens:, **) = super
 
-        # def initialize: (Hash | Sam::BaseModel) -> void
+        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
       end
     end
   end

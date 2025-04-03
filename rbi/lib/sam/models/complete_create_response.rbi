@@ -2,7 +2,7 @@
 
 module Sam
   module Models
-    class CompleteCreateResponse < Sam::BaseModel
+    class CompleteCreateResponse < Sam::Internal::Type::BaseModel
       # Unique object identifier.
       #
       #   The format and length of IDs may change over time.

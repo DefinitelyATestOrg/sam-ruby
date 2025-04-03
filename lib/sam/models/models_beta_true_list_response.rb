@@ -3,11 +3,11 @@
 module Sam
   module Models
     # @see Sam::Resources::ModelsBetaTrue#list
-    class ModelsBetaTrueListResponse < Sam::BaseModel
+    class ModelsBetaTrueListResponse < Sam::Internal::Type::BaseModel
       # @!attribute data
       #
       #   @return [Array<Sam::Models::ModelsBetaTrueListResponse::Data>]
-      required :data, -> { Sam::ArrayOf[Sam::Models::ModelsBetaTrueListResponse::Data] }
+      required :data, -> { Sam::Internal::Type::ArrayOf[Sam::Models::ModelsBetaTrueListResponse::Data] }
 
       # @!attribute first_id
       #   First ID in the `data` list. Can be used as the `before_id` for the previous
@@ -20,7 +20,7 @@ module Sam
       #   Indicates if there are more results in the requested page direction.
       #
       #   @return [Boolean]
-      required :has_more, Sam::BooleanModel
+      required :has_more, Sam::Internal::Type::BooleanModel
 
       # @!attribute last_id
       #   Last ID in the `data` list. Can be used as the `after_id` for the next page.
@@ -36,9 +36,9 @@ module Sam
       #   #
       #   def initialize(data:, first_id:, has_more:, last_id:, **) = super
 
-      # def initialize: (Hash | Sam::BaseModel) -> void
+      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
-      class Data < Sam::BaseModel
+      class Data < Sam::Internal::Type::BaseModel
         # @!attribute id
         #   Unique model identifier.
         #
@@ -74,7 +74,7 @@ module Sam
         #   #
         #   def initialize(id:, created_at:, display_name:, type: :model, **) = super
 
-        # def initialize: (Hash | Sam::BaseModel) -> void
+        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
       end
     end
   end

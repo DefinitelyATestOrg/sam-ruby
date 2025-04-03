@@ -2,7 +2,7 @@
 
 module Sam
   module Models
-    class MessagesBetaTrueCreateParams < Sam::BaseModel
+    class MessagesBetaTrueCreateParams < Sam::Internal::Type::BaseModel
       extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
 
@@ -116,10 +116,7 @@ module Sam
       sig { returns(T.nilable(Sam::Models::MessagesBetaTrueCreateParams::Metadata)) }
       attr_reader :metadata
 
-      sig do
-        params(metadata: T.any(Sam::Models::MessagesBetaTrueCreateParams::Metadata, Sam::Internal::Util::AnyHash))
-          .void
-      end
+      sig { params(metadata: T.any(Sam::Models::MessagesBetaTrueCreateParams::Metadata, Sam::Internal::AnyHash)).void }
       attr_writer :metadata
 
       # Custom text sequences that will cause the model to stop generating.
@@ -163,7 +160,7 @@ module Sam
         params(
           system_: T.any(
             String,
-            T::Array[T.any(Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1, Sam::Internal::Util::AnyHash)]
+            T::Array[T.any(Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1, Sam::Internal::AnyHash)]
           )
         )
           .void
@@ -209,7 +206,7 @@ module Sam
         params(
           thinking: T.any(
             Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigEnabled,
-            Sam::Internal::Util::AnyHash,
+            Sam::Internal::AnyHash,
             Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigDisabled
           )
         )
@@ -237,7 +234,7 @@ module Sam
         params(
           tool_choice: T.any(
             Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAuto,
-            Sam::Internal::Util::AnyHash,
+            Sam::Internal::AnyHash,
             Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAny,
             Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceTool,
             Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceNone
@@ -340,7 +337,7 @@ module Sam
           tools: T::Array[
           T.any(
             Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool,
-            Sam::Internal::Util::AnyHash,
+            Sam::Internal::AnyHash,
             Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022,
             Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022,
             Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022,
@@ -417,24 +414,24 @@ module Sam
       sig do
         params(
           max_tokens: Integer,
-          messages: T::Array[T.any(Sam::Models::MessagesBetaTrueCreateParams::Message, Sam::Internal::Util::AnyHash)],
+          messages: T::Array[T.any(Sam::Models::MessagesBetaTrueCreateParams::Message, Sam::Internal::AnyHash)],
           model: String,
-          metadata: T.any(Sam::Models::MessagesBetaTrueCreateParams::Metadata, Sam::Internal::Util::AnyHash),
+          metadata: T.any(Sam::Models::MessagesBetaTrueCreateParams::Metadata, Sam::Internal::AnyHash),
           stop_sequences: T::Array[String],
           stream: T::Boolean,
           system_: T.any(
             String,
-            T::Array[T.any(Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1, Sam::Internal::Util::AnyHash)]
+            T::Array[T.any(Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1, Sam::Internal::AnyHash)]
           ),
           temperature: Float,
           thinking: T.any(
             Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigEnabled,
-            Sam::Internal::Util::AnyHash,
+            Sam::Internal::AnyHash,
             Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigDisabled
           ),
           tool_choice: T.any(
             Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAuto,
-            Sam::Internal::Util::AnyHash,
+            Sam::Internal::AnyHash,
             Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAny,
             Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceTool,
             Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceNone
@@ -442,7 +439,7 @@ module Sam
           tools: T::Array[
           T.any(
             Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool,
-            Sam::Internal::Util::AnyHash,
+            Sam::Internal::AnyHash,
             Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022,
             Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022,
             Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022,
@@ -456,7 +453,7 @@ module Sam
           anthropic_beta: T::Array[String],
           anthropic_version: String,
           x_api_key: String,
-          request_options: T.any(Sam::RequestOptions, Sam::Internal::Util::AnyHash)
+          request_options: T.any(Sam::RequestOptions, Sam::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -526,7 +523,7 @@ module Sam
       def to_hash
       end
 
-      class Message < Sam::BaseModel
+      class Message < Sam::Internal::Type::BaseModel
         sig do
           returns(
             T.any(
@@ -557,7 +554,7 @@ module Sam
               T::Array[
               T.any(
                 Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock,
-                Sam::Internal::Util::AnyHash,
+                Sam::Internal::AnyHash,
                 Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock,
                 Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock,
                 Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock,
@@ -600,12 +597,12 @@ module Sam
         end
 
         module Content
-          extend Sam::Union
+          extend Sam::Internal::Type::Union
 
           module UnionMember1
-            extend Sam::Union
+            extend Sam::Internal::Type::Union
 
-            class BetaRequestTextBlock < Sam::BaseModel
+            class BetaRequestTextBlock < Sam::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :text
 
@@ -626,7 +623,7 @@ module Sam
                   cache_control: T.nilable(
                     T.any(
                       Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl,
-                      Sam::Internal::Util::AnyHash
+                      Sam::Internal::AnyHash
                     )
                   )
                 )
@@ -655,14 +652,14 @@ module Sam
                   cache_control: T.nilable(
                     T.any(
                       Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl,
-                      Sam::Internal::Util::AnyHash
+                      Sam::Internal::AnyHash
                     )
                   ),
                   citations: T.nilable(
                     T::Array[
                     T.any(
                       Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation,
-                      Sam::Internal::Util::AnyHash,
+                      Sam::Internal::AnyHash,
                       Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation,
                       Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
                     )
@@ -699,7 +696,7 @@ module Sam
               def to_hash
               end
 
-              class CacheControl < Sam::BaseModel
+              class CacheControl < Sam::Internal::Type::BaseModel
                 sig { returns(Symbol) }
                 attr_accessor :type
 
@@ -713,9 +710,9 @@ module Sam
               end
 
               module Citation
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
-                class BetaRequestCharLocationCitation < Sam::BaseModel
+                class BetaRequestCharLocationCitation < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :cited_text
 
@@ -772,7 +769,7 @@ module Sam
                   end
                 end
 
-                class BetaRequestPageLocationCitation < Sam::BaseModel
+                class BetaRequestPageLocationCitation < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :cited_text
 
@@ -829,7 +826,7 @@ module Sam
                   end
                 end
 
-                class BetaRequestContentBlockLocationCitation < Sam::BaseModel
+                class BetaRequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :cited_text
 
@@ -897,7 +894,7 @@ module Sam
               end
             end
 
-            class BetaRequestImageBlock < Sam::BaseModel
+            class BetaRequestImageBlock < Sam::Internal::Type::BaseModel
               sig do
                 returns(
                   T.any(
@@ -925,7 +922,7 @@ module Sam
                   cache_control: T.nilable(
                     T.any(
                       Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl,
-                      Sam::Internal::Util::AnyHash
+                      Sam::Internal::AnyHash
                     )
                   )
                 )
@@ -937,13 +934,13 @@ module Sam
                 params(
                   source: T.any(
                     Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource,
-                    Sam::Internal::Util::AnyHash,
+                    Sam::Internal::AnyHash,
                     Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
                   ),
                   cache_control: T.nilable(
                     T.any(
                       Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl,
-                      Sam::Internal::Util::AnyHash
+                      Sam::Internal::AnyHash
                     )
                   ),
                   type: Symbol
@@ -972,9 +969,9 @@ module Sam
               end
 
               module Source
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
-                class BetaBase64ImageSource < Sam::BaseModel
+                class BetaBase64ImageSource < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :data
 
@@ -1013,7 +1010,7 @@ module Sam
                   end
 
                   module MediaType
-                    extend Sam::Enum
+                    extend Sam::Internal::Type::Enum
 
                     TaggedSymbol =
                       T.type_alias do
@@ -1062,7 +1059,7 @@ module Sam
                   end
                 end
 
-                class BetaURLImageSource < Sam::BaseModel
+                class BetaURLImageSource < Sam::Internal::Type::BaseModel
                   sig { returns(Symbol) }
                   attr_accessor :type
 
@@ -1088,7 +1085,7 @@ module Sam
                 end
               end
 
-              class CacheControl < Sam::BaseModel
+              class CacheControl < Sam::Internal::Type::BaseModel
                 sig { returns(Symbol) }
                 attr_accessor :type
 
@@ -1102,7 +1099,7 @@ module Sam
               end
             end
 
-            class BetaRequestToolUseBlock < Sam::BaseModel
+            class BetaRequestToolUseBlock < Sam::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :id
 
@@ -1129,7 +1126,7 @@ module Sam
                   cache_control: T.nilable(
                     T.any(
                       Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl,
-                      Sam::Internal::Util::AnyHash
+                      Sam::Internal::AnyHash
                     )
                   )
                 )
@@ -1145,7 +1142,7 @@ module Sam
                   cache_control: T.nilable(
                     T.any(
                       Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl,
-                      Sam::Internal::Util::AnyHash
+                      Sam::Internal::AnyHash
                     )
                   ),
                   type: Symbol
@@ -1172,7 +1169,7 @@ module Sam
               def to_hash
               end
 
-              class CacheControl < Sam::BaseModel
+              class CacheControl < Sam::Internal::Type::BaseModel
                 sig { returns(Symbol) }
                 attr_accessor :type
 
@@ -1186,7 +1183,7 @@ module Sam
               end
             end
 
-            class BetaRequestToolResultBlock < Sam::BaseModel
+            class BetaRequestToolResultBlock < Sam::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :tool_use_id
 
@@ -1207,7 +1204,7 @@ module Sam
                   cache_control: T.nilable(
                     T.any(
                       Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl,
-                      Sam::Internal::Util::AnyHash
+                      Sam::Internal::AnyHash
                     )
                   )
                 )
@@ -1239,7 +1236,7 @@ module Sam
                     T::Array[
                     T.any(
                       Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock,
-                      Sam::Internal::Util::AnyHash,
+                      Sam::Internal::AnyHash,
                       Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
                     )
                     ]
@@ -1261,7 +1258,7 @@ module Sam
                   cache_control: T.nilable(
                     T.any(
                       Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl,
-                      Sam::Internal::Util::AnyHash
+                      Sam::Internal::AnyHash
                     )
                   ),
                   content: T.any(
@@ -1269,7 +1266,7 @@ module Sam
                     T::Array[
                     T.any(
                       Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock,
-                      Sam::Internal::Util::AnyHash,
+                      Sam::Internal::AnyHash,
                       Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
                     )
                     ]
@@ -1307,7 +1304,7 @@ module Sam
               def to_hash
               end
 
-              class CacheControl < Sam::BaseModel
+              class CacheControl < Sam::Internal::Type::BaseModel
                 sig { returns(Symbol) }
                 attr_accessor :type
 
@@ -1321,12 +1318,12 @@ module Sam
               end
 
               module Content
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
                 module UnionMember1
-                  extend Sam::Union
+                  extend Sam::Internal::Type::Union
 
-                  class BetaRequestTextBlock < Sam::BaseModel
+                  class BetaRequestTextBlock < Sam::Internal::Type::BaseModel
                     sig { returns(String) }
                     attr_accessor :text
 
@@ -1347,7 +1344,7 @@ module Sam
                         cache_control: T.nilable(
                           T.any(
                             Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl,
-                            Sam::Internal::Util::AnyHash
+                            Sam::Internal::AnyHash
                           )
                         )
                       )
@@ -1376,14 +1373,14 @@ module Sam
                         cache_control: T.nilable(
                           T.any(
                             Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl,
-                            Sam::Internal::Util::AnyHash
+                            Sam::Internal::AnyHash
                           )
                         ),
                         citations: T.nilable(
                           T::Array[
                           T.any(
                             Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation,
-                            Sam::Internal::Util::AnyHash,
+                            Sam::Internal::AnyHash,
                             Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation,
                             Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
                           )
@@ -1420,7 +1417,7 @@ module Sam
                     def to_hash
                     end
 
-                    class CacheControl < Sam::BaseModel
+                    class CacheControl < Sam::Internal::Type::BaseModel
                       sig { returns(Symbol) }
                       attr_accessor :type
 
@@ -1434,9 +1431,9 @@ module Sam
                     end
 
                     module Citation
-                      extend Sam::Union
+                      extend Sam::Internal::Type::Union
 
-                      class BetaRequestCharLocationCitation < Sam::BaseModel
+                      class BetaRequestCharLocationCitation < Sam::Internal::Type::BaseModel
                         sig { returns(String) }
                         attr_accessor :cited_text
 
@@ -1493,7 +1490,7 @@ module Sam
                         end
                       end
 
-                      class BetaRequestPageLocationCitation < Sam::BaseModel
+                      class BetaRequestPageLocationCitation < Sam::Internal::Type::BaseModel
                         sig { returns(String) }
                         attr_accessor :cited_text
 
@@ -1550,7 +1547,7 @@ module Sam
                         end
                       end
 
-                      class BetaRequestContentBlockLocationCitation < Sam::BaseModel
+                      class BetaRequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                         sig { returns(String) }
                         attr_accessor :cited_text
 
@@ -1618,7 +1615,7 @@ module Sam
                     end
                   end
 
-                  class BetaRequestImageBlock < Sam::BaseModel
+                  class BetaRequestImageBlock < Sam::Internal::Type::BaseModel
                     sig do
                       returns(
                         T.any(
@@ -1646,7 +1643,7 @@ module Sam
                         cache_control: T.nilable(
                           T.any(
                             Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl,
-                            Sam::Internal::Util::AnyHash
+                            Sam::Internal::AnyHash
                           )
                         )
                       )
@@ -1658,13 +1655,13 @@ module Sam
                       params(
                         source: T.any(
                           Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource,
-                          Sam::Internal::Util::AnyHash,
+                          Sam::Internal::AnyHash,
                           Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
                         ),
                         cache_control: T.nilable(
                           T.any(
                             Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl,
-                            Sam::Internal::Util::AnyHash
+                            Sam::Internal::AnyHash
                           )
                         ),
                         type: Symbol
@@ -1693,9 +1690,9 @@ module Sam
                     end
 
                     module Source
-                      extend Sam::Union
+                      extend Sam::Internal::Type::Union
 
-                      class BetaBase64ImageSource < Sam::BaseModel
+                      class BetaBase64ImageSource < Sam::Internal::Type::BaseModel
                         sig { returns(String) }
                         attr_accessor :data
 
@@ -1734,7 +1731,7 @@ module Sam
                         end
 
                         module MediaType
-                          extend Sam::Enum
+                          extend Sam::Internal::Type::Enum
 
                           TaggedSymbol =
                             T.type_alias do
@@ -1783,7 +1780,7 @@ module Sam
                         end
                       end
 
-                      class BetaURLImageSource < Sam::BaseModel
+                      class BetaURLImageSource < Sam::Internal::Type::BaseModel
                         sig { returns(Symbol) }
                         attr_accessor :type
 
@@ -1809,7 +1806,7 @@ module Sam
                       end
                     end
 
-                    class CacheControl < Sam::BaseModel
+                    class CacheControl < Sam::Internal::Type::BaseModel
                       sig { returns(Symbol) }
                       attr_accessor :type
 
@@ -1852,7 +1849,7 @@ module Sam
 
                 UnionMember1Array =
                   T.let(
-                    Sam::ArrayOf[
+                    Sam::Internal::Type::ArrayOf[
                     union: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1
                     ],
                     Sam::Internal::Type::Converter
@@ -1860,7 +1857,7 @@ module Sam
               end
             end
 
-            class BetaRequestDocumentBlock < Sam::BaseModel
+            class BetaRequestDocumentBlock < Sam::Internal::Type::BaseModel
               sig do
                 returns(
                   T.any(
@@ -1890,7 +1887,7 @@ module Sam
                   cache_control: T.nilable(
                     T.any(
                       Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl,
-                      Sam::Internal::Util::AnyHash
+                      Sam::Internal::AnyHash
                     )
                   )
                 )
@@ -1911,7 +1908,7 @@ module Sam
                 params(
                   citations: T.any(
                     Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations,
-                    Sam::Internal::Util::AnyHash
+                    Sam::Internal::AnyHash
                   )
                 )
                   .void
@@ -1928,7 +1925,7 @@ module Sam
                 params(
                   source: T.any(
                     Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource,
-                    Sam::Internal::Util::AnyHash,
+                    Sam::Internal::AnyHash,
                     Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource,
                     Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource,
                     Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource
@@ -1936,12 +1933,12 @@ module Sam
                   cache_control: T.nilable(
                     T.any(
                       Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl,
-                      Sam::Internal::Util::AnyHash
+                      Sam::Internal::AnyHash
                     )
                   ),
                   citations: T.any(
                     Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations,
-                    Sam::Internal::Util::AnyHash
+                    Sam::Internal::AnyHash
                   ),
                   context: T.nilable(String),
                   title: T.nilable(String),
@@ -1983,9 +1980,9 @@ module Sam
               end
 
               module Source
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
-                class BetaBase64PdfSource < Sam::BaseModel
+                class BetaBase64PdfSource < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :data
 
@@ -2004,7 +2001,7 @@ module Sam
                   end
                 end
 
-                class BetaPlainTextSource < Sam::BaseModel
+                class BetaPlainTextSource < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :data
 
@@ -2023,7 +2020,7 @@ module Sam
                   end
                 end
 
-                class BetaContentBlockSource < Sam::BaseModel
+                class BetaContentBlockSource < Sam::Internal::Type::BaseModel
                   sig do
                     returns(
                       T.any(
@@ -2049,7 +2046,7 @@ module Sam
                         T::Array[
                         T.any(
                           Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock,
-                          Sam::Internal::Util::AnyHash,
+                          Sam::Internal::AnyHash,
                           Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock
                         )
                         ]
@@ -2082,12 +2079,12 @@ module Sam
                   end
 
                   module Content
-                    extend Sam::Union
+                    extend Sam::Internal::Type::Union
 
                     module UnionMember1
-                      extend Sam::Union
+                      extend Sam::Internal::Type::Union
 
-                      class BetaRequestTextBlock < Sam::BaseModel
+                      class BetaRequestTextBlock < Sam::Internal::Type::BaseModel
                         sig { returns(String) }
                         attr_accessor :text
 
@@ -2108,7 +2105,7 @@ module Sam
                             cache_control: T.nilable(
                               T.any(
                                 Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl,
-                                Sam::Internal::Util::AnyHash
+                                Sam::Internal::AnyHash
                               )
                             )
                           )
@@ -2137,14 +2134,14 @@ module Sam
                             cache_control: T.nilable(
                               T.any(
                                 Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl,
-                                Sam::Internal::Util::AnyHash
+                                Sam::Internal::AnyHash
                               )
                             ),
                             citations: T.nilable(
                               T::Array[
                               T.any(
                                 Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation,
-                                Sam::Internal::Util::AnyHash,
+                                Sam::Internal::AnyHash,
                                 Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation,
                                 Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
                               )
@@ -2181,7 +2178,7 @@ module Sam
                         def to_hash
                         end
 
-                        class CacheControl < Sam::BaseModel
+                        class CacheControl < Sam::Internal::Type::BaseModel
                           sig { returns(Symbol) }
                           attr_accessor :type
 
@@ -2195,9 +2192,9 @@ module Sam
                         end
 
                         module Citation
-                          extend Sam::Union
+                          extend Sam::Internal::Type::Union
 
-                          class BetaRequestCharLocationCitation < Sam::BaseModel
+                          class BetaRequestCharLocationCitation < Sam::Internal::Type::BaseModel
                             sig { returns(String) }
                             attr_accessor :cited_text
 
@@ -2254,7 +2251,7 @@ module Sam
                             end
                           end
 
-                          class BetaRequestPageLocationCitation < Sam::BaseModel
+                          class BetaRequestPageLocationCitation < Sam::Internal::Type::BaseModel
                             sig { returns(String) }
                             attr_accessor :cited_text
 
@@ -2311,7 +2308,7 @@ module Sam
                             end
                           end
 
-                          class BetaRequestContentBlockLocationCitation < Sam::BaseModel
+                          class BetaRequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                             sig { returns(String) }
                             attr_accessor :cited_text
 
@@ -2379,7 +2376,7 @@ module Sam
                         end
                       end
 
-                      class BetaRequestImageBlock < Sam::BaseModel
+                      class BetaRequestImageBlock < Sam::Internal::Type::BaseModel
                         sig do
                           returns(
                             T.any(
@@ -2407,7 +2404,7 @@ module Sam
                             cache_control: T.nilable(
                               T.any(
                                 Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl,
-                                Sam::Internal::Util::AnyHash
+                                Sam::Internal::AnyHash
                               )
                             )
                           )
@@ -2419,13 +2416,13 @@ module Sam
                           params(
                             source: T.any(
                               Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource,
-                              Sam::Internal::Util::AnyHash,
+                              Sam::Internal::AnyHash,
                               Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
                             ),
                             cache_control: T.nilable(
                               T.any(
                                 Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl,
-                                Sam::Internal::Util::AnyHash
+                                Sam::Internal::AnyHash
                               )
                             ),
                             type: Symbol
@@ -2454,9 +2451,9 @@ module Sam
                         end
 
                         module Source
-                          extend Sam::Union
+                          extend Sam::Internal::Type::Union
 
-                          class BetaBase64ImageSource < Sam::BaseModel
+                          class BetaBase64ImageSource < Sam::Internal::Type::BaseModel
                             sig { returns(String) }
                             attr_accessor :data
 
@@ -2495,7 +2492,7 @@ module Sam
                             end
 
                             module MediaType
-                              extend Sam::Enum
+                              extend Sam::Internal::Type::Enum
 
                               TaggedSymbol =
                                 T.type_alias do
@@ -2544,7 +2541,7 @@ module Sam
                             end
                           end
 
-                          class BetaURLImageSource < Sam::BaseModel
+                          class BetaURLImageSource < Sam::Internal::Type::BaseModel
                             sig { returns(Symbol) }
                             attr_accessor :type
 
@@ -2570,7 +2567,7 @@ module Sam
                           end
                         end
 
-                        class CacheControl < Sam::BaseModel
+                        class CacheControl < Sam::Internal::Type::BaseModel
                           sig { returns(Symbol) }
                           attr_accessor :type
 
@@ -2613,7 +2610,7 @@ module Sam
 
                     UnionMember1Array =
                       T.let(
-                        Sam::ArrayOf[
+                        Sam::Internal::Type::ArrayOf[
                         union: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1
                         ],
                         Sam::Internal::Type::Converter
@@ -2621,7 +2618,7 @@ module Sam
                   end
                 end
 
-                class BetaUrlpdfSource < Sam::BaseModel
+                class BetaUrlpdfSource < Sam::Internal::Type::BaseModel
                   sig { returns(Symbol) }
                   attr_accessor :type
 
@@ -2647,7 +2644,7 @@ module Sam
                 end
               end
 
-              class CacheControl < Sam::BaseModel
+              class CacheControl < Sam::Internal::Type::BaseModel
                 sig { returns(Symbol) }
                 attr_accessor :type
 
@@ -2660,7 +2657,7 @@ module Sam
                 end
               end
 
-              class Citations < Sam::BaseModel
+              class Citations < Sam::Internal::Type::BaseModel
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :enabled
 
@@ -2677,7 +2674,7 @@ module Sam
               end
             end
 
-            class BetaRequestThinkingBlock < Sam::BaseModel
+            class BetaRequestThinkingBlock < Sam::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :signature
 
@@ -2696,7 +2693,7 @@ module Sam
               end
             end
 
-            class BetaRequestRedactedThinkingBlock < Sam::BaseModel
+            class BetaRequestRedactedThinkingBlock < Sam::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :data
 
@@ -2746,13 +2743,13 @@ module Sam
 
           UnionMember1Array =
             T.let(
-              Sam::ArrayOf[union: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1],
+              Sam::Internal::Type::ArrayOf[union: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1],
               Sam::Internal::Type::Converter
             )
         end
 
         module Role
-          extend Sam::Enum
+          extend Sam::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Role) }
           OrSymbol =
@@ -2767,7 +2764,7 @@ module Sam
         end
       end
 
-      class Metadata < Sam::BaseModel
+      class Metadata < Sam::Internal::Type::BaseModel
         # An external identifier for the user who is associated with the request.
         #
         #   This should be a uuid, hash value, or other opaque identifier. Anthropic may use
@@ -2792,9 +2789,9 @@ module Sam
       #   as specifying a particular goal or role. See our
       #   [guide to system prompts](https://docs.anthropic.com/en/docs/system-prompts).
       module System
-        extend Sam::Union
+        extend Sam::Internal::Type::Union
 
-        class UnionMember1 < Sam::BaseModel
+        class UnionMember1 < Sam::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :text
 
@@ -2809,7 +2806,7 @@ module Sam
               cache_control: T.nilable(
                 T.any(
                   Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::CacheControl,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 )
               )
             )
@@ -2838,14 +2835,14 @@ module Sam
               cache_control: T.nilable(
                 T.any(
                   Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::CacheControl,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 )
               ),
               citations: T.nilable(
                 T::Array[
                 T.any(
                   Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestCharLocationCitation,
-                  Sam::Internal::Util::AnyHash,
+                  Sam::Internal::AnyHash,
                   Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestPageLocationCitation,
                   Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation
                 )
@@ -2880,7 +2877,7 @@ module Sam
           def to_hash
           end
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :type
 
@@ -2894,9 +2891,9 @@ module Sam
           end
 
           module Citation
-            extend Sam::Union
+            extend Sam::Internal::Type::Union
 
-            class BetaRequestCharLocationCitation < Sam::BaseModel
+            class BetaRequestCharLocationCitation < Sam::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :cited_text
 
@@ -2953,7 +2950,7 @@ module Sam
               end
             end
 
-            class BetaRequestPageLocationCitation < Sam::BaseModel
+            class BetaRequestPageLocationCitation < Sam::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :cited_text
 
@@ -3010,7 +3007,7 @@ module Sam
               end
             end
 
-            class BetaRequestContentBlockLocationCitation < Sam::BaseModel
+            class BetaRequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :cited_text
 
@@ -3084,7 +3081,7 @@ module Sam
 
         UnionMember1Array =
           T.let(
-            Sam::ArrayOf[Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1],
+            Sam::Internal::Type::ArrayOf[Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1],
             Sam::Internal::Type::Converter
           )
       end
@@ -3099,9 +3096,9 @@ module Sam
       #   [extended thinking](https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking)
       #   for details.
       module Thinking
-        extend Sam::Union
+        extend Sam::Internal::Type::Union
 
-        class BetaThinkingConfigEnabled < Sam::BaseModel
+        class BetaThinkingConfigEnabled < Sam::Internal::Type::BaseModel
           # Determines how many tokens Claude can use for its internal reasoning process.
           #   Larger budgets can enable more thorough analysis for complex problems, improving
           #   response quality.
@@ -3126,7 +3123,7 @@ module Sam
           end
         end
 
-        class BetaThinkingConfigDisabled < Sam::BaseModel
+        class BetaThinkingConfigDisabled < Sam::Internal::Type::BaseModel
           sig { returns(Symbol) }
           attr_accessor :type
 
@@ -3152,9 +3149,9 @@ module Sam
       # How the model should use the provided tools. The model can use a specific tool,
       #   any available tool, decide by itself, or not use tools at all.
       module ToolChoice
-        extend Sam::Union
+        extend Sam::Internal::Type::Union
 
-        class BetaToolChoiceAuto < Sam::BaseModel
+        class BetaToolChoiceAuto < Sam::Internal::Type::BaseModel
           sig { returns(Symbol) }
           attr_accessor :type
 
@@ -3178,7 +3175,7 @@ module Sam
           end
         end
 
-        class BetaToolChoiceAny < Sam::BaseModel
+        class BetaToolChoiceAny < Sam::Internal::Type::BaseModel
           sig { returns(Symbol) }
           attr_accessor :type
 
@@ -3202,7 +3199,7 @@ module Sam
           end
         end
 
-        class BetaToolChoiceTool < Sam::BaseModel
+        class BetaToolChoiceTool < Sam::Internal::Type::BaseModel
           # The name of the tool to use.
           sig { returns(String) }
           attr_accessor :name
@@ -3236,7 +3233,7 @@ module Sam
           end
         end
 
-        class BetaToolChoiceNone < Sam::BaseModel
+        class BetaToolChoiceNone < Sam::Internal::Type::BaseModel
           sig { returns(Symbol) }
           attr_accessor :type
 
@@ -3261,9 +3258,9 @@ module Sam
       end
 
       module Tool
-        extend Sam::Union
+        extend Sam::Internal::Type::Union
 
-        class BetaTool < Sam::BaseModel
+        class BetaTool < Sam::Internal::Type::BaseModel
           # [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input.
           #
           #   This defines the shape of the `input` that your tool accepts and that the model
@@ -3273,10 +3270,7 @@ module Sam
 
           sig do
             params(
-              input_schema: T.any(
-                Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::InputSchema,
-                Sam::Internal::Util::AnyHash
-              )
+              input_schema: T.any(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::InputSchema, Sam::Internal::AnyHash)
             )
               .void
           end
@@ -3294,10 +3288,7 @@ module Sam
           sig do
             params(
               cache_control: T.nilable(
-                T.any(
-                  Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::CacheControl,
-                  Sam::Internal::Util::AnyHash
-                )
+                T.any(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::CacheControl, Sam::Internal::AnyHash)
               )
             )
               .void
@@ -3321,16 +3312,10 @@ module Sam
 
           sig do
             params(
-              input_schema: T.any(
-                Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::InputSchema,
-                Sam::Internal::Util::AnyHash
-              ),
+              input_schema: T.any(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::InputSchema, Sam::Internal::AnyHash),
               name: String,
               cache_control: T.nilable(
-                T.any(
-                  Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::CacheControl,
-                  Sam::Internal::Util::AnyHash
-                )
+                T.any(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::CacheControl, Sam::Internal::AnyHash)
               ),
               description: String,
               type: T.nilable(Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::Type::OrSymbol)
@@ -3355,7 +3340,7 @@ module Sam
           def to_hash
           end
 
-          class InputSchema < Sam::BaseModel
+          class InputSchema < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :type
 
@@ -3375,7 +3360,7 @@ module Sam
             end
           end
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :type
 
@@ -3389,7 +3374,7 @@ module Sam
           end
 
           module Type
-            extend Sam::Enum
+            extend Sam::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::Type) }
@@ -3404,7 +3389,7 @@ module Sam
           end
         end
 
-        class BetaComputerUseTool20241022 < Sam::BaseModel
+        class BetaComputerUseTool20241022 < Sam::Internal::Type::BaseModel
           # The height of the display in pixels.
           sig { returns(Integer) }
           attr_accessor :display_height_px
@@ -3434,7 +3419,7 @@ module Sam
               cache_control: T.nilable(
                 T.any(
                   Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022::CacheControl,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 )
               )
             )
@@ -3453,7 +3438,7 @@ module Sam
               cache_control: T.nilable(
                 T.any(
                   Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022::CacheControl,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 )
               ),
               display_number: T.nilable(Integer),
@@ -3488,7 +3473,7 @@ module Sam
           def to_hash
           end
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :type
 
@@ -3502,7 +3487,7 @@ module Sam
           end
         end
 
-        class BetaBashTool20241022 < Sam::BaseModel
+        class BetaBashTool20241022 < Sam::Internal::Type::BaseModel
           # Name of the tool.
           #
           #   This is how the tool will be called by the model and in tool_use blocks.
@@ -3520,7 +3505,7 @@ module Sam
               cache_control: T.nilable(
                 T.any(
                   Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022::CacheControl,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 )
               )
             )
@@ -3533,7 +3518,7 @@ module Sam
               cache_control: T.nilable(
                 T.any(
                   Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022::CacheControl,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 )
               ),
               name: Symbol,
@@ -3557,7 +3542,7 @@ module Sam
           def to_hash
           end
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :type
 
@@ -3571,7 +3556,7 @@ module Sam
           end
         end
 
-        class BetaTextEditor20241022 < Sam::BaseModel
+        class BetaTextEditor20241022 < Sam::Internal::Type::BaseModel
           # Name of the tool.
           #
           #   This is how the tool will be called by the model and in tool_use blocks.
@@ -3589,7 +3574,7 @@ module Sam
               cache_control: T.nilable(
                 T.any(
                   Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022::CacheControl,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 )
               )
             )
@@ -3602,7 +3587,7 @@ module Sam
               cache_control: T.nilable(
                 T.any(
                   Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022::CacheControl,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 )
               ),
               name: Symbol,
@@ -3626,7 +3611,7 @@ module Sam
           def to_hash
           end
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :type
 
@@ -3640,7 +3625,7 @@ module Sam
           end
         end
 
-        class BetaComputerUseTool20250124 < Sam::BaseModel
+        class BetaComputerUseTool20250124 < Sam::Internal::Type::BaseModel
           # The height of the display in pixels.
           sig { returns(Integer) }
           attr_accessor :display_height_px
@@ -3670,7 +3655,7 @@ module Sam
               cache_control: T.nilable(
                 T.any(
                   Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124::CacheControl,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 )
               )
             )
@@ -3689,7 +3674,7 @@ module Sam
               cache_control: T.nilable(
                 T.any(
                   Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124::CacheControl,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 )
               ),
               display_number: T.nilable(Integer),
@@ -3724,7 +3709,7 @@ module Sam
           def to_hash
           end
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :type
 
@@ -3738,7 +3723,7 @@ module Sam
           end
         end
 
-        class BetaBashTool20250124 < Sam::BaseModel
+        class BetaBashTool20250124 < Sam::Internal::Type::BaseModel
           # Name of the tool.
           #
           #   This is how the tool will be called by the model and in tool_use blocks.
@@ -3756,7 +3741,7 @@ module Sam
               cache_control: T.nilable(
                 T.any(
                   Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124::CacheControl,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 )
               )
             )
@@ -3769,7 +3754,7 @@ module Sam
               cache_control: T.nilable(
                 T.any(
                   Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124::CacheControl,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 )
               ),
               name: Symbol,
@@ -3793,7 +3778,7 @@ module Sam
           def to_hash
           end
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :type
 
@@ -3807,7 +3792,7 @@ module Sam
           end
         end
 
-        class BetaTextEditor20250124 < Sam::BaseModel
+        class BetaTextEditor20250124 < Sam::Internal::Type::BaseModel
           # Name of the tool.
           #
           #   This is how the tool will be called by the model and in tool_use blocks.
@@ -3825,7 +3810,7 @@ module Sam
               cache_control: T.nilable(
                 T.any(
                   Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124::CacheControl,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 )
               )
             )
@@ -3838,7 +3823,7 @@ module Sam
               cache_control: T.nilable(
                 T.any(
                   Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124::CacheControl,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 )
               ),
               name: Symbol,
@@ -3862,7 +3847,7 @@ module Sam
           def to_hash
           end
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :type
 
