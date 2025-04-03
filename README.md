@@ -1,6 +1,6 @@
 # Sam Ruby API library
 
-The Sam Ruby library provides convenient access to the Sam REST API from any Ruby 3.0.0+ application.
+The Sam Ruby library provides convenient access to the Sam REST API from any Ruby 3.1.0+ application.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
@@ -141,4 +141,4 @@ This package considers improvements to the (non-runtime) `*.rbi` and `*.rbs` typ
 
 ## Requirements
 
-Ruby 3.0.0 or higher.
+Ruby 3.1.0 or higher.
