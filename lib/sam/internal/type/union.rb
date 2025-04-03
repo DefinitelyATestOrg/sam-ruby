@@ -68,14 +68,14 @@ module Sam
         # @return [Sam::Internal::Type::Converter, Class, nil]
         private def resolve_variant(value)
           case [@discriminator, value]
-          in [_, Sam::BaseModel]
+          in [_, Sam::Internal::Type::BaseModel]
             value.class
           in [Symbol, Hash]
             key = value.fetch(@discriminator) do
-              value.fetch(@discriminator.to_s, Sam::Internal::Util::OMIT)
+              value.fetch(@discriminator.to_s, Sam::Internal::OMIT)
             end
 
-            return nil if key == Sam::Internal::Util::OMIT
+            return nil if key == Sam::Internal::OMIT
 
             key = key.to_sym if key.is_a?(String)
             known_variants.find { |k,| k == key }&.last&.call
@@ -101,7 +101,7 @@ module Sam
         # @return [Boolean]
         def ==(other)
           # rubocop:disable Layout/LineLength
-          other.is_a?(Module) && other.singleton_class <= Sam::Union && other.derefed_variants == derefed_variants
+          other.is_a?(Module) && other.singleton_class <= Sam::Internal::Type::Union && other.derefed_variants == derefed_variants
           # rubocop:enable Layout/LineLength
         end
 

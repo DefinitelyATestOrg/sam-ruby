@@ -5,7 +5,7 @@ module Sam
     module Messages
       module Batches
         # @see Sam::Resources::Messages::Batches::BetaTrue#retrieve
-        class BetaTrueRetrieveResponse < Sam::BaseModel
+        class BetaTrueRetrieveResponse < Sam::Internal::Type::BaseModel
           # @!attribute id
           #   Unique object identifier.
           #
@@ -115,13 +115,13 @@ module Sam
           #     super
           #   end
 
-          # def initialize: (Hash | Sam::BaseModel) -> void
+          # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
           # Processing status of the Message Batch.
           #
           # @see Sam::Models::Messages::Batches::BetaTrueRetrieveResponse#processing_status
           module ProcessingStatus
-            extend Sam::Enum
+            extend Sam::Internal::Type::Enum
 
             IN_PROGRESS = :in_progress
             CANCELING = :canceling
@@ -135,7 +135,7 @@ module Sam
           end
 
           # @see Sam::Models::Messages::Batches::BetaTrueRetrieveResponse#request_counts
-          class RequestCounts < Sam::BaseModel
+          class RequestCounts < Sam::Internal::Type::BaseModel
             # @!attribute canceled
             #   Number of requests in the Message Batch that have been canceled.
             #
@@ -189,7 +189,7 @@ module Sam
             #   #
             #   def initialize(canceled:, errored:, expired:, processing:, succeeded:, **) = super
 
-            # def initialize: (Hash | Sam::BaseModel) -> void
+            # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
           end
         end
       end

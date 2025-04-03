@@ -3,7 +3,7 @@
 module Sam
   module Models
     module Messages
-      class BatchCreateParams < Sam::BaseModel
+      class BatchCreateParams < Sam::Internal::Type::BaseModel
         extend Sam::Internal::Type::RequestParameters::Converter
         include Sam::Internal::Type::RequestParameters
 
@@ -46,11 +46,11 @@ module Sam
 
         sig do
           params(
-            requests: T::Array[T.any(Sam::Models::Messages::BatchCreateParams::Request, Sam::Internal::Util::AnyHash)],
+            requests: T::Array[T.any(Sam::Models::Messages::BatchCreateParams::Request, Sam::Internal::AnyHash)],
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: T.any(Sam::RequestOptions, Sam::Internal::Util::AnyHash)
+            request_options: T.any(Sam::RequestOptions, Sam::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -78,7 +78,7 @@ module Sam
         def to_hash
         end
 
-        class Request < Sam::BaseModel
+        class Request < Sam::Internal::Type::BaseModel
           # Developer-provided ID created for each request in a Message Batch. Useful for
           #   matching results to requests, as results may be given out of request order.
           #
@@ -94,9 +94,7 @@ module Sam
           attr_reader :params
 
           sig do
-            params(
-              params: T.any(Sam::Models::Messages::BatchCreateParams::Request::Params, Sam::Internal::Util::AnyHash)
-            )
+            params(params: T.any(Sam::Models::Messages::BatchCreateParams::Request::Params, Sam::Internal::AnyHash))
               .void
           end
           attr_writer :params
@@ -104,7 +102,7 @@ module Sam
           sig do
             params(
               custom_id: String,
-              params: T.any(Sam::Models::Messages::BatchCreateParams::Request::Params, Sam::Internal::Util::AnyHash)
+              params: T.any(Sam::Models::Messages::BatchCreateParams::Request::Params, Sam::Internal::AnyHash)
             )
               .returns(T.attached_class)
           end
@@ -115,7 +113,7 @@ module Sam
           def to_hash
           end
 
-          class Params < Sam::BaseModel
+          class Params < Sam::Internal::Type::BaseModel
             # The maximum number of tokens to generate before stopping.
             #
             #   Note that our models may stop _before_ reaching this maximum. This parameter
@@ -228,7 +226,7 @@ module Sam
 
             sig do
               params(
-                metadata: T.any(Sam::Models::Messages::BatchCreateParams::Request::Params::Metadata, Sam::Internal::Util::AnyHash)
+                metadata: T.any(Sam::Models::Messages::BatchCreateParams::Request::Params::Metadata, Sam::Internal::AnyHash)
               )
                 .void
             end
@@ -280,7 +278,7 @@ module Sam
                   T::Array[
                   T.any(
                     Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1,
-                    Sam::Internal::Util::AnyHash
+                    Sam::Internal::AnyHash
                   )
                   ]
                 )
@@ -328,7 +326,7 @@ module Sam
               params(
                 thinking: T.any(
                   Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigEnabled,
-                  Sam::Internal::Util::AnyHash,
+                  Sam::Internal::AnyHash,
                   Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigDisabled
                 )
               )
@@ -356,7 +354,7 @@ module Sam
               params(
                 tool_choice: T.any(
                   Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAuto,
-                  Sam::Internal::Util::AnyHash,
+                  Sam::Internal::AnyHash,
                   Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAny,
                   Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceTool,
                   Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceNone
@@ -455,7 +453,7 @@ module Sam
                 tools: T::Array[
                 T.any(
                   Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool,
-                  Sam::Internal::Util::AnyHash,
+                  Sam::Internal::AnyHash,
                   Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124,
                   Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124
                 )
@@ -500,9 +498,9 @@ module Sam
             sig do
               params(
                 max_tokens: Integer,
-                messages: T::Array[T.any(Sam::Models::Messages::BatchCreateParams::Request::Params::Message, Sam::Internal::Util::AnyHash)],
+                messages: T::Array[T.any(Sam::Models::Messages::BatchCreateParams::Request::Params::Message, Sam::Internal::AnyHash)],
                 model: String,
-                metadata: T.any(Sam::Models::Messages::BatchCreateParams::Request::Params::Metadata, Sam::Internal::Util::AnyHash),
+                metadata: T.any(Sam::Models::Messages::BatchCreateParams::Request::Params::Metadata, Sam::Internal::AnyHash),
                 stop_sequences: T::Array[String],
                 stream: T::Boolean,
                 system_: T.any(
@@ -510,19 +508,19 @@ module Sam
                   T::Array[
                   T.any(
                     Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1,
-                    Sam::Internal::Util::AnyHash
+                    Sam::Internal::AnyHash
                   )
                   ]
                 ),
                 temperature: Float,
                 thinking: T.any(
                   Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigEnabled,
-                  Sam::Internal::Util::AnyHash,
+                  Sam::Internal::AnyHash,
                   Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigDisabled
                 ),
                 tool_choice: T.any(
                   Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAuto,
-                  Sam::Internal::Util::AnyHash,
+                  Sam::Internal::AnyHash,
                   Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAny,
                   Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceTool,
                   Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceNone
@@ -530,7 +528,7 @@ module Sam
                 tools: T::Array[
                 T.any(
                   Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool,
-                  Sam::Internal::Util::AnyHash,
+                  Sam::Internal::AnyHash,
                   Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124,
                   Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124
                 )
@@ -594,7 +592,7 @@ module Sam
             def to_hash
             end
 
-            class Message < Sam::BaseModel
+            class Message < Sam::Internal::Type::BaseModel
               sig do
                 returns(
                   T.any(
@@ -625,7 +623,7 @@ module Sam
                     T::Array[
                     T.any(
                       Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock,
-                      Sam::Internal::Util::AnyHash,
+                      Sam::Internal::AnyHash,
                       Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock,
                       Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolUseBlock,
                       Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock,
@@ -668,12 +666,12 @@ module Sam
               end
 
               module Content
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
                 module UnionMember1
-                  extend Sam::Union
+                  extend Sam::Internal::Type::Union
 
-                  class RequestTextBlock < Sam::BaseModel
+                  class RequestTextBlock < Sam::Internal::Type::BaseModel
                     sig { returns(String) }
                     attr_accessor :text
 
@@ -694,7 +692,7 @@ module Sam
                         cache_control: T.nilable(
                           T.any(
                             Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::CacheControl,
-                            Sam::Internal::Util::AnyHash
+                            Sam::Internal::AnyHash
                           )
                         )
                       )
@@ -723,14 +721,14 @@ module Sam
                         cache_control: T.nilable(
                           T.any(
                             Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::CacheControl,
-                            Sam::Internal::Util::AnyHash
+                            Sam::Internal::AnyHash
                           )
                         ),
                         citations: T.nilable(
                           T::Array[
                           T.any(
                             Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                            Sam::Internal::Util::AnyHash,
+                            Sam::Internal::AnyHash,
                             Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
                             Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
                           )
@@ -767,7 +765,7 @@ module Sam
                     def to_hash
                     end
 
-                    class CacheControl < Sam::BaseModel
+                    class CacheControl < Sam::Internal::Type::BaseModel
                       sig { returns(Symbol) }
                       attr_accessor :type
 
@@ -781,9 +779,9 @@ module Sam
                     end
 
                     module Citation
-                      extend Sam::Union
+                      extend Sam::Internal::Type::Union
 
-                      class RequestCharLocationCitation < Sam::BaseModel
+                      class RequestCharLocationCitation < Sam::Internal::Type::BaseModel
                         sig { returns(String) }
                         attr_accessor :cited_text
 
@@ -840,7 +838,7 @@ module Sam
                         end
                       end
 
-                      class RequestPageLocationCitation < Sam::BaseModel
+                      class RequestPageLocationCitation < Sam::Internal::Type::BaseModel
                         sig { returns(String) }
                         attr_accessor :cited_text
 
@@ -897,7 +895,7 @@ module Sam
                         end
                       end
 
-                      class RequestContentBlockLocationCitation < Sam::BaseModel
+                      class RequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                         sig { returns(String) }
                         attr_accessor :cited_text
 
@@ -965,7 +963,7 @@ module Sam
                     end
                   end
 
-                  class RequestImageBlock < Sam::BaseModel
+                  class RequestImageBlock < Sam::Internal::Type::BaseModel
                     sig do
                       returns(
                         T.any(
@@ -993,7 +991,7 @@ module Sam
                         cache_control: T.nilable(
                           T.any(
                             Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::CacheControl,
-                            Sam::Internal::Util::AnyHash
+                            Sam::Internal::AnyHash
                           )
                         )
                       )
@@ -1005,13 +1003,13 @@ module Sam
                       params(
                         source: T.any(
                           Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
-                          Sam::Internal::Util::AnyHash,
+                          Sam::Internal::AnyHash,
                           Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
                         ),
                         cache_control: T.nilable(
                           T.any(
                             Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::CacheControl,
-                            Sam::Internal::Util::AnyHash
+                            Sam::Internal::AnyHash
                           )
                         ),
                         type: Symbol
@@ -1040,9 +1038,9 @@ module Sam
                     end
 
                     module Source
-                      extend Sam::Union
+                      extend Sam::Internal::Type::Union
 
-                      class Base64ImageSource < Sam::BaseModel
+                      class Base64ImageSource < Sam::Internal::Type::BaseModel
                         sig { returns(String) }
                         attr_accessor :data
 
@@ -1081,7 +1079,7 @@ module Sam
                         end
 
                         module MediaType
-                          extend Sam::Enum
+                          extend Sam::Internal::Type::Enum
 
                           TaggedSymbol =
                             T.type_alias do
@@ -1130,7 +1128,7 @@ module Sam
                         end
                       end
 
-                      class URLImageSource < Sam::BaseModel
+                      class URLImageSource < Sam::Internal::Type::BaseModel
                         sig { returns(Symbol) }
                         attr_accessor :type
 
@@ -1156,7 +1154,7 @@ module Sam
                       end
                     end
 
-                    class CacheControl < Sam::BaseModel
+                    class CacheControl < Sam::Internal::Type::BaseModel
                       sig { returns(Symbol) }
                       attr_accessor :type
 
@@ -1170,7 +1168,7 @@ module Sam
                     end
                   end
 
-                  class RequestToolUseBlock < Sam::BaseModel
+                  class RequestToolUseBlock < Sam::Internal::Type::BaseModel
                     sig { returns(String) }
                     attr_accessor :id
 
@@ -1197,7 +1195,7 @@ module Sam
                         cache_control: T.nilable(
                           T.any(
                             Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolUseBlock::CacheControl,
-                            Sam::Internal::Util::AnyHash
+                            Sam::Internal::AnyHash
                           )
                         )
                       )
@@ -1213,7 +1211,7 @@ module Sam
                         cache_control: T.nilable(
                           T.any(
                             Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolUseBlock::CacheControl,
-                            Sam::Internal::Util::AnyHash
+                            Sam::Internal::AnyHash
                           )
                         ),
                         type: Symbol
@@ -1240,7 +1238,7 @@ module Sam
                     def to_hash
                     end
 
-                    class CacheControl < Sam::BaseModel
+                    class CacheControl < Sam::Internal::Type::BaseModel
                       sig { returns(Symbol) }
                       attr_accessor :type
 
@@ -1254,7 +1252,7 @@ module Sam
                     end
                   end
 
-                  class RequestToolResultBlock < Sam::BaseModel
+                  class RequestToolResultBlock < Sam::Internal::Type::BaseModel
                     sig { returns(String) }
                     attr_accessor :tool_use_id
 
@@ -1275,7 +1273,7 @@ module Sam
                         cache_control: T.nilable(
                           T.any(
                             Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::CacheControl,
-                            Sam::Internal::Util::AnyHash
+                            Sam::Internal::AnyHash
                           )
                         )
                       )
@@ -1307,7 +1305,7 @@ module Sam
                           T::Array[
                           T.any(
                             Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
-                            Sam::Internal::Util::AnyHash,
+                            Sam::Internal::AnyHash,
                             Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
                           )
                           ]
@@ -1329,7 +1327,7 @@ module Sam
                         cache_control: T.nilable(
                           T.any(
                             Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::CacheControl,
-                            Sam::Internal::Util::AnyHash
+                            Sam::Internal::AnyHash
                           )
                         ),
                         content: T.any(
@@ -1337,7 +1335,7 @@ module Sam
                           T::Array[
                           T.any(
                             Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
-                            Sam::Internal::Util::AnyHash,
+                            Sam::Internal::AnyHash,
                             Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
                           )
                           ]
@@ -1381,7 +1379,7 @@ module Sam
                     def to_hash
                     end
 
-                    class CacheControl < Sam::BaseModel
+                    class CacheControl < Sam::Internal::Type::BaseModel
                       sig { returns(Symbol) }
                       attr_accessor :type
 
@@ -1395,12 +1393,12 @@ module Sam
                     end
 
                     module Content
-                      extend Sam::Union
+                      extend Sam::Internal::Type::Union
 
                       module UnionMember1
-                        extend Sam::Union
+                        extend Sam::Internal::Type::Union
 
-                        class RequestTextBlock < Sam::BaseModel
+                        class RequestTextBlock < Sam::Internal::Type::BaseModel
                           sig { returns(String) }
                           attr_accessor :text
 
@@ -1421,7 +1419,7 @@ module Sam
                               cache_control: T.nilable(
                                 T.any(
                                   Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::CacheControl,
-                                  Sam::Internal::Util::AnyHash
+                                  Sam::Internal::AnyHash
                                 )
                               )
                             )
@@ -1450,14 +1448,14 @@ module Sam
                               cache_control: T.nilable(
                                 T.any(
                                   Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::CacheControl,
-                                  Sam::Internal::Util::AnyHash
+                                  Sam::Internal::AnyHash
                                 )
                               ),
                               citations: T.nilable(
                                 T::Array[
                                 T.any(
                                   Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                                  Sam::Internal::Util::AnyHash,
+                                  Sam::Internal::AnyHash,
                                   Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
                                   Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
                                 )
@@ -1494,7 +1492,7 @@ module Sam
                           def to_hash
                           end
 
-                          class CacheControl < Sam::BaseModel
+                          class CacheControl < Sam::Internal::Type::BaseModel
                             sig { returns(Symbol) }
                             attr_accessor :type
 
@@ -1508,9 +1506,9 @@ module Sam
                           end
 
                           module Citation
-                            extend Sam::Union
+                            extend Sam::Internal::Type::Union
 
-                            class RequestCharLocationCitation < Sam::BaseModel
+                            class RequestCharLocationCitation < Sam::Internal::Type::BaseModel
                               sig { returns(String) }
                               attr_accessor :cited_text
 
@@ -1567,7 +1565,7 @@ module Sam
                               end
                             end
 
-                            class RequestPageLocationCitation < Sam::BaseModel
+                            class RequestPageLocationCitation < Sam::Internal::Type::BaseModel
                               sig { returns(String) }
                               attr_accessor :cited_text
 
@@ -1624,7 +1622,7 @@ module Sam
                               end
                             end
 
-                            class RequestContentBlockLocationCitation < Sam::BaseModel
+                            class RequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                               sig { returns(String) }
                               attr_accessor :cited_text
 
@@ -1692,7 +1690,7 @@ module Sam
                           end
                         end
 
-                        class RequestImageBlock < Sam::BaseModel
+                        class RequestImageBlock < Sam::Internal::Type::BaseModel
                           sig do
                             returns(
                               T.any(
@@ -1720,7 +1718,7 @@ module Sam
                               cache_control: T.nilable(
                                 T.any(
                                   Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::CacheControl,
-                                  Sam::Internal::Util::AnyHash
+                                  Sam::Internal::AnyHash
                                 )
                               )
                             )
@@ -1732,13 +1730,13 @@ module Sam
                             params(
                               source: T.any(
                                 Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
-                                Sam::Internal::Util::AnyHash,
+                                Sam::Internal::AnyHash,
                                 Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
                               ),
                               cache_control: T.nilable(
                                 T.any(
                                   Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::CacheControl,
-                                  Sam::Internal::Util::AnyHash
+                                  Sam::Internal::AnyHash
                                 )
                               ),
                               type: Symbol
@@ -1767,9 +1765,9 @@ module Sam
                           end
 
                           module Source
-                            extend Sam::Union
+                            extend Sam::Internal::Type::Union
 
-                            class Base64ImageSource < Sam::BaseModel
+                            class Base64ImageSource < Sam::Internal::Type::BaseModel
                               sig { returns(String) }
                               attr_accessor :data
 
@@ -1808,7 +1806,7 @@ module Sam
                               end
 
                               module MediaType
-                                extend Sam::Enum
+                                extend Sam::Internal::Type::Enum
 
                                 TaggedSymbol =
                                   T.type_alias do
@@ -1857,7 +1855,7 @@ module Sam
                               end
                             end
 
-                            class URLImageSource < Sam::BaseModel
+                            class URLImageSource < Sam::Internal::Type::BaseModel
                               sig { returns(Symbol) }
                               attr_accessor :type
 
@@ -1883,7 +1881,7 @@ module Sam
                             end
                           end
 
-                          class CacheControl < Sam::BaseModel
+                          class CacheControl < Sam::Internal::Type::BaseModel
                             sig { returns(Symbol) }
                             attr_accessor :type
 
@@ -1926,7 +1924,7 @@ module Sam
 
                       UnionMember1Array =
                         T.let(
-                          Sam::ArrayOf[
+                          Sam::Internal::Type::ArrayOf[
                           union: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1
                           ],
                           Sam::Internal::Type::Converter
@@ -1934,7 +1932,7 @@ module Sam
                     end
                   end
 
-                  class RequestDocumentBlock < Sam::BaseModel
+                  class RequestDocumentBlock < Sam::Internal::Type::BaseModel
                     sig do
                       returns(
                         T.any(
@@ -1964,7 +1962,7 @@ module Sam
                         cache_control: T.nilable(
                           T.any(
                             Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::CacheControl,
-                            Sam::Internal::Util::AnyHash
+                            Sam::Internal::AnyHash
                           )
                         )
                       )
@@ -1985,7 +1983,7 @@ module Sam
                       params(
                         citations: T.any(
                           Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Citations,
-                          Sam::Internal::Util::AnyHash
+                          Sam::Internal::AnyHash
                         )
                       )
                         .void
@@ -2002,7 +2000,7 @@ module Sam
                       params(
                         source: T.any(
                           Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource,
-                          Sam::Internal::Util::AnyHash,
+                          Sam::Internal::AnyHash,
                           Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource,
                           Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource,
                           Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource
@@ -2010,12 +2008,12 @@ module Sam
                         cache_control: T.nilable(
                           T.any(
                             Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::CacheControl,
-                            Sam::Internal::Util::AnyHash
+                            Sam::Internal::AnyHash
                           )
                         ),
                         citations: T.any(
                           Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Citations,
-                          Sam::Internal::Util::AnyHash
+                          Sam::Internal::AnyHash
                         ),
                         context: T.nilable(String),
                         title: T.nilable(String),
@@ -2057,9 +2055,9 @@ module Sam
                     end
 
                     module Source
-                      extend Sam::Union
+                      extend Sam::Internal::Type::Union
 
-                      class Base64PdfSource < Sam::BaseModel
+                      class Base64PdfSource < Sam::Internal::Type::BaseModel
                         sig { returns(String) }
                         attr_accessor :data
 
@@ -2080,7 +2078,7 @@ module Sam
                         end
                       end
 
-                      class PlainTextSource < Sam::BaseModel
+                      class PlainTextSource < Sam::Internal::Type::BaseModel
                         sig { returns(String) }
                         attr_accessor :data
 
@@ -2101,7 +2099,7 @@ module Sam
                         end
                       end
 
-                      class ContentBlockSource < Sam::BaseModel
+                      class ContentBlockSource < Sam::Internal::Type::BaseModel
                         sig do
                           returns(
                             T.any(
@@ -2127,7 +2125,7 @@ module Sam
                               T::Array[
                               T.any(
                                 Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
-                                Sam::Internal::Util::AnyHash,
+                                Sam::Internal::AnyHash,
                                 Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
                               )
                               ]
@@ -2160,12 +2158,12 @@ module Sam
                         end
 
                         module Content
-                          extend Sam::Union
+                          extend Sam::Internal::Type::Union
 
                           module UnionMember1
-                            extend Sam::Union
+                            extend Sam::Internal::Type::Union
 
-                            class RequestTextBlock < Sam::BaseModel
+                            class RequestTextBlock < Sam::Internal::Type::BaseModel
                               sig { returns(String) }
                               attr_accessor :text
 
@@ -2186,7 +2184,7 @@ module Sam
                                   cache_control: T.nilable(
                                     T.any(
                                       Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::CacheControl,
-                                      Sam::Internal::Util::AnyHash
+                                      Sam::Internal::AnyHash
                                     )
                                   )
                                 )
@@ -2215,14 +2213,14 @@ module Sam
                                   cache_control: T.nilable(
                                     T.any(
                                       Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::CacheControl,
-                                      Sam::Internal::Util::AnyHash
+                                      Sam::Internal::AnyHash
                                     )
                                   ),
                                   citations: T.nilable(
                                     T::Array[
                                     T.any(
                                       Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                                      Sam::Internal::Util::AnyHash,
+                                      Sam::Internal::AnyHash,
                                       Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
                                       Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
                                     )
@@ -2259,7 +2257,7 @@ module Sam
                               def to_hash
                               end
 
-                              class CacheControl < Sam::BaseModel
+                              class CacheControl < Sam::Internal::Type::BaseModel
                                 sig { returns(Symbol) }
                                 attr_accessor :type
 
@@ -2273,9 +2271,9 @@ module Sam
                               end
 
                               module Citation
-                                extend Sam::Union
+                                extend Sam::Internal::Type::Union
 
-                                class RequestCharLocationCitation < Sam::BaseModel
+                                class RequestCharLocationCitation < Sam::Internal::Type::BaseModel
                                   sig { returns(String) }
                                   attr_accessor :cited_text
 
@@ -2332,7 +2330,7 @@ module Sam
                                   end
                                 end
 
-                                class RequestPageLocationCitation < Sam::BaseModel
+                                class RequestPageLocationCitation < Sam::Internal::Type::BaseModel
                                   sig { returns(String) }
                                   attr_accessor :cited_text
 
@@ -2389,7 +2387,7 @@ module Sam
                                   end
                                 end
 
-                                class RequestContentBlockLocationCitation < Sam::BaseModel
+                                class RequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                                   sig { returns(String) }
                                   attr_accessor :cited_text
 
@@ -2457,7 +2455,7 @@ module Sam
                               end
                             end
 
-                            class RequestImageBlock < Sam::BaseModel
+                            class RequestImageBlock < Sam::Internal::Type::BaseModel
                               sig do
                                 returns(
                                   T.any(
@@ -2485,7 +2483,7 @@ module Sam
                                   cache_control: T.nilable(
                                     T.any(
                                       Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::CacheControl,
-                                      Sam::Internal::Util::AnyHash
+                                      Sam::Internal::AnyHash
                                     )
                                   )
                                 )
@@ -2497,13 +2495,13 @@ module Sam
                                 params(
                                   source: T.any(
                                     Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource,
-                                    Sam::Internal::Util::AnyHash,
+                                    Sam::Internal::AnyHash,
                                     Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
                                   ),
                                   cache_control: T.nilable(
                                     T.any(
                                       Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::CacheControl,
-                                      Sam::Internal::Util::AnyHash
+                                      Sam::Internal::AnyHash
                                     )
                                   ),
                                   type: Symbol
@@ -2532,9 +2530,9 @@ module Sam
                               end
 
                               module Source
-                                extend Sam::Union
+                                extend Sam::Internal::Type::Union
 
-                                class Base64ImageSource < Sam::BaseModel
+                                class Base64ImageSource < Sam::Internal::Type::BaseModel
                                   sig { returns(String) }
                                   attr_accessor :data
 
@@ -2573,7 +2571,7 @@ module Sam
                                   end
 
                                   module MediaType
-                                    extend Sam::Enum
+                                    extend Sam::Internal::Type::Enum
 
                                     TaggedSymbol =
                                       T.type_alias do
@@ -2622,7 +2620,7 @@ module Sam
                                   end
                                 end
 
-                                class URLImageSource < Sam::BaseModel
+                                class URLImageSource < Sam::Internal::Type::BaseModel
                                   sig { returns(Symbol) }
                                   attr_accessor :type
 
@@ -2648,7 +2646,7 @@ module Sam
                                 end
                               end
 
-                              class CacheControl < Sam::BaseModel
+                              class CacheControl < Sam::Internal::Type::BaseModel
                                 sig { returns(Symbol) }
                                 attr_accessor :type
 
@@ -2691,7 +2689,7 @@ module Sam
 
                           UnionMember1Array =
                             T.let(
-                              Sam::ArrayOf[
+                              Sam::Internal::Type::ArrayOf[
                               union: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1
                               ],
                               Sam::Internal::Type::Converter
@@ -2699,7 +2697,7 @@ module Sam
                         end
                       end
 
-                      class UrlpdfSource < Sam::BaseModel
+                      class UrlpdfSource < Sam::Internal::Type::BaseModel
                         sig { returns(Symbol) }
                         attr_accessor :type
 
@@ -2725,7 +2723,7 @@ module Sam
                       end
                     end
 
-                    class CacheControl < Sam::BaseModel
+                    class CacheControl < Sam::Internal::Type::BaseModel
                       sig { returns(Symbol) }
                       attr_accessor :type
 
@@ -2738,7 +2736,7 @@ module Sam
                       end
                     end
 
-                    class Citations < Sam::BaseModel
+                    class Citations < Sam::Internal::Type::BaseModel
                       sig { returns(T.nilable(T::Boolean)) }
                       attr_reader :enabled
 
@@ -2755,7 +2753,7 @@ module Sam
                     end
                   end
 
-                  class RequestThinkingBlock < Sam::BaseModel
+                  class RequestThinkingBlock < Sam::Internal::Type::BaseModel
                     sig { returns(String) }
                     attr_accessor :signature
 
@@ -2776,7 +2774,7 @@ module Sam
                     end
                   end
 
-                  class RequestRedactedThinkingBlock < Sam::BaseModel
+                  class RequestRedactedThinkingBlock < Sam::Internal::Type::BaseModel
                     sig { returns(String) }
                     attr_accessor :data
 
@@ -2826,13 +2824,13 @@ module Sam
 
                 UnionMember1Array =
                   T.let(
-                    Sam::ArrayOf[union: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1],
+                    Sam::Internal::Type::ArrayOf[union: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1],
                     Sam::Internal::Type::Converter
                   )
               end
 
               module Role
-                extend Sam::Enum
+                extend Sam::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Role) }
@@ -2859,7 +2857,7 @@ module Sam
               end
             end
 
-            class Metadata < Sam::BaseModel
+            class Metadata < Sam::Internal::Type::BaseModel
               # An external identifier for the user who is associated with the request.
               #
               #   This should be a uuid, hash value, or other opaque identifier. Anthropic may use
@@ -2884,9 +2882,9 @@ module Sam
             #   as specifying a particular goal or role. See our
             #   [guide to system prompts](https://docs.anthropic.com/en/docs/system-prompts).
             module System
-              extend Sam::Union
+              extend Sam::Internal::Type::Union
 
-              class UnionMember1 < Sam::BaseModel
+              class UnionMember1 < Sam::Internal::Type::BaseModel
                 sig { returns(String) }
                 attr_accessor :text
 
@@ -2905,7 +2903,7 @@ module Sam
                     cache_control: T.nilable(
                       T.any(
                         Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::CacheControl,
-                        Sam::Internal::Util::AnyHash
+                        Sam::Internal::AnyHash
                       )
                     )
                   )
@@ -2934,14 +2932,14 @@ module Sam
                     cache_control: T.nilable(
                       T.any(
                         Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::CacheControl,
-                        Sam::Internal::Util::AnyHash
+                        Sam::Internal::AnyHash
                       )
                     ),
                     citations: T.nilable(
                       T::Array[
                       T.any(
                         Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestCharLocationCitation,
-                        Sam::Internal::Util::AnyHash,
+                        Sam::Internal::AnyHash,
                         Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestPageLocationCitation,
                         Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestContentBlockLocationCitation
                       )
@@ -2976,7 +2974,7 @@ module Sam
                 def to_hash
                 end
 
-                class CacheControl < Sam::BaseModel
+                class CacheControl < Sam::Internal::Type::BaseModel
                   sig { returns(Symbol) }
                   attr_accessor :type
 
@@ -2990,9 +2988,9 @@ module Sam
                 end
 
                 module Citation
-                  extend Sam::Union
+                  extend Sam::Internal::Type::Union
 
-                  class RequestCharLocationCitation < Sam::BaseModel
+                  class RequestCharLocationCitation < Sam::Internal::Type::BaseModel
                     sig { returns(String) }
                     attr_accessor :cited_text
 
@@ -3049,7 +3047,7 @@ module Sam
                     end
                   end
 
-                  class RequestPageLocationCitation < Sam::BaseModel
+                  class RequestPageLocationCitation < Sam::Internal::Type::BaseModel
                     sig { returns(String) }
                     attr_accessor :cited_text
 
@@ -3106,7 +3104,7 @@ module Sam
                     end
                   end
 
-                  class RequestContentBlockLocationCitation < Sam::BaseModel
+                  class RequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                     sig { returns(String) }
                     attr_accessor :cited_text
 
@@ -3185,7 +3183,7 @@ module Sam
 
               UnionMember1Array =
                 T.let(
-                  Sam::ArrayOf[Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1],
+                  Sam::Internal::Type::ArrayOf[Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1],
                   Sam::Internal::Type::Converter
                 )
             end
@@ -3200,9 +3198,9 @@ module Sam
             #   [extended thinking](https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking)
             #   for details.
             module Thinking
-              extend Sam::Union
+              extend Sam::Internal::Type::Union
 
-              class ThinkingConfigEnabled < Sam::BaseModel
+              class ThinkingConfigEnabled < Sam::Internal::Type::BaseModel
                 # Determines how many tokens Claude can use for its internal reasoning process.
                 #   Larger budgets can enable more thorough analysis for complex problems, improving
                 #   response quality.
@@ -3227,7 +3225,7 @@ module Sam
                 end
               end
 
-              class ThinkingConfigDisabled < Sam::BaseModel
+              class ThinkingConfigDisabled < Sam::Internal::Type::BaseModel
                 sig { returns(Symbol) }
                 attr_accessor :type
 
@@ -3253,9 +3251,9 @@ module Sam
             # How the model should use the provided tools. The model can use a specific tool,
             #   any available tool, decide by itself, or not use tools at all.
             module ToolChoice
-              extend Sam::Union
+              extend Sam::Internal::Type::Union
 
-              class ToolChoiceAuto < Sam::BaseModel
+              class ToolChoiceAuto < Sam::Internal::Type::BaseModel
                 sig { returns(Symbol) }
                 attr_accessor :type
 
@@ -3279,7 +3277,7 @@ module Sam
                 end
               end
 
-              class ToolChoiceAny < Sam::BaseModel
+              class ToolChoiceAny < Sam::Internal::Type::BaseModel
                 sig { returns(Symbol) }
                 attr_accessor :type
 
@@ -3303,7 +3301,7 @@ module Sam
                 end
               end
 
-              class ToolChoiceTool < Sam::BaseModel
+              class ToolChoiceTool < Sam::Internal::Type::BaseModel
                 # The name of the tool to use.
                 sig { returns(String) }
                 attr_accessor :name
@@ -3337,7 +3335,7 @@ module Sam
                 end
               end
 
-              class ToolChoiceNone < Sam::BaseModel
+              class ToolChoiceNone < Sam::Internal::Type::BaseModel
                 sig { returns(Symbol) }
                 attr_accessor :type
 
@@ -3362,9 +3360,9 @@ module Sam
             end
 
             module Tool
-              extend Sam::Union
+              extend Sam::Internal::Type::Union
 
-              class Tool < Sam::BaseModel
+              class Tool < Sam::Internal::Type::BaseModel
                 # [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input.
                 #
                 #   This defines the shape of the `input` that your tool accepts and that the model
@@ -3376,7 +3374,7 @@ module Sam
                   params(
                     input_schema: T.any(
                       Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::InputSchema,
-                      Sam::Internal::Util::AnyHash
+                      Sam::Internal::AnyHash
                     )
                   )
                     .void
@@ -3397,7 +3395,7 @@ module Sam
                     cache_control: T.nilable(
                       T.any(
                         Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::CacheControl,
-                        Sam::Internal::Util::AnyHash
+                        Sam::Internal::AnyHash
                       )
                     )
                   )
@@ -3421,13 +3419,13 @@ module Sam
                   params(
                     input_schema: T.any(
                       Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::InputSchema,
-                      Sam::Internal::Util::AnyHash
+                      Sam::Internal::AnyHash
                     ),
                     name: String,
                     cache_control: T.nilable(
                       T.any(
                         Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::CacheControl,
-                        Sam::Internal::Util::AnyHash
+                        Sam::Internal::AnyHash
                       )
                     ),
                     description: String
@@ -3451,7 +3449,7 @@ module Sam
                 def to_hash
                 end
 
-                class InputSchema < Sam::BaseModel
+                class InputSchema < Sam::Internal::Type::BaseModel
                   sig { returns(Symbol) }
                   attr_accessor :type
 
@@ -3471,7 +3469,7 @@ module Sam
                   end
                 end
 
-                class CacheControl < Sam::BaseModel
+                class CacheControl < Sam::Internal::Type::BaseModel
                   sig { returns(Symbol) }
                   attr_accessor :type
 
@@ -3485,7 +3483,7 @@ module Sam
                 end
               end
 
-              class BashTool20250124 < Sam::BaseModel
+              class BashTool20250124 < Sam::Internal::Type::BaseModel
                 # Name of the tool.
                 #
                 #   This is how the tool will be called by the model and in tool_use blocks.
@@ -3507,7 +3505,7 @@ module Sam
                     cache_control: T.nilable(
                       T.any(
                         Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124::CacheControl,
-                        Sam::Internal::Util::AnyHash
+                        Sam::Internal::AnyHash
                       )
                     )
                   )
@@ -3520,7 +3518,7 @@ module Sam
                     cache_control: T.nilable(
                       T.any(
                         Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124::CacheControl,
-                        Sam::Internal::Util::AnyHash
+                        Sam::Internal::AnyHash
                       )
                     ),
                     name: Symbol,
@@ -3544,7 +3542,7 @@ module Sam
                 def to_hash
                 end
 
-                class CacheControl < Sam::BaseModel
+                class CacheControl < Sam::Internal::Type::BaseModel
                   sig { returns(Symbol) }
                   attr_accessor :type
 
@@ -3558,7 +3556,7 @@ module Sam
                 end
               end
 
-              class TextEditor20250124 < Sam::BaseModel
+              class TextEditor20250124 < Sam::Internal::Type::BaseModel
                 # Name of the tool.
                 #
                 #   This is how the tool will be called by the model and in tool_use blocks.
@@ -3582,7 +3580,7 @@ module Sam
                     cache_control: T.nilable(
                       T.any(
                         Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124::CacheControl,
-                        Sam::Internal::Util::AnyHash
+                        Sam::Internal::AnyHash
                       )
                     )
                   )
@@ -3595,7 +3593,7 @@ module Sam
                     cache_control: T.nilable(
                       T.any(
                         Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124::CacheControl,
-                        Sam::Internal::Util::AnyHash
+                        Sam::Internal::AnyHash
                       )
                     ),
                     name: Symbol,
@@ -3621,7 +3619,7 @@ module Sam
                 def to_hash
                 end
 
-                class CacheControl < Sam::BaseModel
+                class CacheControl < Sam::Internal::Type::BaseModel
                   sig { returns(Symbol) }
                   attr_accessor :type
 

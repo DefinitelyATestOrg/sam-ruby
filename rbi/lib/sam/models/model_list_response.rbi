@@ -2,7 +2,7 @@
 
 module Sam
   module Models
-    class ModelListResponse < Sam::BaseModel
+    class ModelListResponse < Sam::Internal::Type::BaseModel
       sig { returns(T::Array[Sam::Models::ModelListResponse::Data]) }
       attr_accessor :data
 
@@ -21,7 +21,7 @@ module Sam
 
       sig do
         params(
-          data: T::Array[T.any(Sam::Models::ModelListResponse::Data, Sam::Internal::Util::AnyHash)],
+          data: T::Array[T.any(Sam::Models::ModelListResponse::Data, Sam::Internal::AnyHash)],
           first_id: T.nilable(String),
           has_more: T::Boolean,
           last_id: T.nilable(String)
@@ -45,7 +45,7 @@ module Sam
       def to_hash
       end
 
-      class Data < Sam::BaseModel
+      class Data < Sam::Internal::Type::BaseModel
         # Unique model identifier.
         sig { returns(String) }
         attr_accessor :id

@@ -16,7 +16,7 @@ module Sam
           max_tokens_to_sample: Integer,
           model: String,
           prompt: String,
-          metadata: T.any(Sam::Models::CompleteCreateParams::Metadata, Sam::Internal::Util::AnyHash),
+          metadata: T.any(Sam::Models::CompleteCreateParams::Metadata, Sam::Internal::AnyHash),
           stop_sequences: T::Array[String],
           stream: T::Boolean,
           temperature: Float,
@@ -24,7 +24,7 @@ module Sam
           top_p: Float,
           anthropic_version: String,
           x_api_key: String,
-          request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::AnyHash))
         )
           .returns(Sam::Models::CompleteCreateResponse)
       end

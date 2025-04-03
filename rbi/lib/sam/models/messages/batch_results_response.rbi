@@ -3,7 +3,7 @@
 module Sam
   module Models
     module Messages
-      class BatchResultsResponse < Sam::BaseModel
+      class BatchResultsResponse < Sam::Internal::Type::BaseModel
         # Developer-provided ID created for each request in a Message Batch. Useful for
         #   matching results to requests, as results may be given out of request order.
         #
@@ -35,7 +35,7 @@ module Sam
             custom_id: String,
             result: T.any(
               Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult,
-              Sam::Internal::Util::AnyHash,
+              Sam::Internal::AnyHash,
               Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult,
               Sam::Models::Messages::BatchResultsResponse::Result::CanceledResult,
               Sam::Models::Messages::BatchResultsResponse::Result::ExpiredResult
@@ -69,9 +69,9 @@ module Sam
         #   processing failed, or the reason why processing was not attempted, such as
         #   cancellation or expiration.
         module Result
-          extend Sam::Union
+          extend Sam::Internal::Type::Union
 
-          class SucceededResult < Sam::BaseModel
+          class SucceededResult < Sam::Internal::Type::BaseModel
             sig { returns(Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message) }
             attr_reader :message
 
@@ -79,7 +79,7 @@ module Sam
               params(
                 message: T.any(
                   Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 )
               )
                 .void
@@ -93,7 +93,7 @@ module Sam
               params(
                 message: T.any(
                   Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 ),
                 type: Symbol
               )
@@ -111,7 +111,7 @@ module Sam
             def to_hash
             end
 
-            class Message < Sam::BaseModel
+            class Message < Sam::Internal::Type::BaseModel
               # Unique object identifier.
               #
               #   The format and length of IDs may change over time.
@@ -229,7 +229,7 @@ module Sam
                 params(
                   usage: T.any(
                     Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Usage,
-                    Sam::Internal::Util::AnyHash
+                    Sam::Internal::AnyHash
                   )
                 )
                   .void
@@ -242,7 +242,7 @@ module Sam
                   content: T::Array[
                   T.any(
                     Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock,
-                    Sam::Internal::Util::AnyHash,
+                    Sam::Internal::AnyHash,
                     Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseToolUseBlock,
                     Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseThinkingBlock,
                     Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseRedactedThinkingBlock
@@ -255,7 +255,7 @@ module Sam
                   stop_sequence: T.nilable(String),
                   usage: T.any(
                     Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Usage,
-                    Sam::Internal::Util::AnyHash
+                    Sam::Internal::AnyHash
                   ),
                   role: Symbol,
                   type: Symbol
@@ -302,9 +302,9 @@ module Sam
               end
 
               module Content
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
-                class ResponseTextBlock < Sam::BaseModel
+                class ResponseTextBlock < Sam::Internal::Type::BaseModel
                   # Citations supporting the text block.
                   #
                   #   The type of citation returned will depend on the type of document being cited.
@@ -337,7 +337,7 @@ module Sam
                         T::Array[
                         T.any(
                           Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
-                          Sam::Internal::Util::AnyHash,
+                          Sam::Internal::AnyHash,
                           Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
                           Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
                         )
@@ -373,9 +373,9 @@ module Sam
                   end
 
                   module Citation
-                    extend Sam::Union
+                    extend Sam::Internal::Type::Union
 
-                    class ResponseCharLocationCitation < Sam::BaseModel
+                    class ResponseCharLocationCitation < Sam::Internal::Type::BaseModel
                       sig { returns(String) }
                       attr_accessor :cited_text
 
@@ -432,7 +432,7 @@ module Sam
                       end
                     end
 
-                    class ResponsePageLocationCitation < Sam::BaseModel
+                    class ResponsePageLocationCitation < Sam::Internal::Type::BaseModel
                       sig { returns(String) }
                       attr_accessor :cited_text
 
@@ -489,7 +489,7 @@ module Sam
                       end
                     end
 
-                    class ResponseContentBlockLocationCitation < Sam::BaseModel
+                    class ResponseContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                       sig { returns(String) }
                       attr_accessor :cited_text
 
@@ -557,7 +557,7 @@ module Sam
                   end
                 end
 
-                class ResponseToolUseBlock < Sam::BaseModel
+                class ResponseToolUseBlock < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :id
 
@@ -586,7 +586,7 @@ module Sam
                   end
                 end
 
-                class ResponseThinkingBlock < Sam::BaseModel
+                class ResponseThinkingBlock < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :signature
 
@@ -605,7 +605,7 @@ module Sam
                   end
                 end
 
-                class ResponseRedactedThinkingBlock < Sam::BaseModel
+                class ResponseRedactedThinkingBlock < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :data
 
@@ -643,7 +643,7 @@ module Sam
               #   In non-streaming mode this value is always non-null. In streaming mode, it is
               #   null in the `message_start` event and non-null otherwise.
               module StopReason
-                extend Sam::Enum
+                extend Sam::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::StopReason) }
@@ -687,7 +687,7 @@ module Sam
                 end
               end
 
-              class Usage < Sam::BaseModel
+              class Usage < Sam::Internal::Type::BaseModel
                 # The number of input tokens used to create the cache entry.
                 sig { returns(T.nilable(Integer)) }
                 attr_accessor :cache_creation_input_tokens
@@ -753,16 +753,13 @@ module Sam
             end
           end
 
-          class ErroredResult < Sam::BaseModel
+          class ErroredResult < Sam::Internal::Type::BaseModel
             sig { returns(Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error) }
             attr_reader :error
 
             sig do
               params(
-                error: T.any(
-                  Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error,
-                  Sam::Internal::Util::AnyHash
-                )
+                error: T.any(Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error, Sam::Internal::AnyHash)
               )
                 .void
             end
@@ -773,10 +770,7 @@ module Sam
 
             sig do
               params(
-                error: T.any(
-                  Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error,
-                  Sam::Internal::Util::AnyHash
-                ),
+                error: T.any(Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error, Sam::Internal::AnyHash),
                 type: Symbol
               )
                 .returns(T.attached_class)
@@ -791,7 +785,7 @@ module Sam
             def to_hash
             end
 
-            class Error < Sam::BaseModel
+            class Error < Sam::Internal::Type::BaseModel
               sig do
                 returns(
                   T.any(
@@ -816,7 +810,7 @@ module Sam
                 params(
                   error: T.any(
                     Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::InvalidRequestError,
-                    Sam::Internal::Util::AnyHash,
+                    Sam::Internal::AnyHash,
                     Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::AuthenticationError,
                     Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::BillingError,
                     Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::PermissionError,
@@ -856,9 +850,9 @@ module Sam
               end
 
               module Error
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
-                class InvalidRequestError < Sam::BaseModel
+                class InvalidRequestError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -874,7 +868,7 @@ module Sam
                   end
                 end
 
-                class AuthenticationError < Sam::BaseModel
+                class AuthenticationError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -890,7 +884,7 @@ module Sam
                   end
                 end
 
-                class BillingError < Sam::BaseModel
+                class BillingError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -906,7 +900,7 @@ module Sam
                   end
                 end
 
-                class PermissionError < Sam::BaseModel
+                class PermissionError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -922,7 +916,7 @@ module Sam
                   end
                 end
 
-                class NotFoundError < Sam::BaseModel
+                class NotFoundError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -938,7 +932,7 @@ module Sam
                   end
                 end
 
-                class RateLimitError < Sam::BaseModel
+                class RateLimitError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -954,7 +948,7 @@ module Sam
                   end
                 end
 
-                class GatewayTimeoutError < Sam::BaseModel
+                class GatewayTimeoutError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -970,7 +964,7 @@ module Sam
                   end
                 end
 
-                class APIError < Sam::BaseModel
+                class APIError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -986,7 +980,7 @@ module Sam
                   end
                 end
 
-                class OverloadedError < Sam::BaseModel
+                class OverloadedError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -1014,7 +1008,7 @@ module Sam
             end
           end
 
-          class CanceledResult < Sam::BaseModel
+          class CanceledResult < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :type
 
@@ -1027,7 +1021,7 @@ module Sam
             end
           end
 
-          class ExpiredResult < Sam::BaseModel
+          class ExpiredResult < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :type
 

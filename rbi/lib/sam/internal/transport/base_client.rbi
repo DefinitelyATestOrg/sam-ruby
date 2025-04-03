@@ -25,10 +25,13 @@ module Sam
               ),
               body: T.nilable(T.anything),
               unwrap: T.nilable(Symbol),
-              page: T.nilable(T::Class[Sam::Internal::Type::BasePage[Sam::BaseModel]]),
-              stream: T.nilable(T::Class[Sam::Internal::Type::BaseStream[T.anything, Sam::BaseModel]]),
+              page: T.nilable(T::Class[Sam::Internal::Type::BasePage[Sam::Internal::Type::BaseModel]]),
+              stream: T.nilable(
+                T::Class[Sam::Internal::Type::BaseStream[T.anything,
+                                                         Sam::Internal::Type::BaseModel]]
+              ),
               model: T.nilable(Sam::Internal::Type::Converter::Input),
-              options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::Util::AnyHash))
+              options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::AnyHash))
             }
           end
 
@@ -129,10 +132,7 @@ module Sam
         # @api private
         sig do
           overridable
-            .params(
-              req: Sam::Internal::Transport::BaseClient::RequestComponentsShape,
-              opts: Sam::Internal::Util::AnyHash
-            )
+            .params(req: Sam::Internal::Transport::BaseClient::RequestComponentsShape, opts: Sam::Internal::AnyHash)
             .returns(Sam::Internal::Transport::BaseClient::RequestInputShape)
         end
         private def build_request(req, opts)
@@ -175,10 +175,13 @@ module Sam
             ),
             body: T.nilable(T.anything),
             unwrap: T.nilable(Symbol),
-            page: T.nilable(T::Class[Sam::Internal::Type::BasePage[Sam::BaseModel]]),
-            stream: T.nilable(T::Class[Sam::Internal::Type::BaseStream[T.anything, Sam::BaseModel]]),
+            page: T.nilable(T::Class[Sam::Internal::Type::BasePage[Sam::Internal::Type::BaseModel]]),
+            stream: T.nilable(
+              T::Class[Sam::Internal::Type::BaseStream[T.anything,
+                                                       Sam::Internal::Type::BaseModel]]
+            ),
             model: T.nilable(Sam::Internal::Type::Converter::Input),
-            options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::Util::AnyHash))
+            options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::AnyHash))
           )
             .returns(T.anything)
         end
@@ -191,7 +194,7 @@ module Sam
           unwrap: nil,
           page: nil,
           stream: nil,
-          model: Sam::Unknown,
+          model: Sam::Internal::Type::Unknown,
           options: {}
         )
         end

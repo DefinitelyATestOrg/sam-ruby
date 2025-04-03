@@ -3,26 +3,26 @@
 require_relative "../../test_helper"
 
 class Sam::Test::PrimitiveModelTest < Minitest::Test
-  A = Sam::ArrayOf[-> { Integer }]
-  H = Sam::HashOf[-> { Integer }, nil?: true]
+  A = Sam::Internal::Type::ArrayOf[-> { Integer }]
+  H = Sam::Internal::Type::HashOf[-> { Integer }, nil?: true]
 
   module E
-    extend Sam::Enum
+    extend Sam::Internal::Type::Enum
   end
 
   module U
-    extend Sam::Union
+    extend Sam::Internal::Type::Union
   end
 
-  class B < Sam::BaseModel
+  class B < Sam::Internal::Type::BaseModel
     optional :a, Integer
     optional :b, B
   end
 
   def test_typing
     converters = [
-      Sam::Unknown,
-      Sam::BooleanModel,
+      Sam::Internal::Type::Unknown,
+      Sam::Internal::Type::BooleanModel,
       A,
       H,
       E,
@@ -39,11 +39,11 @@ class Sam::Test::PrimitiveModelTest < Minitest::Test
 
   def test_coerce
     cases = {
-      [Sam::Unknown, :a] => [{yes: 1}, :a],
+      [Sam::Internal::Type::Unknown, :a] => [{yes: 1}, :a],
       [NilClass, :a] => [{maybe: 1}, nil],
       [NilClass, nil] => [{yes: 1}, nil],
-      [Sam::BooleanModel, true] => [{yes: 1}, true],
-      [Sam::BooleanModel, "true"] => [{no: 1}, "true"],
+      [Sam::Internal::Type::BooleanModel, true] => [{yes: 1}, true],
+      [Sam::Internal::Type::BooleanModel, "true"] => [{no: 1}, "true"],
       [Integer, 1] => [{yes: 1}, 1],
       [Integer, 1.0] => [{maybe: 1}, 1],
       [Integer, "1"] => [{maybe: 1}, 1],
@@ -76,7 +76,7 @@ class Sam::Test::PrimitiveModelTest < Minitest::Test
 
   def test_dump
     cases = {
-      [Sam::Unknown, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
+      [Sam::Internal::Type::Unknown, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [A, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [H, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [E, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
@@ -85,8 +85,8 @@ class Sam::Test::PrimitiveModelTest < Minitest::Test
       [String, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [:b, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [nil, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
-      [Sam::BooleanModel, true] => true,
-      [Sam::BooleanModel, "true"] => "true",
+      [Sam::Internal::Type::BooleanModel, true] => true,
+      [Sam::Internal::Type::BooleanModel, "true"] => "true",
       [Integer, "1"] => "1",
       [Float, 1] => 1,
       [String, "one"] => "one",
@@ -126,27 +126,27 @@ end
 
 class Sam::Test::EnumModelTest < Minitest::Test
   module E1
-    extend Sam::Enum
+    extend Sam::Internal::Type::Enum
 
     TRUE = true
   end
 
   module E2
-    extend Sam::Enum
+    extend Sam::Internal::Type::Enum
 
     ONE = 1
     TWO = 2
   end
 
   module E3
-    extend Sam::Enum
+    extend Sam::Internal::Type::Enum
 
     ONE = 1.0
     TWO = 2.0
   end
 
   module E4
-    extend Sam::Enum
+    extend Sam::Internal::Type::Enum
 
     ONE = :one
     TWO = :two
@@ -216,14 +216,14 @@ class Sam::Test::EnumModelTest < Minitest::Test
 end
 
 class Sam::Test::CollectionModelTest < Minitest::Test
-  A1 = Sam::ArrayOf[-> { Integer }]
-  H1 = Sam::HashOf[Integer]
+  A1 = Sam::Internal::Type::ArrayOf[-> { Integer }]
+  H1 = Sam::Internal::Type::HashOf[Integer]
 
-  A2 = Sam::ArrayOf[H1]
-  H2 = Sam::HashOf[-> { A1 }]
+  A2 = Sam::Internal::Type::ArrayOf[H1]
+  H2 = Sam::Internal::Type::HashOf[-> { A1 }]
 
-  A3 = Sam::ArrayOf[Integer, nil?: true]
-  H3 = Sam::HashOf[Integer, nil?: true]
+  A3 = Sam::Internal::Type::ArrayOf[Integer, nil?: true]
+  H3 = Sam::Internal::Type::HashOf[Integer, nil?: true]
 
   def test_coerce
     cases = {
@@ -263,7 +263,7 @@ class Sam::Test::CollectionModelTest < Minitest::Test
 end
 
 class Sam::Test::BaseModelTest < Minitest::Test
-  class M1 < Sam::BaseModel
+  class M1 < Sam::Internal::Type::BaseModel
     required :a, Integer
   end
 
@@ -273,7 +273,7 @@ class Sam::Test::BaseModelTest < Minitest::Test
     optional :c, String
   end
 
-  class M3 < Sam::BaseModel
+  class M3 < Sam::Internal::Type::BaseModel
     optional :c, const: :c
     required :d, const: :d
   end
@@ -290,7 +290,7 @@ class Sam::Test::BaseModelTest < Minitest::Test
     end
   end
 
-  class M5 < Sam::BaseModel
+  class M5 < Sam::Internal::Type::BaseModel
     request_only do
       required :c, const: :c
     end
@@ -301,7 +301,7 @@ class Sam::Test::BaseModelTest < Minitest::Test
   end
 
   class M6 < M1
-    required :a, Sam::ArrayOf[M6]
+    required :a, Sam::Internal::Type::ArrayOf[M6]
   end
 
   def test_coerce
@@ -337,7 +337,7 @@ class Sam::Test::BaseModelTest < Minitest::Test
       assert_pattern do
         coerced = Sam::Internal::Type::Converter.coerce(target, input, state: state)
         assert_equal(coerced, coerced)
-        if coerced.is_a?(Sam::BaseModel)
+        if coerced.is_a?(Sam::Internal::Type::BaseModel)
           coerced.to_h => ^expect
         else
           coerced => ^expect
@@ -403,27 +403,27 @@ end
 
 class Sam::Test::UnionTest < Minitest::Test
   module U0
-    extend Sam::Union
+    extend Sam::Internal::Type::Union
   end
 
   module U1
-    extend Sam::Union
+    extend Sam::Internal::Type::Union
     variant const: :a
     variant const: 2
   end
 
-  class M1 < Sam::BaseModel
+  class M1 < Sam::Internal::Type::BaseModel
     required :t, const: :a, api_name: :type
     optional :c, String
   end
 
-  class M2 < Sam::BaseModel
+  class M2 < Sam::Internal::Type::BaseModel
     required :type, const: :b
     optional :c, String
   end
 
   module U2
-    extend Sam::Union
+    extend Sam::Internal::Type::Union
     discriminator :type
 
     variant :a, M1
@@ -431,7 +431,7 @@ class Sam::Test::UnionTest < Minitest::Test
   end
 
   module U3
-    extend Sam::Union
+    extend Sam::Internal::Type::Union
     discriminator :type
 
     variant :a, M1
@@ -439,37 +439,37 @@ class Sam::Test::UnionTest < Minitest::Test
   end
 
   module U4
-    extend Sam::Union
+    extend Sam::Internal::Type::Union
     discriminator :type
 
     variant String
     variant :a, M1
   end
 
-  class M3 < Sam::BaseModel
+  class M3 < Sam::Internal::Type::BaseModel
     optional :recur, -> { U5 }
     required :a, Integer
   end
 
-  class M4 < Sam::BaseModel
+  class M4 < Sam::Internal::Type::BaseModel
     optional :recur, -> { U5 }
-    required :a, Sam::ArrayOf[-> { U5 }]
+    required :a, Sam::Internal::Type::ArrayOf[-> { U5 }]
   end
 
-  class M5 < Sam::BaseModel
+  class M5 < Sam::Internal::Type::BaseModel
     optional :recur, -> { U5 }
-    required :b, Sam::ArrayOf[-> { U5 }]
+    required :b, Sam::Internal::Type::ArrayOf[-> { U5 }]
   end
 
   module U5
-    extend Sam::Union
+    extend Sam::Internal::Type::Union
 
     variant -> { M3 }
     variant -> { M4 }
   end
 
   module U6
-    extend Sam::Union
+    extend Sam::Internal::Type::Union
 
     variant -> { M3 }
     variant -> { M5 }
@@ -480,7 +480,7 @@ class Sam::Test::UnionTest < Minitest::Test
     tap do
       model.recur
       flunk
-    rescue Sam::ConversionError => e
+    rescue Sam::Errors::ConversionError => e
       assert_kind_of(ArgumentError, e.cause)
     end
   end
@@ -513,7 +513,7 @@ class Sam::Test::UnionTest < Minitest::Test
       assert_pattern do
         coerced = Sam::Internal::Type::Converter.coerce(target, input, state: state)
         assert_equal(coerced, coerced)
-        if coerced.is_a?(Sam::BaseModel)
+        if coerced.is_a?(Sam::Internal::Type::BaseModel)
           coerced.to_h => ^expect
         else
           coerced => ^expect
@@ -527,29 +527,29 @@ end
 
 class Sam::Test::BaseModelQoLTest < Minitest::Test
   module E1
-    extend Sam::Enum
+    extend Sam::Internal::Type::Enum
 
     A = 1
   end
 
   module E2
-    extend Sam::Enum
+    extend Sam::Internal::Type::Enum
 
     A = 1
   end
 
   module E3
-    extend Sam::Enum
+    extend Sam::Internal::Type::Enum
 
     A = 2
     B = 3
   end
 
-  class M1 < Sam::BaseModel
+  class M1 < Sam::Internal::Type::BaseModel
     required :a, Integer
   end
 
-  class M2 < Sam::BaseModel
+  class M2 < Sam::Internal::Type::BaseModel
     required :a, Integer, nil?: true
   end
 
@@ -559,9 +559,9 @@ class Sam::Test::BaseModelQoLTest < Minitest::Test
 
   def test_equality
     cases = {
-      [Sam::Unknown, Sam::Unknown] => true,
-      [Sam::BooleanModel, Sam::BooleanModel] => true,
-      [Sam::Unknown, Sam::BooleanModel] => false,
+      [Sam::Internal::Type::Unknown, Sam::Internal::Type::Unknown] => true,
+      [Sam::Internal::Type::BooleanModel, Sam::Internal::Type::BooleanModel] => true,
+      [Sam::Internal::Type::Unknown, Sam::Internal::Type::BooleanModel] => false,
       [E1, E2] => true,
       [E1, E3] => false,
       [M1, M2] => false,

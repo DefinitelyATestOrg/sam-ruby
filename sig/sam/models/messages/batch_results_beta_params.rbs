@@ -9,7 +9,7 @@ module Sam
         }
         & Sam::Internal::Type::request_parameters
 
-      class BatchResultsBetaParams < Sam::BaseModel
+      class BatchResultsBetaParams < Sam::Internal::Type::BaseModel
         extend Sam::Internal::Type::RequestParameters::Converter
         include Sam::Internal::Type::RequestParameters
 

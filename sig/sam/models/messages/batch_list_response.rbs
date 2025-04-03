@@ -9,7 +9,7 @@ module Sam
           last_id: String?
         }
 
-      class BatchListResponse < Sam::BaseModel
+      class BatchListResponse < Sam::Internal::Type::BaseModel
         attr_accessor data: ::Array[Sam::Models::Messages::BatchListResponse::Data]
 
         attr_accessor first_id: String?
@@ -41,7 +41,7 @@ module Sam
             type: :message_batch
           }
 
-        class Data < Sam::BaseModel
+        class Data < Sam::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor archived_at: Time?
@@ -80,7 +80,7 @@ module Sam
           type processing_status = :in_progress | :canceling | :ended
 
           module ProcessingStatus
-            extend Sam::Enum
+            extend Sam::Internal::Type::Enum
 
             IN_PROGRESS: :in_progress
             CANCELING: :canceling
@@ -98,7 +98,7 @@ module Sam
               succeeded: Integer
             }
 
-          class RequestCounts < Sam::BaseModel
+          class RequestCounts < Sam::Internal::Type::BaseModel
             attr_accessor canceled: Integer
 
             attr_accessor errored: Integer

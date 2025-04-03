@@ -12,7 +12,7 @@ module Sam
 
         # @param mod [Module]
         def self.included(mod)
-          return unless mod <= Sam::BaseModel
+          return unless mod <= Sam::Internal::Type::BaseModel
 
           mod.extend(Sam::Internal::Type::RequestParameters::Converter)
           mod.optional(:request_options, Sam::RequestOptions)

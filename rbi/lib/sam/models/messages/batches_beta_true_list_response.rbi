@@ -3,7 +3,7 @@
 module Sam
   module Models
     module Messages
-      class BatchesBetaTrueListResponse < Sam::BaseModel
+      class BatchesBetaTrueListResponse < Sam::Internal::Type::BaseModel
         sig { returns(T::Array[Sam::Models::Messages::BatchesBetaTrueListResponse::Data]) }
         attr_accessor :data
 
@@ -22,7 +22,7 @@ module Sam
 
         sig do
           params(
-            data: T::Array[T.any(Sam::Models::Messages::BatchesBetaTrueListResponse::Data, Sam::Internal::Util::AnyHash)],
+            data: T::Array[T.any(Sam::Models::Messages::BatchesBetaTrueListResponse::Data, Sam::Internal::AnyHash)],
             first_id: T.nilable(String),
             has_more: T::Boolean,
             last_id: T.nilable(String)
@@ -46,7 +46,7 @@ module Sam
         def to_hash
         end
 
-        class Data < Sam::BaseModel
+        class Data < Sam::Internal::Type::BaseModel
           # Unique object identifier.
           #
           #   The format and length of IDs may change over time.
@@ -95,10 +95,7 @@ module Sam
 
           sig do
             params(
-              request_counts: T.any(
-                Sam::Models::Messages::BatchesBetaTrueListResponse::Data::RequestCounts,
-                Sam::Internal::Util::AnyHash
-              )
+              request_counts: T.any(Sam::Models::Messages::BatchesBetaTrueListResponse::Data::RequestCounts, Sam::Internal::AnyHash)
             )
               .void
           end
@@ -127,10 +124,7 @@ module Sam
               ended_at: T.nilable(Time),
               expires_at: Time,
               processing_status: Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus::OrSymbol,
-              request_counts: T.any(
-                Sam::Models::Messages::BatchesBetaTrueListResponse::Data::RequestCounts,
-                Sam::Internal::Util::AnyHash
-              ),
+              request_counts: T.any(Sam::Models::Messages::BatchesBetaTrueListResponse::Data::RequestCounts, Sam::Internal::AnyHash),
               results_url: T.nilable(String),
               type: Symbol
             )
@@ -172,7 +166,7 @@ module Sam
 
           # Processing status of the Message Batch.
           module ProcessingStatus
-            extend Sam::Enum
+            extend Sam::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus) }
@@ -208,7 +202,7 @@ module Sam
             end
           end
 
-          class RequestCounts < Sam::BaseModel
+          class RequestCounts < Sam::Internal::Type::BaseModel
             # Number of requests in the Message Batch that have been canceled.
             #
             #   This is zero until processing of the entire Message Batch has ended.

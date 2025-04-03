@@ -2,7 +2,7 @@
 
 module Sam
   module Models
-    class ModelsBetaTrueListParams < Sam::BaseModel
+    class ModelsBetaTrueListParams < Sam::Internal::Type::BaseModel
       extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
 
@@ -60,7 +60,7 @@ module Sam
           limit: Integer,
           anthropic_version: String,
           x_api_key: String,
-          request_options: T.any(Sam::RequestOptions, Sam::Internal::Util::AnyHash)
+          request_options: T.any(Sam::RequestOptions, Sam::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

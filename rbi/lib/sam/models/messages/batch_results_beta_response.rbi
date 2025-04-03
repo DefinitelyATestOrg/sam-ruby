@@ -3,7 +3,7 @@
 module Sam
   module Models
     module Messages
-      class BatchResultsBetaResponse < Sam::BaseModel
+      class BatchResultsBetaResponse < Sam::Internal::Type::BaseModel
         # Developer-provided ID created for each request in a Message Batch. Useful for
         #   matching results to requests, as results may be given out of request order.
         #
@@ -35,7 +35,7 @@ module Sam
             custom_id: String,
             result: T.any(
               Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult,
-              Sam::Internal::Util::AnyHash,
+              Sam::Internal::AnyHash,
               Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult,
               Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaCanceledResult,
               Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaExpiredResult
@@ -69,9 +69,9 @@ module Sam
         #   processing failed, or the reason why processing was not attempted, such as
         #   cancellation or expiration.
         module Result
-          extend Sam::Union
+          extend Sam::Internal::Type::Union
 
-          class BetaSucceededResult < Sam::BaseModel
+          class BetaSucceededResult < Sam::Internal::Type::BaseModel
             sig { returns(Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message) }
             attr_reader :message
 
@@ -79,7 +79,7 @@ module Sam
               params(
                 message: T.any(
                   Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 )
               )
                 .void
@@ -93,7 +93,7 @@ module Sam
               params(
                 message: T.any(
                   Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 ),
                 type: Symbol
               )
@@ -111,7 +111,7 @@ module Sam
             def to_hash
             end
 
-            class Message < Sam::BaseModel
+            class Message < Sam::Internal::Type::BaseModel
               # Unique object identifier.
               #
               #   The format and length of IDs may change over time.
@@ -229,7 +229,7 @@ module Sam
                 params(
                   usage: T.any(
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage,
-                    Sam::Internal::Util::AnyHash
+                    Sam::Internal::AnyHash
                   )
                 )
                   .void
@@ -242,7 +242,7 @@ module Sam
                   content: T::Array[
                   T.any(
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock,
-                    Sam::Internal::Util::AnyHash,
+                    Sam::Internal::AnyHash,
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock,
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock,
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock
@@ -255,7 +255,7 @@ module Sam
                   stop_sequence: T.nilable(String),
                   usage: T.any(
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage,
-                    Sam::Internal::Util::AnyHash
+                    Sam::Internal::AnyHash
                   ),
                   role: Symbol,
                   type: Symbol
@@ -302,9 +302,9 @@ module Sam
               end
 
               module Content
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
-                class BetaResponseTextBlock < Sam::BaseModel
+                class BetaResponseTextBlock < Sam::Internal::Type::BaseModel
                   # Citations supporting the text block.
                   #
                   #   The type of citation returned will depend on the type of document being cited.
@@ -337,7 +337,7 @@ module Sam
                         T::Array[
                         T.any(
                           Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation,
-                          Sam::Internal::Util::AnyHash,
+                          Sam::Internal::AnyHash,
                           Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation,
                           Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
                         )
@@ -373,9 +373,9 @@ module Sam
                   end
 
                   module Citation
-                    extend Sam::Union
+                    extend Sam::Internal::Type::Union
 
-                    class BetaResponseCharLocationCitation < Sam::BaseModel
+                    class BetaResponseCharLocationCitation < Sam::Internal::Type::BaseModel
                       sig { returns(String) }
                       attr_accessor :cited_text
 
@@ -432,7 +432,7 @@ module Sam
                       end
                     end
 
-                    class BetaResponsePageLocationCitation < Sam::BaseModel
+                    class BetaResponsePageLocationCitation < Sam::Internal::Type::BaseModel
                       sig { returns(String) }
                       attr_accessor :cited_text
 
@@ -489,7 +489,7 @@ module Sam
                       end
                     end
 
-                    class BetaResponseContentBlockLocationCitation < Sam::BaseModel
+                    class BetaResponseContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                       sig { returns(String) }
                       attr_accessor :cited_text
 
@@ -557,7 +557,7 @@ module Sam
                   end
                 end
 
-                class BetaResponseToolUseBlock < Sam::BaseModel
+                class BetaResponseToolUseBlock < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :id
 
@@ -586,7 +586,7 @@ module Sam
                   end
                 end
 
-                class BetaResponseThinkingBlock < Sam::BaseModel
+                class BetaResponseThinkingBlock < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :signature
 
@@ -605,7 +605,7 @@ module Sam
                   end
                 end
 
-                class BetaResponseRedactedThinkingBlock < Sam::BaseModel
+                class BetaResponseRedactedThinkingBlock < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :data
 
@@ -643,7 +643,7 @@ module Sam
               #   In non-streaming mode this value is always non-null. In streaming mode, it is
               #   null in the `message_start` event and non-null otherwise.
               module StopReason
-                extend Sam::Enum
+                extend Sam::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -691,7 +691,7 @@ module Sam
                 end
               end
 
-              class Usage < Sam::BaseModel
+              class Usage < Sam::Internal::Type::BaseModel
                 # The number of input tokens used to create the cache entry.
                 sig { returns(T.nilable(Integer)) }
                 attr_accessor :cache_creation_input_tokens
@@ -757,7 +757,7 @@ module Sam
             end
           end
 
-          class BetaErroredResult < Sam::BaseModel
+          class BetaErroredResult < Sam::Internal::Type::BaseModel
             sig { returns(Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error) }
             attr_reader :error
 
@@ -765,7 +765,7 @@ module Sam
               params(
                 error: T.any(
                   Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 )
               )
                 .void
@@ -779,7 +779,7 @@ module Sam
               params(
                 error: T.any(
                   Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error,
-                  Sam::Internal::Util::AnyHash
+                  Sam::Internal::AnyHash
                 ),
                 type: Symbol
               )
@@ -797,7 +797,7 @@ module Sam
             def to_hash
             end
 
-            class Error < Sam::BaseModel
+            class Error < Sam::Internal::Type::BaseModel
               sig do
                 returns(
                   T.any(
@@ -822,7 +822,7 @@ module Sam
                 params(
                   error: T.any(
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaInvalidRequestError,
-                    Sam::Internal::Util::AnyHash,
+                    Sam::Internal::AnyHash,
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAuthenticationError,
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaBillingError,
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaPermissionError,
@@ -862,9 +862,9 @@ module Sam
               end
 
               module Error
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
-                class BetaInvalidRequestError < Sam::BaseModel
+                class BetaInvalidRequestError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -880,7 +880,7 @@ module Sam
                   end
                 end
 
-                class BetaAuthenticationError < Sam::BaseModel
+                class BetaAuthenticationError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -896,7 +896,7 @@ module Sam
                   end
                 end
 
-                class BetaBillingError < Sam::BaseModel
+                class BetaBillingError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -912,7 +912,7 @@ module Sam
                   end
                 end
 
-                class BetaPermissionError < Sam::BaseModel
+                class BetaPermissionError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -928,7 +928,7 @@ module Sam
                   end
                 end
 
-                class BetaNotFoundError < Sam::BaseModel
+                class BetaNotFoundError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -944,7 +944,7 @@ module Sam
                   end
                 end
 
-                class BetaRateLimitError < Sam::BaseModel
+                class BetaRateLimitError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -960,7 +960,7 @@ module Sam
                   end
                 end
 
-                class BetaGatewayTimeoutError < Sam::BaseModel
+                class BetaGatewayTimeoutError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -976,7 +976,7 @@ module Sam
                   end
                 end
 
-                class BetaAPIError < Sam::BaseModel
+                class BetaAPIError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -992,7 +992,7 @@ module Sam
                   end
                 end
 
-                class BetaOverloadedError < Sam::BaseModel
+                class BetaOverloadedError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -1020,7 +1020,7 @@ module Sam
             end
           end
 
-          class BetaCanceledResult < Sam::BaseModel
+          class BetaCanceledResult < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :type
 
@@ -1033,7 +1033,7 @@ module Sam
             end
           end
 
-          class BetaExpiredResult < Sam::BaseModel
+          class BetaExpiredResult < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :type
 

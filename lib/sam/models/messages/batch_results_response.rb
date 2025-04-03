@@ -4,7 +4,7 @@ module Sam
   module Models
     module Messages
       # @see Sam::Resources::Messages::Batches#results_streaming
-      class BatchResultsResponse < Sam::BaseModel
+      class BatchResultsResponse < Sam::Internal::Type::BaseModel
         # @!attribute custom_id
         #   Developer-provided ID created for each request in a Message Batch. Useful for
         #     matching results to requests, as results may be given out of request order.
@@ -33,7 +33,7 @@ module Sam
         #   #
         #   def initialize(custom_id:, result:, **) = super
 
-        # def initialize: (Hash | Sam::BaseModel) -> void
+        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
         # Processing result for this request.
         #
@@ -43,7 +43,7 @@ module Sam
         #
         # @see Sam::Models::Messages::BatchResultsResponse#result
         module Result
-          extend Sam::Union
+          extend Sam::Internal::Type::Union
 
           discriminator :type
 
@@ -55,7 +55,7 @@ module Sam
 
           variant :expired, -> { Sam::Models::Messages::BatchResultsResponse::Result::ExpiredResult }
 
-          class SucceededResult < Sam::BaseModel
+          class SucceededResult < Sam::Internal::Type::BaseModel
             # @!attribute message
             #
             #   @return [Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message]
@@ -72,10 +72,10 @@ module Sam
             #   #
             #   def initialize(message:, type: :succeeded, **) = super
 
-            # def initialize: (Hash | Sam::BaseModel) -> void
+            # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
             # @see Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult#message
-            class Message < Sam::BaseModel
+            class Message < Sam::Internal::Type::BaseModel
               # @!attribute id
               #   Unique object identifier.
               #
@@ -120,7 +120,7 @@ module Sam
               #
               #   @return [Array<Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseToolUseBlock, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseThinkingBlock, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseRedactedThinkingBlock>]
               required :content,
-                       -> { Sam::ArrayOf[union: Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content] }
+                       -> { Sam::Internal::Type::ArrayOf[union: Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content] }
 
               # @!attribute model
               #   The model that handled the request.
@@ -204,10 +204,10 @@ module Sam
               #   #
               #   def initialize(id:, content:, model:, stop_reason:, stop_sequence:, usage:, role: :assistant, type: :message, **) = super
 
-              # def initialize: (Hash | Sam::BaseModel) -> void
+              # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
               module Content
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
                 discriminator :type
 
@@ -223,7 +223,7 @@ module Sam
                 variant :redacted_thinking,
                         -> { Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseRedactedThinkingBlock }
 
-                class ResponseTextBlock < Sam::BaseModel
+                class ResponseTextBlock < Sam::Internal::Type::BaseModel
                   # @!attribute citations
                   #   Citations supporting the text block.
                   #
@@ -234,7 +234,7 @@ module Sam
                   #   @return [Array<Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation>, nil]
                   required :citations,
                            -> do
-                             Sam::ArrayOf[
+                             Sam::Internal::Type::ArrayOf[
                              union: Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation
                              ]
                            end,
@@ -257,10 +257,10 @@ module Sam
                   #   #
                   #   def initialize(citations:, text:, type: :text, **) = super
 
-                  # def initialize: (Hash | Sam::BaseModel) -> void
+                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
                   module Citation
-                    extend Sam::Union
+                    extend Sam::Internal::Type::Union
 
                     discriminator :type
 
@@ -273,7 +273,7 @@ module Sam
                     variant :content_block_location,
                             -> { Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation }
 
-                    class ResponseCharLocationCitation < Sam::BaseModel
+                    class ResponseCharLocationCitation < Sam::Internal::Type::BaseModel
                       # @!attribute cited_text
                       #
                       #   @return [String]
@@ -324,10 +324,10 @@ module Sam
                       #     super
                       #   end
 
-                      # def initialize: (Hash | Sam::BaseModel) -> void
+                      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                     end
 
-                    class ResponsePageLocationCitation < Sam::BaseModel
+                    class ResponsePageLocationCitation < Sam::Internal::Type::BaseModel
                       # @!attribute cited_text
                       #
                       #   @return [String]
@@ -378,10 +378,10 @@ module Sam
                       #     super
                       #   end
 
-                      # def initialize: (Hash | Sam::BaseModel) -> void
+                      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                     end
 
-                    class ResponseContentBlockLocationCitation < Sam::BaseModel
+                    class ResponseContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                       # @!attribute cited_text
                       #
                       #   @return [String]
@@ -432,7 +432,7 @@ module Sam
                       #     super
                       #   end
 
-                      # def initialize: (Hash | Sam::BaseModel) -> void
+                      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                     end
 
                     # @!parse
@@ -441,7 +441,7 @@ module Sam
                   end
                 end
 
-                class ResponseToolUseBlock < Sam::BaseModel
+                class ResponseToolUseBlock < Sam::Internal::Type::BaseModel
                   # @!attribute id
                   #
                   #   @return [String]
@@ -450,7 +450,7 @@ module Sam
                   # @!attribute input
                   #
                   #   @return [Object]
-                  required :input, Sam::Unknown
+                  required :input, Sam::Internal::Type::Unknown
 
                   # @!attribute name
                   #
@@ -470,10 +470,10 @@ module Sam
                   #   #
                   #   def initialize(id:, input:, name:, type: :tool_use, **) = super
 
-                  # def initialize: (Hash | Sam::BaseModel) -> void
+                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                 end
 
-                class ResponseThinkingBlock < Sam::BaseModel
+                class ResponseThinkingBlock < Sam::Internal::Type::BaseModel
                   # @!attribute signature
                   #
                   #   @return [String]
@@ -496,10 +496,10 @@ module Sam
                   #   #
                   #   def initialize(signature:, thinking:, type: :thinking, **) = super
 
-                  # def initialize: (Hash | Sam::BaseModel) -> void
+                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                 end
 
-                class ResponseRedactedThinkingBlock < Sam::BaseModel
+                class ResponseRedactedThinkingBlock < Sam::Internal::Type::BaseModel
                   # @!attribute data
                   #
                   #   @return [String]
@@ -516,7 +516,7 @@ module Sam
                   #   #
                   #   def initialize(data:, type: :redacted_thinking, **) = super
 
-                  # def initialize: (Hash | Sam::BaseModel) -> void
+                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                 end
 
                 # @!parse
@@ -538,7 +538,7 @@ module Sam
               #
               # @see Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message#stop_reason
               module StopReason
-                extend Sam::Enum
+                extend Sam::Internal::Type::Enum
 
                 END_TURN = :end_turn
                 MAX_TOKENS = :max_tokens
@@ -553,7 +553,7 @@ module Sam
               end
 
               # @see Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message#usage
-              class Usage < Sam::BaseModel
+              class Usage < Sam::Internal::Type::BaseModel
                 # @!attribute cache_creation_input_tokens
                 #   The number of input tokens used to create the cache entry.
                 #
@@ -602,12 +602,12 @@ module Sam
                 #   #
                 #   def initialize(cache_creation_input_tokens:, cache_read_input_tokens:, input_tokens:, output_tokens:, **) = super
 
-                # def initialize: (Hash | Sam::BaseModel) -> void
+                # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
               end
             end
           end
 
-          class ErroredResult < Sam::BaseModel
+          class ErroredResult < Sam::Internal::Type::BaseModel
             # @!attribute error
             #
             #   @return [Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error]
@@ -624,10 +624,10 @@ module Sam
             #   #
             #   def initialize(error:, type: :errored, **) = super
 
-            # def initialize: (Hash | Sam::BaseModel) -> void
+            # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
             # @see Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult#error
-            class Error < Sam::BaseModel
+            class Error < Sam::Internal::Type::BaseModel
               # @!attribute error
               #
               #   @return [Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::InvalidRequestError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::AuthenticationError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::BillingError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::PermissionError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::NotFoundError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::RateLimitError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::GatewayTimeoutError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::APIError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::OverloadedError]
@@ -645,11 +645,11 @@ module Sam
               #   #
               #   def initialize(error:, type: :error, **) = super
 
-              # def initialize: (Hash | Sam::BaseModel) -> void
+              # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
               # @see Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error#error
               module Error
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
                 discriminator :type
 
@@ -680,7 +680,7 @@ module Sam
                 variant :overloaded_error,
                         -> { Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::OverloadedError }
 
-                class InvalidRequestError < Sam::BaseModel
+                class InvalidRequestError < Sam::Internal::Type::BaseModel
                   # @!attribute message
                   #
                   #   @return [String]
@@ -697,10 +697,10 @@ module Sam
                   #   #
                   #   def initialize(message:, type: :invalid_request_error, **) = super
 
-                  # def initialize: (Hash | Sam::BaseModel) -> void
+                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                 end
 
-                class AuthenticationError < Sam::BaseModel
+                class AuthenticationError < Sam::Internal::Type::BaseModel
                   # @!attribute message
                   #
                   #   @return [String]
@@ -717,10 +717,10 @@ module Sam
                   #   #
                   #   def initialize(message:, type: :authentication_error, **) = super
 
-                  # def initialize: (Hash | Sam::BaseModel) -> void
+                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                 end
 
-                class BillingError < Sam::BaseModel
+                class BillingError < Sam::Internal::Type::BaseModel
                   # @!attribute message
                   #
                   #   @return [String]
@@ -737,10 +737,10 @@ module Sam
                   #   #
                   #   def initialize(message:, type: :billing_error, **) = super
 
-                  # def initialize: (Hash | Sam::BaseModel) -> void
+                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                 end
 
-                class PermissionError < Sam::BaseModel
+                class PermissionError < Sam::Internal::Type::BaseModel
                   # @!attribute message
                   #
                   #   @return [String]
@@ -757,10 +757,10 @@ module Sam
                   #   #
                   #   def initialize(message:, type: :permission_error, **) = super
 
-                  # def initialize: (Hash | Sam::BaseModel) -> void
+                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                 end
 
-                class NotFoundError < Sam::BaseModel
+                class NotFoundError < Sam::Internal::Type::BaseModel
                   # @!attribute message
                   #
                   #   @return [String]
@@ -777,10 +777,10 @@ module Sam
                   #   #
                   #   def initialize(message:, type: :not_found_error, **) = super
 
-                  # def initialize: (Hash | Sam::BaseModel) -> void
+                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                 end
 
-                class RateLimitError < Sam::BaseModel
+                class RateLimitError < Sam::Internal::Type::BaseModel
                   # @!attribute message
                   #
                   #   @return [String]
@@ -797,10 +797,10 @@ module Sam
                   #   #
                   #   def initialize(message:, type: :rate_limit_error, **) = super
 
-                  # def initialize: (Hash | Sam::BaseModel) -> void
+                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                 end
 
-                class GatewayTimeoutError < Sam::BaseModel
+                class GatewayTimeoutError < Sam::Internal::Type::BaseModel
                   # @!attribute message
                   #
                   #   @return [String]
@@ -817,10 +817,10 @@ module Sam
                   #   #
                   #   def initialize(message:, type: :timeout_error, **) = super
 
-                  # def initialize: (Hash | Sam::BaseModel) -> void
+                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                 end
 
-                class APIError < Sam::BaseModel
+                class APIError < Sam::Internal::Type::BaseModel
                   # @!attribute message
                   #
                   #   @return [String]
@@ -837,10 +837,10 @@ module Sam
                   #   #
                   #   def initialize(message:, type: :api_error, **) = super
 
-                  # def initialize: (Hash | Sam::BaseModel) -> void
+                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                 end
 
-                class OverloadedError < Sam::BaseModel
+                class OverloadedError < Sam::Internal::Type::BaseModel
                   # @!attribute message
                   #
                   #   @return [String]
@@ -857,7 +857,7 @@ module Sam
                   #   #
                   #   def initialize(message:, type: :overloaded_error, **) = super
 
-                  # def initialize: (Hash | Sam::BaseModel) -> void
+                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                 end
 
                 # @!parse
@@ -867,7 +867,7 @@ module Sam
             end
           end
 
-          class CanceledResult < Sam::BaseModel
+          class CanceledResult < Sam::Internal::Type::BaseModel
             # @!attribute type
             #
             #   @return [Symbol, :canceled]
@@ -878,10 +878,10 @@ module Sam
             #   #
             #   def initialize(type: :canceled, **) = super
 
-            # def initialize: (Hash | Sam::BaseModel) -> void
+            # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
           end
 
-          class ExpiredResult < Sam::BaseModel
+          class ExpiredResult < Sam::Internal::Type::BaseModel
             # @!attribute type
             #
             #   @return [Symbol, :expired]
@@ -892,7 +892,7 @@ module Sam
             #   #
             #   def initialize(type: :expired, **) = super
 
-            # def initialize: (Hash | Sam::BaseModel) -> void
+            # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
           end
 
           # @!parse

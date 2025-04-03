@@ -17,11 +17,11 @@ module Sam
         sig(:final) do
           params(
             type_info: T.any(
-              Sam::Internal::Util::AnyHash,
+              Sam::Internal::AnyHash,
               T.proc.returns(Sam::Internal::Type::Converter::Input),
               Sam::Internal::Type::Converter::Input
             ),
-            spec: Sam::Internal::Util::AnyHash
+            spec: Sam::Internal::AnyHash
           )
             .returns(T.attached_class)
         end
@@ -72,11 +72,11 @@ module Sam
         sig(:final) do
           params(
             type_info: T.any(
-              Sam::Internal::Util::AnyHash,
+              Sam::Internal::AnyHash,
               T.proc.returns(Sam::Internal::Type::Converter::Input),
               Sam::Internal::Type::Converter::Input
             ),
-            spec: Sam::Internal::Util::AnyHash
+            spec: Sam::Internal::AnyHash
           )
             .void
         end

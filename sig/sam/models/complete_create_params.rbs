@@ -16,7 +16,7 @@ module Sam
       }
       & Sam::Internal::Type::request_parameters
 
-    class CompleteCreateParams < Sam::BaseModel
+    class CompleteCreateParams < Sam::Internal::Type::BaseModel
       extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
 
@@ -79,7 +79,7 @@ module Sam
 
       type metadata = { user_id: String? }
 
-      class Metadata < Sam::BaseModel
+      class Metadata < Sam::Internal::Type::BaseModel
         attr_accessor user_id: String?
 
         def initialize: (?user_id: String?) -> void

@@ -12,9 +12,9 @@ class Sam::Test::Resources::ModelsBetaTrueTest < Sam::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Sam::ArrayOf[Sam::Models::ModelsBetaTrueListResponse::Data]),
+        data: ^(Sam::Internal::Type::ArrayOf[Sam::Models::ModelsBetaTrueListResponse::Data]),
         first_id: String | nil,
-        has_more: Sam::BooleanModel,
+        has_more: Sam::Internal::Type::BooleanModel,
         last_id: String | nil
       }
     end

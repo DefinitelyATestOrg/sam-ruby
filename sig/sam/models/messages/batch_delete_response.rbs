@@ -3,7 +3,7 @@ module Sam
     module Messages
       type batch_delete_response = { id: String, type: :message_batch_deleted }
 
-      class BatchDeleteResponse < Sam::BaseModel
+      class BatchDeleteResponse < Sam::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor type: :message_batch_deleted

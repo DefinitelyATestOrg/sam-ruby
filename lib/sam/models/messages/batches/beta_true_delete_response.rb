@@ -5,7 +5,7 @@ module Sam
     module Messages
       module Batches
         # @see Sam::Resources::Messages::Batches::BetaTrue#delete
-        class BetaTrueDeleteResponse < Sam::BaseModel
+        class BetaTrueDeleteResponse < Sam::Internal::Type::BaseModel
           # @!attribute id
           #   ID of the Message Batch.
           #
@@ -26,7 +26,7 @@ module Sam
           #   #
           #   def initialize(id:, type: :message_batch_deleted, **) = super
 
-          # def initialize: (Hash | Sam::BaseModel) -> void
+          # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
         end
       end
     end

@@ -17,7 +17,7 @@ module Sam
               anthropic_beta: T::Array[String],
               anthropic_version: String,
               x_api_key: String,
-              request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::Util::AnyHash))
+              request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::AnyHash))
             )
               .returns(Sam::Models::Messages::Batches::BetaTrueRetrieveResponse)
           end
@@ -58,7 +58,7 @@ module Sam
               anthropic_beta: T::Array[String],
               anthropic_version: String,
               x_api_key: String,
-              request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::Util::AnyHash))
+              request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::AnyHash))
             )
               .returns(Sam::Models::Messages::Batches::BetaTrueDeleteResponse)
           end

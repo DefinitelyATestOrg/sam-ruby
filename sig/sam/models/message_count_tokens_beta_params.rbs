@@ -14,7 +14,7 @@ module Sam
       }
       & Sam::Internal::Type::request_parameters
 
-    class MessageCountTokensBetaParams < Sam::BaseModel
+    class MessageCountTokensBetaParams < Sam::Internal::Type::BaseModel
       extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
 
@@ -79,7 +79,7 @@ module Sam
           role: Sam::Models::MessageCountTokensBetaParams::Message::role
         }
 
-      class Message < Sam::BaseModel
+      class Message < Sam::Internal::Type::BaseModel
         attr_accessor content: Sam::Models::MessageCountTokensBetaParams::Message::content
 
         attr_accessor role: Sam::Models::MessageCountTokensBetaParams::Message::role
@@ -96,7 +96,7 @@ module Sam
           | ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::union_member1]
 
         module Content
-          extend Sam::Union
+          extend Sam::Internal::Type::Union
 
           type union_member1 =
             Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock
@@ -108,7 +108,7 @@ module Sam
             | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock
 
           module UnionMember1
-            extend Sam::Union
+            extend Sam::Internal::Type::Union
 
             type beta_request_text_block =
               {
@@ -118,7 +118,7 @@ module Sam
                 citations: ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::citation]?
               }
 
-            class BetaRequestTextBlock < Sam::BaseModel
+            class BetaRequestTextBlock < Sam::Internal::Type::BaseModel
               attr_accessor text: String
 
               attr_accessor type: :text
@@ -138,7 +138,7 @@ module Sam
 
               type cache_control = { type: :ephemeral }
 
-              class CacheControl < Sam::BaseModel
+              class CacheControl < Sam::Internal::Type::BaseModel
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
@@ -152,7 +152,7 @@ module Sam
                 | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
 
               module Citation
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
                 type beta_request_char_location_citation =
                   {
@@ -164,7 +164,7 @@ module Sam
                     type: :char_location
                   }
 
-                class BetaRequestCharLocationCitation < Sam::BaseModel
+                class BetaRequestCharLocationCitation < Sam::Internal::Type::BaseModel
                   attr_accessor cited_text: String
 
                   attr_accessor document_index: Integer
@@ -199,7 +199,7 @@ module Sam
                     type: :page_location
                   }
 
-                class BetaRequestPageLocationCitation < Sam::BaseModel
+                class BetaRequestPageLocationCitation < Sam::Internal::Type::BaseModel
                   attr_accessor cited_text: String
 
                   attr_accessor document_index: Integer
@@ -234,7 +234,7 @@ module Sam
                     type: :content_block_location
                   }
 
-                class BetaRequestContentBlockLocationCitation < Sam::BaseModel
+                class BetaRequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                   attr_accessor cited_text: String
 
                   attr_accessor document_index: Integer
@@ -270,7 +270,7 @@ module Sam
                 cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl?
               }
 
-            class BetaRequestImageBlock < Sam::BaseModel
+            class BetaRequestImageBlock < Sam::Internal::Type::BaseModel
               attr_accessor source: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::source
 
               attr_accessor type: :image
@@ -290,7 +290,7 @@ module Sam
                 | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
 
               module Source
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
                 type beta_base64_image_source =
                   {
@@ -299,7 +299,7 @@ module Sam
                     type: :base64
                   }
 
-                class BetaBase64ImageSource < Sam::BaseModel
+                class BetaBase64ImageSource < Sam::Internal::Type::BaseModel
                   attr_accessor data: String
 
                   attr_accessor media_type: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type
@@ -318,7 +318,7 @@ module Sam
                     :"image/jpeg" | :"image/png" | :"image/gif" | :"image/webp"
 
                   module MediaType
-                    extend Sam::Enum
+                    extend Sam::Internal::Type::Enum
 
                     IMAGE_JPEG: :"image/jpeg"
                     IMAGE_PNG: :"image/png"
@@ -331,7 +331,7 @@ module Sam
 
                 type beta_url_image_source = { type: :url, url: String }
 
-                class BetaURLImageSource < Sam::BaseModel
+                class BetaURLImageSource < Sam::Internal::Type::BaseModel
                   attr_accessor type: :url
 
                   attr_accessor url: String
@@ -346,7 +346,7 @@ module Sam
 
               type cache_control = { type: :ephemeral }
 
-              class CacheControl < Sam::BaseModel
+              class CacheControl < Sam::Internal::Type::BaseModel
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
@@ -364,7 +364,7 @@ module Sam
                 cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl?
               }
 
-            class BetaRequestToolUseBlock < Sam::BaseModel
+            class BetaRequestToolUseBlock < Sam::Internal::Type::BaseModel
               attr_accessor id: String
 
               attr_accessor input: top
@@ -387,7 +387,7 @@ module Sam
 
               type cache_control = { type: :ephemeral }
 
-              class CacheControl < Sam::BaseModel
+              class CacheControl < Sam::Internal::Type::BaseModel
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
@@ -405,7 +405,7 @@ module Sam
                 is_error: bool
               }
 
-            class BetaRequestToolResultBlock < Sam::BaseModel
+            class BetaRequestToolResultBlock < Sam::Internal::Type::BaseModel
               attr_accessor tool_use_id: String
 
               attr_accessor type: :tool_result
@@ -434,7 +434,7 @@ module Sam
 
               type cache_control = { type: :ephemeral }
 
-              class CacheControl < Sam::BaseModel
+              class CacheControl < Sam::Internal::Type::BaseModel
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
@@ -447,14 +447,14 @@ module Sam
                 | ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::union_member1]
 
               module Content
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
                 type union_member1 =
                   Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock
                   | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
 
                 module UnionMember1
-                  extend Sam::Union
+                  extend Sam::Internal::Type::Union
 
                   type beta_request_text_block =
                     {
@@ -464,7 +464,7 @@ module Sam
                       citations: ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::citation]?
                     }
 
-                  class BetaRequestTextBlock < Sam::BaseModel
+                  class BetaRequestTextBlock < Sam::Internal::Type::BaseModel
                     attr_accessor text: String
 
                     attr_accessor type: :text
@@ -484,7 +484,7 @@ module Sam
 
                     type cache_control = { type: :ephemeral }
 
-                    class CacheControl < Sam::BaseModel
+                    class CacheControl < Sam::Internal::Type::BaseModel
                       attr_accessor type: :ephemeral
 
                       def initialize: (?type: :ephemeral) -> void
@@ -498,7 +498,7 @@ module Sam
                       | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
 
                     module Citation
-                      extend Sam::Union
+                      extend Sam::Internal::Type::Union
 
                       type beta_request_char_location_citation =
                         {
@@ -510,7 +510,7 @@ module Sam
                           type: :char_location
                         }
 
-                      class BetaRequestCharLocationCitation < Sam::BaseModel
+                      class BetaRequestCharLocationCitation < Sam::Internal::Type::BaseModel
                         attr_accessor cited_text: String
 
                         attr_accessor document_index: Integer
@@ -545,7 +545,7 @@ module Sam
                           type: :page_location
                         }
 
-                      class BetaRequestPageLocationCitation < Sam::BaseModel
+                      class BetaRequestPageLocationCitation < Sam::Internal::Type::BaseModel
                         attr_accessor cited_text: String
 
                         attr_accessor document_index: Integer
@@ -580,7 +580,7 @@ module Sam
                           type: :content_block_location
                         }
 
-                      class BetaRequestContentBlockLocationCitation < Sam::BaseModel
+                      class BetaRequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                         attr_accessor cited_text: String
 
                         attr_accessor document_index: Integer
@@ -616,7 +616,7 @@ module Sam
                       cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl?
                     }
 
-                  class BetaRequestImageBlock < Sam::BaseModel
+                  class BetaRequestImageBlock < Sam::Internal::Type::BaseModel
                     attr_accessor source: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::source
 
                     attr_accessor type: :image
@@ -636,7 +636,7 @@ module Sam
                       | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
 
                     module Source
-                      extend Sam::Union
+                      extend Sam::Internal::Type::Union
 
                       type beta_base64_image_source =
                         {
@@ -645,7 +645,7 @@ module Sam
                           type: :base64
                         }
 
-                      class BetaBase64ImageSource < Sam::BaseModel
+                      class BetaBase64ImageSource < Sam::Internal::Type::BaseModel
                         attr_accessor data: String
 
                         attr_accessor media_type: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type
@@ -667,7 +667,7 @@ module Sam
                           | :"image/webp"
 
                         module MediaType
-                          extend Sam::Enum
+                          extend Sam::Internal::Type::Enum
 
                           IMAGE_JPEG: :"image/jpeg"
                           IMAGE_PNG: :"image/png"
@@ -680,7 +680,7 @@ module Sam
 
                       type beta_url_image_source = { type: :url, url: String }
 
-                      class BetaURLImageSource < Sam::BaseModel
+                      class BetaURLImageSource < Sam::Internal::Type::BaseModel
                         attr_accessor type: :url
 
                         attr_accessor url: String
@@ -695,7 +695,7 @@ module Sam
 
                     type cache_control = { type: :ephemeral }
 
-                    class CacheControl < Sam::BaseModel
+                    class CacheControl < Sam::Internal::Type::BaseModel
                       attr_accessor type: :ephemeral
 
                       def initialize: (?type: :ephemeral) -> void
@@ -726,7 +726,7 @@ module Sam
                 title: String?
               }
 
-            class BetaRequestDocumentBlock < Sam::BaseModel
+            class BetaRequestDocumentBlock < Sam::Internal::Type::BaseModel
               attr_accessor source: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::source
 
               attr_accessor type: :document
@@ -761,7 +761,7 @@ module Sam
                 | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource
 
               module Source
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
                 type beta_base64_pdf_source =
                   {
@@ -770,7 +770,7 @@ module Sam
                     type: :base64
                   }
 
-                class BetaBase64PdfSource < Sam::BaseModel
+                class BetaBase64PdfSource < Sam::Internal::Type::BaseModel
                   attr_accessor data: String
 
                   attr_accessor media_type: :"application/pdf"
@@ -789,7 +789,7 @@ module Sam
                 type beta_plain_text_source =
                   { data: String, media_type: :"text/plain", type: :text }
 
-                class BetaPlainTextSource < Sam::BaseModel
+                class BetaPlainTextSource < Sam::Internal::Type::BaseModel
                   attr_accessor data: String
 
                   attr_accessor media_type: :"text/plain"
@@ -811,7 +811,7 @@ module Sam
                     type: :content
                   }
 
-                class BetaContentBlockSource < Sam::BaseModel
+                class BetaContentBlockSource < Sam::Internal::Type::BaseModel
                   attr_accessor content: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::content
 
                   attr_accessor type: :content
@@ -828,14 +828,14 @@ module Sam
                     | ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::union_member1]
 
                   module Content
-                    extend Sam::Union
+                    extend Sam::Internal::Type::Union
 
                     type union_member1 =
                       Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock
                       | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock
 
                     module UnionMember1
-                      extend Sam::Union
+                      extend Sam::Internal::Type::Union
 
                       type beta_request_text_block =
                         {
@@ -845,7 +845,7 @@ module Sam
                           citations: ::Array[Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::citation]?
                         }
 
-                      class BetaRequestTextBlock < Sam::BaseModel
+                      class BetaRequestTextBlock < Sam::Internal::Type::BaseModel
                         attr_accessor text: String
 
                         attr_accessor type: :text
@@ -865,7 +865,7 @@ module Sam
 
                         type cache_control = { type: :ephemeral }
 
-                        class CacheControl < Sam::BaseModel
+                        class CacheControl < Sam::Internal::Type::BaseModel
                           attr_accessor type: :ephemeral
 
                           def initialize: (?type: :ephemeral) -> void
@@ -879,7 +879,7 @@ module Sam
                           | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
 
                         module Citation
-                          extend Sam::Union
+                          extend Sam::Internal::Type::Union
 
                           type beta_request_char_location_citation =
                             {
@@ -891,7 +891,7 @@ module Sam
                               type: :char_location
                             }
 
-                          class BetaRequestCharLocationCitation < Sam::BaseModel
+                          class BetaRequestCharLocationCitation < Sam::Internal::Type::BaseModel
                             attr_accessor cited_text: String
 
                             attr_accessor document_index: Integer
@@ -926,7 +926,7 @@ module Sam
                               type: :page_location
                             }
 
-                          class BetaRequestPageLocationCitation < Sam::BaseModel
+                          class BetaRequestPageLocationCitation < Sam::Internal::Type::BaseModel
                             attr_accessor cited_text: String
 
                             attr_accessor document_index: Integer
@@ -961,7 +961,7 @@ module Sam
                               type: :content_block_location
                             }
 
-                          class BetaRequestContentBlockLocationCitation < Sam::BaseModel
+                          class BetaRequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                             attr_accessor cited_text: String
 
                             attr_accessor document_index: Integer
@@ -997,7 +997,7 @@ module Sam
                           cache_control: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl?
                         }
 
-                      class BetaRequestImageBlock < Sam::BaseModel
+                      class BetaRequestImageBlock < Sam::Internal::Type::BaseModel
                         attr_accessor source: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::source
 
                         attr_accessor type: :image
@@ -1017,7 +1017,7 @@ module Sam
                           | Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
 
                         module Source
-                          extend Sam::Union
+                          extend Sam::Internal::Type::Union
 
                           type beta_base64_image_source =
                             {
@@ -1026,7 +1026,7 @@ module Sam
                               type: :base64
                             }
 
-                          class BetaBase64ImageSource < Sam::BaseModel
+                          class BetaBase64ImageSource < Sam::Internal::Type::BaseModel
                             attr_accessor data: String
 
                             attr_accessor media_type: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type
@@ -1048,7 +1048,7 @@ module Sam
                               | :"image/webp"
 
                             module MediaType
-                              extend Sam::Enum
+                              extend Sam::Internal::Type::Enum
 
                               IMAGE_JPEG: :"image/jpeg"
                               IMAGE_PNG: :"image/png"
@@ -1062,7 +1062,7 @@ module Sam
                           type beta_url_image_source =
                             { type: :url, url: String }
 
-                          class BetaURLImageSource < Sam::BaseModel
+                          class BetaURLImageSource < Sam::Internal::Type::BaseModel
                             attr_accessor type: :url
 
                             attr_accessor url: String
@@ -1077,7 +1077,7 @@ module Sam
 
                         type cache_control = { type: :ephemeral }
 
-                        class CacheControl < Sam::BaseModel
+                        class CacheControl < Sam::Internal::Type::BaseModel
                           attr_accessor type: :ephemeral
 
                           def initialize: (?type: :ephemeral) -> void
@@ -1100,7 +1100,7 @@ module Sam
 
                 type beta_urlpdf_source = { type: :url, url: String }
 
-                class BetaUrlpdfSource < Sam::BaseModel
+                class BetaUrlpdfSource < Sam::Internal::Type::BaseModel
                   attr_accessor type: :url
 
                   attr_accessor url: String
@@ -1115,7 +1115,7 @@ module Sam
 
               type cache_control = { type: :ephemeral }
 
-              class CacheControl < Sam::BaseModel
+              class CacheControl < Sam::Internal::Type::BaseModel
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
@@ -1125,7 +1125,7 @@ module Sam
 
               type citations = { enabled: bool }
 
-              class Citations < Sam::BaseModel
+              class Citations < Sam::Internal::Type::BaseModel
                 attr_reader enabled: bool?
 
                 def enabled=: (bool) -> bool
@@ -1139,7 +1139,7 @@ module Sam
             type beta_request_thinking_block =
               { signature: String, thinking: String, type: :thinking }
 
-            class BetaRequestThinkingBlock < Sam::BaseModel
+            class BetaRequestThinkingBlock < Sam::Internal::Type::BaseModel
               attr_accessor signature: String
 
               attr_accessor thinking: String
@@ -1158,7 +1158,7 @@ module Sam
             type beta_request_redacted_thinking_block =
               { data: String, type: :redacted_thinking }
 
-            class BetaRequestRedactedThinkingBlock < Sam::BaseModel
+            class BetaRequestRedactedThinkingBlock < Sam::Internal::Type::BaseModel
               attr_accessor data: String
 
               attr_accessor type: :redacted_thinking
@@ -1182,7 +1182,7 @@ module Sam
         type role = :user | :assistant
 
         module Role
-          extend Sam::Enum
+          extend Sam::Internal::Type::Enum
 
           USER: :user
           ASSISTANT: :assistant
@@ -1196,7 +1196,7 @@ module Sam
         | ::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1]
 
       module System
-        extend Sam::Union
+        extend Sam::Internal::Type::Union
 
         type union_member1 =
           {
@@ -1206,7 +1206,7 @@ module Sam
             citations: ::Array[Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::citation]?
           }
 
-        class UnionMember1 < Sam::BaseModel
+        class UnionMember1 < Sam::Internal::Type::BaseModel
           attr_accessor text: String
 
           attr_accessor type: :text
@@ -1226,7 +1226,7 @@ module Sam
 
           type cache_control = { type: :ephemeral }
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void
@@ -1240,7 +1240,7 @@ module Sam
             | Sam::Models::MessageCountTokensBetaParams::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation
 
           module Citation
-            extend Sam::Union
+            extend Sam::Internal::Type::Union
 
             type beta_request_char_location_citation =
               {
@@ -1252,7 +1252,7 @@ module Sam
                 type: :char_location
               }
 
-            class BetaRequestCharLocationCitation < Sam::BaseModel
+            class BetaRequestCharLocationCitation < Sam::Internal::Type::BaseModel
               attr_accessor cited_text: String
 
               attr_accessor document_index: Integer
@@ -1287,7 +1287,7 @@ module Sam
                 type: :page_location
               }
 
-            class BetaRequestPageLocationCitation < Sam::BaseModel
+            class BetaRequestPageLocationCitation < Sam::Internal::Type::BaseModel
               attr_accessor cited_text: String
 
               attr_accessor document_index: Integer
@@ -1322,7 +1322,7 @@ module Sam
                 type: :content_block_location
               }
 
-            class BetaRequestContentBlockLocationCitation < Sam::BaseModel
+            class BetaRequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
               attr_accessor cited_text: String
 
               attr_accessor document_index: Integer
@@ -1364,12 +1364,12 @@ module Sam
         | Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigDisabled
 
       module Thinking
-        extend Sam::Union
+        extend Sam::Internal::Type::Union
 
         type beta_thinking_config_enabled =
           { budget_tokens: Integer, type: :enabled }
 
-        class BetaThinkingConfigEnabled < Sam::BaseModel
+        class BetaThinkingConfigEnabled < Sam::Internal::Type::BaseModel
           attr_accessor budget_tokens: Integer
 
           attr_accessor type: :enabled
@@ -1381,7 +1381,7 @@ module Sam
 
         type beta_thinking_config_disabled = { type: :disabled }
 
-        class BetaThinkingConfigDisabled < Sam::BaseModel
+        class BetaThinkingConfigDisabled < Sam::Internal::Type::BaseModel
           attr_accessor type: :disabled
 
           def initialize: (?type: :disabled) -> void
@@ -1399,12 +1399,12 @@ module Sam
         | Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceNone
 
       module ToolChoice
-        extend Sam::Union
+        extend Sam::Internal::Type::Union
 
         type beta_tool_choice_auto =
           { type: :auto, disable_parallel_tool_use: bool }
 
-        class BetaToolChoiceAuto < Sam::BaseModel
+        class BetaToolChoiceAuto < Sam::Internal::Type::BaseModel
           attr_accessor type: :auto
 
           attr_reader disable_parallel_tool_use: bool?
@@ -1422,7 +1422,7 @@ module Sam
         type beta_tool_choice_any =
           { type: :any, disable_parallel_tool_use: bool }
 
-        class BetaToolChoiceAny < Sam::BaseModel
+        class BetaToolChoiceAny < Sam::Internal::Type::BaseModel
           attr_accessor type: :any
 
           attr_reader disable_parallel_tool_use: bool?
@@ -1440,7 +1440,7 @@ module Sam
         type beta_tool_choice_tool =
           { name: String, type: :tool, disable_parallel_tool_use: bool }
 
-        class BetaToolChoiceTool < Sam::BaseModel
+        class BetaToolChoiceTool < Sam::Internal::Type::BaseModel
           attr_accessor name: String
 
           attr_accessor type: :tool
@@ -1460,7 +1460,7 @@ module Sam
 
         type beta_tool_choice_none = { type: :none }
 
-        class BetaToolChoiceNone < Sam::BaseModel
+        class BetaToolChoiceNone < Sam::Internal::Type::BaseModel
           attr_accessor type: :none
 
           def initialize: (?type: :none) -> void
@@ -1481,7 +1481,7 @@ module Sam
         | Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124
 
       module Tool
-        extend Sam::Union
+        extend Sam::Internal::Type::Union
 
         type beta_tool =
           {
@@ -1492,7 +1492,7 @@ module Sam
             type: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::type_?
           }
 
-        class BetaTool < Sam::BaseModel
+        class BetaTool < Sam::Internal::Type::BaseModel
           attr_accessor input_schema: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::InputSchema
 
           attr_accessor name: String
@@ -1517,7 +1517,7 @@ module Sam
 
           type input_schema = { type: :object, properties: top? }
 
-          class InputSchema < Sam::BaseModel
+          class InputSchema < Sam::Internal::Type::BaseModel
             attr_accessor type: :object
 
             attr_accessor properties: top?
@@ -1529,7 +1529,7 @@ module Sam
 
           type cache_control = { type: :ephemeral }
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void
@@ -1540,7 +1540,7 @@ module Sam
           type type_ = :custom
 
           module Type
-            extend Sam::Enum
+            extend Sam::Internal::Type::Enum
 
             CUSTOM: :custom
 
@@ -1558,7 +1558,7 @@ module Sam
             display_number: Integer?
           }
 
-        class BetaComputerUseTool20241022 < Sam::BaseModel
+        class BetaComputerUseTool20241022 < Sam::Internal::Type::BaseModel
           attr_accessor display_height_px: Integer
 
           attr_accessor display_width_px: Integer
@@ -1584,7 +1584,7 @@ module Sam
 
           type cache_control = { type: :ephemeral }
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void
@@ -1600,7 +1600,7 @@ module Sam
             cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022::CacheControl?
           }
 
-        class BetaBashTool20241022 < Sam::BaseModel
+        class BetaBashTool20241022 < Sam::Internal::Type::BaseModel
           attr_accessor name: :bash
 
           attr_accessor type: :bash_20241022
@@ -1617,7 +1617,7 @@ module Sam
 
           type cache_control = { type: :ephemeral }
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void
@@ -1633,7 +1633,7 @@ module Sam
             cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022::CacheControl?
           }
 
-        class BetaTextEditor20241022 < Sam::BaseModel
+        class BetaTextEditor20241022 < Sam::Internal::Type::BaseModel
           attr_accessor name: :str_replace_editor
 
           attr_accessor type: :text_editor_20241022
@@ -1650,7 +1650,7 @@ module Sam
 
           type cache_control = { type: :ephemeral }
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void
@@ -1669,7 +1669,7 @@ module Sam
             display_number: Integer?
           }
 
-        class BetaComputerUseTool20250124 < Sam::BaseModel
+        class BetaComputerUseTool20250124 < Sam::Internal::Type::BaseModel
           attr_accessor display_height_px: Integer
 
           attr_accessor display_width_px: Integer
@@ -1695,7 +1695,7 @@ module Sam
 
           type cache_control = { type: :ephemeral }
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void
@@ -1711,7 +1711,7 @@ module Sam
             cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124::CacheControl?
           }
 
-        class BetaBashTool20250124 < Sam::BaseModel
+        class BetaBashTool20250124 < Sam::Internal::Type::BaseModel
           attr_accessor name: :bash
 
           attr_accessor type: :bash_20250124
@@ -1728,7 +1728,7 @@ module Sam
 
           type cache_control = { type: :ephemeral }
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void
@@ -1744,7 +1744,7 @@ module Sam
             cache_control: Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124::CacheControl?
           }
 
-        class BetaTextEditor20250124 < Sam::BaseModel
+        class BetaTextEditor20250124 < Sam::Internal::Type::BaseModel
           attr_accessor name: :str_replace_editor
 
           attr_accessor type: :text_editor_20250124
@@ -1761,7 +1761,7 @@ module Sam
 
           type cache_control = { type: :ephemeral }
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void

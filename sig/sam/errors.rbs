@@ -98,32 +98,4 @@ module Sam
       HTTP_STATUS: Range[Integer]
     end
   end
-
-  class Error = Sam::Errors::Error
-
-  class ConversionError = Sam::Errors::ConversionError
-
-  class APIError = Sam::Errors::APIError
-
-  class APIStatusError = Sam::Errors::APIStatusError
-
-  class APIConnectionError = Sam::Errors::APIConnectionError
-
-  class APITimeoutError = Sam::Errors::APITimeoutError
-
-  class BadRequestError = Sam::Errors::BadRequestError
-
-  class AuthenticationError = Sam::Errors::AuthenticationError
-
-  class PermissionDeniedError = Sam::Errors::PermissionDeniedError
-
-  class NotFoundError = Sam::Errors::NotFoundError
-
-  class ConflictError = Sam::Errors::ConflictError
-
-  class UnprocessableEntityError = Sam::Errors::UnprocessableEntityError
-
-  class RateLimitError = Sam::Errors::RateLimitError
-
-  class InternalServerError = Sam::Errors::InternalServerError
 end

@@ -3,7 +3,7 @@
 module Sam
   module Models
     # @see Sam::Resources::Models#retrieve_beta
-    class ModelRetrieveBetaResponse < Sam::BaseModel
+    class ModelRetrieveBetaResponse < Sam::Internal::Type::BaseModel
       # @!attribute id
       #   Unique model identifier.
       #
@@ -39,7 +39,7 @@ module Sam
       #   #
       #   def initialize(id:, created_at:, display_name:, type: :model, **) = super
 
-      # def initialize: (Hash | Sam::BaseModel) -> void
+      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
     end
   end
 end

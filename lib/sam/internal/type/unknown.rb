@@ -21,7 +21,7 @@ module Sam
         # @param other [Object]
         #
         # @return [Boolean]
-        def self.==(other) = other.is_a?(Class) && other <= Sam::Unknown
+        def self.==(other) = other.is_a?(Class) && other <= Sam::Internal::Type::Unknown
 
         class << self
           # @api private

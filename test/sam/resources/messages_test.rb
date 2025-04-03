@@ -18,7 +18,7 @@ class Sam::Test::Resources::MessagesTest < Sam::Test::ResourceTest
     assert_pattern do
       response => {
         id: String,
-        content: ^(Sam::ArrayOf[union: Sam::Models::MessageCreateResponse::Content]),
+        content: ^(Sam::Internal::Type::ArrayOf[union: Sam::Models::MessageCreateResponse::Content]),
         model: String,
         role: Symbol,
         stop_reason: Sam::Models::MessageCreateResponse::StopReason | nil,

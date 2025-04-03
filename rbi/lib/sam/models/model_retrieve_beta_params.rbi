@@ -2,7 +2,7 @@
 
 module Sam
   module Models
-    class ModelRetrieveBetaParams < Sam::BaseModel
+    class ModelRetrieveBetaParams < Sam::Internal::Type::BaseModel
       extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
 
@@ -32,7 +32,7 @@ module Sam
         params(
           anthropic_version: String,
           x_api_key: String,
-          request_options: T.any(Sam::RequestOptions, Sam::Internal::Util::AnyHash)
+          request_options: T.any(Sam::RequestOptions, Sam::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
