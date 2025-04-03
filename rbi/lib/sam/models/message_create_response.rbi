@@ -110,7 +110,7 @@ module Sam
       sig { returns(Sam::Models::MessageCreateResponse::Usage) }
       attr_reader :usage
 
-      sig { params(usage: T.any(Sam::Models::MessageCreateResponse::Usage, Sam::Util::AnyHash)).void }
+      sig { params(usage: T.any(Sam::Models::MessageCreateResponse::Usage, Sam::Internal::Util::AnyHash)).void }
       attr_writer :usage
 
       sig do
@@ -119,7 +119,7 @@ module Sam
           content: T::Array[
           T.any(
             Sam::Models::MessageCreateResponse::Content::ResponseTextBlock,
-            Sam::Util::AnyHash,
+            Sam::Internal::Util::AnyHash,
             Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock,
             Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock,
             Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock
@@ -128,7 +128,7 @@ module Sam
           model: String,
           stop_reason: T.nilable(Sam::Models::MessageCreateResponse::StopReason::OrSymbol),
           stop_sequence: T.nilable(String),
-          usage: T.any(Sam::Models::MessageCreateResponse::Usage, Sam::Util::AnyHash),
+          usage: T.any(Sam::Models::MessageCreateResponse::Usage, Sam::Internal::Util::AnyHash),
           role: Symbol,
           type: Symbol
         )
@@ -207,7 +207,7 @@ module Sam
                 T::Array[
                 T.any(
                   Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
-                  Sam::Util::AnyHash,
+                  Sam::Internal::Util::AnyHash,
                   Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
                   Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
                 )

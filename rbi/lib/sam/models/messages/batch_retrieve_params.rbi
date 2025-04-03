@@ -4,8 +4,8 @@ module Sam
   module Models
     module Messages
       class BatchRetrieveParams < Sam::BaseModel
-        extend Sam::Type::RequestParameters::Converter
-        include Sam::RequestParameters
+        extend Sam::Internal::Type::RequestParameters::Converter
+        include Sam::Internal::Type::RequestParameters
 
         # Optional header to specify the beta version(s) you want to use.
         #
@@ -44,7 +44,7 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: T.any(Sam::RequestOptions, Sam::Util::AnyHash)
+            request_options: T.any(Sam::RequestOptions, Sam::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

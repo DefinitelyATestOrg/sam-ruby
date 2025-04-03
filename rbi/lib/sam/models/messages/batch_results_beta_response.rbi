@@ -35,7 +35,7 @@ module Sam
             custom_id: String,
             result: T.any(
               Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult,
-              Sam::Util::AnyHash,
+              Sam::Internal::Util::AnyHash,
               Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult,
               Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaCanceledResult,
               Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaExpiredResult
@@ -79,7 +79,7 @@ module Sam
               params(
                 message: T.any(
                   Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message,
-                  Sam::Util::AnyHash
+                  Sam::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -93,7 +93,7 @@ module Sam
               params(
                 message: T.any(
                   Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message,
-                  Sam::Util::AnyHash
+                  Sam::Internal::Util::AnyHash
                 ),
                 type: Symbol
               )
@@ -229,7 +229,7 @@ module Sam
                 params(
                   usage: T.any(
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage,
-                    Sam::Util::AnyHash
+                    Sam::Internal::Util::AnyHash
                   )
                 )
                   .void
@@ -242,7 +242,7 @@ module Sam
                   content: T::Array[
                   T.any(
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock,
-                    Sam::Util::AnyHash,
+                    Sam::Internal::Util::AnyHash,
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock,
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock,
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock
@@ -255,7 +255,7 @@ module Sam
                   stop_sequence: T.nilable(String),
                   usage: T.any(
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage,
-                    Sam::Util::AnyHash
+                    Sam::Internal::Util::AnyHash
                   ),
                   role: Symbol,
                   type: Symbol
@@ -337,7 +337,7 @@ module Sam
                         T::Array[
                         T.any(
                           Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation,
-                          Sam::Util::AnyHash,
+                          Sam::Internal::Util::AnyHash,
                           Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation,
                           Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
                         )
@@ -765,7 +765,7 @@ module Sam
               params(
                 error: T.any(
                   Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error,
-                  Sam::Util::AnyHash
+                  Sam::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -779,7 +779,7 @@ module Sam
               params(
                 error: T.any(
                   Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error,
-                  Sam::Util::AnyHash
+                  Sam::Internal::Util::AnyHash
                 ),
                 type: Symbol
               )
@@ -822,7 +822,7 @@ module Sam
                 params(
                   error: T.any(
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaInvalidRequestError,
-                    Sam::Util::AnyHash,
+                    Sam::Internal::Util::AnyHash,
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAuthenticationError,
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaBillingError,
                     Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaPermissionError,

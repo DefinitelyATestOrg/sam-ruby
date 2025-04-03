@@ -5,8 +5,8 @@ module Sam
     # @see Sam::Resources::MessagesBetaTrue#create
     class MessagesBetaTrueCreateParams < Sam::BaseModel
       # @!parse
-      #   extend Sam::Type::RequestParameters::Converter
-      include Sam::RequestParameters
+      #   extend Sam::Internal::Type::RequestParameters::Converter
+      include Sam::Internal::Type::RequestParameters
 
       # @!attribute max_tokens
       #   The maximum number of tokens to generate before stopping.

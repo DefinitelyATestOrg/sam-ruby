@@ -3,8 +3,8 @@
 module Sam
   module Models
     class CompleteCreateParams < Sam::BaseModel
-      extend Sam::Type::RequestParameters::Converter
-      include Sam::RequestParameters
+      extend Sam::Internal::Type::RequestParameters::Converter
+      include Sam::Internal::Type::RequestParameters
 
       # The maximum number of tokens to generate before stopping.
       #
@@ -40,7 +40,7 @@ module Sam
       sig { returns(T.nilable(Sam::Models::CompleteCreateParams::Metadata)) }
       attr_reader :metadata
 
-      sig { params(metadata: T.any(Sam::Models::CompleteCreateParams::Metadata, Sam::Util::AnyHash)).void }
+      sig { params(metadata: T.any(Sam::Models::CompleteCreateParams::Metadata, Sam::Internal::Util::AnyHash)).void }
       attr_writer :metadata
 
       # Sequences that will cause the model to stop generating.
@@ -132,7 +132,7 @@ module Sam
           max_tokens_to_sample: Integer,
           model: String,
           prompt: String,
-          metadata: T.any(Sam::Models::CompleteCreateParams::Metadata, Sam::Util::AnyHash),
+          metadata: T.any(Sam::Models::CompleteCreateParams::Metadata, Sam::Internal::Util::AnyHash),
           stop_sequences: T::Array[String],
           stream: T::Boolean,
           temperature: Float,
@@ -140,7 +140,7 @@ module Sam
           top_p: Float,
           anthropic_version: String,
           x_api_key: String,
-          request_options: T.any(Sam::RequestOptions, Sam::Util::AnyHash)
+          request_options: T.any(Sam::RequestOptions, Sam::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

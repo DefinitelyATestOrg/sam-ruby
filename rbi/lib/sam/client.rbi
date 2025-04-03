@@ -1,7 +1,7 @@
 # typed: strong
 
 module Sam
-  class Client < Sam::Transport::BaseClient
+  class Client < Sam::Internal::Transport::BaseClient
     DEFAULT_MAX_RETRIES = 2
 
     DEFAULT_TIMEOUT_IN_SECONDS = T.let(60.0, Float)
