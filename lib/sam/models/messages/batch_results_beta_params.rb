@@ -3,7 +3,7 @@
 module Sam
   module Models
     module Messages
-      # @see Sam::Resources::Messages::Batches#results_beta
+      # @see Sam::Resources::Messages::Batches#results_beta_streaming
       class BatchResultsBetaParams < Sam::BaseModel
         # @!parse
         #   extend Sam::Internal::Type::RequestParameters::Converter
