@@ -14,7 +14,7 @@ module Sam
       }
       & Sam::Internal::Type::request_parameters
 
-    class MessageCountTokensParams < Sam::BaseModel
+    class MessageCountTokensParams < Sam::Internal::Type::BaseModel
       extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
 
@@ -79,7 +79,7 @@ module Sam
           role: Sam::Models::MessageCountTokensParams::Message::role
         }
 
-      class Message < Sam::BaseModel
+      class Message < Sam::Internal::Type::BaseModel
         attr_accessor content: Sam::Models::MessageCountTokensParams::Message::content
 
         attr_accessor role: Sam::Models::MessageCountTokensParams::Message::role
@@ -96,7 +96,7 @@ module Sam
           | ::Array[Sam::Models::MessageCountTokensParams::Message::Content::union_member1]
 
         module Content
-          extend Sam::Union
+          extend Sam::Internal::Type::Union
 
           type union_member1 =
             Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock
@@ -108,7 +108,7 @@ module Sam
             | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
 
           module UnionMember1
-            extend Sam::Union
+            extend Sam::Internal::Type::Union
 
             type request_text_block =
               {
@@ -118,7 +118,7 @@ module Sam
                 citations: ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::citation]?
               }
 
-            class RequestTextBlock < Sam::BaseModel
+            class RequestTextBlock < Sam::Internal::Type::BaseModel
               attr_accessor text: String
 
               attr_accessor type: :text
@@ -138,7 +138,7 @@ module Sam
 
               type cache_control = { type: :ephemeral }
 
-              class CacheControl < Sam::BaseModel
+              class CacheControl < Sam::Internal::Type::BaseModel
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
@@ -152,7 +152,7 @@ module Sam
                 | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
 
               module Citation
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
                 type request_char_location_citation =
                   {
@@ -164,7 +164,7 @@ module Sam
                     type: :char_location
                   }
 
-                class RequestCharLocationCitation < Sam::BaseModel
+                class RequestCharLocationCitation < Sam::Internal::Type::BaseModel
                   attr_accessor cited_text: String
 
                   attr_accessor document_index: Integer
@@ -199,7 +199,7 @@ module Sam
                     type: :page_location
                   }
 
-                class RequestPageLocationCitation < Sam::BaseModel
+                class RequestPageLocationCitation < Sam::Internal::Type::BaseModel
                   attr_accessor cited_text: String
 
                   attr_accessor document_index: Integer
@@ -234,7 +234,7 @@ module Sam
                     type: :content_block_location
                   }
 
-                class RequestContentBlockLocationCitation < Sam::BaseModel
+                class RequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                   attr_accessor cited_text: String
 
                   attr_accessor document_index: Integer
@@ -270,7 +270,7 @@ module Sam
                 cache_control: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::CacheControl?
               }
 
-            class RequestImageBlock < Sam::BaseModel
+            class RequestImageBlock < Sam::Internal::Type::BaseModel
               attr_accessor source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::source
 
               attr_accessor type: :image
@@ -290,7 +290,7 @@ module Sam
                 | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
 
               module Source
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
                 type base64_image_source =
                   {
@@ -299,7 +299,7 @@ module Sam
                     type: :base64
                   }
 
-                class Base64ImageSource < Sam::BaseModel
+                class Base64ImageSource < Sam::Internal::Type::BaseModel
                   attr_accessor data: String
 
                   attr_accessor media_type: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::media_type
@@ -318,7 +318,7 @@ module Sam
                     :"image/jpeg" | :"image/png" | :"image/gif" | :"image/webp"
 
                   module MediaType
-                    extend Sam::Enum
+                    extend Sam::Internal::Type::Enum
 
                     IMAGE_JPEG: :"image/jpeg"
                     IMAGE_PNG: :"image/png"
@@ -331,7 +331,7 @@ module Sam
 
                 type url_image_source = { type: :url, url: String }
 
-                class URLImageSource < Sam::BaseModel
+                class URLImageSource < Sam::Internal::Type::BaseModel
                   attr_accessor type: :url
 
                   attr_accessor url: String
@@ -346,7 +346,7 @@ module Sam
 
               type cache_control = { type: :ephemeral }
 
-              class CacheControl < Sam::BaseModel
+              class CacheControl < Sam::Internal::Type::BaseModel
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
@@ -364,7 +364,7 @@ module Sam
                 cache_control: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock::CacheControl?
               }
 
-            class RequestToolUseBlock < Sam::BaseModel
+            class RequestToolUseBlock < Sam::Internal::Type::BaseModel
               attr_accessor id: String
 
               attr_accessor input: top
@@ -387,7 +387,7 @@ module Sam
 
               type cache_control = { type: :ephemeral }
 
-              class CacheControl < Sam::BaseModel
+              class CacheControl < Sam::Internal::Type::BaseModel
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
@@ -405,7 +405,7 @@ module Sam
                 is_error: bool
               }
 
-            class RequestToolResultBlock < Sam::BaseModel
+            class RequestToolResultBlock < Sam::Internal::Type::BaseModel
               attr_accessor tool_use_id: String
 
               attr_accessor type: :tool_result
@@ -434,7 +434,7 @@ module Sam
 
               type cache_control = { type: :ephemeral }
 
-              class CacheControl < Sam::BaseModel
+              class CacheControl < Sam::Internal::Type::BaseModel
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
@@ -447,14 +447,14 @@ module Sam
                 | ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::union_member1]
 
               module Content
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
                 type union_member1 =
                   Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock
                   | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
 
                 module UnionMember1
-                  extend Sam::Union
+                  extend Sam::Internal::Type::Union
 
                   type request_text_block =
                     {
@@ -464,7 +464,7 @@ module Sam
                       citations: ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::citation]?
                     }
 
-                  class RequestTextBlock < Sam::BaseModel
+                  class RequestTextBlock < Sam::Internal::Type::BaseModel
                     attr_accessor text: String
 
                     attr_accessor type: :text
@@ -484,7 +484,7 @@ module Sam
 
                     type cache_control = { type: :ephemeral }
 
-                    class CacheControl < Sam::BaseModel
+                    class CacheControl < Sam::Internal::Type::BaseModel
                       attr_accessor type: :ephemeral
 
                       def initialize: (?type: :ephemeral) -> void
@@ -498,7 +498,7 @@ module Sam
                       | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
 
                     module Citation
-                      extend Sam::Union
+                      extend Sam::Internal::Type::Union
 
                       type request_char_location_citation =
                         {
@@ -510,7 +510,7 @@ module Sam
                           type: :char_location
                         }
 
-                      class RequestCharLocationCitation < Sam::BaseModel
+                      class RequestCharLocationCitation < Sam::Internal::Type::BaseModel
                         attr_accessor cited_text: String
 
                         attr_accessor document_index: Integer
@@ -545,7 +545,7 @@ module Sam
                           type: :page_location
                         }
 
-                      class RequestPageLocationCitation < Sam::BaseModel
+                      class RequestPageLocationCitation < Sam::Internal::Type::BaseModel
                         attr_accessor cited_text: String
 
                         attr_accessor document_index: Integer
@@ -580,7 +580,7 @@ module Sam
                           type: :content_block_location
                         }
 
-                      class RequestContentBlockLocationCitation < Sam::BaseModel
+                      class RequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                         attr_accessor cited_text: String
 
                         attr_accessor document_index: Integer
@@ -616,7 +616,7 @@ module Sam
                       cache_control: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::CacheControl?
                     }
 
-                  class RequestImageBlock < Sam::BaseModel
+                  class RequestImageBlock < Sam::Internal::Type::BaseModel
                     attr_accessor source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::source
 
                     attr_accessor type: :image
@@ -636,7 +636,7 @@ module Sam
                       | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
 
                     module Source
-                      extend Sam::Union
+                      extend Sam::Internal::Type::Union
 
                       type base64_image_source =
                         {
@@ -645,7 +645,7 @@ module Sam
                           type: :base64
                         }
 
-                      class Base64ImageSource < Sam::BaseModel
+                      class Base64ImageSource < Sam::Internal::Type::BaseModel
                         attr_accessor data: String
 
                         attr_accessor media_type: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::media_type
@@ -667,7 +667,7 @@ module Sam
                           | :"image/webp"
 
                         module MediaType
-                          extend Sam::Enum
+                          extend Sam::Internal::Type::Enum
 
                           IMAGE_JPEG: :"image/jpeg"
                           IMAGE_PNG: :"image/png"
@@ -680,7 +680,7 @@ module Sam
 
                       type url_image_source = { type: :url, url: String }
 
-                      class URLImageSource < Sam::BaseModel
+                      class URLImageSource < Sam::Internal::Type::BaseModel
                         attr_accessor type: :url
 
                         attr_accessor url: String
@@ -695,7 +695,7 @@ module Sam
 
                     type cache_control = { type: :ephemeral }
 
-                    class CacheControl < Sam::BaseModel
+                    class CacheControl < Sam::Internal::Type::BaseModel
                       attr_accessor type: :ephemeral
 
                       def initialize: (?type: :ephemeral) -> void
@@ -726,7 +726,7 @@ module Sam
                 title: String?
               }
 
-            class RequestDocumentBlock < Sam::BaseModel
+            class RequestDocumentBlock < Sam::Internal::Type::BaseModel
               attr_accessor source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::source
 
               attr_accessor type: :document
@@ -761,7 +761,7 @@ module Sam
                 | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource
 
               module Source
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
                 type base64_pdf_source =
                   {
@@ -770,7 +770,7 @@ module Sam
                     type: :base64
                   }
 
-                class Base64PdfSource < Sam::BaseModel
+                class Base64PdfSource < Sam::Internal::Type::BaseModel
                   attr_accessor data: String
 
                   attr_accessor media_type: :"application/pdf"
@@ -789,7 +789,7 @@ module Sam
                 type plain_text_source =
                   { data: String, media_type: :"text/plain", type: :text }
 
-                class PlainTextSource < Sam::BaseModel
+                class PlainTextSource < Sam::Internal::Type::BaseModel
                   attr_accessor data: String
 
                   attr_accessor media_type: :"text/plain"
@@ -811,7 +811,7 @@ module Sam
                     type: :content
                   }
 
-                class ContentBlockSource < Sam::BaseModel
+                class ContentBlockSource < Sam::Internal::Type::BaseModel
                   attr_accessor content: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::content
 
                   attr_accessor type: :content
@@ -828,14 +828,14 @@ module Sam
                     | ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::union_member1]
 
                   module Content
-                    extend Sam::Union
+                    extend Sam::Internal::Type::Union
 
                     type union_member1 =
                       Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock
                       | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
 
                     module UnionMember1
-                      extend Sam::Union
+                      extend Sam::Internal::Type::Union
 
                       type request_text_block =
                         {
@@ -845,7 +845,7 @@ module Sam
                           citations: ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::citation]?
                         }
 
-                      class RequestTextBlock < Sam::BaseModel
+                      class RequestTextBlock < Sam::Internal::Type::BaseModel
                         attr_accessor text: String
 
                         attr_accessor type: :text
@@ -865,7 +865,7 @@ module Sam
 
                         type cache_control = { type: :ephemeral }
 
-                        class CacheControl < Sam::BaseModel
+                        class CacheControl < Sam::Internal::Type::BaseModel
                           attr_accessor type: :ephemeral
 
                           def initialize: (?type: :ephemeral) -> void
@@ -879,7 +879,7 @@ module Sam
                           | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
 
                         module Citation
-                          extend Sam::Union
+                          extend Sam::Internal::Type::Union
 
                           type request_char_location_citation =
                             {
@@ -891,7 +891,7 @@ module Sam
                               type: :char_location
                             }
 
-                          class RequestCharLocationCitation < Sam::BaseModel
+                          class RequestCharLocationCitation < Sam::Internal::Type::BaseModel
                             attr_accessor cited_text: String
 
                             attr_accessor document_index: Integer
@@ -926,7 +926,7 @@ module Sam
                               type: :page_location
                             }
 
-                          class RequestPageLocationCitation < Sam::BaseModel
+                          class RequestPageLocationCitation < Sam::Internal::Type::BaseModel
                             attr_accessor cited_text: String
 
                             attr_accessor document_index: Integer
@@ -961,7 +961,7 @@ module Sam
                               type: :content_block_location
                             }
 
-                          class RequestContentBlockLocationCitation < Sam::BaseModel
+                          class RequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                             attr_accessor cited_text: String
 
                             attr_accessor document_index: Integer
@@ -997,7 +997,7 @@ module Sam
                           cache_control: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::CacheControl?
                         }
 
-                      class RequestImageBlock < Sam::BaseModel
+                      class RequestImageBlock < Sam::Internal::Type::BaseModel
                         attr_accessor source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::source
 
                         attr_accessor type: :image
@@ -1017,7 +1017,7 @@ module Sam
                           | Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource
 
                         module Source
-                          extend Sam::Union
+                          extend Sam::Internal::Type::Union
 
                           type base64_image_source =
                             {
@@ -1026,7 +1026,7 @@ module Sam
                               type: :base64
                             }
 
-                          class Base64ImageSource < Sam::BaseModel
+                          class Base64ImageSource < Sam::Internal::Type::BaseModel
                             attr_accessor data: String
 
                             attr_accessor media_type: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::media_type
@@ -1048,7 +1048,7 @@ module Sam
                               | :"image/webp"
 
                             module MediaType
-                              extend Sam::Enum
+                              extend Sam::Internal::Type::Enum
 
                               IMAGE_JPEG: :"image/jpeg"
                               IMAGE_PNG: :"image/png"
@@ -1061,7 +1061,7 @@ module Sam
 
                           type url_image_source = { type: :url, url: String }
 
-                          class URLImageSource < Sam::BaseModel
+                          class URLImageSource < Sam::Internal::Type::BaseModel
                             attr_accessor type: :url
 
                             attr_accessor url: String
@@ -1076,7 +1076,7 @@ module Sam
 
                         type cache_control = { type: :ephemeral }
 
-                        class CacheControl < Sam::BaseModel
+                        class CacheControl < Sam::Internal::Type::BaseModel
                           attr_accessor type: :ephemeral
 
                           def initialize: (?type: :ephemeral) -> void
@@ -1099,7 +1099,7 @@ module Sam
 
                 type urlpdf_source = { type: :url, url: String }
 
-                class UrlpdfSource < Sam::BaseModel
+                class UrlpdfSource < Sam::Internal::Type::BaseModel
                   attr_accessor type: :url
 
                   attr_accessor url: String
@@ -1114,7 +1114,7 @@ module Sam
 
               type cache_control = { type: :ephemeral }
 
-              class CacheControl < Sam::BaseModel
+              class CacheControl < Sam::Internal::Type::BaseModel
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
@@ -1124,7 +1124,7 @@ module Sam
 
               type citations = { enabled: bool }
 
-              class Citations < Sam::BaseModel
+              class Citations < Sam::Internal::Type::BaseModel
                 attr_reader enabled: bool?
 
                 def enabled=: (bool) -> bool
@@ -1138,7 +1138,7 @@ module Sam
             type request_thinking_block =
               { signature: String, thinking: String, type: :thinking }
 
-            class RequestThinkingBlock < Sam::BaseModel
+            class RequestThinkingBlock < Sam::Internal::Type::BaseModel
               attr_accessor signature: String
 
               attr_accessor thinking: String
@@ -1157,7 +1157,7 @@ module Sam
             type request_redacted_thinking_block =
               { data: String, type: :redacted_thinking }
 
-            class RequestRedactedThinkingBlock < Sam::BaseModel
+            class RequestRedactedThinkingBlock < Sam::Internal::Type::BaseModel
               attr_accessor data: String
 
               attr_accessor type: :redacted_thinking
@@ -1181,7 +1181,7 @@ module Sam
         type role = :user | :assistant
 
         module Role
-          extend Sam::Enum
+          extend Sam::Internal::Type::Enum
 
           USER: :user
           ASSISTANT: :assistant
@@ -1195,7 +1195,7 @@ module Sam
         | ::Array[Sam::Models::MessageCountTokensParams::System::UnionMember1]
 
       module System
-        extend Sam::Union
+        extend Sam::Internal::Type::Union
 
         type union_member1 =
           {
@@ -1205,7 +1205,7 @@ module Sam
             citations: ::Array[Sam::Models::MessageCountTokensParams::System::UnionMember1::citation]?
           }
 
-        class UnionMember1 < Sam::BaseModel
+        class UnionMember1 < Sam::Internal::Type::BaseModel
           attr_accessor text: String
 
           attr_accessor type: :text
@@ -1225,7 +1225,7 @@ module Sam
 
           type cache_control = { type: :ephemeral }
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void
@@ -1239,7 +1239,7 @@ module Sam
             | Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation
 
           module Citation
-            extend Sam::Union
+            extend Sam::Internal::Type::Union
 
             type request_char_location_citation =
               {
@@ -1251,7 +1251,7 @@ module Sam
                 type: :char_location
               }
 
-            class RequestCharLocationCitation < Sam::BaseModel
+            class RequestCharLocationCitation < Sam::Internal::Type::BaseModel
               attr_accessor cited_text: String
 
               attr_accessor document_index: Integer
@@ -1286,7 +1286,7 @@ module Sam
                 type: :page_location
               }
 
-            class RequestPageLocationCitation < Sam::BaseModel
+            class RequestPageLocationCitation < Sam::Internal::Type::BaseModel
               attr_accessor cited_text: String
 
               attr_accessor document_index: Integer
@@ -1321,7 +1321,7 @@ module Sam
                 type: :content_block_location
               }
 
-            class RequestContentBlockLocationCitation < Sam::BaseModel
+            class RequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
               attr_accessor cited_text: String
 
               attr_accessor document_index: Integer
@@ -1363,12 +1363,12 @@ module Sam
         | Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigDisabled
 
       module Thinking
-        extend Sam::Union
+        extend Sam::Internal::Type::Union
 
         type thinking_config_enabled =
           { budget_tokens: Integer, type: :enabled }
 
-        class ThinkingConfigEnabled < Sam::BaseModel
+        class ThinkingConfigEnabled < Sam::Internal::Type::BaseModel
           attr_accessor budget_tokens: Integer
 
           attr_accessor type: :enabled
@@ -1380,7 +1380,7 @@ module Sam
 
         type thinking_config_disabled = { type: :disabled }
 
-        class ThinkingConfigDisabled < Sam::BaseModel
+        class ThinkingConfigDisabled < Sam::Internal::Type::BaseModel
           attr_accessor type: :disabled
 
           def initialize: (?type: :disabled) -> void
@@ -1398,11 +1398,11 @@ module Sam
         | Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceNone
 
       module ToolChoice
-        extend Sam::Union
+        extend Sam::Internal::Type::Union
 
         type tool_choice_auto = { type: :auto, disable_parallel_tool_use: bool }
 
-        class ToolChoiceAuto < Sam::BaseModel
+        class ToolChoiceAuto < Sam::Internal::Type::BaseModel
           attr_accessor type: :auto
 
           attr_reader disable_parallel_tool_use: bool?
@@ -1419,7 +1419,7 @@ module Sam
 
         type tool_choice_any = { type: :any, disable_parallel_tool_use: bool }
 
-        class ToolChoiceAny < Sam::BaseModel
+        class ToolChoiceAny < Sam::Internal::Type::BaseModel
           attr_accessor type: :any
 
           attr_reader disable_parallel_tool_use: bool?
@@ -1437,7 +1437,7 @@ module Sam
         type tool_choice_tool =
           { name: String, type: :tool, disable_parallel_tool_use: bool }
 
-        class ToolChoiceTool < Sam::BaseModel
+        class ToolChoiceTool < Sam::Internal::Type::BaseModel
           attr_accessor name: String
 
           attr_accessor type: :tool
@@ -1457,7 +1457,7 @@ module Sam
 
         type tool_choice_none = { type: :none }
 
-        class ToolChoiceNone < Sam::BaseModel
+        class ToolChoiceNone < Sam::Internal::Type::BaseModel
           attr_accessor type: :none
 
           def initialize: (?type: :none) -> void
@@ -1474,7 +1474,7 @@ module Sam
         | Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124
 
       module Tool
-        extend Sam::Union
+        extend Sam::Internal::Type::Union
 
         type tool =
           {
@@ -1484,7 +1484,7 @@ module Sam
             description: String
           }
 
-        class Tool < Sam::BaseModel
+        class Tool < Sam::Internal::Type::BaseModel
           attr_accessor input_schema: Sam::Models::MessageCountTokensParams::Tool::Tool::InputSchema
 
           attr_accessor name: String
@@ -1506,7 +1506,7 @@ module Sam
 
           type input_schema = { type: :object, properties: top? }
 
-          class InputSchema < Sam::BaseModel
+          class InputSchema < Sam::Internal::Type::BaseModel
             attr_accessor type: :object
 
             attr_accessor properties: top?
@@ -1518,7 +1518,7 @@ module Sam
 
           type cache_control = { type: :ephemeral }
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void
@@ -1534,7 +1534,7 @@ module Sam
             cache_control: Sam::Models::MessageCountTokensParams::Tool::BashTool20250124::CacheControl?
           }
 
-        class BashTool20250124 < Sam::BaseModel
+        class BashTool20250124 < Sam::Internal::Type::BaseModel
           attr_accessor name: :bash
 
           attr_accessor type: :bash_20250124
@@ -1551,7 +1551,7 @@ module Sam
 
           type cache_control = { type: :ephemeral }
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void
@@ -1567,7 +1567,7 @@ module Sam
             cache_control: Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124::CacheControl?
           }
 
-        class TextEditor20250124 < Sam::BaseModel
+        class TextEditor20250124 < Sam::Internal::Type::BaseModel
           attr_accessor name: :str_replace_editor
 
           attr_accessor type: :text_editor_20250124
@@ -1584,7 +1584,7 @@ module Sam
 
           type cache_control = { type: :ephemeral }
 
-          class CacheControl < Sam::BaseModel
+          class CacheControl < Sam::Internal::Type::BaseModel
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void

@@ -4,7 +4,7 @@ module Sam
   module Models
     module Messages
       # @see Sam::Resources::Messages::Batches#create
-      class BatchCreateParams < Sam::BaseModel
+      class BatchCreateParams < Sam::Internal::Type::BaseModel
         # @!parse
         #   extend Sam::Internal::Type::RequestParameters::Converter
         include Sam::Internal::Type::RequestParameters
@@ -14,7 +14,7 @@ module Sam
         #     a Message.
         #
         #   @return [Array<Sam::Models::Messages::BatchCreateParams::Request>]
-        required :requests, -> { Sam::ArrayOf[Sam::Models::Messages::BatchCreateParams::Request] }
+        required :requests, -> { Sam::Internal::Type::ArrayOf[Sam::Models::Messages::BatchCreateParams::Request] }
 
         # @!attribute [r] anthropic_beta
         #   Optional header to specify the beta version(s) you want to use.
@@ -23,7 +23,7 @@ module Sam
         #     the header multiple times for each beta.
         #
         #   @return [Array<String>, nil]
-        optional :anthropic_beta, Sam::ArrayOf[String], api_name: :"anthropic-beta"
+        optional :anthropic_beta, Sam::Internal::Type::ArrayOf[String], api_name: :"anthropic-beta"
 
         # @!parse
         #   # @return [Array<String>]
@@ -66,9 +66,9 @@ module Sam
         #   #
         #   def initialize(requests:, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Sam::BaseModel) -> void
+        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
-        class Request < Sam::BaseModel
+        class Request < Sam::Internal::Type::BaseModel
           # @!attribute custom_id
           #   Developer-provided ID created for each request in a Message Batch. Useful for
           #     matching results to requests, as results may be given out of request order.
@@ -93,10 +93,10 @@ module Sam
           #   #
           #   def initialize(custom_id:, params:, **) = super
 
-          # def initialize: (Hash | Sam::BaseModel) -> void
+          # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
           # @see Sam::Models::Messages::BatchCreateParams::Request#params
-          class Params < Sam::BaseModel
+          class Params < Sam::Internal::Type::BaseModel
             # @!attribute max_tokens
             #   The maximum number of tokens to generate before stopping.
             #
@@ -199,7 +199,7 @@ module Sam
             #
             #   @return [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message>]
             required :messages,
-                     -> { Sam::ArrayOf[Sam::Models::Messages::BatchCreateParams::Request::Params::Message] }
+                     -> { Sam::Internal::Type::ArrayOf[Sam::Models::Messages::BatchCreateParams::Request::Params::Message] }
 
             # @!attribute model
             #   The model that will complete your prompt.
@@ -232,7 +232,7 @@ module Sam
             #     and the response `stop_sequence` value will contain the matched stop sequence.
             #
             #   @return [Array<String>, nil]
-            optional :stop_sequences, Sam::ArrayOf[String]
+            optional :stop_sequences, Sam::Internal::Type::ArrayOf[String]
 
             # @!parse
             #   # @return [Array<String>]
@@ -245,7 +245,7 @@ module Sam
             #     details.
             #
             #   @return [Boolean, nil]
-            optional :stream, Sam::BooleanModel
+            optional :stream, Sam::Internal::Type::BooleanModel
 
             # @!parse
             #   # @return [Boolean]
@@ -386,7 +386,7 @@ module Sam
             #
             #   @return [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124>, nil]
             optional :tools,
-                     -> { Sam::ArrayOf[union: Sam::Models::Messages::BatchCreateParams::Request::Params::Tool] }
+                     -> { Sam::Internal::Type::ArrayOf[union: Sam::Models::Messages::BatchCreateParams::Request::Params::Tool] }
 
             # @!parse
             #   # @return [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124>]
@@ -465,9 +465,9 @@ module Sam
             #     super
             #   end
 
-            # def initialize: (Hash | Sam::BaseModel) -> void
+            # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
-            class Message < Sam::BaseModel
+            class Message < Sam::Internal::Type::BaseModel
               # @!attribute content
               #
               #   @return [String, Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolUseBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestThinkingBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestRedactedThinkingBlock>]
@@ -485,18 +485,18 @@ module Sam
               #   #
               #   def initialize(content:, role:, **) = super
 
-              # def initialize: (Hash | Sam::BaseModel) -> void
+              # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
               # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message#content
               module Content
-                extend Sam::Union
+                extend Sam::Internal::Type::Union
 
                 variant String
 
                 variant -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1Array }
 
                 module UnionMember1
-                  extend Sam::Union
+                  extend Sam::Internal::Type::Union
 
                   discriminator :type
 
@@ -521,7 +521,7 @@ module Sam
                   variant :redacted_thinking,
                           -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestRedactedThinkingBlock }
 
-                  class RequestTextBlock < Sam::BaseModel
+                  class RequestTextBlock < Sam::Internal::Type::BaseModel
                     # @!attribute text
                     #
                     #   @return [String]
@@ -544,7 +544,7 @@ module Sam
                     #   @return [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation>, nil]
                     optional :citations,
                              -> do
-                               Sam::ArrayOf[
+                               Sam::Internal::Type::ArrayOf[
                                union: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation
                                ]
                              end,
@@ -558,10 +558,10 @@ module Sam
                     #   #
                     #   def initialize(text:, cache_control: nil, citations: nil, type: :text, **) = super
 
-                    # def initialize: (Hash | Sam::BaseModel) -> void
+                    # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
                     # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock#cache_control
-                    class CacheControl < Sam::BaseModel
+                    class CacheControl < Sam::Internal::Type::BaseModel
                       # @!attribute type
                       #
                       #   @return [Symbol, :ephemeral]
@@ -572,11 +572,11 @@ module Sam
                       #   #
                       #   def initialize(type: :ephemeral, **) = super
 
-                      # def initialize: (Hash | Sam::BaseModel) -> void
+                      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                     end
 
                     module Citation
-                      extend Sam::Union
+                      extend Sam::Internal::Type::Union
 
                       discriminator :type
 
@@ -589,7 +589,7 @@ module Sam
                       variant :content_block_location,
                               -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation }
 
-                      class RequestCharLocationCitation < Sam::BaseModel
+                      class RequestCharLocationCitation < Sam::Internal::Type::BaseModel
                         # @!attribute cited_text
                         #
                         #   @return [String]
@@ -640,10 +640,10 @@ module Sam
                         #     super
                         #   end
 
-                        # def initialize: (Hash | Sam::BaseModel) -> void
+                        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                       end
 
-                      class RequestPageLocationCitation < Sam::BaseModel
+                      class RequestPageLocationCitation < Sam::Internal::Type::BaseModel
                         # @!attribute cited_text
                         #
                         #   @return [String]
@@ -694,10 +694,10 @@ module Sam
                         #     super
                         #   end
 
-                        # def initialize: (Hash | Sam::BaseModel) -> void
+                        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                       end
 
-                      class RequestContentBlockLocationCitation < Sam::BaseModel
+                      class RequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                         # @!attribute cited_text
                         #
                         #   @return [String]
@@ -748,7 +748,7 @@ module Sam
                         #     super
                         #   end
 
-                        # def initialize: (Hash | Sam::BaseModel) -> void
+                        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                       end
 
                       # @!parse
@@ -757,7 +757,7 @@ module Sam
                     end
                   end
 
-                  class RequestImageBlock < Sam::BaseModel
+                  class RequestImageBlock < Sam::Internal::Type::BaseModel
                     # @!attribute source
                     #
                     #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
@@ -783,11 +783,11 @@ module Sam
                     #   #
                     #   def initialize(source:, cache_control: nil, type: :image, **) = super
 
-                    # def initialize: (Hash | Sam::BaseModel) -> void
+                    # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
                     # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock#source
                     module Source
-                      extend Sam::Union
+                      extend Sam::Internal::Type::Union
 
                       discriminator :type
 
@@ -797,7 +797,7 @@ module Sam
                       variant :url,
                               -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource }
 
-                      class Base64ImageSource < Sam::BaseModel
+                      class Base64ImageSource < Sam::Internal::Type::BaseModel
                         # @!attribute data
                         #
                         #   @return [String]
@@ -821,11 +821,11 @@ module Sam
                         #   #
                         #   def initialize(data:, media_type:, type: :base64, **) = super
 
-                        # def initialize: (Hash | Sam::BaseModel) -> void
+                        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
                         # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource#media_type
                         module MediaType
-                          extend Sam::Enum
+                          extend Sam::Internal::Type::Enum
 
                           IMAGE_JPEG = :"image/jpeg"
                           IMAGE_PNG = :"image/png"
@@ -840,7 +840,7 @@ module Sam
                         end
                       end
 
-                      class URLImageSource < Sam::BaseModel
+                      class URLImageSource < Sam::Internal::Type::BaseModel
                         # @!attribute type
                         #
                         #   @return [Symbol, :url]
@@ -857,7 +857,7 @@ module Sam
                         #   #
                         #   def initialize(url:, type: :url, **) = super
 
-                        # def initialize: (Hash | Sam::BaseModel) -> void
+                        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                       end
 
                       # @!parse
@@ -866,7 +866,7 @@ module Sam
                     end
 
                     # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestImageBlock#cache_control
-                    class CacheControl < Sam::BaseModel
+                    class CacheControl < Sam::Internal::Type::BaseModel
                       # @!attribute type
                       #
                       #   @return [Symbol, :ephemeral]
@@ -877,11 +877,11 @@ module Sam
                       #   #
                       #   def initialize(type: :ephemeral, **) = super
 
-                      # def initialize: (Hash | Sam::BaseModel) -> void
+                      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                     end
                   end
 
-                  class RequestToolUseBlock < Sam::BaseModel
+                  class RequestToolUseBlock < Sam::Internal::Type::BaseModel
                     # @!attribute id
                     #
                     #   @return [String]
@@ -890,7 +890,7 @@ module Sam
                     # @!attribute input
                     #
                     #   @return [Object]
-                    required :input, Sam::Unknown
+                    required :input, Sam::Internal::Type::Unknown
 
                     # @!attribute name
                     #
@@ -918,10 +918,10 @@ module Sam
                     #   #
                     #   def initialize(id:, input:, name:, cache_control: nil, type: :tool_use, **) = super
 
-                    # def initialize: (Hash | Sam::BaseModel) -> void
+                    # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
                     # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolUseBlock#cache_control
-                    class CacheControl < Sam::BaseModel
+                    class CacheControl < Sam::Internal::Type::BaseModel
                       # @!attribute type
                       #
                       #   @return [Symbol, :ephemeral]
@@ -932,11 +932,11 @@ module Sam
                       #   #
                       #   def initialize(type: :ephemeral, **) = super
 
-                      # def initialize: (Hash | Sam::BaseModel) -> void
+                      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                     end
                   end
 
-                  class RequestToolResultBlock < Sam::BaseModel
+                  class RequestToolResultBlock < Sam::Internal::Type::BaseModel
                     # @!attribute tool_use_id
                     #
                     #   @return [String]
@@ -967,7 +967,7 @@ module Sam
                     # @!attribute [r] is_error
                     #
                     #   @return [Boolean, nil]
-                    optional :is_error, Sam::BooleanModel
+                    optional :is_error, Sam::Internal::Type::BooleanModel
 
                     # @!parse
                     #   # @return [Boolean]
@@ -982,10 +982,10 @@ module Sam
                     #   #
                     #   def initialize(tool_use_id:, cache_control: nil, content: nil, is_error: nil, type: :tool_result, **) = super
 
-                    # def initialize: (Hash | Sam::BaseModel) -> void
+                    # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
                     # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock#cache_control
-                    class CacheControl < Sam::BaseModel
+                    class CacheControl < Sam::Internal::Type::BaseModel
                       # @!attribute type
                       #
                       #   @return [Symbol, :ephemeral]
@@ -996,19 +996,19 @@ module Sam
                       #   #
                       #   def initialize(type: :ephemeral, **) = super
 
-                      # def initialize: (Hash | Sam::BaseModel) -> void
+                      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                     end
 
                     # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock#content
                     module Content
-                      extend Sam::Union
+                      extend Sam::Internal::Type::Union
 
                       variant String
 
                       variant -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1Array }
 
                       module UnionMember1
-                        extend Sam::Union
+                        extend Sam::Internal::Type::Union
 
                         discriminator :type
 
@@ -1018,7 +1018,7 @@ module Sam
                         variant :image,
                                 -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock }
 
-                        class RequestTextBlock < Sam::BaseModel
+                        class RequestTextBlock < Sam::Internal::Type::BaseModel
                           # @!attribute text
                           #
                           #   @return [String]
@@ -1041,7 +1041,7 @@ module Sam
                           #   @return [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation>, nil]
                           optional :citations,
                                    -> do
-                                     Sam::ArrayOf[
+                                     Sam::Internal::Type::ArrayOf[
                                      union: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation
                                      ]
                                    end,
@@ -1055,10 +1055,10 @@ module Sam
                           #   #
                           #   def initialize(text:, cache_control: nil, citations: nil, type: :text, **) = super
 
-                          # def initialize: (Hash | Sam::BaseModel) -> void
+                          # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
                           # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock#cache_control
-                          class CacheControl < Sam::BaseModel
+                          class CacheControl < Sam::Internal::Type::BaseModel
                             # @!attribute type
                             #
                             #   @return [Symbol, :ephemeral]
@@ -1069,11 +1069,11 @@ module Sam
                             #   #
                             #   def initialize(type: :ephemeral, **) = super
 
-                            # def initialize: (Hash | Sam::BaseModel) -> void
+                            # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                           end
 
                           module Citation
-                            extend Sam::Union
+                            extend Sam::Internal::Type::Union
 
                             discriminator :type
 
@@ -1086,7 +1086,7 @@ module Sam
                             variant :content_block_location,
                                     -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation }
 
-                            class RequestCharLocationCitation < Sam::BaseModel
+                            class RequestCharLocationCitation < Sam::Internal::Type::BaseModel
                               # @!attribute cited_text
                               #
                               #   @return [String]
@@ -1137,10 +1137,10 @@ module Sam
                               #     super
                               #   end
 
-                              # def initialize: (Hash | Sam::BaseModel) -> void
+                              # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                             end
 
-                            class RequestPageLocationCitation < Sam::BaseModel
+                            class RequestPageLocationCitation < Sam::Internal::Type::BaseModel
                               # @!attribute cited_text
                               #
                               #   @return [String]
@@ -1191,10 +1191,10 @@ module Sam
                               #     super
                               #   end
 
-                              # def initialize: (Hash | Sam::BaseModel) -> void
+                              # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                             end
 
-                            class RequestContentBlockLocationCitation < Sam::BaseModel
+                            class RequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                               # @!attribute cited_text
                               #
                               #   @return [String]
@@ -1245,7 +1245,7 @@ module Sam
                               #     super
                               #   end
 
-                              # def initialize: (Hash | Sam::BaseModel) -> void
+                              # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                             end
 
                             # @!parse
@@ -1254,7 +1254,7 @@ module Sam
                           end
                         end
 
-                        class RequestImageBlock < Sam::BaseModel
+                        class RequestImageBlock < Sam::Internal::Type::BaseModel
                           # @!attribute source
                           #
                           #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
@@ -1280,11 +1280,11 @@ module Sam
                           #   #
                           #   def initialize(source:, cache_control: nil, type: :image, **) = super
 
-                          # def initialize: (Hash | Sam::BaseModel) -> void
+                          # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
                           # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock#source
                           module Source
-                            extend Sam::Union
+                            extend Sam::Internal::Type::Union
 
                             discriminator :type
 
@@ -1294,7 +1294,7 @@ module Sam
                             variant :url,
                                     -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource }
 
-                            class Base64ImageSource < Sam::BaseModel
+                            class Base64ImageSource < Sam::Internal::Type::BaseModel
                               # @!attribute data
                               #
                               #   @return [String]
@@ -1318,11 +1318,11 @@ module Sam
                               #   #
                               #   def initialize(data:, media_type:, type: :base64, **) = super
 
-                              # def initialize: (Hash | Sam::BaseModel) -> void
+                              # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
                               # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource#media_type
                               module MediaType
-                                extend Sam::Enum
+                                extend Sam::Internal::Type::Enum
 
                                 IMAGE_JPEG = :"image/jpeg"
                                 IMAGE_PNG = :"image/png"
@@ -1337,7 +1337,7 @@ module Sam
                               end
                             end
 
-                            class URLImageSource < Sam::BaseModel
+                            class URLImageSource < Sam::Internal::Type::BaseModel
                               # @!attribute type
                               #
                               #   @return [Symbol, :url]
@@ -1354,7 +1354,7 @@ module Sam
                               #   #
                               #   def initialize(url:, type: :url, **) = super
 
-                              # def initialize: (Hash | Sam::BaseModel) -> void
+                              # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                             end
 
                             # @!parse
@@ -1363,7 +1363,7 @@ module Sam
                           end
 
                           # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock#cache_control
-                          class CacheControl < Sam::BaseModel
+                          class CacheControl < Sam::Internal::Type::BaseModel
                             # @!attribute type
                             #
                             #   @return [Symbol, :ephemeral]
@@ -1374,7 +1374,7 @@ module Sam
                             #   #
                             #   def initialize(type: :ephemeral, **) = super
 
-                            # def initialize: (Hash | Sam::BaseModel) -> void
+                            # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                           end
                         end
 
@@ -1388,13 +1388,13 @@ module Sam
                       #   def self.variants; end
 
                       UnionMember1Array =
-                        Sam::ArrayOf[
+                        Sam::Internal::Type::ArrayOf[
                       union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1 }
                       ]
                     end
                   end
 
-                  class RequestDocumentBlock < Sam::BaseModel
+                  class RequestDocumentBlock < Sam::Internal::Type::BaseModel
                     # @!attribute source
                     #
                     #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource]
@@ -1443,11 +1443,11 @@ module Sam
                     #   #
                     #   def initialize(source:, cache_control: nil, citations: nil, context: nil, title: nil, type: :document, **) = super
 
-                    # def initialize: (Hash | Sam::BaseModel) -> void
+                    # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
                     # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock#source
                     module Source
-                      extend Sam::Union
+                      extend Sam::Internal::Type::Union
 
                       discriminator :type
 
@@ -1463,7 +1463,7 @@ module Sam
                       variant :url,
                               -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource }
 
-                      class Base64PdfSource < Sam::BaseModel
+                      class Base64PdfSource < Sam::Internal::Type::BaseModel
                         # @!attribute data
                         #
                         #   @return [String]
@@ -1486,10 +1486,10 @@ module Sam
                         #   #
                         #   def initialize(data:, media_type: :"application/pdf", type: :base64, **) = super
 
-                        # def initialize: (Hash | Sam::BaseModel) -> void
+                        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                       end
 
-                      class PlainTextSource < Sam::BaseModel
+                      class PlainTextSource < Sam::Internal::Type::BaseModel
                         # @!attribute data
                         #
                         #   @return [String]
@@ -1512,10 +1512,10 @@ module Sam
                         #   #
                         #   def initialize(data:, media_type: :"text/plain", type: :text, **) = super
 
-                        # def initialize: (Hash | Sam::BaseModel) -> void
+                        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                       end
 
-                      class ContentBlockSource < Sam::BaseModel
+                      class ContentBlockSource < Sam::Internal::Type::BaseModel
                         # @!attribute content
                         #
                         #   @return [String, Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock>]
@@ -1533,18 +1533,18 @@ module Sam
                         #   #
                         #   def initialize(content:, type: :content, **) = super
 
-                        # def initialize: (Hash | Sam::BaseModel) -> void
+                        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
                         # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource#content
                         module Content
-                          extend Sam::Union
+                          extend Sam::Internal::Type::Union
 
                           variant String
 
                           variant -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1Array }
 
                           module UnionMember1
-                            extend Sam::Union
+                            extend Sam::Internal::Type::Union
 
                             discriminator :type
 
@@ -1554,7 +1554,7 @@ module Sam
                             variant :image,
                                     -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock }
 
-                            class RequestTextBlock < Sam::BaseModel
+                            class RequestTextBlock < Sam::Internal::Type::BaseModel
                               # @!attribute text
                               #
                               #   @return [String]
@@ -1577,7 +1577,7 @@ module Sam
                               #   @return [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation>, nil]
                               optional :citations,
                                        -> do
-                                         Sam::ArrayOf[
+                                         Sam::Internal::Type::ArrayOf[
                                          union: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation
                                          ]
                                        end,
@@ -1591,10 +1591,10 @@ module Sam
                               #   #
                               #   def initialize(text:, cache_control: nil, citations: nil, type: :text, **) = super
 
-                              # def initialize: (Hash | Sam::BaseModel) -> void
+                              # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
                               # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock#cache_control
-                              class CacheControl < Sam::BaseModel
+                              class CacheControl < Sam::Internal::Type::BaseModel
                                 # @!attribute type
                                 #
                                 #   @return [Symbol, :ephemeral]
@@ -1605,11 +1605,11 @@ module Sam
                                 #   #
                                 #   def initialize(type: :ephemeral, **) = super
 
-                                # def initialize: (Hash | Sam::BaseModel) -> void
+                                # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                               end
 
                               module Citation
-                                extend Sam::Union
+                                extend Sam::Internal::Type::Union
 
                                 discriminator :type
 
@@ -1622,7 +1622,7 @@ module Sam
                                 variant :content_block_location,
                                         -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation }
 
-                                class RequestCharLocationCitation < Sam::BaseModel
+                                class RequestCharLocationCitation < Sam::Internal::Type::BaseModel
                                   # @!attribute cited_text
                                   #
                                   #   @return [String]
@@ -1673,10 +1673,10 @@ module Sam
                                   #     super
                                   #   end
 
-                                  # def initialize: (Hash | Sam::BaseModel) -> void
+                                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                                 end
 
-                                class RequestPageLocationCitation < Sam::BaseModel
+                                class RequestPageLocationCitation < Sam::Internal::Type::BaseModel
                                   # @!attribute cited_text
                                   #
                                   #   @return [String]
@@ -1727,10 +1727,10 @@ module Sam
                                   #     super
                                   #   end
 
-                                  # def initialize: (Hash | Sam::BaseModel) -> void
+                                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                                 end
 
-                                class RequestContentBlockLocationCitation < Sam::BaseModel
+                                class RequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                                   # @!attribute cited_text
                                   #
                                   #   @return [String]
@@ -1781,7 +1781,7 @@ module Sam
                                   #     super
                                   #   end
 
-                                  # def initialize: (Hash | Sam::BaseModel) -> void
+                                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                                 end
 
                                 # @!parse
@@ -1790,7 +1790,7 @@ module Sam
                               end
                             end
 
-                            class RequestImageBlock < Sam::BaseModel
+                            class RequestImageBlock < Sam::Internal::Type::BaseModel
                               # @!attribute source
                               #
                               #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
@@ -1816,11 +1816,11 @@ module Sam
                               #   #
                               #   def initialize(source:, cache_control: nil, type: :image, **) = super
 
-                              # def initialize: (Hash | Sam::BaseModel) -> void
+                              # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
                               # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock#source
                               module Source
-                                extend Sam::Union
+                                extend Sam::Internal::Type::Union
 
                                 discriminator :type
 
@@ -1830,7 +1830,7 @@ module Sam
                                 variant :url,
                                         -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource }
 
-                                class Base64ImageSource < Sam::BaseModel
+                                class Base64ImageSource < Sam::Internal::Type::BaseModel
                                   # @!attribute data
                                   #
                                   #   @return [String]
@@ -1854,11 +1854,11 @@ module Sam
                                   #   #
                                   #   def initialize(data:, media_type:, type: :base64, **) = super
 
-                                  # def initialize: (Hash | Sam::BaseModel) -> void
+                                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
                                   # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource#media_type
                                   module MediaType
-                                    extend Sam::Enum
+                                    extend Sam::Internal::Type::Enum
 
                                     IMAGE_JPEG = :"image/jpeg"
                                     IMAGE_PNG = :"image/png"
@@ -1873,7 +1873,7 @@ module Sam
                                   end
                                 end
 
-                                class URLImageSource < Sam::BaseModel
+                                class URLImageSource < Sam::Internal::Type::BaseModel
                                   # @!attribute type
                                   #
                                   #   @return [Symbol, :url]
@@ -1890,7 +1890,7 @@ module Sam
                                   #   #
                                   #   def initialize(url:, type: :url, **) = super
 
-                                  # def initialize: (Hash | Sam::BaseModel) -> void
+                                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                                 end
 
                                 # @!parse
@@ -1899,7 +1899,7 @@ module Sam
                               end
 
                               # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock#cache_control
-                              class CacheControl < Sam::BaseModel
+                              class CacheControl < Sam::Internal::Type::BaseModel
                                 # @!attribute type
                                 #
                                 #   @return [Symbol, :ephemeral]
@@ -1910,7 +1910,7 @@ module Sam
                                 #   #
                                 #   def initialize(type: :ephemeral, **) = super
 
-                                # def initialize: (Hash | Sam::BaseModel) -> void
+                                # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                               end
                             end
 
@@ -1924,13 +1924,13 @@ module Sam
                           #   def self.variants; end
 
                           UnionMember1Array =
-                            Sam::ArrayOf[
+                            Sam::Internal::Type::ArrayOf[
                           union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1 }
                           ]
                         end
                       end
 
-                      class UrlpdfSource < Sam::BaseModel
+                      class UrlpdfSource < Sam::Internal::Type::BaseModel
                         # @!attribute type
                         #
                         #   @return [Symbol, :url]
@@ -1947,7 +1947,7 @@ module Sam
                         #   #
                         #   def initialize(url:, type: :url, **) = super
 
-                        # def initialize: (Hash | Sam::BaseModel) -> void
+                        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                       end
 
                       # @!parse
@@ -1956,7 +1956,7 @@ module Sam
                     end
 
                     # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock#cache_control
-                    class CacheControl < Sam::BaseModel
+                    class CacheControl < Sam::Internal::Type::BaseModel
                       # @!attribute type
                       #
                       #   @return [Symbol, :ephemeral]
@@ -1967,15 +1967,15 @@ module Sam
                       #   #
                       #   def initialize(type: :ephemeral, **) = super
 
-                      # def initialize: (Hash | Sam::BaseModel) -> void
+                      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                     end
 
                     # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock#citations
-                    class Citations < Sam::BaseModel
+                    class Citations < Sam::Internal::Type::BaseModel
                       # @!attribute [r] enabled
                       #
                       #   @return [Boolean, nil]
-                      optional :enabled, Sam::BooleanModel
+                      optional :enabled, Sam::Internal::Type::BooleanModel
 
                       # @!parse
                       #   # @return [Boolean]
@@ -1986,11 +1986,11 @@ module Sam
                       #   #
                       #   def initialize(enabled: nil, **) = super
 
-                      # def initialize: (Hash | Sam::BaseModel) -> void
+                      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                     end
                   end
 
-                  class RequestThinkingBlock < Sam::BaseModel
+                  class RequestThinkingBlock < Sam::Internal::Type::BaseModel
                     # @!attribute signature
                     #
                     #   @return [String]
@@ -2013,10 +2013,10 @@ module Sam
                     #   #
                     #   def initialize(signature:, thinking:, type: :thinking, **) = super
 
-                    # def initialize: (Hash | Sam::BaseModel) -> void
+                    # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                   end
 
-                  class RequestRedactedThinkingBlock < Sam::BaseModel
+                  class RequestRedactedThinkingBlock < Sam::Internal::Type::BaseModel
                     # @!attribute data
                     #
                     #   @return [String]
@@ -2033,7 +2033,7 @@ module Sam
                     #   #
                     #   def initialize(data:, type: :redacted_thinking, **) = super
 
-                    # def initialize: (Hash | Sam::BaseModel) -> void
+                    # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                   end
 
                   # @!parse
@@ -2046,12 +2046,12 @@ module Sam
                 #   def self.variants; end
 
                 UnionMember1Array =
-                  Sam::ArrayOf[union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1 }]
+                  Sam::Internal::Type::ArrayOf[union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1 }]
               end
 
               # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message#role
               module Role
-                extend Sam::Enum
+                extend Sam::Internal::Type::Enum
 
                 USER = :user
                 ASSISTANT = :assistant
@@ -2065,7 +2065,7 @@ module Sam
             end
 
             # @see Sam::Models::Messages::BatchCreateParams::Request::Params#metadata
-            class Metadata < Sam::BaseModel
+            class Metadata < Sam::Internal::Type::BaseModel
               # @!attribute user_id
               #   An external identifier for the user who is associated with the request.
               #
@@ -2083,7 +2083,7 @@ module Sam
               #   #
               #   def initialize(user_id: nil, **) = super
 
-              # def initialize: (Hash | Sam::BaseModel) -> void
+              # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
             end
 
             # System prompt.
@@ -2094,13 +2094,13 @@ module Sam
             #
             # @see Sam::Models::Messages::BatchCreateParams::Request::Params#system_
             module System
-              extend Sam::Union
+              extend Sam::Internal::Type::Union
 
               variant String
 
               variant -> { Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1Array }
 
-              class UnionMember1 < Sam::BaseModel
+              class UnionMember1 < Sam::Internal::Type::BaseModel
                 # @!attribute text
                 #
                 #   @return [String]
@@ -2122,7 +2122,7 @@ module Sam
                 #
                 #   @return [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestCharLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestPageLocationCitation, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestContentBlockLocationCitation>, nil]
                 optional :citations,
-                         -> { Sam::ArrayOf[union: Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation] },
+                         -> { Sam::Internal::Type::ArrayOf[union: Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation] },
                          nil?: true
 
                 # @!parse
@@ -2133,10 +2133,10 @@ module Sam
                 #   #
                 #   def initialize(text:, cache_control: nil, citations: nil, type: :text, **) = super
 
-                # def initialize: (Hash | Sam::BaseModel) -> void
+                # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
                 # @see Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1#cache_control
-                class CacheControl < Sam::BaseModel
+                class CacheControl < Sam::Internal::Type::BaseModel
                   # @!attribute type
                   #
                   #   @return [Symbol, :ephemeral]
@@ -2147,11 +2147,11 @@ module Sam
                   #   #
                   #   def initialize(type: :ephemeral, **) = super
 
-                  # def initialize: (Hash | Sam::BaseModel) -> void
+                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                 end
 
                 module Citation
-                  extend Sam::Union
+                  extend Sam::Internal::Type::Union
 
                   discriminator :type
 
@@ -2164,7 +2164,7 @@ module Sam
                   variant :content_block_location,
                           -> { Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::RequestContentBlockLocationCitation }
 
-                  class RequestCharLocationCitation < Sam::BaseModel
+                  class RequestCharLocationCitation < Sam::Internal::Type::BaseModel
                     # @!attribute cited_text
                     #
                     #   @return [String]
@@ -2215,10 +2215,10 @@ module Sam
                     #     super
                     #   end
 
-                    # def initialize: (Hash | Sam::BaseModel) -> void
+                    # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                   end
 
-                  class RequestPageLocationCitation < Sam::BaseModel
+                  class RequestPageLocationCitation < Sam::Internal::Type::BaseModel
                     # @!attribute cited_text
                     #
                     #   @return [String]
@@ -2269,10 +2269,10 @@ module Sam
                     #     super
                     #   end
 
-                    # def initialize: (Hash | Sam::BaseModel) -> void
+                    # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                   end
 
-                  class RequestContentBlockLocationCitation < Sam::BaseModel
+                  class RequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
                     # @!attribute cited_text
                     #
                     #   @return [String]
@@ -2323,7 +2323,7 @@ module Sam
                     #     super
                     #   end
 
-                    # def initialize: (Hash | Sam::BaseModel) -> void
+                    # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                   end
 
                   # @!parse
@@ -2337,7 +2337,7 @@ module Sam
               #   def self.variants; end
 
               UnionMember1Array =
-                Sam::ArrayOf[-> { Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1 }]
+                Sam::Internal::Type::ArrayOf[-> { Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1 }]
             end
 
             # Configuration for enabling Claude's extended thinking.
@@ -2352,7 +2352,7 @@ module Sam
             #
             # @see Sam::Models::Messages::BatchCreateParams::Request::Params#thinking
             module Thinking
-              extend Sam::Union
+              extend Sam::Internal::Type::Union
 
               discriminator :type
 
@@ -2362,7 +2362,7 @@ module Sam
               variant :disabled,
                       -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigDisabled }
 
-              class ThinkingConfigEnabled < Sam::BaseModel
+              class ThinkingConfigEnabled < Sam::Internal::Type::BaseModel
                 # @!attribute budget_tokens
                 #   Determines how many tokens Claude can use for its internal reasoning process.
                 #     Larger budgets can enable more thorough analysis for complex problems, improving
@@ -2388,10 +2388,10 @@ module Sam
                 #   #
                 #   def initialize(budget_tokens:, type: :enabled, **) = super
 
-                # def initialize: (Hash | Sam::BaseModel) -> void
+                # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
               end
 
-              class ThinkingConfigDisabled < Sam::BaseModel
+              class ThinkingConfigDisabled < Sam::Internal::Type::BaseModel
                 # @!attribute type
                 #
                 #   @return [Symbol, :disabled]
@@ -2402,7 +2402,7 @@ module Sam
                 #   #
                 #   def initialize(type: :disabled, **) = super
 
-                # def initialize: (Hash | Sam::BaseModel) -> void
+                # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
               end
 
               # @!parse
@@ -2415,7 +2415,7 @@ module Sam
             #
             # @see Sam::Models::Messages::BatchCreateParams::Request::Params#tool_choice
             module ToolChoice
-              extend Sam::Union
+              extend Sam::Internal::Type::Union
 
               discriminator :type
 
@@ -2434,7 +2434,7 @@ module Sam
               variant :none,
                       -> { Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceNone }
 
-              class ToolChoiceAuto < Sam::BaseModel
+              class ToolChoiceAuto < Sam::Internal::Type::BaseModel
                 # @!attribute type
                 #
                 #   @return [Symbol, :auto]
@@ -2447,7 +2447,7 @@ module Sam
                 #     use.
                 #
                 #   @return [Boolean, nil]
-                optional :disable_parallel_tool_use, Sam::BooleanModel
+                optional :disable_parallel_tool_use, Sam::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -2461,10 +2461,10 @@ module Sam
                 #   #
                 #   def initialize(disable_parallel_tool_use: nil, type: :auto, **) = super
 
-                # def initialize: (Hash | Sam::BaseModel) -> void
+                # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
               end
 
-              class ToolChoiceAny < Sam::BaseModel
+              class ToolChoiceAny < Sam::Internal::Type::BaseModel
                 # @!attribute type
                 #
                 #   @return [Symbol, :any]
@@ -2477,7 +2477,7 @@ module Sam
                 #     use.
                 #
                 #   @return [Boolean, nil]
-                optional :disable_parallel_tool_use, Sam::BooleanModel
+                optional :disable_parallel_tool_use, Sam::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -2491,10 +2491,10 @@ module Sam
                 #   #
                 #   def initialize(disable_parallel_tool_use: nil, type: :any, **) = super
 
-                # def initialize: (Hash | Sam::BaseModel) -> void
+                # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
               end
 
-              class ToolChoiceTool < Sam::BaseModel
+              class ToolChoiceTool < Sam::Internal::Type::BaseModel
                 # @!attribute name
                 #   The name of the tool to use.
                 #
@@ -2513,7 +2513,7 @@ module Sam
                 #     use.
                 #
                 #   @return [Boolean, nil]
-                optional :disable_parallel_tool_use, Sam::BooleanModel
+                optional :disable_parallel_tool_use, Sam::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -2528,10 +2528,10 @@ module Sam
                 #   #
                 #   def initialize(name:, disable_parallel_tool_use: nil, type: :tool, **) = super
 
-                # def initialize: (Hash | Sam::BaseModel) -> void
+                # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
               end
 
-              class ToolChoiceNone < Sam::BaseModel
+              class ToolChoiceNone < Sam::Internal::Type::BaseModel
                 # @!attribute type
                 #
                 #   @return [Symbol, :none]
@@ -2544,7 +2544,7 @@ module Sam
                 #   #
                 #   def initialize(type: :none, **) = super
 
-                # def initialize: (Hash | Sam::BaseModel) -> void
+                # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
               end
 
               # @!parse
@@ -2553,7 +2553,7 @@ module Sam
             end
 
             module Tool
-              extend Sam::Union
+              extend Sam::Internal::Type::Union
 
               variant -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool }
 
@@ -2561,7 +2561,7 @@ module Sam
 
               variant -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124 }
 
-              class Tool < Sam::BaseModel
+              class Tool < Sam::Internal::Type::BaseModel
                 # @!attribute input_schema
                 #   [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input.
                 #
@@ -2610,10 +2610,10 @@ module Sam
                 #   #
                 #   def initialize(input_schema:, name:, cache_control: nil, description: nil, **) = super
 
-                # def initialize: (Hash | Sam::BaseModel) -> void
+                # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
                 # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool#input_schema
-                class InputSchema < Sam::BaseModel
+                class InputSchema < Sam::Internal::Type::BaseModel
                   # @!attribute type
                   #
                   #   @return [Symbol, :object]
@@ -2622,7 +2622,7 @@ module Sam
                   # @!attribute properties
                   #
                   #   @return [Object, nil]
-                  optional :properties, Sam::Unknown, nil?: true
+                  optional :properties, Sam::Internal::Type::Unknown, nil?: true
 
                   # @!parse
                   #   # [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input.
@@ -2635,11 +2635,11 @@ module Sam
                   #   #
                   #   def initialize(properties: nil, type: :object, **) = super
 
-                  # def initialize: (Hash | Sam::BaseModel) -> void
+                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                 end
 
                 # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool#cache_control
-                class CacheControl < Sam::BaseModel
+                class CacheControl < Sam::Internal::Type::BaseModel
                   # @!attribute type
                   #
                   #   @return [Symbol, :ephemeral]
@@ -2650,11 +2650,11 @@ module Sam
                   #   #
                   #   def initialize(type: :ephemeral, **) = super
 
-                  # def initialize: (Hash | Sam::BaseModel) -> void
+                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                 end
               end
 
-              class BashTool20250124 < Sam::BaseModel
+              class BashTool20250124 < Sam::Internal::Type::BaseModel
                 # @!attribute name
                 #   Name of the tool.
                 #
@@ -2682,10 +2682,10 @@ module Sam
                 #   #
                 #   def initialize(cache_control: nil, name: :bash, type: :bash_20250124, **) = super
 
-                # def initialize: (Hash | Sam::BaseModel) -> void
+                # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
                 # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124#cache_control
-                class CacheControl < Sam::BaseModel
+                class CacheControl < Sam::Internal::Type::BaseModel
                   # @!attribute type
                   #
                   #   @return [Symbol, :ephemeral]
@@ -2696,11 +2696,11 @@ module Sam
                   #   #
                   #   def initialize(type: :ephemeral, **) = super
 
-                  # def initialize: (Hash | Sam::BaseModel) -> void
+                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                 end
               end
 
-              class TextEditor20250124 < Sam::BaseModel
+              class TextEditor20250124 < Sam::Internal::Type::BaseModel
                 # @!attribute name
                 #   Name of the tool.
                 #
@@ -2728,10 +2728,10 @@ module Sam
                 #   #
                 #   def initialize(cache_control: nil, name: :str_replace_editor, type: :text_editor_20250124, **) = super
 
-                # def initialize: (Hash | Sam::BaseModel) -> void
+                # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
 
                 # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124#cache_control
-                class CacheControl < Sam::BaseModel
+                class CacheControl < Sam::Internal::Type::BaseModel
                   # @!attribute type
                   #
                   #   @return [Symbol, :ephemeral]
@@ -2742,7 +2742,7 @@ module Sam
                   #   #
                   #   def initialize(type: :ephemeral, **) = super
 
-                  # def initialize: (Hash | Sam::BaseModel) -> void
+                  # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
                 end
               end
 

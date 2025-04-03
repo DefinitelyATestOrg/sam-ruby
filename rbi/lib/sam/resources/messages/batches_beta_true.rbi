@@ -14,11 +14,11 @@ module Sam
         #   [user guide](/en/docs/build-with-claude/batch-processing)
         sig do
           params(
-            requests: T::Array[T.any(Sam::Models::Messages::BatchesBetaTrueCreateParams::Request, Sam::Internal::Util::AnyHash)],
+            requests: T::Array[T.any(Sam::Models::Messages::BatchesBetaTrueCreateParams::Request, Sam::Internal::AnyHash)],
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::AnyHash))
           )
             .returns(Sam::Models::Messages::BatchesBetaTrueCreateResponse)
         end
@@ -60,7 +60,7 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::AnyHash))
           )
             .returns(Sam::Models::Messages::BatchesBetaTrueListResponse)
         end

@@ -12,7 +12,7 @@ module Sam
         usage: Sam::Models::MessageCreateResponse::Usage
       }
 
-    class MessageCreateResponse < Sam::BaseModel
+    class MessageCreateResponse < Sam::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor content: ::Array[Sam::Models::MessageCreateResponse::content]
@@ -49,7 +49,7 @@ module Sam
         | Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock
 
       module Content
-        extend Sam::Union
+        extend Sam::Internal::Type::Union
 
         type response_text_block =
           {
@@ -58,7 +58,7 @@ module Sam
             type: :text
           }
 
-        class ResponseTextBlock < Sam::BaseModel
+        class ResponseTextBlock < Sam::Internal::Type::BaseModel
           attr_accessor citations: ::Array[Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::citation]?
 
           attr_accessor text: String
@@ -79,7 +79,7 @@ module Sam
             | Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
 
           module Citation
-            extend Sam::Union
+            extend Sam::Internal::Type::Union
 
             type response_char_location_citation =
               {
@@ -91,7 +91,7 @@ module Sam
                 type: :char_location
               }
 
-            class ResponseCharLocationCitation < Sam::BaseModel
+            class ResponseCharLocationCitation < Sam::Internal::Type::BaseModel
               attr_accessor cited_text: String
 
               attr_accessor document_index: Integer
@@ -126,7 +126,7 @@ module Sam
                 type: :page_location
               }
 
-            class ResponsePageLocationCitation < Sam::BaseModel
+            class ResponsePageLocationCitation < Sam::Internal::Type::BaseModel
               attr_accessor cited_text: String
 
               attr_accessor document_index: Integer
@@ -161,7 +161,7 @@ module Sam
                 type: :content_block_location
               }
 
-            class ResponseContentBlockLocationCitation < Sam::BaseModel
+            class ResponseContentBlockLocationCitation < Sam::Internal::Type::BaseModel
               attr_accessor cited_text: String
 
               attr_accessor document_index: Integer
@@ -193,7 +193,7 @@ module Sam
         type response_tool_use_block =
           { id: String, input: top, name: String, type: :tool_use }
 
-        class ResponseToolUseBlock < Sam::BaseModel
+        class ResponseToolUseBlock < Sam::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor input: top
@@ -215,7 +215,7 @@ module Sam
         type response_thinking_block =
           { signature: String, thinking: String, type: :thinking }
 
-        class ResponseThinkingBlock < Sam::BaseModel
+        class ResponseThinkingBlock < Sam::Internal::Type::BaseModel
           attr_accessor signature: String
 
           attr_accessor thinking: String
@@ -234,7 +234,7 @@ module Sam
         type response_redacted_thinking_block =
           { data: String, type: :redacted_thinking }
 
-        class ResponseRedactedThinkingBlock < Sam::BaseModel
+        class ResponseRedactedThinkingBlock < Sam::Internal::Type::BaseModel
           attr_accessor data: String
 
           attr_accessor type: :redacted_thinking
@@ -250,7 +250,7 @@ module Sam
       type stop_reason = :end_turn | :max_tokens | :stop_sequence | :tool_use
 
       module StopReason
-        extend Sam::Enum
+        extend Sam::Internal::Type::Enum
 
         END_TURN: :end_turn
         MAX_TOKENS: :max_tokens
@@ -268,7 +268,7 @@ module Sam
           output_tokens: Integer
         }
 
-      class Usage < Sam::BaseModel
+      class Usage < Sam::Internal::Type::BaseModel
         attr_accessor cache_creation_input_tokens: Integer?
 
         attr_accessor cache_read_input_tokens: Integer?

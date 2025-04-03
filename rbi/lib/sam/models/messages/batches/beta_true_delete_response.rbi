@@ -4,7 +4,7 @@ module Sam
   module Models
     module Messages
       module Batches
-        class BetaTrueDeleteResponse < Sam::BaseModel
+        class BetaTrueDeleteResponse < Sam::Internal::Type::BaseModel
           # ID of the Message Batch.
           sig { returns(String) }
           attr_accessor :id

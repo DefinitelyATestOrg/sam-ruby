@@ -55,7 +55,7 @@ class SamTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     sam.requester = requester
 
-    assert_raises(Sam::InternalServerError) do
+    assert_raises(Sam::Errors::InternalServerError) do
       sam.messages.create(
         max_tokens: 1024,
         messages: [{content: "Hello, world", role: :user}],
@@ -71,7 +71,7 @@ class SamTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     sam.requester = requester
 
-    assert_raises(Sam::InternalServerError) do
+    assert_raises(Sam::Errors::InternalServerError) do
       sam.messages.create(
         max_tokens: 1024,
         messages: [{content: "Hello, world", role: :user}],
@@ -87,7 +87,7 @@ class SamTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     sam.requester = requester
 
-    assert_raises(Sam::InternalServerError) do
+    assert_raises(Sam::Errors::InternalServerError) do
       sam.messages.create(
         max_tokens: 1024,
         messages: [{content: "Hello, world", role: :user}],
@@ -104,7 +104,7 @@ class SamTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     sam.requester = requester
 
-    assert_raises(Sam::InternalServerError) do
+    assert_raises(Sam::Errors::InternalServerError) do
       sam.messages.create(
         max_tokens: 1024,
         messages: [{content: "Hello, world", role: :user}],
@@ -121,7 +121,7 @@ class SamTest < Minitest::Test
     requester = MockRequester.new(500, {"retry-after" => "1.3"}, {})
     sam.requester = requester
 
-    assert_raises(Sam::InternalServerError) do
+    assert_raises(Sam::Errors::InternalServerError) do
       sam.messages.create(
         max_tokens: 1024,
         messages: [{content: "Hello, world", role: :user}],
@@ -138,7 +138,7 @@ class SamTest < Minitest::Test
     requester = MockRequester.new(500, {"retry-after" => (Time.now + 10).httpdate}, {})
     sam.requester = requester
 
-    assert_raises(Sam::InternalServerError) do
+    assert_raises(Sam::Errors::InternalServerError) do
       Thread.current.thread_variable_set(:time_now, Time.now)
       sam.messages.create(
         max_tokens: 1024,
@@ -157,7 +157,7 @@ class SamTest < Minitest::Test
     requester = MockRequester.new(500, {"retry-after-ms" => "1300"}, {})
     sam.requester = requester
 
-    assert_raises(Sam::InternalServerError) do
+    assert_raises(Sam::Errors::InternalServerError) do
       sam.messages.create(
         max_tokens: 1024,
         messages: [{content: "Hello, world", role: :user}],
@@ -174,7 +174,7 @@ class SamTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     sam.requester = requester
 
-    assert_raises(Sam::InternalServerError) do
+    assert_raises(Sam::Errors::InternalServerError) do
       sam.messages.create(
         max_tokens: 1024,
         messages: [{content: "Hello, world", role: :user}],
@@ -191,7 +191,7 @@ class SamTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     sam.requester = requester
 
-    assert_raises(Sam::InternalServerError) do
+    assert_raises(Sam::Errors::InternalServerError) do
       sam.messages.create(
         max_tokens: 1024,
         messages: [{content: "Hello, world", role: :user}],
@@ -209,7 +209,7 @@ class SamTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     sam.requester = requester
 
-    assert_raises(Sam::InternalServerError) do
+    assert_raises(Sam::Errors::InternalServerError) do
       sam.messages.create(
         max_tokens: 1024,
         messages: [{content: "Hello, world", role: :user}],

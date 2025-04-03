@@ -1,0 +1,4 @@
+module Sam
+  module Internal
+  end
+end

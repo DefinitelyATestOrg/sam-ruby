@@ -8,7 +8,7 @@ module Sam
         last_id: String?
       }
 
-    class ModelListResponse < Sam::BaseModel
+    class ModelListResponse < Sam::Internal::Type::BaseModel
       attr_accessor data: ::Array[Sam::Models::ModelListResponse::Data]
 
       attr_accessor first_id: String?
@@ -29,7 +29,7 @@ module Sam
       type data =
         { id: String, created_at: Time, display_name: String, type: :model }
 
-      class Data < Sam::BaseModel
+      class Data < Sam::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor created_at: Time

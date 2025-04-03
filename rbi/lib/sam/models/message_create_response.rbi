@@ -2,7 +2,7 @@
 
 module Sam
   module Models
-    class MessageCreateResponse < Sam::BaseModel
+    class MessageCreateResponse < Sam::Internal::Type::BaseModel
       # Unique object identifier.
       #
       #   The format and length of IDs may change over time.
@@ -110,7 +110,7 @@ module Sam
       sig { returns(Sam::Models::MessageCreateResponse::Usage) }
       attr_reader :usage
 
-      sig { params(usage: T.any(Sam::Models::MessageCreateResponse::Usage, Sam::Internal::Util::AnyHash)).void }
+      sig { params(usage: T.any(Sam::Models::MessageCreateResponse::Usage, Sam::Internal::AnyHash)).void }
       attr_writer :usage
 
       sig do
@@ -119,7 +119,7 @@ module Sam
           content: T::Array[
           T.any(
             Sam::Models::MessageCreateResponse::Content::ResponseTextBlock,
-            Sam::Internal::Util::AnyHash,
+            Sam::Internal::AnyHash,
             Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock,
             Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock,
             Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock
@@ -128,7 +128,7 @@ module Sam
           model: String,
           stop_reason: T.nilable(Sam::Models::MessageCreateResponse::StopReason::OrSymbol),
           stop_sequence: T.nilable(String),
-          usage: T.any(Sam::Models::MessageCreateResponse::Usage, Sam::Internal::Util::AnyHash),
+          usage: T.any(Sam::Models::MessageCreateResponse::Usage, Sam::Internal::AnyHash),
           role: Symbol,
           type: Symbol
         )
@@ -172,9 +172,9 @@ module Sam
       end
 
       module Content
-        extend Sam::Union
+        extend Sam::Internal::Type::Union
 
-        class ResponseTextBlock < Sam::BaseModel
+        class ResponseTextBlock < Sam::Internal::Type::BaseModel
           # Citations supporting the text block.
           #
           #   The type of citation returned will depend on the type of document being cited.
@@ -207,7 +207,7 @@ module Sam
                 T::Array[
                 T.any(
                   Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
-                  Sam::Internal::Util::AnyHash,
+                  Sam::Internal::AnyHash,
                   Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
                   Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
                 )
@@ -243,9 +243,9 @@ module Sam
           end
 
           module Citation
-            extend Sam::Union
+            extend Sam::Internal::Type::Union
 
-            class ResponseCharLocationCitation < Sam::BaseModel
+            class ResponseCharLocationCitation < Sam::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :cited_text
 
@@ -302,7 +302,7 @@ module Sam
               end
             end
 
-            class ResponsePageLocationCitation < Sam::BaseModel
+            class ResponsePageLocationCitation < Sam::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :cited_text
 
@@ -359,7 +359,7 @@ module Sam
               end
             end
 
-            class ResponseContentBlockLocationCitation < Sam::BaseModel
+            class ResponseContentBlockLocationCitation < Sam::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :cited_text
 
@@ -427,7 +427,7 @@ module Sam
           end
         end
 
-        class ResponseToolUseBlock < Sam::BaseModel
+        class ResponseToolUseBlock < Sam::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
@@ -449,7 +449,7 @@ module Sam
           end
         end
 
-        class ResponseThinkingBlock < Sam::BaseModel
+        class ResponseThinkingBlock < Sam::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :signature
 
@@ -468,7 +468,7 @@ module Sam
           end
         end
 
-        class ResponseRedactedThinkingBlock < Sam::BaseModel
+        class ResponseRedactedThinkingBlock < Sam::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :data
 
@@ -506,7 +506,7 @@ module Sam
       #   In non-streaming mode this value is always non-null. In streaming mode, it is
       #   null in the `message_start` event and non-null otherwise.
       module StopReason
-        extend Sam::Enum
+        extend Sam::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Sam::Models::MessageCreateResponse::StopReason) }
         OrSymbol =
@@ -522,7 +522,7 @@ module Sam
         end
       end
 
-      class Usage < Sam::BaseModel
+      class Usage < Sam::Internal::Type::BaseModel
         # The number of input tokens used to create the cache entry.
         sig { returns(T.nilable(Integer)) }
         attr_accessor :cache_creation_input_tokens

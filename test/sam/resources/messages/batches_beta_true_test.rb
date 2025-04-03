@@ -47,9 +47,9 @@ class Sam::Test::Resources::Messages::BatchesBetaTrueTest < Sam::Test::ResourceT
 
     assert_pattern do
       response => {
-        data: ^(Sam::ArrayOf[Sam::Models::Messages::BatchesBetaTrueListResponse::Data]),
+        data: ^(Sam::Internal::Type::ArrayOf[Sam::Models::Messages::BatchesBetaTrueListResponse::Data]),
         first_id: String | nil,
-        has_more: Sam::BooleanModel,
+        has_more: Sam::Internal::Type::BooleanModel,
         last_id: String | nil
       }
     end

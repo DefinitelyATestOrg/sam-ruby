@@ -31,10 +31,10 @@ module Sam
         def dump(value)
           case value
           in Array
-            value.map { Sam::Unknown.dump(_1) }
+            value.map { Sam::Internal::Type::Unknown.dump(_1) }
           in Hash
-            value.transform_values { Sam::Unknown.dump(_1) }
-          in Sam::BaseModel
+            value.transform_values { Sam::Internal::Type::Unknown.dump(_1) }
+          in Sam::Internal::Type::BaseModel
             value.class.dump(value)
           else
             value
@@ -64,7 +64,7 @@ module Sam
             in Hash
               type_info(spec.slice(:const, :enum, :union).first&.last)
             in true | false
-              -> { Sam::BooleanModel }
+              -> { Sam::Internal::Type::BooleanModel }
             in Sam::Internal::Type::Converter | Class | Symbol
               -> { spec }
             in NilClass | Integer | Float
@@ -209,7 +209,7 @@ module Sam
           #
           # @return [Object]
           def dump(target, value)
-            target.is_a?(Sam::Internal::Type::Converter) ? target.dump(value) : Sam::Unknown.dump(value)
+            target.is_a?(Sam::Internal::Type::Converter) ? target.dump(value) : Sam::Internal::Type::Unknown.dump(value)
           end
         end
       end

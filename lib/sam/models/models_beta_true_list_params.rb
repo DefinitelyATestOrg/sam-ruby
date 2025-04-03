@@ -3,7 +3,7 @@
 module Sam
   module Models
     # @see Sam::Resources::ModelsBetaTrue#list
-    class ModelsBetaTrueListParams < Sam::BaseModel
+    class ModelsBetaTrueListParams < Sam::Internal::Type::BaseModel
       # @!parse
       #   extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
@@ -80,7 +80,7 @@ module Sam
       #   #
       #   def initialize(after_id: nil, before_id: nil, limit: nil, anthropic_version: nil, x_api_key: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Sam::BaseModel) -> void
+      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
     end
   end
 end

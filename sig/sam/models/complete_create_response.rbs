@@ -9,7 +9,7 @@ module Sam
         type: :completion
       }
 
-    class CompleteCreateResponse < Sam::BaseModel
+    class CompleteCreateResponse < Sam::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor completion: String

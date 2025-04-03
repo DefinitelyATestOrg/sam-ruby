@@ -3,7 +3,7 @@ module Sam
     type model_retrieve_response =
       { id: String, created_at: Time, display_name: String, type: :model }
 
-    class ModelRetrieveResponse < Sam::BaseModel
+    class ModelRetrieveResponse < Sam::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor created_at: Time

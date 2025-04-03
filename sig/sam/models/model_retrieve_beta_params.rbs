@@ -4,7 +4,7 @@ module Sam
       { anthropic_version: String, x_api_key: String }
       & Sam::Internal::Type::request_parameters
 
-    class ModelRetrieveBetaParams < Sam::BaseModel
+    class ModelRetrieveBetaParams < Sam::Internal::Type::BaseModel
       extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
 

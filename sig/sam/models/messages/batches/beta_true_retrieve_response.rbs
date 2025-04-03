@@ -16,7 +16,7 @@ module Sam
             type: :message_batch
           }
 
-        class BetaTrueRetrieveResponse < Sam::BaseModel
+        class BetaTrueRetrieveResponse < Sam::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor archived_at: Time?
@@ -55,7 +55,7 @@ module Sam
           type processing_status = :in_progress | :canceling | :ended
 
           module ProcessingStatus
-            extend Sam::Enum
+            extend Sam::Internal::Type::Enum
 
             IN_PROGRESS: :in_progress
             CANCELING: :canceling
@@ -73,7 +73,7 @@ module Sam
               succeeded: Integer
             }
 
-          class RequestCounts < Sam::BaseModel
+          class RequestCounts < Sam::Internal::Type::BaseModel
             attr_accessor canceled: Integer
 
             attr_accessor errored: Integer

@@ -12,7 +12,7 @@ module Sam
         }
         & Sam::Internal::Type::request_parameters
 
-      class BatchListParams < Sam::BaseModel
+      class BatchListParams < Sam::Internal::Type::BaseModel
         extend Sam::Internal::Type::RequestParameters::Converter
         include Sam::Internal::Type::RequestParameters
 
