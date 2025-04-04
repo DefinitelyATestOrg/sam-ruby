@@ -209,7 +209,9 @@ module Sam
           #
           # @return [Object]
           def dump(target, value)
+            # rubocop:disable Layout/LineLength
             target.is_a?(Sam::Internal::Type::Converter) ? target.dump(value) : Sam::Internal::Type::Unknown.dump(value)
+            # rubocop:enable Layout/LineLength
           end
         end
       end
