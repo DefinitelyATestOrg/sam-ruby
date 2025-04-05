@@ -64,7 +64,7 @@ module Sam
             in Hash
               type_info(spec.slice(:const, :enum, :union).first&.last)
             in true | false
-              -> { Sam::Internal::Type::BooleanModel }
+              -> { Sam::Internal::Type::Boolean }
             in Sam::Internal::Type::Converter | Class | Symbol
               -> { spec }
             in NilClass | Integer | Float

@@ -49,7 +49,7 @@ class Sam::Test::Resources::Messages::BatchesBetaTrueTest < Sam::Test::ResourceT
       response => {
         data: ^(Sam::Internal::Type::ArrayOf[Sam::Models::Messages::BatchesBetaTrueListResponse::Data]),
         first_id: String | nil,
-        has_more: Sam::Internal::Type::BooleanModel,
+        has_more: Sam::Internal::Type::Boolean,
         last_id: String | nil
       }
     end
