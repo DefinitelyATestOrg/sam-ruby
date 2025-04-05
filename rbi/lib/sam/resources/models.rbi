@@ -32,9 +32,7 @@ module Sam
         #   Workspace.
         x_api_key: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List available models.
       #
       #   The Models API response can be used to determine which models are available for
@@ -74,9 +72,7 @@ module Sam
         #   Workspace.
         x_api_key: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get a specific model.
       #
       #   The Models API response can be used to determine information about a specific
@@ -106,13 +102,10 @@ module Sam
         #   Workspace.
         x_api_key: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Sam::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

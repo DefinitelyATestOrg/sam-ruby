@@ -37,8 +37,7 @@ module Sam
         params(id: String, completion: String, model: String, stop_reason: T.nilable(String), type: Symbol)
           .returns(T.attached_class)
       end
-      def self.new(id:, completion:, model:, stop_reason:, type: :completion)
-      end
+      def self.new(id:, completion:, model:, stop_reason:, type: :completion); end
 
       sig do
         override
@@ -50,8 +49,7 @@ module Sam
                      type: Symbol
                    })
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

@@ -379,7 +379,7 @@ module Sam
               optional :citations,
                        -> do
                          Sam::Internal::Type::ArrayOf[
-                         union: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation
+                           union: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation
                          ]
                        end,
                        nil?: true
@@ -876,7 +876,7 @@ module Sam
                     optional :citations,
                              -> do
                                Sam::Internal::Type::ArrayOf[
-                               union: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation
+                                 union: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation
                                ]
                              end,
                              nil?: true
@@ -1223,8 +1223,8 @@ module Sam
 
                 UnionMember1Array =
                   Sam::Internal::Type::ArrayOf[
-                union: -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1 }
-                ]
+                    union: -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1 }
+                  ]
               end
             end
 
@@ -1412,7 +1412,7 @@ module Sam
                         optional :citations,
                                  -> do
                                    Sam::Internal::Type::ArrayOf[
-                                   union: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation
+                                     union: Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation
                                    ]
                                  end,
                                  nil?: true
@@ -1759,8 +1759,8 @@ module Sam
 
                     UnionMember1Array =
                       Sam::Internal::Type::ArrayOf[
-                    union: -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1 }
-                    ]
+                        union: -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1 }
+                      ]
                   end
                 end
 

@@ -28,8 +28,7 @@ module Sam
         )
           .returns(T.attached_class)
       end
-      def self.new(data:, first_id:, has_more:, last_id:)
-      end
+      def self.new(data:, first_id:, has_more:, last_id:); end
 
       sig do
         override
@@ -42,8 +41,7 @@ module Sam
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Data < Sam::Internal::Type::BaseModel
         # Unique model identifier.
@@ -68,12 +66,10 @@ module Sam
         sig do
           params(id: String, created_at: Time, display_name: String, type: Symbol).returns(T.attached_class)
         end
-        def self.new(id:, created_at:, display_name:, type: :model)
-        end
+        def self.new(id:, created_at:, display_name:, type: :model); end
 
         sig { override.returns({id: String, created_at: Time, display_name: String, type: Symbol}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end
