@@ -8,7 +8,7 @@ module Sam
       # @abstract
       #
       # Ruby has no Boolean class; this is something for models to refer to.
-      class BooleanModel
+      class Boolean
         extend Sam::Internal::Type::Converter
 
         # @param other [Object]
@@ -19,7 +19,7 @@ module Sam
         # @param other [Object]
         #
         # @return [Boolean]
-        def self.==(other) = other.is_a?(Class) && other <= Sam::Internal::Type::BooleanModel
+        def self.==(other) = other.is_a?(Class) && other <= Sam::Internal::Type::Boolean
 
         class << self
           # @api private

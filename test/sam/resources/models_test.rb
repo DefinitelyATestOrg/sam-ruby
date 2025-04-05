@@ -31,7 +31,7 @@ class Sam::Test::Resources::ModelsTest < Sam::Test::ResourceTest
       response => {
         data: ^(Sam::Internal::Type::ArrayOf[Sam::Models::ModelListResponse::Data]),
         first_id: String | nil,
-        has_more: Sam::Internal::Type::BooleanModel,
+        has_more: Sam::Internal::Type::Boolean,
         last_id: String | nil
       }
     end

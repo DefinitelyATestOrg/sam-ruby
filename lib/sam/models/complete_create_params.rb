@@ -74,7 +74,7 @@ module Sam
       #     See [streaming](https://docs.anthropic.com/en/api/streaming) for details.
       #
       #   @return [Boolean, nil]
-      optional :stream, Sam::Internal::Type::BooleanModel
+      optional :stream, Sam::Internal::Type::Boolean
 
       # @!parse
       #   # @return [Boolean]
