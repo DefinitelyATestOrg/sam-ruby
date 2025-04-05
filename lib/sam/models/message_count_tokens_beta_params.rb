@@ -801,7 +801,7 @@ module Sam
               # @!attribute [r] is_error
               #
               #   @return [Boolean, nil]
-              optional :is_error, Sam::Internal::Type::BooleanModel
+              optional :is_error, Sam::Internal::Type::Boolean
 
               # @!parse
               #   # @return [Boolean]
@@ -1809,7 +1809,7 @@ module Sam
                 # @!attribute [r] enabled
                 #
                 #   @return [Boolean, nil]
-                optional :enabled, Sam::Internal::Type::BooleanModel
+                optional :enabled, Sam::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -2248,7 +2248,7 @@ module Sam
           #     use.
           #
           #   @return [Boolean, nil]
-          optional :disable_parallel_tool_use, Sam::Internal::Type::BooleanModel
+          optional :disable_parallel_tool_use, Sam::Internal::Type::Boolean
 
           # @!parse
           #   # @return [Boolean]
@@ -2278,7 +2278,7 @@ module Sam
           #     use.
           #
           #   @return [Boolean, nil]
-          optional :disable_parallel_tool_use, Sam::Internal::Type::BooleanModel
+          optional :disable_parallel_tool_use, Sam::Internal::Type::Boolean
 
           # @!parse
           #   # @return [Boolean]
@@ -2314,7 +2314,7 @@ module Sam
           #     use.
           #
           #   @return [Boolean, nil]
-          optional :disable_parallel_tool_use, Sam::Internal::Type::BooleanModel
+          optional :disable_parallel_tool_use, Sam::Internal::Type::Boolean
 
           # @!parse
           #   # @return [Boolean]
