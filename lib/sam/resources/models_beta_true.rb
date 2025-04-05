@@ -27,7 +27,10 @@ module Sam
           method: :get,
           path: "v1/models?beta=true",
           query: parsed.slice(*query_params),
-          headers: parsed.except(*query_params),
+          headers: parsed.except(*query_params).transform_keys(
+            anthropic_version: "anthropic-version",
+            x_api_key: "x-api-key"
+          ),
           model: Sam::Models::ModelsBetaTrueListResponse,
           options: options
         )

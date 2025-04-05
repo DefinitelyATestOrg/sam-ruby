@@ -32,12 +32,12 @@ module Sam
       # @see Sam::Models::CompleteCreateParams
       def create(params)
         parsed, options = Sam::Models::CompleteCreateParams.dump_request(params)
-        header_params = [:"anthropic-version", :"x-api-key"]
+        header_params = {anthropic_version: "anthropic-version", x_api_key: "x-api-key"}
         @client.request(
           method: :post,
           path: "v1/complete",
-          headers: parsed.slice(*header_params),
-          body: parsed.except(*header_params),
+          headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+          body: parsed.except(*header_params.keys),
           model: Sam::Models::CompleteCreateResponse,
           options: options
         )

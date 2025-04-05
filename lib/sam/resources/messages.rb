@@ -42,12 +42,13 @@ module Sam
       # @see Sam::Models::MessageCreateParams
       def create(params)
         parsed, options = Sam::Models::MessageCreateParams.dump_request(params)
-        header_params = [:"anthropic-beta", :"anthropic-version", :"x-api-key"]
+        header_params =
+          {anthropic_beta: "anthropic-beta", anthropic_version: "anthropic-version", x_api_key: "x-api-key"}
         @client.request(
           method: :post,
           path: "v1/messages",
-          headers: parsed.slice(*header_params),
-          body: parsed.except(*header_params),
+          headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+          body: parsed.except(*header_params.keys).transform_keys(system_: :system),
           model: Sam::Models::MessageCreateResponse,
           options: options
         )
@@ -79,12 +80,13 @@ module Sam
       # @see Sam::Models::MessageCountTokensParams
       def count_tokens(params)
         parsed, options = Sam::Models::MessageCountTokensParams.dump_request(params)
-        header_params = [:"anthropic-beta", :"anthropic-version", :"x-api-key"]
+        header_params =
+          {anthropic_beta: "anthropic-beta", anthropic_version: "anthropic-version", x_api_key: "x-api-key"}
         @client.request(
           method: :post,
           path: "v1/messages/count_tokens",
-          headers: parsed.slice(*header_params),
-          body: parsed.except(*header_params),
+          headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+          body: parsed.except(*header_params.keys).transform_keys(system_: :system),
           model: Sam::Models::MessageCountTokensResponse,
           options: options
         )
@@ -116,12 +118,13 @@ module Sam
       # @see Sam::Models::MessageCountTokensBetaParams
       def count_tokens_beta(params)
         parsed, options = Sam::Models::MessageCountTokensBetaParams.dump_request(params)
-        header_params = [:"anthropic-beta", :"anthropic-version", :"x-api-key"]
+        header_params =
+          {anthropic_beta: "anthropic-beta", anthropic_version: "anthropic-version", x_api_key: "x-api-key"}
         @client.request(
           method: :post,
           path: "v1/messages/count_tokens?beta=true",
-          headers: parsed.slice(*header_params),
-          body: parsed.except(*header_params),
+          headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+          body: parsed.except(*header_params.keys).transform_keys(system_: :system),
           model: Sam::Models::MessageCountTokensBetaResponse,
           options: options
         )
