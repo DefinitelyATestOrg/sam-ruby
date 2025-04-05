@@ -6,35 +6,35 @@ module Sam
       class BatchRetrieveResponse < Sam::Internal::Type::BaseModel
         # Unique object identifier.
         #
-        #   The format and length of IDs may change over time.
+        # The format and length of IDs may change over time.
         sig { returns(String) }
         attr_accessor :id
 
         # RFC 3339 datetime string representing the time at which the Message Batch was
-        #   archived and its results became unavailable.
+        # archived and its results became unavailable.
         sig { returns(T.nilable(Time)) }
         attr_accessor :archived_at
 
         # RFC 3339 datetime string representing the time at which cancellation was
-        #   initiated for the Message Batch. Specified only if cancellation was initiated.
+        # initiated for the Message Batch. Specified only if cancellation was initiated.
         sig { returns(T.nilable(Time)) }
         attr_accessor :cancel_initiated_at
 
         # RFC 3339 datetime string representing the time at which the Message Batch was
-        #   created.
+        # created.
         sig { returns(Time) }
         attr_accessor :created_at
 
         # RFC 3339 datetime string representing the time at which processing for the
-        #   Message Batch ended. Specified only once processing ends.
+        # Message Batch ended. Specified only once processing ends.
         #
-        #   Processing ends when every request in a Message Batch has either succeeded,
-        #   errored, canceled, or expired.
+        # Processing ends when every request in a Message Batch has either succeeded,
+        # errored, canceled, or expired.
         sig { returns(T.nilable(Time)) }
         attr_accessor :ended_at
 
         # RFC 3339 datetime string representing the time at which the Message Batch will
-        #   expire and end processing, which is 24 hours after creation.
+        # expire and end processing, which is 24 hours after creation.
         sig { returns(Time) }
         attr_accessor :expires_at
 
@@ -44,9 +44,9 @@ module Sam
 
         # Tallies requests within the Message Batch, categorized by their status.
         #
-        #   Requests start as `processing` and move to one of the other statuses only once
-        #   processing of the entire batch ends. The sum of all values always matches the
-        #   total number of requests in the batch.
+        # Requests start as `processing` and move to one of the other statuses only once
+        # processing of the entire batch ends. The sum of all values always matches the
+        # total number of requests in the batch.
         sig { returns(Sam::Models::Messages::BatchRetrieveResponse::RequestCounts) }
         attr_reader :request_counts
 
@@ -59,16 +59,16 @@ module Sam
         attr_writer :request_counts
 
         # URL to a `.jsonl` file containing the results of the Message Batch requests.
-        #   Specified only once processing ends.
+        # Specified only once processing ends.
         #
-        #   Results in the file are not guaranteed to be in the same order as requests. Use
-        #   the `custom_id` field to match results to requests.
+        # Results in the file are not guaranteed to be in the same order as requests. Use
+        # the `custom_id` field to match results to requests.
         sig { returns(T.nilable(String)) }
         attr_accessor :results_url
 
         # Object type.
         #
-        #   For Message Batches, this is always `"message_batch"`.
+        # For Message Batches, this is always `"message_batch"`.
         sig { returns(Symbol) }
         attr_accessor :type
 
@@ -140,19 +140,19 @@ module Sam
         class RequestCounts < Sam::Internal::Type::BaseModel
           # Number of requests in the Message Batch that have been canceled.
           #
-          #   This is zero until processing of the entire Message Batch has ended.
+          # This is zero until processing of the entire Message Batch has ended.
           sig { returns(Integer) }
           attr_accessor :canceled
 
           # Number of requests in the Message Batch that encountered an error.
           #
-          #   This is zero until processing of the entire Message Batch has ended.
+          # This is zero until processing of the entire Message Batch has ended.
           sig { returns(Integer) }
           attr_accessor :errored
 
           # Number of requests in the Message Batch that have expired.
           #
-          #   This is zero until processing of the entire Message Batch has ended.
+          # This is zero until processing of the entire Message Batch has ended.
           sig { returns(Integer) }
           attr_accessor :expired
 
@@ -162,15 +162,15 @@ module Sam
 
           # Number of requests in the Message Batch that have completed successfully.
           #
-          #   This is zero until processing of the entire Message Batch has ended.
+          # This is zero until processing of the entire Message Batch has ended.
           sig { returns(Integer) }
           attr_accessor :succeeded
 
           # Tallies requests within the Message Batch, categorized by their status.
           #
-          #   Requests start as `processing` and move to one of the other statuses only once
-          #   processing of the entire batch ends. The sum of all values always matches the
-          #   total number of requests in the batch.
+          # Requests start as `processing` and move to one of the other statuses only once
+          # processing of the entire batch ends. The sum of all values always matches the
+          # total number of requests in the batch.
           sig do
             params(
               canceled: Integer,

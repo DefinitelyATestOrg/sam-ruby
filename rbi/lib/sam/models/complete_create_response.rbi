@@ -5,7 +5,7 @@ module Sam
     class CompleteCreateResponse < Sam::Internal::Type::BaseModel
       # Unique object identifier.
       #
-      #   The format and length of IDs may change over time.
+      # The format and length of IDs may change over time.
       sig { returns(String) }
       attr_accessor :id
 
@@ -19,17 +19,17 @@ module Sam
 
       # The reason that we stopped.
       #
-      #   This may be one the following values:
+      # This may be one the following values:
       #
-      #   - `"stop_sequence"`: we reached a stop sequence — either provided by you via the
-      #     `stop_sequences` parameter, or a stop sequence built into the model
-      #   - `"max_tokens"`: we exceeded `max_tokens_to_sample` or the model's maximum
+      # - `"stop_sequence"`: we reached a stop sequence — either provided by you via the
+      #   `stop_sequences` parameter, or a stop sequence built into the model
+      # - `"max_tokens"`: we exceeded `max_tokens_to_sample` or the model's maximum
       sig { returns(T.nilable(String)) }
       attr_accessor :stop_reason
 
       # Object type.
       #
-      #   For Text Completions, this is always `"completion"`.
+      # For Text Completions, this is always `"completion"`.
       sig { returns(Symbol) }
       attr_accessor :type
 

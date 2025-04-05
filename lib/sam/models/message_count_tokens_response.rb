@@ -6,7 +6,7 @@ module Sam
     class MessageCountTokensResponse < Sam::Internal::Type::BaseModel
       # @!attribute input_tokens
       #   The total number of tokens across the provided list of messages, system prompt,
-      #     and tools.
+      #   and tools.
       #
       #   @return [Integer]
       required :input_tokens, Integer

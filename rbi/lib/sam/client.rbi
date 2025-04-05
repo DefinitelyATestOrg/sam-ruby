@@ -49,7 +49,7 @@ module Sam
     end
     def self.new(
       # API key used for authenticating requests via the Authorization header Defaults
-      #   to `ENV["API_KEY"]`
+      # to `ENV["API_KEY"]`
       api_key: ENV["API_KEY"],
       # Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
       base_url: nil,

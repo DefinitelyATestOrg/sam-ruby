@@ -4,12 +4,12 @@ module Sam
   module Resources
     class MessagesBetaTrue
       # Send a structured list of input messages with text and/or image content, and the
-      #   model will generate the next message in the conversation.
+      # model will generate the next message in the conversation.
       #
-      #   The Messages API can be used for either single queries or stateless multi-turn
-      #   conversations.
+      # The Messages API can be used for either single queries or stateless multi-turn
+      # conversations.
       #
-      #   Learn more about the Messages API in our [user guide](/en/docs/initial-setup)
+      # Learn more about the Messages API in our [user guide](/en/docs/initial-setup)
       #
       # @overload create(max_tokens:, messages:, model:, metadata: nil, stop_sequences: nil, stream: nil, system_: nil, temperature: nil, thinking: nil, tool_choice: nil, tools: nil, top_k: nil, top_p: nil, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
       #

@@ -43,7 +43,7 @@ module Sam
     # Creates and returns a new client for interacting with the API.
     #
     # @param api_key [String, nil] API key used for authenticating requests via the Authorization header Defaults
-    #   to `ENV["API_KEY"]`
+    # to `ENV["API_KEY"]`
     #
     # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
     #

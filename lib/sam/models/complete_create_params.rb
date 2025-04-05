@@ -11,8 +11,8 @@ module Sam
       # @!attribute max_tokens_to_sample
       #   The maximum number of tokens to generate before stopping.
       #
-      #     Note that our models may stop _before_ reaching this maximum. This parameter
-      #     only specifies the absolute maximum number of tokens to generate.
+      #   Note that our models may stop _before_ reaching this maximum. This parameter
+      #   only specifies the absolute maximum number of tokens to generate.
       #
       #   @return [Integer]
       required :max_tokens_to_sample, Integer
@@ -20,8 +20,8 @@ module Sam
       # @!attribute model
       #   The model that will complete your prompt.
       #
-      #     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional
-      #     details and options.
+      #   See [models](https://docs.anthropic.com/en/docs/models-overview) for additional
+      #   details and options.
       #
       #   @return [String]
       required :model, String
@@ -29,17 +29,17 @@ module Sam
       # @!attribute prompt
       #   The prompt that you want Claude to complete.
       #
-      #     For proper response generation you will need to format your prompt using
-      #     alternating `\n\nHuman:` and `\n\nAssistant:` conversational turns. For example:
+      #   For proper response generation you will need to format your prompt using
+      #   alternating `\n\nHuman:` and `\n\nAssistant:` conversational turns. For example:
       #
-      #     ```
-      #     "\n\nHuman: {userQuestion}\n\nAssistant:"
-      #     ```
+      #   ```
+      #   "\n\nHuman: {userQuestion}\n\nAssistant:"
+      #   ```
       #
-      #     See [prompt validation](https://docs.anthropic.com/en/api/prompt-validation) and
-      #     our guide to
-      #     [prompt design](https://docs.anthropic.com/en/docs/intro-to-prompting) for more
-      #     details.
+      #   See [prompt validation](https://docs.anthropic.com/en/api/prompt-validation) and
+      #   our guide to
+      #   [prompt design](https://docs.anthropic.com/en/docs/intro-to-prompting) for more
+      #   details.
       #
       #   @return [String]
       required :prompt, String
@@ -57,9 +57,9 @@ module Sam
       # @!attribute [r] stop_sequences
       #   Sequences that will cause the model to stop generating.
       #
-      #     Our models stop on `"\n\nHuman:"`, and may include additional built-in stop
-      #     sequences in the future. By providing the stop_sequences parameter, you may
-      #     include additional strings that will cause the model to stop generating.
+      #   Our models stop on `"\n\nHuman:"`, and may include additional built-in stop
+      #   sequences in the future. By providing the stop_sequences parameter, you may
+      #   include additional strings that will cause the model to stop generating.
       #
       #   @return [Array<String>, nil]
       optional :stop_sequences, Sam::Internal::Type::ArrayOf[String]
@@ -71,7 +71,7 @@ module Sam
       # @!attribute [r] stream
       #   Whether to incrementally stream the response using server-sent events.
       #
-      #     See [streaming](https://docs.anthropic.com/en/api/streaming) for details.
+      #   See [streaming](https://docs.anthropic.com/en/api/streaming) for details.
       #
       #   @return [Boolean, nil]
       optional :stream, Sam::Internal::Type::Boolean
@@ -83,12 +83,12 @@ module Sam
       # @!attribute [r] temperature
       #   Amount of randomness injected into the response.
       #
-      #     Defaults to `1.0`. Ranges from `0.0` to `1.0`. Use `temperature` closer to `0.0`
-      #     for analytical / multiple choice, and closer to `1.0` for creative and
-      #     generative tasks.
+      #   Defaults to `1.0`. Ranges from `0.0` to `1.0`. Use `temperature` closer to `0.0`
+      #   for analytical / multiple choice, and closer to `1.0` for creative and
+      #   generative tasks.
       #
-      #     Note that even with `temperature` of `0.0`, the results will not be fully
-      #     deterministic.
+      #   Note that even with `temperature` of `0.0`, the results will not be fully
+      #   deterministic.
       #
       #   @return [Float, nil]
       optional :temperature, Float
@@ -100,11 +100,11 @@ module Sam
       # @!attribute [r] top_k
       #   Only sample from the top K options for each subsequent token.
       #
-      #     Used to remove "long tail" low probability responses.
-      #     [Learn more technical details here](https://towardsdatascience.com/how-to-sample-from-language-models-682bceb97277).
+      #   Used to remove "long tail" low probability responses.
+      #   [Learn more technical details here](https://towardsdatascience.com/how-to-sample-from-language-models-682bceb97277).
       #
-      #     Recommended for advanced use cases only. You usually only need to use
-      #     `temperature`.
+      #   Recommended for advanced use cases only. You usually only need to use
+      #   `temperature`.
       #
       #   @return [Integer, nil]
       optional :top_k, Integer
@@ -116,13 +116,13 @@ module Sam
       # @!attribute [r] top_p
       #   Use nucleus sampling.
       #
-      #     In nucleus sampling, we compute the cumulative distribution over all the options
-      #     for each subsequent token in decreasing probability order and cut it off once it
-      #     reaches a particular probability specified by `top_p`. You should either alter
-      #     `temperature` or `top_p`, but not both.
+      #   In nucleus sampling, we compute the cumulative distribution over all the options
+      #   for each subsequent token in decreasing probability order and cut it off once it
+      #   reaches a particular probability specified by `top_p`. You should either alter
+      #   `temperature` or `top_p`, but not both.
       #
-      #     Recommended for advanced use cases only. You usually only need to use
-      #     `temperature`.
+      #   Recommended for advanced use cases only. You usually only need to use
+      #   `temperature`.
       #
       #   @return [Float, nil]
       optional :top_p, Float
@@ -134,8 +134,8 @@ module Sam
       # @!attribute [r] anthropic_version
       #   The version of the Anthropic API you want to use.
       #
-      #     Read more about versioning and our version history
-      #     [here](https://docs.anthropic.com/en/api/versioning).
+      #   Read more about versioning and our version history
+      #   [here](https://docs.anthropic.com/en/api/versioning).
       #
       #   @return [String, nil]
       optional :anthropic_version, String, api_name: :"anthropic-version"
@@ -147,10 +147,10 @@ module Sam
       # @!attribute [r] x_api_key
       #   Your unique API key for authentication.
       #
-      #     This key is required in the header of all API requests, to authenticate your
-      #     account and access Anthropic's services. Get your API key through the
-      #     [Console](https://console.anthropic.com/settings/keys). Each key is scoped to a
-      #     Workspace.
+      #   This key is required in the header of all API requests, to authenticate your
+      #   account and access Anthropic's services. Get your API key through the
+      #   [Console](https://console.anthropic.com/settings/keys). Each key is scoped to a
+      #   Workspace.
       #
       #   @return [String, nil]
       optional :x_api_key, String, api_name: :"x-api-key"
@@ -197,9 +197,9 @@ module Sam
         # @!attribute user_id
         #   An external identifier for the user who is associated with the request.
         #
-        #     This should be a uuid, hash value, or other opaque identifier. Anthropic may use
-        #     this id to help detect abuse. Do not include any identifying information such as
-        #     name, email address, or phone number.
+        #   This should be a uuid, hash value, or other opaque identifier. Anthropic may use
+        #   this id to help detect abuse. Do not include any identifying information such as
+        #   name, email address, or phone number.
         #
         #   @return [String, nil]
         optional :user_id, String, nil?: true
