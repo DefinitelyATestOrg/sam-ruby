@@ -235,7 +235,7 @@ module Sam
                   required :citations,
                            -> do
                              Sam::Internal::Type::ArrayOf[
-                             union: Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation
+                               union: Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation
                              ]
                            end,
                            nil?: true

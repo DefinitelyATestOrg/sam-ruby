@@ -42,12 +42,12 @@ module Sam
             Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceNone
           ),
           tools: T::Array[
-          T.any(
-            Sam::Models::MessageCreateParams::Tool::Tool,
-            Sam::Internal::AnyHash,
-            Sam::Models::MessageCreateParams::Tool::BashTool20250124,
-            Sam::Models::MessageCreateParams::Tool::TextEditor20250124
-          )
+            T.any(
+              Sam::Models::MessageCreateParams::Tool::Tool,
+              Sam::Internal::AnyHash,
+              Sam::Models::MessageCreateParams::Tool::BashTool20250124,
+              Sam::Models::MessageCreateParams::Tool::TextEditor20250124
+            )
           ],
           top_k: Integer,
           top_p: Float,
@@ -311,9 +311,7 @@ module Sam
         #   Workspace.
         x_api_key: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Count the number of tokens in a Message.
       #
       #   The Token Count API can be used to count the number of tokens in a Message,
@@ -342,12 +340,12 @@ module Sam
             Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceNone
           ),
           tools: T::Array[
-          T.any(
-            Sam::Models::MessageCountTokensParams::Tool::Tool,
-            Sam::Internal::AnyHash,
-            Sam::Models::MessageCountTokensParams::Tool::BashTool20250124,
-            Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124
-          )
+            T.any(
+              Sam::Models::MessageCountTokensParams::Tool::Tool,
+              Sam::Internal::AnyHash,
+              Sam::Models::MessageCountTokensParams::Tool::BashTool20250124,
+              Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124
+            )
           ],
           anthropic_beta: T::Array[String],
           anthropic_version: String,
@@ -556,9 +554,7 @@ module Sam
         #   Workspace.
         x_api_key: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Count the number of tokens in a Message.
       #
       #   The Token Count API can be used to count the number of tokens in a Message,
@@ -587,16 +583,16 @@ module Sam
             Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceNone
           ),
           tools: T::Array[
-          T.any(
-            Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool,
-            Sam::Internal::AnyHash,
-            Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022,
-            Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022,
-            Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022,
-            Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124,
-            Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124,
-            Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124
-          )
+            T.any(
+              Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool,
+              Sam::Internal::AnyHash,
+              Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022,
+              Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022,
+              Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022,
+              Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124,
+              Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124,
+              Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124
+            )
           ],
           anthropic_beta: T::Array[String],
           anthropic_version: String,
@@ -805,13 +801,10 @@ module Sam
         #   Workspace.
         x_api_key: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Sam::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

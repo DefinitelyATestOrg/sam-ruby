@@ -545,7 +545,7 @@ module Sam
                     optional :citations,
                              -> do
                                Sam::Internal::Type::ArrayOf[
-                               union: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation
+                                 union: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestTextBlock::Citation
                                ]
                              end,
                              nil?: true
@@ -1042,7 +1042,7 @@ module Sam
                           optional :citations,
                                    -> do
                                      Sam::Internal::Type::ArrayOf[
-                                     union: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation
+                                       union: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation
                                      ]
                                    end,
                                    nil?: true
@@ -1389,8 +1389,8 @@ module Sam
 
                       UnionMember1Array =
                         Sam::Internal::Type::ArrayOf[
-                      union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1 }
-                      ]
+                          union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1 }
+                        ]
                     end
                   end
 
@@ -1578,7 +1578,7 @@ module Sam
                               optional :citations,
                                        -> do
                                          Sam::Internal::Type::ArrayOf[
-                                         union: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation
+                                           union: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation
                                          ]
                                        end,
                                        nil?: true
@@ -1925,8 +1925,8 @@ module Sam
 
                           UnionMember1Array =
                             Sam::Internal::Type::ArrayOf[
-                          union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1 }
-                          ]
+                              union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1 }
+                            ]
                         end
                       end
 

@@ -36,16 +36,16 @@ module Sam
             Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceNone
           ),
           tools: T::Array[
-          T.any(
-            Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool,
-            Sam::Internal::AnyHash,
-            Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022,
-            Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022,
-            Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022,
-            Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124,
-            Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124,
-            Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124
-          )
+            T.any(
+              Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool,
+              Sam::Internal::AnyHash,
+              Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022,
+              Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022,
+              Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022,
+              Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124,
+              Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124,
+              Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124
+            )
           ],
           top_k: Integer,
           top_p: Float,
@@ -309,13 +309,10 @@ module Sam
         #   Workspace.
         x_api_key: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Sam::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end
