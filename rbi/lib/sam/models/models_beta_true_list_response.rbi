@@ -7,7 +7,7 @@ module Sam
       attr_accessor :data
 
       # First ID in the `data` list. Can be used as the `before_id` for the previous
-      #   page.
+      # page.
       sig { returns(T.nilable(String)) }
       attr_accessor :first_id
 
@@ -49,7 +49,7 @@ module Sam
         attr_accessor :id
 
         # RFC 3339 datetime string representing the time at which the model was released.
-        #   May be set to an epoch value if the release date is unknown.
+        # May be set to an epoch value if the release date is unknown.
         sig { returns(Time) }
         attr_accessor :created_at
 
@@ -59,7 +59,7 @@ module Sam
 
         # Object type.
         #
-        #   For Models, this is always `"model"`.
+        # For Models, this is always `"model"`.
         sig { returns(Symbol) }
         attr_accessor :type
 

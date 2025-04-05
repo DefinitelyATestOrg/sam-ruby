@@ -8,8 +8,8 @@ module Sam
 
       # The version of the Anthropic API you want to use.
       #
-      #   Read more about versioning and our version history
-      #   [here](https://docs.anthropic.com/en/api/versioning).
+      # Read more about versioning and our version history
+      # [here](https://docs.anthropic.com/en/api/versioning).
       sig { returns(T.nilable(String)) }
       attr_reader :anthropic_version
 
@@ -18,10 +18,10 @@ module Sam
 
       # Your unique API key for authentication.
       #
-      #   This key is required in the header of all API requests, to authenticate your
-      #   account and access Anthropic's services. Get your API key through the
-      #   [Console](https://console.anthropic.com/settings/keys). Each key is scoped to a
-      #   Workspace.
+      # This key is required in the header of all API requests, to authenticate your
+      # account and access Anthropic's services. Get your API key through the
+      # [Console](https://console.anthropic.com/settings/keys). Each key is scoped to a
+      # Workspace.
       sig { returns(T.nilable(String)) }
       attr_reader :x_api_key
 

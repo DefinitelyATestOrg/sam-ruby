@@ -6,11 +6,11 @@ module Sam
       class Batches
         class BetaTrue
           # This endpoint is idempotent and can be used to poll for Message Batch
-          #   completion. To access the results of a Message Batch, make a request to the
-          #   `results_url` field in the response.
+          # completion. To access the results of a Message Batch, make a request to the
+          # `results_url` field in the response.
           #
-          #   Learn more about the Message Batches API in our
-          #   [user guide](/en/docs/build-with-claude/batch-processing)
+          # Learn more about the Message Batches API in our
+          # [user guide](/en/docs/build-with-claude/batch-processing)
           #
           # @overload retrieve(message_batch_id, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
           #
@@ -40,11 +40,11 @@ module Sam
 
           # Delete a Message Batch.
           #
-          #   Message Batches can only be deleted once they've finished processing. If you'd
-          #   like to delete an in-progress batch, you must first cancel it.
+          # Message Batches can only be deleted once they've finished processing. If you'd
+          # like to delete an in-progress batch, you must first cancel it.
           #
-          #   Learn more about the Message Batches API in our
-          #   [user guide](/en/docs/build-with-claude/batch-processing)
+          # Learn more about the Message Batches API in our
+          # [user guide](/en/docs/build-with-claude/batch-processing)
           #
           # @overload delete(message_batch_id, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
           #

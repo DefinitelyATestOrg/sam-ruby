@@ -10,12 +10,12 @@ module Sam
       attr_reader :batches_beta_true
 
       # Send a structured list of input messages with text and/or image content, and the
-      #   model will generate the next message in the conversation.
+      # model will generate the next message in the conversation.
       #
-      #   The Messages API can be used for either single queries or stateless multi-turn
-      #   conversations.
+      # The Messages API can be used for either single queries or stateless multi-turn
+      # conversations.
       #
-      #   Learn more about the Messages API in our [user guide](/en/docs/initial-setup)
+      # Learn more about the Messages API in our [user guide](/en/docs/initial-setup)
       #
       # @overload create(max_tokens:, messages:, model:, metadata: nil, stop_sequences: nil, stream: nil, system_: nil, temperature: nil, thinking: nil, tool_choice: nil, tools: nil, top_k: nil, top_p: nil, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
       #
@@ -56,11 +56,11 @@ module Sam
 
       # Count the number of tokens in a Message.
       #
-      #   The Token Count API can be used to count the number of tokens in a Message,
-      #   including tools, images, and documents, without creating it.
+      # The Token Count API can be used to count the number of tokens in a Message,
+      # including tools, images, and documents, without creating it.
       #
-      #   Learn more about token counting in our
-      #   [user guide](/en/docs/build-with-claude/token-counting)
+      # Learn more about token counting in our
+      # [user guide](/en/docs/build-with-claude/token-counting)
       #
       # @overload count_tokens(messages:, model:, system_: nil, thinking: nil, tool_choice: nil, tools: nil, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
       #
@@ -94,11 +94,11 @@ module Sam
 
       # Count the number of tokens in a Message.
       #
-      #   The Token Count API can be used to count the number of tokens in a Message,
-      #   including tools, images, and documents, without creating it.
+      # The Token Count API can be used to count the number of tokens in a Message,
+      # including tools, images, and documents, without creating it.
       #
-      #   Learn more about token counting in our
-      #   [user guide](/en/docs/build-with-claude/token-counting)
+      # Learn more about token counting in our
+      # [user guide](/en/docs/build-with-claude/token-counting)
       #
       # @overload count_tokens_beta(messages:, model:, system_: nil, thinking: nil, tool_choice: nil, tools: nil, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
       #
