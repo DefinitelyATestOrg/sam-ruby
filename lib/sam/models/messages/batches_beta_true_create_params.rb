@@ -549,7 +549,7 @@ module Sam
                     optional :citations,
                              -> do
                                Sam::Internal::Type::ArrayOf[
-                               union: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation
+                                 union: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestTextBlock::Citation
                                ]
                              end,
                              nil?: true
@@ -1046,7 +1046,7 @@ module Sam
                           optional :citations,
                                    -> do
                                      Sam::Internal::Type::ArrayOf[
-                                     union: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation
+                                       union: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation
                                      ]
                                    end,
                                    nil?: true
@@ -1393,8 +1393,8 @@ module Sam
 
                       UnionMember1Array =
                         Sam::Internal::Type::ArrayOf[
-                      union: -> { Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1 }
-                      ]
+                          union: -> { Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1 }
+                        ]
                     end
                   end
 
@@ -1582,7 +1582,7 @@ module Sam
                               optional :citations,
                                        -> do
                                          Sam::Internal::Type::ArrayOf[
-                                         union: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation
+                                           union: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation
                                          ]
                                        end,
                                        nil?: true
@@ -1929,8 +1929,8 @@ module Sam
 
                           UnionMember1Array =
                             Sam::Internal::Type::ArrayOf[
-                          union: -> { Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1 }
-                          ]
+                              union: -> { Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1 }
+                            ]
                         end
                       end
 
@@ -2051,8 +2051,8 @@ module Sam
 
                 UnionMember1Array =
                   Sam::Internal::Type::ArrayOf[
-                union: -> { Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1 }
-                ]
+                    union: -> { Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1 }
+                  ]
               end
 
               # @see Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message#role

@@ -98,9 +98,7 @@ module Sam
           request_counts:,
           results_url:,
           type: :message_batch
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -118,8 +116,7 @@ module Sam
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Processing status of the Message Batch.
         module ProcessingStatus
@@ -137,8 +134,7 @@ module Sam
           ENDED = T.let(:ended, Sam::Models::Messages::BatchCancelBetaResponse::ProcessingStatus::TaggedSymbol)
 
           sig { override.returns(T::Array[Sam::Models::Messages::BatchCancelBetaResponse::ProcessingStatus::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class RequestCounts < Sam::Internal::Type::BaseModel
@@ -185,8 +181,7 @@ module Sam
             )
               .returns(T.attached_class)
           end
-          def self.new(canceled:, errored:, expired:, processing:, succeeded:)
-          end
+          def self.new(canceled:, errored:, expired:, processing:, succeeded:); end
 
           sig do
             override
@@ -198,8 +193,7 @@ module Sam
                          succeeded: Integer
                        })
           end
-          def to_hash
-          end
+          def to_hash; end
         end
       end
     end

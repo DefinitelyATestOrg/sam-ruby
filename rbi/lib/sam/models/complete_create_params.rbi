@@ -157,9 +157,7 @@ module Sam
         anthropic_version: nil,
         x_api_key: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -179,8 +177,7 @@ module Sam
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Metadata < Sam::Internal::Type::BaseModel
         # An external identifier for the user who is associated with the request.
@@ -193,12 +190,10 @@ module Sam
 
         # An object describing metadata about the request.
         sig { params(user_id: T.nilable(String)).returns(T.attached_class) }
-        def self.new(user_id: nil)
-        end
+        def self.new(user_id: nil); end
 
         sig { override.returns({user_id: T.nilable(String)}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

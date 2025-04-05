@@ -257,11 +257,11 @@ module Sam
         returns(
           T.nilable(
             T::Array[
-            T.any(
-              Sam::Models::MessageCountTokensParams::Tool::Tool,
-              Sam::Models::MessageCountTokensParams::Tool::BashTool20250124,
-              Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124
-            )
+              T.any(
+                Sam::Models::MessageCountTokensParams::Tool::Tool,
+                Sam::Models::MessageCountTokensParams::Tool::BashTool20250124,
+                Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124
+              )
             ]
           )
         )
@@ -271,12 +271,12 @@ module Sam
       sig do
         params(
           tools: T::Array[
-          T.any(
-            Sam::Models::MessageCountTokensParams::Tool::Tool,
-            Sam::Internal::AnyHash,
-            Sam::Models::MessageCountTokensParams::Tool::BashTool20250124,
-            Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124
-          )
+            T.any(
+              Sam::Models::MessageCountTokensParams::Tool::Tool,
+              Sam::Internal::AnyHash,
+              Sam::Models::MessageCountTokensParams::Tool::BashTool20250124,
+              Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124
+            )
           ]
         )
           .void
@@ -336,12 +336,12 @@ module Sam
             Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceNone
           ),
           tools: T::Array[
-          T.any(
-            Sam::Models::MessageCountTokensParams::Tool::Tool,
-            Sam::Internal::AnyHash,
-            Sam::Models::MessageCountTokensParams::Tool::BashTool20250124,
-            Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124
-          )
+            T.any(
+              Sam::Models::MessageCountTokensParams::Tool::Tool,
+              Sam::Internal::AnyHash,
+              Sam::Models::MessageCountTokensParams::Tool::BashTool20250124,
+              Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124
+            )
           ],
           anthropic_beta: T::Array[String],
           anthropic_version: String,
@@ -361,9 +361,7 @@ module Sam
         anthropic_version: nil,
         x_api_key: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -382,11 +380,11 @@ module Sam
                 Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceNone
               ),
               tools: T::Array[
-              T.any(
-                Sam::Models::MessageCountTokensParams::Tool::Tool,
-                Sam::Models::MessageCountTokensParams::Tool::BashTool20250124,
-                Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124
-              )
+                T.any(
+                  Sam::Models::MessageCountTokensParams::Tool::Tool,
+                  Sam::Models::MessageCountTokensParams::Tool::BashTool20250124,
+                  Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124
+                )
               ],
               anthropic_beta: T::Array[String],
               anthropic_version: String,
@@ -395,8 +393,7 @@ module Sam
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Message < Sam::Internal::Type::BaseModel
         sig do
@@ -404,15 +401,15 @@ module Sam
             T.any(
               String,
               T::Array[
-              T.any(
-                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock,
-                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock,
-                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock,
-                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock,
-                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock,
-                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestThinkingBlock,
-                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
-              )
+                T.any(
+                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock,
+                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock,
+                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock,
+                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock,
+                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock,
+                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestThinkingBlock,
+                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
+                )
               ]
             )
           )
@@ -427,24 +424,23 @@ module Sam
             content: T.any(
               String,
               T::Array[
-              T.any(
-                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock,
-                Sam::Internal::AnyHash,
-                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock,
-                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock,
-                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock,
-                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock,
-                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestThinkingBlock,
-                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
-              )
+                T.any(
+                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock,
+                  Sam::Internal::AnyHash,
+                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock,
+                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock,
+                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock,
+                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock,
+                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestThinkingBlock,
+                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
+                )
               ]
             ),
             role: Sam::Models::MessageCountTokensParams::Message::Role::OrSymbol
           )
             .returns(T.attached_class)
         end
-        def self.new(content:, role:)
-        end
+        def self.new(content:, role:); end
 
         sig do
           override
@@ -453,23 +449,22 @@ module Sam
                 content: T.any(
                   String,
                   T::Array[
-                  T.any(
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock,
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock,
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock,
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock,
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock,
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestThinkingBlock,
-                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
-                  )
+                    T.any(
+                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock,
+                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock,
+                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock,
+                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock,
+                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock,
+                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestThinkingBlock,
+                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
+                    )
                   ]
                 ),
                 role: Sam::Models::MessageCountTokensParams::Message::Role::OrSymbol
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module Content
           extend Sam::Internal::Type::Union
@@ -510,11 +505,11 @@ module Sam
                 returns(
                   T.nilable(
                     T::Array[
-                    T.any(
-                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                    )
+                      T.any(
+                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
+                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
+                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
+                      )
                     ]
                   )
                 )
@@ -532,20 +527,19 @@ module Sam
                   ),
                   citations: T.nilable(
                     T::Array[
-                    T.any(
-                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                      Sam::Internal::AnyHash,
-                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                    )
+                      T.any(
+                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
+                        Sam::Internal::AnyHash,
+                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
+                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
+                      )
                     ]
                   ),
                   type: Symbol
                 )
                   .returns(T.attached_class)
               end
-              def self.new(text:, cache_control: nil, citations: nil, type: :text)
-              end
+              def self.new(text:, cache_control: nil, citations: nil, type: :text); end
 
               sig do
                 override
@@ -558,30 +552,27 @@ module Sam
                       ),
                       citations: T.nilable(
                         T::Array[
-                        T.any(
-                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                        )
+                          T.any(
+                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
+                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
+                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
+                          )
                         ]
                       )
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class CacheControl < Sam::Internal::Type::BaseModel
                 sig { returns(Symbol) }
                 attr_accessor :type
 
                 sig { params(type: Symbol).returns(T.attached_class) }
-                def self.new(type: :ephemeral)
-                end
+                def self.new(type: :ephemeral); end
 
                 sig { override.returns({type: Symbol}) }
-                def to_hash
-                end
+                def to_hash; end
               end
 
               module Citation
@@ -640,8 +631,7 @@ module Sam
                         }
                       )
                   end
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 class RequestPageLocationCitation < Sam::Internal::Type::BaseModel
@@ -697,8 +687,7 @@ module Sam
                         }
                       )
                   end
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 class RequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
@@ -738,9 +727,7 @@ module Sam
                     end_block_index:,
                     start_block_index:,
                     type: :content_block_location
-                  )
-                  end
-
+                  ); end
                   sig do
                     override
                       .returns(
@@ -754,8 +741,7 @@ module Sam
                         }
                       )
                   end
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 sig do
@@ -764,8 +750,7 @@ module Sam
                       [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]
                     )
                 end
-                def self.variants
-                end
+                def self.variants; end
               end
             end
 
@@ -822,8 +807,7 @@ module Sam
                 )
                   .returns(T.attached_class)
               end
-              def self.new(source:, cache_control: nil, type: :image)
-              end
+              def self.new(source:, cache_control: nil, type: :image); end
 
               sig do
                 override
@@ -840,8 +824,7 @@ module Sam
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               module Source
                 extend Sam::Internal::Type::Union
@@ -868,8 +851,7 @@ module Sam
                     )
                       .returns(T.attached_class)
                   end
-                  def self.new(data:, media_type:, type: :base64)
-                  end
+                  def self.new(data:, media_type:, type: :base64); end
 
                   sig do
                     override
@@ -881,8 +863,7 @@ module Sam
                         }
                       )
                   end
-                  def to_hash
-                  end
+                  def to_hash; end
 
                   module MediaType
                     extend Sam::Internal::Type::Enum
@@ -925,12 +906,11 @@ module Sam
                       override
                         .returns(
                           T::Array[
-                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
+                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                           ]
                         )
                     end
-                    def self.values
-                    end
+                    def self.values; end
                   end
                 end
 
@@ -942,12 +922,10 @@ module Sam
                   attr_accessor :url
 
                   sig { params(url: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(url:, type: :url)
-                  end
+                  def self.new(url:, type: :url); end
 
                   sig { override.returns({type: Symbol, url: String}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 sig do
@@ -956,8 +934,7 @@ module Sam
                       [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
                     )
                 end
-                def self.variants
-                end
+                def self.variants; end
               end
 
               class CacheControl < Sam::Internal::Type::BaseModel
@@ -965,12 +942,10 @@ module Sam
                 attr_accessor :type
 
                 sig { params(type: Symbol).returns(T.attached_class) }
-                def self.new(type: :ephemeral)
-                end
+                def self.new(type: :ephemeral); end
 
                 sig { override.returns({type: Symbol}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -1024,8 +999,7 @@ module Sam
                 )
                   .returns(T.attached_class)
               end
-              def self.new(id:, input:, name:, cache_control: nil, type: :tool_use)
-              end
+              def self.new(id:, input:, name:, cache_control: nil, type: :tool_use); end
 
               sig do
                 override
@@ -1041,20 +1015,17 @@ module Sam
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class CacheControl < Sam::Internal::Type::BaseModel
                 sig { returns(Symbol) }
                 attr_accessor :type
 
                 sig { params(type: Symbol).returns(T.attached_class) }
-                def self.new(type: :ephemeral)
-                end
+                def self.new(type: :ephemeral); end
 
                 sig { override.returns({type: Symbol}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -1093,10 +1064,10 @@ module Sam
                     T.any(
                       String,
                       T::Array[
-                      T.any(
-                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
-                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
-                      )
+                        T.any(
+                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
+                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
+                        )
                       ]
                     )
                   )
@@ -1109,11 +1080,11 @@ module Sam
                   content: T.any(
                     String,
                     T::Array[
-                    T.any(
-                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
-                      Sam::Internal::AnyHash,
-                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
-                    )
+                      T.any(
+                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
+                        Sam::Internal::AnyHash,
+                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
+                      )
                     ]
                   )
                 )
@@ -1139,11 +1110,11 @@ module Sam
                   content: T.any(
                     String,
                     T::Array[
-                    T.any(
-                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
-                      Sam::Internal::AnyHash,
-                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
-                    )
+                      T.any(
+                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
+                        Sam::Internal::AnyHash,
+                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
+                      )
                     ]
                   ),
                   is_error: T::Boolean,
@@ -1166,30 +1137,27 @@ module Sam
                       content: T.any(
                         String,
                         T::Array[
-                        T.any(
-                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
-                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
-                        )
+                          T.any(
+                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
+                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
+                          )
                         ]
                       ),
                       is_error: T::Boolean
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class CacheControl < Sam::Internal::Type::BaseModel
                 sig { returns(Symbol) }
                 attr_accessor :type
 
                 sig { params(type: Symbol).returns(T.attached_class) }
-                def self.new(type: :ephemeral)
-                end
+                def self.new(type: :ephemeral); end
 
                 sig { override.returns({type: Symbol}) }
-                def to_hash
-                end
+                def to_hash; end
               end
 
               module Content
@@ -1231,11 +1199,11 @@ module Sam
                       returns(
                         T.nilable(
                           T::Array[
-                          T.any(
-                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                          )
+                            T.any(
+                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
+                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
+                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
+                            )
                           ]
                         )
                       )
@@ -1253,20 +1221,19 @@ module Sam
                         ),
                         citations: T.nilable(
                           T::Array[
-                          T.any(
-                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                            Sam::Internal::AnyHash,
-                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                          )
+                            T.any(
+                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
+                              Sam::Internal::AnyHash,
+                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
+                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
+                            )
                           ]
                         ),
                         type: Symbol
                       )
                         .returns(T.attached_class)
                     end
-                    def self.new(text:, cache_control: nil, citations: nil, type: :text)
-                    end
+                    def self.new(text:, cache_control: nil, citations: nil, type: :text); end
 
                     sig do
                       override
@@ -1279,30 +1246,27 @@ module Sam
                             ),
                             citations: T.nilable(
                               T::Array[
-                              T.any(
-                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                              )
+                                T.any(
+                                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
+                                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
+                                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
+                                )
                               ]
                             )
                           }
                         )
                     end
-                    def to_hash
-                    end
+                    def to_hash; end
 
                     class CacheControl < Sam::Internal::Type::BaseModel
                       sig { returns(Symbol) }
                       attr_accessor :type
 
                       sig { params(type: Symbol).returns(T.attached_class) }
-                      def self.new(type: :ephemeral)
-                      end
+                      def self.new(type: :ephemeral); end
 
                       sig { override.returns({type: Symbol}) }
-                      def to_hash
-                      end
+                      def to_hash; end
                     end
 
                     module Citation
@@ -1361,8 +1325,7 @@ module Sam
                               }
                             )
                         end
-                        def to_hash
-                        end
+                        def to_hash; end
                       end
 
                       class RequestPageLocationCitation < Sam::Internal::Type::BaseModel
@@ -1418,8 +1381,7 @@ module Sam
                               }
                             )
                         end
-                        def to_hash
-                        end
+                        def to_hash; end
                       end
 
                       class RequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
@@ -1459,9 +1421,7 @@ module Sam
                           end_block_index:,
                           start_block_index:,
                           type: :content_block_location
-                        )
-                        end
-
+                        ); end
                         sig do
                           override
                             .returns(
@@ -1475,8 +1435,7 @@ module Sam
                               }
                             )
                         end
-                        def to_hash
-                        end
+                        def to_hash; end
                       end
 
                       sig do
@@ -1485,8 +1444,7 @@ module Sam
                             [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]
                           )
                       end
-                      def self.variants
-                      end
+                      def self.variants; end
                     end
                   end
 
@@ -1543,8 +1501,7 @@ module Sam
                       )
                         .returns(T.attached_class)
                     end
-                    def self.new(source:, cache_control: nil, type: :image)
-                    end
+                    def self.new(source:, cache_control: nil, type: :image); end
 
                     sig do
                       override
@@ -1561,8 +1518,7 @@ module Sam
                           }
                         )
                     end
-                    def to_hash
-                    end
+                    def to_hash; end
 
                     module Source
                       extend Sam::Internal::Type::Union
@@ -1589,8 +1545,7 @@ module Sam
                           )
                             .returns(T.attached_class)
                         end
-                        def self.new(data:, media_type:, type: :base64)
-                        end
+                        def self.new(data:, media_type:, type: :base64); end
 
                         sig do
                           override
@@ -1602,8 +1557,7 @@ module Sam
                               }
                             )
                         end
-                        def to_hash
-                        end
+                        def to_hash; end
 
                         module MediaType
                           extend Sam::Internal::Type::Enum
@@ -1646,12 +1600,11 @@ module Sam
                             override
                               .returns(
                                 T::Array[
-                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
+                                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                                 ]
                               )
                           end
-                          def self.values
-                          end
+                          def self.values; end
                         end
                       end
 
@@ -1663,12 +1616,10 @@ module Sam
                         attr_accessor :url
 
                         sig { params(url: String, type: Symbol).returns(T.attached_class) }
-                        def self.new(url:, type: :url)
-                        end
+                        def self.new(url:, type: :url); end
 
                         sig { override.returns({type: Symbol, url: String}) }
-                        def to_hash
-                        end
+                        def to_hash; end
                       end
 
                       sig do
@@ -1677,8 +1628,7 @@ module Sam
                             [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
                           )
                       end
-                      def self.variants
-                      end
+                      def self.variants; end
                     end
 
                     class CacheControl < Sam::Internal::Type::BaseModel
@@ -1686,12 +1636,10 @@ module Sam
                       attr_accessor :type
 
                       sig { params(type: Symbol).returns(T.attached_class) }
-                      def self.new(type: :ephemeral)
-                      end
+                      def self.new(type: :ephemeral); end
 
                       sig { override.returns({type: Symbol}) }
-                      def to_hash
-                      end
+                      def to_hash; end
                     end
                   end
 
@@ -1701,8 +1649,7 @@ module Sam
                         [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock]
                       )
                   end
-                  def self.variants
-                  end
+                  def self.variants; end
                 end
 
                 sig do
@@ -1711,21 +1658,20 @@ module Sam
                       [
                         String,
                         T::Array[
-                                              T.any(
-                                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
-                                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
-                                              )
+                                                T.any(
+                                                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock,
+                                                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock
+                                                )
                                               ]
                       ]
                     )
                 end
-                def self.variants
-                end
+                def self.variants; end
 
                 UnionMember1Array =
                   T.let(
                     Sam::Internal::Type::ArrayOf[
-                    union: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1
+                      union: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1
                     ],
                     Sam::Internal::Type::Converter
                   )
@@ -1851,8 +1797,7 @@ module Sam
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               module Source
                 extend Sam::Internal::Type::Union
@@ -1868,12 +1813,10 @@ module Sam
                   attr_accessor :type
 
                   sig { params(data: String, media_type: Symbol, type: Symbol).returns(T.attached_class) }
-                  def self.new(data:, media_type: :"application/pdf", type: :base64)
-                  end
+                  def self.new(data:, media_type: :"application/pdf", type: :base64); end
 
                   sig { override.returns({data: String, media_type: Symbol, type: Symbol}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 class PlainTextSource < Sam::Internal::Type::BaseModel
@@ -1887,12 +1830,10 @@ module Sam
                   attr_accessor :type
 
                   sig { params(data: String, media_type: Symbol, type: Symbol).returns(T.attached_class) }
-                  def self.new(data:, media_type: :"text/plain", type: :text)
-                  end
+                  def self.new(data:, media_type: :"text/plain", type: :text); end
 
                   sig { override.returns({data: String, media_type: Symbol, type: Symbol}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 class ContentBlockSource < Sam::Internal::Type::BaseModel
@@ -1901,10 +1842,10 @@ module Sam
                       T.any(
                         String,
                         T::Array[
-                        T.any(
-                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
-                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
-                        )
+                          T.any(
+                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
+                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
+                          )
                         ]
                       )
                     )
@@ -1919,19 +1860,18 @@ module Sam
                       content: T.any(
                         String,
                         T::Array[
-                        T.any(
-                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
-                          Sam::Internal::AnyHash,
-                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
-                        )
+                          T.any(
+                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
+                            Sam::Internal::AnyHash,
+                            Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
+                          )
                         ]
                       ),
                       type: Symbol
                     )
                       .returns(T.attached_class)
                   end
-                  def self.new(content:, type: :content)
-                  end
+                  def self.new(content:, type: :content); end
 
                   sig do
                     override
@@ -1940,18 +1880,17 @@ module Sam
                           content: T.any(
                             String,
                             T::Array[
-                            T.any(
-                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
-                              Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
-                            )
+                              T.any(
+                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
+                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
+                              )
                             ]
                           ),
                           type: Symbol
                         }
                       )
                   end
-                  def to_hash
-                  end
+                  def to_hash; end
 
                   module Content
                     extend Sam::Internal::Type::Union
@@ -1992,11 +1931,11 @@ module Sam
                           returns(
                             T.nilable(
                               T::Array[
-                              T.any(
-                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                              )
+                                T.any(
+                                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
+                                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
+                                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
+                                )
                               ]
                             )
                           )
@@ -2014,20 +1953,19 @@ module Sam
                             ),
                             citations: T.nilable(
                               T::Array[
-                              T.any(
-                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                                Sam::Internal::AnyHash,
-                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                              )
+                                T.any(
+                                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
+                                  Sam::Internal::AnyHash,
+                                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
+                                  Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
+                                )
                               ]
                             ),
                             type: Symbol
                           )
                             .returns(T.attached_class)
                         end
-                        def self.new(text:, cache_control: nil, citations: nil, type: :text)
-                        end
+                        def self.new(text:, cache_control: nil, citations: nil, type: :text); end
 
                         sig do
                           override
@@ -2040,30 +1978,27 @@ module Sam
                                 ),
                                 citations: T.nilable(
                                   T::Array[
-                                  T.any(
-                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
-                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
-                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
-                                  )
+                                    T.any(
+                                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation,
+                                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation,
+                                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation
+                                    )
                                   ]
                                 )
                               }
                             )
                         end
-                        def to_hash
-                        end
+                        def to_hash; end
 
                         class CacheControl < Sam::Internal::Type::BaseModel
                           sig { returns(Symbol) }
                           attr_accessor :type
 
                           sig { params(type: Symbol).returns(T.attached_class) }
-                          def self.new(type: :ephemeral)
-                          end
+                          def self.new(type: :ephemeral); end
 
                           sig { override.returns({type: Symbol}) }
-                          def to_hash
-                          end
+                          def to_hash; end
                         end
 
                         module Citation
@@ -2122,8 +2057,7 @@ module Sam
                                   }
                                 )
                             end
-                            def to_hash
-                            end
+                            def to_hash; end
                           end
 
                           class RequestPageLocationCitation < Sam::Internal::Type::BaseModel
@@ -2179,8 +2113,7 @@ module Sam
                                   }
                                 )
                             end
-                            def to_hash
-                            end
+                            def to_hash; end
                           end
 
                           class RequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
@@ -2220,9 +2153,7 @@ module Sam
                               end_block_index:,
                               start_block_index:,
                               type: :content_block_location
-                            )
-                            end
-
+                            ); end
                             sig do
                               override
                                 .returns(
@@ -2236,8 +2167,7 @@ module Sam
                                   }
                                 )
                             end
-                            def to_hash
-                            end
+                            def to_hash; end
                           end
 
                           sig do
@@ -2246,8 +2176,7 @@ module Sam
                                 [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestCharLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestPageLocationCitation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock::Citation::RequestContentBlockLocationCitation]
                               )
                           end
-                          def self.variants
-                          end
+                          def self.variants; end
                         end
                       end
 
@@ -2304,8 +2233,7 @@ module Sam
                           )
                             .returns(T.attached_class)
                         end
-                        def self.new(source:, cache_control: nil, type: :image)
-                        end
+                        def self.new(source:, cache_control: nil, type: :image); end
 
                         sig do
                           override
@@ -2322,8 +2250,7 @@ module Sam
                               }
                             )
                         end
-                        def to_hash
-                        end
+                        def to_hash; end
 
                         module Source
                           extend Sam::Internal::Type::Union
@@ -2350,8 +2277,7 @@ module Sam
                               )
                                 .returns(T.attached_class)
                             end
-                            def self.new(data:, media_type:, type: :base64)
-                            end
+                            def self.new(data:, media_type:, type: :base64); end
 
                             sig do
                               override
@@ -2363,8 +2289,7 @@ module Sam
                                   }
                                 )
                             end
-                            def to_hash
-                            end
+                            def to_hash; end
 
                             module MediaType
                               extend Sam::Internal::Type::Enum
@@ -2407,12 +2332,11 @@ module Sam
                                 override
                                   .returns(
                                     T::Array[
-                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
+                                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
                                     ]
                                   )
                               end
-                              def self.values
-                              end
+                              def self.values; end
                             end
                           end
 
@@ -2424,12 +2348,10 @@ module Sam
                             attr_accessor :url
 
                             sig { params(url: String, type: Symbol).returns(T.attached_class) }
-                            def self.new(url:, type: :url)
-                            end
+                            def self.new(url:, type: :url); end
 
                             sig { override.returns({type: Symbol, url: String}) }
-                            def to_hash
-                            end
+                            def to_hash; end
                           end
 
                           sig do
@@ -2438,8 +2360,7 @@ module Sam
                                 [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::URLImageSource]
                               )
                           end
-                          def self.variants
-                          end
+                          def self.variants; end
                         end
 
                         class CacheControl < Sam::Internal::Type::BaseModel
@@ -2447,12 +2368,10 @@ module Sam
                           attr_accessor :type
 
                           sig { params(type: Symbol).returns(T.attached_class) }
-                          def self.new(type: :ephemeral)
-                          end
+                          def self.new(type: :ephemeral); end
 
                           sig { override.returns({type: Symbol}) }
-                          def to_hash
-                          end
+                          def to_hash; end
                         end
                       end
 
@@ -2462,8 +2381,7 @@ module Sam
                             [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock]
                           )
                       end
-                      def self.variants
-                      end
+                      def self.variants; end
                     end
 
                     sig do
@@ -2472,21 +2390,20 @@ module Sam
                           [
                             String,
                             T::Array[
-                                                      T.any(
-                                                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
-                                                        Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
-                                                      )
+                                                        T.any(
+                                                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock,
+                                                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock
+                                                        )
                                                       ]
                           ]
                         )
                     end
-                    def self.variants
-                    end
+                    def self.variants; end
 
                     UnionMember1Array =
                       T.let(
                         Sam::Internal::Type::ArrayOf[
-                        union: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1
+                          union: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1
                         ],
                         Sam::Internal::Type::Converter
                       )
@@ -2501,12 +2418,10 @@ module Sam
                   attr_accessor :url
 
                   sig { params(url: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(url:, type: :url)
-                  end
+                  def self.new(url:, type: :url); end
 
                   sig { override.returns({type: Symbol, url: String}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 sig do
@@ -2515,8 +2430,7 @@ module Sam
                       [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::Base64PdfSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::PlainTextSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::UrlpdfSource]
                     )
                 end
-                def self.variants
-                end
+                def self.variants; end
               end
 
               class CacheControl < Sam::Internal::Type::BaseModel
@@ -2524,12 +2438,10 @@ module Sam
                 attr_accessor :type
 
                 sig { params(type: Symbol).returns(T.attached_class) }
-                def self.new(type: :ephemeral)
-                end
+                def self.new(type: :ephemeral); end
 
                 sig { override.returns({type: Symbol}) }
-                def to_hash
-                end
+                def to_hash; end
               end
 
               class Citations < Sam::Internal::Type::BaseModel
@@ -2540,12 +2452,10 @@ module Sam
                 attr_writer :enabled
 
                 sig { params(enabled: T::Boolean).returns(T.attached_class) }
-                def self.new(enabled: nil)
-                end
+                def self.new(enabled: nil); end
 
                 sig { override.returns({enabled: T::Boolean}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -2560,12 +2470,10 @@ module Sam
               attr_accessor :type
 
               sig { params(signature: String, thinking: String, type: Symbol).returns(T.attached_class) }
-              def self.new(signature:, thinking:, type: :thinking)
-              end
+              def self.new(signature:, thinking:, type: :thinking); end
 
               sig { override.returns({signature: String, thinking: String, type: Symbol}) }
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class RequestRedactedThinkingBlock < Sam::Internal::Type::BaseModel
@@ -2576,12 +2484,10 @@ module Sam
               attr_accessor :type
 
               sig { params(data: String, type: Symbol).returns(T.attached_class) }
-              def self.new(data:, type: :redacted_thinking)
-              end
+              def self.new(data:, type: :redacted_thinking); end
 
               sig { override.returns({data: String, type: Symbol}) }
-              def to_hash
-              end
+              def to_hash; end
             end
 
             sig do
@@ -2590,8 +2496,7 @@ module Sam
                   [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestThinkingBlock, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock]
                 )
             end
-            def self.variants
-            end
+            def self.variants; end
           end
 
           sig do
@@ -2600,21 +2505,20 @@ module Sam
                 [
                   String,
                   T::Array[
-                                  T.any(
-                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock,
-                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock,
-                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock,
-                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock,
-                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock,
-                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestThinkingBlock,
-                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
-                                  )
+                                    T.any(
+                                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestTextBlock,
+                                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock,
+                                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolUseBlock,
+                                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock,
+                                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock,
+                                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestThinkingBlock,
+                                      Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock
+                                    )
                                   ]
                 ]
               )
           end
-          def self.variants
-          end
+          def self.variants; end
 
           UnionMember1Array =
             T.let(
@@ -2634,8 +2538,7 @@ module Sam
           ASSISTANT = T.let(:assistant, Sam::Models::MessageCountTokensParams::Message::Role::TaggedSymbol)
 
           sig { override.returns(T::Array[Sam::Models::MessageCountTokensParams::Message::Role::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -2671,11 +2574,11 @@ module Sam
             returns(
               T.nilable(
                 T::Array[
-                T.any(
-                  Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestCharLocationCitation,
-                  Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestPageLocationCitation,
-                  Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation
-                )
+                  T.any(
+                    Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestCharLocationCitation,
+                    Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestPageLocationCitation,
+                    Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation
+                  )
                 ]
               )
             )
@@ -2690,20 +2593,19 @@ module Sam
               ),
               citations: T.nilable(
                 T::Array[
-                T.any(
-                  Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestCharLocationCitation,
-                  Sam::Internal::AnyHash,
-                  Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestPageLocationCitation,
-                  Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation
-                )
+                  T.any(
+                    Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestCharLocationCitation,
+                    Sam::Internal::AnyHash,
+                    Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestPageLocationCitation,
+                    Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation
+                  )
                 ]
               ),
               type: Symbol
             )
               .returns(T.attached_class)
           end
-          def self.new(text:, cache_control: nil, citations: nil, type: :text)
-          end
+          def self.new(text:, cache_control: nil, citations: nil, type: :text); end
 
           sig do
             override
@@ -2714,30 +2616,27 @@ module Sam
                   cache_control: T.nilable(Sam::Models::MessageCountTokensParams::System::UnionMember1::CacheControl),
                   citations: T.nilable(
                     T::Array[
-                    T.any(
-                      Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestCharLocationCitation,
-                      Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestPageLocationCitation,
-                      Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation
-                    )
+                      T.any(
+                        Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestCharLocationCitation,
+                        Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestPageLocationCitation,
+                        Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation
+                      )
                     ]
                   )
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class CacheControl < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :type
 
             sig { params(type: Symbol).returns(T.attached_class) }
-            def self.new(type: :ephemeral)
-            end
+            def self.new(type: :ephemeral); end
 
             sig { override.returns({type: Symbol}) }
-            def to_hash
-            end
+            def to_hash; end
           end
 
           module Citation
@@ -2796,8 +2695,7 @@ module Sam
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class RequestPageLocationCitation < Sam::Internal::Type::BaseModel
@@ -2853,8 +2751,7 @@ module Sam
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class RequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
@@ -2894,9 +2791,7 @@ module Sam
                 end_block_index:,
                 start_block_index:,
                 type: :content_block_location
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -2910,8 +2805,7 @@ module Sam
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
             end
 
             sig do
@@ -2920,14 +2814,12 @@ module Sam
                   [Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestCharLocationCitation, Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestPageLocationCitation, Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::RequestContentBlockLocationCitation]
                 )
             end
-            def self.variants
-            end
+            def self.variants; end
           end
         end
 
         sig { override.returns([String, T::Array[Sam::Models::MessageCountTokensParams::System::UnionMember1]]) }
-        def self.variants
-        end
+        def self.variants; end
 
         UnionMember1Array =
           T.let(
@@ -2965,12 +2857,10 @@ module Sam
           attr_accessor :type
 
           sig { params(budget_tokens: Integer, type: Symbol).returns(T.attached_class) }
-          def self.new(budget_tokens:, type: :enabled)
-          end
+          def self.new(budget_tokens:, type: :enabled); end
 
           sig { override.returns({budget_tokens: Integer, type: Symbol}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class ThinkingConfigDisabled < Sam::Internal::Type::BaseModel
@@ -2978,12 +2868,10 @@ module Sam
           attr_accessor :type
 
           sig { params(type: Symbol).returns(T.attached_class) }
-          def self.new(type: :disabled)
-          end
+          def self.new(type: :disabled); end
 
           sig { override.returns({type: Symbol}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         sig do
@@ -2992,8 +2880,7 @@ module Sam
               [Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigEnabled, Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigDisabled]
             )
         end
-        def self.variants
-        end
+        def self.variants; end
       end
 
       # How the model should use the provided tools. The model can use a specific tool,
@@ -3017,12 +2904,10 @@ module Sam
 
           # The model will automatically decide whether to use tools.
           sig { params(disable_parallel_tool_use: T::Boolean, type: Symbol).returns(T.attached_class) }
-          def self.new(disable_parallel_tool_use: nil, type: :auto)
-          end
+          def self.new(disable_parallel_tool_use: nil, type: :auto); end
 
           sig { override.returns({type: Symbol, disable_parallel_tool_use: T::Boolean}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class ToolChoiceAny < Sam::Internal::Type::BaseModel
@@ -3041,12 +2926,10 @@ module Sam
 
           # The model will use any available tools.
           sig { params(disable_parallel_tool_use: T::Boolean, type: Symbol).returns(T.attached_class) }
-          def self.new(disable_parallel_tool_use: nil, type: :any)
-          end
+          def self.new(disable_parallel_tool_use: nil, type: :any); end
 
           sig { override.returns({type: Symbol, disable_parallel_tool_use: T::Boolean}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class ToolChoiceTool < Sam::Internal::Type::BaseModel
@@ -3075,12 +2958,10 @@ module Sam
               type: Symbol
             ).returns(T.attached_class)
           end
-          def self.new(name:, disable_parallel_tool_use: nil, type: :tool)
-          end
+          def self.new(name:, disable_parallel_tool_use: nil, type: :tool); end
 
           sig { override.returns({name: String, type: Symbol, disable_parallel_tool_use: T::Boolean}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class ToolChoiceNone < Sam::Internal::Type::BaseModel
@@ -3089,12 +2970,10 @@ module Sam
 
           # The model will not be allowed to use tools.
           sig { params(type: Symbol).returns(T.attached_class) }
-          def self.new(type: :none)
-          end
+          def self.new(type: :none); end
 
           sig { override.returns({type: Symbol}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         sig do
@@ -3103,8 +2982,7 @@ module Sam
               [Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceAuto, Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceAny, Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceTool, Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceNone]
             )
         end
-        def self.variants
-        end
+        def self.variants; end
       end
 
       module Tool
@@ -3164,8 +3042,7 @@ module Sam
             )
               .returns(T.attached_class)
           end
-          def self.new(input_schema:, name:, cache_control: nil, description: nil)
-          end
+          def self.new(input_schema:, name:, cache_control: nil, description: nil); end
 
           sig do
             override
@@ -3178,8 +3055,7 @@ module Sam
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class InputSchema < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
@@ -3193,12 +3069,10 @@ module Sam
             #   This defines the shape of the `input` that your tool accepts and that the model
             #   will produce.
             sig { params(properties: T.nilable(T.anything), type: Symbol).returns(T.attached_class) }
-            def self.new(properties: nil, type: :object)
-            end
+            def self.new(properties: nil, type: :object); end
 
             sig { override.returns({type: Symbol, properties: T.nilable(T.anything)}) }
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class CacheControl < Sam::Internal::Type::BaseModel
@@ -3206,12 +3080,10 @@ module Sam
             attr_accessor :type
 
             sig { params(type: Symbol).returns(T.attached_class) }
-            def self.new(type: :ephemeral)
-            end
+            def self.new(type: :ephemeral); end
 
             sig { override.returns({type: Symbol}) }
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
@@ -3248,8 +3120,7 @@ module Sam
             )
               .returns(T.attached_class)
           end
-          def self.new(cache_control: nil, name: :bash, type: :bash_20250124)
-          end
+          def self.new(cache_control: nil, name: :bash, type: :bash_20250124); end
 
           sig do
             override
@@ -3261,20 +3132,17 @@ module Sam
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class CacheControl < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :type
 
             sig { params(type: Symbol).returns(T.attached_class) }
-            def self.new(type: :ephemeral)
-            end
+            def self.new(type: :ephemeral); end
 
             sig { override.returns({type: Symbol}) }
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
@@ -3317,8 +3185,7 @@ module Sam
             )
               .returns(T.attached_class)
           end
-          def self.new(cache_control: nil, name: :str_replace_editor, type: :text_editor_20250124)
-          end
+          def self.new(cache_control: nil, name: :str_replace_editor, type: :text_editor_20250124); end
 
           sig do
             override
@@ -3330,20 +3197,17 @@ module Sam
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class CacheControl < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :type
 
             sig { params(type: Symbol).returns(T.attached_class) }
-            def self.new(type: :ephemeral)
-            end
+            def self.new(type: :ephemeral); end
 
             sig { override.returns({type: Symbol}) }
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
@@ -3353,8 +3217,7 @@ module Sam
               [Sam::Models::MessageCountTokensParams::Tool::Tool, Sam::Models::MessageCountTokensParams::Tool::BashTool20250124, Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124]
             )
         end
-        def self.variants
-        end
+        def self.variants; end
       end
     end
   end

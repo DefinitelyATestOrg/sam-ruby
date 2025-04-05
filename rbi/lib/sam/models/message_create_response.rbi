@@ -44,12 +44,12 @@ module Sam
       sig do
         returns(
           T::Array[
-          T.any(
-            Sam::Models::MessageCreateResponse::Content::ResponseTextBlock,
-            Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock,
-            Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock,
-            Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock
-          )
+            T.any(
+              Sam::Models::MessageCreateResponse::Content::ResponseTextBlock,
+              Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock,
+              Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock,
+              Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock
+            )
           ]
         )
       end
@@ -117,13 +117,13 @@ module Sam
         params(
           id: String,
           content: T::Array[
-          T.any(
-            Sam::Models::MessageCreateResponse::Content::ResponseTextBlock,
-            Sam::Internal::AnyHash,
-            Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock,
-            Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock,
-            Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock
-          )
+            T.any(
+              Sam::Models::MessageCreateResponse::Content::ResponseTextBlock,
+              Sam::Internal::AnyHash,
+              Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock,
+              Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock,
+              Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock
+            )
           ],
           model: String,
           stop_reason: T.nilable(Sam::Models::MessageCreateResponse::StopReason::OrSymbol),
@@ -152,12 +152,12 @@ module Sam
             {
               id: String,
               content: T::Array[
-              T.any(
-                Sam::Models::MessageCreateResponse::Content::ResponseTextBlock,
-                Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock,
-                Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock,
-                Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock
-              )
+                T.any(
+                  Sam::Models::MessageCreateResponse::Content::ResponseTextBlock,
+                  Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock,
+                  Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock,
+                  Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock
+                )
               ],
               model: String,
               role: Symbol,
@@ -168,8 +168,7 @@ module Sam
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module Content
         extend Sam::Internal::Type::Union
@@ -184,11 +183,11 @@ module Sam
             returns(
               T.nilable(
                 T::Array[
-                T.any(
-                  Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
-                  Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
-                  Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
-                )
+                  T.any(
+                    Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
+                    Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
+                    Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
+                  )
                 ]
               )
             )
@@ -205,12 +204,12 @@ module Sam
             params(
               citations: T.nilable(
                 T::Array[
-                T.any(
-                  Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
-                  Sam::Internal::AnyHash,
-                  Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
-                  Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
-                )
+                  T.any(
+                    Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
+                    Sam::Internal::AnyHash,
+                    Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
+                    Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
+                  )
                 ]
               ),
               text: String,
@@ -218,8 +217,7 @@ module Sam
             )
               .returns(T.attached_class)
           end
-          def self.new(citations:, text:, type: :text)
-          end
+          def self.new(citations:, text:, type: :text); end
 
           sig do
             override
@@ -227,11 +225,11 @@ module Sam
                 {
                   citations: T.nilable(
                     T::Array[
-                    T.any(
-                      Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
-                      Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
-                      Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
-                    )
+                      T.any(
+                        Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
+                        Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
+                        Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
+                      )
                     ]
                   ),
                   text: String,
@@ -239,8 +237,7 @@ module Sam
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module Citation
             extend Sam::Internal::Type::Union
@@ -298,8 +295,7 @@ module Sam
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class ResponsePageLocationCitation < Sam::Internal::Type::BaseModel
@@ -355,8 +351,7 @@ module Sam
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class ResponseContentBlockLocationCitation < Sam::Internal::Type::BaseModel
@@ -396,9 +391,7 @@ module Sam
                 end_block_index:,
                 start_block_index:,
                 type: :content_block_location
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -412,8 +405,7 @@ module Sam
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
             end
 
             sig do
@@ -422,8 +414,7 @@ module Sam
                   [Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation]
                 )
             end
-            def self.variants
-            end
+            def self.variants; end
           end
         end
 
@@ -441,12 +432,10 @@ module Sam
           attr_accessor :type
 
           sig { params(id: String, input: T.anything, name: String, type: Symbol).returns(T.attached_class) }
-          def self.new(id:, input:, name:, type: :tool_use)
-          end
+          def self.new(id:, input:, name:, type: :tool_use); end
 
           sig { override.returns({id: String, input: T.anything, name: String, type: Symbol}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class ResponseThinkingBlock < Sam::Internal::Type::BaseModel
@@ -460,12 +449,10 @@ module Sam
           attr_accessor :type
 
           sig { params(signature: String, thinking: String, type: Symbol).returns(T.attached_class) }
-          def self.new(signature:, thinking:, type: :thinking)
-          end
+          def self.new(signature:, thinking:, type: :thinking); end
 
           sig { override.returns({signature: String, thinking: String, type: Symbol}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class ResponseRedactedThinkingBlock < Sam::Internal::Type::BaseModel
@@ -476,12 +463,10 @@ module Sam
           attr_accessor :type
 
           sig { params(data: String, type: Symbol).returns(T.attached_class) }
-          def self.new(data:, type: :redacted_thinking)
-          end
+          def self.new(data:, type: :redacted_thinking); end
 
           sig { override.returns({data: String, type: Symbol}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         sig do
@@ -490,8 +475,7 @@ module Sam
               [Sam::Models::MessageCreateResponse::Content::ResponseTextBlock, Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock, Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock, Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock]
             )
         end
-        def self.variants
-        end
+        def self.variants; end
       end
 
       # The reason that we stopped.
@@ -518,8 +502,7 @@ module Sam
         TOOL_USE = T.let(:tool_use, Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol)
 
         sig { override.returns(T::Array[Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Usage < Sam::Internal::Type::BaseModel
@@ -577,8 +560,7 @@ module Sam
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

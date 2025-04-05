@@ -49,8 +49,7 @@ module Sam
             )
               .returns(T.attached_class)
           end
-          def self.new(anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
-          end
+          def self.new(anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {}); end
 
           sig do
             override
@@ -63,8 +62,7 @@ module Sam
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
       end
     end

@@ -43,8 +43,7 @@ module Sam
           )
             .returns(T.attached_class)
         end
-        def self.new(custom_id:, result:)
-        end
+        def self.new(custom_id:, result:); end
 
         sig do
           override
@@ -60,8 +59,7 @@ module Sam
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Processing result for this request.
         #
@@ -99,8 +97,7 @@ module Sam
               )
                 .returns(T.attached_class)
             end
-            def self.new(message:, type: :succeeded)
-            end
+            def self.new(message:, type: :succeeded); end
 
             sig do
               override
@@ -108,8 +105,7 @@ module Sam
                   {message: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message, type: Symbol}
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class Message < Sam::Internal::Type::BaseModel
               # Unique object identifier.
@@ -153,12 +149,12 @@ module Sam
               sig do
                 returns(
                   T::Array[
-                  T.any(
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock,
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock,
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock,
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock
-                  )
+                    T.any(
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock
+                    )
                   ]
                 )
               end
@@ -240,13 +236,13 @@ module Sam
                 params(
                   id: String,
                   content: T::Array[
-                  T.any(
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock,
-                    Sam::Internal::AnyHash,
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock,
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock,
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock
-                  )
+                    T.any(
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock,
+                      Sam::Internal::AnyHash,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock
+                    )
                   ],
                   model: String,
                   stop_reason: T.nilable(
@@ -280,12 +276,12 @@ module Sam
                     {
                       id: String,
                       content: T::Array[
-                      T.any(
-                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock,
-                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock,
-                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock,
-                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock
-                      )
+                        T.any(
+                          Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock,
+                          Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock,
+                          Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock,
+                          Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock
+                        )
                       ],
                       model: String,
                       role: Symbol,
@@ -298,8 +294,7 @@ module Sam
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               module Content
                 extend Sam::Internal::Type::Union
@@ -314,11 +309,11 @@ module Sam
                     returns(
                       T.nilable(
                         T::Array[
-                        T.any(
-                          Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation,
-                          Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation,
-                          Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
-                        )
+                          T.any(
+                            Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation,
+                            Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation,
+                            Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
+                          )
                         ]
                       )
                     )
@@ -335,12 +330,12 @@ module Sam
                     params(
                       citations: T.nilable(
                         T::Array[
-                        T.any(
-                          Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation,
-                          Sam::Internal::AnyHash,
-                          Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation,
-                          Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
-                        )
+                          T.any(
+                            Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation,
+                            Sam::Internal::AnyHash,
+                            Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation,
+                            Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
+                          )
                         ]
                       ),
                       text: String,
@@ -348,8 +343,7 @@ module Sam
                     )
                       .returns(T.attached_class)
                   end
-                  def self.new(citations:, text:, type: :text)
-                  end
+                  def self.new(citations:, text:, type: :text); end
 
                   sig do
                     override
@@ -357,11 +351,11 @@ module Sam
                         {
                           citations: T.nilable(
                             T::Array[
-                            T.any(
-                              Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation,
-                              Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation,
-                              Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
-                            )
+                              T.any(
+                                Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation,
+                                Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation,
+                                Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
+                              )
                             ]
                           ),
                           text: String,
@@ -369,8 +363,7 @@ module Sam
                         }
                       )
                   end
-                  def to_hash
-                  end
+                  def to_hash; end
 
                   module Citation
                     extend Sam::Internal::Type::Union
@@ -428,8 +421,7 @@ module Sam
                             }
                           )
                       end
-                      def to_hash
-                      end
+                      def to_hash; end
                     end
 
                     class BetaResponsePageLocationCitation < Sam::Internal::Type::BaseModel
@@ -485,8 +477,7 @@ module Sam
                             }
                           )
                       end
-                      def to_hash
-                      end
+                      def to_hash; end
                     end
 
                     class BetaResponseContentBlockLocationCitation < Sam::Internal::Type::BaseModel
@@ -526,9 +517,7 @@ module Sam
                         end_block_index:,
                         start_block_index:,
                         type: :content_block_location
-                      )
-                      end
-
+                      ); end
                       sig do
                         override
                           .returns(
@@ -542,8 +531,7 @@ module Sam
                             }
                           )
                       end
-                      def to_hash
-                      end
+                      def to_hash; end
                     end
 
                     sig do
@@ -552,8 +540,7 @@ module Sam
                           [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation]
                         )
                     end
-                    def self.variants
-                    end
+                    def self.variants; end
                   end
                 end
 
@@ -578,12 +565,10 @@ module Sam
                       type: Symbol
                     ).returns(T.attached_class)
                   end
-                  def self.new(id:, input:, name:, type: :tool_use)
-                  end
+                  def self.new(id:, input:, name:, type: :tool_use); end
 
                   sig { override.returns({id: String, input: T.anything, name: String, type: Symbol}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 class BetaResponseThinkingBlock < Sam::Internal::Type::BaseModel
@@ -597,12 +582,10 @@ module Sam
                   attr_accessor :type
 
                   sig { params(signature: String, thinking: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(signature:, thinking:, type: :thinking)
-                  end
+                  def self.new(signature:, thinking:, type: :thinking); end
 
                   sig { override.returns({signature: String, thinking: String, type: Symbol}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 class BetaResponseRedactedThinkingBlock < Sam::Internal::Type::BaseModel
@@ -613,12 +596,10 @@ module Sam
                   attr_accessor :type
 
                   sig { params(data: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(data:, type: :redacted_thinking)
-                  end
+                  def self.new(data:, type: :redacted_thinking); end
 
                   sig { override.returns({data: String, type: Symbol}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 sig do
@@ -627,8 +608,7 @@ module Sam
                       [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock]
                     )
                 end
-                def self.variants
-                end
+                def self.variants; end
               end
 
               # The reason that we stopped.
@@ -683,12 +663,11 @@ module Sam
                   override
                     .returns(
                       T::Array[
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               class Usage < Sam::Internal::Type::BaseModel
@@ -751,8 +730,7 @@ module Sam
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
               end
             end
           end
@@ -785,8 +763,7 @@ module Sam
               )
                 .returns(T.attached_class)
             end
-            def self.new(error:, type: :errored)
-            end
+            def self.new(error:, type: :errored); end
 
             sig do
               override
@@ -794,8 +771,7 @@ module Sam
                   {error: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error, type: Symbol}
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class Error < Sam::Internal::Type::BaseModel
               sig do
@@ -836,8 +812,7 @@ module Sam
                 )
                   .returns(T.attached_class)
               end
-              def self.new(error:, type: :error)
-              end
+              def self.new(error:, type: :error); end
 
               sig do
                 override
@@ -858,8 +833,7 @@ module Sam
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               module Error
                 extend Sam::Internal::Type::Union
@@ -872,12 +846,10 @@ module Sam
                   attr_accessor :type
 
                   sig { params(message: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(message:, type: :invalid_request_error)
-                  end
+                  def self.new(message:, type: :invalid_request_error); end
 
                   sig { override.returns({message: String, type: Symbol}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 class BetaAuthenticationError < Sam::Internal::Type::BaseModel
@@ -888,12 +860,10 @@ module Sam
                   attr_accessor :type
 
                   sig { params(message: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(message:, type: :authentication_error)
-                  end
+                  def self.new(message:, type: :authentication_error); end
 
                   sig { override.returns({message: String, type: Symbol}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 class BetaBillingError < Sam::Internal::Type::BaseModel
@@ -904,12 +874,10 @@ module Sam
                   attr_accessor :type
 
                   sig { params(message: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(message:, type: :billing_error)
-                  end
+                  def self.new(message:, type: :billing_error); end
 
                   sig { override.returns({message: String, type: Symbol}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 class BetaPermissionError < Sam::Internal::Type::BaseModel
@@ -920,12 +888,10 @@ module Sam
                   attr_accessor :type
 
                   sig { params(message: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(message:, type: :permission_error)
-                  end
+                  def self.new(message:, type: :permission_error); end
 
                   sig { override.returns({message: String, type: Symbol}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 class BetaNotFoundError < Sam::Internal::Type::BaseModel
@@ -936,12 +902,10 @@ module Sam
                   attr_accessor :type
 
                   sig { params(message: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(message:, type: :not_found_error)
-                  end
+                  def self.new(message:, type: :not_found_error); end
 
                   sig { override.returns({message: String, type: Symbol}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 class BetaRateLimitError < Sam::Internal::Type::BaseModel
@@ -952,12 +916,10 @@ module Sam
                   attr_accessor :type
 
                   sig { params(message: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(message:, type: :rate_limit_error)
-                  end
+                  def self.new(message:, type: :rate_limit_error); end
 
                   sig { override.returns({message: String, type: Symbol}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 class BetaGatewayTimeoutError < Sam::Internal::Type::BaseModel
@@ -968,12 +930,10 @@ module Sam
                   attr_accessor :type
 
                   sig { params(message: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(message:, type: :timeout_error)
-                  end
+                  def self.new(message:, type: :timeout_error); end
 
                   sig { override.returns({message: String, type: Symbol}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 class BetaAPIError < Sam::Internal::Type::BaseModel
@@ -984,12 +944,10 @@ module Sam
                   attr_accessor :type
 
                   sig { params(message: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(message:, type: :api_error)
-                  end
+                  def self.new(message:, type: :api_error); end
 
                   sig { override.returns({message: String, type: Symbol}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 class BetaOverloadedError < Sam::Internal::Type::BaseModel
@@ -1000,12 +958,10 @@ module Sam
                   attr_accessor :type
 
                   sig { params(message: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(message:, type: :overloaded_error)
-                  end
+                  def self.new(message:, type: :overloaded_error); end
 
                   sig { override.returns({message: String, type: Symbol}) }
-                  def to_hash
-                  end
+                  def to_hash; end
                 end
 
                 sig do
@@ -1014,8 +970,7 @@ module Sam
                       [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaInvalidRequestError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAuthenticationError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaBillingError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaPermissionError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaNotFoundError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaRateLimitError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaGatewayTimeoutError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAPIError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaOverloadedError]
                     )
                 end
-                def self.variants
-                end
+                def self.variants; end
               end
             end
           end
@@ -1025,12 +980,10 @@ module Sam
             attr_accessor :type
 
             sig { params(type: Symbol).returns(T.attached_class) }
-            def self.new(type: :canceled)
-            end
+            def self.new(type: :canceled); end
 
             sig { override.returns({type: Symbol}) }
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class BetaExpiredResult < Sam::Internal::Type::BaseModel
@@ -1038,12 +991,10 @@ module Sam
             attr_accessor :type
 
             sig { params(type: Symbol).returns(T.attached_class) }
-            def self.new(type: :expired)
-            end
+            def self.new(type: :expired); end
 
             sig { override.returns({type: Symbol}) }
-            def to_hash
-            end
+            def to_hash; end
           end
 
           sig do
@@ -1052,8 +1003,7 @@ module Sam
                 [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaCanceledResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaExpiredResult]
               )
           end
-          def self.variants
-          end
+          def self.variants; end
         end
       end
     end
