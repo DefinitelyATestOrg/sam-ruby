@@ -29,12 +29,13 @@ module Sam
         # @see Sam::Models::Messages::BatchCreateParams
         def create(params)
           parsed, options = Sam::Models::Messages::BatchCreateParams.dump_request(params)
-          header_params = [:"anthropic-beta", :"anthropic-version", :"x-api-key"]
+          header_params =
+            {anthropic_beta: "anthropic-beta", anthropic_version: "anthropic-version", x_api_key: "x-api-key"}
           @client.request(
             method: :post,
             path: "v1/messages/batches",
-            headers: parsed.slice(*header_params),
-            body: parsed.except(*header_params),
+            headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+            body: parsed.except(*header_params.keys),
             model: Sam::Models::Messages::BatchCreateResponse,
             options: options
           )
@@ -63,7 +64,11 @@ module Sam
           @client.request(
             method: :get,
             path: ["v1/messages/batches/%1$s", message_batch_id],
-            headers: parsed,
+            headers: parsed.transform_keys(
+              anthropic_beta: "anthropic-beta",
+              anthropic_version: "anthropic-version",
+              x_api_key: "x-api-key"
+            ),
             model: Sam::Models::Messages::BatchRetrieveResponse,
             options: options
           )
@@ -95,7 +100,11 @@ module Sam
             method: :get,
             path: "v1/messages/batches",
             query: parsed.slice(*query_params),
-            headers: parsed.except(*query_params),
+            headers: parsed.except(*query_params).transform_keys(
+              anthropic_beta: "anthropic-beta",
+              anthropic_version: "anthropic-version",
+              x_api_key: "x-api-key"
+            ),
             model: Sam::Models::Messages::BatchListResponse,
             options: options
           )
@@ -125,7 +134,11 @@ module Sam
           @client.request(
             method: :delete,
             path: ["v1/messages/batches/%1$s", message_batch_id],
-            headers: parsed,
+            headers: parsed.transform_keys(
+              anthropic_beta: "anthropic-beta",
+              anthropic_version: "anthropic-version",
+              x_api_key: "x-api-key"
+            ),
             model: Sam::Models::Messages::BatchDeleteResponse,
             options: options
           )
@@ -160,7 +173,11 @@ module Sam
           @client.request(
             method: :post,
             path: ["v1/messages/batches/%1$s/cancel", message_batch_id],
-            headers: parsed,
+            headers: parsed.transform_keys(
+              anthropic_beta: "anthropic-beta",
+              anthropic_version: "anthropic-version",
+              x_api_key: "x-api-key"
+            ),
             model: Sam::Models::Messages::BatchCancelResponse,
             options: options
           )
@@ -195,7 +212,11 @@ module Sam
           @client.request(
             method: :post,
             path: ["v1/messages/batches/%1$s/cancel?beta=true", message_batch_id],
-            headers: parsed,
+            headers: parsed.transform_keys(
+              anthropic_beta: "anthropic-beta",
+              anthropic_version: "anthropic-version",
+              x_api_key: "x-api-key"
+            ),
             model: Sam::Models::Messages::BatchCancelBetaResponse,
             options: options
           )
@@ -226,7 +247,11 @@ module Sam
           @client.request(
             method: :get,
             path: ["v1/messages/batches/%1$s/results", message_batch_id],
-            headers: {"accept" => "application/x-jsonl", **parsed},
+            headers: {"accept" => "application/x-jsonl", **parsed}.transform_keys(
+              anthropic_beta: "anthropic-beta",
+              anthropic_version: "anthropic-version",
+              x_api_key: "x-api-key"
+            ),
             stream: Sam::Internal::JsonLStream,
             model: Sam::Models::Messages::BatchResultsResponse,
             options: options
@@ -258,7 +283,11 @@ module Sam
           @client.request(
             method: :get,
             path: ["v1/messages/batches/%1$s/results?beta=true", message_batch_id],
-            headers: {"accept" => "application/x-jsonl", **parsed},
+            headers: {"accept" => "application/x-jsonl", **parsed}.transform_keys(
+              anthropic_beta: "anthropic-beta",
+              anthropic_version: "anthropic-version",
+              x_api_key: "x-api-key"
+            ),
             stream: Sam::Internal::JsonLStream,
             model: Sam::Models::Messages::BatchResultsBetaResponse,
             options: options

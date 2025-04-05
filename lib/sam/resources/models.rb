@@ -23,7 +23,7 @@ module Sam
         @client.request(
           method: :get,
           path: ["v1/models/%1$s", model_id],
-          headers: parsed,
+          headers: parsed.transform_keys(anthropic_version: "anthropic-version", x_api_key: "x-api-key"),
           model: Sam::Models::ModelRetrieveResponse,
           options: options
         )
@@ -53,7 +53,10 @@ module Sam
           method: :get,
           path: "v1/models",
           query: parsed.slice(*query_params),
-          headers: parsed.except(*query_params),
+          headers: parsed.except(*query_params).transform_keys(
+            anthropic_version: "anthropic-version",
+            x_api_key: "x-api-key"
+          ),
           model: Sam::Models::ModelListResponse,
           options: options
         )
@@ -79,7 +82,7 @@ module Sam
         @client.request(
           method: :get,
           path: ["v1/models/%1$s?beta=true", model_id],
-          headers: parsed,
+          headers: parsed.transform_keys(anthropic_version: "anthropic-version", x_api_key: "x-api-key"),
           model: Sam::Models::ModelRetrieveBetaResponse,
           options: options
         )

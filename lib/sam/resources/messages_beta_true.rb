@@ -36,12 +36,13 @@ module Sam
       # @see Sam::Models::MessagesBetaTrueCreateParams
       def create(params)
         parsed, options = Sam::Models::MessagesBetaTrueCreateParams.dump_request(params)
-        header_params = [:"anthropic-beta", :"anthropic-version", :"x-api-key"]
+        header_params =
+          {anthropic_beta: "anthropic-beta", anthropic_version: "anthropic-version", x_api_key: "x-api-key"}
         @client.request(
           method: :post,
           path: "v1/messages?beta=true",
-          headers: parsed.slice(*header_params),
-          body: parsed.except(*header_params),
+          headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+          body: parsed.except(*header_params.keys).transform_keys(system_: :system),
           model: Sam::Models::MessagesBetaTrueCreateResponse,
           options: options
         )

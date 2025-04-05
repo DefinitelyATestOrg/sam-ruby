@@ -28,7 +28,11 @@ module Sam
             @client.request(
               method: :get,
               path: ["v1/messages/batches/%1$s?beta=true", message_batch_id],
-              headers: parsed,
+              headers: parsed.transform_keys(
+                anthropic_beta: "anthropic-beta",
+                anthropic_version: "anthropic-version",
+                x_api_key: "x-api-key"
+              ),
               model: Sam::Models::Messages::Batches::BetaTrueRetrieveResponse,
               options: options
             )
@@ -58,7 +62,11 @@ module Sam
             @client.request(
               method: :delete,
               path: ["v1/messages/batches/%1$s?beta=true", message_batch_id],
-              headers: parsed,
+              headers: parsed.transform_keys(
+                anthropic_beta: "anthropic-beta",
+                anthropic_version: "anthropic-version",
+                x_api_key: "x-api-key"
+              ),
               model: Sam::Models::Messages::Batches::BetaTrueDeleteResponse,
               options: options
             )
