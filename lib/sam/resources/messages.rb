@@ -48,7 +48,7 @@ module Sam
           method: :post,
           path: "v1/messages",
           headers: parsed.slice(*header_params.keys).transform_keys(header_params),
-          body: parsed.except(*header_params.keys).transform_keys(system_: :system),
+          body: parsed.except(*header_params.keys),
           model: Sam::Models::MessageCreateResponse,
           options: options
         )
@@ -86,7 +86,7 @@ module Sam
           method: :post,
           path: "v1/messages/count_tokens",
           headers: parsed.slice(*header_params.keys).transform_keys(header_params),
-          body: parsed.except(*header_params.keys).transform_keys(system_: :system),
+          body: parsed.except(*header_params.keys),
           model: Sam::Models::MessageCountTokensResponse,
           options: options
         )
@@ -124,7 +124,7 @@ module Sam
           method: :post,
           path: "v1/messages/count_tokens?beta=true",
           headers: parsed.slice(*header_params.keys).transform_keys(header_params),
-          body: parsed.except(*header_params.keys).transform_keys(system_: :system),
+          body: parsed.except(*header_params.keys),
           model: Sam::Models::MessageCountTokensBetaResponse,
           options: options
         )

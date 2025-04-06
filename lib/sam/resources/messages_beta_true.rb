@@ -42,7 +42,7 @@ module Sam
           method: :post,
           path: "v1/messages?beta=true",
           headers: parsed.slice(*header_params.keys).transform_keys(header_params),
-          body: parsed.except(*header_params.keys).transform_keys(system_: :system),
+          body: parsed.except(*header_params.keys),
           model: Sam::Models::MessagesBetaTrueCreateResponse,
           options: options
         )
