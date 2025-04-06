@@ -15,7 +15,7 @@ module Sam
       #   [here](https://docs.anthropic.com/en/api/versioning).
       #
       #   @return [String, nil]
-      optional :anthropic_version, String, api_name: :"anthropic-version"
+      optional :anthropic_version, String
 
       # @!parse
       #   # @return [String]
@@ -30,7 +30,7 @@ module Sam
       #   Workspace.
       #
       #   @return [String, nil]
-      optional :x_api_key, String, api_name: :"x-api-key"
+      optional :x_api_key, String
 
       # @!parse
       #   # @return [String]
