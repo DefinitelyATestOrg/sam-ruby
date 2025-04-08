@@ -32,10 +32,13 @@ module Sam
 
         def coerce: (
           top value,
-          state: Sam::Internal::Type::Converter::state
+          state: Sam::Internal::Type::Converter::coerce_state
         ) -> top
 
-        def dump: (top value) -> top
+        def dump: (
+          top value,
+          state: Sam::Internal::Type::Converter::dump_state
+        ) -> top
       end
     end
   end

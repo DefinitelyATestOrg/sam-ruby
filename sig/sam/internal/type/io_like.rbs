@@ -1,7 +1,7 @@
 module Sam
   module Internal
     module Type
-      class Unknown
+      class IOLike
         extend Sam::Internal::Type::Converter
 
         def self.===: (top other) -> bool
@@ -9,14 +9,14 @@ module Sam
         def self.==: (top other) -> bool
 
         def self.coerce: (
-          top value,
+          StringIO | String | top value,
           state: Sam::Internal::Type::Converter::coerce_state
-        ) -> top
+        ) -> (StringIO | top)
 
         def self.dump: (
-          top value,
+          Pathname | StringIO | IO | String | top value,
           state: Sam::Internal::Type::Converter::dump_state
-        ) -> top
+        ) -> (Pathname | StringIO | IO | String | top)
       end
     end
   end
