@@ -17,10 +17,13 @@ module Sam
 
         def coerce: (
           ::Hash[top, top] | top value,
-          state: Sam::Internal::Type::Converter::state
+          state: Sam::Internal::Type::Converter::coerce_state
         ) -> (::Hash[Symbol, top] | top)
 
-        def dump: (::Hash[top, top] | top value) -> (::Hash[Symbol, top] | top)
+        def dump: (
+          ::Hash[top, top] | top value,
+          state: Sam::Internal::Type::Converter::dump_state
+        ) -> (::Hash[Symbol, top] | top)
 
         def item_type: -> Elem
 
