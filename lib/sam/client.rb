@@ -40,6 +40,9 @@ module Sam
     # @return [Sam::Resources::ModelsBetaTrue]
     attr_reader :models_beta_true
 
+    # @return [Sam::Resources::SamPlopPlop]
+    attr_reader :sam_plop_plop
+
     # Creates and returns a new client for interacting with the API.
     #
     # @param api_key [String, nil] API key used for authenticating requests via the Authorization header Defaults
@@ -85,6 +88,7 @@ module Sam
       @models = Sam::Resources::Models.new(client: self)
       @messages_beta_true = Sam::Resources::MessagesBetaTrue.new(client: self)
       @models_beta_true = Sam::Resources::ModelsBetaTrue.new(client: self)
+      @sam_plop_plop = Sam::Resources::SamPlopPlop.new(client: self)
     end
   end
 end

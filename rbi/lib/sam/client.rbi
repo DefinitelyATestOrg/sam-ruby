@@ -35,6 +35,9 @@ module Sam
     sig { returns(Sam::Resources::ModelsBetaTrue) }
     attr_reader :models_beta_true
 
+    sig { returns(Sam::Resources::SamPlopPlop) }
+    attr_reader :sam_plop_plop
+
     # Creates and returns a new client for interacting with the API.
     sig do
       params(
