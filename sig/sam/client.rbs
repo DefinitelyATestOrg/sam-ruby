@@ -24,6 +24,8 @@ module Sam
 
     attr_reader models_beta_true: Sam::Resources::ModelsBetaTrue
 
+    attr_reader sam_plop_plop: Sam::Resources::SamPlopPlop
+
     def initialize: (
       ?api_key: String?,
       ?base_url: String?,
