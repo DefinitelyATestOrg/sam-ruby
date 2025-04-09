@@ -1,26 +1,6 @@
 module Sam
   module Resources
     class SamPlopPlop
-      def create_message: (
-        max_tokens: Integer,
-        messages: ::Array[Sam::Models::SamPlopPlopCreateMessageParams::Message],
-        model: String,
-        ?metadata: Sam::Models::SamPlopPlopCreateMessageParams::Metadata,
-        ?stop_sequences: ::Array[String],
-        ?stream: bool,
-        ?system_: Sam::Models::SamPlopPlopCreateMessageParams::system_,
-        ?temperature: Float,
-        ?thinking: Sam::Models::SamPlopPlopCreateMessageParams::thinking,
-        ?tool_choice: Sam::Models::SamPlopPlopCreateMessageParams::tool_choice,
-        ?tools: ::Array[Sam::Models::SamPlopPlopCreateMessageParams::tool],
-        ?top_k: Integer,
-        ?top_p: Float,
-        ?anthropic_beta: ::Array[String],
-        ?anthropic_version: String,
-        ?x_api_key: String,
-        ?request_options: Sam::request_opts
-      ) -> Sam::Models::SamPlopPlopCreateMessageResponse
-
       def initialize: (client: Sam::Client) -> void
     end
   end
