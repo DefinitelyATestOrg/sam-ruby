@@ -60,5 +60,8 @@
     }
   ],
   "release-type": "ruby",
-  "version-file": "lib/sam/version.rb"
+  "version-file": "lib/sam/version.rb",
+  "extra-files": [
+    "README.md"
+  ]
 }
