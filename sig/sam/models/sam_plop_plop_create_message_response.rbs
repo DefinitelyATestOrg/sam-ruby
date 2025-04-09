@@ -1,0 +1,291 @@
+module Sam
+  module Models
+    type sam_plop_plop_create_message_response =
+      {
+        id: String,
+        content: ::Array[Sam::Models::SamPlopPlopCreateMessageResponse::content],
+        model: String,
+        role: :assistant,
+        stop_reason: Sam::Models::SamPlopPlopCreateMessageResponse::stop_reason?,
+        stop_sequence: String?,
+        type: :message,
+        usage: Sam::Models::SamPlopPlopCreateMessageResponse::Usage
+      }
+
+    class SamPlopPlopCreateMessageResponse < Sam::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor content: ::Array[Sam::Models::SamPlopPlopCreateMessageResponse::content]
+
+      attr_accessor model: String
+
+      attr_accessor role: :assistant
+
+      attr_accessor stop_reason: Sam::Models::SamPlopPlopCreateMessageResponse::stop_reason?
+
+      attr_accessor stop_sequence: String?
+
+      attr_accessor type: :message
+
+      attr_accessor usage: Sam::Models::SamPlopPlopCreateMessageResponse::Usage
+
+      def initialize: (
+        id: String,
+        content: ::Array[Sam::Models::SamPlopPlopCreateMessageResponse::content],
+        model: String,
+        stop_reason: Sam::Models::SamPlopPlopCreateMessageResponse::stop_reason?,
+        stop_sequence: String?,
+        usage: Sam::Models::SamPlopPlopCreateMessageResponse::Usage,
+        ?role: :assistant,
+        ?type: :message
+      ) -> void
+
+      def to_hash: -> Sam::Models::sam_plop_plop_create_message_response
+
+      type content =
+        Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseTextBlock
+        | Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseToolUseBlock
+        | Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseThinkingBlock
+        | Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseRedactedThinkingBlock
+
+      module Content
+        extend Sam::Internal::Type::Union
+
+        type response_text_block =
+          {
+            citations: ::Array[Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseTextBlock::citation]?,
+            text: String,
+            type: :text
+          }
+
+        class ResponseTextBlock < Sam::Internal::Type::BaseModel
+          attr_accessor citations: ::Array[Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseTextBlock::citation]?
+
+          attr_accessor text: String
+
+          attr_accessor type: :text
+
+          def initialize: (
+            citations: ::Array[Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseTextBlock::citation]?,
+            text: String,
+            ?type: :text
+          ) -> void
+
+          def to_hash: -> Sam::Models::SamPlopPlopCreateMessageResponse::Content::response_text_block
+
+          type citation =
+            Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation
+            | Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation
+            | Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
+
+          module Citation
+            extend Sam::Internal::Type::Union
+
+            type response_char_location_citation =
+              {
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_char_index: Integer,
+                start_char_index: Integer,
+                type: :char_location
+              }
+
+            class ResponseCharLocationCitation < Sam::Internal::Type::BaseModel
+              attr_accessor cited_text: String
+
+              attr_accessor document_index: Integer
+
+              attr_accessor document_title: String?
+
+              attr_accessor end_char_index: Integer
+
+              attr_accessor start_char_index: Integer
+
+              attr_accessor type: :char_location
+
+              def initialize: (
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_char_index: Integer,
+                start_char_index: Integer,
+                ?type: :char_location
+              ) -> void
+
+              def to_hash: -> Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseTextBlock::Citation::response_char_location_citation
+            end
+
+            type response_page_location_citation =
+              {
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_page_number: Integer,
+                start_page_number: Integer,
+                type: :page_location
+              }
+
+            class ResponsePageLocationCitation < Sam::Internal::Type::BaseModel
+              attr_accessor cited_text: String
+
+              attr_accessor document_index: Integer
+
+              attr_accessor document_title: String?
+
+              attr_accessor end_page_number: Integer
+
+              attr_accessor start_page_number: Integer
+
+              attr_accessor type: :page_location
+
+              def initialize: (
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_page_number: Integer,
+                start_page_number: Integer,
+                ?type: :page_location
+              ) -> void
+
+              def to_hash: -> Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseTextBlock::Citation::response_page_location_citation
+            end
+
+            type response_content_block_location_citation =
+              {
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_block_index: Integer,
+                start_block_index: Integer,
+                type: :content_block_location
+              }
+
+            class ResponseContentBlockLocationCitation < Sam::Internal::Type::BaseModel
+              attr_accessor cited_text: String
+
+              attr_accessor document_index: Integer
+
+              attr_accessor document_title: String?
+
+              attr_accessor end_block_index: Integer
+
+              attr_accessor start_block_index: Integer
+
+              attr_accessor type: :content_block_location
+
+              def initialize: (
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_block_index: Integer,
+                start_block_index: Integer,
+                ?type: :content_block_location
+              ) -> void
+
+              def to_hash: -> Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseTextBlock::Citation::response_content_block_location_citation
+            end
+
+            def self?.variants: -> [Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation, Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation, Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation]
+          end
+        end
+
+        type response_tool_use_block =
+          { id: String, input: top, name: String, type: :tool_use }
+
+        class ResponseToolUseBlock < Sam::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor input: top
+
+          attr_accessor name: String
+
+          attr_accessor type: :tool_use
+
+          def initialize: (
+            id: String,
+            input: top,
+            name: String,
+            ?type: :tool_use
+          ) -> void
+
+          def to_hash: -> Sam::Models::SamPlopPlopCreateMessageResponse::Content::response_tool_use_block
+        end
+
+        type response_thinking_block =
+          { signature: String, thinking: String, type: :thinking }
+
+        class ResponseThinkingBlock < Sam::Internal::Type::BaseModel
+          attr_accessor signature: String
+
+          attr_accessor thinking: String
+
+          attr_accessor type: :thinking
+
+          def initialize: (
+            signature: String,
+            thinking: String,
+            ?type: :thinking
+          ) -> void
+
+          def to_hash: -> Sam::Models::SamPlopPlopCreateMessageResponse::Content::response_thinking_block
+        end
+
+        type response_redacted_thinking_block =
+          { data: String, type: :redacted_thinking }
+
+        class ResponseRedactedThinkingBlock < Sam::Internal::Type::BaseModel
+          attr_accessor data: String
+
+          attr_accessor type: :redacted_thinking
+
+          def initialize: (data: String, ?type: :redacted_thinking) -> void
+
+          def to_hash: -> Sam::Models::SamPlopPlopCreateMessageResponse::Content::response_redacted_thinking_block
+        end
+
+        def self?.variants: -> [Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseTextBlock, Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseToolUseBlock, Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseThinkingBlock, Sam::Models::SamPlopPlopCreateMessageResponse::Content::ResponseRedactedThinkingBlock]
+      end
+
+      type stop_reason = :end_turn | :max_tokens | :stop_sequence | :tool_use
+
+      module StopReason
+        extend Sam::Internal::Type::Enum
+
+        END_TURN: :end_turn
+        MAX_TOKENS: :max_tokens
+        STOP_SEQUENCE: :stop_sequence
+        TOOL_USE: :tool_use
+
+        def self?.values: -> ::Array[Sam::Models::SamPlopPlopCreateMessageResponse::stop_reason]
+      end
+
+      type usage =
+        {
+          cache_creation_input_tokens: Integer?,
+          cache_read_input_tokens: Integer?,
+          input_tokens: Integer,
+          output_tokens: Integer
+        }
+
+      class Usage < Sam::Internal::Type::BaseModel
+        attr_accessor cache_creation_input_tokens: Integer?
+
+        attr_accessor cache_read_input_tokens: Integer?
+
+        attr_accessor input_tokens: Integer
+
+        attr_accessor output_tokens: Integer
+
+        def initialize: (
+          cache_creation_input_tokens: Integer?,
+          cache_read_input_tokens: Integer?,
+          input_tokens: Integer,
+          output_tokens: Integer
+        ) -> void
+
+        def to_hash: -> Sam::Models::SamPlopPlopCreateMessageResponse::usage
+      end
+    end
+  end
+end
