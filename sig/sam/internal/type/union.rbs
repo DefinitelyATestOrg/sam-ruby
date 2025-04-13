@@ -39,6 +39,8 @@ module Sam
           top value,
           state: Sam::Internal::Type::Converter::dump_state
         ) -> top
+
+        def inspect: (?depth: Integer) -> String
       end
     end
   end

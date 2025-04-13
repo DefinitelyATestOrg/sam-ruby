@@ -189,6 +189,7 @@ module Sam
           model: Sam::Internal::Type::Unknown,
           options: {}
         ); end
+        # @api private
         sig { returns(String) }
         def inspect; end
       end
