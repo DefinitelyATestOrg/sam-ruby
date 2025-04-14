@@ -8,7 +8,7 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/sam).
 
-The underlying REST API documentation can be found on [docs.sam.com](https://docs.sam.com).
+The REST API documentation can be found on [docs.sam.com](https://docs.sam.com).
 
 ## Installation
 
