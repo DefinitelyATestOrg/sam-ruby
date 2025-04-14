@@ -10,17 +10,16 @@ module Sam
         extend Sam::Internal::Type::Converter
 
         abstract!
-        final!
 
-        sig(:final) { params(other: T.anything).returns(T::Boolean) }
+        sig { params(other: T.anything).returns(T::Boolean) }
         def self.===(other); end
 
-        sig(:final) { params(other: T.anything).returns(T::Boolean) }
+        sig { params(other: T.anything).returns(T::Boolean) }
         def self.==(other); end
 
         class << self
           # @api private
-          sig(:final) do
+          sig do
             override
               .params(value: T.any(
                 T::Boolean,
@@ -32,7 +31,7 @@ module Sam
           def coerce(value, state:); end
 
           # @api private
-          sig(:final) do
+          sig do
             override
               .params(value: T.any(T::Boolean, T.anything), state: Sam::Internal::Type::Converter::DumpState)
               .returns(T.any(T::Boolean, T.anything))
