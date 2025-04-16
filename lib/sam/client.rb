@@ -48,7 +48,8 @@ module Sam
     # @param api_key [String, nil] API key used for authenticating requests via the Authorization header Defaults
     # to `ENV["API_KEY"]`
     #
-    # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
+    # @param base_url [String, nil] Override the default base URL for the API, e.g.,
+    # `"https://api.example.com/v2/"`. Defaults to `ENV["SAM_BASE_URL"]`
     #
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
     #
@@ -59,7 +60,7 @@ module Sam
     # @param max_retry_delay [Float]
     def initialize(
       api_key: ENV["API_KEY"],
-      base_url: nil,
+      base_url: ENV["SAM_BASE_URL"],
       max_retries: DEFAULT_MAX_RETRIES,
       timeout: DEFAULT_TIMEOUT_IN_SECONDS,
       initial_retry_delay: DEFAULT_INITIAL_RETRY_DELAY,

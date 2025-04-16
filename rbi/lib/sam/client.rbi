@@ -54,8 +54,9 @@ module Sam
       # API key used for authenticating requests via the Authorization header Defaults
       # to `ENV["API_KEY"]`
       api_key: ENV["API_KEY"],
-      # Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
-      base_url: nil,
+      # Override the default base URL for the API, e.g.,
+      # `"https://api.example.com/v2/"`. Defaults to `ENV["SAM_BASE_URL"]`
+      base_url: ENV["SAM_BASE_URL"],
       # Max number of retries to attempt after a failed retryable request.
       max_retries: DEFAULT_MAX_RETRIES,
       timeout: DEFAULT_TIMEOUT_IN_SECONDS,
