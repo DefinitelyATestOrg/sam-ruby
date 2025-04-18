@@ -36,14 +36,10 @@ module Sam
       #   # @return [String]
       #   attr_writer :x_api_key
 
-      # @!parse
-      #   # @param anthropic_version [String]
-      #   # @param x_api_key [String]
-      #   # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(anthropic_version: nil, x_api_key: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
+      # @!method initialize(anthropic_version: nil, x_api_key: nil, request_options: {})
+      #   @param anthropic_version [String]
+      #   @param x_api_key [String]
+      #   @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

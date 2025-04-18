@@ -28,15 +28,11 @@ module Sam
       #   @return [String, nil]
       required :last_id, String, nil?: true
 
-      # @!parse
-      #   # @param data [Array<Sam::Models::ModelsBetaTrueListResponse::Data>]
-      #   # @param first_id [String, nil]
-      #   # @param has_more [Boolean]
-      #   # @param last_id [String, nil]
-      #   #
-      #   def initialize(data:, first_id:, has_more:, last_id:, **) = super
-
-      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
+      # @!method initialize(data:, first_id:, has_more:, last_id:)
+      #   @param data [Array<Sam::Models::ModelsBetaTrueListResponse::Data>]
+      #   @param first_id [String, nil]
+      #   @param has_more [Boolean]
+      #   @param last_id [String, nil]
 
       class Data < Sam::Internal::Type::BaseModel
         # @!attribute id
@@ -66,15 +62,11 @@ module Sam
         #   @return [Symbol, :model]
         required :type, const: :model
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param created_at [Time]
-        #   # @param display_name [String]
-        #   # @param type [Symbol, :model]
-        #   #
-        #   def initialize(id:, created_at:, display_name:, type: :model, **) = super
-
-        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, created_at:, display_name:, type: :model)
+        #   @param id [String]
+        #   @param created_at [Time]
+        #   @param display_name [String]
+        #   @param type [Symbol, :model]
       end
     end
   end
