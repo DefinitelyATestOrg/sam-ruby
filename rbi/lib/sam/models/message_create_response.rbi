@@ -493,8 +493,7 @@ module Sam
         extend Sam::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Sam::Models::MessageCreateResponse::StopReason) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         END_TURN = T.let(:end_turn, Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol)
         MAX_TOKENS = T.let(:max_tokens, Sam::Models::MessageCreateResponse::StopReason::TaggedSymbol)
