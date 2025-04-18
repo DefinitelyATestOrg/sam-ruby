@@ -4,33 +4,24 @@ module Sam
   module Models
     # @see Sam::Resources::ModelsBetaTrue#list
     class ModelsBetaTrueListParams < Sam::Internal::Type::BaseModel
-      # @!parse
-      #   extend Sam::Internal::Type::RequestParameters::Converter
+      extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
 
-      # @!attribute [r] after_id
+      # @!attribute after_id
       #   ID of the object to use as a cursor for pagination. When provided, returns the
       #   page of results immediately after this object.
       #
       #   @return [String, nil]
       optional :after_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :after_id
-
-      # @!attribute [r] before_id
+      # @!attribute before_id
       #   ID of the object to use as a cursor for pagination. When provided, returns the
       #   page of results immediately before this object.
       #
       #   @return [String, nil]
       optional :before_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :before_id
-
-      # @!attribute [r] limit
+      # @!attribute limit
       #   Number of items to return per page.
       #
       #   Defaults to `20`. Ranges from `1` to `1000`.
@@ -38,11 +29,7 @@ module Sam
       #   @return [Integer, nil]
       optional :limit, Integer
 
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :limit
-
-      # @!attribute [r] anthropic_version
+      # @!attribute anthropic_version
       #   The version of the Anthropic API you want to use.
       #
       #   Read more about versioning and our version history
@@ -51,11 +38,7 @@ module Sam
       #   @return [String, nil]
       optional :anthropic_version, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :anthropic_version
-
-      # @!attribute [r] x_api_key
+      # @!attribute x_api_key
       #   Your unique API key for authentication.
       #
       #   This key is required in the header of all API requests, to authenticate your
@@ -65,10 +48,6 @@ module Sam
       #
       #   @return [String, nil]
       optional :x_api_key, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :x_api_key
 
       # @!method initialize(after_id: nil, before_id: nil, limit: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
       #   @param after_id [String]

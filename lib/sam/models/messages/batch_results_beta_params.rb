@@ -5,11 +5,10 @@ module Sam
     module Messages
       # @see Sam::Resources::Messages::Batches#results_beta_streaming
       class BatchResultsBetaParams < Sam::Internal::Type::BaseModel
-        # @!parse
-        #   extend Sam::Internal::Type::RequestParameters::Converter
+        extend Sam::Internal::Type::RequestParameters::Converter
         include Sam::Internal::Type::RequestParameters
 
-        # @!attribute [r] anthropic_beta
+        # @!attribute anthropic_beta
         #   Optional header to specify the beta version(s) you want to use.
         #
         #   To use multiple betas, use a comma separated list like `beta1,beta2` or specify
@@ -18,11 +17,7 @@ module Sam
         #   @return [Array<String>, nil]
         optional :anthropic_beta, Sam::Internal::Type::ArrayOf[String]
 
-        # @!parse
-        #   # @return [Array<String>]
-        #   attr_writer :anthropic_beta
-
-        # @!attribute [r] anthropic_version
+        # @!attribute anthropic_version
         #   The version of the Anthropic API you want to use.
         #
         #   Read more about versioning and our version history
@@ -31,11 +26,7 @@ module Sam
         #   @return [String, nil]
         optional :anthropic_version, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :anthropic_version
-
-        # @!attribute [r] x_api_key
+        # @!attribute x_api_key
         #   Your unique API key for authentication.
         #
         #   This key is required in the header of all API requests, to authenticate your
@@ -45,10 +36,6 @@ module Sam
         #
         #   @return [String, nil]
         optional :x_api_key, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :x_api_key
 
         # @!method initialize(anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #   @param anthropic_beta [Array<String>]

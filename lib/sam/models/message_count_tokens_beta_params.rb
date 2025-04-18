@@ -4,8 +4,7 @@ module Sam
   module Models
     # @see Sam::Resources::Messages#count_tokens_beta
     class MessageCountTokensBetaParams < Sam::Internal::Type::BaseModel
-      # @!parse
-      #   extend Sam::Internal::Type::RequestParameters::Converter
+      extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
 
       # @!attribute messages
@@ -109,7 +108,7 @@ module Sam
       #   @return [String]
       required :model, String
 
-      # @!attribute [r] system_
+      # @!attribute system_
       #   System prompt.
       #
       #   A system prompt is a way of providing context and instructions to Claude, such
@@ -119,11 +118,7 @@ module Sam
       #   @return [String, Array<Sam::Models::MessageCountTokensBetaParams::System::UnionMember1>, nil]
       optional :system_, union: -> { Sam::Models::MessageCountTokensBetaParams::System }, api_name: :system
 
-      # @!parse
-      #   # @return [String, Array<Sam::Models::MessageCountTokensBetaParams::System::UnionMember1>]
-      #   attr_writer :system_
-
-      # @!attribute [r] thinking
+      # @!attribute thinking
       #   Configuration for enabling Claude's extended thinking.
       #
       #   When enabled, responses include `thinking` content blocks showing Claude's
@@ -137,22 +132,14 @@ module Sam
       #   @return [Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigEnabled, Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigDisabled, nil]
       optional :thinking, union: -> { Sam::Models::MessageCountTokensBetaParams::Thinking }
 
-      # @!parse
-      #   # @return [Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigEnabled, Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigDisabled]
-      #   attr_writer :thinking
-
-      # @!attribute [r] tool_choice
+      # @!attribute tool_choice
       #   How the model should use the provided tools. The model can use a specific tool,
       #   any available tool, decide by itself, or not use tools at all.
       #
       #   @return [Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAuto, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAny, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceTool, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceNone, nil]
       optional :tool_choice, union: -> { Sam::Models::MessageCountTokensBetaParams::ToolChoice }
 
-      # @!parse
-      #   # @return [Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAuto, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAny, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceTool, Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceNone]
-      #   attr_writer :tool_choice
-
-      # @!attribute [r] tools
+      # @!attribute tools
       #   Definitions of tools that the model may use.
       #
       #   If you include `tools` in your API request, the model may return `tool_use`
@@ -227,11 +214,7 @@ module Sam
       optional :tools,
                -> { Sam::Internal::Type::ArrayOf[union: Sam::Models::MessageCountTokensBetaParams::Tool] }
 
-      # @!parse
-      #   # @return [Array<Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool, Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022, Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022, Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022, Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124, Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124, Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124>]
-      #   attr_writer :tools
-
-      # @!attribute [r] anthropic_beta
+      # @!attribute anthropic_beta
       #   Optional header to specify the beta version(s) you want to use.
       #
       #   To use multiple betas, use a comma separated list like `beta1,beta2` or specify
@@ -240,11 +223,7 @@ module Sam
       #   @return [Array<String>, nil]
       optional :anthropic_beta, Sam::Internal::Type::ArrayOf[String]
 
-      # @!parse
-      #   # @return [Array<String>]
-      #   attr_writer :anthropic_beta
-
-      # @!attribute [r] anthropic_version
+      # @!attribute anthropic_version
       #   The version of the Anthropic API you want to use.
       #
       #   Read more about versioning and our version history
@@ -253,11 +232,7 @@ module Sam
       #   @return [String, nil]
       optional :anthropic_version, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :anthropic_version
-
-      # @!attribute [r] x_api_key
+      # @!attribute x_api_key
       #   Your unique API key for authentication.
       #
       #   This key is required in the header of all API requests, to authenticate your
@@ -267,10 +242,6 @@ module Sam
       #
       #   @return [String, nil]
       optional :x_api_key, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :x_api_key
 
       # @!method initialize(messages:, model:, system_: nil, thinking: nil, tool_choice: nil, tools: nil, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
       #   @param messages [Array<Sam::Models::MessageCountTokensBetaParams::Message>]
@@ -687,24 +658,16 @@ module Sam
                        -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl },
                        nil?: true
 
-              # @!attribute [r] content
+              # @!attribute content
               #
               #   @return [String, Array<Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock>, nil]
               optional :content,
                        union: -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content }
 
-              # @!parse
-              #   # @return [String, Array<Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock>]
-              #   attr_writer :content
-
-              # @!attribute [r] is_error
+              # @!attribute is_error
               #
               #   @return [Boolean, nil]
               optional :is_error, Sam::Internal::Type::Boolean
-
-              # @!parse
-              #   # @return [Boolean]
-              #   attr_writer :is_error
 
               # @!method initialize(tool_use_id:, cache_control: nil, content: nil, is_error: nil, type: :tool_result)
               #   @param tool_use_id [String]
@@ -1065,15 +1028,11 @@ module Sam
                        -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl },
                        nil?: true
 
-              # @!attribute [r] citations
+              # @!attribute citations
               #
               #   @return [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations, nil]
               optional :citations,
                        -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations }
-
-              # @!parse
-              #   # @return [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations]
-              #   attr_writer :citations
 
               # @!attribute context
               #
@@ -1526,14 +1485,10 @@ module Sam
 
               # @see Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock#citations
               class Citations < Sam::Internal::Type::BaseModel
-                # @!attribute [r] enabled
+                # @!attribute enabled
                 #
                 #   @return [Boolean, nil]
                 optional :enabled, Sam::Internal::Type::Boolean
-
-                # @!parse
-                #   # @return [Boolean]
-                #   attr_writer :enabled
 
                 # @!method initialize(enabled: nil)
                 #   @param enabled [Boolean]
@@ -1883,7 +1838,7 @@ module Sam
           #   @return [Symbol, :auto]
           required :type, const: :auto
 
-          # @!attribute [r] disable_parallel_tool_use
+          # @!attribute disable_parallel_tool_use
           #   Whether to disable parallel tool use.
           #
           #   Defaults to `false`. If set to `true`, the model will output at most one tool
@@ -1891,10 +1846,6 @@ module Sam
           #
           #   @return [Boolean, nil]
           optional :disable_parallel_tool_use, Sam::Internal::Type::Boolean
-
-          # @!parse
-          #   # @return [Boolean]
-          #   attr_writer :disable_parallel_tool_use
 
           # @!method initialize(disable_parallel_tool_use: nil, type: :auto)
           #   The model will automatically decide whether to use tools.
@@ -1909,7 +1860,7 @@ module Sam
           #   @return [Symbol, :any]
           required :type, const: :any
 
-          # @!attribute [r] disable_parallel_tool_use
+          # @!attribute disable_parallel_tool_use
           #   Whether to disable parallel tool use.
           #
           #   Defaults to `false`. If set to `true`, the model will output exactly one tool
@@ -1917,10 +1868,6 @@ module Sam
           #
           #   @return [Boolean, nil]
           optional :disable_parallel_tool_use, Sam::Internal::Type::Boolean
-
-          # @!parse
-          #   # @return [Boolean]
-          #   attr_writer :disable_parallel_tool_use
 
           # @!method initialize(disable_parallel_tool_use: nil, type: :any)
           #   The model will use any available tools.
@@ -1941,7 +1888,7 @@ module Sam
           #   @return [Symbol, :tool]
           required :type, const: :tool
 
-          # @!attribute [r] disable_parallel_tool_use
+          # @!attribute disable_parallel_tool_use
           #   Whether to disable parallel tool use.
           #
           #   Defaults to `false`. If set to `true`, the model will output exactly one tool
@@ -1949,10 +1896,6 @@ module Sam
           #
           #   @return [Boolean, nil]
           optional :disable_parallel_tool_use, Sam::Internal::Type::Boolean
-
-          # @!parse
-          #   # @return [Boolean]
-          #   attr_writer :disable_parallel_tool_use
 
           # @!method initialize(name:, disable_parallel_tool_use: nil, type: :tool)
           #   The model will use the specified tool with `tool_choice.name`.
@@ -2020,7 +1963,7 @@ module Sam
                    -> { Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool::CacheControl },
                    nil?: true
 
-          # @!attribute [r] description
+          # @!attribute description
           #   Description of what this tool does.
           #
           #   Tool descriptions should be as detailed as possible. The more information that
@@ -2030,10 +1973,6 @@ module Sam
           #
           #   @return [String, nil]
           optional :description, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :description
 
           # @!attribute type
           #
