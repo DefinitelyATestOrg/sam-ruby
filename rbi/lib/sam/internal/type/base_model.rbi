@@ -176,6 +176,7 @@ module Sam
         def deconstruct_keys(keys); end
 
         class << self
+          # @api private
           sig { params(model: Sam::Internal::Type::BaseModel).returns(Sam::Internal::AnyHash) }
           def walk(model); end
         end

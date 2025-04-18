@@ -85,35 +85,17 @@ module Sam
         #   @return [Symbol, :message_batch]
         required :type, const: :message_batch
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param archived_at [Time, nil]
-        #   # @param cancel_initiated_at [Time, nil]
-        #   # @param created_at [Time]
-        #   # @param ended_at [Time, nil]
-        #   # @param expires_at [Time]
-        #   # @param processing_status [Symbol, Sam::Models::Messages::BatchCancelResponse::ProcessingStatus]
-        #   # @param request_counts [Sam::Models::Messages::BatchCancelResponse::RequestCounts]
-        #   # @param results_url [String, nil]
-        #   # @param type [Symbol, :message_batch]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     archived_at:,
-        #     cancel_initiated_at:,
-        #     created_at:,
-        #     ended_at:,
-        #     expires_at:,
-        #     processing_status:,
-        #     request_counts:,
-        #     results_url:,
-        #     type: :message_batch,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, archived_at:, cancel_initiated_at:, created_at:, ended_at:, expires_at:, processing_status:, request_counts:, results_url:, type: :message_batch)
+        #   @param id [String]
+        #   @param archived_at [Time, nil]
+        #   @param cancel_initiated_at [Time, nil]
+        #   @param created_at [Time]
+        #   @param ended_at [Time, nil]
+        #   @param expires_at [Time]
+        #   @param processing_status [Symbol, Sam::Models::Messages::BatchCancelResponse::ProcessingStatus]
+        #   @param request_counts [Sam::Models::Messages::BatchCancelResponse::RequestCounts]
+        #   @param results_url [String, nil]
+        #   @param type [Symbol, :message_batch]
 
         # Processing status of the Message Batch.
         #
@@ -125,11 +107,8 @@ module Sam
           CANCELING = :canceling
           ENDED = :ended
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Sam::Models::Messages::BatchCancelResponse#request_counts
@@ -172,22 +151,18 @@ module Sam
           #   @return [Integer]
           required :succeeded, Integer
 
-          # @!parse
-          #   # Tallies requests within the Message Batch, categorized by their status.
-          #   #
-          #   # Requests start as `processing` and move to one of the other statuses only once
-          #   # processing of the entire batch ends. The sum of all values always matches the
-          #   # total number of requests in the batch.
-          #   #
-          #   # @param canceled [Integer]
-          #   # @param errored [Integer]
-          #   # @param expired [Integer]
-          #   # @param processing [Integer]
-          #   # @param succeeded [Integer]
-          #   #
-          #   def initialize(canceled:, errored:, expired:, processing:, succeeded:, **) = super
-
-          # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
+          # @!method initialize(canceled:, errored:, expired:, processing:, succeeded:)
+          #   Tallies requests within the Message Batch, categorized by their status.
+          #
+          #   Requests start as `processing` and move to one of the other statuses only once
+          #   processing of the entire batch ends. The sum of all values always matches the
+          #   total number of requests in the batch.
+          #
+          #   @param canceled [Integer]
+          #   @param errored [Integer]
+          #   @param expired [Integer]
+          #   @param processing [Integer]
+          #   @param succeeded [Integer]
         end
       end
     end

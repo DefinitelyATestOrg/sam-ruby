@@ -117,19 +117,15 @@ module Sam
       #   @return [Sam::Models::MessagesBetaTrueCreateResponse::Usage]
       required :usage, -> { Sam::Models::MessagesBetaTrueCreateResponse::Usage }
 
-      # @!parse
-      #   # @param id [String]
-      #   # @param content [Array<Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseToolUseBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseThinkingBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseRedactedThinkingBlock>]
-      #   # @param model [String]
-      #   # @param stop_reason [Symbol, Sam::Models::MessagesBetaTrueCreateResponse::StopReason, nil]
-      #   # @param stop_sequence [String, nil]
-      #   # @param usage [Sam::Models::MessagesBetaTrueCreateResponse::Usage]
-      #   # @param role [Symbol, :assistant]
-      #   # @param type [Symbol, :message]
-      #   #
-      #   def initialize(id:, content:, model:, stop_reason:, stop_sequence:, usage:, role: :assistant, type: :message, **) = super
-
-      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, content:, model:, stop_reason:, stop_sequence:, usage:, role: :assistant, type: :message)
+      #   @param id [String]
+      #   @param content [Array<Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseToolUseBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseThinkingBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseRedactedThinkingBlock>]
+      #   @param model [String]
+      #   @param stop_reason [Symbol, Sam::Models::MessagesBetaTrueCreateResponse::StopReason, nil]
+      #   @param stop_sequence [String, nil]
+      #   @param usage [Sam::Models::MessagesBetaTrueCreateResponse::Usage]
+      #   @param role [Symbol, :assistant]
+      #   @param type [Symbol, :message]
 
       module Content
         extend Sam::Internal::Type::Union
@@ -168,14 +164,10 @@ module Sam
           #   @return [Symbol, :text]
           required :type, const: :text
 
-          # @!parse
-          #   # @param citations [Array<Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation>, nil]
-          #   # @param text [String]
-          #   # @param type [Symbol, :text]
-          #   #
-          #   def initialize(citations:, text:, type: :text, **) = super
-
-          # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
+          # @!method initialize(citations:, text:, type: :text)
+          #   @param citations [Array<Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation>, nil]
+          #   @param text [String]
+          #   @param type [Symbol, :text]
 
           module Citation
             extend Sam::Internal::Type::Union
@@ -222,27 +214,13 @@ module Sam
               #   @return [Symbol, :char_location]
               required :type, const: :char_location
 
-              # @!parse
-              #   # @param cited_text [String]
-              #   # @param document_index [Integer]
-              #   # @param document_title [String, nil]
-              #   # @param end_char_index [Integer]
-              #   # @param start_char_index [Integer]
-              #   # @param type [Symbol, :char_location]
-              #   #
-              #   def initialize(
-              #     cited_text:,
-              #     document_index:,
-              #     document_title:,
-              #     end_char_index:,
-              #     start_char_index:,
-              #     type: :char_location,
-              #     **
-              #   )
-              #     super
-              #   end
-
-              # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
+              # @!method initialize(cited_text:, document_index:, document_title:, end_char_index:, start_char_index:, type: :char_location)
+              #   @param cited_text [String]
+              #   @param document_index [Integer]
+              #   @param document_title [String, nil]
+              #   @param end_char_index [Integer]
+              #   @param start_char_index [Integer]
+              #   @param type [Symbol, :char_location]
             end
 
             class BetaResponsePageLocationCitation < Sam::Internal::Type::BaseModel
@@ -276,27 +254,13 @@ module Sam
               #   @return [Symbol, :page_location]
               required :type, const: :page_location
 
-              # @!parse
-              #   # @param cited_text [String]
-              #   # @param document_index [Integer]
-              #   # @param document_title [String, nil]
-              #   # @param end_page_number [Integer]
-              #   # @param start_page_number [Integer]
-              #   # @param type [Symbol, :page_location]
-              #   #
-              #   def initialize(
-              #     cited_text:,
-              #     document_index:,
-              #     document_title:,
-              #     end_page_number:,
-              #     start_page_number:,
-              #     type: :page_location,
-              #     **
-              #   )
-              #     super
-              #   end
-
-              # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
+              # @!method initialize(cited_text:, document_index:, document_title:, end_page_number:, start_page_number:, type: :page_location)
+              #   @param cited_text [String]
+              #   @param document_index [Integer]
+              #   @param document_title [String, nil]
+              #   @param end_page_number [Integer]
+              #   @param start_page_number [Integer]
+              #   @param type [Symbol, :page_location]
             end
 
             class BetaResponseContentBlockLocationCitation < Sam::Internal::Type::BaseModel
@@ -330,32 +294,17 @@ module Sam
               #   @return [Symbol, :content_block_location]
               required :type, const: :content_block_location
 
-              # @!parse
-              #   # @param cited_text [String]
-              #   # @param document_index [Integer]
-              #   # @param document_title [String, nil]
-              #   # @param end_block_index [Integer]
-              #   # @param start_block_index [Integer]
-              #   # @param type [Symbol, :content_block_location]
-              #   #
-              #   def initialize(
-              #     cited_text:,
-              #     document_index:,
-              #     document_title:,
-              #     end_block_index:,
-              #     start_block_index:,
-              #     type: :content_block_location,
-              #     **
-              #   )
-              #     super
-              #   end
-
-              # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
+              # @!method initialize(cited_text:, document_index:, document_title:, end_block_index:, start_block_index:, type: :content_block_location)
+              #   @param cited_text [String]
+              #   @param document_index [Integer]
+              #   @param document_title [String, nil]
+              #   @param end_block_index [Integer]
+              #   @param start_block_index [Integer]
+              #   @param type [Symbol, :content_block_location]
             end
 
-            # @!parse
-            #   # @return [Array(Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation)]
-            #   def self.variants; end
+            # @!method self.variants
+            #   @return [Array(Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation)]
           end
         end
 
@@ -380,15 +329,11 @@ module Sam
           #   @return [Symbol, :tool_use]
           required :type, const: :tool_use
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param input [Object]
-          #   # @param name [String]
-          #   # @param type [Symbol, :tool_use]
-          #   #
-          #   def initialize(id:, input:, name:, type: :tool_use, **) = super
-
-          # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, input:, name:, type: :tool_use)
+          #   @param id [String]
+          #   @param input [Object]
+          #   @param name [String]
+          #   @param type [Symbol, :tool_use]
         end
 
         class BetaResponseThinkingBlock < Sam::Internal::Type::BaseModel
@@ -407,14 +352,10 @@ module Sam
           #   @return [Symbol, :thinking]
           required :type, const: :thinking
 
-          # @!parse
-          #   # @param signature [String]
-          #   # @param thinking [String]
-          #   # @param type [Symbol, :thinking]
-          #   #
-          #   def initialize(signature:, thinking:, type: :thinking, **) = super
-
-          # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
+          # @!method initialize(signature:, thinking:, type: :thinking)
+          #   @param signature [String]
+          #   @param thinking [String]
+          #   @param type [Symbol, :thinking]
         end
 
         class BetaResponseRedactedThinkingBlock < Sam::Internal::Type::BaseModel
@@ -428,18 +369,13 @@ module Sam
           #   @return [Symbol, :redacted_thinking]
           required :type, const: :redacted_thinking
 
-          # @!parse
-          #   # @param data [String]
-          #   # @param type [Symbol, :redacted_thinking]
-          #   #
-          #   def initialize(data:, type: :redacted_thinking, **) = super
-
-          # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
+          # @!method initialize(data:, type: :redacted_thinking)
+          #   @param data [String]
+          #   @param type [Symbol, :redacted_thinking]
         end
 
-        # @!parse
-        #   # @return [Array(Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseToolUseBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseThinkingBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseRedactedThinkingBlock)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseToolUseBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseThinkingBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseRedactedThinkingBlock)]
       end
 
       # The reason that we stopped.
@@ -463,11 +399,8 @@ module Sam
         STOP_SEQUENCE = :stop_sequence
         TOOL_USE = :tool_use
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Sam::Models::MessagesBetaTrueCreateResponse#usage
@@ -496,31 +429,27 @@ module Sam
         #   @return [Integer]
         required :output_tokens, Integer
 
-        # @!parse
-        #   # Billing and rate-limit usage.
-        #   #
-        #   # Anthropic's API bills and rate-limits by token counts, as tokens represent the
-        #   # underlying cost to our systems.
-        #   #
-        #   # Under the hood, the API transforms requests into a format suitable for the
-        #   # model. The model's output then goes through a parsing stage before becoming an
-        #   # API response. As a result, the token counts in `usage` will not match one-to-one
-        #   # with the exact visible content of an API request or response.
-        #   #
-        #   # For example, `output_tokens` will be non-zero, even for an empty string response
-        #   # from Claude.
-        #   #
-        #   # Total input tokens in a request is the summation of `input_tokens`,
-        #   # `cache_creation_input_tokens`, and `cache_read_input_tokens`.
-        #   #
-        #   # @param cache_creation_input_tokens [Integer, nil]
-        #   # @param cache_read_input_tokens [Integer, nil]
-        #   # @param input_tokens [Integer]
-        #   # @param output_tokens [Integer]
-        #   #
-        #   def initialize(cache_creation_input_tokens:, cache_read_input_tokens:, input_tokens:, output_tokens:, **) = super
-
-        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
+        # @!method initialize(cache_creation_input_tokens:, cache_read_input_tokens:, input_tokens:, output_tokens:)
+        #   Billing and rate-limit usage.
+        #
+        #   Anthropic's API bills and rate-limits by token counts, as tokens represent the
+        #   underlying cost to our systems.
+        #
+        #   Under the hood, the API transforms requests into a format suitable for the
+        #   model. The model's output then goes through a parsing stage before becoming an
+        #   API response. As a result, the token counts in `usage` will not match one-to-one
+        #   with the exact visible content of an API request or response.
+        #
+        #   For example, `output_tokens` will be non-zero, even for an empty string response
+        #   from Claude.
+        #
+        #   Total input tokens in a request is the summation of `input_tokens`,
+        #   `cache_creation_input_tokens`, and `cache_read_input_tokens`.
+        #
+        #   @param cache_creation_input_tokens [Integer, nil]
+        #   @param cache_read_input_tokens [Integer, nil]
+        #   @param input_tokens [Integer]
+        #   @param output_tokens [Integer]
       end
     end
   end

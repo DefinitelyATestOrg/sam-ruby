@@ -339,6 +339,8 @@ module Sam
         end
 
         class << self
+          # @api private
+          #
           # @param model [Sam::Internal::Type::BaseModel]
           #
           # @return [Hash{Symbol=>Object}]

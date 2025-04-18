@@ -84,29 +84,14 @@ module Sam
         #   # @return [String]
         #   attr_writer :x_api_key
 
-        # @!parse
-        #   # @param after_id [String]
-        #   # @param before_id [String]
-        #   # @param limit [Integer]
-        #   # @param anthropic_beta [Array<String>]
-        #   # @param anthropic_version [String]
-        #   # @param x_api_key [String]
-        #   # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(
-        #     after_id: nil,
-        #     before_id: nil,
-        #     limit: nil,
-        #     anthropic_beta: nil,
-        #     anthropic_version: nil,
-        #     x_api_key: nil,
-        #     request_options: {},
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
+        # @!method initialize(after_id: nil, before_id: nil, limit: nil, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
+        #   @param after_id [String]
+        #   @param before_id [String]
+        #   @param limit [Integer]
+        #   @param anthropic_beta [Array<String>]
+        #   @param anthropic_version [String]
+        #   @param x_api_key [String]
+        #   @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

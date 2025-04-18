@@ -159,39 +159,19 @@ module Sam
       #   # @return [String]
       #   attr_writer :x_api_key
 
-      # @!parse
-      #   # @param max_tokens_to_sample [Integer]
-      #   # @param model [String]
-      #   # @param prompt [String]
-      #   # @param metadata [Sam::Models::CompleteCreateParams::Metadata]
-      #   # @param stop_sequences [Array<String>]
-      #   # @param stream [Boolean]
-      #   # @param temperature [Float]
-      #   # @param top_k [Integer]
-      #   # @param top_p [Float]
-      #   # @param anthropic_version [String]
-      #   # @param x_api_key [String]
-      #   # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     max_tokens_to_sample:,
-      #     model:,
-      #     prompt:,
-      #     metadata: nil,
-      #     stop_sequences: nil,
-      #     stream: nil,
-      #     temperature: nil,
-      #     top_k: nil,
-      #     top_p: nil,
-      #     anthropic_version: nil,
-      #     x_api_key: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
+      # @!method initialize(max_tokens_to_sample:, model:, prompt:, metadata: nil, stop_sequences: nil, stream: nil, temperature: nil, top_k: nil, top_p: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
+      #   @param max_tokens_to_sample [Integer]
+      #   @param model [String]
+      #   @param prompt [String]
+      #   @param metadata [Sam::Models::CompleteCreateParams::Metadata]
+      #   @param stop_sequences [Array<String>]
+      #   @param stream [Boolean]
+      #   @param temperature [Float]
+      #   @param top_k [Integer]
+      #   @param top_p [Float]
+      #   @param anthropic_version [String]
+      #   @param x_api_key [String]
+      #   @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
 
       class Metadata < Sam::Internal::Type::BaseModel
         # @!attribute user_id
@@ -204,14 +184,10 @@ module Sam
         #   @return [String, nil]
         optional :user_id, String, nil?: true
 
-        # @!parse
-        #   # An object describing metadata about the request.
-        #   #
-        #   # @param user_id [String, nil]
-        #   #
-        #   def initialize(user_id: nil, **) = super
-
-        # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
+        # @!method initialize(user_id: nil)
+        #   An object describing metadata about the request.
+        #
+        #   @param user_id [String, nil]
       end
     end
   end

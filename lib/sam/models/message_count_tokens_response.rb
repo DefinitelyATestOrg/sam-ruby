@@ -11,12 +11,8 @@ module Sam
       #   @return [Integer]
       required :input_tokens, Integer
 
-      # @!parse
-      #   # @param input_tokens [Integer]
-      #   #
-      #   def initialize(input_tokens:, **) = super
-
-      # def initialize: (Hash | Sam::Internal::Type::BaseModel) -> void
+      # @!method initialize(input_tokens:)
+      #   @param input_tokens [Integer]
     end
   end
 end
