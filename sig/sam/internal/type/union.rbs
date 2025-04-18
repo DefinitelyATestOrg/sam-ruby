@@ -30,6 +30,8 @@ module Sam
 
         def ==: (top other) -> bool
 
+        def hash: -> Integer
+
         def coerce: (
           top value,
           state: Sam::Internal::Type::Converter::coerce_state

@@ -4,14 +4,6 @@ module Sam
   module Internal
     module Type
       # @abstract
-      #
-      # @example
-      #   # `message_create_response` is a `Sam::Models::MessageCreateResponse`
-      #   message_create_response => {
-      #     id: id,
-      #     content: content,
-      #     model: model
-      #   }
       class BaseModel
         extend Sam::Internal::Type::Converter
 
@@ -93,11 +85,13 @@ module Sam
                   state: state
                 )
               end
-            rescue StandardError
+            rescue StandardError => e
               cls = self.class.name.split("::").last
-              # rubocop:disable Layout/LineLength
-              message = "Failed to parse #{cls}.#{__method__} from #{value.class} to #{target.inspect}. To get the unparsed API response, use #{cls}[:#{__method__}]."
-              # rubocop:enable Layout/LineLength
+              message = [
+                "Failed to parse #{cls}.#{__method__} from #{value.class} to #{target.inspect}.",
+                "To get the unparsed API response, use #{cls}[#{__method__.inspect}].",
+                "Cause: #{e.message}"
+              ].join(" ")
               raise Sam::Errors::ConversionError.new(message)
             end
           end
@@ -171,12 +165,18 @@ module Sam
           def ==(other)
             other.is_a?(Class) && other <= Sam::Internal::Type::BaseModel && other.fields == fields
           end
+
+          # @return [Integer]
+          def hash = fields.hash
         end
 
         # @param other [Object]
         #
         # @return [Boolean]
         def ==(other) = self.class == other.class && @data == other.to_h
+
+        # @return [Integer]
+        def hash = [self.class, @data].hash
 
         class << self
           # @api private
