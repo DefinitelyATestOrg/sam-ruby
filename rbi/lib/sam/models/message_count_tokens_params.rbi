@@ -872,14 +872,7 @@ module Sam
                       T.type_alias do
                         T.all(Symbol, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType)
                       end
-                    OrSymbol =
-                      T.type_alias do
-                        T.any(
-                          Symbol,
-                          String,
-                          Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
-                        )
-                      end
+                    OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                     IMAGE_JPEG =
                       T.let(
@@ -1566,14 +1559,7 @@ module Sam
                             T.type_alias do
                               T.all(Symbol, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType)
                             end
-                          OrSymbol =
-                            T.type_alias do
-                              T.any(
-                                Symbol,
-                                String,
-                                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
-                              )
-                            end
+                          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                           IMAGE_JPEG =
                             T.let(
@@ -2298,14 +2284,7 @@ module Sam
                                 T.type_alias do
                                   T.all(Symbol, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType)
                                 end
-                              OrSymbol =
-                                T.type_alias do
-                                  T.any(
-                                    Symbol,
-                                    String,
-                                    Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock::Source::Base64ImageSource::MediaType::TaggedSymbol
-                                  )
-                                end
+                              OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                               IMAGE_JPEG =
                                 T.let(
@@ -2531,8 +2510,7 @@ module Sam
           extend Sam::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Sam::Models::MessageCountTokensParams::Message::Role) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Sam::Models::MessageCountTokensParams::Message::Role::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           USER = T.let(:user, Sam::Models::MessageCountTokensParams::Message::Role::TaggedSymbol)
           ASSISTANT = T.let(:assistant, Sam::Models::MessageCountTokensParams::Message::Role::TaggedSymbol)

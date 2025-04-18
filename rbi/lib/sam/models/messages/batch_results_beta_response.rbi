@@ -629,14 +629,7 @@ module Sam
                   T.type_alias do
                     T.all(Symbol, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason)
                   end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      String,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason::TaggedSymbol
-                    )
-                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 END_TURN =
                   T.let(
