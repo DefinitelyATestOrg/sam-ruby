@@ -4,8 +4,7 @@ module Sam
   module Models
     # @see Sam::Resources::Complete#create
     class CompleteCreateParams < Sam::Internal::Type::BaseModel
-      # @!parse
-      #   extend Sam::Internal::Type::RequestParameters::Converter
+      extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
 
       # @!attribute max_tokens_to_sample
@@ -44,17 +43,13 @@ module Sam
       #   @return [String]
       required :prompt, String
 
-      # @!attribute [r] metadata
+      # @!attribute metadata
       #   An object describing metadata about the request.
       #
       #   @return [Sam::Models::CompleteCreateParams::Metadata, nil]
       optional :metadata, -> { Sam::Models::CompleteCreateParams::Metadata }
 
-      # @!parse
-      #   # @return [Sam::Models::CompleteCreateParams::Metadata]
-      #   attr_writer :metadata
-
-      # @!attribute [r] stop_sequences
+      # @!attribute stop_sequences
       #   Sequences that will cause the model to stop generating.
       #
       #   Our models stop on `"\n\nHuman:"`, and may include additional built-in stop
@@ -64,11 +59,7 @@ module Sam
       #   @return [Array<String>, nil]
       optional :stop_sequences, Sam::Internal::Type::ArrayOf[String]
 
-      # @!parse
-      #   # @return [Array<String>]
-      #   attr_writer :stop_sequences
-
-      # @!attribute [r] stream
+      # @!attribute stream
       #   Whether to incrementally stream the response using server-sent events.
       #
       #   See [streaming](https://docs.anthropic.com/en/api/streaming) for details.
@@ -76,11 +67,7 @@ module Sam
       #   @return [Boolean, nil]
       optional :stream, Sam::Internal::Type::Boolean
 
-      # @!parse
-      #   # @return [Boolean]
-      #   attr_writer :stream
-
-      # @!attribute [r] temperature
+      # @!attribute temperature
       #   Amount of randomness injected into the response.
       #
       #   Defaults to `1.0`. Ranges from `0.0` to `1.0`. Use `temperature` closer to `0.0`
@@ -93,11 +80,7 @@ module Sam
       #   @return [Float, nil]
       optional :temperature, Float
 
-      # @!parse
-      #   # @return [Float]
-      #   attr_writer :temperature
-
-      # @!attribute [r] top_k
+      # @!attribute top_k
       #   Only sample from the top K options for each subsequent token.
       #
       #   Used to remove "long tail" low probability responses.
@@ -109,11 +92,7 @@ module Sam
       #   @return [Integer, nil]
       optional :top_k, Integer
 
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :top_k
-
-      # @!attribute [r] top_p
+      # @!attribute top_p
       #   Use nucleus sampling.
       #
       #   In nucleus sampling, we compute the cumulative distribution over all the options
@@ -127,11 +106,7 @@ module Sam
       #   @return [Float, nil]
       optional :top_p, Float
 
-      # @!parse
-      #   # @return [Float]
-      #   attr_writer :top_p
-
-      # @!attribute [r] anthropic_version
+      # @!attribute anthropic_version
       #   The version of the Anthropic API you want to use.
       #
       #   Read more about versioning and our version history
@@ -140,11 +115,7 @@ module Sam
       #   @return [String, nil]
       optional :anthropic_version, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :anthropic_version
-
-      # @!attribute [r] x_api_key
+      # @!attribute x_api_key
       #   Your unique API key for authentication.
       #
       #   This key is required in the header of all API requests, to authenticate your
@@ -154,10 +125,6 @@ module Sam
       #
       #   @return [String, nil]
       optional :x_api_key, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :x_api_key
 
       # @!method initialize(max_tokens_to_sample:, model:, prompt:, metadata: nil, stop_sequences: nil, stream: nil, temperature: nil, top_k: nil, top_p: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
       #   @param max_tokens_to_sample [Integer]
