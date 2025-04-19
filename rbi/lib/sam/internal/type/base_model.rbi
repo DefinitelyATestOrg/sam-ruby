@@ -203,7 +203,6 @@ module Sam
           def inspect(depth: 0); end
         end
 
-        # @api private
         sig { returns(String) }
         def to_s; end
 
