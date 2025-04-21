@@ -389,7 +389,7 @@ module Sam
 
         # Create a new instance of a model.
         #
-        # @param data [Hash{Symbol=>Object}, Sam::Internal::Type::BaseModel]
+        # @param data [Hash{Symbol=>Object}, self]
         def initialize(data = {})
           case Sam::Internal::Util.coerce_hash(data)
           in Hash => coerced
