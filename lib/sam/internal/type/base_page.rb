@@ -19,7 +19,7 @@ module Sam
         # @api public
         #
         # @raise [Sam::Errors::APIError]
-        # @return [Sam::Internal::Type::BasePage]
+        # @return [self]
         def next_page = (raise NotImplementedError)
 
         # @api public
