@@ -53,7 +53,7 @@ module Sam
         ) -> void
 
         # @api private
-        attr_accessor requester: Sam::Internal::Transport::PooledNetRequester
+        attr_reader requester: Sam::Internal::Transport::PooledNetRequester
 
         def initialize: (
           base_url: String,

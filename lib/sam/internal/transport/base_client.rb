@@ -153,7 +153,7 @@ module Sam
 
         # @api private
         # @return [Sam::Internal::Transport::PooledNetRequester]
-        attr_accessor :requester
+        attr_reader :requester
 
         # @api private
         #
