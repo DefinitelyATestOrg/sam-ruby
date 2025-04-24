@@ -200,8 +200,12 @@ class Sam::Test::UtilFormDataEncodingTest < Minitest::Test
     file = Pathname(__FILE__)
     headers = {"content-type" => "multipart/form-data"}
     cases = {
+      "abc" => "abc",
       StringIO.new("abc") => "abc",
-      file => /^class Sam/
+      Sam::FilePart.new("abc") => "abc",
+      Sam::FilePart.new(StringIO.new("abc")) => "abc",
+      file => /^class Sam/,
+      Sam::FilePart.new(file) => /^class Sam/
     }
     cases.each do |body, val|
       encoded = Sam::Internal::Util.encode_content(headers, body)
@@ -219,7 +223,9 @@ class Sam::Test::UtilFormDataEncodingTest < Minitest::Test
       {a: 2, b: nil} => {"a" => "2", "b" => "null"},
       {a: 2, b: [1, 2, 3]} => {"a" => "2", "b" => "1"},
       {strio: StringIO.new("a")} => {"strio" => "a"},
-      {pathname: Pathname(__FILE__)} => {"pathname" => -> { _1.read in /^class Sam/ }}
+      {strio: Sam::FilePart.new("a")} => {"strio" => "a"},
+      {pathname: Pathname(__FILE__)} => {"pathname" => -> { _1.read in /^class Sam/ }},
+      {pathname: Sam::FilePart.new(Pathname(__FILE__))} => {"pathname" => -> { _1.read in /^class Sam/ }}
     }
     cases.each do |body, testcase|
       encoded = Sam::Internal::Util.encode_content(headers, body)
