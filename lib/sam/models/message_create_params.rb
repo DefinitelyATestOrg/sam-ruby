@@ -322,22 +322,42 @@ module Sam
       optional :x_api_key, String
 
       # @!method initialize(max_tokens:, messages:, model:, metadata: nil, stop_sequences: nil, stream: nil, system_: nil, temperature: nil, thinking: nil, tool_choice: nil, tools: nil, top_k: nil, top_p: nil, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
-      #   @param max_tokens [Integer]
-      #   @param messages [Array<Sam::Models::MessageCreateParams::Message>]
-      #   @param model [String]
-      #   @param metadata [Sam::Models::MessageCreateParams::Metadata]
-      #   @param stop_sequences [Array<String>]
-      #   @param stream [Boolean]
-      #   @param system_ [String, Array<Sam::Models::MessageCreateParams::System::UnionMember1>]
-      #   @param temperature [Float]
-      #   @param thinking [Sam::Models::MessageCreateParams::Thinking::ThinkingConfigEnabled, Sam::Models::MessageCreateParams::Thinking::ThinkingConfigDisabled]
-      #   @param tool_choice [Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAuto, Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAny, Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceTool, Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceNone]
-      #   @param tools [Array<Sam::Models::MessageCreateParams::Tool::Tool, Sam::Models::MessageCreateParams::Tool::BashTool20250124, Sam::Models::MessageCreateParams::Tool::TextEditor20250124>]
-      #   @param top_k [Integer]
-      #   @param top_p [Float]
-      #   @param anthropic_beta [Array<String>]
-      #   @param anthropic_version [String]
-      #   @param x_api_key [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Sam::Models::MessageCreateParams} for more details.
+      #
+      #   @param max_tokens [Integer] The maximum number of tokens to generate before stopping. ...
+      #
+      #   @param messages [Array<Sam::Models::MessageCreateParams::Message>] Input messages. ...
+      #
+      #   @param model [String] The model that will complete your prompt. ...
+      #
+      #   @param metadata [Sam::Models::MessageCreateParams::Metadata] An object describing metadata about the request.
+      #
+      #   @param stop_sequences [Array<String>] Custom text sequences that will cause the model to stop generating. ...
+      #
+      #   @param stream [Boolean] Whether to incrementally stream the response using server-sent events. ...
+      #
+      #   @param system_ [String, Array<Sam::Models::MessageCreateParams::System::UnionMember1>] System prompt. ...
+      #
+      #   @param temperature [Float] Amount of randomness injected into the response. ...
+      #
+      #   @param thinking [Sam::Models::MessageCreateParams::Thinking::ThinkingConfigEnabled, Sam::Models::MessageCreateParams::Thinking::ThinkingConfigDisabled] Configuration for enabling Claude's extended thinking. ...
+      #
+      #   @param tool_choice [Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAuto, Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAny, Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceTool, Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceNone] How the model should use the provided tools. The model can use a specific tool,
+      #   ...
+      #
+      #   @param tools [Array<Sam::Models::MessageCreateParams::Tool::Tool, Sam::Models::MessageCreateParams::Tool::BashTool20250124, Sam::Models::MessageCreateParams::Tool::TextEditor20250124>] Definitions of tools that the model may use. ...
+      #
+      #   @param top_k [Integer] Only sample from the top K options for each subsequent token. ...
+      #
+      #   @param top_p [Float] Use nucleus sampling. ...
+      #
+      #   @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+      #
+      #   @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+      #
+      #   @param x_api_key [String] Your unique API key for authentication. ...
+      #
       #   @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
 
       class Message < Sam::Internal::Type::BaseModel
@@ -1647,9 +1667,12 @@ module Sam
         optional :user_id, String, nil?: true
 
         # @!method initialize(user_id: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Sam::Models::MessageCreateParams::Metadata} for more details.
+        #
         #   An object describing metadata about the request.
         #
-        #   @param user_id [String, nil]
+        #   @param user_id [String, nil] An external identifier for the user who is associated with the request. ...
       end
 
       # System prompt.
@@ -1891,7 +1914,13 @@ module Sam
           required :type, const: :enabled
 
           # @!method initialize(budget_tokens:, type: :enabled)
-          #   @param budget_tokens [Integer]
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::MessageCreateParams::Thinking::ThinkingConfigEnabled} for more
+          #   details.
+          #
+          #   @param budget_tokens [Integer] Determines how many tokens Claude can use for its internal reasoning process. La
+          #   ...
+          #
           #   @param type [Symbol, :enabled]
         end
 
@@ -1944,9 +1973,13 @@ module Sam
           optional :disable_parallel_tool_use, Sam::Internal::Type::Boolean
 
           # @!method initialize(disable_parallel_tool_use: nil, type: :auto)
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAuto} for more details.
+          #
           #   The model will automatically decide whether to use tools.
           #
-          #   @param disable_parallel_tool_use [Boolean]
+          #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use. ...
+          #
           #   @param type [Symbol, :auto]
         end
 
@@ -1966,9 +1999,13 @@ module Sam
           optional :disable_parallel_tool_use, Sam::Internal::Type::Boolean
 
           # @!method initialize(disable_parallel_tool_use: nil, type: :any)
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAny} for more details.
+          #
           #   The model will use any available tools.
           #
-          #   @param disable_parallel_tool_use [Boolean]
+          #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use. ...
+          #
           #   @param type [Symbol, :any]
         end
 
@@ -1994,10 +2031,15 @@ module Sam
           optional :disable_parallel_tool_use, Sam::Internal::Type::Boolean
 
           # @!method initialize(name:, disable_parallel_tool_use: nil, type: :tool)
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceTool} for more details.
+          #
           #   The model will use the specified tool with `tool_choice.name`.
           #
-          #   @param name [String]
-          #   @param disable_parallel_tool_use [Boolean]
+          #   @param name [String] The name of the tool to use.
+          #
+          #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use. ...
+          #
           #   @param type [Symbol, :tool]
         end
 
@@ -2061,10 +2103,16 @@ module Sam
           optional :description, String
 
           # @!method initialize(input_schema:, name:, cache_control: nil, description: nil)
-          #   @param input_schema [Sam::Models::MessageCreateParams::Tool::Tool::InputSchema]
-          #   @param name [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::MessageCreateParams::Tool::Tool} for more details.
+          #
+          #   @param input_schema [Sam::Models::MessageCreateParams::Tool::Tool::InputSchema] [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input. ...
+          #
+          #   @param name [String] Name of the tool. ...
+          #
           #   @param cache_control [Sam::Models::MessageCreateParams::Tool::Tool::CacheControl, nil]
-          #   @param description [String]
+          #
+          #   @param description [String] Description of what this tool does. ...
 
           # @see Sam::Models::MessageCreateParams::Tool::Tool#input_schema
           class InputSchema < Sam::Internal::Type::BaseModel
@@ -2122,8 +2170,13 @@ module Sam
                    nil?: true
 
           # @!method initialize(cache_control: nil, name: :bash, type: :bash_20250124)
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::MessageCreateParams::Tool::BashTool20250124} for more details.
+          #
           #   @param cache_control [Sam::Models::MessageCreateParams::Tool::BashTool20250124::CacheControl, nil]
-          #   @param name [Symbol, :bash]
+          #
+          #   @param name [Symbol, :bash] Name of the tool. ...
+          #
           #   @param type [Symbol, :bash_20250124]
 
           # @see Sam::Models::MessageCreateParams::Tool::BashTool20250124#cache_control
@@ -2160,8 +2213,13 @@ module Sam
                    nil?: true
 
           # @!method initialize(cache_control: nil, name: :str_replace_editor, type: :text_editor_20250124)
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::MessageCreateParams::Tool::TextEditor20250124} for more details.
+          #
           #   @param cache_control [Sam::Models::MessageCreateParams::Tool::TextEditor20250124::CacheControl, nil]
-          #   @param name [Symbol, :str_replace_editor]
+          #
+          #   @param name [Symbol, :str_replace_editor] Name of the tool. ...
+          #
           #   @param type [Symbol, :text_editor_20250124]
 
           # @see Sam::Models::MessageCreateParams::Tool::TextEditor20250124#cache_control

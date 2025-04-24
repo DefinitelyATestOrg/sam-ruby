@@ -36,8 +36,21 @@ module Sam
         )
           .returns(T.attached_class)
       end
-      def self.new(anthropic_version: nil, x_api_key: nil, request_options: {}); end
-
+      def self.new(
+        # The version of the Anthropic API you want to use.
+        #
+        # Read more about versioning and our version history
+        # [here](https://docs.anthropic.com/en/api/versioning).
+        anthropic_version: nil,
+        # Your unique API key for authentication.
+        #
+        # This key is required in the header of all API requests, to authenticate your
+        # account and access Anthropic's services. Get your API key through the
+        # [Console](https://console.anthropic.com/settings/keys). Each key is scoped to a
+        # Workspace.
+        x_api_key: nil,
+        request_options: {}
+      ); end
       sig do
         override.returns({anthropic_version: String, x_api_key: String, request_options: Sam::RequestOptions})
       end

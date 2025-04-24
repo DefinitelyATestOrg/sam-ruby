@@ -3,6 +3,9 @@
 module Sam
   module Resources
     class Models
+      # Some parameter documentations has been truncated, see
+      # {Sam::Models::ModelRetrieveParams} for more details.
+      #
       # Get a specific model.
       #
       # The Models API response can be used to determine information about a specific
@@ -10,9 +13,12 @@ module Sam
       #
       # @overload retrieve(model_id, anthropic_version: nil, x_api_key: nil, request_options: {})
       #
-      # @param model_id [String]
-      # @param anthropic_version [String]
-      # @param x_api_key [String]
+      # @param model_id [String] Model identifier or alias.
+      #
+      # @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+      #
+      # @param x_api_key [String] Your unique API key for authentication. ...
+      #
       # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Sam::Models::ModelRetrieveResponse]
@@ -29,6 +35,9 @@ module Sam
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Sam::Models::ModelListParams} for more details.
+      #
       # List available models.
       #
       # The Models API response can be used to determine which models are available for
@@ -36,11 +45,18 @@ module Sam
       #
       # @overload list(after_id: nil, before_id: nil, limit: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
       #
-      # @param after_id [String]
-      # @param before_id [String]
-      # @param limit [Integer]
-      # @param anthropic_version [String]
-      # @param x_api_key [String]
+      # @param after_id [String] Query param: ID of the object to use as a cursor for pagination. When provided,
+      # ...
+      #
+      # @param before_id [String] Query param: ID of the object to use as a cursor for pagination. When provided,
+      # ...
+      #
+      # @param limit [Integer] Query param: Number of items to return per page. ...
+      #
+      # @param anthropic_version [String] Header param: The version of the Anthropic API you want to use. ...
+      #
+      # @param x_api_key [String] Header param: Your unique API key for authentication. ...
+      #
       # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Sam::Models::ModelListResponse]
@@ -62,6 +78,9 @@ module Sam
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Sam::Models::ModelRetrieveBetaParams} for more details.
+      #
       # Get a specific model.
       #
       # The Models API response can be used to determine information about a specific
@@ -69,9 +88,12 @@ module Sam
       #
       # @overload retrieve_beta(model_id, anthropic_version: nil, x_api_key: nil, request_options: {})
       #
-      # @param model_id [String]
-      # @param anthropic_version [String]
-      # @param x_api_key [String]
+      # @param model_id [String] Model identifier or alias.
+      #
+      # @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+      #
+      # @param x_api_key [String] Your unique API key for authentication. ...
+      #
       # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Sam::Models::ModelRetrieveBetaResponse]

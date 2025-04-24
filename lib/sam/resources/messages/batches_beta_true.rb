@@ -4,6 +4,9 @@ module Sam
   module Resources
     class Messages
       class BatchesBetaTrue
+        # Some parameter documentations has been truncated, see
+        # {Sam::Models::Messages::BatchesBetaTrueCreateParams} for more details.
+        #
         # Send a batch of Message creation requests.
         #
         # The Message Batches API can be used to process multiple Messages API requests at
@@ -15,10 +18,16 @@ module Sam
         #
         # @overload create(requests:, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #
-        # @param requests [Array<Sam::Models::Messages::BatchesBetaTrueCreateParams::Request>]
-        # @param anthropic_beta [Array<String>]
-        # @param anthropic_version [String]
-        # @param x_api_key [String]
+        # @param requests [Array<Sam::Models::Messages::BatchesBetaTrueCreateParams::Request>] Body param: List of requests for prompt completion. Each is an individual reques
+        # ...
+        #
+        # @param anthropic_beta [Array<String>] Header param: Optional header to specify the beta version(s) you want to use.
+        # ...
+        #
+        # @param anthropic_version [String] Header param: The version of the Anthropic API you want to use. ...
+        #
+        # @param x_api_key [String] Header param: Your unique API key for authentication. ...
+        #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Sam::Models::Messages::BatchesBetaTrueCreateResponse]
@@ -38,6 +47,9 @@ module Sam
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Sam::Models::Messages::BatchesBetaTrueListParams} for more details.
+        #
         # List all Message Batches within a Workspace. Most recently created batches are
         # returned first.
         #
@@ -46,12 +58,21 @@ module Sam
         #
         # @overload list(after_id: nil, before_id: nil, limit: nil, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #
-        # @param after_id [String]
-        # @param before_id [String]
-        # @param limit [Integer]
-        # @param anthropic_beta [Array<String>]
-        # @param anthropic_version [String]
-        # @param x_api_key [String]
+        # @param after_id [String] Query param: ID of the object to use as a cursor for pagination. When provided,
+        # ...
+        #
+        # @param before_id [String] Query param: ID of the object to use as a cursor for pagination. When provided,
+        # ...
+        #
+        # @param limit [Integer] Query param: Number of items to return per page. ...
+        #
+        # @param anthropic_beta [Array<String>] Header param: Optional header to specify the beta version(s) you want to use.
+        # ...
+        #
+        # @param anthropic_version [String] Header param: The version of the Anthropic API you want to use. ...
+        #
+        # @param x_api_key [String] Header param: Your unique API key for authentication. ...
+        #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Sam::Models::Messages::BatchesBetaTrueListResponse]

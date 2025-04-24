@@ -7,6 +7,9 @@ module Sam
         # @return [Sam::Resources::Messages::Batches::BetaTrue]
         attr_reader :beta_true
 
+        # Some parameter documentations has been truncated, see
+        # {Sam::Models::Messages::BatchCreateParams} for more details.
+        #
         # Send a batch of Message creation requests.
         #
         # The Message Batches API can be used to process multiple Messages API requests at
@@ -18,10 +21,16 @@ module Sam
         #
         # @overload create(requests:, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #
-        # @param requests [Array<Sam::Models::Messages::BatchCreateParams::Request>]
-        # @param anthropic_beta [Array<String>]
-        # @param anthropic_version [String]
-        # @param x_api_key [String]
+        # @param requests [Array<Sam::Models::Messages::BatchCreateParams::Request>] Body param: List of requests for prompt completion. Each is an individual reques
+        # ...
+        #
+        # @param anthropic_beta [Array<String>] Header param: Optional header to specify the beta version(s) you want to use.
+        # ...
+        #
+        # @param anthropic_version [String] Header param: The version of the Anthropic API you want to use. ...
+        #
+        # @param x_api_key [String] Header param: Your unique API key for authentication. ...
+        #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Sam::Models::Messages::BatchCreateResponse]
@@ -41,6 +50,9 @@ module Sam
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Sam::Models::Messages::BatchRetrieveParams} for more details.
+        #
         # This endpoint is idempotent and can be used to poll for Message Batch
         # completion. To access the results of a Message Batch, make a request to the
         # `results_url` field in the response.
@@ -50,10 +62,14 @@ module Sam
         #
         # @overload retrieve(message_batch_id, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #
-        # @param message_batch_id [String]
-        # @param anthropic_beta [Array<String>]
-        # @param anthropic_version [String]
-        # @param x_api_key [String]
+        # @param message_batch_id [String] ID of the Message Batch.
+        #
+        # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+        #
+        # @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+        #
+        # @param x_api_key [String] Your unique API key for authentication. ...
+        #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Sam::Models::Messages::BatchRetrieveResponse]
@@ -74,6 +90,9 @@ module Sam
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Sam::Models::Messages::BatchListParams} for more details.
+        #
         # List all Message Batches within a Workspace. Most recently created batches are
         # returned first.
         #
@@ -82,12 +101,21 @@ module Sam
         #
         # @overload list(after_id: nil, before_id: nil, limit: nil, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #
-        # @param after_id [String]
-        # @param before_id [String]
-        # @param limit [Integer]
-        # @param anthropic_beta [Array<String>]
-        # @param anthropic_version [String]
-        # @param x_api_key [String]
+        # @param after_id [String] Query param: ID of the object to use as a cursor for pagination. When provided,
+        # ...
+        #
+        # @param before_id [String] Query param: ID of the object to use as a cursor for pagination. When provided,
+        # ...
+        #
+        # @param limit [Integer] Query param: Number of items to return per page. ...
+        #
+        # @param anthropic_beta [Array<String>] Header param: Optional header to specify the beta version(s) you want to use.
+        # ...
+        #
+        # @param anthropic_version [String] Header param: The version of the Anthropic API you want to use. ...
+        #
+        # @param x_api_key [String] Header param: Your unique API key for authentication. ...
+        #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Sam::Models::Messages::BatchListResponse]
@@ -110,6 +138,9 @@ module Sam
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Sam::Models::Messages::BatchDeleteParams} for more details.
+        #
         # Delete a Message Batch.
         #
         # Message Batches can only be deleted once they've finished processing. If you'd
@@ -120,10 +151,14 @@ module Sam
         #
         # @overload delete(message_batch_id, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #
-        # @param message_batch_id [String]
-        # @param anthropic_beta [Array<String>]
-        # @param anthropic_version [String]
-        # @param x_api_key [String]
+        # @param message_batch_id [String] ID of the Message Batch.
+        #
+        # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+        #
+        # @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+        #
+        # @param x_api_key [String] Your unique API key for authentication. ...
+        #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Sam::Models::Messages::BatchDeleteResponse]
@@ -144,6 +179,9 @@ module Sam
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Sam::Models::Messages::BatchCancelParams} for more details.
+        #
         # Batches may be canceled any time before processing ends. Once cancellation is
         # initiated, the batch enters a `canceling` state, at which time the system may
         # complete any in-progress, non-interruptible requests before finalizing
@@ -159,10 +197,14 @@ module Sam
         #
         # @overload cancel(message_batch_id, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #
-        # @param message_batch_id [String]
-        # @param anthropic_beta [Array<String>]
-        # @param anthropic_version [String]
-        # @param x_api_key [String]
+        # @param message_batch_id [String] ID of the Message Batch.
+        #
+        # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+        #
+        # @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+        #
+        # @param x_api_key [String] Your unique API key for authentication. ...
+        #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Sam::Models::Messages::BatchCancelResponse]
@@ -183,6 +225,9 @@ module Sam
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Sam::Models::Messages::BatchCancelBetaParams} for more details.
+        #
         # Batches may be canceled any time before processing ends. Once cancellation is
         # initiated, the batch enters a `canceling` state, at which time the system may
         # complete any in-progress, non-interruptible requests before finalizing
@@ -198,10 +243,14 @@ module Sam
         #
         # @overload cancel_beta(message_batch_id, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #
-        # @param message_batch_id [String]
-        # @param anthropic_beta [Array<String>]
-        # @param anthropic_version [String]
-        # @param x_api_key [String]
+        # @param message_batch_id [String] ID of the Message Batch.
+        #
+        # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+        #
+        # @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+        #
+        # @param x_api_key [String] Your unique API key for authentication. ...
+        #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Sam::Models::Messages::BatchCancelBetaResponse]
@@ -222,6 +271,9 @@ module Sam
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Sam::Models::Messages::BatchResultsParams} for more details.
+        #
         # Streams the results of a Message Batch as a `.jsonl` file.
         #
         # Each line in the file is a JSON object containing the result of a single request
@@ -233,10 +285,14 @@ module Sam
         #
         # @overload results_streaming(message_batch_id, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #
-        # @param message_batch_id [String]
-        # @param anthropic_beta [Array<String>]
-        # @param anthropic_version [String]
-        # @param x_api_key [String]
+        # @param message_batch_id [String] ID of the Message Batch.
+        #
+        # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+        #
+        # @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+        #
+        # @param x_api_key [String] Your unique API key for authentication. ...
+        #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Sam::Internal::JsonLStream<Sam::Models::Messages::BatchResultsResponse>]
@@ -258,6 +314,9 @@ module Sam
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Sam::Models::Messages::BatchResultsBetaParams} for more details.
+        #
         # Streams the results of a Message Batch as a `.jsonl` file.
         #
         # Each line in the file is a JSON object containing the result of a single request
@@ -269,10 +328,14 @@ module Sam
         #
         # @overload results_beta_streaming(message_batch_id, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #
-        # @param message_batch_id [String]
-        # @param anthropic_beta [Array<String>]
-        # @param anthropic_version [String]
-        # @param x_api_key [String]
+        # @param message_batch_id [String] ID of the Message Batch.
+        #
+        # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+        #
+        # @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+        #
+        # @param x_api_key [String] Your unique API key for authentication. ...
+        #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Sam::Internal::JsonLStream<Sam::Models::Messages::BatchResultsBetaResponse>]

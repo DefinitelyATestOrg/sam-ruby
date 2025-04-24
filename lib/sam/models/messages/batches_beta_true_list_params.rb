@@ -60,12 +60,23 @@ module Sam
         optional :x_api_key, String
 
         # @!method initialize(after_id: nil, before_id: nil, limit: nil, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
-        #   @param after_id [String]
-        #   @param before_id [String]
-        #   @param limit [Integer]
-        #   @param anthropic_beta [Array<String>]
-        #   @param anthropic_version [String]
-        #   @param x_api_key [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Sam::Models::Messages::BatchesBetaTrueListParams} for more details.
+        #
+        #   @param after_id [String] ID of the object to use as a cursor for pagination. When provided, returns the p
+        #   ...
+        #
+        #   @param before_id [String] ID of the object to use as a cursor for pagination. When provided, returns the p
+        #   ...
+        #
+        #   @param limit [Integer] Number of items to return per page. ...
+        #
+        #   @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+        #
+        #   @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+        #
+        #   @param x_api_key [String] Your unique API key for authentication. ...
+        #
         #   @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
       end
     end

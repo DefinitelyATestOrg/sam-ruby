@@ -324,22 +324,42 @@ module Sam
       optional :x_api_key, String
 
       # @!method initialize(max_tokens:, messages:, model:, metadata: nil, stop_sequences: nil, stream: nil, system_: nil, temperature: nil, thinking: nil, tool_choice: nil, tools: nil, top_k: nil, top_p: nil, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
-      #   @param max_tokens [Integer]
-      #   @param messages [Array<Sam::Models::MessagesBetaTrueCreateParams::Message>]
-      #   @param model [String]
-      #   @param metadata [Sam::Models::MessagesBetaTrueCreateParams::Metadata]
-      #   @param stop_sequences [Array<String>]
-      #   @param stream [Boolean]
-      #   @param system_ [String, Array<Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1>]
-      #   @param temperature [Float]
-      #   @param thinking [Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigEnabled, Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigDisabled]
-      #   @param tool_choice [Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAuto, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAny, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceTool, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceNone]
-      #   @param tools [Array<Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124>]
-      #   @param top_k [Integer]
-      #   @param top_p [Float]
-      #   @param anthropic_beta [Array<String>]
-      #   @param anthropic_version [String]
-      #   @param x_api_key [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Sam::Models::MessagesBetaTrueCreateParams} for more details.
+      #
+      #   @param max_tokens [Integer] The maximum number of tokens to generate before stopping. ...
+      #
+      #   @param messages [Array<Sam::Models::MessagesBetaTrueCreateParams::Message>] Input messages. ...
+      #
+      #   @param model [String] The model that will complete your prompt. ...
+      #
+      #   @param metadata [Sam::Models::MessagesBetaTrueCreateParams::Metadata] An object describing metadata about the request.
+      #
+      #   @param stop_sequences [Array<String>] Custom text sequences that will cause the model to stop generating. ...
+      #
+      #   @param stream [Boolean] Whether to incrementally stream the response using server-sent events. ...
+      #
+      #   @param system_ [String, Array<Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1>] System prompt. ...
+      #
+      #   @param temperature [Float] Amount of randomness injected into the response. ...
+      #
+      #   @param thinking [Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigEnabled, Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigDisabled] Configuration for enabling Claude's extended thinking. ...
+      #
+      #   @param tool_choice [Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAuto, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAny, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceTool, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceNone] How the model should use the provided tools. The model can use a specific tool,
+      #   ...
+      #
+      #   @param tools [Array<Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124>] Definitions of tools that the model may use. ...
+      #
+      #   @param top_k [Integer] Only sample from the top K options for each subsequent token. ...
+      #
+      #   @param top_p [Float] Use nucleus sampling. ...
+      #
+      #   @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+      #
+      #   @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+      #
+      #   @param x_api_key [String] Your unique API key for authentication. ...
+      #
       #   @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
 
       class Message < Sam::Internal::Type::BaseModel
@@ -1655,9 +1675,12 @@ module Sam
         optional :user_id, String, nil?: true
 
         # @!method initialize(user_id: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Sam::Models::MessagesBetaTrueCreateParams::Metadata} for more details.
+        #
         #   An object describing metadata about the request.
         #
-        #   @param user_id [String, nil]
+        #   @param user_id [String, nil] An external identifier for the user who is associated with the request. ...
       end
 
       # System prompt.
@@ -1899,7 +1922,13 @@ module Sam
           required :type, const: :enabled
 
           # @!method initialize(budget_tokens:, type: :enabled)
-          #   @param budget_tokens [Integer]
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigEnabled}
+          #   for more details.
+          #
+          #   @param budget_tokens [Integer] Determines how many tokens Claude can use for its internal reasoning process. La
+          #   ...
+          #
           #   @param type [Symbol, :enabled]
         end
 
@@ -1952,9 +1981,14 @@ module Sam
           optional :disable_parallel_tool_use, Sam::Internal::Type::Boolean
 
           # @!method initialize(disable_parallel_tool_use: nil, type: :auto)
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAuto} for
+          #   more details.
+          #
           #   The model will automatically decide whether to use tools.
           #
-          #   @param disable_parallel_tool_use [Boolean]
+          #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use. ...
+          #
           #   @param type [Symbol, :auto]
         end
 
@@ -1974,9 +2008,14 @@ module Sam
           optional :disable_parallel_tool_use, Sam::Internal::Type::Boolean
 
           # @!method initialize(disable_parallel_tool_use: nil, type: :any)
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAny} for
+          #   more details.
+          #
           #   The model will use any available tools.
           #
-          #   @param disable_parallel_tool_use [Boolean]
+          #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use. ...
+          #
           #   @param type [Symbol, :any]
         end
 
@@ -2002,10 +2041,16 @@ module Sam
           optional :disable_parallel_tool_use, Sam::Internal::Type::Boolean
 
           # @!method initialize(name:, disable_parallel_tool_use: nil, type: :tool)
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceTool} for
+          #   more details.
+          #
           #   The model will use the specified tool with `tool_choice.name`.
           #
-          #   @param name [String]
-          #   @param disable_parallel_tool_use [Boolean]
+          #   @param name [String] The name of the tool to use.
+          #
+          #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use. ...
+          #
           #   @param type [Symbol, :tool]
         end
 
@@ -2084,10 +2129,17 @@ module Sam
           optional :type, enum: -> { Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::Type }, nil?: true
 
           # @!method initialize(input_schema:, name:, cache_control: nil, description: nil, type: nil)
-          #   @param input_schema [Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::InputSchema]
-          #   @param name [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool} for more details.
+          #
+          #   @param input_schema [Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::InputSchema] [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input. ...
+          #
+          #   @param name [String] Name of the tool. ...
+          #
           #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::CacheControl, nil]
-          #   @param description [String]
+          #
+          #   @param description [String] Description of what this tool does. ...
+          #
           #   @param type [Symbol, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool::Type, nil]
 
           # @see Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool#input_schema
@@ -2174,11 +2226,20 @@ module Sam
           optional :display_number, Integer, nil?: true
 
           # @!method initialize(display_height_px:, display_width_px:, cache_control: nil, display_number: nil, name: :computer, type: :computer_20241022)
-          #   @param display_height_px [Integer]
-          #   @param display_width_px [Integer]
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022}
+          #   for more details.
+          #
+          #   @param display_height_px [Integer] The height of the display in pixels.
+          #
+          #   @param display_width_px [Integer] The width of the display in pixels.
+          #
           #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022::CacheControl, nil]
-          #   @param display_number [Integer, nil]
-          #   @param name [Symbol, :computer]
+          #
+          #   @param display_number [Integer, nil] The X11 display number (e.g. 0, 1) for the display.
+          #
+          #   @param name [Symbol, :computer] Name of the tool. ...
+          #
           #   @param type [Symbol, :computer_20241022]
 
           # @see Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022#cache_control
@@ -2215,8 +2276,14 @@ module Sam
                    nil?: true
 
           # @!method initialize(cache_control: nil, name: :bash, type: :bash_20241022)
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022} for more
+          #   details.
+          #
           #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022::CacheControl, nil]
-          #   @param name [Symbol, :bash]
+          #
+          #   @param name [Symbol, :bash] Name of the tool. ...
+          #
           #   @param type [Symbol, :bash_20241022]
 
           # @see Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022#cache_control
@@ -2253,8 +2320,14 @@ module Sam
                    nil?: true
 
           # @!method initialize(cache_control: nil, name: :str_replace_editor, type: :text_editor_20241022)
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022} for
+          #   more details.
+          #
           #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022::CacheControl, nil]
-          #   @param name [Symbol, :str_replace_editor]
+          #
+          #   @param name [Symbol, :str_replace_editor] Name of the tool. ...
+          #
           #   @param type [Symbol, :text_editor_20241022]
 
           # @see Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022#cache_control
@@ -2309,11 +2382,20 @@ module Sam
           optional :display_number, Integer, nil?: true
 
           # @!method initialize(display_height_px:, display_width_px:, cache_control: nil, display_number: nil, name: :computer, type: :computer_20250124)
-          #   @param display_height_px [Integer]
-          #   @param display_width_px [Integer]
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124}
+          #   for more details.
+          #
+          #   @param display_height_px [Integer] The height of the display in pixels.
+          #
+          #   @param display_width_px [Integer] The width of the display in pixels.
+          #
           #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124::CacheControl, nil]
-          #   @param display_number [Integer, nil]
-          #   @param name [Symbol, :computer]
+          #
+          #   @param display_number [Integer, nil] The X11 display number (e.g. 0, 1) for the display.
+          #
+          #   @param name [Symbol, :computer] Name of the tool. ...
+          #
           #   @param type [Symbol, :computer_20250124]
 
           # @see Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124#cache_control
@@ -2350,8 +2432,14 @@ module Sam
                    nil?: true
 
           # @!method initialize(cache_control: nil, name: :bash, type: :bash_20250124)
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124} for more
+          #   details.
+          #
           #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124::CacheControl, nil]
-          #   @param name [Symbol, :bash]
+          #
+          #   @param name [Symbol, :bash] Name of the tool. ...
+          #
           #   @param type [Symbol, :bash_20250124]
 
           # @see Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124#cache_control
@@ -2388,8 +2476,14 @@ module Sam
                    nil?: true
 
           # @!method initialize(cache_control: nil, name: :str_replace_editor, type: :text_editor_20250124)
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124} for
+          #   more details.
+          #
           #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124::CacheControl, nil]
-          #   @param name [Symbol, :str_replace_editor]
+          #
+          #   @param name [Symbol, :str_replace_editor] Name of the tool. ...
+          #
           #   @param type [Symbol, :text_editor_20250124]
 
           # @see Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124#cache_control
