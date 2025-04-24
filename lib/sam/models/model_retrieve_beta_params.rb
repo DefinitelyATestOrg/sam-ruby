@@ -28,8 +28,13 @@ module Sam
       optional :x_api_key, String
 
       # @!method initialize(anthropic_version: nil, x_api_key: nil, request_options: {})
-      #   @param anthropic_version [String]
-      #   @param x_api_key [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Sam::Models::ModelRetrieveBetaParams} for more details.
+      #
+      #   @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+      #
+      #   @param x_api_key [String] Your unique API key for authentication. ...
+      #
       #   @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
     end
   end

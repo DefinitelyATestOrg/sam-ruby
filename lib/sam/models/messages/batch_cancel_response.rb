@@ -86,16 +86,34 @@ module Sam
         required :type, const: :message_batch
 
         # @!method initialize(id:, archived_at:, cancel_initiated_at:, created_at:, ended_at:, expires_at:, processing_status:, request_counts:, results_url:, type: :message_batch)
-        #   @param id [String]
-        #   @param archived_at [Time, nil]
-        #   @param cancel_initiated_at [Time, nil]
-        #   @param created_at [Time]
-        #   @param ended_at [Time, nil]
-        #   @param expires_at [Time]
-        #   @param processing_status [Symbol, Sam::Models::Messages::BatchCancelResponse::ProcessingStatus]
-        #   @param request_counts [Sam::Models::Messages::BatchCancelResponse::RequestCounts]
-        #   @param results_url [String, nil]
-        #   @param type [Symbol, :message_batch]
+        #   Some parameter documentations has been truncated, see
+        #   {Sam::Models::Messages::BatchCancelResponse} for more details.
+        #
+        #   @param id [String] Unique object identifier. ...
+        #
+        #   @param archived_at [Time, nil] RFC 3339 datetime string representing the time at which the Message Batch was ar
+        #   ...
+        #
+        #   @param cancel_initiated_at [Time, nil] RFC 3339 datetime string representing the time at which cancellation was initiat
+        #   ...
+        #
+        #   @param created_at [Time] RFC 3339 datetime string representing the time at which the Message Batch was cr
+        #   ...
+        #
+        #   @param ended_at [Time, nil] RFC 3339 datetime string representing the time at which processing for the Messa
+        #   ...
+        #
+        #   @param expires_at [Time] RFC 3339 datetime string representing the time at which the Message Batch will e
+        #   ...
+        #
+        #   @param processing_status [Symbol, Sam::Models::Messages::BatchCancelResponse::ProcessingStatus] Processing status of the Message Batch.
+        #
+        #   @param request_counts [Sam::Models::Messages::BatchCancelResponse::RequestCounts] Tallies requests within the Message Batch, categorized by their status. ...
+        #
+        #   @param results_url [String, nil] URL to a `.jsonl` file containing the results of the Message Batch requests. Spe
+        #   ...
+        #
+        #   @param type [Symbol, :message_batch] Object type. ...
 
         # Processing status of the Message Batch.
         #
@@ -152,17 +170,24 @@ module Sam
           required :succeeded, Integer
 
           # @!method initialize(canceled:, errored:, expired:, processing:, succeeded:)
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::Messages::BatchCancelResponse::RequestCounts} for more details.
+          #
           #   Tallies requests within the Message Batch, categorized by their status.
           #
           #   Requests start as `processing` and move to one of the other statuses only once
           #   processing of the entire batch ends. The sum of all values always matches the
           #   total number of requests in the batch.
           #
-          #   @param canceled [Integer]
-          #   @param errored [Integer]
-          #   @param expired [Integer]
-          #   @param processing [Integer]
-          #   @param succeeded [Integer]
+          #   @param canceled [Integer] Number of requests in the Message Batch that have been canceled. ...
+          #
+          #   @param errored [Integer] Number of requests in the Message Batch that encountered an error. ...
+          #
+          #   @param expired [Integer] Number of requests in the Message Batch that have expired. ...
+          #
+          #   @param processing [Integer] Number of requests in the Message Batch that are processing.
+          #
+          #   @param succeeded [Integer] Number of requests in the Message Batch that have completed successfully. ...
         end
       end
     end

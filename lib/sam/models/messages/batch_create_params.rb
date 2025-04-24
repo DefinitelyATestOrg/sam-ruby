@@ -45,10 +45,18 @@ module Sam
         optional :x_api_key, String
 
         # @!method initialize(requests:, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
-        #   @param requests [Array<Sam::Models::Messages::BatchCreateParams::Request>]
-        #   @param anthropic_beta [Array<String>]
-        #   @param anthropic_version [String]
-        #   @param x_api_key [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Sam::Models::Messages::BatchCreateParams} for more details.
+        #
+        #   @param requests [Array<Sam::Models::Messages::BatchCreateParams::Request>] List of requests for prompt completion. Each is an individual request to create
+        #   ...
+        #
+        #   @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+        #
+        #   @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+        #
+        #   @param x_api_key [String] Your unique API key for authentication. ...
+        #
         #   @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
 
         class Request < Sam::Internal::Type::BaseModel
@@ -71,8 +79,13 @@ module Sam
           required :params, -> { Sam::Models::Messages::BatchCreateParams::Request::Params }
 
           # @!method initialize(custom_id:, params:)
-          #   @param custom_id [String]
-          #   @param params [Sam::Models::Messages::BatchCreateParams::Request::Params]
+          #   Some parameter documentations has been truncated, see
+          #   {Sam::Models::Messages::BatchCreateParams::Request} for more details.
+          #
+          #   @param custom_id [String] Developer-provided ID created for each request in a Message Batch. Useful for ma
+          #   ...
+          #
+          #   @param params [Sam::Models::Messages::BatchCreateParams::Request::Params] Messages API creation parameters for the individual request. ...
 
           # @see Sam::Models::Messages::BatchCreateParams::Request#params
           class Params < Sam::Internal::Type::BaseModel
@@ -366,24 +379,40 @@ module Sam
             optional :top_p, Float
 
             # @!method initialize(max_tokens:, messages:, model:, metadata: nil, stop_sequences: nil, stream: nil, system_: nil, temperature: nil, thinking: nil, tool_choice: nil, tools: nil, top_k: nil, top_p: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {Sam::Models::Messages::BatchCreateParams::Request::Params} for more details.
+            #
             #   Messages API creation parameters for the individual request.
             #
             #   See the [Messages API reference](/en/api/messages) for full documentation on
             #   available parameters.
             #
-            #   @param max_tokens [Integer]
-            #   @param messages [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message>]
-            #   @param model [String]
-            #   @param metadata [Sam::Models::Messages::BatchCreateParams::Request::Params::Metadata]
-            #   @param stop_sequences [Array<String>]
-            #   @param stream [Boolean]
-            #   @param system_ [String, Array<Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1>]
-            #   @param temperature [Float]
-            #   @param thinking [Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigEnabled, Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigDisabled]
-            #   @param tool_choice [Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAuto, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAny, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceTool, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceNone]
-            #   @param tools [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124>]
-            #   @param top_k [Integer]
-            #   @param top_p [Float]
+            #   @param max_tokens [Integer] The maximum number of tokens to generate before stopping. ...
+            #
+            #   @param messages [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message>] Input messages. ...
+            #
+            #   @param model [String] The model that will complete your prompt. ...
+            #
+            #   @param metadata [Sam::Models::Messages::BatchCreateParams::Request::Params::Metadata] An object describing metadata about the request.
+            #
+            #   @param stop_sequences [Array<String>] Custom text sequences that will cause the model to stop generating. ...
+            #
+            #   @param stream [Boolean] Whether to incrementally stream the response using server-sent events. ...
+            #
+            #   @param system_ [String, Array<Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1>] System prompt. ...
+            #
+            #   @param temperature [Float] Amount of randomness injected into the response. ...
+            #
+            #   @param thinking [Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigEnabled, Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigDisabled] Configuration for enabling Claude's extended thinking. ...
+            #
+            #   @param tool_choice [Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAuto, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAny, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceTool, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceNone] How the model should use the provided tools. The model can use a specific tool,
+            #   ...
+            #
+            #   @param tools [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124>] Definitions of tools that the model may use. ...
+            #
+            #   @param top_k [Integer] Only sample from the top K options for each subsequent token. ...
+            #
+            #   @param top_p [Float] Use nucleus sampling. ...
 
             class Message < Sam::Internal::Type::BaseModel
               # @!attribute content
@@ -1700,9 +1729,13 @@ module Sam
               optional :user_id, String, nil?: true
 
               # @!method initialize(user_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Sam::Models::Messages::BatchCreateParams::Request::Params::Metadata} for more
+              #   details.
+              #
               #   An object describing metadata about the request.
               #
-              #   @param user_id [String, nil]
+              #   @param user_id [String, nil] An external identifier for the user who is associated with the request. ...
             end
 
             # System prompt.
@@ -1950,7 +1983,13 @@ module Sam
                 required :type, const: :enabled
 
                 # @!method initialize(budget_tokens:, type: :enabled)
-                #   @param budget_tokens [Integer]
+                #   Some parameter documentations has been truncated, see
+                #   {Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::ThinkingConfigEnabled}
+                #   for more details.
+                #
+                #   @param budget_tokens [Integer] Determines how many tokens Claude can use for its internal reasoning process. La
+                #   ...
+                #
                 #   @param type [Symbol, :enabled]
               end
 
@@ -2008,9 +2047,14 @@ module Sam
                 optional :disable_parallel_tool_use, Sam::Internal::Type::Boolean
 
                 # @!method initialize(disable_parallel_tool_use: nil, type: :auto)
+                #   Some parameter documentations has been truncated, see
+                #   {Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAuto}
+                #   for more details.
+                #
                 #   The model will automatically decide whether to use tools.
                 #
-                #   @param disable_parallel_tool_use [Boolean]
+                #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use. ...
+                #
                 #   @param type [Symbol, :auto]
               end
 
@@ -2030,9 +2074,14 @@ module Sam
                 optional :disable_parallel_tool_use, Sam::Internal::Type::Boolean
 
                 # @!method initialize(disable_parallel_tool_use: nil, type: :any)
+                #   Some parameter documentations has been truncated, see
+                #   {Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceAny}
+                #   for more details.
+                #
                 #   The model will use any available tools.
                 #
-                #   @param disable_parallel_tool_use [Boolean]
+                #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use. ...
+                #
                 #   @param type [Symbol, :any]
               end
 
@@ -2058,10 +2107,16 @@ module Sam
                 optional :disable_parallel_tool_use, Sam::Internal::Type::Boolean
 
                 # @!method initialize(name:, disable_parallel_tool_use: nil, type: :tool)
+                #   Some parameter documentations has been truncated, see
+                #   {Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::ToolChoiceTool}
+                #   for more details.
+                #
                 #   The model will use the specified tool with `tool_choice.name`.
                 #
-                #   @param name [String]
-                #   @param disable_parallel_tool_use [Boolean]
+                #   @param name [String] The name of the tool to use.
+                #
+                #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use. ...
+                #
                 #   @param type [Symbol, :tool]
               end
 
@@ -2128,10 +2183,17 @@ module Sam
                 optional :description, String
 
                 # @!method initialize(input_schema:, name:, cache_control: nil, description: nil)
-                #   @param input_schema [Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::InputSchema]
-                #   @param name [String]
+                #   Some parameter documentations has been truncated, see
+                #   {Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool} for more
+                #   details.
+                #
+                #   @param input_schema [Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::InputSchema] [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input. ...
+                #
+                #   @param name [String] Name of the tool. ...
+                #
                 #   @param cache_control [Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::CacheControl, nil]
-                #   @param description [String]
+                #
+                #   @param description [String] Description of what this tool does. ...
 
                 # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool#input_schema
                 class InputSchema < Sam::Internal::Type::BaseModel
@@ -2189,8 +2251,14 @@ module Sam
                          nil?: true
 
                 # @!method initialize(cache_control: nil, name: :bash, type: :bash_20250124)
+                #   Some parameter documentations has been truncated, see
+                #   {Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124}
+                #   for more details.
+                #
                 #   @param cache_control [Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124::CacheControl, nil]
-                #   @param name [Symbol, :bash]
+                #
+                #   @param name [Symbol, :bash] Name of the tool. ...
+                #
                 #   @param type [Symbol, :bash_20250124]
 
                 # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124#cache_control
@@ -2227,8 +2295,14 @@ module Sam
                          nil?: true
 
                 # @!method initialize(cache_control: nil, name: :str_replace_editor, type: :text_editor_20250124)
+                #   Some parameter documentations has been truncated, see
+                #   {Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124}
+                #   for more details.
+                #
                 #   @param cache_control [Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124::CacheControl, nil]
-                #   @param name [Symbol, :str_replace_editor]
+                #
+                #   @param name [Symbol, :str_replace_editor] Name of the tool. ...
+                #
                 #   @param type [Symbol, :text_editor_20250124]
 
                 # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124#cache_control

@@ -65,15 +65,30 @@ module Sam
           .returns(T.attached_class)
       end
       def self.new(
+        # ID of the object to use as a cursor for pagination. When provided, returns the
+        # page of results immediately after this object.
         after_id: nil,
+        # ID of the object to use as a cursor for pagination. When provided, returns the
+        # page of results immediately before this object.
         before_id: nil,
+        # Number of items to return per page.
+        #
+        # Defaults to `20`. Ranges from `1` to `1000`.
         limit: nil,
+        # The version of the Anthropic API you want to use.
+        #
+        # Read more about versioning and our version history
+        # [here](https://docs.anthropic.com/en/api/versioning).
         anthropic_version: nil,
+        # Your unique API key for authentication.
+        #
+        # This key is required in the header of all API requests, to authenticate your
+        # account and access Anthropic's services. Get your API key through the
+        # [Console](https://console.anthropic.com/settings/keys). Each key is scoped to a
+        # Workspace.
         x_api_key: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

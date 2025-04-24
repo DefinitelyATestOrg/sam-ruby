@@ -29,10 +29,17 @@ module Sam
       required :last_id, String, nil?: true
 
       # @!method initialize(data:, first_id:, has_more:, last_id:)
+      #   Some parameter documentations has been truncated, see
+      #   {Sam::Models::ModelListResponse} for more details.
+      #
       #   @param data [Array<Sam::Models::ModelListResponse::Data>]
-      #   @param first_id [String, nil]
-      #   @param has_more [Boolean]
-      #   @param last_id [String, nil]
+      #
+      #   @param first_id [String, nil] First ID in the `data` list. Can be used as the `before_id` for the previous pag
+      #   ...
+      #
+      #   @param has_more [Boolean] Indicates if there are more results in the requested page direction.
+      #
+      #   @param last_id [String, nil] Last ID in the `data` list. Can be used as the `after_id` for the next page.
 
       class Data < Sam::Internal::Type::BaseModel
         # @!attribute id
@@ -63,10 +70,17 @@ module Sam
         required :type, const: :model
 
         # @!method initialize(id:, created_at:, display_name:, type: :model)
-        #   @param id [String]
-        #   @param created_at [Time]
-        #   @param display_name [String]
-        #   @param type [Symbol, :model]
+        #   Some parameter documentations has been truncated, see
+        #   {Sam::Models::ModelListResponse::Data} for more details.
+        #
+        #   @param id [String] Unique model identifier.
+        #
+        #   @param created_at [Time] RFC 3339 datetime string representing the time at which the model was released.
+        #   ...
+        #
+        #   @param display_name [String] A human-readable name for the model.
+        #
+        #   @param type [Symbol, :model] Object type. ...
       end
     end
   end

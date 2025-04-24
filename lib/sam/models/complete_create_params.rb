@@ -127,17 +127,31 @@ module Sam
       optional :x_api_key, String
 
       # @!method initialize(max_tokens_to_sample:, model:, prompt:, metadata: nil, stop_sequences: nil, stream: nil, temperature: nil, top_k: nil, top_p: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
-      #   @param max_tokens_to_sample [Integer]
-      #   @param model [String]
-      #   @param prompt [String]
-      #   @param metadata [Sam::Models::CompleteCreateParams::Metadata]
-      #   @param stop_sequences [Array<String>]
-      #   @param stream [Boolean]
-      #   @param temperature [Float]
-      #   @param top_k [Integer]
-      #   @param top_p [Float]
-      #   @param anthropic_version [String]
-      #   @param x_api_key [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Sam::Models::CompleteCreateParams} for more details.
+      #
+      #   @param max_tokens_to_sample [Integer] The maximum number of tokens to generate before stopping. ...
+      #
+      #   @param model [String] The model that will complete your prompt. ...
+      #
+      #   @param prompt [String] The prompt that you want Claude to complete. ...
+      #
+      #   @param metadata [Sam::Models::CompleteCreateParams::Metadata] An object describing metadata about the request.
+      #
+      #   @param stop_sequences [Array<String>] Sequences that will cause the model to stop generating. ...
+      #
+      #   @param stream [Boolean] Whether to incrementally stream the response using server-sent events. ...
+      #
+      #   @param temperature [Float] Amount of randomness injected into the response. ...
+      #
+      #   @param top_k [Integer] Only sample from the top K options for each subsequent token. ...
+      #
+      #   @param top_p [Float] Use nucleus sampling. ...
+      #
+      #   @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+      #
+      #   @param x_api_key [String] Your unique API key for authentication. ...
+      #
       #   @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
 
       class Metadata < Sam::Internal::Type::BaseModel
@@ -152,9 +166,12 @@ module Sam
         optional :user_id, String, nil?: true
 
         # @!method initialize(user_id: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Sam::Models::CompleteCreateParams::Metadata} for more details.
+        #
         #   An object describing metadata about the request.
         #
-        #   @param user_id [String, nil]
+        #   @param user_id [String, nil] An external identifier for the user who is associated with the request. ...
       end
     end
   end

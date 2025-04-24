@@ -45,11 +45,18 @@ module Sam
       required :type, const: :completion
 
       # @!method initialize(id:, completion:, model:, stop_reason:, type: :completion)
-      #   @param id [String]
-      #   @param completion [String]
-      #   @param model [String]
-      #   @param stop_reason [String, nil]
-      #   @param type [Symbol, :completion]
+      #   Some parameter documentations has been truncated, see
+      #   {Sam::Models::CompleteCreateResponse} for more details.
+      #
+      #   @param id [String] Unique object identifier. ...
+      #
+      #   @param completion [String] The resulting completion up to and excluding the stop sequences.
+      #
+      #   @param model [String] The model that handled the request.
+      #
+      #   @param stop_reason [String, nil] The reason that we stopped. ...
+      #
+      #   @param type [Symbol, :completion] Object type. ...
     end
   end
 end

@@ -3,6 +3,9 @@
 module Sam
   module Resources
     class ModelsBetaTrue
+      # Some parameter documentations has been truncated, see
+      # {Sam::Models::ModelsBetaTrueListParams} for more details.
+      #
       # List available models.
       #
       # The Models API response can be used to determine which models are available for
@@ -10,11 +13,18 @@ module Sam
       #
       # @overload list(after_id: nil, before_id: nil, limit: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
       #
-      # @param after_id [String]
-      # @param before_id [String]
-      # @param limit [Integer]
-      # @param anthropic_version [String]
-      # @param x_api_key [String]
+      # @param after_id [String] Query param: ID of the object to use as a cursor for pagination. When provided,
+      # ...
+      #
+      # @param before_id [String] Query param: ID of the object to use as a cursor for pagination. When provided,
+      # ...
+      #
+      # @param limit [Integer] Query param: Number of items to return per page. ...
+      #
+      # @param anthropic_version [String] Header param: The version of the Anthropic API you want to use. ...
+      #
+      # @param x_api_key [String] Header param: Your unique API key for authentication. ...
+      #
       # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Sam::Models::ModelsBetaTrueListResponse]
