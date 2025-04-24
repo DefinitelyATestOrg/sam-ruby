@@ -24,7 +24,14 @@ module Sam
                         )]
               ),
               body: T.nilable(T.anything),
-              unwrap: T.nilable(Symbol),
+              unwrap: T.nilable(
+                T.any(
+                  Symbol,
+                  Integer,
+                  T::Array[T.any(Symbol, Integer)],
+                  T.proc.params(arg0: T.anything).returns(T.anything)
+                )
+              ),
               page: T.nilable(T::Class[Sam::Internal::Type::BasePage[Sam::Internal::Type::BaseModel]]),
               stream: T.nilable(
                 T::Class[Sam::Internal::Type::BaseStream[T.anything,
@@ -166,7 +173,14 @@ module Sam
                       )]
             ),
             body: T.nilable(T.anything),
-            unwrap: T.nilable(Symbol),
+            unwrap: T.nilable(
+              T.any(
+                Symbol,
+                Integer,
+                T::Array[T.any(Symbol, Integer)],
+                T.proc.params(arg0: T.anything).returns(T.anything)
+              )
+            ),
             page: T.nilable(T::Class[Sam::Internal::Type::BasePage[Sam::Internal::Type::BaseModel]]),
             stream: T.nilable(
               T::Class[Sam::Internal::Type::BaseStream[T.anything,

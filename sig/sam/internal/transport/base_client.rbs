@@ -11,7 +11,10 @@ module Sam
             | Integer
             | ::Array[(String | Integer)?])?]?,
             body: top?,
-            unwrap: Symbol?,
+            unwrap: (Symbol
+            | Integer
+            | ::Array[(Symbol | Integer)]
+            | (^(top arg0) -> top))?,
             page: Class?,
             stream: Class?,
             model: Sam::Internal::Type::Converter::input?,
@@ -94,7 +97,10 @@ module Sam
           | Integer
           | ::Array[(String | Integer)?])?]?,
           ?body: top?,
-          ?unwrap: Symbol?,
+          ?unwrap: (Symbol
+          | Integer
+          | ::Array[(Symbol | Integer)]
+          | (^(top arg0) -> top))?,
           ?page: Class?,
           ?stream: Class?,
           ?model: Sam::Internal::Type::Converter::input?,
