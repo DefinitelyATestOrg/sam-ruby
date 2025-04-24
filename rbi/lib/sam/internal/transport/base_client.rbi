@@ -93,7 +93,7 @@ module Sam
 
         # @api private
         sig { returns(Sam::Internal::Transport::PooledNetRequester) }
-        attr_accessor :requester
+        attr_reader :requester
 
         # @api private
         sig do
