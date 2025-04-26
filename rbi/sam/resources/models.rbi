@@ -12,7 +12,7 @@ module Sam
           model_id: String,
           anthropic_version: String,
           x_api_key: String,
-          request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::AnyHash))
+          request_options: Sam::RequestOpts
         )
           .returns(Sam::Models::ModelRetrieveResponse)
       end
@@ -44,7 +44,7 @@ module Sam
           limit: Integer,
           anthropic_version: String,
           x_api_key: String,
-          request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::AnyHash))
+          request_options: Sam::RequestOpts
         )
           .returns(Sam::Models::ModelListResponse)
       end
@@ -82,7 +82,7 @@ module Sam
           model_id: String,
           anthropic_version: String,
           x_api_key: String,
-          request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::AnyHash))
+          request_options: Sam::RequestOpts
         )
           .returns(Sam::Models::ModelRetrieveBetaResponse)
       end

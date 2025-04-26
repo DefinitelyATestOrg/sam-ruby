@@ -24,7 +24,7 @@ module Sam
           top_p: Float,
           anthropic_version: String,
           x_api_key: String,
-          request_options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::AnyHash))
+          request_options: Sam::RequestOpts
         )
           .returns(Sam::Models::CompleteCreateResponse)
       end
