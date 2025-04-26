@@ -1015,6 +1015,7 @@ module Sam
                 # @!method self.variants
                 #   @return [Array(String, Array<Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock>)]
 
+                # @type [Sam::Internal::Type::Converter]
                 UnionMember1Array =
                   Sam::Internal::Type::ArrayOf[
                     union: -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1 }
@@ -1458,6 +1459,7 @@ module Sam
                     # @!method self.variants
                     #   @return [Array(String, Array<Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock>)]
 
+                    # @type [Sam::Internal::Type::Converter]
                     UnionMember1Array =
                       Sam::Internal::Type::ArrayOf[
                         union: -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1 }
@@ -1553,6 +1555,7 @@ module Sam
           # @!method self.variants
           #   @return [Array(String, Array<Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestImageBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolUseBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestToolResultBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestDocumentBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestThinkingBlock, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock>)]
 
+          # @type [Sam::Internal::Type::Converter]
           UnionMember1Array =
             Sam::Internal::Type::ArrayOf[union: -> { Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1 }]
         end
@@ -1765,6 +1768,7 @@ module Sam
         # @!method self.variants
         #   @return [Array(String, Array<Sam::Models::MessageCountTokensBetaParams::System::UnionMember1>)]
 
+        # @type [Sam::Internal::Type::Converter]
         UnionMember1Array =
           Sam::Internal::Type::ArrayOf[-> { Sam::Models::MessageCountTokensBetaParams::System::UnionMember1 }]
       end

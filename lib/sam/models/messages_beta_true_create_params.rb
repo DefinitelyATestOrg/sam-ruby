@@ -1109,6 +1109,7 @@ module Sam
                 # @!method self.variants
                 #   @return [Array(String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock>)]
 
+                # @type [Sam::Internal::Type::Converter]
                 UnionMember1Array =
                   Sam::Internal::Type::ArrayOf[
                     union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1 }
@@ -1552,6 +1553,7 @@ module Sam
                     # @!method self.variants
                     #   @return [Array(String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock>)]
 
+                    # @type [Sam::Internal::Type::Converter]
                     UnionMember1Array =
                       Sam::Internal::Type::ArrayOf[
                         union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1 }
@@ -1647,6 +1649,7 @@ module Sam
           # @!method self.variants
           #   @return [Array(String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestThinkingBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock>)]
 
+          # @type [Sam::Internal::Type::Converter]
           UnionMember1Array =
             Sam::Internal::Type::ArrayOf[union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1 }]
         end
@@ -1879,6 +1882,7 @@ module Sam
         # @!method self.variants
         #   @return [Array(String, Array<Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1>)]
 
+        # @type [Sam::Internal::Type::Converter]
         UnionMember1Array =
           Sam::Internal::Type::ArrayOf[-> { Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1 }]
       end
