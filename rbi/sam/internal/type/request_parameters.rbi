@@ -6,7 +6,7 @@ module Sam
       # @api private
       module RequestParameters
         # Options to specify HTTP behaviour for this request.
-        sig { returns(T.any(Sam::RequestOptions, Sam::Internal::AnyHash)) }
+        sig { returns(Sam::RequestOpts) }
         attr_accessor :request_options
 
         # @api private

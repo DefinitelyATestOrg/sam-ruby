@@ -38,7 +38,7 @@ module Sam
                                                          Sam::Internal::Type::BaseModel]]
               ),
               model: T.nilable(Sam::Internal::Type::Converter::Input),
-              options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::AnyHash))
+              options: T.nilable(Sam::RequestOpts)
             }
           end
 
@@ -187,7 +187,7 @@ module Sam
                                                        Sam::Internal::Type::BaseModel]]
             ),
             model: T.nilable(Sam::Internal::Type::Converter::Input),
-            options: T.nilable(T.any(Sam::RequestOptions, Sam::Internal::AnyHash))
+            options: T.nilable(Sam::RequestOpts)
           )
             .returns(T.anything)
         end
