@@ -751,10 +751,7 @@ module Sam
 
                 def self?.variants: -> [String, ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::union_member1]]
 
-                type union_member1_array =
-                  ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::union_member1]
-
-                UnionMember1Array: union_member1_array
+                UnionMember1Array: Sam::Internal::Type::Converter
               end
             end
 
@@ -1133,10 +1130,7 @@ module Sam
 
                     def self?.variants: -> [String, ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::union_member1]]
 
-                    type union_member1_array =
-                      ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::union_member1]
-
-                    UnionMember1Array: union_member1_array
+                    UnionMember1Array: Sam::Internal::Type::Converter
                   end
                 end
 
@@ -1215,10 +1209,7 @@ module Sam
 
           def self?.variants: -> [String, ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::union_member1]]
 
-          type union_member1_array =
-            ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::union_member1]
-
-          UnionMember1Array: union_member1_array
+          UnionMember1Array: Sam::Internal::Type::Converter
         end
 
         type role = :user | :assistant
@@ -1405,10 +1396,7 @@ module Sam
 
         def self?.variants: -> [String, ::Array[Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1]]
 
-        type union_member1_array =
-          ::Array[Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1]
-
-        UnionMember1Array: union_member1_array
+        UnionMember1Array: Sam::Internal::Type::Converter
       end
 
       type thinking =

@@ -1101,6 +1101,7 @@ module Sam
                 # @!method self.variants
                 #   @return [Array(String, Array<Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1::RequestImageBlock>)]
 
+                # @type [Sam::Internal::Type::Converter]
                 UnionMember1Array =
                   Sam::Internal::Type::ArrayOf[
                     union: -> { Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock::Content::UnionMember1 }
@@ -1544,6 +1545,7 @@ module Sam
                     # @!method self.variants
                     #   @return [Array(String, Array<Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1::RequestImageBlock>)]
 
+                    # @type [Sam::Internal::Type::Converter]
                     UnionMember1Array =
                       Sam::Internal::Type::ArrayOf[
                         union: -> { Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock::Source::ContentBlockSource::Content::UnionMember1 }
@@ -1639,6 +1641,7 @@ module Sam
           # @!method self.variants
           #   @return [Array(String, Array<Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestTextBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestImageBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolUseBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestToolResultBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestDocumentBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestThinkingBlock, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RequestRedactedThinkingBlock>)]
 
+          # @type [Sam::Internal::Type::Converter]
           UnionMember1Array =
             Sam::Internal::Type::ArrayOf[union: -> { Sam::Models::MessageCreateParams::Message::Content::UnionMember1 }]
         end
@@ -1871,6 +1874,7 @@ module Sam
         # @!method self.variants
         #   @return [Array(String, Array<Sam::Models::MessageCreateParams::System::UnionMember1>)]
 
+        # @type [Sam::Internal::Type::Converter]
         UnionMember1Array =
           Sam::Internal::Type::ArrayOf[-> { Sam::Models::MessageCreateParams::System::UnionMember1 }]
       end
