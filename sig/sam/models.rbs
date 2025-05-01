@@ -1,0 +1,21 @@
+module Sam
+  class CompleteCreateParams = Sam::Models::CompleteCreateParams
+
+  class MessageCountTokensBetaParams = Sam::Models::MessageCountTokensBetaParams
+
+  class MessageCountTokensParams = Sam::Models::MessageCountTokensParams
+
+  class MessageCreateParams = Sam::Models::MessageCreateParams
+
+  module Messages = Sam::Models::Messages
+
+  class MessagesBetaTrueCreateParams = Sam::Models::MessagesBetaTrueCreateParams
+
+  class ModelListParams = Sam::Models::ModelListParams
+
+  class ModelRetrieveBetaParams = Sam::Models::ModelRetrieveBetaParams
+
+  class ModelRetrieveParams = Sam::Models::ModelRetrieveParams
+
+  class ModelsBetaTrueListParams = Sam::Models::ModelsBetaTrueListParams
+end
