@@ -183,14 +183,14 @@ module Sam
       #   [extended thinking](https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking)
       #   for details.
       #
-      #   @return [Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigEnabled, Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigDisabled, nil]
+      #   @return [Sam::Models::MessagesBetaTrueCreateParams::Thinking::Enabled, Sam::Models::MessagesBetaTrueCreateParams::Thinking::Disabled, nil]
       optional :thinking, union: -> { Sam::Models::MessagesBetaTrueCreateParams::Thinking }
 
       # @!attribute tool_choice
       #   How the model should use the provided tools. The model can use a specific tool,
       #   any available tool, decide by itself, or not use tools at all.
       #
-      #   @return [Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAuto, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAny, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceTool, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceNone, nil]
+      #   @return [Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Auto, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Any, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Tool, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::None, nil]
       optional :tool_choice, union: -> { Sam::Models::MessagesBetaTrueCreateParams::ToolChoice }
 
       # @!attribute tools
@@ -343,9 +343,9 @@ module Sam
       #
       #   @param temperature [Float] Amount of randomness injected into the response. ...
       #
-      #   @param thinking [Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigEnabled, Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigDisabled] Configuration for enabling Claude's extended thinking. ...
+      #   @param thinking [Sam::Models::MessagesBetaTrueCreateParams::Thinking::Enabled, Sam::Models::MessagesBetaTrueCreateParams::Thinking::Disabled] Configuration for enabling Claude's extended thinking. ...
       #
-      #   @param tool_choice [Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAuto, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAny, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceTool, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceNone] How the model should use the provided tools. The model can use a specific tool,
+      #   @param tool_choice [Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Auto, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Any, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Tool, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::None] How the model should use the provided tools. The model can use a specific tool,
       #   ...
       #
       #   @param tools [Array<Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124>] Definitions of tools that the model may use. ...
@@ -365,7 +365,7 @@ module Sam
       class Message < Sam::Internal::Type::BaseModel
         # @!attribute content
         #
-        #   @return [String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestThinkingBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock>]
+        #   @return [String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Thinking, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::RedactedThinking>]
         required :content, union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content }
 
         # @!attribute role
@@ -374,7 +374,7 @@ module Sam
         required :role, enum: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Role }
 
         # @!method initialize(content:, role:)
-        #   @param content [String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestThinkingBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock>]
+        #   @param content [String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Thinking, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::RedactedThinking>]
         #   @param role [Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Role]
 
         # @see Sam::Models::MessagesBetaTrueCreateParams::Message#content
@@ -390,28 +390,26 @@ module Sam
 
             discriminator :type
 
-            variant :text,
-                    -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock }
+            variant :text, -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text }
 
-            variant :image,
-                    -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock }
+            variant :image, -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image }
 
             variant :tool_use,
-                    -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock }
+                    -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse }
 
             variant :tool_result,
-                    -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock }
+                    -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult }
 
             variant :document,
-                    -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock }
+                    -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document }
 
             variant :thinking,
-                    -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestThinkingBlock }
+                    -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Thinking }
 
             variant :redacted_thinking,
-                    -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock }
+                    -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::RedactedThinking }
 
-            class BetaRequestTextBlock < Sam::Internal::Type::BaseModel
+            class Text < Sam::Internal::Type::BaseModel
               # @!attribute text
               #
               #   @return [String]
@@ -424,29 +422,25 @@ module Sam
 
               # @!attribute cache_control
               #
-              #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl, nil]
+              #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::CacheControl, nil]
               optional :cache_control,
-                       -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl },
+                       -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::CacheControl },
                        nil?: true
 
               # @!attribute citations
               #
-              #   @return [Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation>, nil]
+              #   @return [Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
               optional :citations,
-                       -> do
-                         Sam::Internal::Type::ArrayOf[
-                           union: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation
-                         ]
-                       end,
+                       -> { Sam::Internal::Type::ArrayOf[union: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation] },
                        nil?: true
 
               # @!method initialize(text:, cache_control: nil, citations: nil, type: :text)
               #   @param text [String]
-              #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl, nil]
-              #   @param citations [Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation>, nil]
+              #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::CacheControl, nil]
+              #   @param citations [Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
               #   @param type [Symbol, :text]
 
-              # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock#cache_control
+              # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text#cache_control
               class CacheControl < Sam::Internal::Type::BaseModel
                 # @!attribute type
                 #
@@ -463,15 +457,15 @@ module Sam
                 discriminator :type
 
                 variant :char_location,
-                        -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation }
+                        -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::CharLocation }
 
                 variant :page_location,
-                        -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation }
+                        -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::PageLocation }
 
                 variant :content_block_location,
-                        -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation }
+                        -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation }
 
-                class BetaRequestCharLocationCitation < Sam::Internal::Type::BaseModel
+                class CharLocation < Sam::Internal::Type::BaseModel
                   # @!attribute cited_text
                   #
                   #   @return [String]
@@ -511,7 +505,7 @@ module Sam
                   #   @param type [Symbol, :char_location]
                 end
 
-                class BetaRequestPageLocationCitation < Sam::Internal::Type::BaseModel
+                class PageLocation < Sam::Internal::Type::BaseModel
                   # @!attribute cited_text
                   #
                   #   @return [String]
@@ -551,7 +545,7 @@ module Sam
                   #   @param type [Symbol, :page_location]
                 end
 
-                class BetaRequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
+                class ContentBlockLocation < Sam::Internal::Type::BaseModel
                   # @!attribute cited_text
                   #
                   #   @return [String]
@@ -592,16 +586,16 @@ module Sam
                 end
 
                 # @!method self.variants
-                #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation)]
+                #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
               end
             end
 
-            class BetaRequestImageBlock < Sam::Internal::Type::BaseModel
+            class Image < Sam::Internal::Type::BaseModel
               # @!attribute source
               #
-              #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
+              #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::URL]
               required :source,
-                       union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source }
+                       union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source }
 
               # @!attribute type
               #
@@ -610,29 +604,29 @@ module Sam
 
               # @!attribute cache_control
               #
-              #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl, nil]
+              #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::CacheControl, nil]
               optional :cache_control,
-                       -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl },
+                       -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::CacheControl },
                        nil?: true
 
               # @!method initialize(source:, cache_control: nil, type: :image)
-              #   @param source [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
-              #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl, nil]
+              #   @param source [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::URL]
+              #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::CacheControl, nil]
               #   @param type [Symbol, :image]
 
-              # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock#source
+              # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image#source
               module Source
                 extend Sam::Internal::Type::Union
 
                 discriminator :type
 
                 variant :base64,
-                        -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource }
+                        -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::Base64 }
 
                 variant :url,
-                        -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource }
+                        -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::URL }
 
-                class BetaBase64ImageSource < Sam::Internal::Type::BaseModel
+                class Base64 < Sam::Internal::Type::BaseModel
                   # @!attribute data
                   #
                   #   @return [String]
@@ -640,9 +634,9 @@ module Sam
 
                   # @!attribute media_type
                   #
-                  #   @return [Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType]
+                  #   @return [Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::Base64::MediaType]
                   required :media_type,
-                           enum: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType }
+                           enum: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::Base64::MediaType }
 
                   # @!attribute type
                   #
@@ -651,10 +645,10 @@ module Sam
 
                   # @!method initialize(data:, media_type:, type: :base64)
                   #   @param data [String]
-                  #   @param media_type [Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType]
+                  #   @param media_type [Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::Base64::MediaType]
                   #   @param type [Symbol, :base64]
 
-                  # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource#media_type
+                  # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::Base64#media_type
                   module MediaType
                     extend Sam::Internal::Type::Enum
 
@@ -668,7 +662,7 @@ module Sam
                   end
                 end
 
-                class BetaURLImageSource < Sam::Internal::Type::BaseModel
+                class URL < Sam::Internal::Type::BaseModel
                   # @!attribute type
                   #
                   #   @return [Symbol, :url]
@@ -685,10 +679,10 @@ module Sam
                 end
 
                 # @!method self.variants
-                #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource)]
+                #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::URL)]
               end
 
-              # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock#cache_control
+              # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image#cache_control
               class CacheControl < Sam::Internal::Type::BaseModel
                 # @!attribute type
                 #
@@ -700,7 +694,7 @@ module Sam
               end
             end
 
-            class BetaRequestToolUseBlock < Sam::Internal::Type::BaseModel
+            class ToolUse < Sam::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -723,19 +717,19 @@ module Sam
 
               # @!attribute cache_control
               #
-              #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl, nil]
+              #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse::CacheControl, nil]
               optional :cache_control,
-                       -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl },
+                       -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse::CacheControl },
                        nil?: true
 
               # @!method initialize(id:, input:, name:, cache_control: nil, type: :tool_use)
               #   @param id [String]
               #   @param input [Object]
               #   @param name [String]
-              #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl, nil]
+              #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse::CacheControl, nil]
               #   @param type [Symbol, :tool_use]
 
-              # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock#cache_control
+              # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse#cache_control
               class CacheControl < Sam::Internal::Type::BaseModel
                 # @!attribute type
                 #
@@ -747,7 +741,7 @@ module Sam
               end
             end
 
-            class BetaRequestToolResultBlock < Sam::Internal::Type::BaseModel
+            class ToolResult < Sam::Internal::Type::BaseModel
               # @!attribute tool_use_id
               #
               #   @return [String]
@@ -760,16 +754,16 @@ module Sam
 
               # @!attribute cache_control
               #
-              #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl, nil]
+              #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::CacheControl, nil]
               optional :cache_control,
-                       -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl },
+                       -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::CacheControl },
                        nil?: true
 
               # @!attribute content
               #
-              #   @return [String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock>, nil]
+              #   @return [String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>, nil]
               optional :content,
-                       union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content }
+                       union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content }
 
               # @!attribute is_error
               #
@@ -778,12 +772,12 @@ module Sam
 
               # @!method initialize(tool_use_id:, cache_control: nil, content: nil, is_error: nil, type: :tool_result)
               #   @param tool_use_id [String]
-              #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl, nil]
-              #   @param content [String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock>]
+              #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::CacheControl, nil]
+              #   @param content [String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>]
               #   @param is_error [Boolean]
               #   @param type [Symbol, :tool_result]
 
-              # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock#cache_control
+              # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult#cache_control
               class CacheControl < Sam::Internal::Type::BaseModel
                 # @!attribute type
                 #
@@ -794,13 +788,13 @@ module Sam
                 #   @param type [Symbol, :ephemeral]
               end
 
-              # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock#content
+              # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult#content
               module Content
                 extend Sam::Internal::Type::Union
 
                 variant String
 
-                variant -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1Array }
+                variant -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1Array }
 
                 module UnionMember1
                   extend Sam::Internal::Type::Union
@@ -808,12 +802,12 @@ module Sam
                   discriminator :type
 
                   variant :text,
-                          -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock }
+                          -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text }
 
                   variant :image,
-                          -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock }
+                          -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image }
 
-                  class BetaRequestTextBlock < Sam::Internal::Type::BaseModel
+                  class Text < Sam::Internal::Type::BaseModel
                     # @!attribute text
                     #
                     #   @return [String]
@@ -826,29 +820,29 @@ module Sam
 
                     # @!attribute cache_control
                     #
-                    #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl, nil]
+                    #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl, nil]
                     optional :cache_control,
-                             -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl },
+                             -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl },
                              nil?: true
 
                     # @!attribute citations
                     #
-                    #   @return [Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation>, nil]
+                    #   @return [Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
                     optional :citations,
                              -> do
                                Sam::Internal::Type::ArrayOf[
-                                 union: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation
+                                 union: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation
                                ]
                              end,
                              nil?: true
 
                     # @!method initialize(text:, cache_control: nil, citations: nil, type: :text)
                     #   @param text [String]
-                    #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl, nil]
-                    #   @param citations [Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation>, nil]
+                    #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl, nil]
+                    #   @param citations [Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
                     #   @param type [Symbol, :text]
 
-                    # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock#cache_control
+                    # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text#cache_control
                     class CacheControl < Sam::Internal::Type::BaseModel
                       # @!attribute type
                       #
@@ -865,15 +859,15 @@ module Sam
                       discriminator :type
 
                       variant :char_location,
-                              -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation }
+                              -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation }
 
                       variant :page_location,
-                              -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation }
+                              -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation }
 
                       variant :content_block_location,
-                              -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation }
+                              -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation }
 
-                      class BetaRequestCharLocationCitation < Sam::Internal::Type::BaseModel
+                      class CharLocation < Sam::Internal::Type::BaseModel
                         # @!attribute cited_text
                         #
                         #   @return [String]
@@ -913,7 +907,7 @@ module Sam
                         #   @param type [Symbol, :char_location]
                       end
 
-                      class BetaRequestPageLocationCitation < Sam::Internal::Type::BaseModel
+                      class PageLocation < Sam::Internal::Type::BaseModel
                         # @!attribute cited_text
                         #
                         #   @return [String]
@@ -953,7 +947,7 @@ module Sam
                         #   @param type [Symbol, :page_location]
                       end
 
-                      class BetaRequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
+                      class ContentBlockLocation < Sam::Internal::Type::BaseModel
                         # @!attribute cited_text
                         #
                         #   @return [String]
@@ -994,16 +988,16 @@ module Sam
                       end
 
                       # @!method self.variants
-                      #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation)]
+                      #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
                     end
                   end
 
-                  class BetaRequestImageBlock < Sam::Internal::Type::BaseModel
+                  class Image < Sam::Internal::Type::BaseModel
                     # @!attribute source
                     #
-                    #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
+                    #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL]
                     required :source,
-                             union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source }
+                             union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source }
 
                     # @!attribute type
                     #
@@ -1012,29 +1006,29 @@ module Sam
 
                     # @!attribute cache_control
                     #
-                    #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl, nil]
+                    #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl, nil]
                     optional :cache_control,
-                             -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl },
+                             -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl },
                              nil?: true
 
                     # @!method initialize(source:, cache_control: nil, type: :image)
-                    #   @param source [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
-                    #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl, nil]
+                    #   @param source [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL]
+                    #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl, nil]
                     #   @param type [Symbol, :image]
 
-                    # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock#source
+                    # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image#source
                     module Source
                       extend Sam::Internal::Type::Union
 
                       discriminator :type
 
                       variant :base64,
-                              -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource }
+                              -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64 }
 
                       variant :url,
-                              -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource }
+                              -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL }
 
-                      class BetaBase64ImageSource < Sam::Internal::Type::BaseModel
+                      class Base64 < Sam::Internal::Type::BaseModel
                         # @!attribute data
                         #
                         #   @return [String]
@@ -1042,9 +1036,9 @@ module Sam
 
                         # @!attribute media_type
                         #
-                        #   @return [Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType]
+                        #   @return [Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType]
                         required :media_type,
-                                 enum: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType }
+                                 enum: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType }
 
                         # @!attribute type
                         #
@@ -1053,10 +1047,10 @@ module Sam
 
                         # @!method initialize(data:, media_type:, type: :base64)
                         #   @param data [String]
-                        #   @param media_type [Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType]
+                        #   @param media_type [Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType]
                         #   @param type [Symbol, :base64]
 
-                        # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource#media_type
+                        # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64#media_type
                         module MediaType
                           extend Sam::Internal::Type::Enum
 
@@ -1070,7 +1064,7 @@ module Sam
                         end
                       end
 
-                      class BetaURLImageSource < Sam::Internal::Type::BaseModel
+                      class URL < Sam::Internal::Type::BaseModel
                         # @!attribute type
                         #
                         #   @return [Symbol, :url]
@@ -1087,10 +1081,10 @@ module Sam
                       end
 
                       # @!method self.variants
-                      #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource)]
+                      #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL)]
                     end
 
-                    # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock#cache_control
+                    # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image#cache_control
                     class CacheControl < Sam::Internal::Type::BaseModel
                       # @!attribute type
                       #
@@ -1103,26 +1097,26 @@ module Sam
                   end
 
                   # @!method self.variants
-                  #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock)]
+                  #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image)]
                 end
 
                 # @!method self.variants
-                #   @return [Array(String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock>)]
+                #   @return [Array(String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>)]
 
                 # @type [Sam::Internal::Type::Converter]
                 UnionMember1Array =
                   Sam::Internal::Type::ArrayOf[
-                    union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1 }
+                    union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1 }
                   ]
               end
             end
 
-            class BetaRequestDocumentBlock < Sam::Internal::Type::BaseModel
+            class Document < Sam::Internal::Type::BaseModel
               # @!attribute source
               #
-              #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource]
+              #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Base64, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::URL]
               required :source,
-                       union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source }
+                       union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source }
 
               # @!attribute type
               #
@@ -1131,16 +1125,16 @@ module Sam
 
               # @!attribute cache_control
               #
-              #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl, nil]
+              #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::CacheControl, nil]
               optional :cache_control,
-                       -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl },
+                       -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::CacheControl },
                        nil?: true
 
               # @!attribute citations
               #
-              #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations, nil]
+              #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Citations, nil]
               optional :citations,
-                       -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations }
+                       -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Citations }
 
               # @!attribute context
               #
@@ -1153,32 +1147,32 @@ module Sam
               optional :title, String, nil?: true
 
               # @!method initialize(source:, cache_control: nil, citations: nil, context: nil, title: nil, type: :document)
-              #   @param source [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource]
-              #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl, nil]
-              #   @param citations [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations]
+              #   @param source [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Base64, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::URL]
+              #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::CacheControl, nil]
+              #   @param citations [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Citations]
               #   @param context [String, nil]
               #   @param title [String, nil]
               #   @param type [Symbol, :document]
 
-              # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock#source
+              # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document#source
               module Source
                 extend Sam::Internal::Type::Union
 
                 discriminator :type
 
                 variant :base64,
-                        -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource }
+                        -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Base64 }
 
                 variant :text,
-                        -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource }
+                        -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Text }
 
                 variant :content,
-                        -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource }
+                        -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content }
 
                 variant :url,
-                        -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource }
+                        -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::URL }
 
-                class BetaBase64PdfSource < Sam::Internal::Type::BaseModel
+                class Base64 < Sam::Internal::Type::BaseModel
                   # @!attribute data
                   #
                   #   @return [String]
@@ -1200,7 +1194,7 @@ module Sam
                   #   @param type [Symbol, :base64]
                 end
 
-                class BetaPlainTextSource < Sam::Internal::Type::BaseModel
+                class Text < Sam::Internal::Type::BaseModel
                   # @!attribute data
                   #
                   #   @return [String]
@@ -1222,12 +1216,12 @@ module Sam
                   #   @param type [Symbol, :text]
                 end
 
-                class BetaContentBlockSource < Sam::Internal::Type::BaseModel
+                class Content < Sam::Internal::Type::BaseModel
                   # @!attribute content
                   #
-                  #   @return [String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock>]
+                  #   @return [String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>]
                   required :content,
-                           union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content }
+                           union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content }
 
                   # @!attribute type
                   #
@@ -1235,16 +1229,16 @@ module Sam
                   required :type, const: :content
 
                   # @!method initialize(content:, type: :content)
-                  #   @param content [String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock>]
+                  #   @param content [String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>]
                   #   @param type [Symbol, :content]
 
-                  # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource#content
+                  # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content#content
                   module Content
                     extend Sam::Internal::Type::Union
 
                     variant String
 
-                    variant -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1Array }
+                    variant -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1Array }
 
                     module UnionMember1
                       extend Sam::Internal::Type::Union
@@ -1252,12 +1246,12 @@ module Sam
                       discriminator :type
 
                       variant :text,
-                              -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock }
+                              -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text }
 
                       variant :image,
-                              -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock }
+                              -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image }
 
-                      class BetaRequestTextBlock < Sam::Internal::Type::BaseModel
+                      class Text < Sam::Internal::Type::BaseModel
                         # @!attribute text
                         #
                         #   @return [String]
@@ -1270,29 +1264,29 @@ module Sam
 
                         # @!attribute cache_control
                         #
-                        #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl, nil]
+                        #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl, nil]
                         optional :cache_control,
-                                 -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl },
+                                 -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl },
                                  nil?: true
 
                         # @!attribute citations
                         #
-                        #   @return [Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation>, nil]
+                        #   @return [Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
                         optional :citations,
                                  -> do
                                    Sam::Internal::Type::ArrayOf[
-                                     union: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation
+                                     union: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation
                                    ]
                                  end,
                                  nil?: true
 
                         # @!method initialize(text:, cache_control: nil, citations: nil, type: :text)
                         #   @param text [String]
-                        #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl, nil]
-                        #   @param citations [Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation>, nil]
+                        #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl, nil]
+                        #   @param citations [Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
                         #   @param type [Symbol, :text]
 
-                        # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock#cache_control
+                        # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text#cache_control
                         class CacheControl < Sam::Internal::Type::BaseModel
                           # @!attribute type
                           #
@@ -1309,15 +1303,15 @@ module Sam
                           discriminator :type
 
                           variant :char_location,
-                                  -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation }
+                                  -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation }
 
                           variant :page_location,
-                                  -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation }
+                                  -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation }
 
                           variant :content_block_location,
-                                  -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation }
+                                  -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation }
 
-                          class BetaRequestCharLocationCitation < Sam::Internal::Type::BaseModel
+                          class CharLocation < Sam::Internal::Type::BaseModel
                             # @!attribute cited_text
                             #
                             #   @return [String]
@@ -1357,7 +1351,7 @@ module Sam
                             #   @param type [Symbol, :char_location]
                           end
 
-                          class BetaRequestPageLocationCitation < Sam::Internal::Type::BaseModel
+                          class PageLocation < Sam::Internal::Type::BaseModel
                             # @!attribute cited_text
                             #
                             #   @return [String]
@@ -1397,7 +1391,7 @@ module Sam
                             #   @param type [Symbol, :page_location]
                           end
 
-                          class BetaRequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
+                          class ContentBlockLocation < Sam::Internal::Type::BaseModel
                             # @!attribute cited_text
                             #
                             #   @return [String]
@@ -1438,16 +1432,16 @@ module Sam
                           end
 
                           # @!method self.variants
-                          #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation)]
+                          #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
                         end
                       end
 
-                      class BetaRequestImageBlock < Sam::Internal::Type::BaseModel
+                      class Image < Sam::Internal::Type::BaseModel
                         # @!attribute source
                         #
-                        #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
+                        #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL]
                         required :source,
-                                 union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source }
+                                 union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source }
 
                         # @!attribute type
                         #
@@ -1456,29 +1450,29 @@ module Sam
 
                         # @!attribute cache_control
                         #
-                        #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl, nil]
+                        #   @return [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl, nil]
                         optional :cache_control,
-                                 -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl },
+                                 -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl },
                                  nil?: true
 
                         # @!method initialize(source:, cache_control: nil, type: :image)
-                        #   @param source [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
-                        #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl, nil]
+                        #   @param source [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL]
+                        #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl, nil]
                         #   @param type [Symbol, :image]
 
-                        # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock#source
+                        # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image#source
                         module Source
                           extend Sam::Internal::Type::Union
 
                           discriminator :type
 
                           variant :base64,
-                                  -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource }
+                                  -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64 }
 
                           variant :url,
-                                  -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource }
+                                  -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL }
 
-                          class BetaBase64ImageSource < Sam::Internal::Type::BaseModel
+                          class Base64 < Sam::Internal::Type::BaseModel
                             # @!attribute data
                             #
                             #   @return [String]
@@ -1486,9 +1480,9 @@ module Sam
 
                             # @!attribute media_type
                             #
-                            #   @return [Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType]
+                            #   @return [Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType]
                             required :media_type,
-                                     enum: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType }
+                                     enum: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType }
 
                             # @!attribute type
                             #
@@ -1497,10 +1491,10 @@ module Sam
 
                             # @!method initialize(data:, media_type:, type: :base64)
                             #   @param data [String]
-                            #   @param media_type [Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::MediaType]
+                            #   @param media_type [Symbol, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType]
                             #   @param type [Symbol, :base64]
 
-                            # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource#media_type
+                            # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64#media_type
                             module MediaType
                               extend Sam::Internal::Type::Enum
 
@@ -1514,7 +1508,7 @@ module Sam
                             end
                           end
 
-                          class BetaURLImageSource < Sam::Internal::Type::BaseModel
+                          class URL < Sam::Internal::Type::BaseModel
                             # @!attribute type
                             #
                             #   @return [Symbol, :url]
@@ -1531,10 +1525,10 @@ module Sam
                           end
 
                           # @!method self.variants
-                          #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource)]
+                          #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL)]
                         end
 
-                        # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock#cache_control
+                        # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image#cache_control
                         class CacheControl < Sam::Internal::Type::BaseModel
                           # @!attribute type
                           #
@@ -1547,21 +1541,21 @@ module Sam
                       end
 
                       # @!method self.variants
-                      #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock)]
+                      #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image)]
                     end
 
                     # @!method self.variants
-                    #   @return [Array(String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock>)]
+                    #   @return [Array(String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>)]
 
                     # @type [Sam::Internal::Type::Converter]
                     UnionMember1Array =
                       Sam::Internal::Type::ArrayOf[
-                        union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1 }
+                        union: -> { Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1 }
                       ]
                   end
                 end
 
-                class BetaUrlpdfSource < Sam::Internal::Type::BaseModel
+                class URL < Sam::Internal::Type::BaseModel
                   # @!attribute type
                   #
                   #   @return [Symbol, :url]
@@ -1578,10 +1572,10 @@ module Sam
                 end
 
                 # @!method self.variants
-                #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource)]
+                #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Base64, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::URL)]
               end
 
-              # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock#cache_control
+              # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document#cache_control
               class CacheControl < Sam::Internal::Type::BaseModel
                 # @!attribute type
                 #
@@ -1592,7 +1586,7 @@ module Sam
                 #   @param type [Symbol, :ephemeral]
               end
 
-              # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock#citations
+              # @see Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document#citations
               class Citations < Sam::Internal::Type::BaseModel
                 # @!attribute enabled
                 #
@@ -1604,7 +1598,7 @@ module Sam
               end
             end
 
-            class BetaRequestThinkingBlock < Sam::Internal::Type::BaseModel
+            class Thinking < Sam::Internal::Type::BaseModel
               # @!attribute signature
               #
               #   @return [String]
@@ -1626,7 +1620,7 @@ module Sam
               #   @param type [Symbol, :thinking]
             end
 
-            class BetaRequestRedactedThinkingBlock < Sam::Internal::Type::BaseModel
+            class RedactedThinking < Sam::Internal::Type::BaseModel
               # @!attribute data
               #
               #   @return [String]
@@ -1643,11 +1637,11 @@ module Sam
             end
 
             # @!method self.variants
-            #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestThinkingBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock)]
+            #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Thinking, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::RedactedThinking)]
           end
 
           # @!method self.variants
-          #   @return [Array(String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestThinkingBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock>)]
+          #   @return [Array(String, Array<Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Thinking, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::RedactedThinking>)]
 
           # @type [Sam::Internal::Type::Converter]
           UnionMember1Array =
@@ -1718,7 +1712,7 @@ module Sam
 
           # @!attribute citations
           #
-          #   @return [Array<Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestCharLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestPageLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation>, nil]
+          #   @return [Array<Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::ContentBlockLocation>, nil]
           optional :citations,
                    -> { Sam::Internal::Type::ArrayOf[union: Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation] },
                    nil?: true
@@ -1726,7 +1720,7 @@ module Sam
           # @!method initialize(text:, cache_control: nil, citations: nil, type: :text)
           #   @param text [String]
           #   @param cache_control [Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::CacheControl, nil]
-          #   @param citations [Array<Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestCharLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestPageLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation>, nil]
+          #   @param citations [Array<Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::ContentBlockLocation>, nil]
           #   @param type [Symbol, :text]
 
           # @see Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1#cache_control
@@ -1746,15 +1740,15 @@ module Sam
             discriminator :type
 
             variant :char_location,
-                    -> { Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestCharLocationCitation }
+                    -> { Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::CharLocation }
 
             variant :page_location,
-                    -> { Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestPageLocationCitation }
+                    -> { Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::PageLocation }
 
             variant :content_block_location,
-                    -> { Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation }
+                    -> { Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::ContentBlockLocation }
 
-            class BetaRequestCharLocationCitation < Sam::Internal::Type::BaseModel
+            class CharLocation < Sam::Internal::Type::BaseModel
               # @!attribute cited_text
               #
               #   @return [String]
@@ -1794,7 +1788,7 @@ module Sam
               #   @param type [Symbol, :char_location]
             end
 
-            class BetaRequestPageLocationCitation < Sam::Internal::Type::BaseModel
+            class PageLocation < Sam::Internal::Type::BaseModel
               # @!attribute cited_text
               #
               #   @return [String]
@@ -1834,7 +1828,7 @@ module Sam
               #   @param type [Symbol, :page_location]
             end
 
-            class BetaRequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
+            class ContentBlockLocation < Sam::Internal::Type::BaseModel
               # @!attribute cited_text
               #
               #   @return [String]
@@ -1875,7 +1869,7 @@ module Sam
             end
 
             # @!method self.variants
-            #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestCharLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestPageLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation)]
+            #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::ContentBlockLocation)]
           end
         end
 
@@ -1901,11 +1895,11 @@ module Sam
 
         discriminator :type
 
-        variant :enabled, -> { Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigEnabled }
+        variant :enabled, -> { Sam::Models::MessagesBetaTrueCreateParams::Thinking::Enabled }
 
-        variant :disabled, -> { Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigDisabled }
+        variant :disabled, -> { Sam::Models::MessagesBetaTrueCreateParams::Thinking::Disabled }
 
-        class BetaThinkingConfigEnabled < Sam::Internal::Type::BaseModel
+        class Enabled < Sam::Internal::Type::BaseModel
           # @!attribute budget_tokens
           #   Determines how many tokens Claude can use for its internal reasoning process.
           #   Larger budgets can enable more thorough analysis for complex problems, improving
@@ -1927,8 +1921,7 @@ module Sam
 
           # @!method initialize(budget_tokens:, type: :enabled)
           #   Some parameter documentations has been truncated, see
-          #   {Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigEnabled}
-          #   for more details.
+          #   {Sam::Models::MessagesBetaTrueCreateParams::Thinking::Enabled} for more details.
           #
           #   @param budget_tokens [Integer] Determines how many tokens Claude can use for its internal reasoning process. La
           #   ...
@@ -1936,7 +1929,7 @@ module Sam
           #   @param type [Symbol, :enabled]
         end
 
-        class BetaThinkingConfigDisabled < Sam::Internal::Type::BaseModel
+        class Disabled < Sam::Internal::Type::BaseModel
           # @!attribute type
           #
           #   @return [Symbol, :disabled]
@@ -1947,7 +1940,7 @@ module Sam
         end
 
         # @!method self.variants
-        #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigEnabled, Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigDisabled)]
+        #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::Thinking::Enabled, Sam::Models::MessagesBetaTrueCreateParams::Thinking::Disabled)]
       end
 
       # How the model should use the provided tools. The model can use a specific tool,
@@ -1958,18 +1951,18 @@ module Sam
         discriminator :type
 
         # The model will automatically decide whether to use tools.
-        variant :auto, -> { Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAuto }
+        variant :auto, -> { Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Auto }
 
         # The model will use any available tools.
-        variant :any, -> { Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAny }
+        variant :any, -> { Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Any }
 
         # The model will use the specified tool with `tool_choice.name`.
-        variant :tool, -> { Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceTool }
+        variant :tool, -> { Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Tool }
 
         # The model will not be allowed to use tools.
-        variant :none, -> { Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceNone }
+        variant :none, -> { Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::None }
 
-        class BetaToolChoiceAuto < Sam::Internal::Type::BaseModel
+        class Auto < Sam::Internal::Type::BaseModel
           # @!attribute type
           #
           #   @return [Symbol, :auto]
@@ -1986,8 +1979,7 @@ module Sam
 
           # @!method initialize(disable_parallel_tool_use: nil, type: :auto)
           #   Some parameter documentations has been truncated, see
-          #   {Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAuto} for
-          #   more details.
+          #   {Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Auto} for more details.
           #
           #   The model will automatically decide whether to use tools.
           #
@@ -1996,7 +1988,7 @@ module Sam
           #   @param type [Symbol, :auto]
         end
 
-        class BetaToolChoiceAny < Sam::Internal::Type::BaseModel
+        class Any < Sam::Internal::Type::BaseModel
           # @!attribute type
           #
           #   @return [Symbol, :any]
@@ -2013,8 +2005,7 @@ module Sam
 
           # @!method initialize(disable_parallel_tool_use: nil, type: :any)
           #   Some parameter documentations has been truncated, see
-          #   {Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAny} for
-          #   more details.
+          #   {Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Any} for more details.
           #
           #   The model will use any available tools.
           #
@@ -2023,7 +2014,7 @@ module Sam
           #   @param type [Symbol, :any]
         end
 
-        class BetaToolChoiceTool < Sam::Internal::Type::BaseModel
+        class Tool < Sam::Internal::Type::BaseModel
           # @!attribute name
           #   The name of the tool to use.
           #
@@ -2046,8 +2037,7 @@ module Sam
 
           # @!method initialize(name:, disable_parallel_tool_use: nil, type: :tool)
           #   Some parameter documentations has been truncated, see
-          #   {Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceTool} for
-          #   more details.
+          #   {Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Tool} for more details.
           #
           #   The model will use the specified tool with `tool_choice.name`.
           #
@@ -2058,7 +2048,7 @@ module Sam
           #   @param type [Symbol, :tool]
         end
 
-        class BetaToolChoiceNone < Sam::Internal::Type::BaseModel
+        class None < Sam::Internal::Type::BaseModel
           # @!attribute type
           #
           #   @return [Symbol, :none]
@@ -2071,7 +2061,7 @@ module Sam
         end
 
         # @!method self.variants
-        #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAuto, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAny, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceTool, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceNone)]
+        #   @return [Array(Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Auto, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Any, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Tool, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::None)]
       end
 
       module Tool

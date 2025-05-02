@@ -24,16 +24,16 @@ module Sam
           ),
           temperature: Float,
           thinking: T.any(
-            Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigEnabled,
+            Sam::Models::MessagesBetaTrueCreateParams::Thinking::Enabled,
             Sam::Internal::AnyHash,
-            Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigDisabled
+            Sam::Models::MessagesBetaTrueCreateParams::Thinking::Disabled
           ),
           tool_choice: T.any(
-            Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAuto,
+            Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Auto,
             Sam::Internal::AnyHash,
-            Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAny,
-            Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceTool,
-            Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceNone
+            Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Any,
+            Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Tool,
+            Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::None
           ),
           tools: T::Array[
             T.any(

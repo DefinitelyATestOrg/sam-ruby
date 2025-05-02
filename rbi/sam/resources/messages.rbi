@@ -30,16 +30,16 @@ module Sam
           ),
           temperature: Float,
           thinking: T.any(
-            Sam::Models::MessageCreateParams::Thinking::ThinkingConfigEnabled,
+            Sam::Models::MessageCreateParams::Thinking::Enabled,
             Sam::Internal::AnyHash,
-            Sam::Models::MessageCreateParams::Thinking::ThinkingConfigDisabled
+            Sam::Models::MessageCreateParams::Thinking::Disabled
           ),
           tool_choice: T.any(
-            Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAuto,
+            Sam::Models::MessageCreateParams::ToolChoice::Auto,
             Sam::Internal::AnyHash,
-            Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceAny,
-            Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceTool,
-            Sam::Models::MessageCreateParams::ToolChoice::ToolChoiceNone
+            Sam::Models::MessageCreateParams::ToolChoice::Any,
+            Sam::Models::MessageCreateParams::ToolChoice::Tool,
+            Sam::Models::MessageCreateParams::ToolChoice::None
           ),
           tools: T::Array[
             T.any(
@@ -328,16 +328,16 @@ module Sam
             T::Array[T.any(Sam::Models::MessageCountTokensParams::System::UnionMember1, Sam::Internal::AnyHash)]
           ),
           thinking: T.any(
-            Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigEnabled,
+            Sam::Models::MessageCountTokensParams::Thinking::Enabled,
             Sam::Internal::AnyHash,
-            Sam::Models::MessageCountTokensParams::Thinking::ThinkingConfigDisabled
+            Sam::Models::MessageCountTokensParams::Thinking::Disabled
           ),
           tool_choice: T.any(
-            Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceAuto,
+            Sam::Models::MessageCountTokensParams::ToolChoice::Auto,
             Sam::Internal::AnyHash,
-            Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceAny,
-            Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceTool,
-            Sam::Models::MessageCountTokensParams::ToolChoice::ToolChoiceNone
+            Sam::Models::MessageCountTokensParams::ToolChoice::Any,
+            Sam::Models::MessageCountTokensParams::ToolChoice::Tool,
+            Sam::Models::MessageCountTokensParams::ToolChoice::None
           ),
           tools: T::Array[
             T.any(
@@ -571,16 +571,16 @@ module Sam
             T::Array[T.any(Sam::Models::MessageCountTokensBetaParams::System::UnionMember1, Sam::Internal::AnyHash)]
           ),
           thinking: T.any(
-            Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigEnabled,
+            Sam::Models::MessageCountTokensBetaParams::Thinking::Enabled,
             Sam::Internal::AnyHash,
-            Sam::Models::MessageCountTokensBetaParams::Thinking::BetaThinkingConfigDisabled
+            Sam::Models::MessageCountTokensBetaParams::Thinking::Disabled
           ),
           tool_choice: T.any(
-            Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAuto,
+            Sam::Models::MessageCountTokensBetaParams::ToolChoice::Auto,
             Sam::Internal::AnyHash,
-            Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceAny,
-            Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceTool,
-            Sam::Models::MessageCountTokensBetaParams::ToolChoice::BetaToolChoiceNone
+            Sam::Models::MessageCountTokensBetaParams::ToolChoice::Any,
+            Sam::Models::MessageCountTokensBetaParams::ToolChoice::Tool,
+            Sam::Models::MessageCountTokensBetaParams::ToolChoice::None
           ),
           tools: T::Array[
             T.any(
