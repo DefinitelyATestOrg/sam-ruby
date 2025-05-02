@@ -141,42 +141,42 @@ module Sam
           extend Sam::Internal::Type::Union
 
           type union_member1 =
-            Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock
-            | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock
-            | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock
-            | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock
-            | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock
-            | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestThinkingBlock
-            | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock
+            Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text
+            | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image
+            | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse
+            | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult
+            | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document
+            | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Thinking
+            | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::RedactedThinking
 
           module UnionMember1
             extend Sam::Internal::Type::Union
 
-            type beta_request_text_block =
+            type text =
               {
                 text: String,
                 type: :text,
-                cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl?,
-                citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::citation]?
+                cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::CacheControl?,
+                citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::citation]?
               }
 
-            class BetaRequestTextBlock < Sam::Internal::Type::BaseModel
+            class Text < Sam::Internal::Type::BaseModel
               attr_accessor text: String
 
               attr_accessor type: :text
 
-              attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl?
+              attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::CacheControl?
 
-              attr_accessor citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::citation]?
+              attr_accessor citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::citation]?
 
               def initialize: (
                 text: String,
-                ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::CacheControl?,
-                ?citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::citation]?,
+                ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::CacheControl?,
+                ?citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::citation]?,
                 ?type: :text
               ) -> void
 
-              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_text_block
+              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::text
 
               type cache_control = { type: :ephemeral }
 
@@ -185,18 +185,18 @@ module Sam
 
                 def initialize: (?type: :ephemeral) -> void
 
-                def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::cache_control
+                def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::cache_control
               end
 
               type citation =
-                Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation
-                | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation
-                | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
+                Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::CharLocation
+                | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::PageLocation
+                | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation
 
               module Citation
                 extend Sam::Internal::Type::Union
 
-                type beta_request_char_location_citation =
+                type char_location =
                   {
                     cited_text: String,
                     document_index: Integer,
@@ -206,7 +206,7 @@ module Sam
                     type: :char_location
                   }
 
-                class BetaRequestCharLocationCitation < Sam::Internal::Type::BaseModel
+                class CharLocation < Sam::Internal::Type::BaseModel
                   attr_accessor cited_text: String
 
                   attr_accessor document_index: Integer
@@ -228,10 +228,10 @@ module Sam
                     ?type: :char_location
                   ) -> void
 
-                  def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_char_location_citation
+                  def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::char_location
                 end
 
-                type beta_request_page_location_citation =
+                type page_location =
                   {
                     cited_text: String,
                     document_index: Integer,
@@ -241,7 +241,7 @@ module Sam
                     type: :page_location
                   }
 
-                class BetaRequestPageLocationCitation < Sam::Internal::Type::BaseModel
+                class PageLocation < Sam::Internal::Type::BaseModel
                   attr_accessor cited_text: String
 
                   attr_accessor document_index: Integer
@@ -263,10 +263,10 @@ module Sam
                     ?type: :page_location
                   ) -> void
 
-                  def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_page_location_citation
+                  def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::page_location
                 end
 
-                type beta_request_content_block_location_citation =
+                type content_block_location =
                   {
                     cited_text: String,
                     document_index: Integer,
@@ -276,7 +276,7 @@ module Sam
                     type: :content_block_location
                   }
 
-                class BetaRequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
+                class ContentBlockLocation < Sam::Internal::Type::BaseModel
                   attr_accessor cited_text: String
 
                   attr_accessor document_index: Integer
@@ -298,63 +298,63 @@ module Sam
                     ?type: :content_block_location
                   ) -> void
 
-                  def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_content_block_location_citation
+                  def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::content_block_location
                 end
 
-                def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]
+                def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation]
               end
             end
 
-            type beta_request_image_block =
+            type image =
               {
-                source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::source,
+                source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::source,
                 type: :image,
-                cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl?
+                cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::CacheControl?
               }
 
-            class BetaRequestImageBlock < Sam::Internal::Type::BaseModel
-              attr_accessor source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::source
+            class Image < Sam::Internal::Type::BaseModel
+              attr_accessor source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::source
 
               attr_accessor type: :image
 
-              attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl?
+              attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::CacheControl?
 
               def initialize: (
-                source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::source,
-                ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::CacheControl?,
+                source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::source,
+                ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::CacheControl?,
                 ?type: :image
               ) -> void
 
-              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_image_block
+              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::image
 
               type source =
-                Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource
-                | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
+                Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::Base64
+                | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::URL
 
               module Source
                 extend Sam::Internal::Type::Union
 
-                type beta_base64_image_source =
+                type base64 =
                   {
                     data: String,
-                    media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type,
+                    media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::Base64::media_type,
                     type: :base64
                   }
 
-                class BetaBase64ImageSource < Sam::Internal::Type::BaseModel
+                class Base64 < Sam::Internal::Type::BaseModel
                   attr_accessor data: String
 
-                  attr_accessor media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type
+                  attr_accessor media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::Base64::media_type
 
                   attr_accessor type: :base64
 
                   def initialize: (
                     data: String,
-                    media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type,
+                    media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::Base64::media_type,
                     ?type: :base64
                   ) -> void
 
-                  def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::beta_base64_image_source
+                  def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::base64
 
                   type media_type =
                     :"image/jpeg" | :"image/png" | :"image/gif" | :"image/webp"
@@ -367,23 +367,23 @@ module Sam
                     IMAGE_GIF: :"image/gif"
                     IMAGE_WEBP: :"image/webp"
 
-                    def self?.values: -> ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type]
+                    def self?.values: -> ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::Base64::media_type]
                   end
                 end
 
-                type beta_url_image_source = { type: :url, url: String }
+                type url = { type: :url, url: String }
 
-                class BetaURLImageSource < Sam::Internal::Type::BaseModel
+                class URL < Sam::Internal::Type::BaseModel
                   attr_accessor type: :url
 
                   attr_accessor url: String
 
                   def initialize: (url: String, ?type: :url) -> void
 
-                  def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::beta_url_image_source
+                  def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::url
                 end
 
-                def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
+                def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::URL]
               end
 
               type cache_control = { type: :ephemeral }
@@ -393,20 +393,20 @@ module Sam
 
                 def initialize: (?type: :ephemeral) -> void
 
-                def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock::cache_control
+                def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::cache_control
               end
             end
 
-            type beta_request_tool_use_block =
+            type tool_use =
               {
                 id: String,
                 input: top,
                 name: String,
                 type: :tool_use,
-                cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl?
+                cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse::CacheControl?
               }
 
-            class BetaRequestToolUseBlock < Sam::Internal::Type::BaseModel
+            class ToolUse < Sam::Internal::Type::BaseModel
               attr_accessor id: String
 
               attr_accessor input: top
@@ -415,17 +415,17 @@ module Sam
 
               attr_accessor type: :tool_use
 
-              attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl?
+              attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse::CacheControl?
 
               def initialize: (
                 id: String,
                 input: top,
                 name: String,
-                ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::CacheControl?,
+                ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse::CacheControl?,
                 ?type: :tool_use
               ) -> void
 
-              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_tool_use_block
+              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::tool_use
 
               type cache_control = { type: :ephemeral }
 
@@ -434,31 +434,31 @@ module Sam
 
                 def initialize: (?type: :ephemeral) -> void
 
-                def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock::cache_control
+                def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse::cache_control
               end
             end
 
-            type beta_request_tool_result_block =
+            type tool_result =
               {
                 tool_use_id: String,
                 type: :tool_result,
-                cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl?,
-                content: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::content,
+                cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::CacheControl?,
+                content: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::content,
                 is_error: bool
               }
 
-            class BetaRequestToolResultBlock < Sam::Internal::Type::BaseModel
+            class ToolResult < Sam::Internal::Type::BaseModel
               attr_accessor tool_use_id: String
 
               attr_accessor type: :tool_result
 
-              attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl?
+              attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::CacheControl?
 
-              attr_reader content: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::content?
+              attr_reader content: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::content?
 
               def content=: (
-                Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::content
-              ) -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::content
+                Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::content
+              ) -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::content
 
               attr_reader is_error: bool?
 
@@ -466,13 +466,13 @@ module Sam
 
               def initialize: (
                 tool_use_id: String,
-                ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::CacheControl?,
-                ?content: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::content,
+                ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::CacheControl?,
+                ?content: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::content,
                 ?is_error: bool,
                 ?type: :tool_result
               ) -> void
 
-              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_tool_result_block
+              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::tool_result
 
               type cache_control = { type: :ephemeral }
 
@@ -481,48 +481,48 @@ module Sam
 
                 def initialize: (?type: :ephemeral) -> void
 
-                def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::cache_control
+                def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::cache_control
               end
 
               type content =
                 String
-                | ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::union_member1]
+                | ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::union_member1]
 
               module Content
                 extend Sam::Internal::Type::Union
 
                 type union_member1 =
-                  Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock
-                  | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock
+                  Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text
+                  | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
 
                 module UnionMember1
                   extend Sam::Internal::Type::Union
 
-                  type beta_request_text_block =
+                  type text =
                     {
                       text: String,
                       type: :text,
-                      cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl?,
-                      citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::citation]?
+                      cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl?,
+                      citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]?
                     }
 
-                  class BetaRequestTextBlock < Sam::Internal::Type::BaseModel
+                  class Text < Sam::Internal::Type::BaseModel
                     attr_accessor text: String
 
                     attr_accessor type: :text
 
-                    attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl?
+                    attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl?
 
-                    attr_accessor citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::citation]?
+                    attr_accessor citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]?
 
                     def initialize: (
                       text: String,
-                      ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::CacheControl?,
-                      ?citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::citation]?,
+                      ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl?,
+                      ?citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]?,
                       ?type: :text
                     ) -> void
 
-                    def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::beta_request_text_block
+                    def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::text
 
                     type cache_control = { type: :ephemeral }
 
@@ -531,18 +531,18 @@ module Sam
 
                       def initialize: (?type: :ephemeral) -> void
 
-                      def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::cache_control
+                      def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::cache_control
                     end
 
                     type citation =
-                      Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation
-                      | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation
-                      | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
+                      Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation
+                      | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation
+                      | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation
 
                     module Citation
                       extend Sam::Internal::Type::Union
 
-                      type beta_request_char_location_citation =
+                      type char_location =
                         {
                           cited_text: String,
                           document_index: Integer,
@@ -552,7 +552,7 @@ module Sam
                           type: :char_location
                         }
 
-                      class BetaRequestCharLocationCitation < Sam::Internal::Type::BaseModel
+                      class CharLocation < Sam::Internal::Type::BaseModel
                         attr_accessor cited_text: String
 
                         attr_accessor document_index: Integer
@@ -574,10 +574,10 @@ module Sam
                           ?type: :char_location
                         ) -> void
 
-                        def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_char_location_citation
+                        def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::char_location
                       end
 
-                      type beta_request_page_location_citation =
+                      type page_location =
                         {
                           cited_text: String,
                           document_index: Integer,
@@ -587,7 +587,7 @@ module Sam
                           type: :page_location
                         }
 
-                      class BetaRequestPageLocationCitation < Sam::Internal::Type::BaseModel
+                      class PageLocation < Sam::Internal::Type::BaseModel
                         attr_accessor cited_text: String
 
                         attr_accessor document_index: Integer
@@ -609,10 +609,10 @@ module Sam
                           ?type: :page_location
                         ) -> void
 
-                        def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_page_location_citation
+                        def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::page_location
                       end
 
-                      type beta_request_content_block_location_citation =
+                      type content_block_location =
                         {
                           cited_text: String,
                           document_index: Integer,
@@ -622,7 +622,7 @@ module Sam
                           type: :content_block_location
                         }
 
-                      class BetaRequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
+                      class ContentBlockLocation < Sam::Internal::Type::BaseModel
                         attr_accessor cited_text: String
 
                         attr_accessor document_index: Integer
@@ -644,63 +644,63 @@ module Sam
                           ?type: :content_block_location
                         ) -> void
 
-                        def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_content_block_location_citation
+                        def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::content_block_location
                       end
 
-                      def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]
+                      def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation]
                     end
                   end
 
-                  type beta_request_image_block =
+                  type image =
                     {
-                      source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::source,
+                      source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source,
                       type: :image,
-                      cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl?
+                      cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl?
                     }
 
-                  class BetaRequestImageBlock < Sam::Internal::Type::BaseModel
-                    attr_accessor source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::source
+                  class Image < Sam::Internal::Type::BaseModel
+                    attr_accessor source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source
 
                     attr_accessor type: :image
 
-                    attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl?
+                    attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl?
 
                     def initialize: (
-                      source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::source,
-                      ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::CacheControl?,
+                      source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source,
+                      ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl?,
                       ?type: :image
                     ) -> void
 
-                    def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::beta_request_image_block
+                    def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::image
 
                     type source =
-                      Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource
-                      | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
+                      Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64
+                      | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL
 
                     module Source
                       extend Sam::Internal::Type::Union
 
-                      type beta_base64_image_source =
+                      type base64 =
                         {
                           data: String,
-                          media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type,
+                          media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type,
                           type: :base64
                         }
 
-                      class BetaBase64ImageSource < Sam::Internal::Type::BaseModel
+                      class Base64 < Sam::Internal::Type::BaseModel
                         attr_accessor data: String
 
-                        attr_accessor media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type
+                        attr_accessor media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type
 
                         attr_accessor type: :base64
 
                         def initialize: (
                           data: String,
-                          media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type,
+                          media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type,
                           ?type: :base64
                         ) -> void
 
-                        def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::beta_base64_image_source
+                        def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::base64
 
                         type media_type =
                           :"image/jpeg"
@@ -716,23 +716,23 @@ module Sam
                           IMAGE_GIF: :"image/gif"
                           IMAGE_WEBP: :"image/webp"
 
-                          def self?.values: -> ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type]
+                          def self?.values: -> ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type]
                         end
                       end
 
-                      type beta_url_image_source = { type: :url, url: String }
+                      type url = { type: :url, url: String }
 
-                      class BetaURLImageSource < Sam::Internal::Type::BaseModel
+                      class URL < Sam::Internal::Type::BaseModel
                         attr_accessor type: :url
 
                         attr_accessor url: String
 
                         def initialize: (url: String, ?type: :url) -> void
 
-                        def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::beta_url_image_source
+                        def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::url
                       end
 
-                      def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
+                      def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL]
                     end
 
                     type cache_control = { type: :ephemeral }
@@ -742,74 +742,74 @@ module Sam
 
                       def initialize: (?type: :ephemeral) -> void
 
-                      def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock::cache_control
+                      def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::cache_control
                     end
                   end
 
-                  def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::UnionMember1::BetaRequestImageBlock]
+                  def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image]
                 end
 
-                def self?.variants: -> [String, ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock::Content::union_member1]]
+                def self?.variants: -> [String, ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::union_member1]]
 
                 UnionMember1Array: Sam::Internal::Type::Converter
               end
             end
 
-            type beta_request_document_block =
+            type document =
               {
-                source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::source,
+                source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::source,
                 type: :document,
-                cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl?,
-                citations: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations,
+                cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::CacheControl?,
+                citations: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Citations,
                 context: String?,
                 title: String?
               }
 
-            class BetaRequestDocumentBlock < Sam::Internal::Type::BaseModel
-              attr_accessor source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::source
+            class Document < Sam::Internal::Type::BaseModel
+              attr_accessor source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::source
 
               attr_accessor type: :document
 
-              attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl?
+              attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::CacheControl?
 
-              attr_reader citations: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations?
+              attr_reader citations: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Citations?
 
               def citations=: (
-                Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations
-              ) -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations
+                Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Citations
+              ) -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Citations
 
               attr_accessor context: String?
 
               attr_accessor title: String?
 
               def initialize: (
-                source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::source,
-                ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::CacheControl?,
-                ?citations: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Citations,
+                source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::source,
+                ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::CacheControl?,
+                ?citations: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Citations,
                 ?context: String?,
                 ?title: String?,
                 ?type: :document
               ) -> void
 
-              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_document_block
+              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::document
 
               type source =
-                Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource
-                | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource
-                | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource
-                | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource
+                Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Base64
+                | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Text
+                | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content
+                | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::URL
 
               module Source
                 extend Sam::Internal::Type::Union
 
-                type beta_base64_pdf_source =
+                type base64 =
                   {
                     data: String,
                     media_type: :"application/pdf",
                     type: :base64
                   }
 
-                class BetaBase64PdfSource < Sam::Internal::Type::BaseModel
+                class Base64 < Sam::Internal::Type::BaseModel
                   attr_accessor data: String
 
                   attr_accessor media_type: :"application/pdf"
@@ -822,13 +822,13 @@ module Sam
                     ?type: :base64
                   ) -> void
 
-                  def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_base64_pdf_source
+                  def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::base64
                 end
 
-                type beta_plain_text_source =
+                type text =
                   { data: String, media_type: :"text/plain", type: :text }
 
-                class BetaPlainTextSource < Sam::Internal::Type::BaseModel
+                class Text < Sam::Internal::Type::BaseModel
                   attr_accessor data: String
 
                   attr_accessor media_type: :"text/plain"
@@ -841,66 +841,66 @@ module Sam
                     ?type: :text
                   ) -> void
 
-                  def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_plain_text_source
+                  def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::text
                 end
 
-                type beta_content_block_source =
+                type content =
                   {
-                    content: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::content,
+                    content: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::content,
                     type: :content
                   }
 
-                class BetaContentBlockSource < Sam::Internal::Type::BaseModel
-                  attr_accessor content: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::content
+                class Content < Sam::Internal::Type::BaseModel
+                  attr_accessor content: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::content
 
                   attr_accessor type: :content
 
                   def initialize: (
-                    content: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::content,
+                    content: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::content,
                     ?type: :content
                   ) -> void
 
-                  def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_content_block_source
+                  def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::content
 
                   type content =
                     String
-                    | ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::union_member1]
+                    | ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::union_member1]
 
                   module Content
                     extend Sam::Internal::Type::Union
 
                     type union_member1 =
-                      Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock
-                      | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock
+                      Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text
+                      | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
 
                     module UnionMember1
                       extend Sam::Internal::Type::Union
 
-                      type beta_request_text_block =
+                      type text =
                         {
                           text: String,
                           type: :text,
-                          cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl?,
-                          citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::citation]?
+                          cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl?,
+                          citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]?
                         }
 
-                      class BetaRequestTextBlock < Sam::Internal::Type::BaseModel
+                      class Text < Sam::Internal::Type::BaseModel
                         attr_accessor text: String
 
                         attr_accessor type: :text
 
-                        attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl?
+                        attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl?
 
-                        attr_accessor citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::citation]?
+                        attr_accessor citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]?
 
                         def initialize: (
                           text: String,
-                          ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::CacheControl?,
-                          ?citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::citation]?,
+                          ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl?,
+                          ?citations: ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]?,
                           ?type: :text
                         ) -> void
 
-                        def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::beta_request_text_block
+                        def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::text
 
                         type cache_control = { type: :ephemeral }
 
@@ -909,18 +909,18 @@ module Sam
 
                           def initialize: (?type: :ephemeral) -> void
 
-                          def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::cache_control
+                          def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::cache_control
                         end
 
                         type citation =
-                          Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation
-                          | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation
-                          | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation
+                          Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation
+                          | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation
+                          | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation
 
                         module Citation
                           extend Sam::Internal::Type::Union
 
-                          type beta_request_char_location_citation =
+                          type char_location =
                             {
                               cited_text: String,
                               document_index: Integer,
@@ -930,7 +930,7 @@ module Sam
                               type: :char_location
                             }
 
-                          class BetaRequestCharLocationCitation < Sam::Internal::Type::BaseModel
+                          class CharLocation < Sam::Internal::Type::BaseModel
                             attr_accessor cited_text: String
 
                             attr_accessor document_index: Integer
@@ -952,10 +952,10 @@ module Sam
                               ?type: :char_location
                             ) -> void
 
-                            def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_char_location_citation
+                            def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::char_location
                           end
 
-                          type beta_request_page_location_citation =
+                          type page_location =
                             {
                               cited_text: String,
                               document_index: Integer,
@@ -965,7 +965,7 @@ module Sam
                               type: :page_location
                             }
 
-                          class BetaRequestPageLocationCitation < Sam::Internal::Type::BaseModel
+                          class PageLocation < Sam::Internal::Type::BaseModel
                             attr_accessor cited_text: String
 
                             attr_accessor document_index: Integer
@@ -987,10 +987,10 @@ module Sam
                               ?type: :page_location
                             ) -> void
 
-                            def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_page_location_citation
+                            def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::page_location
                           end
 
-                          type beta_request_content_block_location_citation =
+                          type content_block_location =
                             {
                               cited_text: String,
                               document_index: Integer,
@@ -1000,7 +1000,7 @@ module Sam
                               type: :content_block_location
                             }
 
-                          class BetaRequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
+                          class ContentBlockLocation < Sam::Internal::Type::BaseModel
                             attr_accessor cited_text: String
 
                             attr_accessor document_index: Integer
@@ -1022,63 +1022,63 @@ module Sam
                               ?type: :content_block_location
                             ) -> void
 
-                            def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::beta_request_content_block_location_citation
+                            def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::content_block_location
                           end
 
-                          def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestCharLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestPageLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock::Citation::BetaRequestContentBlockLocationCitation]
+                          def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation]
                         end
                       end
 
-                      type beta_request_image_block =
+                      type image =
                         {
-                          source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::source,
+                          source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source,
                           type: :image,
-                          cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl?
+                          cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl?
                         }
 
-                      class BetaRequestImageBlock < Sam::Internal::Type::BaseModel
-                        attr_accessor source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::source
+                      class Image < Sam::Internal::Type::BaseModel
+                        attr_accessor source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source
 
                         attr_accessor type: :image
 
-                        attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl?
+                        attr_accessor cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl?
 
                         def initialize: (
-                          source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::source,
-                          ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::CacheControl?,
+                          source: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source,
+                          ?cache_control: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl?,
                           ?type: :image
                         ) -> void
 
-                        def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::beta_request_image_block
+                        def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::image
 
                         type source =
-                          Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource
-                          | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource
+                          Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64
+                          | Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL
 
                         module Source
                           extend Sam::Internal::Type::Union
 
-                          type beta_base64_image_source =
+                          type base64 =
                             {
                               data: String,
-                              media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type,
+                              media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type,
                               type: :base64
                             }
 
-                          class BetaBase64ImageSource < Sam::Internal::Type::BaseModel
+                          class Base64 < Sam::Internal::Type::BaseModel
                             attr_accessor data: String
 
-                            attr_accessor media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type
+                            attr_accessor media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type
 
                             attr_accessor type: :base64
 
                             def initialize: (
                               data: String,
-                              media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type,
+                              media_type: Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type,
                               ?type: :base64
                             ) -> void
 
-                            def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::beta_base64_image_source
+                            def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::base64
 
                             type media_type =
                               :"image/jpeg"
@@ -1094,24 +1094,23 @@ module Sam
                               IMAGE_GIF: :"image/gif"
                               IMAGE_WEBP: :"image/webp"
 
-                              def self?.values: -> ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource::media_type]
+                              def self?.values: -> ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type]
                             end
                           end
 
-                          type beta_url_image_source =
-                            { type: :url, url: String }
+                          type url = { type: :url, url: String }
 
-                          class BetaURLImageSource < Sam::Internal::Type::BaseModel
+                          class URL < Sam::Internal::Type::BaseModel
                             attr_accessor type: :url
 
                             attr_accessor url: String
 
                             def initialize: (url: String, ?type: :url) -> void
 
-                            def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::beta_url_image_source
+                            def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::url
                           end
 
-                          def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaBase64ImageSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::Source::BetaURLImageSource]
+                          def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL]
                         end
 
                         type cache_control = { type: :ephemeral }
@@ -1121,32 +1120,32 @@ module Sam
 
                           def initialize: (?type: :ephemeral) -> void
 
-                          def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock::cache_control
+                          def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::cache_control
                         end
                       end
 
-                      def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::UnionMember1::BetaRequestImageBlock]
+                      def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image]
                     end
 
-                    def self?.variants: -> [String, ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource::Content::union_member1]]
+                    def self?.variants: -> [String, ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::union_member1]]
 
                     UnionMember1Array: Sam::Internal::Type::Converter
                   end
                 end
 
-                type beta_urlpdf_source = { type: :url, url: String }
+                type url = { type: :url, url: String }
 
-                class BetaUrlpdfSource < Sam::Internal::Type::BaseModel
+                class URL < Sam::Internal::Type::BaseModel
                   attr_accessor type: :url
 
                   attr_accessor url: String
 
                   def initialize: (url: String, ?type: :url) -> void
 
-                  def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::beta_urlpdf_source
+                  def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::url
                 end
 
-                def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaBase64PdfSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaPlainTextSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaContentBlockSource, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::Source::BetaUrlpdfSource]
+                def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Base64, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::URL]
               end
 
               type cache_control = { type: :ephemeral }
@@ -1156,7 +1155,7 @@ module Sam
 
                 def initialize: (?type: :ephemeral) -> void
 
-                def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::cache_control
+                def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::cache_control
               end
 
               type citations = { enabled: bool }
@@ -1168,14 +1167,14 @@ module Sam
 
                 def initialize: (?enabled: bool) -> void
 
-                def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock::citations
+                def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::citations
               end
             end
 
-            type beta_request_thinking_block =
+            type thinking =
               { signature: String, thinking: String, type: :thinking }
 
-            class BetaRequestThinkingBlock < Sam::Internal::Type::BaseModel
+            class Thinking < Sam::Internal::Type::BaseModel
               attr_accessor signature: String
 
               attr_accessor thinking: String
@@ -1188,23 +1187,22 @@ module Sam
                 ?type: :thinking
               ) -> void
 
-              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_thinking_block
+              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::thinking
             end
 
-            type beta_request_redacted_thinking_block =
-              { data: String, type: :redacted_thinking }
+            type redacted_thinking = { data: String, type: :redacted_thinking }
 
-            class BetaRequestRedactedThinkingBlock < Sam::Internal::Type::BaseModel
+            class RedactedThinking < Sam::Internal::Type::BaseModel
               attr_accessor data: String
 
               attr_accessor type: :redacted_thinking
 
               def initialize: (data: String, ?type: :redacted_thinking) -> void
 
-              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::beta_request_redacted_thinking_block
+              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::redacted_thinking
             end
 
-            def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestTextBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestImageBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolUseBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestToolResultBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestDocumentBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestThinkingBlock, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::BetaRequestRedactedThinkingBlock]
+            def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Thinking, Sam::Models::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::RedactedThinking]
           end
 
           def self?.variants: -> [String, ::Array[Sam::Models::MessagesBetaTrueCreateParams::Message::Content::union_member1]]
@@ -1278,14 +1276,14 @@ module Sam
           end
 
           type citation =
-            Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestCharLocationCitation
-            | Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestPageLocationCitation
-            | Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation
+            Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::CharLocation
+            | Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::PageLocation
+            | Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::ContentBlockLocation
 
           module Citation
             extend Sam::Internal::Type::Union
 
-            type beta_request_char_location_citation =
+            type char_location =
               {
                 cited_text: String,
                 document_index: Integer,
@@ -1295,7 +1293,7 @@ module Sam
                 type: :char_location
               }
 
-            class BetaRequestCharLocationCitation < Sam::Internal::Type::BaseModel
+            class CharLocation < Sam::Internal::Type::BaseModel
               attr_accessor cited_text: String
 
               attr_accessor document_index: Integer
@@ -1317,10 +1315,10 @@ module Sam
                 ?type: :char_location
               ) -> void
 
-              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::beta_request_char_location_citation
+              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::char_location
             end
 
-            type beta_request_page_location_citation =
+            type page_location =
               {
                 cited_text: String,
                 document_index: Integer,
@@ -1330,7 +1328,7 @@ module Sam
                 type: :page_location
               }
 
-            class BetaRequestPageLocationCitation < Sam::Internal::Type::BaseModel
+            class PageLocation < Sam::Internal::Type::BaseModel
               attr_accessor cited_text: String
 
               attr_accessor document_index: Integer
@@ -1352,10 +1350,10 @@ module Sam
                 ?type: :page_location
               ) -> void
 
-              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::beta_request_page_location_citation
+              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::page_location
             end
 
-            type beta_request_content_block_location_citation =
+            type content_block_location =
               {
                 cited_text: String,
                 document_index: Integer,
@@ -1365,7 +1363,7 @@ module Sam
                 type: :content_block_location
               }
 
-            class BetaRequestContentBlockLocationCitation < Sam::Internal::Type::BaseModel
+            class ContentBlockLocation < Sam::Internal::Type::BaseModel
               attr_accessor cited_text: String
 
               attr_accessor document_index: Integer
@@ -1387,10 +1385,10 @@ module Sam
                 ?type: :content_block_location
               ) -> void
 
-              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::beta_request_content_block_location_citation
+              def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::content_block_location
             end
 
-            def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestCharLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestPageLocationCitation, Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::BetaRequestContentBlockLocationCitation]
+            def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::ContentBlockLocation]
           end
         end
 
@@ -1400,51 +1398,49 @@ module Sam
       end
 
       type thinking =
-        Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigEnabled
-        | Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigDisabled
+        Sam::Models::MessagesBetaTrueCreateParams::Thinking::Enabled
+        | Sam::Models::MessagesBetaTrueCreateParams::Thinking::Disabled
 
       module Thinking
         extend Sam::Internal::Type::Union
 
-        type beta_thinking_config_enabled =
-          { budget_tokens: Integer, type: :enabled }
+        type enabled = { budget_tokens: Integer, type: :enabled }
 
-        class BetaThinkingConfigEnabled < Sam::Internal::Type::BaseModel
+        class Enabled < Sam::Internal::Type::BaseModel
           attr_accessor budget_tokens: Integer
 
           attr_accessor type: :enabled
 
           def initialize: (budget_tokens: Integer, ?type: :enabled) -> void
 
-          def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Thinking::beta_thinking_config_enabled
+          def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Thinking::enabled
         end
 
-        type beta_thinking_config_disabled = { type: :disabled }
+        type disabled = { type: :disabled }
 
-        class BetaThinkingConfigDisabled < Sam::Internal::Type::BaseModel
+        class Disabled < Sam::Internal::Type::BaseModel
           attr_accessor type: :disabled
 
           def initialize: (?type: :disabled) -> void
 
-          def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Thinking::beta_thinking_config_disabled
+          def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::Thinking::disabled
         end
 
-        def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigEnabled, Sam::Models::MessagesBetaTrueCreateParams::Thinking::BetaThinkingConfigDisabled]
+        def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::Thinking::Enabled, Sam::Models::MessagesBetaTrueCreateParams::Thinking::Disabled]
       end
 
       type tool_choice =
-        Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAuto
-        | Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAny
-        | Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceTool
-        | Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceNone
+        Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Auto
+        | Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Any
+        | Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Tool
+        | Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::None
 
       module ToolChoice
         extend Sam::Internal::Type::Union
 
-        type beta_tool_choice_auto =
-          { type: :auto, disable_parallel_tool_use: bool }
+        type auto = { type: :auto, disable_parallel_tool_use: bool }
 
-        class BetaToolChoiceAuto < Sam::Internal::Type::BaseModel
+        class Auto < Sam::Internal::Type::BaseModel
           attr_accessor type: :auto
 
           attr_reader disable_parallel_tool_use: bool?
@@ -1456,13 +1452,12 @@ module Sam
             ?type: :auto
           ) -> void
 
-          def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::beta_tool_choice_auto
+          def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::auto
         end
 
-        type beta_tool_choice_any =
-          { type: :any, disable_parallel_tool_use: bool }
+        type any = { type: :any, disable_parallel_tool_use: bool }
 
-        class BetaToolChoiceAny < Sam::Internal::Type::BaseModel
+        class Any < Sam::Internal::Type::BaseModel
           attr_accessor type: :any
 
           attr_reader disable_parallel_tool_use: bool?
@@ -1474,13 +1469,13 @@ module Sam
             ?type: :any
           ) -> void
 
-          def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::beta_tool_choice_any
+          def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::any
         end
 
-        type beta_tool_choice_tool =
+        type tool =
           { name: String, type: :tool, disable_parallel_tool_use: bool }
 
-        class BetaToolChoiceTool < Sam::Internal::Type::BaseModel
+        class Tool < Sam::Internal::Type::BaseModel
           attr_accessor name: String
 
           attr_accessor type: :tool
@@ -1495,20 +1490,20 @@ module Sam
             ?type: :tool
           ) -> void
 
-          def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::beta_tool_choice_tool
+          def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::tool
         end
 
-        type beta_tool_choice_none = { type: :none }
+        type none = { type: :none }
 
-        class BetaToolChoiceNone < Sam::Internal::Type::BaseModel
+        class None < Sam::Internal::Type::BaseModel
           attr_accessor type: :none
 
           def initialize: (?type: :none) -> void
 
-          def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::beta_tool_choice_none
+          def to_hash: -> Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::none
         end
 
-        def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAuto, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceAny, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceTool, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::BetaToolChoiceNone]
+        def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Auto, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Any, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Tool, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::None]
       end
 
       type tool =

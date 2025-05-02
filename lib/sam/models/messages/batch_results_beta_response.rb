@@ -21,7 +21,7 @@ module Sam
         #   processing failed, or the reason why processing was not attempted, such as
         #   cancellation or expiration.
         #
-        #   @return [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaCanceledResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaExpiredResult]
+        #   @return [Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored, Sam::Models::Messages::BatchResultsBetaResponse::Result::Canceled, Sam::Models::Messages::BatchResultsBetaResponse::Result::Expired]
         required :result, union: -> { Sam::Models::Messages::BatchResultsBetaResponse::Result }
 
         # @!method initialize(custom_id:, result:)
@@ -34,7 +34,7 @@ module Sam
         #   @param custom_id [String] Developer-provided ID created for each request in a Message Batch. Useful for ma
         #   ...
         #
-        #   @param result [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaCanceledResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaExpiredResult] Processing result for this request. ...
+        #   @param result [Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored, Sam::Models::Messages::BatchResultsBetaResponse::Result::Canceled, Sam::Models::Messages::BatchResultsBetaResponse::Result::Expired] Processing result for this request. ...
 
         # Processing result for this request.
         #
@@ -48,20 +48,19 @@ module Sam
 
           discriminator :type
 
-          variant :succeeded, -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult }
+          variant :succeeded, -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded }
 
-          variant :errored, -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult }
+          variant :errored, -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored }
 
-          variant :canceled, -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaCanceledResult }
+          variant :canceled, -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Canceled }
 
-          variant :expired, -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaExpiredResult }
+          variant :expired, -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Expired }
 
-          class BetaSucceededResult < Sam::Internal::Type::BaseModel
+          class Succeeded < Sam::Internal::Type::BaseModel
             # @!attribute message
             #
-            #   @return [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message]
-            required :message,
-                     -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message }
+            #   @return [Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message]
+            required :message, -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message }
 
             # @!attribute type
             #
@@ -69,10 +68,10 @@ module Sam
             required :type, const: :succeeded
 
             # @!method initialize(message:, type: :succeeded)
-            #   @param message [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message]
+            #   @param message [Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message]
             #   @param type [Symbol, :succeeded]
 
-            # @see Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult#message
+            # @see Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded#message
             class Message < Sam::Internal::Type::BaseModel
               # @!attribute id
               #   Unique object identifier.
@@ -116,9 +115,9 @@ module Sam
               #   [{ "type": "text", "text": "B)" }]
               #   ```
               #
-              #   @return [Array<Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock>]
+              #   @return [Array<Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::ToolUse, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Thinking, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::RedactedThinking>]
               required :content,
-                       -> { Sam::Internal::Type::ArrayOf[union: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content] }
+                       -> { Sam::Internal::Type::ArrayOf[union: Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content] }
 
               # @!attribute model
               #   The model that handled the request.
@@ -147,9 +146,9 @@ module Sam
               #   In non-streaming mode this value is always non-null. In streaming mode, it is
               #   null in the `message_start` event and non-null otherwise.
               #
-              #   @return [Symbol, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason, nil]
+              #   @return [Symbol, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason, nil]
               required :stop_reason,
-                       enum: -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason },
+                       enum: -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason },
                        nil?: true
 
               # @!attribute stop_sequence
@@ -186,26 +185,25 @@ module Sam
               #   Total input tokens in a request is the summation of `input_tokens`,
               #   `cache_creation_input_tokens`, and `cache_read_input_tokens`.
               #
-              #   @return [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage]
-              required :usage,
-                       -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage }
+              #   @return [Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Usage]
+              required :usage, -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Usage }
 
               # @!method initialize(id:, content:, model:, stop_reason:, stop_sequence:, usage:, role: :assistant, type: :message)
               #   Some parameter documentations has been truncated, see
-              #   {Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message}
+              #   {Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message}
               #   for more details.
               #
               #   @param id [String] Unique object identifier. ...
               #
-              #   @param content [Array<Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock>] Content generated by the model. ...
+              #   @param content [Array<Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::ToolUse, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Thinking, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::RedactedThinking>] Content generated by the model. ...
               #
               #   @param model [String] The model that handled the request.
               #
-              #   @param stop_reason [Symbol, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::StopReason, nil] The reason that we stopped. ...
+              #   @param stop_reason [Symbol, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason, nil] The reason that we stopped. ...
               #
               #   @param stop_sequence [String, nil] Which custom stop sequence was generated, if any. ...
               #
-              #   @param usage [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Usage] Billing and rate-limit usage. ...
+              #   @param usage [Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Usage] Billing and rate-limit usage. ...
               #
               #   @param role [Symbol, :assistant] Conversational role of the generated message. ...
               #
@@ -217,18 +215,18 @@ module Sam
                 discriminator :type
 
                 variant :text,
-                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock }
+                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text }
 
                 variant :tool_use,
-                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock }
+                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::ToolUse }
 
                 variant :thinking,
-                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock }
+                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Thinking }
 
                 variant :redacted_thinking,
-                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock }
+                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::RedactedThinking }
 
-                class BetaResponseTextBlock < Sam::Internal::Type::BaseModel
+                class Text < Sam::Internal::Type::BaseModel
                   # @!attribute citations
                   #   Citations supporting the text block.
                   #
@@ -236,11 +234,11 @@ module Sam
                   #   Citing a PDF results in `page_location`, plain text results in `char_location`,
                   #   and content document results in `content_block_location`.
                   #
-                  #   @return [Array<Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation>, nil]
+                  #   @return [Array<Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation>, nil]
                   required :citations,
                            -> do
                              Sam::Internal::Type::ArrayOf[
-                               union: Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation
+                               union: Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation
                              ]
                            end,
                            nil?: true
@@ -257,10 +255,10 @@ module Sam
 
                   # @!method initialize(citations:, text:, type: :text)
                   #   Some parameter documentations has been truncated, see
-                  #   {Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock}
+                  #   {Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text}
                   #   for more details.
                   #
-                  #   @param citations [Array<Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation>, nil] Citations supporting the text block. ...
+                  #   @param citations [Array<Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation>, nil] Citations supporting the text block. ...
                   #
                   #   @param text [String]
                   #
@@ -272,15 +270,15 @@ module Sam
                     discriminator :type
 
                     variant :char_location,
-                            -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation }
+                            -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation }
 
                     variant :page_location,
-                            -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation }
+                            -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation }
 
                     variant :content_block_location,
-                            -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation }
+                            -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation }
 
-                    class BetaResponseCharLocationCitation < Sam::Internal::Type::BaseModel
+                    class CharLocation < Sam::Internal::Type::BaseModel
                       # @!attribute cited_text
                       #
                       #   @return [String]
@@ -320,7 +318,7 @@ module Sam
                       #   @param type [Symbol, :char_location]
                     end
 
-                    class BetaResponsePageLocationCitation < Sam::Internal::Type::BaseModel
+                    class PageLocation < Sam::Internal::Type::BaseModel
                       # @!attribute cited_text
                       #
                       #   @return [String]
@@ -360,7 +358,7 @@ module Sam
                       #   @param type [Symbol, :page_location]
                     end
 
-                    class BetaResponseContentBlockLocationCitation < Sam::Internal::Type::BaseModel
+                    class ContentBlockLocation < Sam::Internal::Type::BaseModel
                       # @!attribute cited_text
                       #
                       #   @return [String]
@@ -401,11 +399,11 @@ module Sam
                     end
 
                     # @!method self.variants
-                    #   @return [Array(Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation)]
+                    #   @return [Array(Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation)]
                   end
                 end
 
-                class BetaResponseToolUseBlock < Sam::Internal::Type::BaseModel
+                class ToolUse < Sam::Internal::Type::BaseModel
                   # @!attribute id
                   #
                   #   @return [String]
@@ -433,7 +431,7 @@ module Sam
                   #   @param type [Symbol, :tool_use]
                 end
 
-                class BetaResponseThinkingBlock < Sam::Internal::Type::BaseModel
+                class Thinking < Sam::Internal::Type::BaseModel
                   # @!attribute signature
                   #
                   #   @return [String]
@@ -455,7 +453,7 @@ module Sam
                   #   @param type [Symbol, :thinking]
                 end
 
-                class BetaResponseRedactedThinkingBlock < Sam::Internal::Type::BaseModel
+                class RedactedThinking < Sam::Internal::Type::BaseModel
                   # @!attribute data
                   #
                   #   @return [String]
@@ -472,7 +470,7 @@ module Sam
                 end
 
                 # @!method self.variants
-                #   @return [Array(Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseTextBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseToolUseBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseThinkingBlock, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message::Content::BetaResponseRedactedThinkingBlock)]
+                #   @return [Array(Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::ToolUse, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Thinking, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::RedactedThinking)]
               end
 
               # The reason that we stopped.
@@ -487,7 +485,7 @@ module Sam
               # In non-streaming mode this value is always non-null. In streaming mode, it is
               # null in the `message_start` event and non-null otherwise.
               #
-              # @see Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message#stop_reason
+              # @see Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message#stop_reason
               module StopReason
                 extend Sam::Internal::Type::Enum
 
@@ -500,7 +498,7 @@ module Sam
                 #   @return [Array<Symbol>]
               end
 
-              # @see Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult::Message#usage
+              # @see Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message#usage
               class Usage < Sam::Internal::Type::BaseModel
                 # @!attribute cache_creation_input_tokens
                 #   The number of input tokens used to create the cache entry.
@@ -554,11 +552,11 @@ module Sam
             end
           end
 
-          class BetaErroredResult < Sam::Internal::Type::BaseModel
+          class Errored < Sam::Internal::Type::BaseModel
             # @!attribute error
             #
-            #   @return [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error]
-            required :error, -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error }
+            #   @return [Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error]
+            required :error, -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error }
 
             # @!attribute type
             #
@@ -566,16 +564,16 @@ module Sam
             required :type, const: :errored
 
             # @!method initialize(error:, type: :errored)
-            #   @param error [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error]
+            #   @param error [Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error]
             #   @param type [Symbol, :errored]
 
-            # @see Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult#error
+            # @see Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored#error
             class Error < Sam::Internal::Type::BaseModel
               # @!attribute error
               #
-              #   @return [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaInvalidRequestError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAuthenticationError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaBillingError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaPermissionError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaNotFoundError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaRateLimitError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaGatewayTimeoutError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAPIError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaOverloadedError]
+              #   @return [Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::InvalidRequestError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::AuthenticationError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::BillingError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::PermissionError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::NotFoundError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::RateLimitError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::TimeoutError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::APIError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::OverloadedError]
               required :error,
-                       union: -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error }
+                       union: -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error }
 
               # @!attribute type
               #
@@ -583,43 +581,43 @@ module Sam
               required :type, const: :error
 
               # @!method initialize(error:, type: :error)
-              #   @param error [Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaInvalidRequestError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAuthenticationError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaBillingError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaPermissionError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaNotFoundError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaRateLimitError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaGatewayTimeoutError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAPIError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaOverloadedError]
+              #   @param error [Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::InvalidRequestError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::AuthenticationError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::BillingError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::PermissionError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::NotFoundError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::RateLimitError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::TimeoutError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::APIError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::OverloadedError]
               #   @param type [Symbol, :error]
 
-              # @see Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error#error
+              # @see Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error#error
               module Error
                 extend Sam::Internal::Type::Union
 
                 discriminator :type
 
                 variant :invalid_request_error,
-                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaInvalidRequestError }
+                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::InvalidRequestError }
 
                 variant :authentication_error,
-                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAuthenticationError }
+                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::AuthenticationError }
 
                 variant :billing_error,
-                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaBillingError }
+                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::BillingError }
 
                 variant :permission_error,
-                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaPermissionError }
+                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::PermissionError }
 
                 variant :not_found_error,
-                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaNotFoundError }
+                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::NotFoundError }
 
                 variant :rate_limit_error,
-                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaRateLimitError }
+                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::RateLimitError }
 
                 variant :timeout_error,
-                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaGatewayTimeoutError }
+                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::TimeoutError }
 
                 variant :api_error,
-                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAPIError }
+                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::APIError }
 
                 variant :overloaded_error,
-                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaOverloadedError }
+                        -> { Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::OverloadedError }
 
-                class BetaInvalidRequestError < Sam::Internal::Type::BaseModel
+                class InvalidRequestError < Sam::Internal::Type::BaseModel
                   # @!attribute message
                   #
                   #   @return [String]
@@ -635,7 +633,7 @@ module Sam
                   #   @param type [Symbol, :invalid_request_error]
                 end
 
-                class BetaAuthenticationError < Sam::Internal::Type::BaseModel
+                class AuthenticationError < Sam::Internal::Type::BaseModel
                   # @!attribute message
                   #
                   #   @return [String]
@@ -651,7 +649,7 @@ module Sam
                   #   @param type [Symbol, :authentication_error]
                 end
 
-                class BetaBillingError < Sam::Internal::Type::BaseModel
+                class BillingError < Sam::Internal::Type::BaseModel
                   # @!attribute message
                   #
                   #   @return [String]
@@ -667,7 +665,7 @@ module Sam
                   #   @param type [Symbol, :billing_error]
                 end
 
-                class BetaPermissionError < Sam::Internal::Type::BaseModel
+                class PermissionError < Sam::Internal::Type::BaseModel
                   # @!attribute message
                   #
                   #   @return [String]
@@ -683,7 +681,7 @@ module Sam
                   #   @param type [Symbol, :permission_error]
                 end
 
-                class BetaNotFoundError < Sam::Internal::Type::BaseModel
+                class NotFoundError < Sam::Internal::Type::BaseModel
                   # @!attribute message
                   #
                   #   @return [String]
@@ -699,7 +697,7 @@ module Sam
                   #   @param type [Symbol, :not_found_error]
                 end
 
-                class BetaRateLimitError < Sam::Internal::Type::BaseModel
+                class RateLimitError < Sam::Internal::Type::BaseModel
                   # @!attribute message
                   #
                   #   @return [String]
@@ -715,7 +713,7 @@ module Sam
                   #   @param type [Symbol, :rate_limit_error]
                 end
 
-                class BetaGatewayTimeoutError < Sam::Internal::Type::BaseModel
+                class TimeoutError < Sam::Internal::Type::BaseModel
                   # @!attribute message
                   #
                   #   @return [String]
@@ -731,7 +729,7 @@ module Sam
                   #   @param type [Symbol, :timeout_error]
                 end
 
-                class BetaAPIError < Sam::Internal::Type::BaseModel
+                class APIError < Sam::Internal::Type::BaseModel
                   # @!attribute message
                   #
                   #   @return [String]
@@ -747,7 +745,7 @@ module Sam
                   #   @param type [Symbol, :api_error]
                 end
 
-                class BetaOverloadedError < Sam::Internal::Type::BaseModel
+                class OverloadedError < Sam::Internal::Type::BaseModel
                   # @!attribute message
                   #
                   #   @return [String]
@@ -764,12 +762,12 @@ module Sam
                 end
 
                 # @!method self.variants
-                #   @return [Array(Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaInvalidRequestError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAuthenticationError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaBillingError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaPermissionError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaNotFoundError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaRateLimitError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaGatewayTimeoutError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaAPIError, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult::Error::Error::BetaOverloadedError)]
+                #   @return [Array(Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::InvalidRequestError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::AuthenticationError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::BillingError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::PermissionError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::NotFoundError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::RateLimitError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::TimeoutError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::APIError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::OverloadedError)]
               end
             end
           end
 
-          class BetaCanceledResult < Sam::Internal::Type::BaseModel
+          class Canceled < Sam::Internal::Type::BaseModel
             # @!attribute type
             #
             #   @return [Symbol, :canceled]
@@ -779,7 +777,7 @@ module Sam
             #   @param type [Symbol, :canceled]
           end
 
-          class BetaExpiredResult < Sam::Internal::Type::BaseModel
+          class Expired < Sam::Internal::Type::BaseModel
             # @!attribute type
             #
             #   @return [Symbol, :expired]
@@ -790,7 +788,7 @@ module Sam
           end
 
           # @!method self.variants
-          #   @return [Array(Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaSucceededResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaErroredResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaCanceledResult, Sam::Models::Messages::BatchResultsBetaResponse::Result::BetaExpiredResult)]
+          #   @return [Array(Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored, Sam::Models::Messages::BatchResultsBetaResponse::Result::Canceled, Sam::Models::Messages::BatchResultsBetaResponse::Result::Expired)]
         end
       end
     end

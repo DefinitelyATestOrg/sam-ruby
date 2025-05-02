@@ -45,10 +45,10 @@ module Sam
         returns(
           T::Array[
             T.any(
-              Sam::Models::MessageCreateResponse::Content::ResponseTextBlock,
-              Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock,
-              Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock,
-              Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock
+              Sam::Models::MessageCreateResponse::Content::Text,
+              Sam::Models::MessageCreateResponse::Content::ToolUse,
+              Sam::Models::MessageCreateResponse::Content::Thinking,
+              Sam::Models::MessageCreateResponse::Content::RedactedThinking
             )
           ]
         )
@@ -118,11 +118,11 @@ module Sam
           id: String,
           content: T::Array[
             T.any(
-              Sam::Models::MessageCreateResponse::Content::ResponseTextBlock,
+              Sam::Models::MessageCreateResponse::Content::Text,
               Sam::Internal::AnyHash,
-              Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock,
-              Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock,
-              Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock
+              Sam::Models::MessageCreateResponse::Content::ToolUse,
+              Sam::Models::MessageCreateResponse::Content::Thinking,
+              Sam::Models::MessageCreateResponse::Content::RedactedThinking
             )
           ],
           model: String,
@@ -223,10 +223,10 @@ module Sam
               id: String,
               content: T::Array[
                 T.any(
-                  Sam::Models::MessageCreateResponse::Content::ResponseTextBlock,
-                  Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock,
-                  Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock,
-                  Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock
+                  Sam::Models::MessageCreateResponse::Content::Text,
+                  Sam::Models::MessageCreateResponse::Content::ToolUse,
+                  Sam::Models::MessageCreateResponse::Content::Thinking,
+                  Sam::Models::MessageCreateResponse::Content::RedactedThinking
                 )
               ],
               model: String,
@@ -243,7 +243,7 @@ module Sam
       module Content
         extend Sam::Internal::Type::Union
 
-        class ResponseTextBlock < Sam::Internal::Type::BaseModel
+        class Text < Sam::Internal::Type::BaseModel
           # Citations supporting the text block.
           #
           # The type of citation returned will depend on the type of document being cited.
@@ -254,9 +254,9 @@ module Sam
               T.nilable(
                 T::Array[
                   T.any(
-                    Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
-                    Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
-                    Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
+                    Sam::Models::MessageCreateResponse::Content::Text::Citation::CharLocation,
+                    Sam::Models::MessageCreateResponse::Content::Text::Citation::PageLocation,
+                    Sam::Models::MessageCreateResponse::Content::Text::Citation::ContentBlockLocation
                   )
                 ]
               )
@@ -275,10 +275,10 @@ module Sam
               citations: T.nilable(
                 T::Array[
                   T.any(
-                    Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
+                    Sam::Models::MessageCreateResponse::Content::Text::Citation::CharLocation,
                     Sam::Internal::AnyHash,
-                    Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
-                    Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
+                    Sam::Models::MessageCreateResponse::Content::Text::Citation::PageLocation,
+                    Sam::Models::MessageCreateResponse::Content::Text::Citation::ContentBlockLocation
                   )
                 ]
               ),
@@ -304,9 +304,9 @@ module Sam
                   citations: T.nilable(
                     T::Array[
                       T.any(
-                        Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
-                        Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
-                        Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
+                        Sam::Models::MessageCreateResponse::Content::Text::Citation::CharLocation,
+                        Sam::Models::MessageCreateResponse::Content::Text::Citation::PageLocation,
+                        Sam::Models::MessageCreateResponse::Content::Text::Citation::ContentBlockLocation
                       )
                     ]
                   ),
@@ -320,7 +320,7 @@ module Sam
           module Citation
             extend Sam::Internal::Type::Union
 
-            class ResponseCharLocationCitation < Sam::Internal::Type::BaseModel
+            class CharLocation < Sam::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :cited_text
 
@@ -376,7 +376,7 @@ module Sam
               def to_hash; end
             end
 
-            class ResponsePageLocationCitation < Sam::Internal::Type::BaseModel
+            class PageLocation < Sam::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :cited_text
 
@@ -432,7 +432,7 @@ module Sam
               def to_hash; end
             end
 
-            class ResponseContentBlockLocationCitation < Sam::Internal::Type::BaseModel
+            class ContentBlockLocation < Sam::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :cited_text
 
@@ -489,14 +489,14 @@ module Sam
             sig do
               override
                 .returns(
-                  [Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation, Sam::Models::MessageCreateResponse::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation]
+                  [Sam::Models::MessageCreateResponse::Content::Text::Citation::CharLocation, Sam::Models::MessageCreateResponse::Content::Text::Citation::PageLocation, Sam::Models::MessageCreateResponse::Content::Text::Citation::ContentBlockLocation]
                 )
             end
             def self.variants; end
           end
         end
 
-        class ResponseToolUseBlock < Sam::Internal::Type::BaseModel
+        class ToolUse < Sam::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
@@ -516,7 +516,7 @@ module Sam
           def to_hash; end
         end
 
-        class ResponseThinkingBlock < Sam::Internal::Type::BaseModel
+        class Thinking < Sam::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :signature
 
@@ -533,7 +533,7 @@ module Sam
           def to_hash; end
         end
 
-        class ResponseRedactedThinkingBlock < Sam::Internal::Type::BaseModel
+        class RedactedThinking < Sam::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :data
 
@@ -550,7 +550,7 @@ module Sam
         sig do
           override
             .returns(
-              [Sam::Models::MessageCreateResponse::Content::ResponseTextBlock, Sam::Models::MessageCreateResponse::Content::ResponseToolUseBlock, Sam::Models::MessageCreateResponse::Content::ResponseThinkingBlock, Sam::Models::MessageCreateResponse::Content::ResponseRedactedThinkingBlock]
+              [Sam::Models::MessageCreateResponse::Content::Text, Sam::Models::MessageCreateResponse::Content::ToolUse, Sam::Models::MessageCreateResponse::Content::Thinking, Sam::Models::MessageCreateResponse::Content::RedactedThinking]
             )
         end
         def self.variants; end

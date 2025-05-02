@@ -19,10 +19,10 @@ module Sam
         sig do
           returns(
             T.any(
-              Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult,
-              Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult,
-              Sam::Models::Messages::BatchResultsResponse::Result::CanceledResult,
-              Sam::Models::Messages::BatchResultsResponse::Result::ExpiredResult
+              Sam::Models::Messages::BatchResultsResponse::Result::Succeeded,
+              Sam::Models::Messages::BatchResultsResponse::Result::Errored,
+              Sam::Models::Messages::BatchResultsResponse::Result::Canceled,
+              Sam::Models::Messages::BatchResultsResponse::Result::Expired
             )
           )
         end
@@ -34,11 +34,11 @@ module Sam
           params(
             custom_id: String,
             result: T.any(
-              Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult,
+              Sam::Models::Messages::BatchResultsResponse::Result::Succeeded,
               Sam::Internal::AnyHash,
-              Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult,
-              Sam::Models::Messages::BatchResultsResponse::Result::CanceledResult,
-              Sam::Models::Messages::BatchResultsResponse::Result::ExpiredResult
+              Sam::Models::Messages::BatchResultsResponse::Result::Errored,
+              Sam::Models::Messages::BatchResultsResponse::Result::Canceled,
+              Sam::Models::Messages::BatchResultsResponse::Result::Expired
             )
           )
             .returns(T.attached_class)
@@ -62,10 +62,10 @@ module Sam
               {
                 custom_id: String,
                 result: T.any(
-                  Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult,
-                  Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult,
-                  Sam::Models::Messages::BatchResultsResponse::Result::CanceledResult,
-                  Sam::Models::Messages::BatchResultsResponse::Result::ExpiredResult
+                  Sam::Models::Messages::BatchResultsResponse::Result::Succeeded,
+                  Sam::Models::Messages::BatchResultsResponse::Result::Errored,
+                  Sam::Models::Messages::BatchResultsResponse::Result::Canceled,
+                  Sam::Models::Messages::BatchResultsResponse::Result::Expired
                 )
               }
             )
@@ -80,16 +80,13 @@ module Sam
         module Result
           extend Sam::Internal::Type::Union
 
-          class SucceededResult < Sam::Internal::Type::BaseModel
-            sig { returns(Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message) }
+          class Succeeded < Sam::Internal::Type::BaseModel
+            sig { returns(Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message) }
             attr_reader :message
 
             sig do
               params(
-                message: T.any(
-                  Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message,
-                  Sam::Internal::AnyHash
-                )
+                message: T.any(Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message, Sam::Internal::AnyHash)
               )
                 .void
             end
@@ -100,10 +97,7 @@ module Sam
 
             sig do
               params(
-                message: T.any(
-                  Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message,
-                  Sam::Internal::AnyHash
-                ),
+                message: T.any(Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message, Sam::Internal::AnyHash),
                 type: Symbol
               )
                 .returns(T.attached_class)
@@ -112,9 +106,7 @@ module Sam
 
             sig do
               override
-                .returns(
-                  {message: Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message, type: Symbol}
-                )
+                .returns({message: Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message, type: Symbol})
             end
             def to_hash; end
 
@@ -161,10 +153,10 @@ module Sam
                 returns(
                   T::Array[
                     T.any(
-                      Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock,
-                      Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseToolUseBlock,
-                      Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseThinkingBlock,
-                      Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseRedactedThinkingBlock
+                      Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text,
+                      Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::ToolUse,
+                      Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Thinking,
+                      Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::RedactedThinking
                     )
                   ]
                 )
@@ -195,7 +187,7 @@ module Sam
               sig do
                 returns(
                   T.nilable(
-                    Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::StopReason::TaggedSymbol
+                    Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::StopReason::TaggedSymbol
                   )
                 )
               end
@@ -229,13 +221,13 @@ module Sam
               #
               # Total input tokens in a request is the summation of `input_tokens`,
               # `cache_creation_input_tokens`, and `cache_read_input_tokens`.
-              sig { returns(Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Usage) }
+              sig { returns(Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Usage) }
               attr_reader :usage
 
               sig do
                 params(
                   usage: T.any(
-                    Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Usage,
+                    Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Usage,
                     Sam::Internal::AnyHash
                   )
                 )
@@ -248,20 +240,18 @@ module Sam
                   id: String,
                   content: T::Array[
                     T.any(
-                      Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock,
+                      Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text,
                       Sam::Internal::AnyHash,
-                      Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseToolUseBlock,
-                      Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseThinkingBlock,
-                      Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseRedactedThinkingBlock
+                      Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::ToolUse,
+                      Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Thinking,
+                      Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::RedactedThinking
                     )
                   ],
                   model: String,
-                  stop_reason: T.nilable(
-                    Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::StopReason::OrSymbol
-                  ),
+                  stop_reason: T.nilable(Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::StopReason::OrSymbol),
                   stop_sequence: T.nilable(String),
                   usage: T.any(
-                    Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Usage,
+                    Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Usage,
                     Sam::Internal::AnyHash
                   ),
                   role: Symbol,
@@ -358,20 +348,20 @@ module Sam
                       id: String,
                       content: T::Array[
                         T.any(
-                          Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock,
-                          Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseToolUseBlock,
-                          Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseThinkingBlock,
-                          Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseRedactedThinkingBlock
+                          Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text,
+                          Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::ToolUse,
+                          Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Thinking,
+                          Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::RedactedThinking
                         )
                       ],
                       model: String,
                       role: Symbol,
                       stop_reason: T.nilable(
-                        Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::StopReason::TaggedSymbol
+                        Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::StopReason::TaggedSymbol
                       ),
                       stop_sequence: T.nilable(String),
                       type: Symbol,
-                      usage: Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Usage
+                      usage: Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Usage
                     }
                   )
               end
@@ -380,7 +370,7 @@ module Sam
               module Content
                 extend Sam::Internal::Type::Union
 
-                class ResponseTextBlock < Sam::Internal::Type::BaseModel
+                class Text < Sam::Internal::Type::BaseModel
                   # Citations supporting the text block.
                   #
                   # The type of citation returned will depend on the type of document being cited.
@@ -391,9 +381,9 @@ module Sam
                       T.nilable(
                         T::Array[
                           T.any(
-                            Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
-                            Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
-                            Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
+                            Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation,
+                            Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation,
+                            Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation
                           )
                         ]
                       )
@@ -412,10 +402,10 @@ module Sam
                       citations: T.nilable(
                         T::Array[
                           T.any(
-                            Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
+                            Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation,
                             Sam::Internal::AnyHash,
-                            Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
-                            Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
+                            Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation,
+                            Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation
                           )
                         ]
                       ),
@@ -441,9 +431,9 @@ module Sam
                           citations: T.nilable(
                             T::Array[
                               T.any(
-                                Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation,
-                                Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation,
-                                Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation
+                                Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation,
+                                Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation,
+                                Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation
                               )
                             ]
                           ),
@@ -457,7 +447,7 @@ module Sam
                   module Citation
                     extend Sam::Internal::Type::Union
 
-                    class ResponseCharLocationCitation < Sam::Internal::Type::BaseModel
+                    class CharLocation < Sam::Internal::Type::BaseModel
                       sig { returns(String) }
                       attr_accessor :cited_text
 
@@ -513,7 +503,7 @@ module Sam
                       def to_hash; end
                     end
 
-                    class ResponsePageLocationCitation < Sam::Internal::Type::BaseModel
+                    class PageLocation < Sam::Internal::Type::BaseModel
                       sig { returns(String) }
                       attr_accessor :cited_text
 
@@ -569,7 +559,7 @@ module Sam
                       def to_hash; end
                     end
 
-                    class ResponseContentBlockLocationCitation < Sam::Internal::Type::BaseModel
+                    class ContentBlockLocation < Sam::Internal::Type::BaseModel
                       sig { returns(String) }
                       attr_accessor :cited_text
 
@@ -626,14 +616,14 @@ module Sam
                     sig do
                       override
                         .returns(
-                          [Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseCharLocationCitation, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponsePageLocationCitation, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock::Citation::ResponseContentBlockLocationCitation]
+                          [Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation, Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation, Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation]
                         )
                     end
                     def self.variants; end
                   end
                 end
 
-                class ResponseToolUseBlock < Sam::Internal::Type::BaseModel
+                class ToolUse < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :id
 
@@ -660,7 +650,7 @@ module Sam
                   def to_hash; end
                 end
 
-                class ResponseThinkingBlock < Sam::Internal::Type::BaseModel
+                class Thinking < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :signature
 
@@ -677,7 +667,7 @@ module Sam
                   def to_hash; end
                 end
 
-                class ResponseRedactedThinkingBlock < Sam::Internal::Type::BaseModel
+                class RedactedThinking < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :data
 
@@ -694,7 +684,7 @@ module Sam
                 sig do
                   override
                     .returns(
-                      [Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseTextBlock, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseToolUseBlock, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseThinkingBlock, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::Content::ResponseRedactedThinkingBlock]
+                      [Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text, Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::ToolUse, Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Thinking, Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::RedactedThinking]
                     )
                 end
                 def self.variants; end
@@ -715,34 +705,34 @@ module Sam
                 extend Sam::Internal::Type::Enum
 
                 TaggedSymbol =
-                  T.type_alias { T.all(Symbol, Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::StopReason) }
+                  T.type_alias { T.all(Symbol, Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::StopReason) }
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 END_TURN =
                   T.let(
                     :end_turn,
-                    Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::StopReason::TaggedSymbol
+                    Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::StopReason::TaggedSymbol
                   )
                 MAX_TOKENS =
                   T.let(
                     :max_tokens,
-                    Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::StopReason::TaggedSymbol
+                    Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::StopReason::TaggedSymbol
                   )
                 STOP_SEQUENCE =
                   T.let(
                     :stop_sequence,
-                    Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::StopReason::TaggedSymbol
+                    Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::StopReason::TaggedSymbol
                   )
                 TOOL_USE =
                   T.let(
                     :tool_use,
-                    Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::StopReason::TaggedSymbol
+                    Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::StopReason::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
-                      T::Array[Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult::Message::StopReason::TaggedSymbol]
+                      T::Array[Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::StopReason::TaggedSymbol]
                     )
                 end
                 def self.values; end
@@ -815,13 +805,13 @@ module Sam
             end
           end
 
-          class ErroredResult < Sam::Internal::Type::BaseModel
-            sig { returns(Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error) }
+          class Errored < Sam::Internal::Type::BaseModel
+            sig { returns(Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error) }
             attr_reader :error
 
             sig do
               params(
-                error: T.any(Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error, Sam::Internal::AnyHash)
+                error: T.any(Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error, Sam::Internal::AnyHash)
               )
                 .void
             end
@@ -832,7 +822,7 @@ module Sam
 
             sig do
               params(
-                error: T.any(Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error, Sam::Internal::AnyHash),
+                error: T.any(Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error, Sam::Internal::AnyHash),
                 type: Symbol
               )
                 .returns(T.attached_class)
@@ -841,7 +831,7 @@ module Sam
 
             sig do
               override
-                .returns({error: Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error, type: Symbol})
+                .returns({error: Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error, type: Symbol})
             end
             def to_hash; end
 
@@ -849,15 +839,15 @@ module Sam
               sig do
                 returns(
                   T.any(
-                    Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::InvalidRequestError,
-                    Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::AuthenticationError,
-                    Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::BillingError,
-                    Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::PermissionError,
-                    Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::NotFoundError,
-                    Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::RateLimitError,
-                    Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::GatewayTimeoutError,
-                    Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::APIError,
-                    Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::OverloadedError
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::InvalidRequestError,
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::AuthenticationError,
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::BillingError,
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::PermissionError,
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::NotFoundError,
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::RateLimitError,
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::TimeoutError,
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::APIError,
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::OverloadedError
                   )
                 )
               end
@@ -869,16 +859,16 @@ module Sam
               sig do
                 params(
                   error: T.any(
-                    Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::InvalidRequestError,
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::InvalidRequestError,
                     Sam::Internal::AnyHash,
-                    Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::AuthenticationError,
-                    Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::BillingError,
-                    Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::PermissionError,
-                    Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::NotFoundError,
-                    Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::RateLimitError,
-                    Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::GatewayTimeoutError,
-                    Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::APIError,
-                    Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::OverloadedError
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::AuthenticationError,
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::BillingError,
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::PermissionError,
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::NotFoundError,
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::RateLimitError,
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::TimeoutError,
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::APIError,
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::OverloadedError
                   ),
                   type: Symbol
                 )
@@ -891,15 +881,15 @@ module Sam
                   .returns(
                     {
                       error: T.any(
-                        Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::InvalidRequestError,
-                        Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::AuthenticationError,
-                        Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::BillingError,
-                        Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::PermissionError,
-                        Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::NotFoundError,
-                        Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::RateLimitError,
-                        Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::GatewayTimeoutError,
-                        Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::APIError,
-                        Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::OverloadedError
+                        Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::InvalidRequestError,
+                        Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::AuthenticationError,
+                        Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::BillingError,
+                        Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::PermissionError,
+                        Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::NotFoundError,
+                        Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::RateLimitError,
+                        Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::TimeoutError,
+                        Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::APIError,
+                        Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::OverloadedError
                       ),
                       type: Symbol
                     }
@@ -994,7 +984,7 @@ module Sam
                   def to_hash; end
                 end
 
-                class GatewayTimeoutError < Sam::Internal::Type::BaseModel
+                class TimeoutError < Sam::Internal::Type::BaseModel
                   sig { returns(String) }
                   attr_accessor :message
 
@@ -1039,7 +1029,7 @@ module Sam
                 sig do
                   override
                     .returns(
-                      [Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::InvalidRequestError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::AuthenticationError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::BillingError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::PermissionError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::NotFoundError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::RateLimitError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::GatewayTimeoutError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::APIError, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult::Error::Error::OverloadedError]
+                      [Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::InvalidRequestError, Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::AuthenticationError, Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::BillingError, Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::PermissionError, Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::NotFoundError, Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::RateLimitError, Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::TimeoutError, Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::APIError, Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::OverloadedError]
                     )
                 end
                 def self.variants; end
@@ -1047,7 +1037,7 @@ module Sam
             end
           end
 
-          class CanceledResult < Sam::Internal::Type::BaseModel
+          class Canceled < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :type
 
@@ -1058,7 +1048,7 @@ module Sam
             def to_hash; end
           end
 
-          class ExpiredResult < Sam::Internal::Type::BaseModel
+          class Expired < Sam::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :type
 
@@ -1072,7 +1062,7 @@ module Sam
           sig do
             override
               .returns(
-                [Sam::Models::Messages::BatchResultsResponse::Result::SucceededResult, Sam::Models::Messages::BatchResultsResponse::Result::ErroredResult, Sam::Models::Messages::BatchResultsResponse::Result::CanceledResult, Sam::Models::Messages::BatchResultsResponse::Result::ExpiredResult]
+                [Sam::Models::Messages::BatchResultsResponse::Result::Succeeded, Sam::Models::Messages::BatchResultsResponse::Result::Errored, Sam::Models::Messages::BatchResultsResponse::Result::Canceled, Sam::Models::Messages::BatchResultsResponse::Result::Expired]
               )
           end
           def self.variants; end

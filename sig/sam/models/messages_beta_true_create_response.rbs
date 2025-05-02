@@ -43,45 +43,45 @@ module Sam
       def to_hash: -> Sam::Models::messages_beta_true_create_response
 
       type content =
-        Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock
-        | Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseToolUseBlock
-        | Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseThinkingBlock
-        | Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseRedactedThinkingBlock
+        Sam::Models::MessagesBetaTrueCreateResponse::Content::Text
+        | Sam::Models::MessagesBetaTrueCreateResponse::Content::ToolUse
+        | Sam::Models::MessagesBetaTrueCreateResponse::Content::Thinking
+        | Sam::Models::MessagesBetaTrueCreateResponse::Content::RedactedThinking
 
       module Content
         extend Sam::Internal::Type::Union
 
-        type beta_response_text_block =
+        type text =
           {
-            citations: ::Array[Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::citation]?,
+            citations: ::Array[Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::citation]?,
             text: String,
             type: :text
           }
 
-        class BetaResponseTextBlock < Sam::Internal::Type::BaseModel
-          attr_accessor citations: ::Array[Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::citation]?
+        class Text < Sam::Internal::Type::BaseModel
+          attr_accessor citations: ::Array[Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::citation]?
 
           attr_accessor text: String
 
           attr_accessor type: :text
 
           def initialize: (
-            citations: ::Array[Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::citation]?,
+            citations: ::Array[Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::citation]?,
             text: String,
             ?type: :text
           ) -> void
 
-          def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::beta_response_text_block
+          def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::text
 
           type citation =
-            Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation
-            | Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation
-            | Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation
+            Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::CharLocation
+            | Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::PageLocation
+            | Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::ContentBlockLocation
 
           module Citation
             extend Sam::Internal::Type::Union
 
-            type beta_response_char_location_citation =
+            type char_location =
               {
                 cited_text: String,
                 document_index: Integer,
@@ -91,7 +91,7 @@ module Sam
                 type: :char_location
               }
 
-            class BetaResponseCharLocationCitation < Sam::Internal::Type::BaseModel
+            class CharLocation < Sam::Internal::Type::BaseModel
               attr_accessor cited_text: String
 
               attr_accessor document_index: Integer
@@ -113,10 +113,10 @@ module Sam
                 ?type: :char_location
               ) -> void
 
-              def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::beta_response_char_location_citation
+              def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::char_location
             end
 
-            type beta_response_page_location_citation =
+            type page_location =
               {
                 cited_text: String,
                 document_index: Integer,
@@ -126,7 +126,7 @@ module Sam
                 type: :page_location
               }
 
-            class BetaResponsePageLocationCitation < Sam::Internal::Type::BaseModel
+            class PageLocation < Sam::Internal::Type::BaseModel
               attr_accessor cited_text: String
 
               attr_accessor document_index: Integer
@@ -148,10 +148,10 @@ module Sam
                 ?type: :page_location
               ) -> void
 
-              def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::beta_response_page_location_citation
+              def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::page_location
             end
 
-            type beta_response_content_block_location_citation =
+            type content_block_location =
               {
                 cited_text: String,
                 document_index: Integer,
@@ -161,7 +161,7 @@ module Sam
                 type: :content_block_location
               }
 
-            class BetaResponseContentBlockLocationCitation < Sam::Internal::Type::BaseModel
+            class ContentBlockLocation < Sam::Internal::Type::BaseModel
               attr_accessor cited_text: String
 
               attr_accessor document_index: Integer
@@ -183,17 +183,17 @@ module Sam
                 ?type: :content_block_location
               ) -> void
 
-              def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::beta_response_content_block_location_citation
+              def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::content_block_location
             end
 
-            def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseCharLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponsePageLocationCitation, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock::Citation::BetaResponseContentBlockLocationCitation]
+            def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::ContentBlockLocation]
           end
         end
 
-        type beta_response_tool_use_block =
+        type tool_use =
           { id: String, input: top, name: String, type: :tool_use }
 
-        class BetaResponseToolUseBlock < Sam::Internal::Type::BaseModel
+        class ToolUse < Sam::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor input: top
@@ -209,13 +209,12 @@ module Sam
             ?type: :tool_use
           ) -> void
 
-          def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::beta_response_tool_use_block
+          def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::tool_use
         end
 
-        type beta_response_thinking_block =
-          { signature: String, thinking: String, type: :thinking }
+        type thinking = { signature: String, thinking: String, type: :thinking }
 
-        class BetaResponseThinkingBlock < Sam::Internal::Type::BaseModel
+        class Thinking < Sam::Internal::Type::BaseModel
           attr_accessor signature: String
 
           attr_accessor thinking: String
@@ -228,23 +227,22 @@ module Sam
             ?type: :thinking
           ) -> void
 
-          def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::beta_response_thinking_block
+          def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::thinking
         end
 
-        type beta_response_redacted_thinking_block =
-          { data: String, type: :redacted_thinking }
+        type redacted_thinking = { data: String, type: :redacted_thinking }
 
-        class BetaResponseRedactedThinkingBlock < Sam::Internal::Type::BaseModel
+        class RedactedThinking < Sam::Internal::Type::BaseModel
           attr_accessor data: String
 
           attr_accessor type: :redacted_thinking
 
           def initialize: (data: String, ?type: :redacted_thinking) -> void
 
-          def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::beta_response_redacted_thinking_block
+          def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::redacted_thinking
         end
 
-        def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseTextBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseToolUseBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseThinkingBlock, Sam::Models::MessagesBetaTrueCreateResponse::Content::BetaResponseRedactedThinkingBlock]
+        def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateResponse::Content::Text, Sam::Models::MessagesBetaTrueCreateResponse::Content::ToolUse, Sam::Models::MessagesBetaTrueCreateResponse::Content::Thinking, Sam::Models::MessagesBetaTrueCreateResponse::Content::RedactedThinking]
       end
 
       type stop_reason = :end_turn | :max_tokens | :stop_sequence | :tool_use
