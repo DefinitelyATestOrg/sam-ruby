@@ -32,8 +32,6 @@ module Sam
             ?x_api_key: String,
             ?request_options: Sam::request_opts
           ) -> void
-
-          def to_hash: -> Sam::Models::Messages::Batches::beta_true_delete_params
         end
       end
     end

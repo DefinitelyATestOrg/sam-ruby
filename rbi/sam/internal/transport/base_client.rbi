@@ -12,33 +12,52 @@ module Sam
             {
               method: Symbol,
               path: T.any(String, T::Array[String]),
-              query: T.nilable(T::Hash[String, T.nilable(T.any(T::Array[String], String))]),
-              headers: T.nilable(
-                T::Hash[String,
-                        T.nilable(
-                          T.any(
-                            String,
-                            Integer,
-                            T::Array[T.nilable(T.any(String, Integer))]
-                          )
-                        )]
-              ),
+              query:
+                T.nilable(
+                  T::Hash[String, T.nilable(T.any(T::Array[String], String))]
+                ),
+              headers:
+                T.nilable(
+                  T::Hash[
+                    String,
+                    T.nilable(
+                      T.any(
+                        String,
+                        Integer,
+                        T::Array[T.nilable(T.any(String, Integer))]
+                      )
+                    )
+                  ]
+                ),
               body: T.nilable(T.anything),
-              unwrap: T.nilable(
-                T.any(
-                  Symbol,
-                  Integer,
-                  T::Array[T.any(Symbol, Integer)],
-                  T.proc.params(arg0: T.anything).returns(T.anything)
-                )
-              ),
-              page: T.nilable(T::Class[Sam::Internal::Type::BasePage[Sam::Internal::Type::BaseModel]]),
-              stream: T.nilable(
-                T::Class[Sam::Internal::Type::BaseStream[T.anything,
-                                                         Sam::Internal::Type::BaseModel]]
-              ),
+              unwrap:
+                T.nilable(
+                  T.any(
+                    Symbol,
+                    Integer,
+                    T::Array[T.any(Symbol, Integer)],
+                    T.proc.params(arg0: T.anything).returns(T.anything)
+                  )
+                ),
+              page:
+                T.nilable(
+                  T::Class[
+                    Sam::Internal::Type::BasePage[
+                      Sam::Internal::Type::BaseModel
+                    ]
+                  ]
+                ),
+              stream:
+                T.nilable(
+                  T::Class[
+                    Sam::Internal::Type::BaseStream[
+                      T.anything,
+                      Sam::Internal::Type::BaseModel
+                    ]
+                  ]
+                ),
               model: T.nilable(Sam::Internal::Type::Converter::Input),
-              options: T.nilable(Sam::RequestOpts)
+              options: T.nilable(Sam::RequestOptions::OrHash)
             }
           end
 
@@ -61,20 +80,23 @@ module Sam
 
         class << self
           # @api private
-          sig { params(req: Sam::Internal::Transport::BaseClient::RequestComponentsShape).void }
-          def validate!(req); end
+          sig do
+            params(
+              req: Sam::Internal::Transport::BaseClient::RequestComponentsShape
+            ).void
+          end
+          def validate!(req)
+          end
 
           # @api private
           sig do
             params(
               status: Integer,
-              headers: T.any(
-                T::Hash[String, String],
-                Net::HTTPHeader
-              )
+              headers: T.any(T::Hash[String, String], Net::HTTPHeader)
             ).returns(T::Boolean)
           end
-          def should_retry?(status, headers:); end
+          def should_retry?(status, headers:)
+          end
 
           # @api private
           sig do
@@ -82,20 +104,20 @@ module Sam
               request: Sam::Internal::Transport::BaseClient::RequestInputShape,
               status: Integer,
               response_headers: T.any(T::Hash[String, String], Net::HTTPHeader)
-            )
-              .returns(Sam::Internal::Transport::BaseClient::RequestInputShape)
+            ).returns(Sam::Internal::Transport::BaseClient::RequestInputShape)
           end
-          def follow_redirect(request, status:, response_headers:); end
+          def follow_redirect(request, status:, response_headers:)
+          end
 
           # @api private
           sig do
             params(
               status: T.any(Integer, Sam::Errors::APIConnectionError),
               stream: T.nilable(T::Enumerable[String])
-            )
-              .void
+            ).void
           end
-          def reap_connection!(status, stream:); end
+          def reap_connection!(status, stream:)
+          end
         end
 
         # @api private
@@ -110,11 +132,19 @@ module Sam
             max_retries: Integer,
             initial_retry_delay: Float,
             max_retry_delay: Float,
-            headers: T::Hash[String,
-                             T.nilable(T.any(String, Integer, T::Array[T.nilable(T.any(String, Integer))]))],
+            headers:
+              T::Hash[
+                String,
+                T.nilable(
+                  T.any(
+                    String,
+                    Integer,
+                    T::Array[T.nilable(T.any(String, Integer))]
+                  )
+                )
+              ],
             idempotency_header: T.nilable(String)
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           base_url:,
@@ -124,22 +154,35 @@ module Sam
           max_retry_delay: 0.0,
           headers: {},
           idempotency_header: nil
-        ); end
+        )
+        end
+
         # @api private
         sig { returns(String) }
-        private def generate_idempotency_key; end
+        private def generate_idempotency_key
+        end
 
         # @api private
         sig do
           overridable
-            .params(req: Sam::Internal::Transport::BaseClient::RequestComponentsShape, opts: Sam::Internal::AnyHash)
+            .params(
+              req: Sam::Internal::Transport::BaseClient::RequestComponentsShape,
+              opts: Sam::Internal::AnyHash
+            )
             .returns(Sam::Internal::Transport::BaseClient::RequestInputShape)
         end
-        private def build_request(req, opts); end
+        private def build_request(req, opts)
+        end
 
         # @api private
-        sig { params(headers: T::Hash[String, String], retry_count: Integer).returns(Float) }
-        private def retry_delay(headers, retry_count:); end
+        sig do
+          params(
+            headers: T::Hash[String, String],
+            retry_count: Integer
+          ).returns(Float)
+        end
+        private def retry_delay(headers, retry_count:)
+        end
 
         # @api private
         sig do
@@ -148,10 +191,15 @@ module Sam
             redirect_count: Integer,
             retry_count: Integer,
             send_retry_header: T::Boolean
-          )
-            .returns([Integer, Net::HTTPResponse, T::Enumerable[String]])
+          ).returns([Integer, Net::HTTPResponse, T::Enumerable[String]])
         end
-        private def send_request(request, redirect_count:, retry_count:, send_retry_header:); end
+        private def send_request(
+          request,
+          redirect_count:,
+          retry_count:,
+          send_retry_header:
+        )
+        end
 
         # Execute the request specified by `req`. This is the method that all resource
         # methods call into.
@@ -161,35 +209,51 @@ module Sam
           params(
             method: Symbol,
             path: T.any(String, T::Array[String]),
-            query: T.nilable(T::Hash[String, T.nilable(T.any(T::Array[String], String))]),
-            headers: T.nilable(
-              T::Hash[String,
-                      T.nilable(
-                        T.any(
-                          String,
-                          Integer,
-                          T::Array[T.nilable(T.any(String, Integer))]
-                        )
-                      )]
-            ),
+            query:
+              T.nilable(
+                T::Hash[String, T.nilable(T.any(T::Array[String], String))]
+              ),
+            headers:
+              T.nilable(
+                T::Hash[
+                  String,
+                  T.nilable(
+                    T.any(
+                      String,
+                      Integer,
+                      T::Array[T.nilable(T.any(String, Integer))]
+                    )
+                  )
+                ]
+              ),
             body: T.nilable(T.anything),
-            unwrap: T.nilable(
-              T.any(
-                Symbol,
-                Integer,
-                T::Array[T.any(Symbol, Integer)],
-                T.proc.params(arg0: T.anything).returns(T.anything)
-              )
-            ),
-            page: T.nilable(T::Class[Sam::Internal::Type::BasePage[Sam::Internal::Type::BaseModel]]),
-            stream: T.nilable(
-              T::Class[Sam::Internal::Type::BaseStream[T.anything,
-                                                       Sam::Internal::Type::BaseModel]]
-            ),
+            unwrap:
+              T.nilable(
+                T.any(
+                  Symbol,
+                  Integer,
+                  T::Array[T.any(Symbol, Integer)],
+                  T.proc.params(arg0: T.anything).returns(T.anything)
+                )
+              ),
+            page:
+              T.nilable(
+                T::Class[
+                  Sam::Internal::Type::BasePage[Sam::Internal::Type::BaseModel]
+                ]
+              ),
+            stream:
+              T.nilable(
+                T::Class[
+                  Sam::Internal::Type::BaseStream[
+                    T.anything,
+                    Sam::Internal::Type::BaseModel
+                  ]
+                ]
+              ),
             model: T.nilable(Sam::Internal::Type::Converter::Input),
-            options: T.nilable(Sam::RequestOpts)
-          )
-            .returns(T.anything)
+            options: T.nilable(Sam::RequestOptions::OrHash)
+          ).returns(T.anything)
         end
         def request(
           method,
@@ -202,10 +266,13 @@ module Sam
           stream: nil,
           model: Sam::Internal::Type::Unknown,
           options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { returns(String) }
-        def inspect; end
+        def inspect
+        end
       end
     end
   end

@@ -4,7 +4,13 @@ module Sam
   module Models
     module Messages
       class BatchesBetaTrueListResponse < Sam::Internal::Type::BaseModel
-        sig { returns(T::Array[Sam::Models::Messages::BatchesBetaTrueListResponse::Data]) }
+        OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
+        sig do
+          returns(
+            T::Array[Sam::Models::Messages::BatchesBetaTrueListResponse::Data]
+          )
+        end
         attr_accessor :data
 
         # First ID in the `data` list. Can be used as the `before_id` for the previous
@@ -22,12 +28,14 @@ module Sam
 
         sig do
           params(
-            data: T::Array[T.any(Sam::Models::Messages::BatchesBetaTrueListResponse::Data, Sam::Internal::AnyHash)],
+            data:
+              T::Array[
+                Sam::Models::Messages::BatchesBetaTrueListResponse::Data::OrHash
+              ],
             first_id: T.nilable(String),
             has_more: T::Boolean,
             last_id: T.nilable(String)
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           data:,
@@ -38,21 +46,28 @@ module Sam
           has_more:,
           # Last ID in the `data` list. Can be used as the `after_id` for the next page.
           last_id:
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                data: T::Array[Sam::Models::Messages::BatchesBetaTrueListResponse::Data],
-                first_id: T.nilable(String),
-                has_more: T::Boolean,
-                last_id: T.nilable(String)
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              data:
+                T::Array[
+                  Sam::Models::Messages::BatchesBetaTrueListResponse::Data
+                ],
+              first_id: T.nilable(String),
+              has_more: T::Boolean,
+              last_id: T.nilable(String)
+            }
+          )
+        end
+        def to_hash
+        end
 
         class Data < Sam::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
           # Unique object identifier.
           #
           # The format and length of IDs may change over time.
@@ -88,7 +103,11 @@ module Sam
           attr_accessor :expires_at
 
           # Processing status of the Message Batch.
-          sig { returns(Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus::TaggedSymbol) }
+          sig do
+            returns(
+              Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus::TaggedSymbol
+            )
+          end
           attr_accessor :processing_status
 
           # Tallies requests within the Message Batch, categorized by their status.
@@ -96,14 +115,18 @@ module Sam
           # Requests start as `processing` and move to one of the other statuses only once
           # processing of the entire batch ends. The sum of all values always matches the
           # total number of requests in the batch.
-          sig { returns(Sam::Models::Messages::BatchesBetaTrueListResponse::Data::RequestCounts) }
+          sig do
+            returns(
+              Sam::Models::Messages::BatchesBetaTrueListResponse::Data::RequestCounts
+            )
+          end
           attr_reader :request_counts
 
           sig do
             params(
-              request_counts: T.any(Sam::Models::Messages::BatchesBetaTrueListResponse::Data::RequestCounts, Sam::Internal::AnyHash)
-            )
-              .void
+              request_counts:
+                Sam::Models::Messages::BatchesBetaTrueListResponse::Data::RequestCounts::OrHash
+            ).void
           end
           attr_writer :request_counts
 
@@ -129,12 +152,13 @@ module Sam
               created_at: Time,
               ended_at: T.nilable(Time),
               expires_at: Time,
-              processing_status: Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus::OrSymbol,
-              request_counts: T.any(Sam::Models::Messages::BatchesBetaTrueListResponse::Data::RequestCounts, Sam::Internal::AnyHash),
+              processing_status:
+                Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus::OrSymbol,
+              request_counts:
+                Sam::Models::Messages::BatchesBetaTrueListResponse::Data::RequestCounts::OrHash,
               results_url: T.nilable(String),
               type: Symbol
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # Unique object identifier.
@@ -177,32 +201,41 @@ module Sam
             #
             # For Message Batches, this is always `"message_batch"`.
             type: :message_batch
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  id: String,
-                  archived_at: T.nilable(Time),
-                  cancel_initiated_at: T.nilable(Time),
-                  created_at: Time,
-                  ended_at: T.nilable(Time),
-                  expires_at: Time,
-                  processing_status: Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus::TaggedSymbol,
-                  request_counts: Sam::Models::Messages::BatchesBetaTrueListResponse::Data::RequestCounts,
-                  results_url: T.nilable(String),
-                  type: Symbol
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                archived_at: T.nilable(Time),
+                cancel_initiated_at: T.nilable(Time),
+                created_at: Time,
+                ended_at: T.nilable(Time),
+                expires_at: Time,
+                processing_status:
+                  Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus::TaggedSymbol,
+                request_counts:
+                  Sam::Models::Messages::BatchesBetaTrueListResponse::Data::RequestCounts,
+                results_url: T.nilable(String),
+                type: Symbol
+              }
+            )
+          end
+          def to_hash
+          end
 
           # Processing status of the Message Batch.
           module ProcessingStatus
             extend Sam::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             IN_PROGRESS =
@@ -216,18 +249,25 @@ module Sam
                 Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus::TaggedSymbol
               )
             ENDED =
-              T.let(:ended, Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus::TaggedSymbol)
+              T.let(
+                :ended,
+                Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(
-                  T::Array[Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Sam::Models::Messages::BatchesBetaTrueListResponse::Data::ProcessingStatus::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
 
           class RequestCounts < Sam::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
             # Number of requests in the Message Batch that have been canceled.
             #
             # This is zero until processing of the entire Message Batch has ended.
@@ -268,8 +308,7 @@ module Sam
                 expired: Integer,
                 processing: Integer,
                 succeeded: Integer
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               # Number of requests in the Message Batch that have been canceled.
@@ -290,18 +329,22 @@ module Sam
               #
               # This is zero until processing of the entire Message Batch has ended.
               succeeded:
-            ); end
-            sig do
-              override
-                .returns({
-                           canceled: Integer,
-                           errored: Integer,
-                           expired: Integer,
-                           processing: Integer,
-                           succeeded: Integer
-                         })
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  canceled: Integer,
+                  errored: Integer,
+                  expired: Integer,
+                  processing: Integer,
+                  succeeded: Integer
+                }
+              )
+            end
+            def to_hash
+            end
           end
         end
       end

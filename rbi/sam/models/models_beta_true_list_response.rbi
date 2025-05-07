@@ -3,6 +3,8 @@
 module Sam
   module Models
     class ModelsBetaTrueListResponse < Sam::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
       sig { returns(T::Array[Sam::Models::ModelsBetaTrueListResponse::Data]) }
       attr_accessor :data
 
@@ -21,12 +23,11 @@ module Sam
 
       sig do
         params(
-          data: T::Array[T.any(Sam::Models::ModelsBetaTrueListResponse::Data, Sam::Internal::AnyHash)],
+          data: T::Array[Sam::Models::ModelsBetaTrueListResponse::Data::OrHash],
           first_id: T.nilable(String),
           has_more: T::Boolean,
           last_id: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         data:,
@@ -37,21 +38,25 @@ module Sam
         has_more:,
         # Last ID in the `data` list. Can be used as the `after_id` for the next page.
         last_id:
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              data: T::Array[Sam::Models::ModelsBetaTrueListResponse::Data],
-              first_id: T.nilable(String),
-              has_more: T::Boolean,
-              last_id: T.nilable(String)
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            data: T::Array[Sam::Models::ModelsBetaTrueListResponse::Data],
+            first_id: T.nilable(String),
+            has_more: T::Boolean,
+            last_id: T.nilable(String)
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Data < Sam::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
         # Unique model identifier.
         sig { returns(String) }
         attr_accessor :id
@@ -72,7 +77,12 @@ module Sam
         attr_accessor :type
 
         sig do
-          params(id: String, created_at: Time, display_name: String, type: Symbol).returns(T.attached_class)
+          params(
+            id: String,
+            created_at: Time,
+            display_name: String,
+            type: Symbol
+          ).returns(T.attached_class)
         end
         def self.new(
           # Unique model identifier.
@@ -86,9 +96,16 @@ module Sam
           #
           # For Models, this is always `"model"`.
           type: :model
-        ); end
-        sig { override.returns({id: String, created_at: Time, display_name: String, type: Symbol}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            { id: String, created_at: Time, display_name: String, type: Symbol }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

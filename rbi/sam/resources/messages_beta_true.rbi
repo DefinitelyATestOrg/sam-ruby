@@ -13,48 +13,51 @@ module Sam
       sig do
         params(
           max_tokens: Integer,
-          messages: T::Array[T.any(Sam::Models::MessagesBetaTrueCreateParams::Message, Sam::Internal::AnyHash)],
+          messages:
+            T::Array[Sam::MessagesBetaTrueCreateParams::Message::OrHash],
           model: String,
-          metadata: T.any(Sam::Models::MessagesBetaTrueCreateParams::Metadata, Sam::Internal::AnyHash),
+          metadata: Sam::MessagesBetaTrueCreateParams::Metadata::OrHash,
           stop_sequences: T::Array[String],
           stream: T::Boolean,
-          system_: T.any(
-            String,
-            T::Array[T.any(Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1, Sam::Internal::AnyHash)]
-          ),
-          temperature: Float,
-          thinking: T.any(
-            Sam::Models::MessagesBetaTrueCreateParams::Thinking::Enabled,
-            Sam::Internal::AnyHash,
-            Sam::Models::MessagesBetaTrueCreateParams::Thinking::Disabled
-          ),
-          tool_choice: T.any(
-            Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Auto,
-            Sam::Internal::AnyHash,
-            Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Any,
-            Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Tool,
-            Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::None
-          ),
-          tools: T::Array[
+          system_:
             T.any(
-              Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool,
-              Sam::Internal::AnyHash,
-              Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022,
-              Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022,
-              Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022,
-              Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124,
-              Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124,
-              Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124
-            )
-          ],
+              String,
+              T::Array[
+                Sam::MessagesBetaTrueCreateParams::System::UnionMember1::OrHash
+              ]
+            ),
+          temperature: Float,
+          thinking:
+            T.any(
+              Sam::MessagesBetaTrueCreateParams::Thinking::Enabled::OrHash,
+              Sam::MessagesBetaTrueCreateParams::Thinking::Disabled::OrHash
+            ),
+          tool_choice:
+            T.any(
+              Sam::MessagesBetaTrueCreateParams::ToolChoice::Auto::OrHash,
+              Sam::MessagesBetaTrueCreateParams::ToolChoice::Any::OrHash,
+              Sam::MessagesBetaTrueCreateParams::ToolChoice::Tool::OrHash,
+              Sam::MessagesBetaTrueCreateParams::ToolChoice::None::OrHash
+            ),
+          tools:
+            T::Array[
+              T.any(
+                Sam::MessagesBetaTrueCreateParams::Tool::BetaTool::OrHash,
+                Sam::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022::OrHash,
+                Sam::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022::OrHash,
+                Sam::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022::OrHash,
+                Sam::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124::OrHash,
+                Sam::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124::OrHash,
+                Sam::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124::OrHash
+              )
+            ],
           top_k: Integer,
           top_p: Float,
           anthropic_beta: T::Array[String],
           anthropic_version: String,
           x_api_key: String,
-          request_options: Sam::RequestOpts
-        )
-          .returns(Sam::Models::MessagesBetaTrueCreateResponse)
+          request_options: Sam::RequestOptions::OrHash
+        ).returns(Sam::Models::MessagesBetaTrueCreateResponse)
       end
       def create(
         # Body param: The maximum number of tokens to generate before stopping.
@@ -309,10 +312,13 @@ module Sam
         # Workspace.
         x_api_key: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Sam::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

@@ -19,11 +19,11 @@ module Sam
           #
           # @param message_batch_id [String] ID of the Message Batch.
           #
-          # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+          # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use.
           #
-          # @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+          # @param anthropic_version [String] The version of the Anthropic API you want to use.
           #
-          # @param x_api_key [String] Your unique API key for authentication. ...
+          # @param x_api_key [String] Your unique API key for authentication.
           #
           # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -31,7 +31,7 @@ module Sam
           #
           # @see Sam::Models::Messages::Batches::BetaTrueRetrieveParams
           def retrieve(message_batch_id, params = {})
-            parsed, options = Sam::Models::Messages::Batches::BetaTrueRetrieveParams.dump_request(params)
+            parsed, options = Sam::Messages::Batches::BetaTrueRetrieveParams.dump_request(params)
             @client.request(
               method: :get,
               path: ["v1/messages/batches/%1$s?beta=true", message_batch_id],
@@ -60,11 +60,11 @@ module Sam
           #
           # @param message_batch_id [String] ID of the Message Batch.
           #
-          # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+          # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use.
           #
-          # @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+          # @param anthropic_version [String] The version of the Anthropic API you want to use.
           #
-          # @param x_api_key [String] Your unique API key for authentication. ...
+          # @param x_api_key [String] Your unique API key for authentication.
           #
           # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -72,7 +72,7 @@ module Sam
           #
           # @see Sam::Models::Messages::Batches::BetaTrueDeleteParams
           def delete(message_batch_id, params = {})
-            parsed, options = Sam::Models::Messages::Batches::BetaTrueDeleteParams.dump_request(params)
+            parsed, options = Sam::Messages::Batches::BetaTrueDeleteParams.dump_request(params)
             @client.request(
               method: :delete,
               path: ["v1/messages/batches/%1$s?beta=true", message_batch_id],

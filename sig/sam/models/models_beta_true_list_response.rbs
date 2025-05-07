@@ -24,8 +24,6 @@ module Sam
         last_id: String?
       ) -> void
 
-      def to_hash: -> Sam::Models::models_beta_true_list_response
-
       type data =
         { id: String, created_at: Time, display_name: String, type: :model }
 
@@ -44,8 +42,6 @@ module Sam
           display_name: String,
           ?type: :model
         ) -> void
-
-        def to_hash: -> Sam::Models::ModelsBetaTrueListResponse::data
       end
     end
   end

@@ -18,8 +18,6 @@ module Sam
         display_name: String,
         ?type: :model
       ) -> void
-
-      def to_hash: -> Sam::Models::model_retrieve_response
     end
   end
 end

@@ -14,9 +14,8 @@ module Sam
           limit: Integer,
           anthropic_version: String,
           x_api_key: String,
-          request_options: Sam::RequestOpts
-        )
-          .returns(Sam::Models::ModelsBetaTrueListResponse)
+          request_options: Sam::RequestOptions::OrHash
+        ).returns(Sam::Models::ModelsBetaTrueListResponse)
       end
       def list(
         # Query param: ID of the object to use as a cursor for pagination. When provided,
@@ -42,10 +41,13 @@ module Sam
         # Workspace.
         x_api_key: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Sam::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

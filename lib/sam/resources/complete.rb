@@ -17,28 +17,27 @@ module Sam
       #
       # @overload create(max_tokens_to_sample:, model:, prompt:, metadata: nil, stop_sequences: nil, stream: nil, temperature: nil, top_k: nil, top_p: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
       #
-      # @param max_tokens_to_sample [Integer] Body param: The maximum number of tokens to generate before stopping. ...
+      # @param max_tokens_to_sample [Integer] Body param: The maximum number of tokens to generate before stopping.
       #
-      # @param model [String] Body param: The model that will complete your prompt. ...
+      # @param model [String] Body param: The model that will complete your prompt.
       #
-      # @param prompt [String] Body param: The prompt that you want Claude to complete. ...
+      # @param prompt [String] Body param: The prompt that you want Claude to complete.
       #
-      # @param metadata [Sam::Models::CompleteCreateParams::Metadata] Body param: An object describing metadata about the request.
+      # @param metadata [Sam::CompleteCreateParams::Metadata] Body param: An object describing metadata about the request.
       #
-      # @param stop_sequences [Array<String>] Body param: Sequences that will cause the model to stop generating. ...
+      # @param stop_sequences [Array<String>] Body param: Sequences that will cause the model to stop generating.
       #
       # @param stream [Boolean] Body param: Whether to incrementally stream the response using server-sent event
-      # ...
       #
-      # @param temperature [Float] Body param: Amount of randomness injected into the response. ...
+      # @param temperature [Float] Body param: Amount of randomness injected into the response.
       #
-      # @param top_k [Integer] Body param: Only sample from the top K options for each subsequent token. ...
+      # @param top_k [Integer] Body param: Only sample from the top K options for each subsequent token.
       #
-      # @param top_p [Float] Body param: Use nucleus sampling. ...
+      # @param top_p [Float] Body param: Use nucleus sampling.
       #
-      # @param anthropic_version [String] Header param: The version of the Anthropic API you want to use. ...
+      # @param anthropic_version [String] Header param: The version of the Anthropic API you want to use.
       #
-      # @param x_api_key [String] Header param: Your unique API key for authentication. ...
+      # @param x_api_key [String] Header param: Your unique API key for authentication.
       #
       # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -46,7 +45,7 @@ module Sam
       #
       # @see Sam::Models::CompleteCreateParams
       def create(params)
-        parsed, options = Sam::Models::CompleteCreateParams.dump_request(params)
+        parsed, options = Sam::CompleteCreateParams.dump_request(params)
         header_params = {anthropic_version: "anthropic-version", x_api_key: "x-api-key"}
         @client.request(
           method: :post,

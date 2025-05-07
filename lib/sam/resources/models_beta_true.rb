@@ -14,16 +14,14 @@ module Sam
       # @overload list(after_id: nil, before_id: nil, limit: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
       #
       # @param after_id [String] Query param: ID of the object to use as a cursor for pagination. When provided,
-      # ...
       #
       # @param before_id [String] Query param: ID of the object to use as a cursor for pagination. When provided,
-      # ...
       #
-      # @param limit [Integer] Query param: Number of items to return per page. ...
+      # @param limit [Integer] Query param: Number of items to return per page.
       #
-      # @param anthropic_version [String] Header param: The version of the Anthropic API you want to use. ...
+      # @param anthropic_version [String] Header param: The version of the Anthropic API you want to use.
       #
-      # @param x_api_key [String] Header param: Your unique API key for authentication. ...
+      # @param x_api_key [String] Header param: Your unique API key for authentication.
       #
       # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -31,7 +29,7 @@ module Sam
       #
       # @see Sam::Models::ModelsBetaTrueListParams
       def list(params = {})
-        parsed, options = Sam::Models::ModelsBetaTrueListParams.dump_request(params)
+        parsed, options = Sam::ModelsBetaTrueListParams.dump_request(params)
         query_params = [:after_id, :before_id, :limit]
         @client.request(
           method: :get,

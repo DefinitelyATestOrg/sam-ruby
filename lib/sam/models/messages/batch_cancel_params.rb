@@ -41,11 +41,11 @@ module Sam
         #   Some parameter documentations has been truncated, see
         #   {Sam::Models::Messages::BatchCancelParams} for more details.
         #
-        #   @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+        #   @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use.
         #
-        #   @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+        #   @param anthropic_version [String] The version of the Anthropic API you want to use.
         #
-        #   @param x_api_key [String] Your unique API key for authentication. ...
+        #   @param x_api_key [String] Your unique API key for authentication.
         #
         #   @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
       end

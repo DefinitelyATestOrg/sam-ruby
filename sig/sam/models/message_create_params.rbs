@@ -3,16 +3,16 @@ module Sam
     type message_create_params =
       {
         max_tokens: Integer,
-        messages: ::Array[Sam::Models::MessageCreateParams::Message],
+        messages: ::Array[Sam::MessageCreateParams::Message],
         model: String,
-        metadata: Sam::Models::MessageCreateParams::Metadata,
+        metadata: Sam::MessageCreateParams::Metadata,
         stop_sequences: ::Array[String],
         stream: bool,
         system_: Sam::Models::MessageCreateParams::system_,
         temperature: Float,
         thinking: Sam::Models::MessageCreateParams::thinking,
         tool_choice: Sam::Models::MessageCreateParams::tool_choice,
-        tools: ::Array[Sam::Models::MessageCreateParams::tool],
+        tools: ::Array[Sam::MessageCreateParams::tool],
         top_k: Integer,
         top_p: Float,
         anthropic_beta: ::Array[String],
@@ -27,15 +27,15 @@ module Sam
 
       attr_accessor max_tokens: Integer
 
-      attr_accessor messages: ::Array[Sam::Models::MessageCreateParams::Message]
+      attr_accessor messages: ::Array[Sam::MessageCreateParams::Message]
 
       attr_accessor model: String
 
-      attr_reader metadata: Sam::Models::MessageCreateParams::Metadata?
+      attr_reader metadata: Sam::MessageCreateParams::Metadata?
 
       def metadata=: (
-        Sam::Models::MessageCreateParams::Metadata
-      ) -> Sam::Models::MessageCreateParams::Metadata
+        Sam::MessageCreateParams::Metadata
+      ) -> Sam::MessageCreateParams::Metadata
 
       attr_reader stop_sequences: ::Array[String]?
 
@@ -67,11 +67,11 @@ module Sam
         Sam::Models::MessageCreateParams::tool_choice
       ) -> Sam::Models::MessageCreateParams::tool_choice
 
-      attr_reader tools: ::Array[Sam::Models::MessageCreateParams::tool]?
+      attr_reader tools: ::Array[Sam::MessageCreateParams::tool]?
 
       def tools=: (
-        ::Array[Sam::Models::MessageCreateParams::tool]
-      ) -> ::Array[Sam::Models::MessageCreateParams::tool]
+        ::Array[Sam::MessageCreateParams::tool]
+      ) -> ::Array[Sam::MessageCreateParams::tool]
 
       attr_reader top_k: Integer?
 
@@ -95,16 +95,16 @@ module Sam
 
       def initialize: (
         max_tokens: Integer,
-        messages: ::Array[Sam::Models::MessageCreateParams::Message],
+        messages: ::Array[Sam::MessageCreateParams::Message],
         model: String,
-        ?metadata: Sam::Models::MessageCreateParams::Metadata,
+        ?metadata: Sam::MessageCreateParams::Metadata,
         ?stop_sequences: ::Array[String],
         ?stream: bool,
         ?system_: Sam::Models::MessageCreateParams::system_,
         ?temperature: Float,
         ?thinking: Sam::Models::MessageCreateParams::thinking,
         ?tool_choice: Sam::Models::MessageCreateParams::tool_choice,
-        ?tools: ::Array[Sam::Models::MessageCreateParams::tool],
+        ?tools: ::Array[Sam::MessageCreateParams::tool],
         ?top_k: Integer,
         ?top_p: Float,
         ?anthropic_beta: ::Array[String],
@@ -113,41 +113,37 @@ module Sam
         ?request_options: Sam::request_opts
       ) -> void
 
-      def to_hash: -> Sam::Models::message_create_params
-
       type message =
         {
-          content: Sam::Models::MessageCreateParams::Message::content,
-          role: Sam::Models::MessageCreateParams::Message::role
+          content: Sam::MessageCreateParams::Message::content,
+          role: Sam::MessageCreateParams::Message::role
         }
 
       class Message < Sam::Internal::Type::BaseModel
-        attr_accessor content: Sam::Models::MessageCreateParams::Message::content
+        attr_accessor content: Sam::MessageCreateParams::Message::content
 
-        attr_accessor role: Sam::Models::MessageCreateParams::Message::role
+        attr_accessor role: Sam::MessageCreateParams::Message::role
 
         def initialize: (
-          content: Sam::Models::MessageCreateParams::Message::content,
-          role: Sam::Models::MessageCreateParams::Message::role
+          content: Sam::MessageCreateParams::Message::content,
+          role: Sam::MessageCreateParams::Message::role
         ) -> void
-
-        def to_hash: -> Sam::Models::MessageCreateParams::message
 
         type content =
           String
-          | ::Array[Sam::Models::MessageCreateParams::Message::Content::union_member1]
+          | ::Array[Sam::MessageCreateParams::Message::Content::union_member1]
 
         module Content
           extend Sam::Internal::Type::Union
 
           type union_member1 =
-            Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Text
-            | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image
-            | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolUse
-            | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult
-            | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document
-            | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Thinking
-            | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RedactedThinking
+            Sam::MessageCreateParams::Message::Content::UnionMember1::Text
+            | Sam::MessageCreateParams::Message::Content::UnionMember1::Image
+            | Sam::MessageCreateParams::Message::Content::UnionMember1::ToolUse
+            | Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult
+            | Sam::MessageCreateParams::Message::Content::UnionMember1::Document
+            | Sam::MessageCreateParams::Message::Content::UnionMember1::Thinking
+            | Sam::MessageCreateParams::Message::Content::UnionMember1::RedactedThinking
 
           module UnionMember1
             extend Sam::Internal::Type::Union
@@ -156,8 +152,8 @@ module Sam
               {
                 text: String,
                 type: :text,
-                cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Text::CacheControl?,
-                citations: ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Text::citation]?
+                cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::Text::CacheControl?,
+                citations: ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::Text::citation]?
               }
 
             class Text < Sam::Internal::Type::BaseModel
@@ -165,18 +161,16 @@ module Sam
 
               attr_accessor type: :text
 
-              attr_accessor cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Text::CacheControl?
+              attr_accessor cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::Text::CacheControl?
 
-              attr_accessor citations: ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Text::citation]?
+              attr_accessor citations: ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::Text::citation]?
 
               def initialize: (
                 text: String,
-                ?cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Text::CacheControl?,
-                ?citations: ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Text::citation]?,
+                ?cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::Text::CacheControl?,
+                ?citations: ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::Text::citation]?,
                 ?type: :text
               ) -> void
-
-              def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::text
 
               type cache_control = { type: :ephemeral }
 
@@ -184,14 +178,12 @@ module Sam
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
-
-                def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Text::cache_control
               end
 
               type citation =
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Text::Citation::CharLocation
-                | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Text::Citation::PageLocation
-                | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                Sam::MessageCreateParams::Message::Content::UnionMember1::Text::Citation::CharLocation
+                | Sam::MessageCreateParams::Message::Content::UnionMember1::Text::Citation::PageLocation
+                | Sam::MessageCreateParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation
 
               module Citation
                 extend Sam::Internal::Type::Union
@@ -227,8 +219,6 @@ module Sam
                     start_char_index: Integer,
                     ?type: :char_location
                   ) -> void
-
-                  def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Text::Citation::char_location
                 end
 
                 type page_location =
@@ -262,8 +252,6 @@ module Sam
                     start_page_number: Integer,
                     ?type: :page_location
                   ) -> void
-
-                  def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Text::Citation::page_location
                 end
 
                 type content_block_location =
@@ -297,39 +285,35 @@ module Sam
                     start_block_index: Integer,
                     ?type: :content_block_location
                   ) -> void
-
-                  def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Text::Citation::content_block_location
                 end
 
-                def self?.variants: -> [Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation]
+                def self?.variants: -> ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::Text::citation]
               end
             end
 
             type image =
               {
-                source: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image::source,
+                source: Sam::MessageCreateParams::Message::Content::UnionMember1::Image::source,
                 type: :image,
-                cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image::CacheControl?
+                cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::Image::CacheControl?
               }
 
             class Image < Sam::Internal::Type::BaseModel
-              attr_accessor source: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image::source
+              attr_accessor source: Sam::MessageCreateParams::Message::Content::UnionMember1::Image::source
 
               attr_accessor type: :image
 
-              attr_accessor cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image::CacheControl?
+              attr_accessor cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::Image::CacheControl?
 
               def initialize: (
-                source: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image::source,
-                ?cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image::CacheControl?,
+                source: Sam::MessageCreateParams::Message::Content::UnionMember1::Image::source,
+                ?cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::Image::CacheControl?,
                 ?type: :image
               ) -> void
 
-              def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::image
-
               type source =
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image::Source::Base64
-                | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image::Source::URL
+                Sam::MessageCreateParams::Message::Content::UnionMember1::Image::Source::Base64
+                | Sam::MessageCreateParams::Message::Content::UnionMember1::Image::Source::URL
 
               module Source
                 extend Sam::Internal::Type::Union
@@ -337,24 +321,22 @@ module Sam
                 type base64 =
                   {
                     data: String,
-                    media_type: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image::Source::Base64::media_type,
+                    media_type: Sam::MessageCreateParams::Message::Content::UnionMember1::Image::Source::Base64::media_type,
                     type: :base64
                   }
 
                 class Base64 < Sam::Internal::Type::BaseModel
                   attr_accessor data: String
 
-                  attr_accessor media_type: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image::Source::Base64::media_type
+                  attr_accessor media_type: Sam::MessageCreateParams::Message::Content::UnionMember1::Image::Source::Base64::media_type
 
                   attr_accessor type: :base64
 
                   def initialize: (
                     data: String,
-                    media_type: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image::Source::Base64::media_type,
+                    media_type: Sam::MessageCreateParams::Message::Content::UnionMember1::Image::Source::Base64::media_type,
                     ?type: :base64
                   ) -> void
-
-                  def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image::Source::base64
 
                   type media_type =
                     :"image/jpeg" | :"image/png" | :"image/gif" | :"image/webp"
@@ -367,7 +349,7 @@ module Sam
                     IMAGE_GIF: :"image/gif"
                     IMAGE_WEBP: :"image/webp"
 
-                    def self?.values: -> ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image::Source::Base64::media_type]
+                    def self?.values: -> ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::Image::Source::Base64::media_type]
                   end
                 end
 
@@ -379,11 +361,9 @@ module Sam
                   attr_accessor url: String
 
                   def initialize: (url: String, ?type: :url) -> void
-
-                  def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image::Source::url
                 end
 
-                def self?.variants: -> [Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image::Source::URL]
+                def self?.variants: -> ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::Image::source]
               end
 
               type cache_control = { type: :ephemeral }
@@ -392,8 +372,6 @@ module Sam
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
-
-                def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image::cache_control
               end
             end
 
@@ -403,7 +381,7 @@ module Sam
                 input: top,
                 name: String,
                 type: :tool_use,
-                cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolUse::CacheControl?
+                cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolUse::CacheControl?
               }
 
             class ToolUse < Sam::Internal::Type::BaseModel
@@ -415,17 +393,15 @@ module Sam
 
               attr_accessor type: :tool_use
 
-              attr_accessor cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolUse::CacheControl?
+              attr_accessor cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolUse::CacheControl?
 
               def initialize: (
                 id: String,
                 input: top,
                 name: String,
-                ?cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolUse::CacheControl?,
+                ?cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolUse::CacheControl?,
                 ?type: :tool_use
               ) -> void
-
-              def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::tool_use
 
               type cache_control = { type: :ephemeral }
 
@@ -433,8 +409,6 @@ module Sam
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
-
-                def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolUse::cache_control
               end
             end
 
@@ -442,8 +416,8 @@ module Sam
               {
                 tool_use_id: String,
                 type: :tool_result,
-                cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::CacheControl?,
-                content: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::content,
+                cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::CacheControl?,
+                content: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::content,
                 is_error: bool
               }
 
@@ -452,13 +426,13 @@ module Sam
 
               attr_accessor type: :tool_result
 
-              attr_accessor cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::CacheControl?
+              attr_accessor cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::CacheControl?
 
-              attr_reader content: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::content?
+              attr_reader content: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::content?
 
               def content=: (
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::content
-              ) -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::content
+                Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::content
+              ) -> Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::content
 
               attr_reader is_error: bool?
 
@@ -466,13 +440,11 @@ module Sam
 
               def initialize: (
                 tool_use_id: String,
-                ?cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::CacheControl?,
-                ?content: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::content,
+                ?cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::CacheControl?,
+                ?content: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::content,
                 ?is_error: bool,
                 ?type: :tool_result
               ) -> void
-
-              def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::tool_result
 
               type cache_control = { type: :ephemeral }
 
@@ -480,20 +452,18 @@ module Sam
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
-
-                def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::cache_control
               end
 
               type content =
                 String
-                | ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::union_member1]
+                | ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::union_member1]
 
               module Content
                 extend Sam::Internal::Type::Union
 
                 type union_member1 =
-                  Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text
-                  | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
+                  Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text
+                  | Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
 
                 module UnionMember1
                   extend Sam::Internal::Type::Union
@@ -502,8 +472,8 @@ module Sam
                     {
                       text: String,
                       type: :text,
-                      cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl?,
-                      citations: ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]?
+                      cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl?,
+                      citations: ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]?
                     }
 
                   class Text < Sam::Internal::Type::BaseModel
@@ -511,18 +481,16 @@ module Sam
 
                     attr_accessor type: :text
 
-                    attr_accessor cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl?
+                    attr_accessor cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl?
 
-                    attr_accessor citations: ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]?
+                    attr_accessor citations: ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]?
 
                     def initialize: (
                       text: String,
-                      ?cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl?,
-                      ?citations: ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]?,
+                      ?cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl?,
+                      ?citations: ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]?,
                       ?type: :text
                     ) -> void
-
-                    def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::text
 
                     type cache_control = { type: :ephemeral }
 
@@ -530,14 +498,12 @@ module Sam
                       attr_accessor type: :ephemeral
 
                       def initialize: (?type: :ephemeral) -> void
-
-                      def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::cache_control
                     end
 
                     type citation =
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation
-                      | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation
-                      | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                      Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation
+                      | Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation
+                      | Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation
 
                     module Citation
                       extend Sam::Internal::Type::Union
@@ -573,8 +539,6 @@ module Sam
                           start_char_index: Integer,
                           ?type: :char_location
                         ) -> void
-
-                        def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::char_location
                       end
 
                       type page_location =
@@ -608,8 +572,6 @@ module Sam
                           start_page_number: Integer,
                           ?type: :page_location
                         ) -> void
-
-                        def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::page_location
                       end
 
                       type content_block_location =
@@ -643,39 +605,35 @@ module Sam
                           start_block_index: Integer,
                           ?type: :content_block_location
                         ) -> void
-
-                        def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::content_block_location
                       end
 
-                      def self?.variants: -> [Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation]
+                      def self?.variants: -> ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]
                     end
                   end
 
                   type image =
                     {
-                      source: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source,
+                      source: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source,
                       type: :image,
-                      cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl?
+                      cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl?
                     }
 
                   class Image < Sam::Internal::Type::BaseModel
-                    attr_accessor source: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source
+                    attr_accessor source: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source
 
                     attr_accessor type: :image
 
-                    attr_accessor cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl?
+                    attr_accessor cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl?
 
                     def initialize: (
-                      source: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source,
-                      ?cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl?,
+                      source: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source,
+                      ?cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl?,
                       ?type: :image
                     ) -> void
 
-                    def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::image
-
                     type source =
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64
-                      | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL
+                      Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64
+                      | Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL
 
                     module Source
                       extend Sam::Internal::Type::Union
@@ -683,24 +641,22 @@ module Sam
                       type base64 =
                         {
                           data: String,
-                          media_type: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type,
+                          media_type: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type,
                           type: :base64
                         }
 
                       class Base64 < Sam::Internal::Type::BaseModel
                         attr_accessor data: String
 
-                        attr_accessor media_type: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type
+                        attr_accessor media_type: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type
 
                         attr_accessor type: :base64
 
                         def initialize: (
                           data: String,
-                          media_type: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type,
+                          media_type: Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type,
                           ?type: :base64
                         ) -> void
-
-                        def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::base64
 
                         type media_type =
                           :"image/jpeg"
@@ -716,7 +672,7 @@ module Sam
                           IMAGE_GIF: :"image/gif"
                           IMAGE_WEBP: :"image/webp"
 
-                          def self?.values: -> ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type]
+                          def self?.values: -> ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type]
                         end
                       end
 
@@ -728,11 +684,9 @@ module Sam
                         attr_accessor url: String
 
                         def initialize: (url: String, ?type: :url) -> void
-
-                        def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::url
                       end
 
-                      def self?.variants: -> [Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL]
+                      def self?.variants: -> ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source]
                     end
 
                     type cache_control = { type: :ephemeral }
@@ -741,15 +695,13 @@ module Sam
                       attr_accessor type: :ephemeral
 
                       def initialize: (?type: :ephemeral) -> void
-
-                      def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::cache_control
                     end
                   end
 
-                  def self?.variants: -> [Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image]
+                  def self?.variants: -> ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::union_member1]
                 end
 
-                def self?.variants: -> [String, ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::union_member1]]
+                def self?.variants: -> ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::content]
 
                 UnionMember1Array: Sam::Internal::Type::Converter
               end
@@ -757,47 +709,45 @@ module Sam
 
             type document =
               {
-                source: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::source,
+                source: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::source,
                 type: :document,
-                cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::CacheControl?,
-                citations: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Citations,
+                cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::CacheControl?,
+                citations: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Citations,
                 context: String?,
                 title: String?
               }
 
             class Document < Sam::Internal::Type::BaseModel
-              attr_accessor source: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::source
+              attr_accessor source: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::source
 
               attr_accessor type: :document
 
-              attr_accessor cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::CacheControl?
+              attr_accessor cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::CacheControl?
 
-              attr_reader citations: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Citations?
+              attr_reader citations: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Citations?
 
               def citations=: (
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Citations
-              ) -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Citations
+                Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Citations
+              ) -> Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Citations
 
               attr_accessor context: String?
 
               attr_accessor title: String?
 
               def initialize: (
-                source: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::source,
-                ?cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::CacheControl?,
-                ?citations: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Citations,
+                source: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::source,
+                ?cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::CacheControl?,
+                ?citations: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Citations,
                 ?context: String?,
                 ?title: String?,
                 ?type: :document
               ) -> void
 
-              def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::document
-
               type source =
-                Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Base64
-                | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Text
-                | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content
-                | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::URL
+                Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Base64
+                | Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Text
+                | Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content
+                | Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::URL
 
               module Source
                 extend Sam::Internal::Type::Union
@@ -821,8 +771,6 @@ module Sam
                     ?media_type: :"application/pdf",
                     ?type: :base64
                   ) -> void
-
-                  def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::base64
                 end
 
                 type text =
@@ -840,38 +788,34 @@ module Sam
                     ?media_type: :"text/plain",
                     ?type: :text
                   ) -> void
-
-                  def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::text
                 end
 
                 type content =
                   {
-                    content: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::content,
+                    content: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::content,
                     type: :content
                   }
 
                 class Content < Sam::Internal::Type::BaseModel
-                  attr_accessor content: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::content
+                  attr_accessor content: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::content
 
                   attr_accessor type: :content
 
                   def initialize: (
-                    content: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::content,
+                    content: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::content,
                     ?type: :content
                   ) -> void
 
-                  def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::content
-
                   type content =
                     String
-                    | ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::union_member1]
+                    | ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::union_member1]
 
                   module Content
                     extend Sam::Internal::Type::Union
 
                     type union_member1 =
-                      Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text
-                      | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
+                      Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text
+                      | Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
 
                     module UnionMember1
                       extend Sam::Internal::Type::Union
@@ -880,8 +824,8 @@ module Sam
                         {
                           text: String,
                           type: :text,
-                          cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl?,
-                          citations: ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]?
+                          cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl?,
+                          citations: ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]?
                         }
 
                       class Text < Sam::Internal::Type::BaseModel
@@ -889,18 +833,16 @@ module Sam
 
                         attr_accessor type: :text
 
-                        attr_accessor cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl?
+                        attr_accessor cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl?
 
-                        attr_accessor citations: ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]?
+                        attr_accessor citations: ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]?
 
                         def initialize: (
                           text: String,
-                          ?cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl?,
-                          ?citations: ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]?,
+                          ?cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl?,
+                          ?citations: ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]?,
                           ?type: :text
                         ) -> void
-
-                        def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::text
 
                         type cache_control = { type: :ephemeral }
 
@@ -908,14 +850,12 @@ module Sam
                           attr_accessor type: :ephemeral
 
                           def initialize: (?type: :ephemeral) -> void
-
-                          def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::cache_control
                         end
 
                         type citation =
-                          Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation
-                          | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation
-                          | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                          Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation
+                          | Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation
+                          | Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation
 
                         module Citation
                           extend Sam::Internal::Type::Union
@@ -951,8 +891,6 @@ module Sam
                               start_char_index: Integer,
                               ?type: :char_location
                             ) -> void
-
-                            def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::char_location
                           end
 
                           type page_location =
@@ -986,8 +924,6 @@ module Sam
                               start_page_number: Integer,
                               ?type: :page_location
                             ) -> void
-
-                            def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::page_location
                           end
 
                           type content_block_location =
@@ -1021,39 +957,35 @@ module Sam
                               start_block_index: Integer,
                               ?type: :content_block_location
                             ) -> void
-
-                            def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::content_block_location
                           end
 
-                          def self?.variants: -> [Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation]
+                          def self?.variants: -> ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]
                         end
                       end
 
                       type image =
                         {
-                          source: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source,
+                          source: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source,
                           type: :image,
-                          cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl?
+                          cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl?
                         }
 
                       class Image < Sam::Internal::Type::BaseModel
-                        attr_accessor source: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source
+                        attr_accessor source: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source
 
                         attr_accessor type: :image
 
-                        attr_accessor cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl?
+                        attr_accessor cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl?
 
                         def initialize: (
-                          source: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source,
-                          ?cache_control: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl?,
+                          source: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source,
+                          ?cache_control: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl?,
                           ?type: :image
                         ) -> void
 
-                        def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::image
-
                         type source =
-                          Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64
-                          | Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL
+                          Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64
+                          | Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL
 
                         module Source
                           extend Sam::Internal::Type::Union
@@ -1061,24 +993,22 @@ module Sam
                           type base64 =
                             {
                               data: String,
-                              media_type: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type,
+                              media_type: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type,
                               type: :base64
                             }
 
                           class Base64 < Sam::Internal::Type::BaseModel
                             attr_accessor data: String
 
-                            attr_accessor media_type: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type
+                            attr_accessor media_type: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type
 
                             attr_accessor type: :base64
 
                             def initialize: (
                               data: String,
-                              media_type: Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type,
+                              media_type: Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type,
                               ?type: :base64
                             ) -> void
-
-                            def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::base64
 
                             type media_type =
                               :"image/jpeg"
@@ -1094,7 +1024,7 @@ module Sam
                               IMAGE_GIF: :"image/gif"
                               IMAGE_WEBP: :"image/webp"
 
-                              def self?.values: -> ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type]
+                              def self?.values: -> ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type]
                             end
                           end
 
@@ -1106,11 +1036,9 @@ module Sam
                             attr_accessor url: String
 
                             def initialize: (url: String, ?type: :url) -> void
-
-                            def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::url
                           end
 
-                          def self?.variants: -> [Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL]
+                          def self?.variants: -> ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source]
                         end
 
                         type cache_control = { type: :ephemeral }
@@ -1119,15 +1047,13 @@ module Sam
                           attr_accessor type: :ephemeral
 
                           def initialize: (?type: :ephemeral) -> void
-
-                          def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::cache_control
                         end
                       end
 
-                      def self?.variants: -> [Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image]
+                      def self?.variants: -> ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::union_member1]
                     end
 
-                    def self?.variants: -> [String, ::Array[Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::union_member1]]
+                    def self?.variants: -> ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::content]
 
                     UnionMember1Array: Sam::Internal::Type::Converter
                   end
@@ -1141,11 +1067,9 @@ module Sam
                   attr_accessor url: String
 
                   def initialize: (url: String, ?type: :url) -> void
-
-                  def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::url
                 end
 
-                def self?.variants: -> [Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Base64, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Text, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::Source::URL]
+                def self?.variants: -> ::Array[Sam::MessageCreateParams::Message::Content::UnionMember1::Document::source]
               end
 
               type cache_control = { type: :ephemeral }
@@ -1154,8 +1078,6 @@ module Sam
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
-
-                def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::cache_control
               end
 
               type citations = { enabled: bool }
@@ -1166,8 +1088,6 @@ module Sam
                 def enabled=: (bool) -> bool
 
                 def initialize: (?enabled: bool) -> void
-
-                def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document::citations
               end
             end
 
@@ -1186,8 +1106,6 @@ module Sam
                 thinking: String,
                 ?type: :thinking
               ) -> void
-
-              def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::thinking
             end
 
             type redacted_thinking = { data: String, type: :redacted_thinking }
@@ -1198,14 +1116,12 @@ module Sam
               attr_accessor type: :redacted_thinking
 
               def initialize: (data: String, ?type: :redacted_thinking) -> void
-
-              def to_hash: -> Sam::Models::MessageCreateParams::Message::Content::UnionMember1::redacted_thinking
             end
 
-            def self?.variants: -> [Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Text, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Image, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolUse, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::ToolResult, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Document, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::Thinking, Sam::Models::MessageCreateParams::Message::Content::UnionMember1::RedactedThinking]
+            def self?.variants: -> ::Array[Sam::MessageCreateParams::Message::Content::union_member1]
           end
 
-          def self?.variants: -> [String, ::Array[Sam::Models::MessageCreateParams::Message::Content::union_member1]]
+          def self?.variants: -> ::Array[Sam::MessageCreateParams::Message::content]
 
           UnionMember1Array: Sam::Internal::Type::Converter
         end
@@ -1218,7 +1134,7 @@ module Sam
           USER: :user
           ASSISTANT: :assistant
 
-          def self?.values: -> ::Array[Sam::Models::MessageCreateParams::Message::role]
+          def self?.values: -> ::Array[Sam::MessageCreateParams::Message::role]
         end
       end
 
@@ -1228,12 +1144,10 @@ module Sam
         attr_accessor user_id: String?
 
         def initialize: (?user_id: String?) -> void
-
-        def to_hash: -> Sam::Models::MessageCreateParams::metadata
       end
 
       type system_ =
-        String | ::Array[Sam::Models::MessageCreateParams::System::UnionMember1]
+        String | ::Array[Sam::MessageCreateParams::System::UnionMember1]
 
       module System
         extend Sam::Internal::Type::Union
@@ -1242,8 +1156,8 @@ module Sam
           {
             text: String,
             type: :text,
-            cache_control: Sam::Models::MessageCreateParams::System::UnionMember1::CacheControl?,
-            citations: ::Array[Sam::Models::MessageCreateParams::System::UnionMember1::citation]?
+            cache_control: Sam::MessageCreateParams::System::UnionMember1::CacheControl?,
+            citations: ::Array[Sam::MessageCreateParams::System::UnionMember1::citation]?
           }
 
         class UnionMember1 < Sam::Internal::Type::BaseModel
@@ -1251,18 +1165,16 @@ module Sam
 
           attr_accessor type: :text
 
-          attr_accessor cache_control: Sam::Models::MessageCreateParams::System::UnionMember1::CacheControl?
+          attr_accessor cache_control: Sam::MessageCreateParams::System::UnionMember1::CacheControl?
 
-          attr_accessor citations: ::Array[Sam::Models::MessageCreateParams::System::UnionMember1::citation]?
+          attr_accessor citations: ::Array[Sam::MessageCreateParams::System::UnionMember1::citation]?
 
           def initialize: (
             text: String,
-            ?cache_control: Sam::Models::MessageCreateParams::System::UnionMember1::CacheControl?,
-            ?citations: ::Array[Sam::Models::MessageCreateParams::System::UnionMember1::citation]?,
+            ?cache_control: Sam::MessageCreateParams::System::UnionMember1::CacheControl?,
+            ?citations: ::Array[Sam::MessageCreateParams::System::UnionMember1::citation]?,
             ?type: :text
           ) -> void
-
-          def to_hash: -> Sam::Models::MessageCreateParams::System::union_member1
 
           type cache_control = { type: :ephemeral }
 
@@ -1270,14 +1182,12 @@ module Sam
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void
-
-            def to_hash: -> Sam::Models::MessageCreateParams::System::UnionMember1::cache_control
           end
 
           type citation =
-            Sam::Models::MessageCreateParams::System::UnionMember1::Citation::CharLocation
-            | Sam::Models::MessageCreateParams::System::UnionMember1::Citation::PageLocation
-            | Sam::Models::MessageCreateParams::System::UnionMember1::Citation::ContentBlockLocation
+            Sam::MessageCreateParams::System::UnionMember1::Citation::CharLocation
+            | Sam::MessageCreateParams::System::UnionMember1::Citation::PageLocation
+            | Sam::MessageCreateParams::System::UnionMember1::Citation::ContentBlockLocation
 
           module Citation
             extend Sam::Internal::Type::Union
@@ -1313,8 +1223,6 @@ module Sam
                 start_char_index: Integer,
                 ?type: :char_location
               ) -> void
-
-              def to_hash: -> Sam::Models::MessageCreateParams::System::UnionMember1::Citation::char_location
             end
 
             type page_location =
@@ -1348,8 +1256,6 @@ module Sam
                 start_page_number: Integer,
                 ?type: :page_location
               ) -> void
-
-              def to_hash: -> Sam::Models::MessageCreateParams::System::UnionMember1::Citation::page_location
             end
 
             type content_block_location =
@@ -1383,22 +1289,20 @@ module Sam
                 start_block_index: Integer,
                 ?type: :content_block_location
               ) -> void
-
-              def to_hash: -> Sam::Models::MessageCreateParams::System::UnionMember1::Citation::content_block_location
             end
 
-            def self?.variants: -> [Sam::Models::MessageCreateParams::System::UnionMember1::Citation::CharLocation, Sam::Models::MessageCreateParams::System::UnionMember1::Citation::PageLocation, Sam::Models::MessageCreateParams::System::UnionMember1::Citation::ContentBlockLocation]
+            def self?.variants: -> ::Array[Sam::MessageCreateParams::System::UnionMember1::citation]
           end
         end
 
-        def self?.variants: -> [String, ::Array[Sam::Models::MessageCreateParams::System::UnionMember1]]
+        def self?.variants: -> ::Array[Sam::Models::MessageCreateParams::system_]
 
         UnionMember1Array: Sam::Internal::Type::Converter
       end
 
       type thinking =
-        Sam::Models::MessageCreateParams::Thinking::Enabled
-        | Sam::Models::MessageCreateParams::Thinking::Disabled
+        Sam::MessageCreateParams::Thinking::Enabled
+        | Sam::MessageCreateParams::Thinking::Disabled
 
       module Thinking
         extend Sam::Internal::Type::Union
@@ -1411,8 +1315,6 @@ module Sam
           attr_accessor type: :enabled
 
           def initialize: (budget_tokens: Integer, ?type: :enabled) -> void
-
-          def to_hash: -> Sam::Models::MessageCreateParams::Thinking::enabled
         end
 
         type disabled = { type: :disabled }
@@ -1421,18 +1323,16 @@ module Sam
           attr_accessor type: :disabled
 
           def initialize: (?type: :disabled) -> void
-
-          def to_hash: -> Sam::Models::MessageCreateParams::Thinking::disabled
         end
 
-        def self?.variants: -> [Sam::Models::MessageCreateParams::Thinking::Enabled, Sam::Models::MessageCreateParams::Thinking::Disabled]
+        def self?.variants: -> ::Array[Sam::Models::MessageCreateParams::thinking]
       end
 
       type tool_choice =
-        Sam::Models::MessageCreateParams::ToolChoice::Auto
-        | Sam::Models::MessageCreateParams::ToolChoice::Any
-        | Sam::Models::MessageCreateParams::ToolChoice::Tool
-        | Sam::Models::MessageCreateParams::ToolChoice::None
+        Sam::MessageCreateParams::ToolChoice::Auto
+        | Sam::MessageCreateParams::ToolChoice::Any
+        | Sam::MessageCreateParams::ToolChoice::Tool
+        | Sam::MessageCreateParams::ToolChoice::None
 
       module ToolChoice
         extend Sam::Internal::Type::Union
@@ -1450,8 +1350,6 @@ module Sam
             ?disable_parallel_tool_use: bool,
             ?type: :auto
           ) -> void
-
-          def to_hash: -> Sam::Models::MessageCreateParams::ToolChoice::auto
         end
 
         type any = { type: :any, disable_parallel_tool_use: bool }
@@ -1467,8 +1365,6 @@ module Sam
             ?disable_parallel_tool_use: bool,
             ?type: :any
           ) -> void
-
-          def to_hash: -> Sam::Models::MessageCreateParams::ToolChoice::any
         end
 
         type tool =
@@ -1488,8 +1384,6 @@ module Sam
             ?disable_parallel_tool_use: bool,
             ?type: :tool
           ) -> void
-
-          def to_hash: -> Sam::Models::MessageCreateParams::ToolChoice::tool
         end
 
         type none = { type: :none }
@@ -1498,48 +1392,44 @@ module Sam
           attr_accessor type: :none
 
           def initialize: (?type: :none) -> void
-
-          def to_hash: -> Sam::Models::MessageCreateParams::ToolChoice::none
         end
 
-        def self?.variants: -> [Sam::Models::MessageCreateParams::ToolChoice::Auto, Sam::Models::MessageCreateParams::ToolChoice::Any, Sam::Models::MessageCreateParams::ToolChoice::Tool, Sam::Models::MessageCreateParams::ToolChoice::None]
+        def self?.variants: -> ::Array[Sam::Models::MessageCreateParams::tool_choice]
       end
 
       type tool =
-        Sam::Models::MessageCreateParams::Tool::Tool
-        | Sam::Models::MessageCreateParams::Tool::BashTool20250124
-        | Sam::Models::MessageCreateParams::Tool::TextEditor20250124
+        Sam::MessageCreateParams::Tool::Tool
+        | Sam::MessageCreateParams::Tool::BashTool20250124
+        | Sam::MessageCreateParams::Tool::TextEditor20250124
 
       module Tool
         extend Sam::Internal::Type::Union
 
         type tool =
           {
-            input_schema: Sam::Models::MessageCreateParams::Tool::Tool::InputSchema,
+            input_schema: Sam::MessageCreateParams::Tool::Tool::InputSchema,
             name: String,
-            cache_control: Sam::Models::MessageCreateParams::Tool::Tool::CacheControl?,
+            cache_control: Sam::MessageCreateParams::Tool::Tool::CacheControl?,
             description: String
           }
 
         class Tool < Sam::Internal::Type::BaseModel
-          attr_accessor input_schema: Sam::Models::MessageCreateParams::Tool::Tool::InputSchema
+          attr_accessor input_schema: Sam::MessageCreateParams::Tool::Tool::InputSchema
 
           attr_accessor name: String
 
-          attr_accessor cache_control: Sam::Models::MessageCreateParams::Tool::Tool::CacheControl?
+          attr_accessor cache_control: Sam::MessageCreateParams::Tool::Tool::CacheControl?
 
           attr_reader description: String?
 
           def description=: (String) -> String
 
           def initialize: (
-            input_schema: Sam::Models::MessageCreateParams::Tool::Tool::InputSchema,
+            input_schema: Sam::MessageCreateParams::Tool::Tool::InputSchema,
             name: String,
-            ?cache_control: Sam::Models::MessageCreateParams::Tool::Tool::CacheControl?,
+            ?cache_control: Sam::MessageCreateParams::Tool::Tool::CacheControl?,
             ?description: String
           ) -> void
-
-          def to_hash: -> Sam::Models::MessageCreateParams::Tool::tool
 
           type input_schema = { type: :object, properties: top? }
 
@@ -1549,8 +1439,6 @@ module Sam
             attr_accessor properties: top?
 
             def initialize: (?properties: top?, ?type: :object) -> void
-
-            def to_hash: -> Sam::Models::MessageCreateParams::Tool::Tool::input_schema
           end
 
           type cache_control = { type: :ephemeral }
@@ -1559,8 +1447,6 @@ module Sam
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void
-
-            def to_hash: -> Sam::Models::MessageCreateParams::Tool::Tool::cache_control
           end
         end
 
@@ -1568,7 +1454,7 @@ module Sam
           {
             name: :bash,
             type: :bash_20250124,
-            cache_control: Sam::Models::MessageCreateParams::Tool::BashTool20250124::CacheControl?
+            cache_control: Sam::MessageCreateParams::Tool::BashTool20250124::CacheControl?
           }
 
         class BashTool20250124 < Sam::Internal::Type::BaseModel
@@ -1576,15 +1462,13 @@ module Sam
 
           attr_accessor type: :bash_20250124
 
-          attr_accessor cache_control: Sam::Models::MessageCreateParams::Tool::BashTool20250124::CacheControl?
+          attr_accessor cache_control: Sam::MessageCreateParams::Tool::BashTool20250124::CacheControl?
 
           def initialize: (
-            ?cache_control: Sam::Models::MessageCreateParams::Tool::BashTool20250124::CacheControl?,
+            ?cache_control: Sam::MessageCreateParams::Tool::BashTool20250124::CacheControl?,
             ?name: :bash,
             ?type: :bash_20250124
           ) -> void
-
-          def to_hash: -> Sam::Models::MessageCreateParams::Tool::bash_tool20250124
 
           type cache_control = { type: :ephemeral }
 
@@ -1592,8 +1476,6 @@ module Sam
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void
-
-            def to_hash: -> Sam::Models::MessageCreateParams::Tool::BashTool20250124::cache_control
           end
         end
 
@@ -1601,7 +1483,7 @@ module Sam
           {
             name: :str_replace_editor,
             type: :text_editor_20250124,
-            cache_control: Sam::Models::MessageCreateParams::Tool::TextEditor20250124::CacheControl?
+            cache_control: Sam::MessageCreateParams::Tool::TextEditor20250124::CacheControl?
           }
 
         class TextEditor20250124 < Sam::Internal::Type::BaseModel
@@ -1609,15 +1491,13 @@ module Sam
 
           attr_accessor type: :text_editor_20250124
 
-          attr_accessor cache_control: Sam::Models::MessageCreateParams::Tool::TextEditor20250124::CacheControl?
+          attr_accessor cache_control: Sam::MessageCreateParams::Tool::TextEditor20250124::CacheControl?
 
           def initialize: (
-            ?cache_control: Sam::Models::MessageCreateParams::Tool::TextEditor20250124::CacheControl?,
+            ?cache_control: Sam::MessageCreateParams::Tool::TextEditor20250124::CacheControl?,
             ?name: :str_replace_editor,
             ?type: :text_editor_20250124
           ) -> void
-
-          def to_hash: -> Sam::Models::MessageCreateParams::Tool::text_editor20250124
 
           type cache_control = { type: :ephemeral }
 
@@ -1625,12 +1505,10 @@ module Sam
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void
-
-            def to_hash: -> Sam::Models::MessageCreateParams::Tool::TextEditor20250124::cache_control
           end
         end
 
-        def self?.variants: -> [Sam::Models::MessageCreateParams::Tool::Tool, Sam::Models::MessageCreateParams::Tool::BashTool20250124, Sam::Models::MessageCreateParams::Tool::TextEditor20250124]
+        def self?.variants: -> ::Array[Sam::MessageCreateParams::tool]
       end
     end
   end

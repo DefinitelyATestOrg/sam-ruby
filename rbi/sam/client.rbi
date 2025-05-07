@@ -47,8 +47,7 @@ module Sam
         timeout: Float,
         initial_retry_delay: Float,
         max_retry_delay: Float
-      )
-        .returns(T.attached_class)
+      ).returns(T.attached_class)
     end
     def self.new(
       # API key used for authenticating requests via the Authorization header Defaults
@@ -62,6 +61,7 @@ module Sam
       timeout: Sam::Client::DEFAULT_TIMEOUT_IN_SECONDS,
       initial_retry_delay: Sam::Client::DEFAULT_INITIAL_RETRY_DELAY,
       max_retry_delay: Sam::Client::DEFAULT_MAX_RETRY_DELAY
-    ); end
+    )
+    end
   end
 end

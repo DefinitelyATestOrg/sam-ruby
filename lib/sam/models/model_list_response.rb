@@ -35,7 +35,6 @@ module Sam
       #   @param data [Array<Sam::Models::ModelListResponse::Data>]
       #
       #   @param first_id [String, nil] First ID in the `data` list. Can be used as the `before_id` for the previous pag
-      #   ...
       #
       #   @param has_more [Boolean] Indicates if there are more results in the requested page direction.
       #
@@ -76,11 +75,10 @@ module Sam
         #   @param id [String] Unique model identifier.
         #
         #   @param created_at [Time] RFC 3339 datetime string representing the time at which the model was released.
-        #   ...
         #
         #   @param display_name [String] A human-readable name for the model.
         #
-        #   @param type [Symbol, :model] Object type. ...
+        #   @param type [Symbol, :model] Object type.
       end
     end
   end

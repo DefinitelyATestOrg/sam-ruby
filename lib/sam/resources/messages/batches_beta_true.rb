@@ -18,15 +18,13 @@ module Sam
         #
         # @overload create(requests:, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #
-        # @param requests [Array<Sam::Models::Messages::BatchesBetaTrueCreateParams::Request>] Body param: List of requests for prompt completion. Each is an individual reques
-        # ...
+        # @param requests [Array<Sam::Messages::BatchesBetaTrueCreateParams::Request>] Body param: List of requests for prompt completion. Each is an individual reques
         #
         # @param anthropic_beta [Array<String>] Header param: Optional header to specify the beta version(s) you want to use.
-        # ...
         #
-        # @param anthropic_version [String] Header param: The version of the Anthropic API you want to use. ...
+        # @param anthropic_version [String] Header param: The version of the Anthropic API you want to use.
         #
-        # @param x_api_key [String] Header param: Your unique API key for authentication. ...
+        # @param x_api_key [String] Header param: Your unique API key for authentication.
         #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -34,7 +32,7 @@ module Sam
         #
         # @see Sam::Models::Messages::BatchesBetaTrueCreateParams
         def create(params)
-          parsed, options = Sam::Models::Messages::BatchesBetaTrueCreateParams.dump_request(params)
+          parsed, options = Sam::Messages::BatchesBetaTrueCreateParams.dump_request(params)
           header_params =
             {anthropic_beta: "anthropic-beta", anthropic_version: "anthropic-version", x_api_key: "x-api-key"}
           @client.request(
@@ -59,19 +57,16 @@ module Sam
         # @overload list(after_id: nil, before_id: nil, limit: nil, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #
         # @param after_id [String] Query param: ID of the object to use as a cursor for pagination. When provided,
-        # ...
         #
         # @param before_id [String] Query param: ID of the object to use as a cursor for pagination. When provided,
-        # ...
         #
-        # @param limit [Integer] Query param: Number of items to return per page. ...
+        # @param limit [Integer] Query param: Number of items to return per page.
         #
         # @param anthropic_beta [Array<String>] Header param: Optional header to specify the beta version(s) you want to use.
-        # ...
         #
-        # @param anthropic_version [String] Header param: The version of the Anthropic API you want to use. ...
+        # @param anthropic_version [String] Header param: The version of the Anthropic API you want to use.
         #
-        # @param x_api_key [String] Header param: Your unique API key for authentication. ...
+        # @param x_api_key [String] Header param: Your unique API key for authentication.
         #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -79,7 +74,7 @@ module Sam
         #
         # @see Sam::Models::Messages::BatchesBetaTrueListParams
         def list(params = {})
-          parsed, options = Sam::Models::Messages::BatchesBetaTrueListParams.dump_request(params)
+          parsed, options = Sam::Messages::BatchesBetaTrueListParams.dump_request(params)
           query_params = [:after_id, :before_id, :limit]
           @client.request(
             method: :get,

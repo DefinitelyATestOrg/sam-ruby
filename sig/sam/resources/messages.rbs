@@ -7,16 +7,16 @@ module Sam
 
       def create: (
         max_tokens: Integer,
-        messages: ::Array[Sam::Models::MessageCreateParams::Message],
+        messages: ::Array[Sam::MessageCreateParams::Message],
         model: String,
-        ?metadata: Sam::Models::MessageCreateParams::Metadata,
+        ?metadata: Sam::MessageCreateParams::Metadata,
         ?stop_sequences: ::Array[String],
         ?stream: bool,
         ?system_: Sam::Models::MessageCreateParams::system_,
         ?temperature: Float,
         ?thinking: Sam::Models::MessageCreateParams::thinking,
         ?tool_choice: Sam::Models::MessageCreateParams::tool_choice,
-        ?tools: ::Array[Sam::Models::MessageCreateParams::tool],
+        ?tools: ::Array[Sam::MessageCreateParams::tool],
         ?top_k: Integer,
         ?top_p: Float,
         ?anthropic_beta: ::Array[String],
@@ -26,12 +26,12 @@ module Sam
       ) -> Sam::Models::MessageCreateResponse
 
       def count_tokens: (
-        messages: ::Array[Sam::Models::MessageCountTokensParams::Message],
+        messages: ::Array[Sam::MessageCountTokensParams::Message],
         model: String,
         ?system_: Sam::Models::MessageCountTokensParams::system_,
         ?thinking: Sam::Models::MessageCountTokensParams::thinking,
         ?tool_choice: Sam::Models::MessageCountTokensParams::tool_choice,
-        ?tools: ::Array[Sam::Models::MessageCountTokensParams::tool],
+        ?tools: ::Array[Sam::MessageCountTokensParams::tool],
         ?anthropic_beta: ::Array[String],
         ?anthropic_version: String,
         ?x_api_key: String,
@@ -39,12 +39,12 @@ module Sam
       ) -> Sam::Models::MessageCountTokensResponse
 
       def count_tokens_beta: (
-        messages: ::Array[Sam::Models::MessageCountTokensBetaParams::Message],
+        messages: ::Array[Sam::MessageCountTokensBetaParams::Message],
         model: String,
         ?system_: Sam::Models::MessageCountTokensBetaParams::system_,
         ?thinking: Sam::Models::MessageCountTokensBetaParams::thinking,
         ?tool_choice: Sam::Models::MessageCountTokensBetaParams::tool_choice,
-        ?tools: ::Array[Sam::Models::MessageCountTokensBetaParams::tool],
+        ?tools: ::Array[Sam::MessageCountTokensBetaParams::tool],
         ?anthropic_beta: ::Array[String],
         ?anthropic_version: String,
         ?x_api_key: String,

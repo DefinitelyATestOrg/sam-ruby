@@ -4,6 +4,8 @@ module Sam
   module Models
     module Messages
       class BatchResultsBetaResponse < Sam::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
         # Developer-provided ID created for each request in a Message Batch. Useful for
         # matching results to requests, as results may be given out of request order.
         #
@@ -33,15 +35,14 @@ module Sam
         sig do
           params(
             custom_id: String,
-            result: T.any(
-              Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded,
-              Sam::Internal::AnyHash,
-              Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored,
-              Sam::Models::Messages::BatchResultsBetaResponse::Result::Canceled,
-              Sam::Models::Messages::BatchResultsBetaResponse::Result::Expired
-            )
-          )
-            .returns(T.attached_class)
+            result:
+              T.any(
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::OrHash,
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::OrHash,
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Canceled::OrHash,
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Expired::OrHash
+              )
+          ).returns(T.attached_class)
         end
         def self.new(
           # Developer-provided ID created for each request in a Message Batch. Useful for
@@ -55,22 +56,25 @@ module Sam
           # processing failed, or the reason why processing was not attempted, such as
           # cancellation or expiration.
           result:
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                custom_id: String,
-                result: T.any(
+          override.returns(
+            {
+              custom_id: String,
+              result:
+                T.any(
                   Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded,
                   Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored,
                   Sam::Models::Messages::BatchResultsBetaResponse::Result::Canceled,
                   Sam::Models::Messages::BatchResultsBetaResponse::Result::Expired
                 )
-              }
-            )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # Processing result for this request.
         #
@@ -80,15 +84,31 @@ module Sam
         module Result
           extend Sam::Internal::Type::Union
 
+          Variants =
+            T.type_alias do
+              T.any(
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded,
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored,
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Canceled,
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Expired
+              )
+            end
+
           class Succeeded < Sam::Internal::Type::BaseModel
-            sig { returns(Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message) }
+            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
+            sig do
+              returns(
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message
+              )
+            end
             attr_reader :message
 
             sig do
               params(
-                message: T.any(Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message, Sam::Internal::AnyHash)
-              )
-                .void
+                message:
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::OrHash
+              ).void
             end
             attr_writer :message
 
@@ -97,22 +117,30 @@ module Sam
 
             sig do
               params(
-                message: T.any(Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message, Sam::Internal::AnyHash),
+                message:
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::OrHash,
                 type: Symbol
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
-            def self.new(message:, type: :succeeded); end
+            def self.new(message:, type: :succeeded)
+            end
 
             sig do
-              override
-                .returns(
-                  {message: Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message, type: Symbol}
-                )
+              override.returns(
+                {
+                  message:
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message,
+                  type: Symbol
+                }
+              )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Message < Sam::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
               # Unique object identifier.
               #
               # The format and length of IDs may change over time.
@@ -223,45 +251,44 @@ module Sam
               #
               # Total input tokens in a request is the summation of `input_tokens`,
               # `cache_creation_input_tokens`, and `cache_read_input_tokens`.
-              sig { returns(Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Usage) }
+              sig do
+                returns(
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Usage
+                )
+              end
               attr_reader :usage
 
               sig do
                 params(
-                  usage: T.any(
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Usage,
-                    Sam::Internal::AnyHash
-                  )
-                )
-                  .void
+                  usage:
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Usage::OrHash
+                ).void
               end
               attr_writer :usage
 
               sig do
                 params(
                   id: String,
-                  content: T::Array[
-                    T.any(
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text,
-                      Sam::Internal::AnyHash,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::ToolUse,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Thinking,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::RedactedThinking
-                    )
-                  ],
+                  content:
+                    T::Array[
+                      T.any(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::OrHash,
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::ToolUse::OrHash,
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Thinking::OrHash,
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::RedactedThinking::OrHash
+                      )
+                    ],
                   model: String,
-                  stop_reason: T.nilable(
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason::OrSymbol
-                  ),
+                  stop_reason:
+                    T.nilable(
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason::OrSymbol
+                    ),
                   stop_sequence: T.nilable(String),
-                  usage: T.any(
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Usage,
-                    Sam::Internal::AnyHash
-                  ),
+                  usage:
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Usage::OrHash,
                   role: Symbol,
                   type: Symbol
-                )
-                  .returns(T.attached_class)
+                ).returns(T.attached_class)
               end
               def self.new(
                 # Unique object identifier.
@@ -344,13 +371,15 @@ module Sam
                 #
                 # For Messages, this is always `"message"`.
                 type: :message
-              ); end
+              )
+              end
+
               sig do
-                override
-                  .returns(
-                    {
-                      id: String,
-                      content: T::Array[
+                override.returns(
+                  {
+                    id: String,
+                    content:
+                      T::Array[
                         T.any(
                           Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text,
                           Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::ToolUse,
@@ -358,23 +387,39 @@ module Sam
                           Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::RedactedThinking
                         )
                       ],
-                      model: String,
-                      role: Symbol,
-                      stop_reason: T.nilable(
+                    model: String,
+                    role: Symbol,
+                    stop_reason:
+                      T.nilable(
                         Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason::TaggedSymbol
                       ),
-                      stop_sequence: T.nilable(String),
-                      type: Symbol,
-                      usage: Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Usage
-                    }
-                  )
+                    stop_sequence: T.nilable(String),
+                    type: Symbol,
+                    usage:
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Usage
+                  }
+                )
               end
-              def to_hash; end
+              def to_hash
+              end
 
               module Content
                 extend Sam::Internal::Type::Union
 
+                Variants =
+                  T.type_alias do
+                    T.any(
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::ToolUse,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Thinking,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::RedactedThinking
+                    )
+                  end
+
                 class Text < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   # Citations supporting the text block.
                   #
                   # The type of citation returned will depend on the type of document being cited.
@@ -403,20 +448,19 @@ module Sam
 
                   sig do
                     params(
-                      citations: T.nilable(
-                        T::Array[
-                          T.any(
-                            Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation,
-                            Sam::Internal::AnyHash,
-                            Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation,
-                            Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation
-                          )
-                        ]
-                      ),
+                      citations:
+                        T.nilable(
+                          T::Array[
+                            T.any(
+                              Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation::OrHash,
+                              Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation::OrHash,
+                              Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation::OrHash
+                            )
+                          ]
+                        ),
                       text: String,
                       type: Symbol
-                    )
-                      .returns(T.attached_class)
+                    ).returns(T.attached_class)
                   end
                   def self.new(
                     # Citations supporting the text block.
@@ -427,12 +471,14 @@ module Sam
                     citations:,
                     text:,
                     type: :text
-                  ); end
+                  )
+                  end
+
                   sig do
-                    override
-                      .returns(
-                        {
-                          citations: T.nilable(
+                    override.returns(
+                      {
+                        citations:
+                          T.nilable(
                             T::Array[
                               T.any(
                                 Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation,
@@ -441,17 +487,32 @@ module Sam
                               )
                             ]
                           ),
-                          text: String,
-                          type: Symbol
-                        }
-                      )
+                        text: String,
+                        type: Symbol
+                      }
+                    )
                   end
-                  def to_hash; end
+                  def to_hash
+                  end
 
                   module Citation
                     extend Sam::Internal::Type::Union
 
+                    Variants =
+                      T.type_alias do
+                        T.any(
+                          Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation,
+                          Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation,
+                          Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation
+                        )
+                      end
+
                     class CharLocation < Sam::Internal::Type::BaseModel
+                      OrHash =
+                        T.type_alias do
+                          T.any(T.self_type, Sam::Internal::AnyHash)
+                        end
+
                       sig { returns(String) }
                       attr_accessor :cited_text
 
@@ -478,8 +539,7 @@ module Sam
                           end_char_index: Integer,
                           start_char_index: Integer,
                           type: Symbol
-                        )
-                          .returns(T.attached_class)
+                        ).returns(T.attached_class)
                       end
                       def self.new(
                         cited_text:,
@@ -492,22 +552,27 @@ module Sam
                       end
 
                       sig do
-                        override
-                          .returns(
-                            {
-                              cited_text: String,
-                              document_index: Integer,
-                              document_title: T.nilable(String),
-                              end_char_index: Integer,
-                              start_char_index: Integer,
-                              type: Symbol
-                            }
-                          )
+                        override.returns(
+                          {
+                            cited_text: String,
+                            document_index: Integer,
+                            document_title: T.nilable(String),
+                            end_char_index: Integer,
+                            start_char_index: Integer,
+                            type: Symbol
+                          }
+                        )
                       end
-                      def to_hash; end
+                      def to_hash
+                      end
                     end
 
                     class PageLocation < Sam::Internal::Type::BaseModel
+                      OrHash =
+                        T.type_alias do
+                          T.any(T.self_type, Sam::Internal::AnyHash)
+                        end
+
                       sig { returns(String) }
                       attr_accessor :cited_text
 
@@ -534,8 +599,7 @@ module Sam
                           end_page_number: Integer,
                           start_page_number: Integer,
                           type: Symbol
-                        )
-                          .returns(T.attached_class)
+                        ).returns(T.attached_class)
                       end
                       def self.new(
                         cited_text:,
@@ -548,22 +612,27 @@ module Sam
                       end
 
                       sig do
-                        override
-                          .returns(
-                            {
-                              cited_text: String,
-                              document_index: Integer,
-                              document_title: T.nilable(String),
-                              end_page_number: Integer,
-                              start_page_number: Integer,
-                              type: Symbol
-                            }
-                          )
+                        override.returns(
+                          {
+                            cited_text: String,
+                            document_index: Integer,
+                            document_title: T.nilable(String),
+                            end_page_number: Integer,
+                            start_page_number: Integer,
+                            type: Symbol
+                          }
+                        )
                       end
-                      def to_hash; end
+                      def to_hash
+                      end
                     end
 
                     class ContentBlockLocation < Sam::Internal::Type::BaseModel
+                      OrHash =
+                        T.type_alias do
+                          T.any(T.self_type, Sam::Internal::AnyHash)
+                        end
+
                       sig { returns(String) }
                       attr_accessor :cited_text
 
@@ -590,8 +659,7 @@ module Sam
                           end_block_index: Integer,
                           start_block_index: Integer,
                           type: Symbol
-                        )
-                          .returns(T.attached_class)
+                        ).returns(T.attached_class)
                       end
                       def self.new(
                         cited_text:,
@@ -600,34 +668,41 @@ module Sam
                         end_block_index:,
                         start_block_index:,
                         type: :content_block_location
-                      ); end
-                      sig do
-                        override
-                          .returns(
-                            {
-                              cited_text: String,
-                              document_index: Integer,
-                              document_title: T.nilable(String),
-                              end_block_index: Integer,
-                              start_block_index: Integer,
-                              type: Symbol
-                            }
-                          )
+                      )
                       end
-                      def to_hash; end
+
+                      sig do
+                        override.returns(
+                          {
+                            cited_text: String,
+                            document_index: Integer,
+                            document_title: T.nilable(String),
+                            end_block_index: Integer,
+                            start_block_index: Integer,
+                            type: Symbol
+                          }
+                        )
+                      end
+                      def to_hash
+                      end
                     end
 
                     sig do
-                      override
-                        .returns(
-                          [Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation]
-                        )
+                      override.returns(
+                        T::Array[
+                          Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::Variants
+                        ]
+                      )
                     end
-                    def self.variants; end
+                    def self.variants
+                    end
                   end
                 end
 
                 class ToolUse < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(String) }
                   attr_accessor :id
 
@@ -648,13 +723,27 @@ module Sam
                       type: Symbol
                     ).returns(T.attached_class)
                   end
-                  def self.new(id:, input:, name:, type: :tool_use); end
+                  def self.new(id:, input:, name:, type: :tool_use)
+                  end
 
-                  sig { override.returns({id: String, input: T.anything, name: String, type: Symbol}) }
-                  def to_hash; end
+                  sig do
+                    override.returns(
+                      {
+                        id: String,
+                        input: T.anything,
+                        name: String,
+                        type: Symbol
+                      }
+                    )
+                  end
+                  def to_hash
+                  end
                 end
 
                 class Thinking < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(String) }
                   attr_accessor :signature
 
@@ -664,34 +753,55 @@ module Sam
                   sig { returns(Symbol) }
                   attr_accessor :type
 
-                  sig { params(signature: String, thinking: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(signature:, thinking:, type: :thinking); end
+                  sig do
+                    params(
+                      signature: String,
+                      thinking: String,
+                      type: Symbol
+                    ).returns(T.attached_class)
+                  end
+                  def self.new(signature:, thinking:, type: :thinking)
+                  end
 
-                  sig { override.returns({signature: String, thinking: String, type: Symbol}) }
-                  def to_hash; end
+                  sig do
+                    override.returns(
+                      { signature: String, thinking: String, type: Symbol }
+                    )
+                  end
+                  def to_hash
+                  end
                 end
 
                 class RedactedThinking < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(String) }
                   attr_accessor :data
 
                   sig { returns(Symbol) }
                   attr_accessor :type
 
-                  sig { params(data: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(data:, type: :redacted_thinking); end
+                  sig do
+                    params(data: String, type: Symbol).returns(T.attached_class)
+                  end
+                  def self.new(data:, type: :redacted_thinking)
+                  end
 
-                  sig { override.returns({data: String, type: Symbol}) }
-                  def to_hash; end
+                  sig { override.returns({ data: String, type: Symbol }) }
+                  def to_hash
+                  end
                 end
 
                 sig do
-                  override
-                    .returns(
-                      [Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::ToolUse, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Thinking, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::RedactedThinking]
-                    )
+                  override.returns(
+                    T::Array[
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Variants
+                    ]
+                  )
                 end
-                def self.variants; end
+                def self.variants
+                end
               end
 
               # The reason that we stopped.
@@ -709,7 +819,12 @@ module Sam
                 extend Sam::Internal::Type::Enum
 
                 TaggedSymbol =
-                  T.type_alias { T.all(Symbol, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason) }
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason
+                    )
+                  end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 END_TURN =
@@ -734,15 +849,20 @@ module Sam
                   )
 
                 sig do
-                  override
-                    .returns(
-                      T::Array[Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason::TaggedSymbol]
-                    )
+                  override.returns(
+                    T::Array[
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason::TaggedSymbol
+                    ]
+                  )
                 end
-                def self.values; end
+                def self.values
+                end
               end
 
               class Usage < Sam::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                 # The number of input tokens used to create the cache entry.
                 sig { returns(T.nilable(Integer)) }
                 attr_accessor :cache_creation_input_tokens
@@ -780,8 +900,7 @@ module Sam
                     cache_read_input_tokens: T.nilable(Integer),
                     input_tokens: Integer,
                     output_tokens: Integer
-                  )
-                    .returns(T.attached_class)
+                  ).returns(T.attached_class)
                 end
                 def self.new(
                   # The number of input tokens used to create the cache entry.
@@ -792,32 +911,40 @@ module Sam
                   input_tokens:,
                   # The number of output tokens which were used.
                   output_tokens:
-                ); end
-                sig do
-                  override
-                    .returns(
-                      {
-                        cache_creation_input_tokens: T.nilable(Integer),
-                        cache_read_input_tokens: T.nilable(Integer),
-                        input_tokens: Integer,
-                        output_tokens: Integer
-                      }
-                    )
+                )
                 end
-                def to_hash; end
+
+                sig do
+                  override.returns(
+                    {
+                      cache_creation_input_tokens: T.nilable(Integer),
+                      cache_read_input_tokens: T.nilable(Integer),
+                      input_tokens: Integer,
+                      output_tokens: Integer
+                    }
+                  )
+                end
+                def to_hash
+                end
               end
             end
           end
 
           class Errored < Sam::Internal::Type::BaseModel
-            sig { returns(Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error) }
+            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
+            sig do
+              returns(
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error
+              )
+            end
             attr_reader :error
 
             sig do
               params(
-                error: T.any(Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error, Sam::Internal::AnyHash)
-              )
-                .void
+                error:
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::OrHash
+              ).void
             end
             attr_writer :error
 
@@ -826,20 +953,30 @@ module Sam
 
             sig do
               params(
-                error: T.any(Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error, Sam::Internal::AnyHash),
+                error:
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::OrHash,
                 type: Symbol
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
-            def self.new(error:, type: :errored); end
+            def self.new(error:, type: :errored)
+            end
 
             sig do
-              override
-                .returns({error: Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error, type: Symbol})
+              override.returns(
+                {
+                  error:
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error,
+                  type: Symbol
+                }
+              )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Error < Sam::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
               sig do
                 returns(
                   T.any(
@@ -862,29 +999,29 @@ module Sam
 
               sig do
                 params(
-                  error: T.any(
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::InvalidRequestError,
-                    Sam::Internal::AnyHash,
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::AuthenticationError,
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::BillingError,
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::PermissionError,
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::NotFoundError,
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::RateLimitError,
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::TimeoutError,
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::APIError,
-                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::OverloadedError
-                  ),
+                  error:
+                    T.any(
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::InvalidRequestError::OrHash,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::AuthenticationError::OrHash,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::BillingError::OrHash,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::PermissionError::OrHash,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::NotFoundError::OrHash,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::RateLimitError::OrHash,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::TimeoutError::OrHash,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::APIError::OrHash,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::OverloadedError::OrHash
+                    ),
                   type: Symbol
-                )
-                  .returns(T.attached_class)
+                ).returns(T.attached_class)
               end
-              def self.new(error:, type: :error); end
+              def self.new(error:, type: :error)
+              end
 
               sig do
-                override
-                  .returns(
-                    {
-                      error: T.any(
+                override.returns(
+                  {
+                    error:
+                      T.any(
                         Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::InvalidRequestError,
                         Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::AuthenticationError,
                         Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::BillingError,
@@ -895,181 +1032,290 @@ module Sam
                         Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::APIError,
                         Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::OverloadedError
                       ),
-                      type: Symbol
-                    }
-                  )
+                    type: Symbol
+                  }
+                )
               end
-              def to_hash; end
+              def to_hash
+              end
 
               module Error
                 extend Sam::Internal::Type::Union
 
+                Variants =
+                  T.type_alias do
+                    T.any(
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::InvalidRequestError,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::AuthenticationError,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::BillingError,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::PermissionError,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::NotFoundError,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::RateLimitError,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::TimeoutError,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::APIError,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::OverloadedError
+                    )
+                  end
+
                 class InvalidRequestError < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(String) }
                   attr_accessor :message
 
                   sig { returns(Symbol) }
                   attr_accessor :type
 
-                  sig { params(message: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(message:, type: :invalid_request_error); end
+                  sig do
+                    params(message: String, type: Symbol).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(message:, type: :invalid_request_error)
+                  end
 
-                  sig { override.returns({message: String, type: Symbol}) }
-                  def to_hash; end
+                  sig { override.returns({ message: String, type: Symbol }) }
+                  def to_hash
+                  end
                 end
 
                 class AuthenticationError < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(String) }
                   attr_accessor :message
 
                   sig { returns(Symbol) }
                   attr_accessor :type
 
-                  sig { params(message: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(message:, type: :authentication_error); end
+                  sig do
+                    params(message: String, type: Symbol).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(message:, type: :authentication_error)
+                  end
 
-                  sig { override.returns({message: String, type: Symbol}) }
-                  def to_hash; end
+                  sig { override.returns({ message: String, type: Symbol }) }
+                  def to_hash
+                  end
                 end
 
                 class BillingError < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(String) }
                   attr_accessor :message
 
                   sig { returns(Symbol) }
                   attr_accessor :type
 
-                  sig { params(message: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(message:, type: :billing_error); end
+                  sig do
+                    params(message: String, type: Symbol).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(message:, type: :billing_error)
+                  end
 
-                  sig { override.returns({message: String, type: Symbol}) }
-                  def to_hash; end
+                  sig { override.returns({ message: String, type: Symbol }) }
+                  def to_hash
+                  end
                 end
 
                 class PermissionError < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(String) }
                   attr_accessor :message
 
                   sig { returns(Symbol) }
                   attr_accessor :type
 
-                  sig { params(message: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(message:, type: :permission_error); end
+                  sig do
+                    params(message: String, type: Symbol).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(message:, type: :permission_error)
+                  end
 
-                  sig { override.returns({message: String, type: Symbol}) }
-                  def to_hash; end
+                  sig { override.returns({ message: String, type: Symbol }) }
+                  def to_hash
+                  end
                 end
 
                 class NotFoundError < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(String) }
                   attr_accessor :message
 
                   sig { returns(Symbol) }
                   attr_accessor :type
 
-                  sig { params(message: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(message:, type: :not_found_error); end
+                  sig do
+                    params(message: String, type: Symbol).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(message:, type: :not_found_error)
+                  end
 
-                  sig { override.returns({message: String, type: Symbol}) }
-                  def to_hash; end
+                  sig { override.returns({ message: String, type: Symbol }) }
+                  def to_hash
+                  end
                 end
 
                 class RateLimitError < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(String) }
                   attr_accessor :message
 
                   sig { returns(Symbol) }
                   attr_accessor :type
 
-                  sig { params(message: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(message:, type: :rate_limit_error); end
+                  sig do
+                    params(message: String, type: Symbol).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(message:, type: :rate_limit_error)
+                  end
 
-                  sig { override.returns({message: String, type: Symbol}) }
-                  def to_hash; end
+                  sig { override.returns({ message: String, type: Symbol }) }
+                  def to_hash
+                  end
                 end
 
                 class TimeoutError < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(String) }
                   attr_accessor :message
 
                   sig { returns(Symbol) }
                   attr_accessor :type
 
-                  sig { params(message: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(message:, type: :timeout_error); end
+                  sig do
+                    params(message: String, type: Symbol).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(message:, type: :timeout_error)
+                  end
 
-                  sig { override.returns({message: String, type: Symbol}) }
-                  def to_hash; end
+                  sig { override.returns({ message: String, type: Symbol }) }
+                  def to_hash
+                  end
                 end
 
                 class APIError < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(String) }
                   attr_accessor :message
 
                   sig { returns(Symbol) }
                   attr_accessor :type
 
-                  sig { params(message: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(message:, type: :api_error); end
+                  sig do
+                    params(message: String, type: Symbol).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(message:, type: :api_error)
+                  end
 
-                  sig { override.returns({message: String, type: Symbol}) }
-                  def to_hash; end
+                  sig { override.returns({ message: String, type: Symbol }) }
+                  def to_hash
+                  end
                 end
 
                 class OverloadedError < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(String) }
                   attr_accessor :message
 
                   sig { returns(Symbol) }
                   attr_accessor :type
 
-                  sig { params(message: String, type: Symbol).returns(T.attached_class) }
-                  def self.new(message:, type: :overloaded_error); end
+                  sig do
+                    params(message: String, type: Symbol).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(message:, type: :overloaded_error)
+                  end
 
-                  sig { override.returns({message: String, type: Symbol}) }
-                  def to_hash; end
+                  sig { override.returns({ message: String, type: Symbol }) }
+                  def to_hash
+                  end
                 end
 
                 sig do
-                  override
-                    .returns(
-                      [Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::InvalidRequestError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::AuthenticationError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::BillingError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::PermissionError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::NotFoundError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::RateLimitError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::TimeoutError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::APIError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::OverloadedError]
-                    )
+                  override.returns(
+                    T::Array[
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::Variants
+                    ]
+                  )
                 end
-                def self.variants; end
+                def self.variants
+                end
               end
             end
           end
 
           class Canceled < Sam::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
             sig { returns(Symbol) }
             attr_accessor :type
 
             sig { params(type: Symbol).returns(T.attached_class) }
-            def self.new(type: :canceled); end
+            def self.new(type: :canceled)
+            end
 
-            sig { override.returns({type: Symbol}) }
-            def to_hash; end
+            sig { override.returns({ type: Symbol }) }
+            def to_hash
+            end
           end
 
           class Expired < Sam::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
             sig { returns(Symbol) }
             attr_accessor :type
 
             sig { params(type: Symbol).returns(T.attached_class) }
-            def self.new(type: :expired); end
+            def self.new(type: :expired)
+            end
 
-            sig { override.returns({type: Symbol}) }
-            def to_hash; end
+            sig { override.returns({ type: Symbol }) }
+            def to_hash
+            end
           end
 
           sig do
-            override
-              .returns(
-                [Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored, Sam::Models::Messages::BatchResultsBetaResponse::Result::Canceled, Sam::Models::Messages::BatchResultsBetaResponse::Result::Expired]
-              )
+            override.returns(
+              T::Array[
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Variants
+              ]
+            )
           end
-          def self.variants; end
+          def self.variants
+          end
         end
       end
     end

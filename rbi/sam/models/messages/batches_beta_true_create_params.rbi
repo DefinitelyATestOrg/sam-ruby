@@ -7,9 +7,13 @@ module Sam
         extend Sam::Internal::Type::RequestParameters::Converter
         include Sam::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
         # List of requests for prompt completion. Each is an individual request to create
         # a Message.
-        sig { returns(T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request]) }
+        sig do
+          returns(T::Array[Sam::Messages::BatchesBetaTrueCreateParams::Request])
+        end
         attr_accessor :requests
 
         # Optional header to specify the beta version(s) you want to use.
@@ -46,13 +50,15 @@ module Sam
 
         sig do
           params(
-            requests: T::Array[T.any(Sam::Models::Messages::BatchesBetaTrueCreateParams::Request, Sam::Internal::AnyHash)],
+            requests:
+              T::Array[
+                Sam::Messages::BatchesBetaTrueCreateParams::Request::OrHash
+              ],
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: T.any(Sam::RequestOptions, Sam::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: Sam::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # List of requests for prompt completion. Each is an individual request to create
@@ -76,22 +82,27 @@ module Sam
           # Workspace.
           x_api_key: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                requests: T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request],
-                anthropic_beta: T::Array[String],
-                anthropic_version: String,
-                x_api_key: String,
-                request_options: Sam::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              requests:
+                T::Array[Sam::Messages::BatchesBetaTrueCreateParams::Request],
+              anthropic_beta: T::Array[String],
+              anthropic_version: String,
+              x_api_key: String,
+              request_options: Sam::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         class Request < Sam::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
           # Developer-provided ID created for each request in a Message Batch. Useful for
           # matching results to requests, as results may be given out of request order.
           #
@@ -103,23 +114,25 @@ module Sam
           #
           # See the [Messages API reference](/en/api/messages) for full documentation on
           # available parameters.
-          sig { returns(Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params) }
+          sig do
+            returns(Sam::Messages::BatchesBetaTrueCreateParams::Request::Params)
+          end
           attr_reader :params
 
           sig do
             params(
-              params: T.any(Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params, Sam::Internal::AnyHash)
-            )
-              .void
+              params:
+                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::OrHash
+            ).void
           end
           attr_writer :params
 
           sig do
             params(
               custom_id: String,
-              params: T.any(Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params, Sam::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              params:
+                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             # Developer-provided ID created for each request in a Message Batch. Useful for
@@ -132,14 +145,24 @@ module Sam
             # See the [Messages API reference](/en/api/messages) for full documentation on
             # available parameters.
             params:
-          ); end
-          sig do
-            override
-              .returns({custom_id: String, params: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params})
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                custom_id: String,
+                params:
+                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params
+              }
+            )
+          end
+          def to_hash
+          end
 
           class Params < Sam::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
             # The maximum number of tokens to generate before stopping.
             #
             # Note that our models may stop _before_ reaching this maximum. This parameter
@@ -236,7 +259,13 @@ module Sam
             # [system prompt](https://docs.anthropic.com/en/docs/system-prompts), you can use
             # the top-level `system` parameter — there is no `"system"` role for input
             # messages in the Messages API.
-            sig { returns(T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message]) }
+            sig do
+              returns(
+                T::Array[
+                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message
+                ]
+              )
+            end
             attr_accessor :messages
 
             # The model that will complete your prompt.
@@ -247,17 +276,20 @@ module Sam
             attr_accessor :model
 
             # An object describing metadata about the request.
-            sig { returns(T.nilable(Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Metadata)) }
+            sig do
+              returns(
+                T.nilable(
+                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Metadata
+                )
+              )
+            end
             attr_reader :metadata
 
             sig do
               params(
-                metadata: T.any(
-                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Metadata,
-                  Sam::Internal::AnyHash
-                )
-              )
-                .void
+                metadata:
+                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Metadata::OrHash
+              ).void
             end
             attr_writer :metadata
 
@@ -296,7 +328,9 @@ module Sam
                 T.nilable(
                   T.any(
                     String,
-                    T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1]
+                    T::Array[
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1
+                    ]
                   )
                 )
               )
@@ -305,17 +339,14 @@ module Sam
 
             sig do
               params(
-                system_: T.any(
-                  String,
-                  T::Array[
-                    T.any(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1,
-                      Sam::Internal::AnyHash
-                    )
-                  ]
-                )
-              )
-                .void
+                system_:
+                  T.any(
+                    String,
+                    T::Array[
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::OrHash
+                    ]
+                  )
+              ).void
             end
             attr_writer :system_
 
@@ -346,8 +377,8 @@ module Sam
               returns(
                 T.nilable(
                   T.any(
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Enabled,
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Disabled
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Enabled,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Disabled
                   )
                 )
               )
@@ -356,13 +387,12 @@ module Sam
 
             sig do
               params(
-                thinking: T.any(
-                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Enabled,
-                  Sam::Internal::AnyHash,
-                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Disabled
-                )
-              )
-                .void
+                thinking:
+                  T.any(
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Enabled::OrHash,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Disabled::OrHash
+                  )
+              ).void
             end
             attr_writer :thinking
 
@@ -372,10 +402,10 @@ module Sam
               returns(
                 T.nilable(
                   T.any(
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Auto,
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Any,
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Tool,
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::None
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Auto,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Any,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Tool,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::None
                   )
                 )
               )
@@ -384,15 +414,14 @@ module Sam
 
             sig do
               params(
-                tool_choice: T.any(
-                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Auto,
-                  Sam::Internal::AnyHash,
-                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Any,
-                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Tool,
-                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::None
-                )
-              )
-                .void
+                tool_choice:
+                  T.any(
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Auto::OrHash,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Any::OrHash,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Tool::OrHash,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::None::OrHash
+                  )
+              ).void
             end
             attr_writer :tool_choice
 
@@ -470,13 +499,13 @@ module Sam
                 T.nilable(
                   T::Array[
                     T.any(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124
                     )
                   ]
                 )
@@ -486,20 +515,19 @@ module Sam
 
             sig do
               params(
-                tools: T::Array[
-                  T.any(
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool,
-                    Sam::Internal::AnyHash,
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022,
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022,
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022,
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124,
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124,
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124
-                  )
-                ]
-              )
-                .void
+                tools:
+                  T::Array[
+                    T.any(
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::OrHash,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022::OrHash,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022::OrHash,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022::OrHash,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124::OrHash,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124::OrHash,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124::OrHash
+                    )
+                  ]
+              ).void
             end
             attr_writer :tools
 
@@ -538,57 +566,50 @@ module Sam
             sig do
               params(
                 max_tokens: Integer,
-                messages: T::Array[
-                  T.any(
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message,
-                    Sam::Internal::AnyHash
-                  )
-                ],
+                messages:
+                  T::Array[
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::OrHash
+                  ],
                 model: String,
-                metadata: T.any(
-                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Metadata,
-                  Sam::Internal::AnyHash
-                ),
+                metadata:
+                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Metadata::OrHash,
                 stop_sequences: T::Array[String],
                 stream: T::Boolean,
-                system_: T.any(
-                  String,
+                system_:
+                  T.any(
+                    String,
+                    T::Array[
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::OrHash
+                    ]
+                  ),
+                temperature: Float,
+                thinking:
+                  T.any(
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Enabled::OrHash,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Disabled::OrHash
+                  ),
+                tool_choice:
+                  T.any(
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Auto::OrHash,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Any::OrHash,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Tool::OrHash,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::None::OrHash
+                  ),
+                tools:
                   T::Array[
                     T.any(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1,
-                      Sam::Internal::AnyHash
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::OrHash,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022::OrHash,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022::OrHash,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022::OrHash,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124::OrHash,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124::OrHash,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124::OrHash
                     )
-                  ]
-                ),
-                temperature: Float,
-                thinking: T.any(
-                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Enabled,
-                  Sam::Internal::AnyHash,
-                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Disabled
-                ),
-                tool_choice: T.any(
-                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Auto,
-                  Sam::Internal::AnyHash,
-                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Any,
-                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Tool,
-                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::None
-                ),
-                tools: T::Array[
-                  T.any(
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool,
-                    Sam::Internal::AnyHash,
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022,
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022,
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022,
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124,
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124,
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124
-                  )
-                ],
+                  ],
                 top_k: Integer,
                 top_p: Float
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               # The maximum number of tokens to generate before stopping.
@@ -824,64 +845,79 @@ module Sam
               # Recommended for advanced use cases only. You usually only need to use
               # `temperature`.
               top_p: nil
-            ); end
+            )
+            end
+
             sig do
-              override
-                .returns(
-                  {
-                    max_tokens: Integer,
-                    messages: T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message],
-                    model: String,
-                    metadata: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Metadata,
-                    stop_sequences: T::Array[String],
-                    stream: T::Boolean,
-                    system_: T.any(
+              override.returns(
+                {
+                  max_tokens: Integer,
+                  messages:
+                    T::Array[
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message
+                    ],
+                  model: String,
+                  metadata:
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Metadata,
+                  stop_sequences: T::Array[String],
+                  stream: T::Boolean,
+                  system_:
+                    T.any(
                       String,
-                      T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1]
+                      T::Array[
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1
+                      ]
                     ),
-                    temperature: Float,
-                    thinking: T.any(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Enabled,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Disabled
+                  temperature: Float,
+                  thinking:
+                    T.any(
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Enabled,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Disabled
                     ),
-                    tool_choice: T.any(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Auto,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Any,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Tool,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::None
+                  tool_choice:
+                    T.any(
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Auto,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Any,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Tool,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::None
                     ),
-                    tools: T::Array[
+                  tools:
+                    T::Array[
                       T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool,
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022,
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022,
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022,
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124,
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124,
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124
                       )
                     ],
-                    top_k: Integer,
-                    top_p: Float
-                  }
-                )
+                  top_k: Integer,
+                  top_p: Float
+                }
+              )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class Message < Sam::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
               sig do
                 returns(
                   T.any(
                     String,
                     T::Array[
                       T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text,
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image,
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse,
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult,
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document,
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Thinking,
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Thinking,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking
                       )
                     ]
                   )
@@ -889,63 +925,106 @@ module Sam
               end
               attr_accessor :content
 
-              sig { returns(Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role::OrSymbol) }
+              sig do
+                returns(
+                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role::OrSymbol
+                )
+              end
               attr_accessor :role
 
               sig do
                 params(
-                  content: T.any(
-                    String,
-                    T::Array[
-                      T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text,
-                        Sam::Internal::AnyHash,
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image,
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse,
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult,
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document,
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Thinking,
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking
-                      )
-                    ]
-                  ),
-                  role: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role::OrSymbol
-                )
-                  .returns(T.attached_class)
+                  content:
+                    T.any(
+                      String,
+                      T::Array[
+                        T.any(
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::OrHash,
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::OrHash,
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse::OrHash,
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::OrHash,
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::OrHash,
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Thinking::OrHash,
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking::OrHash
+                        )
+                      ]
+                    ),
+                  role:
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role::OrSymbol
+                ).returns(T.attached_class)
               end
-              def self.new(content:, role:); end
+              def self.new(content:, role:)
+              end
 
               sig do
-                override
-                  .returns(
-                    {
-                      content: T.any(
+                override.returns(
+                  {
+                    content:
+                      T.any(
                         String,
                         T::Array[
                           T.any(
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text,
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image,
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse,
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult,
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document,
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Thinking,
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text,
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image,
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse,
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult,
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document,
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Thinking,
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking
                           )
                         ]
                       ),
-                      role: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role::OrSymbol
-                    }
-                  )
+                    role:
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role::OrSymbol
+                  }
+                )
               end
-              def to_hash; end
+              def to_hash
+              end
 
               module Content
                 extend Sam::Internal::Type::Union
 
+                Variants =
+                  T.type_alias do
+                    T.any(
+                      String,
+                      T::Array[
+                        T.any(
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text,
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image,
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse,
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult,
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document,
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Thinking,
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking
+                        )
+                      ]
+                    )
+                  end
+
                 module UnionMember1
                   extend Sam::Internal::Type::Union
 
+                  Variants =
+                    T.type_alias do
+                      T.any(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Thinking,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking
+                      )
+                    end
+
                   class Text < Sam::Internal::Type::BaseModel
+                    OrHash =
+                      T.type_alias do
+                        T.any(T.self_type, Sam::Internal::AnyHash)
+                      end
+
                     sig { returns(String) }
                     attr_accessor :text
 
@@ -955,7 +1034,7 @@ module Sam
                     sig do
                       returns(
                         T.nilable(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::CacheControl
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::CacheControl
                         )
                       )
                     end
@@ -963,14 +1042,11 @@ module Sam
 
                     sig do
                       params(
-                        cache_control: T.nilable(
-                          T.any(
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::CacheControl,
-                            Sam::Internal::AnyHash
+                        cache_control:
+                          T.nilable(
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::CacheControl::OrHash
                           )
-                        )
-                      )
-                        .void
+                      ).void
                     end
                     attr_writer :cache_control
 
@@ -979,9 +1055,9 @@ module Sam
                         T.nilable(
                           T::Array[
                             T.any(
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation,
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation,
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation,
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation,
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation
                             )
                           ]
                         )
@@ -992,66 +1068,92 @@ module Sam
                     sig do
                       params(
                         text: String,
-                        cache_control: T.nilable(
-                          T.any(
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::CacheControl,
-                            Sam::Internal::AnyHash
-                          )
-                        ),
-                        citations: T.nilable(
-                          T::Array[
-                            T.any(
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation,
-                              Sam::Internal::AnyHash,
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation,
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation
-                            )
-                          ]
-                        ),
+                        cache_control:
+                          T.nilable(
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::CacheControl::OrHash
+                          ),
+                        citations:
+                          T.nilable(
+                            T::Array[
+                              T.any(
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation::OrHash,
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation::OrHash,
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation::OrHash
+                              )
+                            ]
+                          ),
                         type: Symbol
-                      )
-                        .returns(T.attached_class)
+                      ).returns(T.attached_class)
                     end
-                    def self.new(text:, cache_control: nil, citations: nil, type: :text); end
+                    def self.new(
+                      text:,
+                      cache_control: nil,
+                      citations: nil,
+                      type: :text
+                    )
+                    end
 
                     sig do
-                      override
-                        .returns(
-                          {
-                            text: String,
-                            type: Symbol,
-                            cache_control: T.nilable(
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::CacheControl
+                      override.returns(
+                        {
+                          text: String,
+                          type: Symbol,
+                          cache_control:
+                            T.nilable(
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::CacheControl
                             ),
-                            citations: T.nilable(
+                          citations:
+                            T.nilable(
                               T::Array[
                                 T.any(
-                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation,
-                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation,
-                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation,
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation,
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation
                                 )
                               ]
                             )
-                          }
-                        )
+                        }
+                      )
                     end
-                    def to_hash; end
+                    def to_hash
+                    end
 
                     class CacheControl < Sam::Internal::Type::BaseModel
+                      OrHash =
+                        T.type_alias do
+                          T.any(T.self_type, Sam::Internal::AnyHash)
+                        end
+
                       sig { returns(Symbol) }
                       attr_accessor :type
 
                       sig { params(type: Symbol).returns(T.attached_class) }
-                      def self.new(type: :ephemeral); end
+                      def self.new(type: :ephemeral)
+                      end
 
-                      sig { override.returns({type: Symbol}) }
-                      def to_hash; end
+                      sig { override.returns({ type: Symbol }) }
+                      def to_hash
+                      end
                     end
 
                     module Citation
                       extend Sam::Internal::Type::Union
 
+                      Variants =
+                        T.type_alias do
+                          T.any(
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation,
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation,
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                          )
+                        end
+
                       class CharLocation < Sam::Internal::Type::BaseModel
+                        OrHash =
+                          T.type_alias do
+                            T.any(T.self_type, Sam::Internal::AnyHash)
+                          end
+
                         sig { returns(String) }
                         attr_accessor :cited_text
 
@@ -1078,8 +1180,7 @@ module Sam
                             end_char_index: Integer,
                             start_char_index: Integer,
                             type: Symbol
-                          )
-                            .returns(T.attached_class)
+                          ).returns(T.attached_class)
                         end
                         def self.new(
                           cited_text:,
@@ -1092,22 +1193,27 @@ module Sam
                         end
 
                         sig do
-                          override
-                            .returns(
-                              {
-                                cited_text: String,
-                                document_index: Integer,
-                                document_title: T.nilable(String),
-                                end_char_index: Integer,
-                                start_char_index: Integer,
-                                type: Symbol
-                              }
-                            )
+                          override.returns(
+                            {
+                              cited_text: String,
+                              document_index: Integer,
+                              document_title: T.nilable(String),
+                              end_char_index: Integer,
+                              start_char_index: Integer,
+                              type: Symbol
+                            }
+                          )
                         end
-                        def to_hash; end
+                        def to_hash
+                        end
                       end
 
                       class PageLocation < Sam::Internal::Type::BaseModel
+                        OrHash =
+                          T.type_alias do
+                            T.any(T.self_type, Sam::Internal::AnyHash)
+                          end
+
                         sig { returns(String) }
                         attr_accessor :cited_text
 
@@ -1134,8 +1240,7 @@ module Sam
                             end_page_number: Integer,
                             start_page_number: Integer,
                             type: Symbol
-                          )
-                            .returns(T.attached_class)
+                          ).returns(T.attached_class)
                         end
                         def self.new(
                           cited_text:,
@@ -1148,22 +1253,27 @@ module Sam
                         end
 
                         sig do
-                          override
-                            .returns(
-                              {
-                                cited_text: String,
-                                document_index: Integer,
-                                document_title: T.nilable(String),
-                                end_page_number: Integer,
-                                start_page_number: Integer,
-                                type: Symbol
-                              }
-                            )
+                          override.returns(
+                            {
+                              cited_text: String,
+                              document_index: Integer,
+                              document_title: T.nilable(String),
+                              end_page_number: Integer,
+                              start_page_number: Integer,
+                              type: Symbol
+                            }
+                          )
                         end
-                        def to_hash; end
+                        def to_hash
+                        end
                       end
 
                       class ContentBlockLocation < Sam::Internal::Type::BaseModel
+                        OrHash =
+                          T.type_alias do
+                            T.any(T.self_type, Sam::Internal::AnyHash)
+                          end
+
                         sig { returns(String) }
                         attr_accessor :cited_text
 
@@ -1190,8 +1300,7 @@ module Sam
                             end_block_index: Integer,
                             start_block_index: Integer,
                             type: Symbol
-                          )
-                            .returns(T.attached_class)
+                          ).returns(T.attached_class)
                         end
                         def self.new(
                           cited_text:,
@@ -1200,39 +1309,48 @@ module Sam
                           end_block_index:,
                           start_block_index:,
                           type: :content_block_location
-                        ); end
-                        sig do
-                          override
-                            .returns(
-                              {
-                                cited_text: String,
-                                document_index: Integer,
-                                document_title: T.nilable(String),
-                                end_block_index: Integer,
-                                start_block_index: Integer,
-                                type: Symbol
-                              }
-                            )
+                        )
                         end
-                        def to_hash; end
+
+                        sig do
+                          override.returns(
+                            {
+                              cited_text: String,
+                              document_index: Integer,
+                              document_title: T.nilable(String),
+                              end_block_index: Integer,
+                              start_block_index: Integer,
+                              type: Symbol
+                            }
+                          )
+                        end
+                        def to_hash
+                        end
                       end
 
                       sig do
-                        override
-                          .returns(
-                            [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation]
-                          )
+                        override.returns(
+                          T::Array[
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::Variants
+                          ]
+                        )
                       end
-                      def self.variants; end
+                      def self.variants
+                      end
                     end
                   end
 
                   class Image < Sam::Internal::Type::BaseModel
+                    OrHash =
+                      T.type_alias do
+                        T.any(T.self_type, Sam::Internal::AnyHash)
+                      end
+
                     sig do
                       returns(
                         T.any(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64,
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL
                         )
                       )
                     end
@@ -1244,7 +1362,7 @@ module Sam
                     sig do
                       returns(
                         T.nilable(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::CacheControl
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::CacheControl
                         )
                       )
                     end
@@ -1252,63 +1370,73 @@ module Sam
 
                     sig do
                       params(
-                        cache_control: T.nilable(
-                          T.any(
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::CacheControl,
-                            Sam::Internal::AnyHash
+                        cache_control:
+                          T.nilable(
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::CacheControl::OrHash
                           )
-                        )
-                      )
-                        .void
+                      ).void
                     end
                     attr_writer :cache_control
 
                     sig do
                       params(
-                        source: T.any(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64,
-                          Sam::Internal::AnyHash,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL
-                        ),
-                        cache_control: T.nilable(
+                        source:
                           T.any(
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::CacheControl,
-                            Sam::Internal::AnyHash
-                          )
-                        ),
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::OrHash,
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL::OrHash
+                          ),
+                        cache_control:
+                          T.nilable(
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::CacheControl::OrHash
+                          ),
                         type: Symbol
-                      )
-                        .returns(T.attached_class)
+                      ).returns(T.attached_class)
                     end
-                    def self.new(source:, cache_control: nil, type: :image); end
+                    def self.new(source:, cache_control: nil, type: :image)
+                    end
 
                     sig do
-                      override
-                        .returns(
-                          {
-                            source: T.any(
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64,
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL
+                      override.returns(
+                        {
+                          source:
+                            T.any(
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64,
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL
                             ),
-                            type: Symbol,
-                            cache_control: T.nilable(
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::CacheControl
+                          type: Symbol,
+                          cache_control:
+                            T.nilable(
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::CacheControl
                             )
-                          }
-                        )
+                        }
+                      )
                     end
-                    def to_hash; end
+                    def to_hash
+                    end
 
                     module Source
                       extend Sam::Internal::Type::Union
 
+                      Variants =
+                        T.type_alias do
+                          T.any(
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64,
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL
+                          )
+                        end
+
                       class Base64 < Sam::Internal::Type::BaseModel
+                        OrHash =
+                          T.type_alias do
+                            T.any(T.self_type, Sam::Internal::AnyHash)
+                          end
+
                         sig { returns(String) }
                         attr_accessor :data
 
                         sig do
                           returns(
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType::OrSymbol
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType::OrSymbol
                           )
                         end
                         attr_accessor :media_type
@@ -1319,103 +1447,133 @@ module Sam
                         sig do
                           params(
                             data: String,
-                            media_type: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType::OrSymbol,
+                            media_type:
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType::OrSymbol,
                             type: Symbol
-                          )
-                            .returns(T.attached_class)
+                          ).returns(T.attached_class)
                         end
-                        def self.new(data:, media_type:, type: :base64); end
+                        def self.new(data:, media_type:, type: :base64)
+                        end
 
                         sig do
-                          override
-                            .returns(
-                              {
-                                data: String,
-                                media_type: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType::OrSymbol,
-                                type: Symbol
-                              }
-                            )
+                          override.returns(
+                            {
+                              data: String,
+                              media_type:
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType::OrSymbol,
+                              type: Symbol
+                            }
+                          )
                         end
-                        def to_hash; end
+                        def to_hash
+                        end
 
                         module MediaType
                           extend Sam::Internal::Type::Enum
 
                           TaggedSymbol =
                             T.type_alias do
-                              T.all(Symbol, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType)
+                              T.all(
+                                Symbol,
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType
+                              )
                             end
                           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                           IMAGE_JPEG =
                             T.let(
                               :"image/jpeg",
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
                             )
                           IMAGE_PNG =
                             T.let(
                               :"image/png",
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
                             )
                           IMAGE_GIF =
                             T.let(
                               :"image/gif",
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
                             )
                           IMAGE_WEBP =
                             T.let(
                               :"image/webp",
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
                             )
 
                           sig do
-                            override
-                              .returns(
-                                T::Array[
-                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
-                                ]
-                              )
+                            override.returns(
+                              T::Array[
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
+                              ]
+                            )
                           end
-                          def self.values; end
+                          def self.values
+                          end
                         end
                       end
 
                       class URL < Sam::Internal::Type::BaseModel
+                        OrHash =
+                          T.type_alias do
+                            T.any(T.self_type, Sam::Internal::AnyHash)
+                          end
+
                         sig { returns(Symbol) }
                         attr_accessor :type
 
                         sig { returns(String) }
                         attr_accessor :url
 
-                        sig { params(url: String, type: Symbol).returns(T.attached_class) }
-                        def self.new(url:, type: :url); end
+                        sig do
+                          params(url: String, type: Symbol).returns(
+                            T.attached_class
+                          )
+                        end
+                        def self.new(url:, type: :url)
+                        end
 
-                        sig { override.returns({type: Symbol, url: String}) }
-                        def to_hash; end
+                        sig { override.returns({ type: Symbol, url: String }) }
+                        def to_hash
+                        end
                       end
 
                       sig do
-                        override
-                          .returns(
-                            [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL]
-                          )
+                        override.returns(
+                          T::Array[
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Variants
+                          ]
+                        )
                       end
-                      def self.variants; end
+                      def self.variants
+                      end
                     end
 
                     class CacheControl < Sam::Internal::Type::BaseModel
+                      OrHash =
+                        T.type_alias do
+                          T.any(T.self_type, Sam::Internal::AnyHash)
+                        end
+
                       sig { returns(Symbol) }
                       attr_accessor :type
 
                       sig { params(type: Symbol).returns(T.attached_class) }
-                      def self.new(type: :ephemeral); end
+                      def self.new(type: :ephemeral)
+                      end
 
-                      sig { override.returns({type: Symbol}) }
-                      def to_hash; end
+                      sig { override.returns({ type: Symbol }) }
+                      def to_hash
+                      end
                     end
                   end
 
                   class ToolUse < Sam::Internal::Type::BaseModel
+                    OrHash =
+                      T.type_alias do
+                        T.any(T.self_type, Sam::Internal::AnyHash)
+                      end
+
                     sig { returns(String) }
                     attr_accessor :id
 
@@ -1431,7 +1589,7 @@ module Sam
                     sig do
                       returns(
                         T.nilable(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse::CacheControl
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse::CacheControl
                         )
                       )
                     end
@@ -1439,14 +1597,11 @@ module Sam
 
                     sig do
                       params(
-                        cache_control: T.nilable(
-                          T.any(
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse::CacheControl,
-                            Sam::Internal::AnyHash
+                        cache_control:
+                          T.nilable(
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse::CacheControl::OrHash
                           )
-                        )
-                      )
-                        .void
+                      ).void
                     end
                     attr_writer :cache_control
 
@@ -1455,47 +1610,64 @@ module Sam
                         id: String,
                         input: T.anything,
                         name: String,
-                        cache_control: T.nilable(
-                          T.any(
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse::CacheControl,
-                            Sam::Internal::AnyHash
-                          )
-                        ),
+                        cache_control:
+                          T.nilable(
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse::CacheControl::OrHash
+                          ),
                         type: Symbol
-                      )
-                        .returns(T.attached_class)
+                      ).returns(T.attached_class)
                     end
-                    def self.new(id:, input:, name:, cache_control: nil, type: :tool_use); end
+                    def self.new(
+                      id:,
+                      input:,
+                      name:,
+                      cache_control: nil,
+                      type: :tool_use
+                    )
+                    end
 
                     sig do
-                      override
-                        .returns(
-                          {
-                            id: String,
-                            input: T.anything,
-                            name: String,
-                            type: Symbol,
-                            cache_control: T.nilable(
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse::CacheControl
+                      override.returns(
+                        {
+                          id: String,
+                          input: T.anything,
+                          name: String,
+                          type: Symbol,
+                          cache_control:
+                            T.nilable(
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse::CacheControl
                             )
-                          }
-                        )
+                        }
+                      )
                     end
-                    def to_hash; end
+                    def to_hash
+                    end
 
                     class CacheControl < Sam::Internal::Type::BaseModel
+                      OrHash =
+                        T.type_alias do
+                          T.any(T.self_type, Sam::Internal::AnyHash)
+                        end
+
                       sig { returns(Symbol) }
                       attr_accessor :type
 
                       sig { params(type: Symbol).returns(T.attached_class) }
-                      def self.new(type: :ephemeral); end
+                      def self.new(type: :ephemeral)
+                      end
 
-                      sig { override.returns({type: Symbol}) }
-                      def to_hash; end
+                      sig { override.returns({ type: Symbol }) }
+                      def to_hash
+                      end
                     end
                   end
 
                   class ToolResult < Sam::Internal::Type::BaseModel
+                    OrHash =
+                      T.type_alias do
+                        T.any(T.self_type, Sam::Internal::AnyHash)
+                      end
+
                     sig { returns(String) }
                     attr_accessor :tool_use_id
 
@@ -1505,7 +1677,7 @@ module Sam
                     sig do
                       returns(
                         T.nilable(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::CacheControl
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::CacheControl
                         )
                       )
                     end
@@ -1513,14 +1685,11 @@ module Sam
 
                     sig do
                       params(
-                        cache_control: T.nilable(
-                          T.any(
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::CacheControl,
-                            Sam::Internal::AnyHash
+                        cache_control:
+                          T.nilable(
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::CacheControl::OrHash
                           )
-                        )
-                      )
-                        .void
+                      ).void
                     end
                     attr_writer :cache_control
 
@@ -1531,8 +1700,8 @@ module Sam
                             String,
                             T::Array[
                               T.any(
-                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
-                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
                               )
                             ]
                           )
@@ -1543,18 +1712,17 @@ module Sam
 
                     sig do
                       params(
-                        content: T.any(
-                          String,
-                          T::Array[
-                            T.any(
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
-                              Sam::Internal::AnyHash,
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
-                            )
-                          ]
-                        )
-                      )
-                        .void
+                        content:
+                          T.any(
+                            String,
+                            T::Array[
+                              T.any(
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::OrHash,
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::OrHash
+                              )
+                            ]
+                          )
+                      ).void
                     end
                     attr_writer :content
 
@@ -1567,26 +1735,23 @@ module Sam
                     sig do
                       params(
                         tool_use_id: String,
-                        cache_control: T.nilable(
+                        cache_control:
+                          T.nilable(
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::CacheControl::OrHash
+                          ),
+                        content:
                           T.any(
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::CacheControl,
-                            Sam::Internal::AnyHash
-                          )
-                        ),
-                        content: T.any(
-                          String,
-                          T::Array[
-                            T.any(
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
-                              Sam::Internal::AnyHash,
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
-                            )
-                          ]
-                        ),
+                            String,
+                            T::Array[
+                              T.any(
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::OrHash,
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::OrHash
+                              )
+                            ]
+                          ),
                         is_error: T::Boolean,
                         type: Symbol
-                      )
-                        .returns(T.attached_class)
+                      ).returns(T.attached_class)
                     end
                     def self.new(
                       tool_use_id:,
@@ -1598,47 +1763,82 @@ module Sam
                     end
 
                     sig do
-                      override
-                        .returns(
-                          {
-                            tool_use_id: String,
-                            type: Symbol,
-                            cache_control: T.nilable(
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::CacheControl
+                      override.returns(
+                        {
+                          tool_use_id: String,
+                          type: Symbol,
+                          cache_control:
+                            T.nilable(
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::CacheControl
                             ),
-                            content: T.any(
+                          content:
+                            T.any(
                               String,
                               T::Array[
                                 T.any(
-                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
-                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
                                 )
                               ]
                             ),
-                            is_error: T::Boolean
-                          }
-                        )
+                          is_error: T::Boolean
+                        }
+                      )
                     end
-                    def to_hash; end
+                    def to_hash
+                    end
 
                     class CacheControl < Sam::Internal::Type::BaseModel
+                      OrHash =
+                        T.type_alias do
+                          T.any(T.self_type, Sam::Internal::AnyHash)
+                        end
+
                       sig { returns(Symbol) }
                       attr_accessor :type
 
                       sig { params(type: Symbol).returns(T.attached_class) }
-                      def self.new(type: :ephemeral); end
+                      def self.new(type: :ephemeral)
+                      end
 
-                      sig { override.returns({type: Symbol}) }
-                      def to_hash; end
+                      sig { override.returns({ type: Symbol }) }
+                      def to_hash
+                      end
                     end
 
                     module Content
                       extend Sam::Internal::Type::Union
 
+                      Variants =
+                        T.type_alias do
+                          T.any(
+                            String,
+                            T::Array[
+                              T.any(
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
+                              )
+                            ]
+                          )
+                        end
+
                       module UnionMember1
                         extend Sam::Internal::Type::Union
 
+                        Variants =
+                          T.type_alias do
+                            T.any(
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
+                            )
+                          end
+
                         class Text < Sam::Internal::Type::BaseModel
+                          OrHash =
+                            T.type_alias do
+                              T.any(T.self_type, Sam::Internal::AnyHash)
+                            end
+
                           sig { returns(String) }
                           attr_accessor :text
 
@@ -1648,7 +1848,7 @@ module Sam
                           sig do
                             returns(
                               T.nilable(
-                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl
                               )
                             )
                           end
@@ -1656,14 +1856,11 @@ module Sam
 
                           sig do
                             params(
-                              cache_control: T.nilable(
-                                T.any(
-                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl,
-                                  Sam::Internal::AnyHash
+                              cache_control:
+                                T.nilable(
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl::OrHash
                                 )
-                              )
-                            )
-                              .void
+                            ).void
                           end
                           attr_writer :cache_control
 
@@ -1672,9 +1869,9 @@ module Sam
                               T.nilable(
                                 T::Array[
                                   T.any(
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation,
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation,
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation,
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation,
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation
                                   )
                                 ]
                               )
@@ -1685,66 +1882,94 @@ module Sam
                           sig do
                             params(
                               text: String,
-                              cache_control: T.nilable(
-                                T.any(
-                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl,
-                                  Sam::Internal::AnyHash
-                                )
-                              ),
-                              citations: T.nilable(
-                                T::Array[
-                                  T.any(
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation,
-                                    Sam::Internal::AnyHash,
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation,
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation
-                                  )
-                                ]
-                              ),
+                              cache_control:
+                                T.nilable(
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl::OrHash
+                                ),
+                              citations:
+                                T.nilable(
+                                  T::Array[
+                                    T.any(
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation::OrHash,
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation::OrHash,
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation::OrHash
+                                    )
+                                  ]
+                                ),
                               type: Symbol
-                            )
-                              .returns(T.attached_class)
+                            ).returns(T.attached_class)
                           end
-                          def self.new(text:, cache_control: nil, citations: nil, type: :text); end
+                          def self.new(
+                            text:,
+                            cache_control: nil,
+                            citations: nil,
+                            type: :text
+                          )
+                          end
 
                           sig do
-                            override
-                              .returns(
-                                {
-                                  text: String,
-                                  type: Symbol,
-                                  cache_control: T.nilable(
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl
+                            override.returns(
+                              {
+                                text: String,
+                                type: Symbol,
+                                cache_control:
+                                  T.nilable(
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl
                                   ),
-                                  citations: T.nilable(
+                                citations:
+                                  T.nilable(
                                     T::Array[
                                       T.any(
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation,
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation,
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation,
+                                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation,
+                                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation
                                       )
                                     ]
                                   )
-                                }
-                              )
+                              }
+                            )
                           end
-                          def to_hash; end
+                          def to_hash
+                          end
 
                           class CacheControl < Sam::Internal::Type::BaseModel
+                            OrHash =
+                              T.type_alias do
+                                T.any(T.self_type, Sam::Internal::AnyHash)
+                              end
+
                             sig { returns(Symbol) }
                             attr_accessor :type
 
-                            sig { params(type: Symbol).returns(T.attached_class) }
-                            def self.new(type: :ephemeral); end
+                            sig do
+                              params(type: Symbol).returns(T.attached_class)
+                            end
+                            def self.new(type: :ephemeral)
+                            end
 
-                            sig { override.returns({type: Symbol}) }
-                            def to_hash; end
+                            sig { override.returns({ type: Symbol }) }
+                            def to_hash
+                            end
                           end
 
                           module Citation
                             extend Sam::Internal::Type::Union
 
+                            Variants =
+                              T.type_alias do
+                                T.any(
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation,
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation,
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                                )
+                              end
+
                             class CharLocation < Sam::Internal::Type::BaseModel
+                              OrHash =
+                                T.type_alias do
+                                  T.any(T.self_type, Sam::Internal::AnyHash)
+                                end
+
                               sig { returns(String) }
                               attr_accessor :cited_text
 
@@ -1771,8 +1996,7 @@ module Sam
                                   end_char_index: Integer,
                                   start_char_index: Integer,
                                   type: Symbol
-                                )
-                                  .returns(T.attached_class)
+                                ).returns(T.attached_class)
                               end
                               def self.new(
                                 cited_text:,
@@ -1785,22 +2009,27 @@ module Sam
                               end
 
                               sig do
-                                override
-                                  .returns(
-                                    {
-                                      cited_text: String,
-                                      document_index: Integer,
-                                      document_title: T.nilable(String),
-                                      end_char_index: Integer,
-                                      start_char_index: Integer,
-                                      type: Symbol
-                                    }
-                                  )
+                                override.returns(
+                                  {
+                                    cited_text: String,
+                                    document_index: Integer,
+                                    document_title: T.nilable(String),
+                                    end_char_index: Integer,
+                                    start_char_index: Integer,
+                                    type: Symbol
+                                  }
+                                )
                               end
-                              def to_hash; end
+                              def to_hash
+                              end
                             end
 
                             class PageLocation < Sam::Internal::Type::BaseModel
+                              OrHash =
+                                T.type_alias do
+                                  T.any(T.self_type, Sam::Internal::AnyHash)
+                                end
+
                               sig { returns(String) }
                               attr_accessor :cited_text
 
@@ -1827,8 +2056,7 @@ module Sam
                                   end_page_number: Integer,
                                   start_page_number: Integer,
                                   type: Symbol
-                                )
-                                  .returns(T.attached_class)
+                                ).returns(T.attached_class)
                               end
                               def self.new(
                                 cited_text:,
@@ -1841,22 +2069,27 @@ module Sam
                               end
 
                               sig do
-                                override
-                                  .returns(
-                                    {
-                                      cited_text: String,
-                                      document_index: Integer,
-                                      document_title: T.nilable(String),
-                                      end_page_number: Integer,
-                                      start_page_number: Integer,
-                                      type: Symbol
-                                    }
-                                  )
+                                override.returns(
+                                  {
+                                    cited_text: String,
+                                    document_index: Integer,
+                                    document_title: T.nilable(String),
+                                    end_page_number: Integer,
+                                    start_page_number: Integer,
+                                    type: Symbol
+                                  }
+                                )
                               end
-                              def to_hash; end
+                              def to_hash
+                              end
                             end
 
                             class ContentBlockLocation < Sam::Internal::Type::BaseModel
+                              OrHash =
+                                T.type_alias do
+                                  T.any(T.self_type, Sam::Internal::AnyHash)
+                                end
+
                               sig { returns(String) }
                               attr_accessor :cited_text
 
@@ -1883,8 +2116,7 @@ module Sam
                                   end_block_index: Integer,
                                   start_block_index: Integer,
                                   type: Symbol
-                                )
-                                  .returns(T.attached_class)
+                                ).returns(T.attached_class)
                               end
                               def self.new(
                                 cited_text:,
@@ -1893,39 +2125,48 @@ module Sam
                                 end_block_index:,
                                 start_block_index:,
                                 type: :content_block_location
-                              ); end
-                              sig do
-                                override
-                                  .returns(
-                                    {
-                                      cited_text: String,
-                                      document_index: Integer,
-                                      document_title: T.nilable(String),
-                                      end_block_index: Integer,
-                                      start_block_index: Integer,
-                                      type: Symbol
-                                    }
-                                  )
+                              )
                               end
-                              def to_hash; end
+
+                              sig do
+                                override.returns(
+                                  {
+                                    cited_text: String,
+                                    document_index: Integer,
+                                    document_title: T.nilable(String),
+                                    end_block_index: Integer,
+                                    start_block_index: Integer,
+                                    type: Symbol
+                                  }
+                                )
+                              end
+                              def to_hash
+                              end
                             end
 
                             sig do
-                              override
-                                .returns(
-                                  [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation]
-                                )
+                              override.returns(
+                                T::Array[
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::Variants
+                                ]
+                              )
                             end
-                            def self.variants; end
+                            def self.variants
+                            end
                           end
                         end
 
                         class Image < Sam::Internal::Type::BaseModel
+                          OrHash =
+                            T.type_alias do
+                              T.any(T.self_type, Sam::Internal::AnyHash)
+                            end
+
                           sig do
                             returns(
                               T.any(
-                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64,
-                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64,
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL
                               )
                             )
                           end
@@ -1937,7 +2178,7 @@ module Sam
                           sig do
                             returns(
                               T.nilable(
-                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl
                               )
                             )
                           end
@@ -1945,63 +2186,77 @@ module Sam
 
                           sig do
                             params(
-                              cache_control: T.nilable(
-                                T.any(
-                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl,
-                                  Sam::Internal::AnyHash
+                              cache_control:
+                                T.nilable(
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl::OrHash
                                 )
-                              )
-                            )
-                              .void
+                            ).void
                           end
                           attr_writer :cache_control
 
                           sig do
                             params(
-                              source: T.any(
-                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64,
-                                Sam::Internal::AnyHash,
-                                Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL
-                              ),
-                              cache_control: T.nilable(
+                              source:
                                 T.any(
-                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl,
-                                  Sam::Internal::AnyHash
-                                )
-                              ),
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::OrHash,
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL::OrHash
+                                ),
+                              cache_control:
+                                T.nilable(
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl::OrHash
+                                ),
                               type: Symbol
-                            )
-                              .returns(T.attached_class)
+                            ).returns(T.attached_class)
                           end
-                          def self.new(source:, cache_control: nil, type: :image); end
+                          def self.new(
+                            source:,
+                            cache_control: nil,
+                            type: :image
+                          )
+                          end
 
                           sig do
-                            override
-                              .returns(
-                                {
-                                  source: T.any(
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64,
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL
+                            override.returns(
+                              {
+                                source:
+                                  T.any(
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64,
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL
                                   ),
-                                  type: Symbol,
-                                  cache_control: T.nilable(
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl
+                                type: Symbol,
+                                cache_control:
+                                  T.nilable(
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl
                                   )
-                                }
-                              )
+                              }
+                            )
                           end
-                          def to_hash; end
+                          def to_hash
+                          end
 
                           module Source
                             extend Sam::Internal::Type::Union
 
+                            Variants =
+                              T.type_alias do
+                                T.any(
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64,
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL
+                                )
+                              end
+
                             class Base64 < Sam::Internal::Type::BaseModel
+                              OrHash =
+                                T.type_alias do
+                                  T.any(T.self_type, Sam::Internal::AnyHash)
+                                end
+
                               sig { returns(String) }
                               attr_accessor :data
 
                               sig do
                                 returns(
-                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType::OrSymbol
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType::OrSymbol
                                 )
                               end
                               attr_accessor :media_type
@@ -2012,131 +2267,158 @@ module Sam
                               sig do
                                 params(
                                   data: String,
-                                  media_type: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType::OrSymbol,
+                                  media_type:
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType::OrSymbol,
                                   type: Symbol
-                                )
-                                  .returns(T.attached_class)
+                                ).returns(T.attached_class)
                               end
-                              def self.new(data:, media_type:, type: :base64); end
+                              def self.new(data:, media_type:, type: :base64)
+                              end
 
                               sig do
-                                override
-                                  .returns(
-                                    {
-                                      data: String,
-                                      media_type: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType::OrSymbol,
-                                      type: Symbol
-                                    }
-                                  )
+                                override.returns(
+                                  {
+                                    data: String,
+                                    media_type:
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType::OrSymbol,
+                                    type: Symbol
+                                  }
+                                )
                               end
-                              def to_hash; end
+                              def to_hash
+                              end
 
                               module MediaType
                                 extend Sam::Internal::Type::Enum
 
                                 TaggedSymbol =
                                   T.type_alias do
-                                    T.all(Symbol, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType)
+                                    T.all(
+                                      Symbol,
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType
+                                    )
                                   end
-                                OrSymbol = T.type_alias { T.any(Symbol, String) }
+                                OrSymbol =
+                                  T.type_alias { T.any(Symbol, String) }
 
                                 IMAGE_JPEG =
                                   T.let(
                                     :"image/jpeg",
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
                                   )
                                 IMAGE_PNG =
                                   T.let(
                                     :"image/png",
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
                                   )
                                 IMAGE_GIF =
                                   T.let(
                                     :"image/gif",
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
                                   )
                                 IMAGE_WEBP =
                                   T.let(
                                     :"image/webp",
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
                                   )
 
                                 sig do
-                                  override
-                                    .returns(
-                                      T::Array[
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
-                                      ]
-                                    )
+                                  override.returns(
+                                    T::Array[
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
+                                    ]
+                                  )
                                 end
-                                def self.values; end
+                                def self.values
+                                end
                               end
                             end
 
                             class URL < Sam::Internal::Type::BaseModel
+                              OrHash =
+                                T.type_alias do
+                                  T.any(T.self_type, Sam::Internal::AnyHash)
+                                end
+
                               sig { returns(Symbol) }
                               attr_accessor :type
 
                               sig { returns(String) }
                               attr_accessor :url
 
-                              sig { params(url: String, type: Symbol).returns(T.attached_class) }
-                              def self.new(url:, type: :url); end
+                              sig do
+                                params(url: String, type: Symbol).returns(
+                                  T.attached_class
+                                )
+                              end
+                              def self.new(url:, type: :url)
+                              end
 
-                              sig { override.returns({type: Symbol, url: String}) }
-                              def to_hash; end
+                              sig do
+                                override.returns({ type: Symbol, url: String })
+                              end
+                              def to_hash
+                              end
                             end
 
                             sig do
-                              override
-                                .returns(
-                                  [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL]
-                                )
+                              override.returns(
+                                T::Array[
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Variants
+                                ]
+                              )
                             end
-                            def self.variants; end
+                            def self.variants
+                            end
                           end
 
                           class CacheControl < Sam::Internal::Type::BaseModel
+                            OrHash =
+                              T.type_alias do
+                                T.any(T.self_type, Sam::Internal::AnyHash)
+                              end
+
                             sig { returns(Symbol) }
                             attr_accessor :type
 
-                            sig { params(type: Symbol).returns(T.attached_class) }
-                            def self.new(type: :ephemeral); end
+                            sig do
+                              params(type: Symbol).returns(T.attached_class)
+                            end
+                            def self.new(type: :ephemeral)
+                            end
 
-                            sig { override.returns({type: Symbol}) }
-                            def to_hash; end
+                            sig { override.returns({ type: Symbol }) }
+                            def to_hash
+                            end
                           end
                         end
 
                         sig do
-                          override
-                            .returns(
-                              [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image]
-                            )
+                          override.returns(
+                            T::Array[
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Variants
+                            ]
+                          )
                         end
-                        def self.variants; end
+                        def self.variants
+                        end
                       end
 
                       sig do
-                        override
-                          .returns(
-                            [
-                              String,
-                              T::Array[
-                                                            T.any(
-                                                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
-                                                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
-                                                            )
-                                                          ]
-                            ]
-                          )
+                        override.returns(
+                          T::Array[
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::Variants
+                          ]
+                        )
                       end
-                      def self.variants; end
+                      def self.variants
+                      end
 
                       UnionMember1Array =
                         T.let(
                           Sam::Internal::Type::ArrayOf[
-                            union: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1
+                            union:
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1
                           ],
                           Sam::Internal::Type::Converter
                         )
@@ -2144,13 +2426,18 @@ module Sam
                   end
 
                   class Document < Sam::Internal::Type::BaseModel
+                    OrHash =
+                      T.type_alias do
+                        T.any(T.self_type, Sam::Internal::AnyHash)
+                      end
+
                     sig do
                       returns(
                         T.any(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64,
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text,
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content,
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL
                         )
                       )
                     end
@@ -2162,7 +2449,7 @@ module Sam
                     sig do
                       returns(
                         T.nilable(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::CacheControl
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::CacheControl
                         )
                       )
                     end
@@ -2170,21 +2457,18 @@ module Sam
 
                     sig do
                       params(
-                        cache_control: T.nilable(
-                          T.any(
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::CacheControl,
-                            Sam::Internal::AnyHash
+                        cache_control:
+                          T.nilable(
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::CacheControl::OrHash
                           )
-                        )
-                      )
-                        .void
+                      ).void
                     end
                     attr_writer :cache_control
 
                     sig do
                       returns(
                         T.nilable(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Citations
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Citations
                         )
                       )
                     end
@@ -2192,12 +2476,9 @@ module Sam
 
                     sig do
                       params(
-                        citations: T.any(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Citations,
-                          Sam::Internal::AnyHash
-                        )
-                      )
-                        .void
+                        citations:
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Citations::OrHash
+                      ).void
                     end
                     attr_writer :citations
 
@@ -2209,28 +2490,23 @@ module Sam
 
                     sig do
                       params(
-                        source: T.any(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64,
-                          Sam::Internal::AnyHash,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL
-                        ),
-                        cache_control: T.nilable(
+                        source:
                           T.any(
-                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::CacheControl,
-                            Sam::Internal::AnyHash
-                          )
-                        ),
-                        citations: T.any(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Citations,
-                          Sam::Internal::AnyHash
-                        ),
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64::OrHash,
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text::OrHash,
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::OrHash,
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL::OrHash
+                          ),
+                        cache_control:
+                          T.nilable(
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::CacheControl::OrHash
+                          ),
+                        citations:
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Citations::OrHash,
                         context: T.nilable(String),
                         title: T.nilable(String),
                         type: Symbol
-                      )
-                        .returns(T.attached_class)
+                      ).returns(T.attached_class)
                     end
                     def self.new(
                       source:,
@@ -2243,31 +2519,49 @@ module Sam
                     end
 
                     sig do
-                      override
-                        .returns(
-                          {
-                            source: T.any(
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64,
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text,
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content,
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL
+                      override.returns(
+                        {
+                          source:
+                            T.any(
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64,
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text,
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content,
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL
                             ),
-                            type: Symbol,
-                            cache_control: T.nilable(
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::CacheControl
+                          type: Symbol,
+                          cache_control:
+                            T.nilable(
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::CacheControl
                             ),
-                            citations: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Citations,
-                            context: T.nilable(String),
-                            title: T.nilable(String)
-                          }
-                        )
+                          citations:
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Citations,
+                          context: T.nilable(String),
+                          title: T.nilable(String)
+                        }
+                      )
                     end
-                    def to_hash; end
+                    def to_hash
+                    end
 
                     module Source
                       extend Sam::Internal::Type::Union
 
+                      Variants =
+                        T.type_alias do
+                          T.any(
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64,
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text,
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content,
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL
+                          )
+                        end
+
                       class Base64 < Sam::Internal::Type::BaseModel
+                        OrHash =
+                          T.type_alias do
+                            T.any(T.self_type, Sam::Internal::AnyHash)
+                          end
+
                         sig { returns(String) }
                         attr_accessor :data
 
@@ -2278,15 +2572,34 @@ module Sam
                         attr_accessor :type
 
                         sig do
-                          params(data: String, media_type: Symbol, type: Symbol).returns(T.attached_class)
+                          params(
+                            data: String,
+                            media_type: Symbol,
+                            type: Symbol
+                          ).returns(T.attached_class)
                         end
-                        def self.new(data:, media_type: :"application/pdf", type: :base64); end
+                        def self.new(
+                          data:,
+                          media_type: :"application/pdf",
+                          type: :base64
+                        )
+                        end
 
-                        sig { override.returns({data: String, media_type: Symbol, type: Symbol}) }
-                        def to_hash; end
+                        sig do
+                          override.returns(
+                            { data: String, media_type: Symbol, type: Symbol }
+                          )
+                        end
+                        def to_hash
+                        end
                       end
 
                       class Text < Sam::Internal::Type::BaseModel
+                        OrHash =
+                          T.type_alias do
+                            T.any(T.self_type, Sam::Internal::AnyHash)
+                          end
+
                         sig { returns(String) }
                         attr_accessor :data
 
@@ -2297,23 +2610,42 @@ module Sam
                         attr_accessor :type
 
                         sig do
-                          params(data: String, media_type: Symbol, type: Symbol).returns(T.attached_class)
+                          params(
+                            data: String,
+                            media_type: Symbol,
+                            type: Symbol
+                          ).returns(T.attached_class)
                         end
-                        def self.new(data:, media_type: :"text/plain", type: :text); end
+                        def self.new(
+                          data:,
+                          media_type: :"text/plain",
+                          type: :text
+                        )
+                        end
 
-                        sig { override.returns({data: String, media_type: Symbol, type: Symbol}) }
-                        def to_hash; end
+                        sig do
+                          override.returns(
+                            { data: String, media_type: Symbol, type: Symbol }
+                          )
+                        end
+                        def to_hash
+                        end
                       end
 
                       class Content < Sam::Internal::Type::BaseModel
+                        OrHash =
+                          T.type_alias do
+                            T.any(T.self_type, Sam::Internal::AnyHash)
+                          end
+
                         sig do
                           returns(
                             T.any(
                               String,
                               T::Array[
                                 T.any(
-                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
-                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
                                 )
                               ]
                             )
@@ -2326,48 +2658,75 @@ module Sam
 
                         sig do
                           params(
-                            content: T.any(
-                              String,
-                              T::Array[
-                                T.any(
-                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
-                                  Sam::Internal::AnyHash,
-                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
-                                )
-                              ]
-                            ),
+                            content:
+                              T.any(
+                                String,
+                                T::Array[
+                                  T.any(
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::OrHash,
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::OrHash
+                                  )
+                                ]
+                              ),
                             type: Symbol
-                          )
-                            .returns(T.attached_class)
+                          ).returns(T.attached_class)
                         end
-                        def self.new(content:, type: :content); end
+                        def self.new(content:, type: :content)
+                        end
 
                         sig do
-                          override
-                            .returns(
-                              {
-                                content: T.any(
+                          override.returns(
+                            {
+                              content:
+                                T.any(
                                   String,
                                   T::Array[
                                     T.any(
-                                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
-                                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
                                     )
                                   ]
                                 ),
-                                type: Symbol
-                              }
-                            )
+                              type: Symbol
+                            }
+                          )
                         end
-                        def to_hash; end
+                        def to_hash
+                        end
 
                         module Content
                           extend Sam::Internal::Type::Union
 
+                          Variants =
+                            T.type_alias do
+                              T.any(
+                                String,
+                                T::Array[
+                                  T.any(
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
+                                  )
+                                ]
+                              )
+                            end
+
                           module UnionMember1
                             extend Sam::Internal::Type::Union
 
+                            Variants =
+                              T.type_alias do
+                                T.any(
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
+                                )
+                              end
+
                             class Text < Sam::Internal::Type::BaseModel
+                              OrHash =
+                                T.type_alias do
+                                  T.any(T.self_type, Sam::Internal::AnyHash)
+                                end
+
                               sig { returns(String) }
                               attr_accessor :text
 
@@ -2377,7 +2736,7 @@ module Sam
                               sig do
                                 returns(
                                   T.nilable(
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl
                                   )
                                 )
                               end
@@ -2385,14 +2744,11 @@ module Sam
 
                               sig do
                                 params(
-                                  cache_control: T.nilable(
-                                    T.any(
-                                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl,
-                                      Sam::Internal::AnyHash
+                                  cache_control:
+                                    T.nilable(
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl::OrHash
                                     )
-                                  )
-                                )
-                                  .void
+                                ).void
                               end
                               attr_writer :cache_control
 
@@ -2401,9 +2757,9 @@ module Sam
                                   T.nilable(
                                     T::Array[
                                       T.any(
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation,
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation,
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation,
+                                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation,
+                                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation
                                       )
                                     ]
                                   )
@@ -2414,66 +2770,94 @@ module Sam
                               sig do
                                 params(
                                   text: String,
-                                  cache_control: T.nilable(
-                                    T.any(
-                                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl,
-                                      Sam::Internal::AnyHash
-                                    )
-                                  ),
-                                  citations: T.nilable(
-                                    T::Array[
-                                      T.any(
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation,
-                                        Sam::Internal::AnyHash,
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation,
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation
-                                      )
-                                    ]
-                                  ),
+                                  cache_control:
+                                    T.nilable(
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl::OrHash
+                                    ),
+                                  citations:
+                                    T.nilable(
+                                      T::Array[
+                                        T.any(
+                                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation::OrHash,
+                                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation::OrHash,
+                                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation::OrHash
+                                        )
+                                      ]
+                                    ),
                                   type: Symbol
-                                )
-                                  .returns(T.attached_class)
+                                ).returns(T.attached_class)
                               end
-                              def self.new(text:, cache_control: nil, citations: nil, type: :text); end
+                              def self.new(
+                                text:,
+                                cache_control: nil,
+                                citations: nil,
+                                type: :text
+                              )
+                              end
 
                               sig do
-                                override
-                                  .returns(
-                                    {
-                                      text: String,
-                                      type: Symbol,
-                                      cache_control: T.nilable(
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl
+                                override.returns(
+                                  {
+                                    text: String,
+                                    type: Symbol,
+                                    cache_control:
+                                      T.nilable(
+                                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl
                                       ),
-                                      citations: T.nilable(
+                                    citations:
+                                      T.nilable(
                                         T::Array[
                                           T.any(
-                                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation,
-                                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation,
-                                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation,
+                                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation,
+                                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation
                                           )
                                         ]
                                       )
-                                    }
-                                  )
+                                  }
+                                )
                               end
-                              def to_hash; end
+                              def to_hash
+                              end
 
                               class CacheControl < Sam::Internal::Type::BaseModel
+                                OrHash =
+                                  T.type_alias do
+                                    T.any(T.self_type, Sam::Internal::AnyHash)
+                                  end
+
                                 sig { returns(Symbol) }
                                 attr_accessor :type
 
-                                sig { params(type: Symbol).returns(T.attached_class) }
-                                def self.new(type: :ephemeral); end
+                                sig do
+                                  params(type: Symbol).returns(T.attached_class)
+                                end
+                                def self.new(type: :ephemeral)
+                                end
 
-                                sig { override.returns({type: Symbol}) }
-                                def to_hash; end
+                                sig { override.returns({ type: Symbol }) }
+                                def to_hash
+                                end
                               end
 
                               module Citation
                                 extend Sam::Internal::Type::Union
 
+                                Variants =
+                                  T.type_alias do
+                                    T.any(
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation,
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation,
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                                    )
+                                  end
+
                                 class CharLocation < Sam::Internal::Type::BaseModel
+                                  OrHash =
+                                    T.type_alias do
+                                      T.any(T.self_type, Sam::Internal::AnyHash)
+                                    end
+
                                   sig { returns(String) }
                                   attr_accessor :cited_text
 
@@ -2500,8 +2884,7 @@ module Sam
                                       end_char_index: Integer,
                                       start_char_index: Integer,
                                       type: Symbol
-                                    )
-                                      .returns(T.attached_class)
+                                    ).returns(T.attached_class)
                                   end
                                   def self.new(
                                     cited_text:,
@@ -2514,22 +2897,27 @@ module Sam
                                   end
 
                                   sig do
-                                    override
-                                      .returns(
-                                        {
-                                          cited_text: String,
-                                          document_index: Integer,
-                                          document_title: T.nilable(String),
-                                          end_char_index: Integer,
-                                          start_char_index: Integer,
-                                          type: Symbol
-                                        }
-                                      )
+                                    override.returns(
+                                      {
+                                        cited_text: String,
+                                        document_index: Integer,
+                                        document_title: T.nilable(String),
+                                        end_char_index: Integer,
+                                        start_char_index: Integer,
+                                        type: Symbol
+                                      }
+                                    )
                                   end
-                                  def to_hash; end
+                                  def to_hash
+                                  end
                                 end
 
                                 class PageLocation < Sam::Internal::Type::BaseModel
+                                  OrHash =
+                                    T.type_alias do
+                                      T.any(T.self_type, Sam::Internal::AnyHash)
+                                    end
+
                                   sig { returns(String) }
                                   attr_accessor :cited_text
 
@@ -2556,8 +2944,7 @@ module Sam
                                       end_page_number: Integer,
                                       start_page_number: Integer,
                                       type: Symbol
-                                    )
-                                      .returns(T.attached_class)
+                                    ).returns(T.attached_class)
                                   end
                                   def self.new(
                                     cited_text:,
@@ -2570,22 +2957,27 @@ module Sam
                                   end
 
                                   sig do
-                                    override
-                                      .returns(
-                                        {
-                                          cited_text: String,
-                                          document_index: Integer,
-                                          document_title: T.nilable(String),
-                                          end_page_number: Integer,
-                                          start_page_number: Integer,
-                                          type: Symbol
-                                        }
-                                      )
+                                    override.returns(
+                                      {
+                                        cited_text: String,
+                                        document_index: Integer,
+                                        document_title: T.nilable(String),
+                                        end_page_number: Integer,
+                                        start_page_number: Integer,
+                                        type: Symbol
+                                      }
+                                    )
                                   end
-                                  def to_hash; end
+                                  def to_hash
+                                  end
                                 end
 
                                 class ContentBlockLocation < Sam::Internal::Type::BaseModel
+                                  OrHash =
+                                    T.type_alias do
+                                      T.any(T.self_type, Sam::Internal::AnyHash)
+                                    end
+
                                   sig { returns(String) }
                                   attr_accessor :cited_text
 
@@ -2612,8 +3004,7 @@ module Sam
                                       end_block_index: Integer,
                                       start_block_index: Integer,
                                       type: Symbol
-                                    )
-                                      .returns(T.attached_class)
+                                    ).returns(T.attached_class)
                                   end
                                   def self.new(
                                     cited_text:,
@@ -2622,39 +3013,48 @@ module Sam
                                     end_block_index:,
                                     start_block_index:,
                                     type: :content_block_location
-                                  ); end
-                                  sig do
-                                    override
-                                      .returns(
-                                        {
-                                          cited_text: String,
-                                          document_index: Integer,
-                                          document_title: T.nilable(String),
-                                          end_block_index: Integer,
-                                          start_block_index: Integer,
-                                          type: Symbol
-                                        }
-                                      )
+                                  )
                                   end
-                                  def to_hash; end
+
+                                  sig do
+                                    override.returns(
+                                      {
+                                        cited_text: String,
+                                        document_index: Integer,
+                                        document_title: T.nilable(String),
+                                        end_block_index: Integer,
+                                        start_block_index: Integer,
+                                        type: Symbol
+                                      }
+                                    )
+                                  end
+                                  def to_hash
+                                  end
                                 end
 
                                 sig do
-                                  override
-                                    .returns(
-                                      [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation]
-                                    )
+                                  override.returns(
+                                    T::Array[
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::Variants
+                                    ]
+                                  )
                                 end
-                                def self.variants; end
+                                def self.variants
+                                end
                               end
                             end
 
                             class Image < Sam::Internal::Type::BaseModel
+                              OrHash =
+                                T.type_alias do
+                                  T.any(T.self_type, Sam::Internal::AnyHash)
+                                end
+
                               sig do
                                 returns(
                                   T.any(
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64,
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64,
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL
                                   )
                                 )
                               end
@@ -2666,7 +3066,7 @@ module Sam
                               sig do
                                 returns(
                                   T.nilable(
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl
+                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl
                                   )
                                 )
                               end
@@ -2674,63 +3074,77 @@ module Sam
 
                               sig do
                                 params(
-                                  cache_control: T.nilable(
-                                    T.any(
-                                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl,
-                                      Sam::Internal::AnyHash
+                                  cache_control:
+                                    T.nilable(
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl::OrHash
                                     )
-                                  )
-                                )
-                                  .void
+                                ).void
                               end
                               attr_writer :cache_control
 
                               sig do
                                 params(
-                                  source: T.any(
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64,
-                                    Sam::Internal::AnyHash,
-                                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL
-                                  ),
-                                  cache_control: T.nilable(
+                                  source:
                                     T.any(
-                                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl,
-                                      Sam::Internal::AnyHash
-                                    )
-                                  ),
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::OrHash,
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL::OrHash
+                                    ),
+                                  cache_control:
+                                    T.nilable(
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl::OrHash
+                                    ),
                                   type: Symbol
-                                )
-                                  .returns(T.attached_class)
+                                ).returns(T.attached_class)
                               end
-                              def self.new(source:, cache_control: nil, type: :image); end
+                              def self.new(
+                                source:,
+                                cache_control: nil,
+                                type: :image
+                              )
+                              end
 
                               sig do
-                                override
-                                  .returns(
-                                    {
-                                      source: T.any(
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64,
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL
+                                override.returns(
+                                  {
+                                    source:
+                                      T.any(
+                                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64,
+                                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL
                                       ),
-                                      type: Symbol,
-                                      cache_control: T.nilable(
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl
+                                    type: Symbol,
+                                    cache_control:
+                                      T.nilable(
+                                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl
                                       )
-                                    }
-                                  )
+                                  }
+                                )
                               end
-                              def to_hash; end
+                              def to_hash
+                              end
 
                               module Source
                                 extend Sam::Internal::Type::Union
 
+                                Variants =
+                                  T.type_alias do
+                                    T.any(
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64,
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL
+                                    )
+                                  end
+
                                 class Base64 < Sam::Internal::Type::BaseModel
+                                  OrHash =
+                                    T.type_alias do
+                                      T.any(T.self_type, Sam::Internal::AnyHash)
+                                    end
+
                                   sig { returns(String) }
                                   attr_accessor :data
 
                                   sig do
                                     returns(
-                                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType::OrSymbol
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType::OrSymbol
                                     )
                                   end
                                   attr_accessor :media_type
@@ -2741,131 +3155,164 @@ module Sam
                                   sig do
                                     params(
                                       data: String,
-                                      media_type: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType::OrSymbol,
+                                      media_type:
+                                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType::OrSymbol,
                                       type: Symbol
-                                    )
-                                      .returns(T.attached_class)
+                                    ).returns(T.attached_class)
                                   end
-                                  def self.new(data:, media_type:, type: :base64); end
+                                  def self.new(
+                                    data:,
+                                    media_type:,
+                                    type: :base64
+                                  )
+                                  end
 
                                   sig do
-                                    override
-                                      .returns(
-                                        {
-                                          data: String,
-                                          media_type: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType::OrSymbol,
-                                          type: Symbol
-                                        }
-                                      )
+                                    override.returns(
+                                      {
+                                        data: String,
+                                        media_type:
+                                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType::OrSymbol,
+                                        type: Symbol
+                                      }
+                                    )
                                   end
-                                  def to_hash; end
+                                  def to_hash
+                                  end
 
                                   module MediaType
                                     extend Sam::Internal::Type::Enum
 
                                     TaggedSymbol =
                                       T.type_alias do
-                                        T.all(Symbol, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType)
+                                        T.all(
+                                          Symbol,
+                                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType
+                                        )
                                       end
-                                    OrSymbol = T.type_alias { T.any(Symbol, String) }
+                                    OrSymbol =
+                                      T.type_alias { T.any(Symbol, String) }
 
                                     IMAGE_JPEG =
                                       T.let(
                                         :"image/jpeg",
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
+                                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
                                       )
                                     IMAGE_PNG =
                                       T.let(
                                         :"image/png",
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
+                                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
                                       )
                                     IMAGE_GIF =
                                       T.let(
                                         :"image/gif",
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
+                                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
                                       )
                                     IMAGE_WEBP =
                                       T.let(
                                         :"image/webp",
-                                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
+                                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
                                       )
 
                                     sig do
-                                      override
-                                        .returns(
-                                          T::Array[
-                                            Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
-                                          ]
-                                        )
+                                      override.returns(
+                                        T::Array[
+                                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType::TaggedSymbol
+                                        ]
+                                      )
                                     end
-                                    def self.values; end
+                                    def self.values
+                                    end
                                   end
                                 end
 
                                 class URL < Sam::Internal::Type::BaseModel
+                                  OrHash =
+                                    T.type_alias do
+                                      T.any(T.self_type, Sam::Internal::AnyHash)
+                                    end
+
                                   sig { returns(Symbol) }
                                   attr_accessor :type
 
                                   sig { returns(String) }
                                   attr_accessor :url
 
-                                  sig { params(url: String, type: Symbol).returns(T.attached_class) }
-                                  def self.new(url:, type: :url); end
+                                  sig do
+                                    params(url: String, type: Symbol).returns(
+                                      T.attached_class
+                                    )
+                                  end
+                                  def self.new(url:, type: :url)
+                                  end
 
-                                  sig { override.returns({type: Symbol, url: String}) }
-                                  def to_hash; end
+                                  sig do
+                                    override.returns(
+                                      { type: Symbol, url: String }
+                                    )
+                                  end
+                                  def to_hash
+                                  end
                                 end
 
                                 sig do
-                                  override
-                                    .returns(
-                                      [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL]
-                                    )
+                                  override.returns(
+                                    T::Array[
+                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Variants
+                                    ]
+                                  )
                                 end
-                                def self.variants; end
+                                def self.variants
+                                end
                               end
 
                               class CacheControl < Sam::Internal::Type::BaseModel
+                                OrHash =
+                                  T.type_alias do
+                                    T.any(T.self_type, Sam::Internal::AnyHash)
+                                  end
+
                                 sig { returns(Symbol) }
                                 attr_accessor :type
 
-                                sig { params(type: Symbol).returns(T.attached_class) }
-                                def self.new(type: :ephemeral); end
+                                sig do
+                                  params(type: Symbol).returns(T.attached_class)
+                                end
+                                def self.new(type: :ephemeral)
+                                end
 
-                                sig { override.returns({type: Symbol}) }
-                                def to_hash; end
+                                sig { override.returns({ type: Symbol }) }
+                                def to_hash
+                                end
                               end
                             end
 
                             sig do
-                              override
-                                .returns(
-                                  [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image]
-                                )
+                              override.returns(
+                                T::Array[
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Variants
+                                ]
+                              )
                             end
-                            def self.variants; end
+                            def self.variants
+                            end
                           end
 
                           sig do
-                            override
-                              .returns(
-                                [
-                                  String,
-                                  T::Array[
-                                                                    T.any(
-                                                                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
-                                                                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
-                                                                    )
-                                                                  ]
-                                ]
-                              )
+                            override.returns(
+                              T::Array[
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::Variants
+                              ]
+                            )
                           end
-                          def self.variants; end
+                          def self.variants
+                          end
 
                           UnionMember1Array =
                             T.let(
                               Sam::Internal::Type::ArrayOf[
-                                union: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1
+                                union:
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1
                               ],
                               Sam::Internal::Type::Converter
                             )
@@ -2873,55 +3320,89 @@ module Sam
                       end
 
                       class URL < Sam::Internal::Type::BaseModel
+                        OrHash =
+                          T.type_alias do
+                            T.any(T.self_type, Sam::Internal::AnyHash)
+                          end
+
                         sig { returns(Symbol) }
                         attr_accessor :type
 
                         sig { returns(String) }
                         attr_accessor :url
 
-                        sig { params(url: String, type: Symbol).returns(T.attached_class) }
-                        def self.new(url:, type: :url); end
+                        sig do
+                          params(url: String, type: Symbol).returns(
+                            T.attached_class
+                          )
+                        end
+                        def self.new(url:, type: :url)
+                        end
 
-                        sig { override.returns({type: Symbol, url: String}) }
-                        def to_hash; end
+                        sig { override.returns({ type: Symbol, url: String }) }
+                        def to_hash
+                        end
                       end
 
                       sig do
-                        override
-                          .returns(
-                            [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL]
-                          )
+                        override.returns(
+                          T::Array[
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Variants
+                          ]
+                        )
                       end
-                      def self.variants; end
+                      def self.variants
+                      end
                     end
 
                     class CacheControl < Sam::Internal::Type::BaseModel
+                      OrHash =
+                        T.type_alias do
+                          T.any(T.self_type, Sam::Internal::AnyHash)
+                        end
+
                       sig { returns(Symbol) }
                       attr_accessor :type
 
                       sig { params(type: Symbol).returns(T.attached_class) }
-                      def self.new(type: :ephemeral); end
+                      def self.new(type: :ephemeral)
+                      end
 
-                      sig { override.returns({type: Symbol}) }
-                      def to_hash; end
+                      sig { override.returns({ type: Symbol }) }
+                      def to_hash
+                      end
                     end
 
                     class Citations < Sam::Internal::Type::BaseModel
+                      OrHash =
+                        T.type_alias do
+                          T.any(T.self_type, Sam::Internal::AnyHash)
+                        end
+
                       sig { returns(T.nilable(T::Boolean)) }
                       attr_reader :enabled
 
                       sig { params(enabled: T::Boolean).void }
                       attr_writer :enabled
 
-                      sig { params(enabled: T::Boolean).returns(T.attached_class) }
-                      def self.new(enabled: nil); end
+                      sig do
+                        params(enabled: T::Boolean).returns(T.attached_class)
+                      end
+                      def self.new(enabled: nil)
+                      end
 
-                      sig { override.returns({enabled: T::Boolean}) }
-                      def to_hash; end
+                      sig { override.returns({ enabled: T::Boolean }) }
+                      def to_hash
+                      end
                     end
                   end
 
                   class Thinking < Sam::Internal::Type::BaseModel
+                    OrHash =
+                      T.type_alias do
+                        T.any(T.self_type, Sam::Internal::AnyHash)
+                      end
+
                     sig { returns(String) }
                     attr_accessor :signature
 
@@ -2932,61 +3413,76 @@ module Sam
                     attr_accessor :type
 
                     sig do
-                      params(signature: String, thinking: String, type: Symbol).returns(T.attached_class)
+                      params(
+                        signature: String,
+                        thinking: String,
+                        type: Symbol
+                      ).returns(T.attached_class)
                     end
-                    def self.new(signature:, thinking:, type: :thinking); end
+                    def self.new(signature:, thinking:, type: :thinking)
+                    end
 
-                    sig { override.returns({signature: String, thinking: String, type: Symbol}) }
-                    def to_hash; end
+                    sig do
+                      override.returns(
+                        { signature: String, thinking: String, type: Symbol }
+                      )
+                    end
+                    def to_hash
+                    end
                   end
 
                   class RedactedThinking < Sam::Internal::Type::BaseModel
+                    OrHash =
+                      T.type_alias do
+                        T.any(T.self_type, Sam::Internal::AnyHash)
+                      end
+
                     sig { returns(String) }
                     attr_accessor :data
 
                     sig { returns(Symbol) }
                     attr_accessor :type
 
-                    sig { params(data: String, type: Symbol).returns(T.attached_class) }
-                    def self.new(data:, type: :redacted_thinking); end
+                    sig do
+                      params(data: String, type: Symbol).returns(
+                        T.attached_class
+                      )
+                    end
+                    def self.new(data:, type: :redacted_thinking)
+                    end
 
-                    sig { override.returns({data: String, type: Symbol}) }
-                    def to_hash; end
+                    sig { override.returns({ data: String, type: Symbol }) }
+                    def to_hash
+                    end
                   end
 
                   sig do
-                    override
-                      .returns(
-                        [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Thinking, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking]
-                      )
+                    override.returns(
+                      T::Array[
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Variants
+                      ]
+                    )
                   end
-                  def self.variants; end
+                  def self.variants
+                  end
                 end
 
                 sig do
-                  override
-                    .returns(
-                      [
-                        String,
-                        T::Array[
-                                                T.any(
-                                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text,
-                                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image,
-                                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse,
-                                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult,
-                                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document,
-                                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Thinking,
-                                                  Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking
-                                                )
-                                              ]
-                      ]
-                    )
+                  override.returns(
+                    T::Array[
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::Variants
+                    ]
+                  )
                 end
-                def self.variants; end
+                def self.variants
+                end
 
                 UnionMember1Array =
                   T.let(
-                    Sam::Internal::Type::ArrayOf[union: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1],
+                    Sam::Internal::Type::ArrayOf[
+                      union:
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1
+                    ],
                     Sam::Internal::Type::Converter
                   )
               end
@@ -2995,31 +3491,41 @@ module Sam
                 extend Sam::Internal::Type::Enum
 
                 TaggedSymbol =
-                  T.type_alias { T.all(Symbol, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role) }
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role
+                    )
+                  end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 USER =
                   T.let(
                     :user,
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role::TaggedSymbol
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role::TaggedSymbol
                   )
                 ASSISTANT =
                   T.let(
                     :assistant,
-                    Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role::TaggedSymbol
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role::TaggedSymbol
                   )
 
                 sig do
-                  override
-                    .returns(
-                      T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role::TaggedSymbol]
-                    )
+                  override.returns(
+                    T::Array[
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role::TaggedSymbol
+                    ]
+                  )
                 end
-                def self.values; end
+                def self.values
+                end
               end
             end
 
             class Metadata < Sam::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
               # An external identifier for the user who is associated with the request.
               #
               # This should be a uuid, hash value, or other opaque identifier. Anthropic may use
@@ -3029,7 +3535,9 @@ module Sam
               attr_accessor :user_id
 
               # An object describing metadata about the request.
-              sig { params(user_id: T.nilable(String)).returns(T.attached_class) }
+              sig do
+                params(user_id: T.nilable(String)).returns(T.attached_class)
+              end
               def self.new(
                 # An external identifier for the user who is associated with the request.
                 #
@@ -3037,9 +3545,12 @@ module Sam
                 # this id to help detect abuse. Do not include any identifying information such as
                 # name, email address, or phone number.
                 user_id: nil
-              ); end
-              sig { override.returns({user_id: T.nilable(String)}) }
-              def to_hash; end
+              )
+              end
+
+              sig { override.returns({ user_id: T.nilable(String) }) }
+              def to_hash
+              end
             end
 
             # System prompt.
@@ -3050,7 +3561,20 @@ module Sam
             module System
               extend Sam::Internal::Type::Union
 
+              Variants =
+                T.type_alias do
+                  T.any(
+                    String,
+                    T::Array[
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1
+                    ]
+                  )
+                end
+
               class UnionMember1 < Sam::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                 sig { returns(String) }
                 attr_accessor :text
 
@@ -3060,7 +3584,7 @@ module Sam
                 sig do
                   returns(
                     T.nilable(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::CacheControl
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::CacheControl
                     )
                   )
                 end
@@ -3068,14 +3592,11 @@ module Sam
 
                 sig do
                   params(
-                    cache_control: T.nilable(
-                      T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::CacheControl,
-                        Sam::Internal::AnyHash
+                    cache_control:
+                      T.nilable(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::CacheControl::OrHash
                       )
-                    )
-                  )
-                    .void
+                  ).void
                 end
                 attr_writer :cache_control
 
@@ -3084,9 +3605,9 @@ module Sam
                     T.nilable(
                       T::Array[
                         T.any(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation,
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation,
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation
                         )
                       ]
                     )
@@ -3097,66 +3618,90 @@ module Sam
                 sig do
                   params(
                     text: String,
-                    cache_control: T.nilable(
-                      T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::CacheControl,
-                        Sam::Internal::AnyHash
-                      )
-                    ),
-                    citations: T.nilable(
-                      T::Array[
-                        T.any(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation,
-                          Sam::Internal::AnyHash,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation,
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation
-                        )
-                      ]
-                    ),
+                    cache_control:
+                      T.nilable(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::CacheControl::OrHash
+                      ),
+                    citations:
+                      T.nilable(
+                        T::Array[
+                          T.any(
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation::OrHash,
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation::OrHash,
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation::OrHash
+                          )
+                        ]
+                      ),
                     type: Symbol
-                  )
-                    .returns(T.attached_class)
+                  ).returns(T.attached_class)
                 end
-                def self.new(text:, cache_control: nil, citations: nil, type: :text); end
+                def self.new(
+                  text:,
+                  cache_control: nil,
+                  citations: nil,
+                  type: :text
+                )
+                end
 
                 sig do
-                  override
-                    .returns(
-                      {
-                        text: String,
-                        type: Symbol,
-                        cache_control: T.nilable(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::CacheControl
+                  override.returns(
+                    {
+                      text: String,
+                      type: Symbol,
+                      cache_control:
+                        T.nilable(
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::CacheControl
                         ),
-                        citations: T.nilable(
+                      citations:
+                        T.nilable(
                           T::Array[
                             T.any(
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation,
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation,
-                              Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation,
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation,
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation
                             )
                           ]
                         )
-                      }
-                    )
+                    }
+                  )
                 end
-                def to_hash; end
+                def to_hash
+                end
 
                 class CacheControl < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(Symbol) }
                   attr_accessor :type
 
                   sig { params(type: Symbol).returns(T.attached_class) }
-                  def self.new(type: :ephemeral); end
+                  def self.new(type: :ephemeral)
+                  end
 
-                  sig { override.returns({type: Symbol}) }
-                  def to_hash; end
+                  sig { override.returns({ type: Symbol }) }
+                  def to_hash
+                  end
                 end
 
                 module Citation
                   extend Sam::Internal::Type::Union
 
+                  Variants =
+                    T.type_alias do
+                      T.any(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation
+                      )
+                    end
+
                   class CharLocation < Sam::Internal::Type::BaseModel
+                    OrHash =
+                      T.type_alias do
+                        T.any(T.self_type, Sam::Internal::AnyHash)
+                      end
+
                     sig { returns(String) }
                     attr_accessor :cited_text
 
@@ -3183,8 +3728,7 @@ module Sam
                         end_char_index: Integer,
                         start_char_index: Integer,
                         type: Symbol
-                      )
-                        .returns(T.attached_class)
+                      ).returns(T.attached_class)
                     end
                     def self.new(
                       cited_text:,
@@ -3197,22 +3741,27 @@ module Sam
                     end
 
                     sig do
-                      override
-                        .returns(
-                          {
-                            cited_text: String,
-                            document_index: Integer,
-                            document_title: T.nilable(String),
-                            end_char_index: Integer,
-                            start_char_index: Integer,
-                            type: Symbol
-                          }
-                        )
+                      override.returns(
+                        {
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: T.nilable(String),
+                          end_char_index: Integer,
+                          start_char_index: Integer,
+                          type: Symbol
+                        }
+                      )
                     end
-                    def to_hash; end
+                    def to_hash
+                    end
                   end
 
                   class PageLocation < Sam::Internal::Type::BaseModel
+                    OrHash =
+                      T.type_alias do
+                        T.any(T.self_type, Sam::Internal::AnyHash)
+                      end
+
                     sig { returns(String) }
                     attr_accessor :cited_text
 
@@ -3239,8 +3788,7 @@ module Sam
                         end_page_number: Integer,
                         start_page_number: Integer,
                         type: Symbol
-                      )
-                        .returns(T.attached_class)
+                      ).returns(T.attached_class)
                     end
                     def self.new(
                       cited_text:,
@@ -3253,22 +3801,27 @@ module Sam
                     end
 
                     sig do
-                      override
-                        .returns(
-                          {
-                            cited_text: String,
-                            document_index: Integer,
-                            document_title: T.nilable(String),
-                            end_page_number: Integer,
-                            start_page_number: Integer,
-                            type: Symbol
-                          }
-                        )
+                      override.returns(
+                        {
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: T.nilable(String),
+                          end_page_number: Integer,
+                          start_page_number: Integer,
+                          type: Symbol
+                        }
+                      )
                     end
-                    def to_hash; end
+                    def to_hash
+                    end
                   end
 
                   class ContentBlockLocation < Sam::Internal::Type::BaseModel
+                    OrHash =
+                      T.type_alias do
+                        T.any(T.self_type, Sam::Internal::AnyHash)
+                      end
+
                     sig { returns(String) }
                     attr_accessor :cited_text
 
@@ -3295,8 +3848,7 @@ module Sam
                         end_block_index: Integer,
                         start_block_index: Integer,
                         type: Symbol
-                      )
-                        .returns(T.attached_class)
+                      ).returns(T.attached_class)
                     end
                     def self.new(
                       cited_text:,
@@ -3305,44 +3857,52 @@ module Sam
                       end_block_index:,
                       start_block_index:,
                       type: :content_block_location
-                    ); end
-                    sig do
-                      override
-                        .returns(
-                          {
-                            cited_text: String,
-                            document_index: Integer,
-                            document_title: T.nilable(String),
-                            end_block_index: Integer,
-                            start_block_index: Integer,
-                            type: Symbol
-                          }
-                        )
+                    )
                     end
-                    def to_hash; end
+
+                    sig do
+                      override.returns(
+                        {
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: T.nilable(String),
+                          end_block_index: Integer,
+                          start_block_index: Integer,
+                          type: Symbol
+                        }
+                      )
+                    end
+                    def to_hash
+                    end
                   end
 
                   sig do
-                    override
-                      .returns(
-                        [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation]
-                      )
+                    override.returns(
+                      T::Array[
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::Variants
+                      ]
+                    )
                   end
-                  def self.variants; end
+                  def self.variants
+                  end
                 end
               end
 
               sig do
-                override
-                  .returns(
-                    [String, T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1]]
-                  )
+                override.returns(
+                  T::Array[
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::Variants
+                  ]
+                )
               end
-              def self.variants; end
+              def self.variants
+              end
 
               UnionMember1Array =
                 T.let(
-                  Sam::Internal::Type::ArrayOf[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1],
+                  Sam::Internal::Type::ArrayOf[
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1
+                  ],
                   Sam::Internal::Type::Converter
                 )
             end
@@ -3359,7 +3919,18 @@ module Sam
             module Thinking
               extend Sam::Internal::Type::Union
 
+              Variants =
+                T.type_alias do
+                  T.any(
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Enabled,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Disabled
+                  )
+                end
+
               class Enabled < Sam::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                 # Determines how many tokens Claude can use for its internal reasoning process.
                 # Larger budgets can enable more thorough analysis for complex problems, improving
                 # response quality.
@@ -3375,7 +3946,11 @@ module Sam
                 sig { returns(Symbol) }
                 attr_accessor :type
 
-                sig { params(budget_tokens: Integer, type: Symbol).returns(T.attached_class) }
+                sig do
+                  params(budget_tokens: Integer, type: Symbol).returns(
+                    T.attached_class
+                  )
+                end
                 def self.new(
                   # Determines how many tokens Claude can use for its internal reasoning process.
                   # Larger budgets can enable more thorough analysis for complex problems, improving
@@ -3388,29 +3963,41 @@ module Sam
                   # for details.
                   budget_tokens:,
                   type: :enabled
-                ); end
-                sig { override.returns({budget_tokens: Integer, type: Symbol}) }
-                def to_hash; end
+                )
+                end
+
+                sig do
+                  override.returns({ budget_tokens: Integer, type: Symbol })
+                end
+                def to_hash
+                end
               end
 
               class Disabled < Sam::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                 sig { returns(Symbol) }
                 attr_accessor :type
 
                 sig { params(type: Symbol).returns(T.attached_class) }
-                def self.new(type: :disabled); end
+                def self.new(type: :disabled)
+                end
 
-                sig { override.returns({type: Symbol}) }
-                def to_hash; end
+                sig { override.returns({ type: Symbol }) }
+                def to_hash
+                end
               end
 
               sig do
-                override
-                  .returns(
-                    [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Enabled, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Disabled]
-                  )
+                override.returns(
+                  T::Array[
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Variants
+                  ]
+                )
               end
-              def self.variants; end
+              def self.variants
+              end
             end
 
             # How the model should use the provided tools. The model can use a specific tool,
@@ -3418,7 +4005,20 @@ module Sam
             module ToolChoice
               extend Sam::Internal::Type::Union
 
+              Variants =
+                T.type_alias do
+                  T.any(
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Auto,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Any,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Tool,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::None
+                  )
+                end
+
               class Auto < Sam::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                 sig { returns(Symbol) }
                 attr_accessor :type
 
@@ -3433,7 +4033,12 @@ module Sam
                 attr_writer :disable_parallel_tool_use
 
                 # The model will automatically decide whether to use tools.
-                sig { params(disable_parallel_tool_use: T::Boolean, type: Symbol).returns(T.attached_class) }
+                sig do
+                  params(
+                    disable_parallel_tool_use: T::Boolean,
+                    type: Symbol
+                  ).returns(T.attached_class)
+                end
                 def self.new(
                   # Whether to disable parallel tool use.
                   #
@@ -3441,12 +4046,22 @@ module Sam
                   # use.
                   disable_parallel_tool_use: nil,
                   type: :auto
-                ); end
-                sig { override.returns({type: Symbol, disable_parallel_tool_use: T::Boolean}) }
-                def to_hash; end
+                )
+                end
+
+                sig do
+                  override.returns(
+                    { type: Symbol, disable_parallel_tool_use: T::Boolean }
+                  )
+                end
+                def to_hash
+                end
               end
 
               class Any < Sam::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                 sig { returns(Symbol) }
                 attr_accessor :type
 
@@ -3461,7 +4076,12 @@ module Sam
                 attr_writer :disable_parallel_tool_use
 
                 # The model will use any available tools.
-                sig { params(disable_parallel_tool_use: T::Boolean, type: Symbol).returns(T.attached_class) }
+                sig do
+                  params(
+                    disable_parallel_tool_use: T::Boolean,
+                    type: Symbol
+                  ).returns(T.attached_class)
+                end
                 def self.new(
                   # Whether to disable parallel tool use.
                   #
@@ -3469,12 +4089,22 @@ module Sam
                   # use.
                   disable_parallel_tool_use: nil,
                   type: :any
-                ); end
-                sig { override.returns({type: Symbol, disable_parallel_tool_use: T::Boolean}) }
-                def to_hash; end
+                )
+                end
+
+                sig do
+                  override.returns(
+                    { type: Symbol, disable_parallel_tool_use: T::Boolean }
+                  )
+                end
+                def to_hash
+                end
               end
 
               class Tool < Sam::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                 # The name of the tool to use.
                 sig { returns(String) }
                 attr_accessor :name
@@ -3509,51 +4139,86 @@ module Sam
                   # use.
                   disable_parallel_tool_use: nil,
                   type: :tool
-                ); end
-                sig { override.returns({name: String, type: Symbol, disable_parallel_tool_use: T::Boolean}) }
-                def to_hash; end
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      name: String,
+                      type: Symbol,
+                      disable_parallel_tool_use: T::Boolean
+                    }
+                  )
+                end
+                def to_hash
+                end
               end
 
               class None < Sam::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                 sig { returns(Symbol) }
                 attr_accessor :type
 
                 # The model will not be allowed to use tools.
                 sig { params(type: Symbol).returns(T.attached_class) }
-                def self.new(type: :none); end
+                def self.new(type: :none)
+                end
 
-                sig { override.returns({type: Symbol}) }
-                def to_hash; end
+                sig { override.returns({ type: Symbol }) }
+                def to_hash
+                end
               end
 
               sig do
-                override
-                  .returns(
-                    [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Auto, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Any, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Tool, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::None]
-                  )
+                override.returns(
+                  T::Array[
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Variants
+                  ]
+                )
               end
-              def self.variants; end
+              def self.variants
+              end
             end
 
             module Tool
               extend Sam::Internal::Type::Union
 
+              Variants =
+                T.type_alias do
+                  T.any(
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124,
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124
+                  )
+                end
+
               class BetaTool < Sam::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                 # [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input.
                 #
                 # This defines the shape of the `input` that your tool accepts and that the model
                 # will produce.
-                sig { returns(Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::InputSchema) }
+                sig do
+                  returns(
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::InputSchema
+                  )
+                end
                 attr_reader :input_schema
 
                 sig do
                   params(
-                    input_schema: T.any(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::InputSchema,
-                      Sam::Internal::AnyHash
-                    )
-                  )
-                    .void
+                    input_schema:
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::InputSchema::OrHash
+                  ).void
                 end
                 attr_writer :input_schema
 
@@ -3566,7 +4231,7 @@ module Sam
                 sig do
                   returns(
                     T.nilable(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::CacheControl
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::CacheControl
                     )
                   )
                 end
@@ -3574,14 +4239,11 @@ module Sam
 
                 sig do
                   params(
-                    cache_control: T.nilable(
-                      T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::CacheControl,
-                        Sam::Internal::AnyHash
+                    cache_control:
+                      T.nilable(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::CacheControl::OrHash
                       )
-                    )
-                  )
-                    .void
+                  ).void
                 end
                 attr_writer :cache_control
 
@@ -3600,7 +4262,7 @@ module Sam
                 sig do
                   returns(
                     T.nilable(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::Type::OrSymbol
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::Type::OrSymbol
                     )
                   )
                 end
@@ -3608,23 +4270,19 @@ module Sam
 
                 sig do
                   params(
-                    input_schema: T.any(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::InputSchema,
-                      Sam::Internal::AnyHash
-                    ),
+                    input_schema:
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::InputSchema::OrHash,
                     name: String,
-                    cache_control: T.nilable(
-                      T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::CacheControl,
-                        Sam::Internal::AnyHash
-                      )
-                    ),
+                    cache_control:
+                      T.nilable(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::CacheControl::OrHash
+                      ),
                     description: String,
-                    type: T.nilable(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::Type::OrSymbol
-                    )
-                  )
-                    .returns(T.attached_class)
+                    type:
+                      T.nilable(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::Type::OrSymbol
+                      )
+                  ).returns(T.attached_class)
                 end
                 def self.new(
                   # [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input.
@@ -3645,26 +4303,34 @@ module Sam
                   # aspects of the tool input JSON schema.
                   description: nil,
                   type: nil
-                ); end
-                sig do
-                  override
-                    .returns(
-                      {
-                        input_schema: Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::InputSchema,
-                        name: String,
-                        cache_control: T.nilable(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::CacheControl
-                        ),
-                        description: String,
-                        type: T.nilable(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::Type::OrSymbol
-                        )
-                      }
-                    )
+                )
                 end
-                def to_hash; end
+
+                sig do
+                  override.returns(
+                    {
+                      input_schema:
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::InputSchema,
+                      name: String,
+                      cache_control:
+                        T.nilable(
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::CacheControl
+                        ),
+                      description: String,
+                      type:
+                        T.nilable(
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::Type::OrSymbol
+                        )
+                    }
+                  )
+                end
+                def to_hash
+                end
 
                 class InputSchema < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(Symbol) }
                   attr_accessor :type
 
@@ -3675,48 +4341,74 @@ module Sam
                   #
                   # This defines the shape of the `input` that your tool accepts and that the model
                   # will produce.
-                  sig { params(properties: T.nilable(T.anything), type: Symbol).returns(T.attached_class) }
-                  def self.new(properties: nil, type: :object); end
+                  sig do
+                    params(
+                      properties: T.nilable(T.anything),
+                      type: Symbol
+                    ).returns(T.attached_class)
+                  end
+                  def self.new(properties: nil, type: :object)
+                  end
 
-                  sig { override.returns({type: Symbol, properties: T.nilable(T.anything)}) }
-                  def to_hash; end
+                  sig do
+                    override.returns(
+                      { type: Symbol, properties: T.nilable(T.anything) }
+                    )
+                  end
+                  def to_hash
+                  end
                 end
 
                 class CacheControl < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(Symbol) }
                   attr_accessor :type
 
                   sig { params(type: Symbol).returns(T.attached_class) }
-                  def self.new(type: :ephemeral); end
+                  def self.new(type: :ephemeral)
+                  end
 
-                  sig { override.returns({type: Symbol}) }
-                  def to_hash; end
+                  sig { override.returns({ type: Symbol }) }
+                  def to_hash
+                  end
                 end
 
                 module Type
                   extend Sam::Internal::Type::Enum
 
                   TaggedSymbol =
-                    T.type_alias { T.all(Symbol, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::Type) }
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::Type
+                      )
+                    end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                   CUSTOM =
                     T.let(
                       :custom,
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::Type::TaggedSymbol
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::Type::TaggedSymbol
                     )
 
                   sig do
-                    override
-                      .returns(
-                        T::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::Type::TaggedSymbol]
-                      )
+                    override.returns(
+                      T::Array[
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::Type::TaggedSymbol
+                      ]
+                    )
                   end
-                  def self.values; end
+                  def self.values
+                  end
                 end
               end
 
               class BetaComputerUseTool20241022 < Sam::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                 # The height of the display in pixels.
                 sig { returns(Integer) }
                 attr_accessor :display_height_px
@@ -3737,7 +4429,7 @@ module Sam
                 sig do
                   returns(
                     T.nilable(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022::CacheControl
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022::CacheControl
                     )
                   )
                 end
@@ -3745,14 +4437,11 @@ module Sam
 
                 sig do
                   params(
-                    cache_control: T.nilable(
-                      T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022::CacheControl,
-                        Sam::Internal::AnyHash
+                    cache_control:
+                      T.nilable(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022::CacheControl::OrHash
                       )
-                    )
-                  )
-                    .void
+                  ).void
                 end
                 attr_writer :cache_control
 
@@ -3764,17 +4453,14 @@ module Sam
                   params(
                     display_height_px: Integer,
                     display_width_px: Integer,
-                    cache_control: T.nilable(
-                      T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022::CacheControl,
-                        Sam::Internal::AnyHash
-                      )
-                    ),
+                    cache_control:
+                      T.nilable(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022::CacheControl::OrHash
+                      ),
                     display_number: T.nilable(Integer),
                     name: Symbol,
                     type: Symbol
-                  )
-                    .returns(T.attached_class)
+                  ).returns(T.attached_class)
                 end
                 def self.new(
                   # The height of the display in pixels.
@@ -3789,37 +4475,48 @@ module Sam
                   # This is how the tool will be called by the model and in tool_use blocks.
                   name: :computer,
                   type: :computer_20241022
-                ); end
-                sig do
-                  override
-                    .returns(
-                      {
-                        display_height_px: Integer,
-                        display_width_px: Integer,
-                        name: Symbol,
-                        type: Symbol,
-                        cache_control: T.nilable(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022::CacheControl
-                        ),
-                        display_number: T.nilable(Integer)
-                      }
-                    )
+                )
                 end
-                def to_hash; end
+
+                sig do
+                  override.returns(
+                    {
+                      display_height_px: Integer,
+                      display_width_px: Integer,
+                      name: Symbol,
+                      type: Symbol,
+                      cache_control:
+                        T.nilable(
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022::CacheControl
+                        ),
+                      display_number: T.nilable(Integer)
+                    }
+                  )
+                end
+                def to_hash
+                end
 
                 class CacheControl < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(Symbol) }
                   attr_accessor :type
 
                   sig { params(type: Symbol).returns(T.attached_class) }
-                  def self.new(type: :ephemeral); end
+                  def self.new(type: :ephemeral)
+                  end
 
-                  sig { override.returns({type: Symbol}) }
-                  def to_hash; end
+                  sig { override.returns({ type: Symbol }) }
+                  def to_hash
+                  end
                 end
               end
 
               class BetaBashTool20241022 < Sam::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                 # Name of the tool.
                 #
                 # This is how the tool will be called by the model and in tool_use blocks.
@@ -3832,7 +4529,7 @@ module Sam
                 sig do
                   returns(
                     T.nilable(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022::CacheControl
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022::CacheControl
                     )
                   )
                 end
@@ -3840,29 +4537,23 @@ module Sam
 
                 sig do
                   params(
-                    cache_control: T.nilable(
-                      T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022::CacheControl,
-                        Sam::Internal::AnyHash
+                    cache_control:
+                      T.nilable(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022::CacheControl::OrHash
                       )
-                    )
-                  )
-                    .void
+                  ).void
                 end
                 attr_writer :cache_control
 
                 sig do
                   params(
-                    cache_control: T.nilable(
-                      T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022::CacheControl,
-                        Sam::Internal::AnyHash
-                      )
-                    ),
+                    cache_control:
+                      T.nilable(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022::CacheControl::OrHash
+                      ),
                     name: Symbol,
                     type: Symbol
-                  )
-                    .returns(T.attached_class)
+                  ).returns(T.attached_class)
                 end
                 def self.new(
                   cache_control: nil,
@@ -3871,34 +4562,45 @@ module Sam
                   # This is how the tool will be called by the model and in tool_use blocks.
                   name: :bash,
                   type: :bash_20241022
-                ); end
-                sig do
-                  override
-                    .returns(
-                      {
-                        name: Symbol,
-                        type: Symbol,
-                        cache_control: T.nilable(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022::CacheControl
-                        )
-                      }
-                    )
+                )
                 end
-                def to_hash; end
+
+                sig do
+                  override.returns(
+                    {
+                      name: Symbol,
+                      type: Symbol,
+                      cache_control:
+                        T.nilable(
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022::CacheControl
+                        )
+                    }
+                  )
+                end
+                def to_hash
+                end
 
                 class CacheControl < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(Symbol) }
                   attr_accessor :type
 
                   sig { params(type: Symbol).returns(T.attached_class) }
-                  def self.new(type: :ephemeral); end
+                  def self.new(type: :ephemeral)
+                  end
 
-                  sig { override.returns({type: Symbol}) }
-                  def to_hash; end
+                  sig { override.returns({ type: Symbol }) }
+                  def to_hash
+                  end
                 end
               end
 
               class BetaTextEditor20241022 < Sam::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                 # Name of the tool.
                 #
                 # This is how the tool will be called by the model and in tool_use blocks.
@@ -3911,7 +4613,7 @@ module Sam
                 sig do
                   returns(
                     T.nilable(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022::CacheControl
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022::CacheControl
                     )
                   )
                 end
@@ -3919,29 +4621,23 @@ module Sam
 
                 sig do
                   params(
-                    cache_control: T.nilable(
-                      T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022::CacheControl,
-                        Sam::Internal::AnyHash
+                    cache_control:
+                      T.nilable(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022::CacheControl::OrHash
                       )
-                    )
-                  )
-                    .void
+                  ).void
                 end
                 attr_writer :cache_control
 
                 sig do
                   params(
-                    cache_control: T.nilable(
-                      T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022::CacheControl,
-                        Sam::Internal::AnyHash
-                      )
-                    ),
+                    cache_control:
+                      T.nilable(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022::CacheControl::OrHash
+                      ),
                     name: Symbol,
                     type: Symbol
-                  )
-                    .returns(T.attached_class)
+                  ).returns(T.attached_class)
                 end
                 def self.new(
                   cache_control: nil,
@@ -3950,34 +4646,45 @@ module Sam
                   # This is how the tool will be called by the model and in tool_use blocks.
                   name: :str_replace_editor,
                   type: :text_editor_20241022
-                ); end
-                sig do
-                  override
-                    .returns(
-                      {
-                        name: Symbol,
-                        type: Symbol,
-                        cache_control: T.nilable(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022::CacheControl
-                        )
-                      }
-                    )
+                )
                 end
-                def to_hash; end
+
+                sig do
+                  override.returns(
+                    {
+                      name: Symbol,
+                      type: Symbol,
+                      cache_control:
+                        T.nilable(
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022::CacheControl
+                        )
+                    }
+                  )
+                end
+                def to_hash
+                end
 
                 class CacheControl < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(Symbol) }
                   attr_accessor :type
 
                   sig { params(type: Symbol).returns(T.attached_class) }
-                  def self.new(type: :ephemeral); end
+                  def self.new(type: :ephemeral)
+                  end
 
-                  sig { override.returns({type: Symbol}) }
-                  def to_hash; end
+                  sig { override.returns({ type: Symbol }) }
+                  def to_hash
+                  end
                 end
               end
 
               class BetaComputerUseTool20250124 < Sam::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                 # The height of the display in pixels.
                 sig { returns(Integer) }
                 attr_accessor :display_height_px
@@ -3998,7 +4705,7 @@ module Sam
                 sig do
                   returns(
                     T.nilable(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124::CacheControl
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124::CacheControl
                     )
                   )
                 end
@@ -4006,14 +4713,11 @@ module Sam
 
                 sig do
                   params(
-                    cache_control: T.nilable(
-                      T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124::CacheControl,
-                        Sam::Internal::AnyHash
+                    cache_control:
+                      T.nilable(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124::CacheControl::OrHash
                       )
-                    )
-                  )
-                    .void
+                  ).void
                 end
                 attr_writer :cache_control
 
@@ -4025,17 +4729,14 @@ module Sam
                   params(
                     display_height_px: Integer,
                     display_width_px: Integer,
-                    cache_control: T.nilable(
-                      T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124::CacheControl,
-                        Sam::Internal::AnyHash
-                      )
-                    ),
+                    cache_control:
+                      T.nilable(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124::CacheControl::OrHash
+                      ),
                     display_number: T.nilable(Integer),
                     name: Symbol,
                     type: Symbol
-                  )
-                    .returns(T.attached_class)
+                  ).returns(T.attached_class)
                 end
                 def self.new(
                   # The height of the display in pixels.
@@ -4050,37 +4751,48 @@ module Sam
                   # This is how the tool will be called by the model and in tool_use blocks.
                   name: :computer,
                   type: :computer_20250124
-                ); end
-                sig do
-                  override
-                    .returns(
-                      {
-                        display_height_px: Integer,
-                        display_width_px: Integer,
-                        name: Symbol,
-                        type: Symbol,
-                        cache_control: T.nilable(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124::CacheControl
-                        ),
-                        display_number: T.nilable(Integer)
-                      }
-                    )
+                )
                 end
-                def to_hash; end
+
+                sig do
+                  override.returns(
+                    {
+                      display_height_px: Integer,
+                      display_width_px: Integer,
+                      name: Symbol,
+                      type: Symbol,
+                      cache_control:
+                        T.nilable(
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124::CacheControl
+                        ),
+                      display_number: T.nilable(Integer)
+                    }
+                  )
+                end
+                def to_hash
+                end
 
                 class CacheControl < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(Symbol) }
                   attr_accessor :type
 
                   sig { params(type: Symbol).returns(T.attached_class) }
-                  def self.new(type: :ephemeral); end
+                  def self.new(type: :ephemeral)
+                  end
 
-                  sig { override.returns({type: Symbol}) }
-                  def to_hash; end
+                  sig { override.returns({ type: Symbol }) }
+                  def to_hash
+                  end
                 end
               end
 
               class BetaBashTool20250124 < Sam::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                 # Name of the tool.
                 #
                 # This is how the tool will be called by the model and in tool_use blocks.
@@ -4093,7 +4805,7 @@ module Sam
                 sig do
                   returns(
                     T.nilable(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124::CacheControl
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124::CacheControl
                     )
                   )
                 end
@@ -4101,29 +4813,23 @@ module Sam
 
                 sig do
                   params(
-                    cache_control: T.nilable(
-                      T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124::CacheControl,
-                        Sam::Internal::AnyHash
+                    cache_control:
+                      T.nilable(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124::CacheControl::OrHash
                       )
-                    )
-                  )
-                    .void
+                  ).void
                 end
                 attr_writer :cache_control
 
                 sig do
                   params(
-                    cache_control: T.nilable(
-                      T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124::CacheControl,
-                        Sam::Internal::AnyHash
-                      )
-                    ),
+                    cache_control:
+                      T.nilable(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124::CacheControl::OrHash
+                      ),
                     name: Symbol,
                     type: Symbol
-                  )
-                    .returns(T.attached_class)
+                  ).returns(T.attached_class)
                 end
                 def self.new(
                   cache_control: nil,
@@ -4132,34 +4838,45 @@ module Sam
                   # This is how the tool will be called by the model and in tool_use blocks.
                   name: :bash,
                   type: :bash_20250124
-                ); end
-                sig do
-                  override
-                    .returns(
-                      {
-                        name: Symbol,
-                        type: Symbol,
-                        cache_control: T.nilable(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124::CacheControl
-                        )
-                      }
-                    )
+                )
                 end
-                def to_hash; end
+
+                sig do
+                  override.returns(
+                    {
+                      name: Symbol,
+                      type: Symbol,
+                      cache_control:
+                        T.nilable(
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124::CacheControl
+                        )
+                    }
+                  )
+                end
+                def to_hash
+                end
 
                 class CacheControl < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(Symbol) }
                   attr_accessor :type
 
                   sig { params(type: Symbol).returns(T.attached_class) }
-                  def self.new(type: :ephemeral); end
+                  def self.new(type: :ephemeral)
+                  end
 
-                  sig { override.returns({type: Symbol}) }
-                  def to_hash; end
+                  sig { override.returns({ type: Symbol }) }
+                  def to_hash
+                  end
                 end
               end
 
               class BetaTextEditor20250124 < Sam::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                 # Name of the tool.
                 #
                 # This is how the tool will be called by the model and in tool_use blocks.
@@ -4172,7 +4889,7 @@ module Sam
                 sig do
                   returns(
                     T.nilable(
-                      Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124::CacheControl
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124::CacheControl
                     )
                   )
                 end
@@ -4180,29 +4897,23 @@ module Sam
 
                 sig do
                   params(
-                    cache_control: T.nilable(
-                      T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124::CacheControl,
-                        Sam::Internal::AnyHash
+                    cache_control:
+                      T.nilable(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124::CacheControl::OrHash
                       )
-                    )
-                  )
-                    .void
+                  ).void
                 end
                 attr_writer :cache_control
 
                 sig do
                   params(
-                    cache_control: T.nilable(
-                      T.any(
-                        Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124::CacheControl,
-                        Sam::Internal::AnyHash
-                      )
-                    ),
+                    cache_control:
+                      T.nilable(
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124::CacheControl::OrHash
+                      ),
                     name: Symbol,
                     type: Symbol
-                  )
-                    .returns(T.attached_class)
+                  ).returns(T.attached_class)
                 end
                 def self.new(
                   cache_control: nil,
@@ -4211,40 +4922,50 @@ module Sam
                   # This is how the tool will be called by the model and in tool_use blocks.
                   name: :str_replace_editor,
                   type: :text_editor_20250124
-                ); end
-                sig do
-                  override
-                    .returns(
-                      {
-                        name: Symbol,
-                        type: Symbol,
-                        cache_control: T.nilable(
-                          Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124::CacheControl
-                        )
-                      }
-                    )
+                )
                 end
-                def to_hash; end
+
+                sig do
+                  override.returns(
+                    {
+                      name: Symbol,
+                      type: Symbol,
+                      cache_control:
+                        T.nilable(
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124::CacheControl
+                        )
+                    }
+                  )
+                end
+                def to_hash
+                end
 
                 class CacheControl < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
                   sig { returns(Symbol) }
                   attr_accessor :type
 
                   sig { params(type: Symbol).returns(T.attached_class) }
-                  def self.new(type: :ephemeral); end
+                  def self.new(type: :ephemeral)
+                  end
 
-                  sig { override.returns({type: Symbol}) }
-                  def to_hash; end
+                  sig { override.returns({ type: Symbol }) }
+                  def to_hash
+                  end
                 end
               end
 
               sig do
-                override
-                  .returns(
-                    [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124]
-                  )
+                override.returns(
+                  T::Array[
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::Variants
+                  ]
+                )
               end
-              def self.variants; end
+              def self.variants
+              end
             end
           end
         end

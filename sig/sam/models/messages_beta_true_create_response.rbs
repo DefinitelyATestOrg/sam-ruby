@@ -40,8 +40,6 @@ module Sam
         ?type: :message
       ) -> void
 
-      def to_hash: -> Sam::Models::messages_beta_true_create_response
-
       type content =
         Sam::Models::MessagesBetaTrueCreateResponse::Content::Text
         | Sam::Models::MessagesBetaTrueCreateResponse::Content::ToolUse
@@ -70,8 +68,6 @@ module Sam
             text: String,
             ?type: :text
           ) -> void
-
-          def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::text
 
           type citation =
             Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::CharLocation
@@ -112,8 +108,6 @@ module Sam
                 start_char_index: Integer,
                 ?type: :char_location
               ) -> void
-
-              def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::char_location
             end
 
             type page_location =
@@ -147,8 +141,6 @@ module Sam
                 start_page_number: Integer,
                 ?type: :page_location
               ) -> void
-
-              def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::page_location
             end
 
             type content_block_location =
@@ -182,11 +174,9 @@ module Sam
                 start_block_index: Integer,
                 ?type: :content_block_location
               ) -> void
-
-              def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::content_block_location
             end
 
-            def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::ContentBlockLocation]
+            def self?.variants: -> ::Array[Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::citation]
           end
         end
 
@@ -208,8 +198,6 @@ module Sam
             name: String,
             ?type: :tool_use
           ) -> void
-
-          def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::tool_use
         end
 
         type thinking = { signature: String, thinking: String, type: :thinking }
@@ -226,8 +214,6 @@ module Sam
             thinking: String,
             ?type: :thinking
           ) -> void
-
-          def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::thinking
         end
 
         type redacted_thinking = { data: String, type: :redacted_thinking }
@@ -238,11 +224,9 @@ module Sam
           attr_accessor type: :redacted_thinking
 
           def initialize: (data: String, ?type: :redacted_thinking) -> void
-
-          def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::Content::redacted_thinking
         end
 
-        def self?.variants: -> [Sam::Models::MessagesBetaTrueCreateResponse::Content::Text, Sam::Models::MessagesBetaTrueCreateResponse::Content::ToolUse, Sam::Models::MessagesBetaTrueCreateResponse::Content::Thinking, Sam::Models::MessagesBetaTrueCreateResponse::Content::RedactedThinking]
+        def self?.variants: -> ::Array[Sam::Models::MessagesBetaTrueCreateResponse::content]
       end
 
       type stop_reason = :end_turn | :max_tokens | :stop_sequence | :tool_use
@@ -281,8 +265,6 @@ module Sam
           input_tokens: Integer,
           output_tokens: Integer
         ) -> void
-
-        def to_hash: -> Sam::Models::MessagesBetaTrueCreateResponse::usage
       end
     end
   end
