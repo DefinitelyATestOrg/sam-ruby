@@ -12,8 +12,8 @@ module Sam
         #   List of requests for prompt completion. Each is an individual request to create
         #   a Message.
         #
-        #   @return [Array<Sam::Models::Messages::BatchCreateParams::Request>]
-        required :requests, -> { Sam::Internal::Type::ArrayOf[Sam::Models::Messages::BatchCreateParams::Request] }
+        #   @return [Array<Sam::Messages::BatchCreateParams::Request>]
+        required :requests, -> { Sam::Internal::Type::ArrayOf[Sam::Messages::BatchCreateParams::Request] }
 
         # @!attribute anthropic_beta
         #   Optional header to specify the beta version(s) you want to use.
@@ -48,14 +48,13 @@ module Sam
         #   Some parameter documentations has been truncated, see
         #   {Sam::Models::Messages::BatchCreateParams} for more details.
         #
-        #   @param requests [Array<Sam::Models::Messages::BatchCreateParams::Request>] List of requests for prompt completion. Each is an individual request to create
-        #   ...
+        #   @param requests [Array<Sam::Messages::BatchCreateParams::Request>] List of requests for prompt completion. Each is an individual request to create
         #
-        #   @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+        #   @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use.
         #
-        #   @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+        #   @param anthropic_version [String] The version of the Anthropic API you want to use.
         #
-        #   @param x_api_key [String] Your unique API key for authentication. ...
+        #   @param x_api_key [String] Your unique API key for authentication.
         #
         #   @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
 
@@ -75,19 +74,18 @@ module Sam
           #   See the [Messages API reference](/en/api/messages) for full documentation on
           #   available parameters.
           #
-          #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params]
-          required :params, -> { Sam::Models::Messages::BatchCreateParams::Request::Params }
+          #   @return [Sam::Messages::BatchCreateParams::Request::Params]
+          required :params, -> { Sam::Messages::BatchCreateParams::Request::Params }
 
           # @!method initialize(custom_id:, params:)
           #   Some parameter documentations has been truncated, see
-          #   {Sam::Models::Messages::BatchCreateParams::Request} for more details.
+          #   {Sam::Messages::BatchCreateParams::Request} for more details.
           #
           #   @param custom_id [String] Developer-provided ID created for each request in a Message Batch. Useful for ma
-          #   ...
           #
-          #   @param params [Sam::Models::Messages::BatchCreateParams::Request::Params] Messages API creation parameters for the individual request. ...
+          #   @param params [Sam::Messages::BatchCreateParams::Request::Params] Messages API creation parameters for the individual request.
 
-          # @see Sam::Models::Messages::BatchCreateParams::Request#params
+          # @see Sam::Messages::BatchCreateParams::Request#params
           class Params < Sam::Internal::Type::BaseModel
             # @!attribute max_tokens
             #   The maximum number of tokens to generate before stopping.
@@ -189,9 +187,11 @@ module Sam
             #   the top-level `system` parameter — there is no `"system"` role for input
             #   messages in the Messages API.
             #
-            #   @return [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message>]
+            #   @return [Array<Sam::Messages::BatchCreateParams::Request::Params::Message>]
             required :messages,
-                     -> { Sam::Internal::Type::ArrayOf[Sam::Models::Messages::BatchCreateParams::Request::Params::Message] }
+                     -> {
+                       Sam::Internal::Type::ArrayOf[Sam::Messages::BatchCreateParams::Request::Params::Message]
+                     }
 
             # @!attribute model
             #   The model that will complete your prompt.
@@ -205,8 +205,8 @@ module Sam
             # @!attribute metadata
             #   An object describing metadata about the request.
             #
-            #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Metadata, nil]
-            optional :metadata, -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Metadata }
+            #   @return [Sam::Messages::BatchCreateParams::Request::Params::Metadata, nil]
+            optional :metadata, -> { Sam::Messages::BatchCreateParams::Request::Params::Metadata }
 
             # @!attribute stop_sequences
             #   Custom text sequences that will cause the model to stop generating.
@@ -238,9 +238,9 @@ module Sam
             #   as specifying a particular goal or role. See our
             #   [guide to system prompts](https://docs.anthropic.com/en/docs/system-prompts).
             #
-            #   @return [String, Array<Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1>, nil]
+            #   @return [String, Array<Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1>, nil]
             optional :system_,
-                     union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::System },
+                     union: -> { Sam::Messages::BatchCreateParams::Request::Params::System },
                      api_name: :system
 
             # @!attribute temperature
@@ -267,15 +267,15 @@ module Sam
             #   [extended thinking](https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking)
             #   for details.
             #
-            #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::Enabled, Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::Disabled, nil]
-            optional :thinking, union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking }
+            #   @return [Sam::Messages::BatchCreateParams::Request::Params::Thinking::Enabled, Sam::Messages::BatchCreateParams::Request::Params::Thinking::Disabled, nil]
+            optional :thinking, union: -> { Sam::Messages::BatchCreateParams::Request::Params::Thinking }
 
             # @!attribute tool_choice
             #   How the model should use the provided tools. The model can use a specific tool,
             #   any available tool, decide by itself, or not use tools at all.
             #
-            #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::Auto, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::Any, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::Tool, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::None, nil]
-            optional :tool_choice, union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice }
+            #   @return [Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Auto, Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Any, Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Tool, Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::None, nil]
+            optional :tool_choice, union: -> { Sam::Messages::BatchCreateParams::Request::Params::ToolChoice }
 
             # @!attribute tools
             #   Definitions of tools that the model may use.
@@ -348,9 +348,11 @@ module Sam
             #
             #   See our [guide](https://docs.anthropic.com/en/docs/tool-use) for more details.
             #
-            #   @return [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124>, nil]
+            #   @return [Array<Sam::Messages::BatchCreateParams::Request::Params::Tool::Tool, Sam::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124, Sam::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124>, nil]
             optional :tools,
-                     -> { Sam::Internal::Type::ArrayOf[union: Sam::Models::Messages::BatchCreateParams::Request::Params::Tool] }
+                     -> {
+                       Sam::Internal::Type::ArrayOf[union: Sam::Messages::BatchCreateParams::Request::Params::Tool]
+                     }
 
             # @!attribute top_k
             #   Only sample from the top K options for each subsequent token.
@@ -380,63 +382,66 @@ module Sam
 
             # @!method initialize(max_tokens:, messages:, model:, metadata: nil, stop_sequences: nil, stream: nil, system_: nil, temperature: nil, thinking: nil, tool_choice: nil, tools: nil, top_k: nil, top_p: nil)
             #   Some parameter documentations has been truncated, see
-            #   {Sam::Models::Messages::BatchCreateParams::Request::Params} for more details.
+            #   {Sam::Messages::BatchCreateParams::Request::Params} for more details.
             #
             #   Messages API creation parameters for the individual request.
             #
             #   See the [Messages API reference](/en/api/messages) for full documentation on
             #   available parameters.
             #
-            #   @param max_tokens [Integer] The maximum number of tokens to generate before stopping. ...
+            #   @param max_tokens [Integer] The maximum number of tokens to generate before stopping.
             #
-            #   @param messages [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message>] Input messages. ...
+            #   @param messages [Array<Sam::Messages::BatchCreateParams::Request::Params::Message>] Input messages.
             #
-            #   @param model [String] The model that will complete your prompt. ...
+            #   @param model [String] The model that will complete your prompt.
             #
-            #   @param metadata [Sam::Models::Messages::BatchCreateParams::Request::Params::Metadata] An object describing metadata about the request.
+            #   @param metadata [Sam::Messages::BatchCreateParams::Request::Params::Metadata] An object describing metadata about the request.
             #
-            #   @param stop_sequences [Array<String>] Custom text sequences that will cause the model to stop generating. ...
+            #   @param stop_sequences [Array<String>] Custom text sequences that will cause the model to stop generating.
             #
-            #   @param stream [Boolean] Whether to incrementally stream the response using server-sent events. ...
+            #   @param stream [Boolean] Whether to incrementally stream the response using server-sent events.
             #
-            #   @param system_ [String, Array<Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1>] System prompt. ...
+            #   @param system_ [String, Array<Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1>] System prompt.
             #
-            #   @param temperature [Float] Amount of randomness injected into the response. ...
+            #   @param temperature [Float] Amount of randomness injected into the response.
             #
-            #   @param thinking [Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::Enabled, Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::Disabled] Configuration for enabling Claude's extended thinking. ...
+            #   @param thinking [Sam::Messages::BatchCreateParams::Request::Params::Thinking::Enabled, Sam::Messages::BatchCreateParams::Request::Params::Thinking::Disabled] Configuration for enabling Claude's extended thinking.
             #
-            #   @param tool_choice [Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::Auto, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::Any, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::Tool, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::None] How the model should use the provided tools. The model can use a specific tool,
-            #   ...
+            #   @param tool_choice [Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Auto, Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Any, Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Tool, Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::None] How the model should use the provided tools. The model can use a specific tool,
             #
-            #   @param tools [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124>] Definitions of tools that the model may use. ...
+            #   @param tools [Array<Sam::Messages::BatchCreateParams::Request::Params::Tool::Tool, Sam::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124, Sam::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124>] Definitions of tools that the model may use.
             #
-            #   @param top_k [Integer] Only sample from the top K options for each subsequent token. ...
+            #   @param top_k [Integer] Only sample from the top K options for each subsequent token.
             #
-            #   @param top_p [Float] Use nucleus sampling. ...
+            #   @param top_p [Float] Use nucleus sampling.
 
             class Message < Sam::Internal::Type::BaseModel
               # @!attribute content
               #
-              #   @return [String, Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Thinking, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking>]
+              #   @return [String, Array<Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Thinking, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking>]
               required :content,
-                       union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content }
+                       union: -> {
+                         Sam::Messages::BatchCreateParams::Request::Params::Message::Content
+                       }
 
               # @!attribute role
               #
-              #   @return [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Role]
-              required :role, enum: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Role }
+              #   @return [Symbol, Sam::Messages::BatchCreateParams::Request::Params::Message::Role]
+              required :role, enum: -> { Sam::Messages::BatchCreateParams::Request::Params::Message::Role }
 
               # @!method initialize(content:, role:)
-              #   @param content [String, Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Thinking, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking>]
-              #   @param role [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Role]
+              #   @param content [String, Array<Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Thinking, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking>]
+              #   @param role [Symbol, Sam::Messages::BatchCreateParams::Request::Params::Message::Role]
 
-              # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message#content
+              # @see Sam::Messages::BatchCreateParams::Request::Params::Message#content
               module Content
                 extend Sam::Internal::Type::Union
 
                 variant String
 
-                variant -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1Array }
+                variant -> {
+                  Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1Array
+                }
 
                 module UnionMember1
                   extend Sam::Internal::Type::Union
@@ -444,25 +449,39 @@ module Sam
                   discriminator :type
 
                   variant :text,
-                          -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text }
+                          -> {
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text
+                          }
 
                   variant :image,
-                          -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image }
+                          -> {
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image
+                          }
 
                   variant :tool_use,
-                          -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse }
+                          -> {
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse
+                          }
 
                   variant :tool_result,
-                          -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult }
+                          -> {
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult
+                          }
 
                   variant :document,
-                          -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document }
+                          -> {
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document
+                          }
 
                   variant :thinking,
-                          -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Thinking }
+                          -> {
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Thinking
+                          }
 
                   variant :redacted_thinking,
-                          -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking }
+                          -> {
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking
+                          }
 
                   class Text < Sam::Internal::Type::BaseModel
                     # @!attribute text
@@ -477,29 +496,29 @@ module Sam
 
                     # @!attribute cache_control
                     #
-                    #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::CacheControl, nil]
+                    #   @return [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::CacheControl, nil]
                     optional :cache_control,
-                             -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::CacheControl },
+                             -> {
+                               Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::CacheControl
+                             },
                              nil?: true
 
                     # @!attribute citations
                     #
-                    #   @return [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
+                    #   @return [Array<Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
                     optional :citations,
-                             -> do
-                               Sam::Internal::Type::ArrayOf[
-                                 union: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation
-                               ]
-                             end,
+                             -> {
+                               Sam::Internal::Type::ArrayOf[union: Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation]
+                             },
                              nil?: true
 
                     # @!method initialize(text:, cache_control: nil, citations: nil, type: :text)
                     #   @param text [String]
-                    #   @param cache_control [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::CacheControl, nil]
-                    #   @param citations [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
+                    #   @param cache_control [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::CacheControl, nil]
+                    #   @param citations [Array<Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
                     #   @param type [Symbol, :text]
 
-                    # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text#cache_control
+                    # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text#cache_control
                     class CacheControl < Sam::Internal::Type::BaseModel
                       # @!attribute type
                       #
@@ -516,13 +535,19 @@ module Sam
                       discriminator :type
 
                       variant :char_location,
-                              -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation }
+                              -> {
+                                Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation
+                              }
 
                       variant :page_location,
-                              -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation }
+                              -> {
+                                Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation
+                              }
 
                       variant :content_block_location,
-                              -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation }
+                              -> {
+                                Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                              }
 
                       class CharLocation < Sam::Internal::Type::BaseModel
                         # @!attribute cited_text
@@ -645,16 +670,18 @@ module Sam
                       end
 
                       # @!method self.variants
-                      #   @return [Array(Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
+                      #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
                     end
                   end
 
                   class Image < Sam::Internal::Type::BaseModel
                     # @!attribute source
                     #
-                    #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL]
+                    #   @return [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL]
                     required :source,
-                             union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source }
+                             union: -> {
+                               Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source
+                             }
 
                     # @!attribute type
                     #
@@ -663,27 +690,33 @@ module Sam
 
                     # @!attribute cache_control
                     #
-                    #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::CacheControl, nil]
+                    #   @return [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::CacheControl, nil]
                     optional :cache_control,
-                             -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::CacheControl },
+                             -> {
+                               Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::CacheControl
+                             },
                              nil?: true
 
                     # @!method initialize(source:, cache_control: nil, type: :image)
-                    #   @param source [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL]
-                    #   @param cache_control [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::CacheControl, nil]
+                    #   @param source [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL]
+                    #   @param cache_control [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::CacheControl, nil]
                     #   @param type [Symbol, :image]
 
-                    # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image#source
+                    # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image#source
                     module Source
                       extend Sam::Internal::Type::Union
 
                       discriminator :type
 
                       variant :base64,
-                              -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64 }
+                              -> {
+                                Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64
+                              }
 
                       variant :url,
-                              -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL }
+                              -> {
+                                Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL
+                              }
 
                       class Base64 < Sam::Internal::Type::BaseModel
                         # @!attribute data
@@ -693,9 +726,11 @@ module Sam
 
                         # @!attribute media_type
                         #
-                        #   @return [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType]
+                        #   @return [Symbol, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType]
                         required :media_type,
-                                 enum: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType }
+                                 enum: -> {
+                                   Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType
+                                 }
 
                         # @!attribute type
                         #
@@ -704,10 +739,10 @@ module Sam
 
                         # @!method initialize(data:, media_type:, type: :base64)
                         #   @param data [String]
-                        #   @param media_type [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType]
+                        #   @param media_type [Symbol, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType]
                         #   @param type [Symbol, :base64]
 
-                        # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64#media_type
+                        # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64#media_type
                         module MediaType
                           extend Sam::Internal::Type::Enum
 
@@ -738,10 +773,10 @@ module Sam
                       end
 
                       # @!method self.variants
-                      #   @return [Array(Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL)]
+                      #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL)]
                     end
 
-                    # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image#cache_control
+                    # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image#cache_control
                     class CacheControl < Sam::Internal::Type::BaseModel
                       # @!attribute type
                       #
@@ -776,19 +811,21 @@ module Sam
 
                     # @!attribute cache_control
                     #
-                    #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse::CacheControl, nil]
+                    #   @return [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse::CacheControl, nil]
                     optional :cache_control,
-                             -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse::CacheControl },
+                             -> {
+                               Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse::CacheControl
+                             },
                              nil?: true
 
                     # @!method initialize(id:, input:, name:, cache_control: nil, type: :tool_use)
                     #   @param id [String]
                     #   @param input [Object]
                     #   @param name [String]
-                    #   @param cache_control [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse::CacheControl, nil]
+                    #   @param cache_control [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse::CacheControl, nil]
                     #   @param type [Symbol, :tool_use]
 
-                    # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse#cache_control
+                    # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse#cache_control
                     class CacheControl < Sam::Internal::Type::BaseModel
                       # @!attribute type
                       #
@@ -813,16 +850,20 @@ module Sam
 
                     # @!attribute cache_control
                     #
-                    #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::CacheControl, nil]
+                    #   @return [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::CacheControl, nil]
                     optional :cache_control,
-                             -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::CacheControl },
+                             -> {
+                               Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::CacheControl
+                             },
                              nil?: true
 
                     # @!attribute content
                     #
-                    #   @return [String, Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>, nil]
+                    #   @return [String, Array<Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>, nil]
                     optional :content,
-                             union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content }
+                             union: -> {
+                               Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content
+                             }
 
                     # @!attribute is_error
                     #
@@ -831,12 +872,12 @@ module Sam
 
                     # @!method initialize(tool_use_id:, cache_control: nil, content: nil, is_error: nil, type: :tool_result)
                     #   @param tool_use_id [String]
-                    #   @param cache_control [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::CacheControl, nil]
-                    #   @param content [String, Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>]
+                    #   @param cache_control [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::CacheControl, nil]
+                    #   @param content [String, Array<Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>]
                     #   @param is_error [Boolean]
                     #   @param type [Symbol, :tool_result]
 
-                    # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult#cache_control
+                    # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult#cache_control
                     class CacheControl < Sam::Internal::Type::BaseModel
                       # @!attribute type
                       #
@@ -847,13 +888,15 @@ module Sam
                       #   @param type [Symbol, :ephemeral]
                     end
 
-                    # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult#content
+                    # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult#content
                     module Content
                       extend Sam::Internal::Type::Union
 
                       variant String
 
-                      variant -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1Array }
+                      variant -> {
+                        Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1Array
+                      }
 
                       module UnionMember1
                         extend Sam::Internal::Type::Union
@@ -861,10 +904,14 @@ module Sam
                         discriminator :type
 
                         variant :text,
-                                -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text }
+                                -> {
+                                  Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text
+                                }
 
                         variant :image,
-                                -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image }
+                                -> {
+                                  Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
+                                }
 
                         class Text < Sam::Internal::Type::BaseModel
                           # @!attribute text
@@ -879,29 +926,31 @@ module Sam
 
                           # @!attribute cache_control
                           #
-                          #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl, nil]
+                          #   @return [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl, nil]
                           optional :cache_control,
-                                   -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl },
+                                   -> {
+                                     Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl
+                                   },
                                    nil?: true
 
                           # @!attribute citations
                           #
-                          #   @return [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
+                          #   @return [Array<Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
                           optional :citations,
                                    -> do
                                      Sam::Internal::Type::ArrayOf[
-                                       union: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation
+                                       union: Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation
                                      ]
                                    end,
                                    nil?: true
 
                           # @!method initialize(text:, cache_control: nil, citations: nil, type: :text)
                           #   @param text [String]
-                          #   @param cache_control [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl, nil]
-                          #   @param citations [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
+                          #   @param cache_control [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl, nil]
+                          #   @param citations [Array<Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
                           #   @param type [Symbol, :text]
 
-                          # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text#cache_control
+                          # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text#cache_control
                           class CacheControl < Sam::Internal::Type::BaseModel
                             # @!attribute type
                             #
@@ -918,13 +967,19 @@ module Sam
                             discriminator :type
 
                             variant :char_location,
-                                    -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation }
+                                    -> {
+                                      Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation
+                                    }
 
                             variant :page_location,
-                                    -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation }
+                                    -> {
+                                      Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation
+                                    }
 
                             variant :content_block_location,
-                                    -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation }
+                                    -> {
+                                      Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                                    }
 
                             class CharLocation < Sam::Internal::Type::BaseModel
                               # @!attribute cited_text
@@ -1047,16 +1102,18 @@ module Sam
                             end
 
                             # @!method self.variants
-                            #   @return [Array(Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
+                            #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
                           end
                         end
 
                         class Image < Sam::Internal::Type::BaseModel
                           # @!attribute source
                           #
-                          #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL]
+                          #   @return [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL]
                           required :source,
-                                   union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source }
+                                   union: -> {
+                                     Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source
+                                   }
 
                           # @!attribute type
                           #
@@ -1065,27 +1122,33 @@ module Sam
 
                           # @!attribute cache_control
                           #
-                          #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl, nil]
+                          #   @return [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl, nil]
                           optional :cache_control,
-                                   -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl },
+                                   -> {
+                                     Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl
+                                   },
                                    nil?: true
 
                           # @!method initialize(source:, cache_control: nil, type: :image)
-                          #   @param source [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL]
-                          #   @param cache_control [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl, nil]
+                          #   @param source [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL]
+                          #   @param cache_control [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl, nil]
                           #   @param type [Symbol, :image]
 
-                          # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image#source
+                          # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image#source
                           module Source
                             extend Sam::Internal::Type::Union
 
                             discriminator :type
 
                             variant :base64,
-                                    -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64 }
+                                    -> {
+                                      Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64
+                                    }
 
                             variant :url,
-                                    -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL }
+                                    -> {
+                                      Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL
+                                    }
 
                             class Base64 < Sam::Internal::Type::BaseModel
                               # @!attribute data
@@ -1095,9 +1158,11 @@ module Sam
 
                               # @!attribute media_type
                               #
-                              #   @return [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType]
+                              #   @return [Symbol, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType]
                               required :media_type,
-                                       enum: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType }
+                                       enum: -> {
+                                         Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType
+                                       }
 
                               # @!attribute type
                               #
@@ -1106,10 +1171,10 @@ module Sam
 
                               # @!method initialize(data:, media_type:, type: :base64)
                               #   @param data [String]
-                              #   @param media_type [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType]
+                              #   @param media_type [Symbol, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType]
                               #   @param type [Symbol, :base64]
 
-                              # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64#media_type
+                              # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64#media_type
                               module MediaType
                                 extend Sam::Internal::Type::Enum
 
@@ -1140,10 +1205,10 @@ module Sam
                             end
 
                             # @!method self.variants
-                            #   @return [Array(Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL)]
+                            #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL)]
                           end
 
-                          # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image#cache_control
+                          # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image#cache_control
                           class CacheControl < Sam::Internal::Type::BaseModel
                             # @!attribute type
                             #
@@ -1156,16 +1221,18 @@ module Sam
                         end
 
                         # @!method self.variants
-                        #   @return [Array(Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image)]
+                        #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image)]
                       end
 
                       # @!method self.variants
-                      #   @return [Array(String, Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>)]
+                      #   @return [Array(String, Array<Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>)]
 
                       # @type [Sam::Internal::Type::Converter]
                       UnionMember1Array =
                         Sam::Internal::Type::ArrayOf[
-                          union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1 }
+                          union: -> {
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1
+                          }
                         ]
                     end
                   end
@@ -1173,9 +1240,11 @@ module Sam
                   class Document < Sam::Internal::Type::BaseModel
                     # @!attribute source
                     #
-                    #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL]
+                    #   @return [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL]
                     required :source,
-                             union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source }
+                             union: -> {
+                               Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source
+                             }
 
                     # @!attribute type
                     #
@@ -1184,16 +1253,20 @@ module Sam
 
                     # @!attribute cache_control
                     #
-                    #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::CacheControl, nil]
+                    #   @return [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::CacheControl, nil]
                     optional :cache_control,
-                             -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::CacheControl },
+                             -> {
+                               Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::CacheControl
+                             },
                              nil?: true
 
                     # @!attribute citations
                     #
-                    #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Citations, nil]
+                    #   @return [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Citations, nil]
                     optional :citations,
-                             -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Citations }
+                             -> {
+                               Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Citations
+                             }
 
                     # @!attribute context
                     #
@@ -1206,30 +1279,38 @@ module Sam
                     optional :title, String, nil?: true
 
                     # @!method initialize(source:, cache_control: nil, citations: nil, context: nil, title: nil, type: :document)
-                    #   @param source [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL]
-                    #   @param cache_control [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::CacheControl, nil]
-                    #   @param citations [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Citations]
+                    #   @param source [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL]
+                    #   @param cache_control [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::CacheControl, nil]
+                    #   @param citations [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Citations]
                     #   @param context [String, nil]
                     #   @param title [String, nil]
                     #   @param type [Symbol, :document]
 
-                    # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document#source
+                    # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document#source
                     module Source
                       extend Sam::Internal::Type::Union
 
                       discriminator :type
 
                       variant :base64,
-                              -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64 }
+                              -> {
+                                Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64
+                              }
 
                       variant :text,
-                              -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text }
+                              -> {
+                                Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text
+                              }
 
                       variant :content,
-                              -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content }
+                              -> {
+                                Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content
+                              }
 
                       variant :url,
-                              -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL }
+                              -> {
+                                Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL
+                              }
 
                       class Base64 < Sam::Internal::Type::BaseModel
                         # @!attribute data
@@ -1278,9 +1359,11 @@ module Sam
                       class Content < Sam::Internal::Type::BaseModel
                         # @!attribute content
                         #
-                        #   @return [String, Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>]
+                        #   @return [String, Array<Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>]
                         required :content,
-                                 union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content }
+                                 union: -> {
+                                   Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content
+                                 }
 
                         # @!attribute type
                         #
@@ -1288,16 +1371,18 @@ module Sam
                         required :type, const: :content
 
                         # @!method initialize(content:, type: :content)
-                        #   @param content [String, Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>]
+                        #   @param content [String, Array<Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>]
                         #   @param type [Symbol, :content]
 
-                        # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content#content
+                        # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content#content
                         module Content
                           extend Sam::Internal::Type::Union
 
                           variant String
 
-                          variant -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1Array }
+                          variant -> {
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1Array
+                          }
 
                           module UnionMember1
                             extend Sam::Internal::Type::Union
@@ -1305,10 +1390,14 @@ module Sam
                             discriminator :type
 
                             variant :text,
-                                    -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text }
+                                    -> {
+                                      Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text
+                                    }
 
                             variant :image,
-                                    -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image }
+                                    -> {
+                                      Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
+                                    }
 
                             class Text < Sam::Internal::Type::BaseModel
                               # @!attribute text
@@ -1323,29 +1412,31 @@ module Sam
 
                               # @!attribute cache_control
                               #
-                              #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl, nil]
+                              #   @return [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl, nil]
                               optional :cache_control,
-                                       -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl },
+                                       -> {
+                                         Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl
+                                       },
                                        nil?: true
 
                               # @!attribute citations
                               #
-                              #   @return [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
+                              #   @return [Array<Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
                               optional :citations,
                                        -> do
                                          Sam::Internal::Type::ArrayOf[
-                                           union: Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation
+                                           union: Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation
                                          ]
                                        end,
                                        nil?: true
 
                               # @!method initialize(text:, cache_control: nil, citations: nil, type: :text)
                               #   @param text [String]
-                              #   @param cache_control [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl, nil]
-                              #   @param citations [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
+                              #   @param cache_control [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl, nil]
+                              #   @param citations [Array<Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
                               #   @param type [Symbol, :text]
 
-                              # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text#cache_control
+                              # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text#cache_control
                               class CacheControl < Sam::Internal::Type::BaseModel
                                 # @!attribute type
                                 #
@@ -1362,13 +1453,19 @@ module Sam
                                 discriminator :type
 
                                 variant :char_location,
-                                        -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation }
+                                        -> {
+                                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation
+                                        }
 
                                 variant :page_location,
-                                        -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation }
+                                        -> {
+                                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation
+                                        }
 
                                 variant :content_block_location,
-                                        -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation }
+                                        -> {
+                                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                                        }
 
                                 class CharLocation < Sam::Internal::Type::BaseModel
                                   # @!attribute cited_text
@@ -1491,16 +1588,18 @@ module Sam
                                 end
 
                                 # @!method self.variants
-                                #   @return [Array(Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
+                                #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
                               end
                             end
 
                             class Image < Sam::Internal::Type::BaseModel
                               # @!attribute source
                               #
-                              #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL]
+                              #   @return [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL]
                               required :source,
-                                       union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source }
+                                       union: -> {
+                                         Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source
+                                       }
 
                               # @!attribute type
                               #
@@ -1509,27 +1608,33 @@ module Sam
 
                               # @!attribute cache_control
                               #
-                              #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl, nil]
+                              #   @return [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl, nil]
                               optional :cache_control,
-                                       -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl },
+                                       -> {
+                                         Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl
+                                       },
                                        nil?: true
 
                               # @!method initialize(source:, cache_control: nil, type: :image)
-                              #   @param source [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL]
-                              #   @param cache_control [Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl, nil]
+                              #   @param source [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL]
+                              #   @param cache_control [Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl, nil]
                               #   @param type [Symbol, :image]
 
-                              # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image#source
+                              # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image#source
                               module Source
                                 extend Sam::Internal::Type::Union
 
                                 discriminator :type
 
                                 variant :base64,
-                                        -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64 }
+                                        -> {
+                                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64
+                                        }
 
                                 variant :url,
-                                        -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL }
+                                        -> {
+                                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL
+                                        }
 
                                 class Base64 < Sam::Internal::Type::BaseModel
                                   # @!attribute data
@@ -1539,9 +1644,11 @@ module Sam
 
                                   # @!attribute media_type
                                   #
-                                  #   @return [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType]
+                                  #   @return [Symbol, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType]
                                   required :media_type,
-                                           enum: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType }
+                                           enum: -> {
+                                             Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType
+                                           }
 
                                   # @!attribute type
                                   #
@@ -1550,10 +1657,10 @@ module Sam
 
                                   # @!method initialize(data:, media_type:, type: :base64)
                                   #   @param data [String]
-                                  #   @param media_type [Symbol, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType]
+                                  #   @param media_type [Symbol, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType]
                                   #   @param type [Symbol, :base64]
 
-                                  # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64#media_type
+                                  # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64#media_type
                                   module MediaType
                                     extend Sam::Internal::Type::Enum
 
@@ -1584,10 +1691,10 @@ module Sam
                                 end
 
                                 # @!method self.variants
-                                #   @return [Array(Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL)]
+                                #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL)]
                               end
 
-                              # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image#cache_control
+                              # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image#cache_control
                               class CacheControl < Sam::Internal::Type::BaseModel
                                 # @!attribute type
                                 #
@@ -1600,16 +1707,18 @@ module Sam
                             end
 
                             # @!method self.variants
-                            #   @return [Array(Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image)]
+                            #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image)]
                           end
 
                           # @!method self.variants
-                          #   @return [Array(String, Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>)]
+                          #   @return [Array(String, Array<Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>)]
 
                           # @type [Sam::Internal::Type::Converter]
                           UnionMember1Array =
                             Sam::Internal::Type::ArrayOf[
-                              union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1 }
+                              union: -> {
+                                Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1
+                              }
                             ]
                         end
                       end
@@ -1631,10 +1740,10 @@ module Sam
                       end
 
                       # @!method self.variants
-                      #   @return [Array(Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL)]
+                      #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL)]
                     end
 
-                    # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document#cache_control
+                    # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document#cache_control
                     class CacheControl < Sam::Internal::Type::BaseModel
                       # @!attribute type
                       #
@@ -1645,7 +1754,7 @@ module Sam
                       #   @param type [Symbol, :ephemeral]
                     end
 
-                    # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document#citations
+                    # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document#citations
                     class Citations < Sam::Internal::Type::BaseModel
                       # @!attribute enabled
                       #
@@ -1696,18 +1805,20 @@ module Sam
                   end
 
                   # @!method self.variants
-                  #   @return [Array(Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Thinking, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking)]
+                  #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Thinking, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking)]
                 end
 
                 # @!method self.variants
-                #   @return [Array(String, Array<Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Thinking, Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking>)]
+                #   @return [Array(String, Array<Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Thinking, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking>)]
 
                 # @type [Sam::Internal::Type::Converter]
                 UnionMember1Array =
-                  Sam::Internal::Type::ArrayOf[union: -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1 }]
+                  Sam::Internal::Type::ArrayOf[union: -> {
+                    Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1
+                  }]
               end
 
-              # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Message#role
+              # @see Sam::Messages::BatchCreateParams::Request::Params::Message#role
               module Role
                 extend Sam::Internal::Type::Enum
 
@@ -1719,7 +1830,7 @@ module Sam
               end
             end
 
-            # @see Sam::Models::Messages::BatchCreateParams::Request::Params#metadata
+            # @see Sam::Messages::BatchCreateParams::Request::Params#metadata
             class Metadata < Sam::Internal::Type::BaseModel
               # @!attribute user_id
               #   An external identifier for the user who is associated with the request.
@@ -1733,12 +1844,11 @@ module Sam
 
               # @!method initialize(user_id: nil)
               #   Some parameter documentations has been truncated, see
-              #   {Sam::Models::Messages::BatchCreateParams::Request::Params::Metadata} for more
-              #   details.
+              #   {Sam::Messages::BatchCreateParams::Request::Params::Metadata} for more details.
               #
               #   An object describing metadata about the request.
               #
-              #   @param user_id [String, nil] An external identifier for the user who is associated with the request. ...
+              #   @param user_id [String, nil] An external identifier for the user who is associated with the request.
             end
 
             # System prompt.
@@ -1747,13 +1857,13 @@ module Sam
             # as specifying a particular goal or role. See our
             # [guide to system prompts](https://docs.anthropic.com/en/docs/system-prompts).
             #
-            # @see Sam::Models::Messages::BatchCreateParams::Request::Params#system_
+            # @see Sam::Messages::BatchCreateParams::Request::Params#system_
             module System
               extend Sam::Internal::Type::Union
 
               variant String
 
-              variant -> { Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1Array }
+              variant -> { Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1Array }
 
               class UnionMember1 < Sam::Internal::Type::BaseModel
                 # @!attribute text
@@ -1768,25 +1878,29 @@ module Sam
 
                 # @!attribute cache_control
                 #
-                #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::CacheControl, nil]
+                #   @return [Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::CacheControl, nil]
                 optional :cache_control,
-                         -> { Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::CacheControl },
+                         -> {
+                           Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::CacheControl
+                         },
                          nil?: true
 
                 # @!attribute citations
                 #
-                #   @return [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation>, nil]
+                #   @return [Array<Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation, Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation, Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation>, nil]
                 optional :citations,
-                         -> { Sam::Internal::Type::ArrayOf[union: Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation] },
+                         -> {
+                           Sam::Internal::Type::ArrayOf[union: Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation]
+                         },
                          nil?: true
 
                 # @!method initialize(text:, cache_control: nil, citations: nil, type: :text)
                 #   @param text [String]
-                #   @param cache_control [Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::CacheControl, nil]
-                #   @param citations [Array<Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation>, nil]
+                #   @param cache_control [Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::CacheControl, nil]
+                #   @param citations [Array<Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation, Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation, Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation>, nil]
                 #   @param type [Symbol, :text]
 
-                # @see Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1#cache_control
+                # @see Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1#cache_control
                 class CacheControl < Sam::Internal::Type::BaseModel
                   # @!attribute type
                   #
@@ -1803,13 +1917,19 @@ module Sam
                   discriminator :type
 
                   variant :char_location,
-                          -> { Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation }
+                          -> {
+                            Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation
+                          }
 
                   variant :page_location,
-                          -> { Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation }
+                          -> {
+                            Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation
+                          }
 
                   variant :content_block_location,
-                          -> { Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation }
+                          -> {
+                            Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation
+                          }
 
                   class CharLocation < Sam::Internal::Type::BaseModel
                     # @!attribute cited_text
@@ -1932,16 +2052,18 @@ module Sam
                   end
 
                   # @!method self.variants
-                  #   @return [Array(Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation, Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation)]
+                  #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation, Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation, Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation)]
                 end
               end
 
               # @!method self.variants
-              #   @return [Array(String, Array<Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1>)]
+              #   @return [Array(String, Array<Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1>)]
 
               # @type [Sam::Internal::Type::Converter]
               UnionMember1Array =
-                Sam::Internal::Type::ArrayOf[-> { Sam::Models::Messages::BatchCreateParams::Request::Params::System::UnionMember1 }]
+                Sam::Internal::Type::ArrayOf[-> {
+                  Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1
+                }]
             end
 
             # Configuration for enabling Claude's extended thinking.
@@ -1954,15 +2076,15 @@ module Sam
             # [extended thinking](https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking)
             # for details.
             #
-            # @see Sam::Models::Messages::BatchCreateParams::Request::Params#thinking
+            # @see Sam::Messages::BatchCreateParams::Request::Params#thinking
             module Thinking
               extend Sam::Internal::Type::Union
 
               discriminator :type
 
-              variant :enabled, -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::Enabled }
+              variant :enabled, -> { Sam::Messages::BatchCreateParams::Request::Params::Thinking::Enabled }
 
-              variant :disabled, -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::Disabled }
+              variant :disabled, -> { Sam::Messages::BatchCreateParams::Request::Params::Thinking::Disabled }
 
               class Enabled < Sam::Internal::Type::BaseModel
                 # @!attribute budget_tokens
@@ -1986,11 +2108,10 @@ module Sam
 
                 # @!method initialize(budget_tokens:, type: :enabled)
                 #   Some parameter documentations has been truncated, see
-                #   {Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::Enabled}
-                #   for more details.
+                #   {Sam::Messages::BatchCreateParams::Request::Params::Thinking::Enabled} for more
+                #   details.
                 #
                 #   @param budget_tokens [Integer] Determines how many tokens Claude can use for its internal reasoning process. La
-                #   ...
                 #
                 #   @param type [Symbol, :enabled]
               end
@@ -2006,29 +2127,29 @@ module Sam
               end
 
               # @!method self.variants
-              #   @return [Array(Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::Enabled, Sam::Models::Messages::BatchCreateParams::Request::Params::Thinking::Disabled)]
+              #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Thinking::Enabled, Sam::Messages::BatchCreateParams::Request::Params::Thinking::Disabled)]
             end
 
             # How the model should use the provided tools. The model can use a specific tool,
             # any available tool, decide by itself, or not use tools at all.
             #
-            # @see Sam::Models::Messages::BatchCreateParams::Request::Params#tool_choice
+            # @see Sam::Messages::BatchCreateParams::Request::Params#tool_choice
             module ToolChoice
               extend Sam::Internal::Type::Union
 
               discriminator :type
 
               # The model will automatically decide whether to use tools.
-              variant :auto, -> { Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::Auto }
+              variant :auto, -> { Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Auto }
 
               # The model will use any available tools.
-              variant :any, -> { Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::Any }
+              variant :any, -> { Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Any }
 
               # The model will use the specified tool with `tool_choice.name`.
-              variant :tool, -> { Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::Tool }
+              variant :tool, -> { Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Tool }
 
               # The model will not be allowed to use tools.
-              variant :none, -> { Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::None }
+              variant :none, -> { Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::None }
 
               class Auto < Sam::Internal::Type::BaseModel
                 # @!attribute type
@@ -2047,12 +2168,12 @@ module Sam
 
                 # @!method initialize(disable_parallel_tool_use: nil, type: :auto)
                 #   Some parameter documentations has been truncated, see
-                #   {Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::Auto}
-                #   for more details.
+                #   {Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Auto} for more
+                #   details.
                 #
                 #   The model will automatically decide whether to use tools.
                 #
-                #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use. ...
+                #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use.
                 #
                 #   @param type [Symbol, :auto]
               end
@@ -2074,12 +2195,12 @@ module Sam
 
                 # @!method initialize(disable_parallel_tool_use: nil, type: :any)
                 #   Some parameter documentations has been truncated, see
-                #   {Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::Any} for
-                #   more details.
+                #   {Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Any} for more
+                #   details.
                 #
                 #   The model will use any available tools.
                 #
-                #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use. ...
+                #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use.
                 #
                 #   @param type [Symbol, :any]
               end
@@ -2107,14 +2228,14 @@ module Sam
 
                 # @!method initialize(name:, disable_parallel_tool_use: nil, type: :tool)
                 #   Some parameter documentations has been truncated, see
-                #   {Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::Tool}
-                #   for more details.
+                #   {Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Tool} for more
+                #   details.
                 #
                 #   The model will use the specified tool with `tool_choice.name`.
                 #
                 #   @param name [String] The name of the tool to use.
                 #
-                #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use. ...
+                #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use.
                 #
                 #   @param type [Symbol, :tool]
               end
@@ -2132,17 +2253,17 @@ module Sam
               end
 
               # @!method self.variants
-              #   @return [Array(Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::Auto, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::Any, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::Tool, Sam::Models::Messages::BatchCreateParams::Request::Params::ToolChoice::None)]
+              #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Auto, Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Any, Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Tool, Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::None)]
             end
 
             module Tool
               extend Sam::Internal::Type::Union
 
-              variant -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool }
+              variant -> { Sam::Messages::BatchCreateParams::Request::Params::Tool::Tool }
 
-              variant -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124 }
+              variant -> { Sam::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124 }
 
-              variant -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124 }
+              variant -> { Sam::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124 }
 
               class Tool < Sam::Internal::Type::BaseModel
                 # @!attribute input_schema
@@ -2151,9 +2272,11 @@ module Sam
                 #   This defines the shape of the `input` that your tool accepts and that the model
                 #   will produce.
                 #
-                #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::InputSchema]
+                #   @return [Sam::Messages::BatchCreateParams::Request::Params::Tool::Tool::InputSchema]
                 required :input_schema,
-                         -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::InputSchema }
+                         -> {
+                           Sam::Messages::BatchCreateParams::Request::Params::Tool::Tool::InputSchema
+                         }
 
                 # @!attribute name
                 #   Name of the tool.
@@ -2165,9 +2288,9 @@ module Sam
 
                 # @!attribute cache_control
                 #
-                #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::CacheControl, nil]
+                #   @return [Sam::Messages::BatchCreateParams::Request::Params::Tool::Tool::CacheControl, nil]
                 optional :cache_control,
-                         -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::CacheControl },
+                         -> { Sam::Messages::BatchCreateParams::Request::Params::Tool::Tool::CacheControl },
                          nil?: true
 
                 # @!attribute description
@@ -2183,18 +2306,18 @@ module Sam
 
                 # @!method initialize(input_schema:, name:, cache_control: nil, description: nil)
                 #   Some parameter documentations has been truncated, see
-                #   {Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool} for more
+                #   {Sam::Messages::BatchCreateParams::Request::Params::Tool::Tool} for more
                 #   details.
                 #
-                #   @param input_schema [Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::InputSchema] [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input. ...
+                #   @param input_schema [Sam::Messages::BatchCreateParams::Request::Params::Tool::Tool::InputSchema] [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input.
                 #
-                #   @param name [String] Name of the tool. ...
+                #   @param name [String] Name of the tool.
                 #
-                #   @param cache_control [Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool::CacheControl, nil]
+                #   @param cache_control [Sam::Messages::BatchCreateParams::Request::Params::Tool::Tool::CacheControl, nil]
                 #
-                #   @param description [String] Description of what this tool does. ...
+                #   @param description [String] Description of what this tool does.
 
-                # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool#input_schema
+                # @see Sam::Messages::BatchCreateParams::Request::Params::Tool::Tool#input_schema
                 class InputSchema < Sam::Internal::Type::BaseModel
                   # @!attribute type
                   #
@@ -2216,7 +2339,7 @@ module Sam
                   #   @param type [Symbol, :object]
                 end
 
-                # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool#cache_control
+                # @see Sam::Messages::BatchCreateParams::Request::Params::Tool::Tool#cache_control
                 class CacheControl < Sam::Internal::Type::BaseModel
                   # @!attribute type
                   #
@@ -2244,23 +2367,25 @@ module Sam
 
                 # @!attribute cache_control
                 #
-                #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124::CacheControl, nil]
+                #   @return [Sam::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124::CacheControl, nil]
                 optional :cache_control,
-                         -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124::CacheControl },
+                         -> {
+                           Sam::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124::CacheControl
+                         },
                          nil?: true
 
                 # @!method initialize(cache_control: nil, name: :bash, type: :bash_20250124)
                 #   Some parameter documentations has been truncated, see
-                #   {Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124}
-                #   for more details.
+                #   {Sam::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124} for
+                #   more details.
                 #
-                #   @param cache_control [Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124::CacheControl, nil]
+                #   @param cache_control [Sam::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124::CacheControl, nil]
                 #
-                #   @param name [Symbol, :bash] Name of the tool. ...
+                #   @param name [Symbol, :bash] Name of the tool.
                 #
                 #   @param type [Symbol, :bash_20250124]
 
-                # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124#cache_control
+                # @see Sam::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124#cache_control
                 class CacheControl < Sam::Internal::Type::BaseModel
                   # @!attribute type
                   #
@@ -2288,23 +2413,25 @@ module Sam
 
                 # @!attribute cache_control
                 #
-                #   @return [Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124::CacheControl, nil]
+                #   @return [Sam::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124::CacheControl, nil]
                 optional :cache_control,
-                         -> { Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124::CacheControl },
+                         -> {
+                           Sam::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124::CacheControl
+                         },
                          nil?: true
 
                 # @!method initialize(cache_control: nil, name: :str_replace_editor, type: :text_editor_20250124)
                 #   Some parameter documentations has been truncated, see
-                #   {Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124}
+                #   {Sam::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124}
                 #   for more details.
                 #
-                #   @param cache_control [Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124::CacheControl, nil]
+                #   @param cache_control [Sam::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124::CacheControl, nil]
                 #
-                #   @param name [Symbol, :str_replace_editor] Name of the tool. ...
+                #   @param name [Symbol, :str_replace_editor] Name of the tool.
                 #
                 #   @param type [Symbol, :text_editor_20250124]
 
-                # @see Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124#cache_control
+                # @see Sam::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124#cache_control
                 class CacheControl < Sam::Internal::Type::BaseModel
                   # @!attribute type
                   #
@@ -2317,7 +2444,7 @@ module Sam
               end
 
               # @!method self.variants
-              #   @return [Array(Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::Tool, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124, Sam::Models::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124)]
+              #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Tool::Tool, Sam::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124, Sam::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124)]
             end
           end
         end

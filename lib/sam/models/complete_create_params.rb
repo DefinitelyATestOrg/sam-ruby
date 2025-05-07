@@ -46,8 +46,8 @@ module Sam
       # @!attribute metadata
       #   An object describing metadata about the request.
       #
-      #   @return [Sam::Models::CompleteCreateParams::Metadata, nil]
-      optional :metadata, -> { Sam::Models::CompleteCreateParams::Metadata }
+      #   @return [Sam::CompleteCreateParams::Metadata, nil]
+      optional :metadata, -> { Sam::CompleteCreateParams::Metadata }
 
       # @!attribute stop_sequences
       #   Sequences that will cause the model to stop generating.
@@ -130,27 +130,27 @@ module Sam
       #   Some parameter documentations has been truncated, see
       #   {Sam::Models::CompleteCreateParams} for more details.
       #
-      #   @param max_tokens_to_sample [Integer] The maximum number of tokens to generate before stopping. ...
+      #   @param max_tokens_to_sample [Integer] The maximum number of tokens to generate before stopping.
       #
-      #   @param model [String] The model that will complete your prompt. ...
+      #   @param model [String] The model that will complete your prompt.
       #
-      #   @param prompt [String] The prompt that you want Claude to complete. ...
+      #   @param prompt [String] The prompt that you want Claude to complete.
       #
-      #   @param metadata [Sam::Models::CompleteCreateParams::Metadata] An object describing metadata about the request.
+      #   @param metadata [Sam::CompleteCreateParams::Metadata] An object describing metadata about the request.
       #
-      #   @param stop_sequences [Array<String>] Sequences that will cause the model to stop generating. ...
+      #   @param stop_sequences [Array<String>] Sequences that will cause the model to stop generating.
       #
-      #   @param stream [Boolean] Whether to incrementally stream the response using server-sent events. ...
+      #   @param stream [Boolean] Whether to incrementally stream the response using server-sent events.
       #
-      #   @param temperature [Float] Amount of randomness injected into the response. ...
+      #   @param temperature [Float] Amount of randomness injected into the response.
       #
-      #   @param top_k [Integer] Only sample from the top K options for each subsequent token. ...
+      #   @param top_k [Integer] Only sample from the top K options for each subsequent token.
       #
-      #   @param top_p [Float] Use nucleus sampling. ...
+      #   @param top_p [Float] Use nucleus sampling.
       #
-      #   @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+      #   @param anthropic_version [String] The version of the Anthropic API you want to use.
       #
-      #   @param x_api_key [String] Your unique API key for authentication. ...
+      #   @param x_api_key [String] Your unique API key for authentication.
       #
       #   @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
 
@@ -167,11 +167,11 @@ module Sam
 
         # @!method initialize(user_id: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Sam::Models::CompleteCreateParams::Metadata} for more details.
+        #   {Sam::CompleteCreateParams::Metadata} for more details.
         #
         #   An object describing metadata about the request.
         #
-        #   @param user_id [String, nil] An external identifier for the user who is associated with the request. ...
+        #   @param user_id [String, nil] An external identifier for the user who is associated with the request.
       end
     end
   end

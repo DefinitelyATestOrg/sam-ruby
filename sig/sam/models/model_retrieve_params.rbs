@@ -21,8 +21,6 @@ module Sam
         ?x_api_key: String,
         ?request_options: Sam::request_opts
       ) -> void
-
-      def to_hash: -> Sam::Models::model_retrieve_params
     end
   end
 end

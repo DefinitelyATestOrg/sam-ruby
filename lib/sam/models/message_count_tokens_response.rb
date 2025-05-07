@@ -16,7 +16,6 @@ module Sam
       #   {Sam::Models::MessageCountTokensResponse} for more details.
       #
       #   @param input_tokens [Integer] The total number of tokens across the provided list of messages, system prompt,
-      #   ...
     end
   end
 end

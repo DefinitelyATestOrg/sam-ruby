@@ -95,8 +95,8 @@ module Sam
       #   the top-level `system` parameter — there is no `"system"` role for input
       #   messages in the Messages API.
       #
-      #   @return [Array<Sam::Models::MessageCountTokensParams::Message>]
-      required :messages, -> { Sam::Internal::Type::ArrayOf[Sam::Models::MessageCountTokensParams::Message] }
+      #   @return [Array<Sam::MessageCountTokensParams::Message>]
+      required :messages, -> { Sam::Internal::Type::ArrayOf[Sam::MessageCountTokensParams::Message] }
 
       # @!attribute model
       #   The model that will complete your prompt.
@@ -114,8 +114,8 @@ module Sam
       #   as specifying a particular goal or role. See our
       #   [guide to system prompts](https://docs.anthropic.com/en/docs/system-prompts).
       #
-      #   @return [String, Array<Sam::Models::MessageCountTokensParams::System::UnionMember1>, nil]
-      optional :system_, union: -> { Sam::Models::MessageCountTokensParams::System }, api_name: :system
+      #   @return [String, Array<Sam::MessageCountTokensParams::System::UnionMember1>, nil]
+      optional :system_, union: -> { Sam::MessageCountTokensParams::System }, api_name: :system
 
       # @!attribute thinking
       #   Configuration for enabling Claude's extended thinking.
@@ -128,15 +128,15 @@ module Sam
       #   [extended thinking](https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking)
       #   for details.
       #
-      #   @return [Sam::Models::MessageCountTokensParams::Thinking::Enabled, Sam::Models::MessageCountTokensParams::Thinking::Disabled, nil]
-      optional :thinking, union: -> { Sam::Models::MessageCountTokensParams::Thinking }
+      #   @return [Sam::MessageCountTokensParams::Thinking::Enabled, Sam::MessageCountTokensParams::Thinking::Disabled, nil]
+      optional :thinking, union: -> { Sam::MessageCountTokensParams::Thinking }
 
       # @!attribute tool_choice
       #   How the model should use the provided tools. The model can use a specific tool,
       #   any available tool, decide by itself, or not use tools at all.
       #
-      #   @return [Sam::Models::MessageCountTokensParams::ToolChoice::Auto, Sam::Models::MessageCountTokensParams::ToolChoice::Any, Sam::Models::MessageCountTokensParams::ToolChoice::Tool, Sam::Models::MessageCountTokensParams::ToolChoice::None, nil]
-      optional :tool_choice, union: -> { Sam::Models::MessageCountTokensParams::ToolChoice }
+      #   @return [Sam::MessageCountTokensParams::ToolChoice::Auto, Sam::MessageCountTokensParams::ToolChoice::Any, Sam::MessageCountTokensParams::ToolChoice::Tool, Sam::MessageCountTokensParams::ToolChoice::None, nil]
+      optional :tool_choice, union: -> { Sam::MessageCountTokensParams::ToolChoice }
 
       # @!attribute tools
       #   Definitions of tools that the model may use.
@@ -209,8 +209,8 @@ module Sam
       #
       #   See our [guide](https://docs.anthropic.com/en/docs/tool-use) for more details.
       #
-      #   @return [Array<Sam::Models::MessageCountTokensParams::Tool::Tool, Sam::Models::MessageCountTokensParams::Tool::BashTool20250124, Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124>, nil]
-      optional :tools, -> { Sam::Internal::Type::ArrayOf[union: Sam::Models::MessageCountTokensParams::Tool] }
+      #   @return [Array<Sam::MessageCountTokensParams::Tool::Tool, Sam::MessageCountTokensParams::Tool::BashTool20250124, Sam::MessageCountTokensParams::Tool::TextEditor20250124>, nil]
+      optional :tools, -> { Sam::Internal::Type::ArrayOf[union: Sam::MessageCountTokensParams::Tool] }
 
       # @!attribute anthropic_beta
       #   Optional header to specify the beta version(s) you want to use.
@@ -245,70 +245,71 @@ module Sam
       #   Some parameter documentations has been truncated, see
       #   {Sam::Models::MessageCountTokensParams} for more details.
       #
-      #   @param messages [Array<Sam::Models::MessageCountTokensParams::Message>] Input messages. ...
+      #   @param messages [Array<Sam::MessageCountTokensParams::Message>] Input messages.
       #
-      #   @param model [String] The model that will complete your prompt. ...
+      #   @param model [String] The model that will complete your prompt.
       #
-      #   @param system_ [String, Array<Sam::Models::MessageCountTokensParams::System::UnionMember1>] System prompt. ...
+      #   @param system_ [String, Array<Sam::MessageCountTokensParams::System::UnionMember1>] System prompt.
       #
-      #   @param thinking [Sam::Models::MessageCountTokensParams::Thinking::Enabled, Sam::Models::MessageCountTokensParams::Thinking::Disabled] Configuration for enabling Claude's extended thinking. ...
+      #   @param thinking [Sam::MessageCountTokensParams::Thinking::Enabled, Sam::MessageCountTokensParams::Thinking::Disabled] Configuration for enabling Claude's extended thinking.
       #
-      #   @param tool_choice [Sam::Models::MessageCountTokensParams::ToolChoice::Auto, Sam::Models::MessageCountTokensParams::ToolChoice::Any, Sam::Models::MessageCountTokensParams::ToolChoice::Tool, Sam::Models::MessageCountTokensParams::ToolChoice::None] How the model should use the provided tools. The model can use a specific tool,
-      #   ...
+      #   @param tool_choice [Sam::MessageCountTokensParams::ToolChoice::Auto, Sam::MessageCountTokensParams::ToolChoice::Any, Sam::MessageCountTokensParams::ToolChoice::Tool, Sam::MessageCountTokensParams::ToolChoice::None] How the model should use the provided tools. The model can use a specific tool,
       #
-      #   @param tools [Array<Sam::Models::MessageCountTokensParams::Tool::Tool, Sam::Models::MessageCountTokensParams::Tool::BashTool20250124, Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124>] Definitions of tools that the model may use. ...
+      #   @param tools [Array<Sam::MessageCountTokensParams::Tool::Tool, Sam::MessageCountTokensParams::Tool::BashTool20250124, Sam::MessageCountTokensParams::Tool::TextEditor20250124>] Definitions of tools that the model may use.
       #
-      #   @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+      #   @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use.
       #
-      #   @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+      #   @param anthropic_version [String] The version of the Anthropic API you want to use.
       #
-      #   @param x_api_key [String] Your unique API key for authentication. ...
+      #   @param x_api_key [String] Your unique API key for authentication.
       #
       #   @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
 
       class Message < Sam::Internal::Type::BaseModel
         # @!attribute content
         #
-        #   @return [String, Array<Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Thinking, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RedactedThinking>]
-        required :content, union: -> { Sam::Models::MessageCountTokensParams::Message::Content }
+        #   @return [String, Array<Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Thinking, Sam::MessageCountTokensParams::Message::Content::UnionMember1::RedactedThinking>]
+        required :content, union: -> { Sam::MessageCountTokensParams::Message::Content }
 
         # @!attribute role
         #
-        #   @return [Symbol, Sam::Models::MessageCountTokensParams::Message::Role]
-        required :role, enum: -> { Sam::Models::MessageCountTokensParams::Message::Role }
+        #   @return [Symbol, Sam::MessageCountTokensParams::Message::Role]
+        required :role, enum: -> { Sam::MessageCountTokensParams::Message::Role }
 
         # @!method initialize(content:, role:)
-        #   @param content [String, Array<Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Thinking, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RedactedThinking>]
-        #   @param role [Symbol, Sam::Models::MessageCountTokensParams::Message::Role]
+        #   @param content [String, Array<Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Thinking, Sam::MessageCountTokensParams::Message::Content::UnionMember1::RedactedThinking>]
+        #   @param role [Symbol, Sam::MessageCountTokensParams::Message::Role]
 
-        # @see Sam::Models::MessageCountTokensParams::Message#content
+        # @see Sam::MessageCountTokensParams::Message#content
         module Content
           extend Sam::Internal::Type::Union
 
           variant String
 
-          variant -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1Array }
+          variant -> { Sam::MessageCountTokensParams::Message::Content::UnionMember1Array }
 
           module UnionMember1
             extend Sam::Internal::Type::Union
 
             discriminator :type
 
-            variant :text, -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text }
+            variant :text, -> { Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text }
 
-            variant :image, -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image }
+            variant :image, -> { Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image }
 
-            variant :tool_use, -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse }
+            variant :tool_use, -> { Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse }
 
             variant :tool_result,
-                    -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult }
+                    -> {
+                      Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult
+                    }
 
-            variant :document, -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document }
+            variant :document, -> { Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document }
 
-            variant :thinking, -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Thinking }
+            variant :thinking, -> { Sam::MessageCountTokensParams::Message::Content::UnionMember1::Thinking }
 
             variant :redacted_thinking,
-                    -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RedactedThinking }
+                    -> { Sam::MessageCountTokensParams::Message::Content::UnionMember1::RedactedThinking }
 
             class Text < Sam::Internal::Type::BaseModel
               # @!attribute text
@@ -323,25 +324,29 @@ module Sam
 
               # @!attribute cache_control
               #
-              #   @return [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::CacheControl, nil]
+              #   @return [Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::CacheControl, nil]
               optional :cache_control,
-                       -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::CacheControl },
+                       -> {
+                         Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::CacheControl
+                       },
                        nil?: true
 
               # @!attribute citations
               #
-              #   @return [Array<Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
+              #   @return [Array<Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
               optional :citations,
-                       -> { Sam::Internal::Type::ArrayOf[union: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation] },
+                       -> {
+                         Sam::Internal::Type::ArrayOf[union: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation]
+                       },
                        nil?: true
 
               # @!method initialize(text:, cache_control: nil, citations: nil, type: :text)
               #   @param text [String]
-              #   @param cache_control [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::CacheControl, nil]
-              #   @param citations [Array<Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
+              #   @param cache_control [Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::CacheControl, nil]
+              #   @param citations [Array<Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
               #   @param type [Symbol, :text]
 
-              # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text#cache_control
+              # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text#cache_control
               class CacheControl < Sam::Internal::Type::BaseModel
                 # @!attribute type
                 #
@@ -358,13 +363,19 @@ module Sam
                 discriminator :type
 
                 variant :char_location,
-                        -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::CharLocation }
+                        -> {
+                          Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::CharLocation
+                        }
 
                 variant :page_location,
-                        -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::PageLocation }
+                        -> {
+                          Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::PageLocation
+                        }
 
                 variant :content_block_location,
-                        -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation }
+                        -> {
+                          Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                        }
 
                 class CharLocation < Sam::Internal::Type::BaseModel
                   # @!attribute cited_text
@@ -487,16 +498,18 @@ module Sam
                 end
 
                 # @!method self.variants
-                #   @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
+                #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
               end
             end
 
             class Image < Sam::Internal::Type::BaseModel
               # @!attribute source
               #
-              #   @return [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::URL]
+              #   @return [Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::URL]
               required :source,
-                       union: -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source }
+                       union: -> {
+                         Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source
+                       }
 
               # @!attribute type
               #
@@ -505,27 +518,33 @@ module Sam
 
               # @!attribute cache_control
               #
-              #   @return [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::CacheControl, nil]
+              #   @return [Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::CacheControl, nil]
               optional :cache_control,
-                       -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::CacheControl },
+                       -> {
+                         Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::CacheControl
+                       },
                        nil?: true
 
               # @!method initialize(source:, cache_control: nil, type: :image)
-              #   @param source [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::URL]
-              #   @param cache_control [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::CacheControl, nil]
+              #   @param source [Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::URL]
+              #   @param cache_control [Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::CacheControl, nil]
               #   @param type [Symbol, :image]
 
-              # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image#source
+              # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image#source
               module Source
                 extend Sam::Internal::Type::Union
 
                 discriminator :type
 
                 variant :base64,
-                        -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64 }
+                        -> {
+                          Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64
+                        }
 
                 variant :url,
-                        -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::URL }
+                        -> {
+                          Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::URL
+                        }
 
                 class Base64 < Sam::Internal::Type::BaseModel
                   # @!attribute data
@@ -535,9 +554,11 @@ module Sam
 
                   # @!attribute media_type
                   #
-                  #   @return [Symbol, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64::MediaType]
+                  #   @return [Symbol, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64::MediaType]
                   required :media_type,
-                           enum: -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64::MediaType }
+                           enum: -> {
+                             Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64::MediaType
+                           }
 
                   # @!attribute type
                   #
@@ -546,10 +567,10 @@ module Sam
 
                   # @!method initialize(data:, media_type:, type: :base64)
                   #   @param data [String]
-                  #   @param media_type [Symbol, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64::MediaType]
+                  #   @param media_type [Symbol, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64::MediaType]
                   #   @param type [Symbol, :base64]
 
-                  # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64#media_type
+                  # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64#media_type
                   module MediaType
                     extend Sam::Internal::Type::Enum
 
@@ -580,10 +601,10 @@ module Sam
                 end
 
                 # @!method self.variants
-                #   @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::URL)]
+                #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::URL)]
               end
 
-              # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image#cache_control
+              # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image#cache_control
               class CacheControl < Sam::Internal::Type::BaseModel
                 # @!attribute type
                 #
@@ -618,19 +639,21 @@ module Sam
 
               # @!attribute cache_control
               #
-              #   @return [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse::CacheControl, nil]
+              #   @return [Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse::CacheControl, nil]
               optional :cache_control,
-                       -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse::CacheControl },
+                       -> {
+                         Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse::CacheControl
+                       },
                        nil?: true
 
               # @!method initialize(id:, input:, name:, cache_control: nil, type: :tool_use)
               #   @param id [String]
               #   @param input [Object]
               #   @param name [String]
-              #   @param cache_control [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse::CacheControl, nil]
+              #   @param cache_control [Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse::CacheControl, nil]
               #   @param type [Symbol, :tool_use]
 
-              # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse#cache_control
+              # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse#cache_control
               class CacheControl < Sam::Internal::Type::BaseModel
                 # @!attribute type
                 #
@@ -655,16 +678,20 @@ module Sam
 
               # @!attribute cache_control
               #
-              #   @return [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::CacheControl, nil]
+              #   @return [Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::CacheControl, nil]
               optional :cache_control,
-                       -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::CacheControl },
+                       -> {
+                         Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::CacheControl
+                       },
                        nil?: true
 
               # @!attribute content
               #
-              #   @return [String, Array<Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>, nil]
+              #   @return [String, Array<Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>, nil]
               optional :content,
-                       union: -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content }
+                       union: -> {
+                         Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content
+                       }
 
               # @!attribute is_error
               #
@@ -673,12 +700,12 @@ module Sam
 
               # @!method initialize(tool_use_id:, cache_control: nil, content: nil, is_error: nil, type: :tool_result)
               #   @param tool_use_id [String]
-              #   @param cache_control [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::CacheControl, nil]
-              #   @param content [String, Array<Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>]
+              #   @param cache_control [Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::CacheControl, nil]
+              #   @param content [String, Array<Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>]
               #   @param is_error [Boolean]
               #   @param type [Symbol, :tool_result]
 
-              # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult#cache_control
+              # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult#cache_control
               class CacheControl < Sam::Internal::Type::BaseModel
                 # @!attribute type
                 #
@@ -689,13 +716,15 @@ module Sam
                 #   @param type [Symbol, :ephemeral]
               end
 
-              # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult#content
+              # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult#content
               module Content
                 extend Sam::Internal::Type::Union
 
                 variant String
 
-                variant -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1Array }
+                variant -> {
+                  Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1Array
+                }
 
                 module UnionMember1
                   extend Sam::Internal::Type::Union
@@ -703,10 +732,14 @@ module Sam
                   discriminator :type
 
                   variant :text,
-                          -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text }
+                          -> {
+                            Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text
+                          }
 
                   variant :image,
-                          -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image }
+                          -> {
+                            Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
+                          }
 
                   class Text < Sam::Internal::Type::BaseModel
                     # @!attribute text
@@ -721,29 +754,31 @@ module Sam
 
                     # @!attribute cache_control
                     #
-                    #   @return [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl, nil]
+                    #   @return [Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl, nil]
                     optional :cache_control,
-                             -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl },
+                             -> {
+                               Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl
+                             },
                              nil?: true
 
                     # @!attribute citations
                     #
-                    #   @return [Array<Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
+                    #   @return [Array<Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
                     optional :citations,
                              -> do
                                Sam::Internal::Type::ArrayOf[
-                                 union: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation
+                                 union: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation
                                ]
                              end,
                              nil?: true
 
                     # @!method initialize(text:, cache_control: nil, citations: nil, type: :text)
                     #   @param text [String]
-                    #   @param cache_control [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl, nil]
-                    #   @param citations [Array<Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
+                    #   @param cache_control [Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl, nil]
+                    #   @param citations [Array<Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
                     #   @param type [Symbol, :text]
 
-                    # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text#cache_control
+                    # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text#cache_control
                     class CacheControl < Sam::Internal::Type::BaseModel
                       # @!attribute type
                       #
@@ -760,13 +795,19 @@ module Sam
                       discriminator :type
 
                       variant :char_location,
-                              -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation }
+                              -> {
+                                Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation
+                              }
 
                       variant :page_location,
-                              -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation }
+                              -> {
+                                Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation
+                              }
 
                       variant :content_block_location,
-                              -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation }
+                              -> {
+                                Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                              }
 
                       class CharLocation < Sam::Internal::Type::BaseModel
                         # @!attribute cited_text
@@ -889,16 +930,18 @@ module Sam
                       end
 
                       # @!method self.variants
-                      #   @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
+                      #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
                     end
                   end
 
                   class Image < Sam::Internal::Type::BaseModel
                     # @!attribute source
                     #
-                    #   @return [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL]
+                    #   @return [Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL]
                     required :source,
-                             union: -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source }
+                             union: -> {
+                               Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source
+                             }
 
                     # @!attribute type
                     #
@@ -907,27 +950,33 @@ module Sam
 
                     # @!attribute cache_control
                     #
-                    #   @return [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl, nil]
+                    #   @return [Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl, nil]
                     optional :cache_control,
-                             -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl },
+                             -> {
+                               Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl
+                             },
                              nil?: true
 
                     # @!method initialize(source:, cache_control: nil, type: :image)
-                    #   @param source [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL]
-                    #   @param cache_control [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl, nil]
+                    #   @param source [Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL]
+                    #   @param cache_control [Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl, nil]
                     #   @param type [Symbol, :image]
 
-                    # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image#source
+                    # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image#source
                     module Source
                       extend Sam::Internal::Type::Union
 
                       discriminator :type
 
                       variant :base64,
-                              -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64 }
+                              -> {
+                                Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64
+                              }
 
                       variant :url,
-                              -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL }
+                              -> {
+                                Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL
+                              }
 
                       class Base64 < Sam::Internal::Type::BaseModel
                         # @!attribute data
@@ -937,9 +986,11 @@ module Sam
 
                         # @!attribute media_type
                         #
-                        #   @return [Symbol, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType]
+                        #   @return [Symbol, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType]
                         required :media_type,
-                                 enum: -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType }
+                                 enum: -> {
+                                   Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType
+                                 }
 
                         # @!attribute type
                         #
@@ -948,10 +999,10 @@ module Sam
 
                         # @!method initialize(data:, media_type:, type: :base64)
                         #   @param data [String]
-                        #   @param media_type [Symbol, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType]
+                        #   @param media_type [Symbol, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType]
                         #   @param type [Symbol, :base64]
 
-                        # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64#media_type
+                        # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64#media_type
                         module MediaType
                           extend Sam::Internal::Type::Enum
 
@@ -982,10 +1033,10 @@ module Sam
                       end
 
                       # @!method self.variants
-                      #   @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL)]
+                      #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL)]
                     end
 
-                    # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image#cache_control
+                    # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image#cache_control
                     class CacheControl < Sam::Internal::Type::BaseModel
                       # @!attribute type
                       #
@@ -998,16 +1049,18 @@ module Sam
                   end
 
                   # @!method self.variants
-                  #   @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image)]
+                  #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image)]
                 end
 
                 # @!method self.variants
-                #   @return [Array(String, Array<Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>)]
+                #   @return [Array(String, Array<Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>)]
 
                 # @type [Sam::Internal::Type::Converter]
                 UnionMember1Array =
                   Sam::Internal::Type::ArrayOf[
-                    union: -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1 }
+                    union: -> {
+                      Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1
+                    }
                   ]
               end
             end
@@ -1015,9 +1068,11 @@ module Sam
             class Document < Sam::Internal::Type::BaseModel
               # @!attribute source
               #
-              #   @return [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Base64, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Text, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::URL]
+              #   @return [Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Base64, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::URL]
               required :source,
-                       union: -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source }
+                       union: -> {
+                         Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source
+                       }
 
               # @!attribute type
               #
@@ -1026,16 +1081,20 @@ module Sam
 
               # @!attribute cache_control
               #
-              #   @return [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::CacheControl, nil]
+              #   @return [Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::CacheControl, nil]
               optional :cache_control,
-                       -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::CacheControl },
+                       -> {
+                         Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::CacheControl
+                       },
                        nil?: true
 
               # @!attribute citations
               #
-              #   @return [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Citations, nil]
+              #   @return [Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Citations, nil]
               optional :citations,
-                       -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Citations }
+                       -> {
+                         Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Citations
+                       }
 
               # @!attribute context
               #
@@ -1048,30 +1107,38 @@ module Sam
               optional :title, String, nil?: true
 
               # @!method initialize(source:, cache_control: nil, citations: nil, context: nil, title: nil, type: :document)
-              #   @param source [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Base64, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Text, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::URL]
-              #   @param cache_control [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::CacheControl, nil]
-              #   @param citations [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Citations]
+              #   @param source [Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Base64, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::URL]
+              #   @param cache_control [Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::CacheControl, nil]
+              #   @param citations [Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Citations]
               #   @param context [String, nil]
               #   @param title [String, nil]
               #   @param type [Symbol, :document]
 
-              # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document#source
+              # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document#source
               module Source
                 extend Sam::Internal::Type::Union
 
                 discriminator :type
 
                 variant :base64,
-                        -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Base64 }
+                        -> {
+                          Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Base64
+                        }
 
                 variant :text,
-                        -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Text }
+                        -> {
+                          Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Text
+                        }
 
                 variant :content,
-                        -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content }
+                        -> {
+                          Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content
+                        }
 
                 variant :url,
-                        -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::URL }
+                        -> {
+                          Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::URL
+                        }
 
                 class Base64 < Sam::Internal::Type::BaseModel
                   # @!attribute data
@@ -1120,9 +1187,11 @@ module Sam
                 class Content < Sam::Internal::Type::BaseModel
                   # @!attribute content
                   #
-                  #   @return [String, Array<Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>]
+                  #   @return [String, Array<Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>]
                   required :content,
-                           union: -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content }
+                           union: -> {
+                             Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content
+                           }
 
                   # @!attribute type
                   #
@@ -1130,16 +1199,18 @@ module Sam
                   required :type, const: :content
 
                   # @!method initialize(content:, type: :content)
-                  #   @param content [String, Array<Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>]
+                  #   @param content [String, Array<Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>]
                   #   @param type [Symbol, :content]
 
-                  # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content#content
+                  # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content#content
                   module Content
                     extend Sam::Internal::Type::Union
 
                     variant String
 
-                    variant -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1Array }
+                    variant -> {
+                      Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1Array
+                    }
 
                     module UnionMember1
                       extend Sam::Internal::Type::Union
@@ -1147,10 +1218,14 @@ module Sam
                       discriminator :type
 
                       variant :text,
-                              -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text }
+                              -> {
+                                Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text
+                              }
 
                       variant :image,
-                              -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image }
+                              -> {
+                                Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
+                              }
 
                       class Text < Sam::Internal::Type::BaseModel
                         # @!attribute text
@@ -1165,29 +1240,31 @@ module Sam
 
                         # @!attribute cache_control
                         #
-                        #   @return [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl, nil]
+                        #   @return [Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl, nil]
                         optional :cache_control,
-                                 -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl },
+                                 -> {
+                                   Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl
+                                 },
                                  nil?: true
 
                         # @!attribute citations
                         #
-                        #   @return [Array<Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
+                        #   @return [Array<Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
                         optional :citations,
                                  -> do
                                    Sam::Internal::Type::ArrayOf[
-                                     union: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation
+                                     union: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation
                                    ]
                                  end,
                                  nil?: true
 
                         # @!method initialize(text:, cache_control: nil, citations: nil, type: :text)
                         #   @param text [String]
-                        #   @param cache_control [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl, nil]
-                        #   @param citations [Array<Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
+                        #   @param cache_control [Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl, nil]
+                        #   @param citations [Array<Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation>, nil]
                         #   @param type [Symbol, :text]
 
-                        # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text#cache_control
+                        # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text#cache_control
                         class CacheControl < Sam::Internal::Type::BaseModel
                           # @!attribute type
                           #
@@ -1204,13 +1281,19 @@ module Sam
                           discriminator :type
 
                           variant :char_location,
-                                  -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation }
+                                  -> {
+                                    Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation
+                                  }
 
                           variant :page_location,
-                                  -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation }
+                                  -> {
+                                    Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation
+                                  }
 
                           variant :content_block_location,
-                                  -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation }
+                                  -> {
+                                    Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                                  }
 
                           class CharLocation < Sam::Internal::Type::BaseModel
                             # @!attribute cited_text
@@ -1333,16 +1416,18 @@ module Sam
                           end
 
                           # @!method self.variants
-                          #   @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
+                          #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
                         end
                       end
 
                       class Image < Sam::Internal::Type::BaseModel
                         # @!attribute source
                         #
-                        #   @return [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL]
+                        #   @return [Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL]
                         required :source,
-                                 union: -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source }
+                                 union: -> {
+                                   Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source
+                                 }
 
                         # @!attribute type
                         #
@@ -1351,27 +1436,33 @@ module Sam
 
                         # @!attribute cache_control
                         #
-                        #   @return [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl, nil]
+                        #   @return [Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl, nil]
                         optional :cache_control,
-                                 -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl },
+                                 -> {
+                                   Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl
+                                 },
                                  nil?: true
 
                         # @!method initialize(source:, cache_control: nil, type: :image)
-                        #   @param source [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL]
-                        #   @param cache_control [Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl, nil]
+                        #   @param source [Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL]
+                        #   @param cache_control [Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl, nil]
                         #   @param type [Symbol, :image]
 
-                        # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image#source
+                        # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image#source
                         module Source
                           extend Sam::Internal::Type::Union
 
                           discriminator :type
 
                           variant :base64,
-                                  -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64 }
+                                  -> {
+                                    Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64
+                                  }
 
                           variant :url,
-                                  -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL }
+                                  -> {
+                                    Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL
+                                  }
 
                           class Base64 < Sam::Internal::Type::BaseModel
                             # @!attribute data
@@ -1381,9 +1472,11 @@ module Sam
 
                             # @!attribute media_type
                             #
-                            #   @return [Symbol, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType]
+                            #   @return [Symbol, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType]
                             required :media_type,
-                                     enum: -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType }
+                                     enum: -> {
+                                       Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType
+                                     }
 
                             # @!attribute type
                             #
@@ -1392,10 +1485,10 @@ module Sam
 
                             # @!method initialize(data:, media_type:, type: :base64)
                             #   @param data [String]
-                            #   @param media_type [Symbol, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType]
+                            #   @param media_type [Symbol, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType]
                             #   @param type [Symbol, :base64]
 
-                            # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64#media_type
+                            # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64#media_type
                             module MediaType
                               extend Sam::Internal::Type::Enum
 
@@ -1426,10 +1519,10 @@ module Sam
                           end
 
                           # @!method self.variants
-                          #   @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL)]
+                          #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL)]
                         end
 
-                        # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image#cache_control
+                        # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image#cache_control
                         class CacheControl < Sam::Internal::Type::BaseModel
                           # @!attribute type
                           #
@@ -1442,16 +1535,18 @@ module Sam
                       end
 
                       # @!method self.variants
-                      #   @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image)]
+                      #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image)]
                     end
 
                     # @!method self.variants
-                    #   @return [Array(String, Array<Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>)]
+                    #   @return [Array(String, Array<Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>)]
 
                     # @type [Sam::Internal::Type::Converter]
                     UnionMember1Array =
                       Sam::Internal::Type::ArrayOf[
-                        union: -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1 }
+                        union: -> {
+                          Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1
+                        }
                       ]
                   end
                 end
@@ -1473,10 +1568,10 @@ module Sam
                 end
 
                 # @!method self.variants
-                #   @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Base64, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Text, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::URL)]
+                #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Base64, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::URL)]
               end
 
-              # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document#cache_control
+              # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document#cache_control
               class CacheControl < Sam::Internal::Type::BaseModel
                 # @!attribute type
                 #
@@ -1487,7 +1582,7 @@ module Sam
                 #   @param type [Symbol, :ephemeral]
               end
 
-              # @see Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document#citations
+              # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document#citations
               class Citations < Sam::Internal::Type::BaseModel
                 # @!attribute enabled
                 #
@@ -1538,18 +1633,20 @@ module Sam
             end
 
             # @!method self.variants
-            #   @return [Array(Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Thinking, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RedactedThinking)]
+            #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Thinking, Sam::MessageCountTokensParams::Message::Content::UnionMember1::RedactedThinking)]
           end
 
           # @!method self.variants
-          #   @return [Array(String, Array<Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Thinking, Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::RedactedThinking>)]
+          #   @return [Array(String, Array<Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Thinking, Sam::MessageCountTokensParams::Message::Content::UnionMember1::RedactedThinking>)]
 
           # @type [Sam::Internal::Type::Converter]
           UnionMember1Array =
-            Sam::Internal::Type::ArrayOf[union: -> { Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1 }]
+            Sam::Internal::Type::ArrayOf[union: -> {
+              Sam::MessageCountTokensParams::Message::Content::UnionMember1
+            }]
         end
 
-        # @see Sam::Models::MessageCountTokensParams::Message#role
+        # @see Sam::MessageCountTokensParams::Message#role
         module Role
           extend Sam::Internal::Type::Enum
 
@@ -1571,7 +1668,7 @@ module Sam
 
         variant String
 
-        variant -> { Sam::Models::MessageCountTokensParams::System::UnionMember1Array }
+        variant -> { Sam::MessageCountTokensParams::System::UnionMember1Array }
 
         class UnionMember1 < Sam::Internal::Type::BaseModel
           # @!attribute text
@@ -1586,25 +1683,27 @@ module Sam
 
           # @!attribute cache_control
           #
-          #   @return [Sam::Models::MessageCountTokensParams::System::UnionMember1::CacheControl, nil]
+          #   @return [Sam::MessageCountTokensParams::System::UnionMember1::CacheControl, nil]
           optional :cache_control,
-                   -> { Sam::Models::MessageCountTokensParams::System::UnionMember1::CacheControl },
+                   -> { Sam::MessageCountTokensParams::System::UnionMember1::CacheControl },
                    nil?: true
 
           # @!attribute citations
           #
-          #   @return [Array<Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::CharLocation, Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::PageLocation, Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::ContentBlockLocation>, nil]
+          #   @return [Array<Sam::MessageCountTokensParams::System::UnionMember1::Citation::CharLocation, Sam::MessageCountTokensParams::System::UnionMember1::Citation::PageLocation, Sam::MessageCountTokensParams::System::UnionMember1::Citation::ContentBlockLocation>, nil]
           optional :citations,
-                   -> { Sam::Internal::Type::ArrayOf[union: Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation] },
+                   -> {
+                     Sam::Internal::Type::ArrayOf[union: Sam::MessageCountTokensParams::System::UnionMember1::Citation]
+                   },
                    nil?: true
 
           # @!method initialize(text:, cache_control: nil, citations: nil, type: :text)
           #   @param text [String]
-          #   @param cache_control [Sam::Models::MessageCountTokensParams::System::UnionMember1::CacheControl, nil]
-          #   @param citations [Array<Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::CharLocation, Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::PageLocation, Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::ContentBlockLocation>, nil]
+          #   @param cache_control [Sam::MessageCountTokensParams::System::UnionMember1::CacheControl, nil]
+          #   @param citations [Array<Sam::MessageCountTokensParams::System::UnionMember1::Citation::CharLocation, Sam::MessageCountTokensParams::System::UnionMember1::Citation::PageLocation, Sam::MessageCountTokensParams::System::UnionMember1::Citation::ContentBlockLocation>, nil]
           #   @param type [Symbol, :text]
 
-          # @see Sam::Models::MessageCountTokensParams::System::UnionMember1#cache_control
+          # @see Sam::MessageCountTokensParams::System::UnionMember1#cache_control
           class CacheControl < Sam::Internal::Type::BaseModel
             # @!attribute type
             #
@@ -1621,13 +1720,17 @@ module Sam
             discriminator :type
 
             variant :char_location,
-                    -> { Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::CharLocation }
+                    -> {
+                      Sam::MessageCountTokensParams::System::UnionMember1::Citation::CharLocation
+                    }
 
             variant :page_location,
-                    -> { Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::PageLocation }
+                    -> {
+                      Sam::MessageCountTokensParams::System::UnionMember1::Citation::PageLocation
+                    }
 
             variant :content_block_location,
-                    -> { Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::ContentBlockLocation }
+                    -> { Sam::MessageCountTokensParams::System::UnionMember1::Citation::ContentBlockLocation }
 
             class CharLocation < Sam::Internal::Type::BaseModel
               # @!attribute cited_text
@@ -1750,16 +1853,16 @@ module Sam
             end
 
             # @!method self.variants
-            #   @return [Array(Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::CharLocation, Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::PageLocation, Sam::Models::MessageCountTokensParams::System::UnionMember1::Citation::ContentBlockLocation)]
+            #   @return [Array(Sam::MessageCountTokensParams::System::UnionMember1::Citation::CharLocation, Sam::MessageCountTokensParams::System::UnionMember1::Citation::PageLocation, Sam::MessageCountTokensParams::System::UnionMember1::Citation::ContentBlockLocation)]
           end
         end
 
         # @!method self.variants
-        #   @return [Array(String, Array<Sam::Models::MessageCountTokensParams::System::UnionMember1>)]
+        #   @return [Array(String, Array<Sam::MessageCountTokensParams::System::UnionMember1>)]
 
         # @type [Sam::Internal::Type::Converter]
         UnionMember1Array =
-          Sam::Internal::Type::ArrayOf[-> { Sam::Models::MessageCountTokensParams::System::UnionMember1 }]
+          Sam::Internal::Type::ArrayOf[-> { Sam::MessageCountTokensParams::System::UnionMember1 }]
       end
 
       # Configuration for enabling Claude's extended thinking.
@@ -1776,9 +1879,9 @@ module Sam
 
         discriminator :type
 
-        variant :enabled, -> { Sam::Models::MessageCountTokensParams::Thinking::Enabled }
+        variant :enabled, -> { Sam::MessageCountTokensParams::Thinking::Enabled }
 
-        variant :disabled, -> { Sam::Models::MessageCountTokensParams::Thinking::Disabled }
+        variant :disabled, -> { Sam::MessageCountTokensParams::Thinking::Disabled }
 
         class Enabled < Sam::Internal::Type::BaseModel
           # @!attribute budget_tokens
@@ -1802,10 +1905,9 @@ module Sam
 
           # @!method initialize(budget_tokens:, type: :enabled)
           #   Some parameter documentations has been truncated, see
-          #   {Sam::Models::MessageCountTokensParams::Thinking::Enabled} for more details.
+          #   {Sam::MessageCountTokensParams::Thinking::Enabled} for more details.
           #
           #   @param budget_tokens [Integer] Determines how many tokens Claude can use for its internal reasoning process. La
-          #   ...
           #
           #   @param type [Symbol, :enabled]
         end
@@ -1821,7 +1923,7 @@ module Sam
         end
 
         # @!method self.variants
-        #   @return [Array(Sam::Models::MessageCountTokensParams::Thinking::Enabled, Sam::Models::MessageCountTokensParams::Thinking::Disabled)]
+        #   @return [Array(Sam::MessageCountTokensParams::Thinking::Enabled, Sam::MessageCountTokensParams::Thinking::Disabled)]
       end
 
       # How the model should use the provided tools. The model can use a specific tool,
@@ -1832,16 +1934,16 @@ module Sam
         discriminator :type
 
         # The model will automatically decide whether to use tools.
-        variant :auto, -> { Sam::Models::MessageCountTokensParams::ToolChoice::Auto }
+        variant :auto, -> { Sam::MessageCountTokensParams::ToolChoice::Auto }
 
         # The model will use any available tools.
-        variant :any, -> { Sam::Models::MessageCountTokensParams::ToolChoice::Any }
+        variant :any, -> { Sam::MessageCountTokensParams::ToolChoice::Any }
 
         # The model will use the specified tool with `tool_choice.name`.
-        variant :tool, -> { Sam::Models::MessageCountTokensParams::ToolChoice::Tool }
+        variant :tool, -> { Sam::MessageCountTokensParams::ToolChoice::Tool }
 
         # The model will not be allowed to use tools.
-        variant :none, -> { Sam::Models::MessageCountTokensParams::ToolChoice::None }
+        variant :none, -> { Sam::MessageCountTokensParams::ToolChoice::None }
 
         class Auto < Sam::Internal::Type::BaseModel
           # @!attribute type
@@ -1860,11 +1962,11 @@ module Sam
 
           # @!method initialize(disable_parallel_tool_use: nil, type: :auto)
           #   Some parameter documentations has been truncated, see
-          #   {Sam::Models::MessageCountTokensParams::ToolChoice::Auto} for more details.
+          #   {Sam::MessageCountTokensParams::ToolChoice::Auto} for more details.
           #
           #   The model will automatically decide whether to use tools.
           #
-          #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use. ...
+          #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use.
           #
           #   @param type [Symbol, :auto]
         end
@@ -1886,11 +1988,11 @@ module Sam
 
           # @!method initialize(disable_parallel_tool_use: nil, type: :any)
           #   Some parameter documentations has been truncated, see
-          #   {Sam::Models::MessageCountTokensParams::ToolChoice::Any} for more details.
+          #   {Sam::MessageCountTokensParams::ToolChoice::Any} for more details.
           #
           #   The model will use any available tools.
           #
-          #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use. ...
+          #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use.
           #
           #   @param type [Symbol, :any]
         end
@@ -1918,13 +2020,13 @@ module Sam
 
           # @!method initialize(name:, disable_parallel_tool_use: nil, type: :tool)
           #   Some parameter documentations has been truncated, see
-          #   {Sam::Models::MessageCountTokensParams::ToolChoice::Tool} for more details.
+          #   {Sam::MessageCountTokensParams::ToolChoice::Tool} for more details.
           #
           #   The model will use the specified tool with `tool_choice.name`.
           #
           #   @param name [String] The name of the tool to use.
           #
-          #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use. ...
+          #   @param disable_parallel_tool_use [Boolean] Whether to disable parallel tool use.
           #
           #   @param type [Symbol, :tool]
         end
@@ -1942,17 +2044,17 @@ module Sam
         end
 
         # @!method self.variants
-        #   @return [Array(Sam::Models::MessageCountTokensParams::ToolChoice::Auto, Sam::Models::MessageCountTokensParams::ToolChoice::Any, Sam::Models::MessageCountTokensParams::ToolChoice::Tool, Sam::Models::MessageCountTokensParams::ToolChoice::None)]
+        #   @return [Array(Sam::MessageCountTokensParams::ToolChoice::Auto, Sam::MessageCountTokensParams::ToolChoice::Any, Sam::MessageCountTokensParams::ToolChoice::Tool, Sam::MessageCountTokensParams::ToolChoice::None)]
       end
 
       module Tool
         extend Sam::Internal::Type::Union
 
-        variant -> { Sam::Models::MessageCountTokensParams::Tool::Tool }
+        variant -> { Sam::MessageCountTokensParams::Tool::Tool }
 
-        variant -> { Sam::Models::MessageCountTokensParams::Tool::BashTool20250124 }
+        variant -> { Sam::MessageCountTokensParams::Tool::BashTool20250124 }
 
-        variant -> { Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124 }
+        variant -> { Sam::MessageCountTokensParams::Tool::TextEditor20250124 }
 
         class Tool < Sam::Internal::Type::BaseModel
           # @!attribute input_schema
@@ -1961,8 +2063,8 @@ module Sam
           #   This defines the shape of the `input` that your tool accepts and that the model
           #   will produce.
           #
-          #   @return [Sam::Models::MessageCountTokensParams::Tool::Tool::InputSchema]
-          required :input_schema, -> { Sam::Models::MessageCountTokensParams::Tool::Tool::InputSchema }
+          #   @return [Sam::MessageCountTokensParams::Tool::Tool::InputSchema]
+          required :input_schema, -> { Sam::MessageCountTokensParams::Tool::Tool::InputSchema }
 
           # @!attribute name
           #   Name of the tool.
@@ -1974,10 +2076,8 @@ module Sam
 
           # @!attribute cache_control
           #
-          #   @return [Sam::Models::MessageCountTokensParams::Tool::Tool::CacheControl, nil]
-          optional :cache_control,
-                   -> { Sam::Models::MessageCountTokensParams::Tool::Tool::CacheControl },
-                   nil?: true
+          #   @return [Sam::MessageCountTokensParams::Tool::Tool::CacheControl, nil]
+          optional :cache_control, -> { Sam::MessageCountTokensParams::Tool::Tool::CacheControl }, nil?: true
 
           # @!attribute description
           #   Description of what this tool does.
@@ -1992,17 +2092,17 @@ module Sam
 
           # @!method initialize(input_schema:, name:, cache_control: nil, description: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Sam::Models::MessageCountTokensParams::Tool::Tool} for more details.
+          #   {Sam::MessageCountTokensParams::Tool::Tool} for more details.
           #
-          #   @param input_schema [Sam::Models::MessageCountTokensParams::Tool::Tool::InputSchema] [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input. ...
+          #   @param input_schema [Sam::MessageCountTokensParams::Tool::Tool::InputSchema] [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input.
           #
-          #   @param name [String] Name of the tool. ...
+          #   @param name [String] Name of the tool.
           #
-          #   @param cache_control [Sam::Models::MessageCountTokensParams::Tool::Tool::CacheControl, nil]
+          #   @param cache_control [Sam::MessageCountTokensParams::Tool::Tool::CacheControl, nil]
           #
-          #   @param description [String] Description of what this tool does. ...
+          #   @param description [String] Description of what this tool does.
 
-          # @see Sam::Models::MessageCountTokensParams::Tool::Tool#input_schema
+          # @see Sam::MessageCountTokensParams::Tool::Tool#input_schema
           class InputSchema < Sam::Internal::Type::BaseModel
             # @!attribute type
             #
@@ -2024,7 +2124,7 @@ module Sam
             #   @param type [Symbol, :object]
           end
 
-          # @see Sam::Models::MessageCountTokensParams::Tool::Tool#cache_control
+          # @see Sam::MessageCountTokensParams::Tool::Tool#cache_control
           class CacheControl < Sam::Internal::Type::BaseModel
             # @!attribute type
             #
@@ -2052,23 +2152,22 @@ module Sam
 
           # @!attribute cache_control
           #
-          #   @return [Sam::Models::MessageCountTokensParams::Tool::BashTool20250124::CacheControl, nil]
+          #   @return [Sam::MessageCountTokensParams::Tool::BashTool20250124::CacheControl, nil]
           optional :cache_control,
-                   -> { Sam::Models::MessageCountTokensParams::Tool::BashTool20250124::CacheControl },
+                   -> { Sam::MessageCountTokensParams::Tool::BashTool20250124::CacheControl },
                    nil?: true
 
           # @!method initialize(cache_control: nil, name: :bash, type: :bash_20250124)
           #   Some parameter documentations has been truncated, see
-          #   {Sam::Models::MessageCountTokensParams::Tool::BashTool20250124} for more
-          #   details.
+          #   {Sam::MessageCountTokensParams::Tool::BashTool20250124} for more details.
           #
-          #   @param cache_control [Sam::Models::MessageCountTokensParams::Tool::BashTool20250124::CacheControl, nil]
+          #   @param cache_control [Sam::MessageCountTokensParams::Tool::BashTool20250124::CacheControl, nil]
           #
-          #   @param name [Symbol, :bash] Name of the tool. ...
+          #   @param name [Symbol, :bash] Name of the tool.
           #
           #   @param type [Symbol, :bash_20250124]
 
-          # @see Sam::Models::MessageCountTokensParams::Tool::BashTool20250124#cache_control
+          # @see Sam::MessageCountTokensParams::Tool::BashTool20250124#cache_control
           class CacheControl < Sam::Internal::Type::BaseModel
             # @!attribute type
             #
@@ -2096,23 +2195,22 @@ module Sam
 
           # @!attribute cache_control
           #
-          #   @return [Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124::CacheControl, nil]
+          #   @return [Sam::MessageCountTokensParams::Tool::TextEditor20250124::CacheControl, nil]
           optional :cache_control,
-                   -> { Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124::CacheControl },
+                   -> { Sam::MessageCountTokensParams::Tool::TextEditor20250124::CacheControl },
                    nil?: true
 
           # @!method initialize(cache_control: nil, name: :str_replace_editor, type: :text_editor_20250124)
           #   Some parameter documentations has been truncated, see
-          #   {Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124} for more
-          #   details.
+          #   {Sam::MessageCountTokensParams::Tool::TextEditor20250124} for more details.
           #
-          #   @param cache_control [Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124::CacheControl, nil]
+          #   @param cache_control [Sam::MessageCountTokensParams::Tool::TextEditor20250124::CacheControl, nil]
           #
-          #   @param name [Symbol, :str_replace_editor] Name of the tool. ...
+          #   @param name [Symbol, :str_replace_editor] Name of the tool.
           #
           #   @param type [Symbol, :text_editor_20250124]
 
-          # @see Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124#cache_control
+          # @see Sam::MessageCountTokensParams::Tool::TextEditor20250124#cache_control
           class CacheControl < Sam::Internal::Type::BaseModel
             # @!attribute type
             #
@@ -2125,7 +2223,7 @@ module Sam
         end
 
         # @!method self.variants
-        #   @return [Array(Sam::Models::MessageCountTokensParams::Tool::Tool, Sam::Models::MessageCountTokensParams::Tool::BashTool20250124, Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124)]
+        #   @return [Array(Sam::MessageCountTokensParams::Tool::Tool, Sam::MessageCountTokensParams::Tool::BashTool20250124, Sam::MessageCountTokensParams::Tool::TextEditor20250124)]
       end
     end
   end

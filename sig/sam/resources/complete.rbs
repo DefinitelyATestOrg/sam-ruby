@@ -5,7 +5,7 @@ module Sam
         max_tokens_to_sample: Integer,
         model: String,
         prompt: String,
-        ?metadata: Sam::Models::CompleteCreateParams::Metadata,
+        ?metadata: Sam::CompleteCreateParams::Metadata,
         ?stop_sequences: ::Array[String],
         ?stream: bool,
         ?temperature: Float,

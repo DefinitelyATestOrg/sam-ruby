@@ -21,15 +21,13 @@ module Sam
         #
         # @overload create(requests:, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #
-        # @param requests [Array<Sam::Models::Messages::BatchCreateParams::Request>] Body param: List of requests for prompt completion. Each is an individual reques
-        # ...
+        # @param requests [Array<Sam::Messages::BatchCreateParams::Request>] Body param: List of requests for prompt completion. Each is an individual reques
         #
         # @param anthropic_beta [Array<String>] Header param: Optional header to specify the beta version(s) you want to use.
-        # ...
         #
-        # @param anthropic_version [String] Header param: The version of the Anthropic API you want to use. ...
+        # @param anthropic_version [String] Header param: The version of the Anthropic API you want to use.
         #
-        # @param x_api_key [String] Header param: Your unique API key for authentication. ...
+        # @param x_api_key [String] Header param: Your unique API key for authentication.
         #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -37,7 +35,7 @@ module Sam
         #
         # @see Sam::Models::Messages::BatchCreateParams
         def create(params)
-          parsed, options = Sam::Models::Messages::BatchCreateParams.dump_request(params)
+          parsed, options = Sam::Messages::BatchCreateParams.dump_request(params)
           header_params =
             {anthropic_beta: "anthropic-beta", anthropic_version: "anthropic-version", x_api_key: "x-api-key"}
           @client.request(
@@ -64,11 +62,11 @@ module Sam
         #
         # @param message_batch_id [String] ID of the Message Batch.
         #
-        # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+        # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use.
         #
-        # @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+        # @param anthropic_version [String] The version of the Anthropic API you want to use.
         #
-        # @param x_api_key [String] Your unique API key for authentication. ...
+        # @param x_api_key [String] Your unique API key for authentication.
         #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -76,7 +74,7 @@ module Sam
         #
         # @see Sam::Models::Messages::BatchRetrieveParams
         def retrieve(message_batch_id, params = {})
-          parsed, options = Sam::Models::Messages::BatchRetrieveParams.dump_request(params)
+          parsed, options = Sam::Messages::BatchRetrieveParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["v1/messages/batches/%1$s", message_batch_id],
@@ -102,19 +100,16 @@ module Sam
         # @overload list(after_id: nil, before_id: nil, limit: nil, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #
         # @param after_id [String] Query param: ID of the object to use as a cursor for pagination. When provided,
-        # ...
         #
         # @param before_id [String] Query param: ID of the object to use as a cursor for pagination. When provided,
-        # ...
         #
-        # @param limit [Integer] Query param: Number of items to return per page. ...
+        # @param limit [Integer] Query param: Number of items to return per page.
         #
         # @param anthropic_beta [Array<String>] Header param: Optional header to specify the beta version(s) you want to use.
-        # ...
         #
-        # @param anthropic_version [String] Header param: The version of the Anthropic API you want to use. ...
+        # @param anthropic_version [String] Header param: The version of the Anthropic API you want to use.
         #
-        # @param x_api_key [String] Header param: Your unique API key for authentication. ...
+        # @param x_api_key [String] Header param: Your unique API key for authentication.
         #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -122,7 +117,7 @@ module Sam
         #
         # @see Sam::Models::Messages::BatchListParams
         def list(params = {})
-          parsed, options = Sam::Models::Messages::BatchListParams.dump_request(params)
+          parsed, options = Sam::Messages::BatchListParams.dump_request(params)
           query_params = [:after_id, :before_id, :limit]
           @client.request(
             method: :get,
@@ -153,11 +148,11 @@ module Sam
         #
         # @param message_batch_id [String] ID of the Message Batch.
         #
-        # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+        # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use.
         #
-        # @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+        # @param anthropic_version [String] The version of the Anthropic API you want to use.
         #
-        # @param x_api_key [String] Your unique API key for authentication. ...
+        # @param x_api_key [String] Your unique API key for authentication.
         #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -165,7 +160,7 @@ module Sam
         #
         # @see Sam::Models::Messages::BatchDeleteParams
         def delete(message_batch_id, params = {})
-          parsed, options = Sam::Models::Messages::BatchDeleteParams.dump_request(params)
+          parsed, options = Sam::Messages::BatchDeleteParams.dump_request(params)
           @client.request(
             method: :delete,
             path: ["v1/messages/batches/%1$s", message_batch_id],
@@ -199,11 +194,11 @@ module Sam
         #
         # @param message_batch_id [String] ID of the Message Batch.
         #
-        # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+        # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use.
         #
-        # @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+        # @param anthropic_version [String] The version of the Anthropic API you want to use.
         #
-        # @param x_api_key [String] Your unique API key for authentication. ...
+        # @param x_api_key [String] Your unique API key for authentication.
         #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -211,7 +206,7 @@ module Sam
         #
         # @see Sam::Models::Messages::BatchCancelParams
         def cancel(message_batch_id, params = {})
-          parsed, options = Sam::Models::Messages::BatchCancelParams.dump_request(params)
+          parsed, options = Sam::Messages::BatchCancelParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["v1/messages/batches/%1$s/cancel", message_batch_id],
@@ -245,11 +240,11 @@ module Sam
         #
         # @param message_batch_id [String] ID of the Message Batch.
         #
-        # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+        # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use.
         #
-        # @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+        # @param anthropic_version [String] The version of the Anthropic API you want to use.
         #
-        # @param x_api_key [String] Your unique API key for authentication. ...
+        # @param x_api_key [String] Your unique API key for authentication.
         #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -257,7 +252,7 @@ module Sam
         #
         # @see Sam::Models::Messages::BatchCancelBetaParams
         def cancel_beta(message_batch_id, params = {})
-          parsed, options = Sam::Models::Messages::BatchCancelBetaParams.dump_request(params)
+          parsed, options = Sam::Messages::BatchCancelBetaParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["v1/messages/batches/%1$s/cancel?beta=true", message_batch_id],
@@ -287,11 +282,11 @@ module Sam
         #
         # @param message_batch_id [String] ID of the Message Batch.
         #
-        # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+        # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use.
         #
-        # @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+        # @param anthropic_version [String] The version of the Anthropic API you want to use.
         #
-        # @param x_api_key [String] Your unique API key for authentication. ...
+        # @param x_api_key [String] Your unique API key for authentication.
         #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -299,7 +294,7 @@ module Sam
         #
         # @see Sam::Models::Messages::BatchResultsParams
         def results_streaming(message_batch_id, params = {})
-          parsed, options = Sam::Models::Messages::BatchResultsParams.dump_request(params)
+          parsed, options = Sam::Messages::BatchResultsParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["v1/messages/batches/%1$s/results", message_batch_id],
@@ -330,11 +325,11 @@ module Sam
         #
         # @param message_batch_id [String] ID of the Message Batch.
         #
-        # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use. ...
+        # @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use.
         #
-        # @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+        # @param anthropic_version [String] The version of the Anthropic API you want to use.
         #
-        # @param x_api_key [String] Your unique API key for authentication. ...
+        # @param x_api_key [String] Your unique API key for authentication.
         #
         # @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -342,7 +337,7 @@ module Sam
         #
         # @see Sam::Models::Messages::BatchResultsBetaParams
         def results_beta_streaming(message_batch_id, params = {})
-          parsed, options = Sam::Models::Messages::BatchResultsBetaParams.dump_request(params)
+          parsed, options = Sam::Messages::BatchResultsBetaParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["v1/messages/batches/%1$s/results?beta=true", message_batch_id],

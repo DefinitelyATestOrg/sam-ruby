@@ -19,44 +19,44 @@ module Sam
       sig do
         params(
           max_tokens: Integer,
-          messages: T::Array[T.any(Sam::Models::MessageCreateParams::Message, Sam::Internal::AnyHash)],
+          messages: T::Array[Sam::MessageCreateParams::Message::OrHash],
           model: String,
-          metadata: T.any(Sam::Models::MessageCreateParams::Metadata, Sam::Internal::AnyHash),
+          metadata: Sam::MessageCreateParams::Metadata::OrHash,
           stop_sequences: T::Array[String],
           stream: T::Boolean,
-          system_: T.any(
-            String,
-            T::Array[T.any(Sam::Models::MessageCreateParams::System::UnionMember1, Sam::Internal::AnyHash)]
-          ),
-          temperature: Float,
-          thinking: T.any(
-            Sam::Models::MessageCreateParams::Thinking::Enabled,
-            Sam::Internal::AnyHash,
-            Sam::Models::MessageCreateParams::Thinking::Disabled
-          ),
-          tool_choice: T.any(
-            Sam::Models::MessageCreateParams::ToolChoice::Auto,
-            Sam::Internal::AnyHash,
-            Sam::Models::MessageCreateParams::ToolChoice::Any,
-            Sam::Models::MessageCreateParams::ToolChoice::Tool,
-            Sam::Models::MessageCreateParams::ToolChoice::None
-          ),
-          tools: T::Array[
+          system_:
             T.any(
-              Sam::Models::MessageCreateParams::Tool::Tool,
-              Sam::Internal::AnyHash,
-              Sam::Models::MessageCreateParams::Tool::BashTool20250124,
-              Sam::Models::MessageCreateParams::Tool::TextEditor20250124
-            )
-          ],
+              String,
+              T::Array[Sam::MessageCreateParams::System::UnionMember1::OrHash]
+            ),
+          temperature: Float,
+          thinking:
+            T.any(
+              Sam::MessageCreateParams::Thinking::Enabled::OrHash,
+              Sam::MessageCreateParams::Thinking::Disabled::OrHash
+            ),
+          tool_choice:
+            T.any(
+              Sam::MessageCreateParams::ToolChoice::Auto::OrHash,
+              Sam::MessageCreateParams::ToolChoice::Any::OrHash,
+              Sam::MessageCreateParams::ToolChoice::Tool::OrHash,
+              Sam::MessageCreateParams::ToolChoice::None::OrHash
+            ),
+          tools:
+            T::Array[
+              T.any(
+                Sam::MessageCreateParams::Tool::Tool::OrHash,
+                Sam::MessageCreateParams::Tool::BashTool20250124::OrHash,
+                Sam::MessageCreateParams::Tool::TextEditor20250124::OrHash
+              )
+            ],
           top_k: Integer,
           top_p: Float,
           anthropic_beta: T::Array[String],
           anthropic_version: String,
           x_api_key: String,
-          request_options: Sam::RequestOpts
-        )
-          .returns(Sam::Models::MessageCreateResponse)
+          request_options: Sam::RequestOptions::OrHash
+        ).returns(Sam::Models::MessageCreateResponse)
       end
       def create(
         # Body param: The maximum number of tokens to generate before stopping.
@@ -311,7 +311,9 @@ module Sam
         # Workspace.
         x_api_key: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Count the number of tokens in a Message.
       #
       # The Token Count API can be used to count the number of tokens in a Message,
@@ -321,38 +323,40 @@ module Sam
       # [user guide](/en/docs/build-with-claude/token-counting)
       sig do
         params(
-          messages: T::Array[T.any(Sam::Models::MessageCountTokensParams::Message, Sam::Internal::AnyHash)],
+          messages: T::Array[Sam::MessageCountTokensParams::Message::OrHash],
           model: String,
-          system_: T.any(
-            String,
-            T::Array[T.any(Sam::Models::MessageCountTokensParams::System::UnionMember1, Sam::Internal::AnyHash)]
-          ),
-          thinking: T.any(
-            Sam::Models::MessageCountTokensParams::Thinking::Enabled,
-            Sam::Internal::AnyHash,
-            Sam::Models::MessageCountTokensParams::Thinking::Disabled
-          ),
-          tool_choice: T.any(
-            Sam::Models::MessageCountTokensParams::ToolChoice::Auto,
-            Sam::Internal::AnyHash,
-            Sam::Models::MessageCountTokensParams::ToolChoice::Any,
-            Sam::Models::MessageCountTokensParams::ToolChoice::Tool,
-            Sam::Models::MessageCountTokensParams::ToolChoice::None
-          ),
-          tools: T::Array[
+          system_:
             T.any(
-              Sam::Models::MessageCountTokensParams::Tool::Tool,
-              Sam::Internal::AnyHash,
-              Sam::Models::MessageCountTokensParams::Tool::BashTool20250124,
-              Sam::Models::MessageCountTokensParams::Tool::TextEditor20250124
-            )
-          ],
+              String,
+              T::Array[
+                Sam::MessageCountTokensParams::System::UnionMember1::OrHash
+              ]
+            ),
+          thinking:
+            T.any(
+              Sam::MessageCountTokensParams::Thinking::Enabled::OrHash,
+              Sam::MessageCountTokensParams::Thinking::Disabled::OrHash
+            ),
+          tool_choice:
+            T.any(
+              Sam::MessageCountTokensParams::ToolChoice::Auto::OrHash,
+              Sam::MessageCountTokensParams::ToolChoice::Any::OrHash,
+              Sam::MessageCountTokensParams::ToolChoice::Tool::OrHash,
+              Sam::MessageCountTokensParams::ToolChoice::None::OrHash
+            ),
+          tools:
+            T::Array[
+              T.any(
+                Sam::MessageCountTokensParams::Tool::Tool::OrHash,
+                Sam::MessageCountTokensParams::Tool::BashTool20250124::OrHash,
+                Sam::MessageCountTokensParams::Tool::TextEditor20250124::OrHash
+              )
+            ],
           anthropic_beta: T::Array[String],
           anthropic_version: String,
           x_api_key: String,
-          request_options: Sam::RequestOpts
-        )
-          .returns(Sam::Models::MessageCountTokensResponse)
+          request_options: Sam::RequestOptions::OrHash
+        ).returns(Sam::Models::MessageCountTokensResponse)
       end
       def count_tokens(
         # Body param: Input messages.
@@ -554,7 +558,9 @@ module Sam
         # Workspace.
         x_api_key: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Count the number of tokens in a Message.
       #
       # The Token Count API can be used to count the number of tokens in a Message,
@@ -564,42 +570,45 @@ module Sam
       # [user guide](/en/docs/build-with-claude/token-counting)
       sig do
         params(
-          messages: T::Array[T.any(Sam::Models::MessageCountTokensBetaParams::Message, Sam::Internal::AnyHash)],
+          messages:
+            T::Array[Sam::MessageCountTokensBetaParams::Message::OrHash],
           model: String,
-          system_: T.any(
-            String,
-            T::Array[T.any(Sam::Models::MessageCountTokensBetaParams::System::UnionMember1, Sam::Internal::AnyHash)]
-          ),
-          thinking: T.any(
-            Sam::Models::MessageCountTokensBetaParams::Thinking::Enabled,
-            Sam::Internal::AnyHash,
-            Sam::Models::MessageCountTokensBetaParams::Thinking::Disabled
-          ),
-          tool_choice: T.any(
-            Sam::Models::MessageCountTokensBetaParams::ToolChoice::Auto,
-            Sam::Internal::AnyHash,
-            Sam::Models::MessageCountTokensBetaParams::ToolChoice::Any,
-            Sam::Models::MessageCountTokensBetaParams::ToolChoice::Tool,
-            Sam::Models::MessageCountTokensBetaParams::ToolChoice::None
-          ),
-          tools: T::Array[
+          system_:
             T.any(
-              Sam::Models::MessageCountTokensBetaParams::Tool::BetaTool,
-              Sam::Internal::AnyHash,
-              Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022,
-              Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20241022,
-              Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022,
-              Sam::Models::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124,
-              Sam::Models::MessageCountTokensBetaParams::Tool::BetaBashTool20250124,
-              Sam::Models::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124
-            )
-          ],
+              String,
+              T::Array[
+                Sam::MessageCountTokensBetaParams::System::UnionMember1::OrHash
+              ]
+            ),
+          thinking:
+            T.any(
+              Sam::MessageCountTokensBetaParams::Thinking::Enabled::OrHash,
+              Sam::MessageCountTokensBetaParams::Thinking::Disabled::OrHash
+            ),
+          tool_choice:
+            T.any(
+              Sam::MessageCountTokensBetaParams::ToolChoice::Auto::OrHash,
+              Sam::MessageCountTokensBetaParams::ToolChoice::Any::OrHash,
+              Sam::MessageCountTokensBetaParams::ToolChoice::Tool::OrHash,
+              Sam::MessageCountTokensBetaParams::ToolChoice::None::OrHash
+            ),
+          tools:
+            T::Array[
+              T.any(
+                Sam::MessageCountTokensBetaParams::Tool::BetaTool::OrHash,
+                Sam::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022::OrHash,
+                Sam::MessageCountTokensBetaParams::Tool::BetaBashTool20241022::OrHash,
+                Sam::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022::OrHash,
+                Sam::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124::OrHash,
+                Sam::MessageCountTokensBetaParams::Tool::BetaBashTool20250124::OrHash,
+                Sam::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124::OrHash
+              )
+            ],
           anthropic_beta: T::Array[String],
           anthropic_version: String,
           x_api_key: String,
-          request_options: Sam::RequestOpts
-        )
-          .returns(Sam::Models::MessageCountTokensBetaResponse)
+          request_options: Sam::RequestOptions::OrHash
+        ).returns(Sam::Models::MessageCountTokensBetaResponse)
       end
       def count_tokens_beta(
         # Body param: Input messages.
@@ -801,10 +810,13 @@ module Sam
         # Workspace.
         x_api_key: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Sam::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

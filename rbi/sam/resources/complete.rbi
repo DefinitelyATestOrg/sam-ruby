@@ -16,7 +16,7 @@ module Sam
           max_tokens_to_sample: Integer,
           model: String,
           prompt: String,
-          metadata: T.any(Sam::Models::CompleteCreateParams::Metadata, Sam::Internal::AnyHash),
+          metadata: Sam::CompleteCreateParams::Metadata::OrHash,
           stop_sequences: T::Array[String],
           stream: T::Boolean,
           temperature: Float,
@@ -24,9 +24,8 @@ module Sam
           top_p: Float,
           anthropic_version: String,
           x_api_key: String,
-          request_options: Sam::RequestOpts
-        )
-          .returns(Sam::Models::CompleteCreateResponse)
+          request_options: Sam::RequestOptions::OrHash
+        ).returns(Sam::Models::CompleteCreateResponse)
       end
       def create(
         # Body param: The maximum number of tokens to generate before stopping.
@@ -106,10 +105,13 @@ module Sam
         # Workspace.
         x_api_key: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Sam::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

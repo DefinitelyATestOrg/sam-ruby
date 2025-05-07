@@ -27,8 +27,6 @@ module Sam
         stop_reason: String?,
         ?type: :completion
       ) -> void
-
-      def to_hash: -> Sam::Models::complete_create_response
     end
   end
 end

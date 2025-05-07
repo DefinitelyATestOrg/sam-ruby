@@ -12,9 +12,8 @@ module Sam
           model_id: String,
           anthropic_version: String,
           x_api_key: String,
-          request_options: Sam::RequestOpts
-        )
-          .returns(Sam::Models::ModelRetrieveResponse)
+          request_options: Sam::RequestOptions::OrHash
+        ).returns(Sam::Models::ModelRetrieveResponse)
       end
       def retrieve(
         # Model identifier or alias.
@@ -32,7 +31,9 @@ module Sam
         # Workspace.
         x_api_key: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # List available models.
       #
       # The Models API response can be used to determine which models are available for
@@ -44,9 +45,8 @@ module Sam
           limit: Integer,
           anthropic_version: String,
           x_api_key: String,
-          request_options: Sam::RequestOpts
-        )
-          .returns(Sam::Models::ModelListResponse)
+          request_options: Sam::RequestOptions::OrHash
+        ).returns(Sam::Models::ModelListResponse)
       end
       def list(
         # Query param: ID of the object to use as a cursor for pagination. When provided,
@@ -72,7 +72,9 @@ module Sam
         # Workspace.
         x_api_key: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get a specific model.
       #
       # The Models API response can be used to determine information about a specific
@@ -82,9 +84,8 @@ module Sam
           model_id: String,
           anthropic_version: String,
           x_api_key: String,
-          request_options: Sam::RequestOpts
-        )
-          .returns(Sam::Models::ModelRetrieveBetaResponse)
+          request_options: Sam::RequestOptions::OrHash
+        ).returns(Sam::Models::ModelRetrieveBetaResponse)
       end
       def retrieve_beta(
         # Model identifier or alias.
@@ -102,10 +103,13 @@ module Sam
         # Workspace.
         x_api_key: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Sam::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

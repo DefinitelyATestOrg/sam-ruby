@@ -3,7 +3,7 @@ module Sam
     class Messages
       class BatchesBetaTrue
         def create: (
-          requests: ::Array[Sam::Models::Messages::BatchesBetaTrueCreateParams::Request],
+          requests: ::Array[Sam::Messages::BatchesBetaTrueCreateParams::Request],
           ?anthropic_beta: ::Array[String],
           ?anthropic_version: String,
           ?x_api_key: String,

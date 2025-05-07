@@ -49,8 +49,6 @@ module Sam
           ?type: :message_batch
         ) -> void
 
-        def to_hash: -> Sam::Models::Messages::batch_cancel_beta_response
-
         type processing_status = :in_progress | :canceling | :ended
 
         module ProcessingStatus
@@ -90,8 +88,6 @@ module Sam
             processing: Integer,
             succeeded: Integer
           ) -> void
-
-          def to_hash: -> Sam::Models::Messages::BatchCancelBetaResponse::request_counts
         end
       end
     end

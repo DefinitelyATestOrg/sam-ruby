@@ -6,6 +6,8 @@ module Sam
       extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
       # The maximum number of tokens to generate before stopping.
       #
       # Note that our models may stop _before_ reaching this maximum. This parameter
@@ -37,10 +39,10 @@ module Sam
       attr_accessor :prompt
 
       # An object describing metadata about the request.
-      sig { returns(T.nilable(Sam::Models::CompleteCreateParams::Metadata)) }
+      sig { returns(T.nilable(Sam::CompleteCreateParams::Metadata)) }
       attr_reader :metadata
 
-      sig { params(metadata: T.any(Sam::Models::CompleteCreateParams::Metadata, Sam::Internal::AnyHash)).void }
+      sig { params(metadata: Sam::CompleteCreateParams::Metadata::OrHash).void }
       attr_writer :metadata
 
       # Sequences that will cause the model to stop generating.
@@ -132,7 +134,7 @@ module Sam
           max_tokens_to_sample: Integer,
           model: String,
           prompt: String,
-          metadata: T.any(Sam::Models::CompleteCreateParams::Metadata, Sam::Internal::AnyHash),
+          metadata: Sam::CompleteCreateParams::Metadata::OrHash,
           stop_sequences: T::Array[String],
           stream: T::Boolean,
           temperature: Float,
@@ -140,9 +142,8 @@ module Sam
           top_p: Float,
           anthropic_version: String,
           x_api_key: String,
-          request_options: T.any(Sam::RequestOptions, Sam::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Sam::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # The maximum number of tokens to generate before stopping.
@@ -221,29 +222,33 @@ module Sam
         # Workspace.
         x_api_key: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              max_tokens_to_sample: Integer,
-              model: String,
-              prompt: String,
-              metadata: Sam::Models::CompleteCreateParams::Metadata,
-              stop_sequences: T::Array[String],
-              stream: T::Boolean,
-              temperature: Float,
-              top_k: Integer,
-              top_p: Float,
-              anthropic_version: String,
-              x_api_key: String,
-              request_options: Sam::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            max_tokens_to_sample: Integer,
+            model: String,
+            prompt: String,
+            metadata: Sam::CompleteCreateParams::Metadata,
+            stop_sequences: T::Array[String],
+            stream: T::Boolean,
+            temperature: Float,
+            top_k: Integer,
+            top_p: Float,
+            anthropic_version: String,
+            x_api_key: String,
+            request_options: Sam::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Metadata < Sam::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
         # An external identifier for the user who is associated with the request.
         #
         # This should be a uuid, hash value, or other opaque identifier. Anthropic may use
@@ -261,9 +266,12 @@ module Sam
           # this id to help detect abuse. Do not include any identifying information such as
           # name, email address, or phone number.
           user_id: nil
-        ); end
-        sig { override.returns({user_id: T.nilable(String)}) }
-        def to_hash; end
+        )
+        end
+
+        sig { override.returns({ user_id: T.nilable(String) }) }
+        def to_hash
+        end
       end
     end
   end

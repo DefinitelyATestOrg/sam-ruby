@@ -48,15 +48,15 @@ module Sam
       #   Some parameter documentations has been truncated, see
       #   {Sam::Models::CompleteCreateResponse} for more details.
       #
-      #   @param id [String] Unique object identifier. ...
+      #   @param id [String] Unique object identifier.
       #
       #   @param completion [String] The resulting completion up to and excluding the stop sequences.
       #
       #   @param model [String] The model that handled the request.
       #
-      #   @param stop_reason [String, nil] The reason that we stopped. ...
+      #   @param stop_reason [String, nil] The reason that we stopped.
       #
-      #   @param type [Symbol, :completion] Object type. ...
+      #   @param type [Symbol, :completion] Object type.
     end
   end
 end

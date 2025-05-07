@@ -6,6 +6,8 @@ module Sam
       extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
       # The version of the Anthropic API you want to use.
       #
       # Read more about versioning and our version history
@@ -32,9 +34,8 @@ module Sam
         params(
           anthropic_version: String,
           x_api_key: String,
-          request_options: T.any(Sam::RequestOptions, Sam::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Sam::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # The version of the Anthropic API you want to use.
@@ -50,11 +51,20 @@ module Sam
         # Workspace.
         x_api_key: nil,
         request_options: {}
-      ); end
-      sig do
-        override.returns({anthropic_version: String, x_api_key: String, request_options: Sam::RequestOptions})
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            anthropic_version: String,
+            x_api_key: String,
+            request_options: Sam::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

@@ -5,7 +5,7 @@ module Sam
         attr_reader beta_true: Sam::Resources::Messages::Batches::BetaTrue
 
         def create: (
-          requests: ::Array[Sam::Models::Messages::BatchCreateParams::Request],
+          requests: ::Array[Sam::Messages::BatchCreateParams::Request],
           ?anthropic_beta: ::Array[String],
           ?anthropic_version: String,
           ?x_api_key: String,

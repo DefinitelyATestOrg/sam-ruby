@@ -26,7 +26,7 @@ module Sam
           #
           #   @param id [String] ID of the Message Batch.
           #
-          #   @param type [Symbol, :message_batch_deleted] Deleted object type. ...
+          #   @param type [Symbol, :message_batch_deleted] Deleted object type.
         end
       end
     end

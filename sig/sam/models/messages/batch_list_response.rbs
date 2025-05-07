@@ -25,8 +25,6 @@ module Sam
           last_id: String?
         ) -> void
 
-        def to_hash: -> Sam::Models::Messages::batch_list_response
-
         type data =
           {
             id: String,
@@ -75,8 +73,6 @@ module Sam
             ?type: :message_batch
           ) -> void
 
-          def to_hash: -> Sam::Models::Messages::BatchListResponse::data
-
           type processing_status = :in_progress | :canceling | :ended
 
           module ProcessingStatus
@@ -116,8 +112,6 @@ module Sam
               processing: Integer,
               succeeded: Integer
             ) -> void
-
-            def to_hash: -> Sam::Models::Messages::BatchListResponse::Data::request_counts
           end
         end
       end

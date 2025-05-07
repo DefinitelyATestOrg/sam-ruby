@@ -7,6 +7,8 @@ module Sam
         extend Sam::Internal::Type::RequestParameters::Converter
         include Sam::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
         # ID of the object to use as a cursor for pagination. When provided, returns the
         # page of results immediately after this object.
         sig { returns(T.nilable(String)) }
@@ -72,9 +74,8 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: T.any(Sam::RequestOptions, Sam::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: Sam::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # ID of the object to use as a cursor for pagination. When provided, returns the
@@ -105,22 +106,24 @@ module Sam
           # Workspace.
           x_api_key: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                after_id: String,
-                before_id: String,
-                limit: Integer,
-                anthropic_beta: T::Array[String],
-                anthropic_version: String,
-                x_api_key: String,
-                request_options: Sam::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              after_id: String,
+              before_id: String,
+              limit: Integer,
+              anthropic_beta: T::Array[String],
+              anthropic_version: String,
+              x_api_key: String,
+              request_options: Sam::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

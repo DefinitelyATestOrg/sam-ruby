@@ -14,13 +14,15 @@ module Sam
         # [user guide](/en/docs/build-with-claude/batch-processing)
         sig do
           params(
-            requests: T::Array[T.any(Sam::Models::Messages::BatchesBetaTrueCreateParams::Request, Sam::Internal::AnyHash)],
+            requests:
+              T::Array[
+                Sam::Messages::BatchesBetaTrueCreateParams::Request::OrHash
+              ],
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: Sam::RequestOpts
-          )
-            .returns(Sam::Models::Messages::BatchesBetaTrueCreateResponse)
+            request_options: Sam::RequestOptions::OrHash
+          ).returns(Sam::Models::Messages::BatchesBetaTrueCreateResponse)
         end
         def create(
           # Body param: List of requests for prompt completion. Each is an individual
@@ -44,7 +46,9 @@ module Sam
           # Workspace.
           x_api_key: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # List all Message Batches within a Workspace. Most recently created batches are
         # returned first.
         #
@@ -58,9 +62,8 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: Sam::RequestOpts
-          )
-            .returns(Sam::Models::Messages::BatchesBetaTrueListResponse)
+            request_options: Sam::RequestOptions::OrHash
+          ).returns(Sam::Models::Messages::BatchesBetaTrueListResponse)
         end
         def list(
           # Query param: ID of the object to use as a cursor for pagination. When provided,
@@ -91,10 +94,13 @@ module Sam
           # Workspace.
           x_api_key: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Sam::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

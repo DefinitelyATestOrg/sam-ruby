@@ -7,6 +7,8 @@ module Sam
         extend Sam::Internal::Type::RequestParameters::Converter
         include Sam::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
         # Optional header to specify the beta version(s) you want to use.
         #
         # To use multiple betas, use a comma separated list like `beta1,beta2` or specify
@@ -44,9 +46,8 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: T.any(Sam::RequestOptions, Sam::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: Sam::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # Optional header to specify the beta version(s) you want to use.
@@ -67,19 +68,21 @@ module Sam
           # Workspace.
           x_api_key: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                anthropic_beta: T::Array[String],
-                anthropic_version: String,
-                x_api_key: String,
-                request_options: Sam::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              anthropic_beta: T::Array[String],
+              anthropic_version: String,
+              x_api_key: String,
+              request_options: Sam::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

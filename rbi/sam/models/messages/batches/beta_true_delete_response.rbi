@@ -5,6 +5,8 @@ module Sam
     module Messages
       module Batches
         class BetaTrueDeleteResponse < Sam::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
           # ID of the Message Batch.
           sig { returns(String) }
           attr_accessor :id
@@ -23,9 +25,12 @@ module Sam
             #
             # For Message Batches, this is always `"message_batch_deleted"`.
             type: :message_batch_deleted
-          ); end
-          sig { override.returns({id: String, type: Symbol}) }
-          def to_hash; end
+          )
+          end
+
+          sig { override.returns({ id: String, type: Symbol }) }
+          def to_hash
+          end
         end
       end
     end

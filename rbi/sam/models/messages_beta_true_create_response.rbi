@@ -3,6 +3,8 @@
 module Sam
   module Models
     class MessagesBetaTrueCreateResponse < Sam::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
       # Unique object identifier.
       #
       # The format and length of IDs may change over time.
@@ -76,7 +78,13 @@ module Sam
       #
       # In non-streaming mode this value is always non-null. In streaming mode, it is
       # null in the `message_start` event and non-null otherwise.
-      sig { returns(T.nilable(Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol)) }
+      sig do
+        returns(
+          T.nilable(
+            Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol
+          )
+        )
+      end
       attr_accessor :stop_reason
 
       # Which custom stop sequence was generated, if any.
@@ -110,29 +118,35 @@ module Sam
       sig { returns(Sam::Models::MessagesBetaTrueCreateResponse::Usage) }
       attr_reader :usage
 
-      sig { params(usage: T.any(Sam::Models::MessagesBetaTrueCreateResponse::Usage, Sam::Internal::AnyHash)).void }
+      sig do
+        params(
+          usage: Sam::Models::MessagesBetaTrueCreateResponse::Usage::OrHash
+        ).void
+      end
       attr_writer :usage
 
       sig do
         params(
           id: String,
-          content: T::Array[
-            T.any(
-              Sam::Models::MessagesBetaTrueCreateResponse::Content::Text,
-              Sam::Internal::AnyHash,
-              Sam::Models::MessagesBetaTrueCreateResponse::Content::ToolUse,
-              Sam::Models::MessagesBetaTrueCreateResponse::Content::Thinking,
-              Sam::Models::MessagesBetaTrueCreateResponse::Content::RedactedThinking
-            )
-          ],
+          content:
+            T::Array[
+              T.any(
+                Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::OrHash,
+                Sam::Models::MessagesBetaTrueCreateResponse::Content::ToolUse::OrHash,
+                Sam::Models::MessagesBetaTrueCreateResponse::Content::Thinking::OrHash,
+                Sam::Models::MessagesBetaTrueCreateResponse::Content::RedactedThinking::OrHash
+              )
+            ],
           model: String,
-          stop_reason: T.nilable(Sam::Models::MessagesBetaTrueCreateResponse::StopReason::OrSymbol),
+          stop_reason:
+            T.nilable(
+              Sam::Models::MessagesBetaTrueCreateResponse::StopReason::OrSymbol
+            ),
           stop_sequence: T.nilable(String),
-          usage: T.any(Sam::Models::MessagesBetaTrueCreateResponse::Usage, Sam::Internal::AnyHash),
+          usage: Sam::Models::MessagesBetaTrueCreateResponse::Usage::OrHash,
           role: Symbol,
           type: Symbol
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Unique object identifier.
@@ -215,13 +229,15 @@ module Sam
         #
         # For Messages, this is always `"message"`.
         type: :message
-      ); end
+      )
+      end
+
       sig do
-        override
-          .returns(
-            {
-              id: String,
-              content: T::Array[
+        override.returns(
+          {
+            id: String,
+            content:
+              T::Array[
                 T.any(
                   Sam::Models::MessagesBetaTrueCreateResponse::Content::Text,
                   Sam::Models::MessagesBetaTrueCreateResponse::Content::ToolUse,
@@ -229,21 +245,37 @@ module Sam
                   Sam::Models::MessagesBetaTrueCreateResponse::Content::RedactedThinking
                 )
               ],
-              model: String,
-              role: Symbol,
-              stop_reason: T.nilable(Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol),
-              stop_sequence: T.nilable(String),
-              type: Symbol,
-              usage: Sam::Models::MessagesBetaTrueCreateResponse::Usage
-            }
-          )
+            model: String,
+            role: Symbol,
+            stop_reason:
+              T.nilable(
+                Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol
+              ),
+            stop_sequence: T.nilable(String),
+            type: Symbol,
+            usage: Sam::Models::MessagesBetaTrueCreateResponse::Usage
+          }
+        )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       module Content
         extend Sam::Internal::Type::Union
 
+        Variants =
+          T.type_alias do
+            T.any(
+              Sam::Models::MessagesBetaTrueCreateResponse::Content::Text,
+              Sam::Models::MessagesBetaTrueCreateResponse::Content::ToolUse,
+              Sam::Models::MessagesBetaTrueCreateResponse::Content::Thinking,
+              Sam::Models::MessagesBetaTrueCreateResponse::Content::RedactedThinking
+            )
+          end
+
         class Text < Sam::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
           # Citations supporting the text block.
           #
           # The type of citation returned will depend on the type of document being cited.
@@ -272,20 +304,19 @@ module Sam
 
           sig do
             params(
-              citations: T.nilable(
-                T::Array[
-                  T.any(
-                    Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::CharLocation,
-                    Sam::Internal::AnyHash,
-                    Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::PageLocation,
-                    Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::ContentBlockLocation
-                  )
-                ]
-              ),
+              citations:
+                T.nilable(
+                  T::Array[
+                    T.any(
+                      Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::CharLocation::OrHash,
+                      Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::PageLocation::OrHash,
+                      Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::ContentBlockLocation::OrHash
+                    )
+                  ]
+                ),
               text: String,
               type: Symbol
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # Citations supporting the text block.
@@ -296,12 +327,14 @@ module Sam
             citations:,
             text:,
             type: :text
-          ); end
+          )
+          end
+
           sig do
-            override
-              .returns(
-                {
-                  citations: T.nilable(
+            override.returns(
+              {
+                citations:
+                  T.nilable(
                     T::Array[
                       T.any(
                         Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::CharLocation,
@@ -310,17 +343,30 @@ module Sam
                       )
                     ]
                   ),
-                  text: String,
-                  type: Symbol
-                }
-              )
+                text: String,
+                type: Symbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module Citation
             extend Sam::Internal::Type::Union
 
+            Variants =
+              T.type_alias do
+                T.any(
+                  Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::CharLocation,
+                  Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::PageLocation,
+                  Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::ContentBlockLocation
+                )
+              end
+
             class CharLocation < Sam::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
               sig { returns(String) }
               attr_accessor :cited_text
 
@@ -347,8 +393,7 @@ module Sam
                   end_char_index: Integer,
                   start_char_index: Integer,
                   type: Symbol
-                )
-                  .returns(T.attached_class)
+                ).returns(T.attached_class)
               end
               def self.new(
                 cited_text:,
@@ -361,22 +406,25 @@ module Sam
               end
 
               sig do
-                override
-                  .returns(
-                    {
-                      cited_text: String,
-                      document_index: Integer,
-                      document_title: T.nilable(String),
-                      end_char_index: Integer,
-                      start_char_index: Integer,
-                      type: Symbol
-                    }
-                  )
+                override.returns(
+                  {
+                    cited_text: String,
+                    document_index: Integer,
+                    document_title: T.nilable(String),
+                    end_char_index: Integer,
+                    start_char_index: Integer,
+                    type: Symbol
+                  }
+                )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class PageLocation < Sam::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
               sig { returns(String) }
               attr_accessor :cited_text
 
@@ -403,8 +451,7 @@ module Sam
                   end_page_number: Integer,
                   start_page_number: Integer,
                   type: Symbol
-                )
-                  .returns(T.attached_class)
+                ).returns(T.attached_class)
               end
               def self.new(
                 cited_text:,
@@ -417,22 +464,25 @@ module Sam
               end
 
               sig do
-                override
-                  .returns(
-                    {
-                      cited_text: String,
-                      document_index: Integer,
-                      document_title: T.nilable(String),
-                      end_page_number: Integer,
-                      start_page_number: Integer,
-                      type: Symbol
-                    }
-                  )
+                override.returns(
+                  {
+                    cited_text: String,
+                    document_index: Integer,
+                    document_title: T.nilable(String),
+                    end_page_number: Integer,
+                    start_page_number: Integer,
+                    type: Symbol
+                  }
+                )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class ContentBlockLocation < Sam::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
               sig { returns(String) }
               attr_accessor :cited_text
 
@@ -459,8 +509,7 @@ module Sam
                   end_block_index: Integer,
                   start_block_index: Integer,
                   type: Symbol
-                )
-                  .returns(T.attached_class)
+                ).returns(T.attached_class)
               end
               def self.new(
                 cited_text:,
@@ -469,34 +518,40 @@ module Sam
                 end_block_index:,
                 start_block_index:,
                 type: :content_block_location
-              ); end
-              sig do
-                override
-                  .returns(
-                    {
-                      cited_text: String,
-                      document_index: Integer,
-                      document_title: T.nilable(String),
-                      end_block_index: Integer,
-                      start_block_index: Integer,
-                      type: Symbol
-                    }
-                  )
+              )
               end
-              def to_hash; end
+
+              sig do
+                override.returns(
+                  {
+                    cited_text: String,
+                    document_index: Integer,
+                    document_title: T.nilable(String),
+                    end_block_index: Integer,
+                    start_block_index: Integer,
+                    type: Symbol
+                  }
+                )
+              end
+              def to_hash
+              end
             end
 
             sig do
-              override
-                .returns(
-                  [Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::ContentBlockLocation]
-                )
+              override.returns(
+                T::Array[
+                  Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::Variants
+                ]
+              )
             end
-            def self.variants; end
+            def self.variants
+            end
           end
         end
 
         class ToolUse < Sam::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -509,14 +564,29 @@ module Sam
           sig { returns(Symbol) }
           attr_accessor :type
 
-          sig { params(id: String, input: T.anything, name: String, type: Symbol).returns(T.attached_class) }
-          def self.new(id:, input:, name:, type: :tool_use); end
+          sig do
+            params(
+              id: String,
+              input: T.anything,
+              name: String,
+              type: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(id:, input:, name:, type: :tool_use)
+          end
 
-          sig { override.returns({id: String, input: T.anything, name: String, type: Symbol}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              { id: String, input: T.anything, name: String, type: Symbol }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Thinking < Sam::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :signature
 
@@ -526,14 +596,26 @@ module Sam
           sig { returns(Symbol) }
           attr_accessor :type
 
-          sig { params(signature: String, thinking: String, type: Symbol).returns(T.attached_class) }
-          def self.new(signature:, thinking:, type: :thinking); end
+          sig do
+            params(signature: String, thinking: String, type: Symbol).returns(
+              T.attached_class
+            )
+          end
+          def self.new(signature:, thinking:, type: :thinking)
+          end
 
-          sig { override.returns({signature: String, thinking: String, type: Symbol}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              { signature: String, thinking: String, type: Symbol }
+            )
+          end
+          def to_hash
+          end
         end
 
         class RedactedThinking < Sam::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :data
 
@@ -541,19 +623,23 @@ module Sam
           attr_accessor :type
 
           sig { params(data: String, type: Symbol).returns(T.attached_class) }
-          def self.new(data:, type: :redacted_thinking); end
+          def self.new(data:, type: :redacted_thinking)
+          end
 
-          sig { override.returns({data: String, type: Symbol}) }
-          def to_hash; end
+          sig { override.returns({ data: String, type: Symbol }) }
+          def to_hash
+          end
         end
 
         sig do
-          override
-            .returns(
-              [Sam::Models::MessagesBetaTrueCreateResponse::Content::Text, Sam::Models::MessagesBetaTrueCreateResponse::Content::ToolUse, Sam::Models::MessagesBetaTrueCreateResponse::Content::Thinking, Sam::Models::MessagesBetaTrueCreateResponse::Content::RedactedThinking]
-            )
+          override.returns(
+            T::Array[
+              Sam::Models::MessagesBetaTrueCreateResponse::Content::Variants
+            ]
+          )
         end
-        def self.variants; end
+        def self.variants
+        end
       end
 
       # The reason that we stopped.
@@ -570,20 +656,50 @@ module Sam
       module StopReason
         extend Sam::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Sam::Models::MessagesBetaTrueCreateResponse::StopReason) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Sam::Models::MessagesBetaTrueCreateResponse::StopReason
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        END_TURN = T.let(:end_turn, Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol)
-        MAX_TOKENS = T.let(:max_tokens, Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol)
+        END_TURN =
+          T.let(
+            :end_turn,
+            Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol
+          )
+        MAX_TOKENS =
+          T.let(
+            :max_tokens,
+            Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol
+          )
         STOP_SEQUENCE =
-          T.let(:stop_sequence, Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol)
-        TOOL_USE = T.let(:tool_use, Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol)
+          T.let(
+            :stop_sequence,
+            Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol
+          )
+        TOOL_USE =
+          T.let(
+            :tool_use,
+            Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Sam::Models::MessagesBetaTrueCreateResponse::StopReason::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       class Usage < Sam::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
         # The number of input tokens used to create the cache entry.
         sig { returns(T.nilable(Integer)) }
         attr_accessor :cache_creation_input_tokens
@@ -621,8 +737,7 @@ module Sam
             cache_read_input_tokens: T.nilable(Integer),
             input_tokens: Integer,
             output_tokens: Integer
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # The number of input tokens used to create the cache entry.
@@ -633,19 +748,21 @@ module Sam
           input_tokens:,
           # The number of output tokens which were used.
           output_tokens:
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                cache_creation_input_tokens: T.nilable(Integer),
-                cache_read_input_tokens: T.nilable(Integer),
-                input_tokens: Integer,
-                output_tokens: Integer
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              cache_creation_input_tokens: T.nilable(Integer),
+              cache_read_input_tokens: T.nilable(Integer),
+              input_tokens: Integer,
+              output_tokens: Integer
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

@@ -54,16 +54,14 @@ module Sam
       #   {Sam::Models::ModelsBetaTrueListParams} for more details.
       #
       #   @param after_id [String] ID of the object to use as a cursor for pagination. When provided, returns the p
-      #   ...
       #
       #   @param before_id [String] ID of the object to use as a cursor for pagination. When provided, returns the p
-      #   ...
       #
-      #   @param limit [Integer] Number of items to return per page. ...
+      #   @param limit [Integer] Number of items to return per page.
       #
-      #   @param anthropic_version [String] The version of the Anthropic API you want to use. ...
+      #   @param anthropic_version [String] The version of the Anthropic API you want to use.
       #
-      #   @param x_api_key [String] Your unique API key for authentication. ...
+      #   @param x_api_key [String] Your unique API key for authentication.
       #
       #   @param request_options [Sam::RequestOptions, Hash{Symbol=>Object}]
     end

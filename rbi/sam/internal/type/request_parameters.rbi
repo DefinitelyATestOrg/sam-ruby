@@ -6,14 +6,22 @@ module Sam
       # @api private
       module RequestParameters
         # Options to specify HTTP behaviour for this request.
-        sig { returns(Sam::RequestOpts) }
-        attr_accessor :request_options
+        sig { returns(Sam::RequestOptions) }
+        attr_reader :request_options
+
+        sig { params(request_options: Sam::RequestOptions::OrHash).void }
+        attr_writer :request_options
 
         # @api private
         module Converter
           # @api private
-          sig { params(params: T.anything).returns([T.anything, Sam::Internal::AnyHash]) }
-          def dump_request(params); end
+          sig do
+            params(params: T.anything).returns(
+              [T.anything, Sam::Internal::AnyHash]
+            )
+          end
+          def dump_request(params)
+          end
         end
       end
     end

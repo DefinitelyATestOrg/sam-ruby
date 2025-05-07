@@ -3,6 +3,8 @@
 module Sam
   module Models
     class CompleteCreateResponse < Sam::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+
       # Unique object identifier.
       #
       # The format and length of IDs may change over time.
@@ -34,8 +36,13 @@ module Sam
       attr_accessor :type
 
       sig do
-        params(id: String, completion: String, model: String, stop_reason: T.nilable(String), type: Symbol)
-          .returns(T.attached_class)
+        params(
+          id: String,
+          completion: String,
+          model: String,
+          stop_reason: T.nilable(String),
+          type: Symbol
+        ).returns(T.attached_class)
       end
       def self.new(
         # Unique object identifier.
@@ -58,18 +65,22 @@ module Sam
         #
         # For Text Completions, this is always `"completion"`.
         type: :completion
-      ); end
-      sig do
-        override
-          .returns({
-                     id: String,
-                     completion: String,
-                     model: String,
-                     stop_reason: T.nilable(String),
-                     type: Symbol
-                   })
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            completion: String,
+            model: String,
+            stop_reason: T.nilable(String),
+            type: Symbol
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

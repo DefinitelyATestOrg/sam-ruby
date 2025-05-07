@@ -17,13 +17,13 @@ module Sam
         # [user guide](/en/docs/build-with-claude/batch-processing)
         sig do
           params(
-            requests: T::Array[T.any(Sam::Models::Messages::BatchCreateParams::Request, Sam::Internal::AnyHash)],
+            requests:
+              T::Array[Sam::Messages::BatchCreateParams::Request::OrHash],
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: Sam::RequestOpts
-          )
-            .returns(Sam::Models::Messages::BatchCreateResponse)
+            request_options: Sam::RequestOptions::OrHash
+          ).returns(Sam::Models::Messages::BatchCreateResponse)
         end
         def create(
           # Body param: List of requests for prompt completion. Each is an individual
@@ -47,7 +47,9 @@ module Sam
           # Workspace.
           x_api_key: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # This endpoint is idempotent and can be used to poll for Message Batch
         # completion. To access the results of a Message Batch, make a request to the
         # `results_url` field in the response.
@@ -60,9 +62,8 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: Sam::RequestOpts
-          )
-            .returns(Sam::Models::Messages::BatchRetrieveResponse)
+            request_options: Sam::RequestOptions::OrHash
+          ).returns(Sam::Models::Messages::BatchRetrieveResponse)
         end
         def retrieve(
           # ID of the Message Batch.
@@ -85,7 +86,9 @@ module Sam
           # Workspace.
           x_api_key: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # List all Message Batches within a Workspace. Most recently created batches are
         # returned first.
         #
@@ -99,9 +102,8 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: Sam::RequestOpts
-          )
-            .returns(Sam::Models::Messages::BatchListResponse)
+            request_options: Sam::RequestOptions::OrHash
+          ).returns(Sam::Models::Messages::BatchListResponse)
         end
         def list(
           # Query param: ID of the object to use as a cursor for pagination. When provided,
@@ -132,7 +134,9 @@ module Sam
           # Workspace.
           x_api_key: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Delete a Message Batch.
         #
         # Message Batches can only be deleted once they've finished processing. If you'd
@@ -146,9 +150,8 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: Sam::RequestOpts
-          )
-            .returns(Sam::Models::Messages::BatchDeleteResponse)
+            request_options: Sam::RequestOptions::OrHash
+          ).returns(Sam::Models::Messages::BatchDeleteResponse)
         end
         def delete(
           # ID of the Message Batch.
@@ -171,7 +174,9 @@ module Sam
           # Workspace.
           x_api_key: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Batches may be canceled any time before processing ends. Once cancellation is
         # initiated, the batch enters a `canceling` state, at which time the system may
         # complete any in-progress, non-interruptible requests before finalizing
@@ -190,9 +195,8 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: Sam::RequestOpts
-          )
-            .returns(Sam::Models::Messages::BatchCancelResponse)
+            request_options: Sam::RequestOptions::OrHash
+          ).returns(Sam::Models::Messages::BatchCancelResponse)
         end
         def cancel(
           # ID of the Message Batch.
@@ -215,7 +219,9 @@ module Sam
           # Workspace.
           x_api_key: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Batches may be canceled any time before processing ends. Once cancellation is
         # initiated, the batch enters a `canceling` state, at which time the system may
         # complete any in-progress, non-interruptible requests before finalizing
@@ -234,9 +240,8 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: Sam::RequestOpts
-          )
-            .returns(Sam::Models::Messages::BatchCancelBetaResponse)
+            request_options: Sam::RequestOptions::OrHash
+          ).returns(Sam::Models::Messages::BatchCancelBetaResponse)
         end
         def cancel_beta(
           # ID of the Message Batch.
@@ -259,7 +264,9 @@ module Sam
           # Workspace.
           x_api_key: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Streams the results of a Message Batch as a `.jsonl` file.
         #
         # Each line in the file is a JSON object containing the result of a single request
@@ -274,9 +281,12 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: Sam::RequestOpts
+            request_options: Sam::RequestOptions::OrHash
+          ).returns(
+            Sam::Internal::JsonLStream[
+              Sam::Models::Messages::BatchResultsResponse
+            ]
           )
-            .returns(Sam::Internal::JsonLStream[Sam::Models::Messages::BatchResultsResponse])
         end
         def results_streaming(
           # ID of the Message Batch.
@@ -299,7 +309,9 @@ module Sam
           # Workspace.
           x_api_key: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Streams the results of a Message Batch as a `.jsonl` file.
         #
         # Each line in the file is a JSON object containing the result of a single request
@@ -314,9 +326,12 @@ module Sam
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
-            request_options: Sam::RequestOpts
+            request_options: Sam::RequestOptions::OrHash
+          ).returns(
+            Sam::Internal::JsonLStream[
+              Sam::Models::Messages::BatchResultsBetaResponse
+            ]
           )
-            .returns(Sam::Internal::JsonLStream[Sam::Models::Messages::BatchResultsBetaResponse])
         end
         def results_beta_streaming(
           # ID of the Message Batch.
@@ -339,10 +354,13 @@ module Sam
           # Workspace.
           x_api_key: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Sam::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end
