@@ -29,7 +29,7 @@ module Sam
         sig do
           params(
             client: Sam::Internal::Transport::BaseClient,
-            req: Sam::Internal::Transport::BaseClient::RequestComponentsShape,
+            req: Sam::Internal::Transport::BaseClient::RequestComponents,
             headers: T.any(T::Hash[String, String], Net::HTTPHeader),
             page_data: T.anything
           ).void

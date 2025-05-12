@@ -3,7 +3,10 @@
 module Sam
   module Models
     class ModelRetrieveBetaResponse < Sam::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Sam::Models::ModelRetrieveBetaResponse, Sam::Internal::AnyHash)
+        end
 
       # Unique model identifier.
       sig { returns(String) }

@@ -2,6 +2,8 @@ module Sam
   module Internal
     module Transport
       class BaseClient
+        extend Sam::Internal::Util::SorbetRuntimeSupport
+
         type request_components =
           {
             method: Symbol,
@@ -20,7 +22,6 @@ module Sam
             model: Sam::Internal::Type::Converter::input?,
             options: Sam::request_opts?
           }
-
         type request_input =
           {
             method: Symbol,

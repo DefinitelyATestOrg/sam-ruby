@@ -7,7 +7,10 @@ module Sam
         extend Sam::Internal::Type::RequestParameters::Converter
         include Sam::Internal::Type::RequestParameters
 
-        OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Sam::Messages::BatchCreateParams, Sam::Internal::AnyHash)
+          end
 
         # List of requests for prompt completion. Each is an individual request to create
         # a Message.
@@ -96,7 +99,13 @@ module Sam
         end
 
         class Request < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::Messages::BatchCreateParams::Request,
+                Sam::Internal::AnyHash
+              )
+            end
 
           # Developer-provided ID created for each request in a Message Batch. Useful for
           # matching results to requests, as results may be given out of request order.
@@ -151,7 +160,13 @@ module Sam
           end
 
           class Params < Sam::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::Messages::BatchCreateParams::Request::Params,
+                  Sam::Internal::AnyHash
+                )
+              end
 
             # The maximum number of tokens to generate before stopping.
             #
@@ -877,7 +892,12 @@ module Sam
 
             class Message < Sam::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Sam::Messages::BatchCreateParams::Request::Params::Message,
+                    Sam::Internal::AnyHash
+                  )
+                end
 
               sig do
                 returns(
@@ -996,7 +1016,10 @@ module Sam
                   class Text < Sam::Internal::Type::BaseModel
                     OrHash =
                       T.type_alias do
-                        T.any(T.self_type, Sam::Internal::AnyHash)
+                        T.any(
+                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text,
+                          Sam::Internal::AnyHash
+                        )
                       end
 
                     sig { returns(String) }
@@ -1095,7 +1118,10 @@ module Sam
                     class CacheControl < Sam::Internal::Type::BaseModel
                       OrHash =
                         T.type_alias do
-                          T.any(T.self_type, Sam::Internal::AnyHash)
+                          T.any(
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::CacheControl,
+                            Sam::Internal::AnyHash
+                          )
                         end
 
                       sig { returns(Symbol) }
@@ -1125,7 +1151,10 @@ module Sam
                       class CharLocation < Sam::Internal::Type::BaseModel
                         OrHash =
                           T.type_alias do
-                            T.any(T.self_type, Sam::Internal::AnyHash)
+                            T.any(
+                              Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation,
+                              Sam::Internal::AnyHash
+                            )
                           end
 
                         sig { returns(String) }
@@ -1185,7 +1214,10 @@ module Sam
                       class PageLocation < Sam::Internal::Type::BaseModel
                         OrHash =
                           T.type_alias do
-                            T.any(T.self_type, Sam::Internal::AnyHash)
+                            T.any(
+                              Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation,
+                              Sam::Internal::AnyHash
+                            )
                           end
 
                         sig { returns(String) }
@@ -1245,7 +1277,10 @@ module Sam
                       class ContentBlockLocation < Sam::Internal::Type::BaseModel
                         OrHash =
                           T.type_alias do
-                            T.any(T.self_type, Sam::Internal::AnyHash)
+                            T.any(
+                              Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation,
+                              Sam::Internal::AnyHash
+                            )
                           end
 
                         sig { returns(String) }
@@ -1317,7 +1352,10 @@ module Sam
                   class Image < Sam::Internal::Type::BaseModel
                     OrHash =
                       T.type_alias do
-                        T.any(T.self_type, Sam::Internal::AnyHash)
+                        T.any(
+                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image,
+                          Sam::Internal::AnyHash
+                        )
                       end
 
                     sig do
@@ -1402,7 +1440,10 @@ module Sam
                       class Base64 < Sam::Internal::Type::BaseModel
                         OrHash =
                           T.type_alias do
-                            T.any(T.self_type, Sam::Internal::AnyHash)
+                            T.any(
+                              Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64,
+                              Sam::Internal::AnyHash
+                            )
                           end
 
                         sig { returns(String) }
@@ -1490,7 +1531,10 @@ module Sam
                       class URL < Sam::Internal::Type::BaseModel
                         OrHash =
                           T.type_alias do
-                            T.any(T.self_type, Sam::Internal::AnyHash)
+                            T.any(
+                              Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL,
+                              Sam::Internal::AnyHash
+                            )
                           end
 
                         sig { returns(Symbol) }
@@ -1526,7 +1570,10 @@ module Sam
                     class CacheControl < Sam::Internal::Type::BaseModel
                       OrHash =
                         T.type_alias do
-                          T.any(T.self_type, Sam::Internal::AnyHash)
+                          T.any(
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::CacheControl,
+                            Sam::Internal::AnyHash
+                          )
                         end
 
                       sig { returns(Symbol) }
@@ -1545,7 +1592,10 @@ module Sam
                   class ToolUse < Sam::Internal::Type::BaseModel
                     OrHash =
                       T.type_alias do
-                        T.any(T.self_type, Sam::Internal::AnyHash)
+                        T.any(
+                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse,
+                          Sam::Internal::AnyHash
+                        )
                       end
 
                     sig { returns(String) }
@@ -1620,7 +1670,10 @@ module Sam
                     class CacheControl < Sam::Internal::Type::BaseModel
                       OrHash =
                         T.type_alias do
-                          T.any(T.self_type, Sam::Internal::AnyHash)
+                          T.any(
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse::CacheControl,
+                            Sam::Internal::AnyHash
+                          )
                         end
 
                       sig { returns(Symbol) }
@@ -1639,7 +1692,10 @@ module Sam
                   class ToolResult < Sam::Internal::Type::BaseModel
                     OrHash =
                       T.type_alias do
-                        T.any(T.self_type, Sam::Internal::AnyHash)
+                        T.any(
+                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult,
+                          Sam::Internal::AnyHash
+                        )
                       end
 
                     sig { returns(String) }
@@ -1765,7 +1821,10 @@ module Sam
                     class CacheControl < Sam::Internal::Type::BaseModel
                       OrHash =
                         T.type_alias do
-                          T.any(T.self_type, Sam::Internal::AnyHash)
+                          T.any(
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::CacheControl,
+                            Sam::Internal::AnyHash
+                          )
                         end
 
                       sig { returns(Symbol) }
@@ -1810,7 +1869,10 @@ module Sam
                         class Text < Sam::Internal::Type::BaseModel
                           OrHash =
                             T.type_alias do
-                              T.any(T.self_type, Sam::Internal::AnyHash)
+                              T.any(
+                                Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
+                                Sam::Internal::AnyHash
+                              )
                             end
 
                           sig { returns(String) }
@@ -1909,7 +1971,10 @@ module Sam
                           class CacheControl < Sam::Internal::Type::BaseModel
                             OrHash =
                               T.type_alias do
-                                T.any(T.self_type, Sam::Internal::AnyHash)
+                                T.any(
+                                  Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl,
+                                  Sam::Internal::AnyHash
+                                )
                               end
 
                             sig { returns(Symbol) }
@@ -1941,7 +2006,10 @@ module Sam
                             class CharLocation < Sam::Internal::Type::BaseModel
                               OrHash =
                                 T.type_alias do
-                                  T.any(T.self_type, Sam::Internal::AnyHash)
+                                  T.any(
+                                    Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation,
+                                    Sam::Internal::AnyHash
+                                  )
                                 end
 
                               sig { returns(String) }
@@ -2001,7 +2069,10 @@ module Sam
                             class PageLocation < Sam::Internal::Type::BaseModel
                               OrHash =
                                 T.type_alias do
-                                  T.any(T.self_type, Sam::Internal::AnyHash)
+                                  T.any(
+                                    Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation,
+                                    Sam::Internal::AnyHash
+                                  )
                                 end
 
                               sig { returns(String) }
@@ -2061,7 +2132,10 @@ module Sam
                             class ContentBlockLocation < Sam::Internal::Type::BaseModel
                               OrHash =
                                 T.type_alias do
-                                  T.any(T.self_type, Sam::Internal::AnyHash)
+                                  T.any(
+                                    Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation,
+                                    Sam::Internal::AnyHash
+                                  )
                                 end
 
                               sig { returns(String) }
@@ -2133,7 +2207,10 @@ module Sam
                         class Image < Sam::Internal::Type::BaseModel
                           OrHash =
                             T.type_alias do
-                              T.any(T.self_type, Sam::Internal::AnyHash)
+                              T.any(
+                                Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image,
+                                Sam::Internal::AnyHash
+                              )
                             end
 
                           sig do
@@ -2222,7 +2299,10 @@ module Sam
                             class Base64 < Sam::Internal::Type::BaseModel
                               OrHash =
                                 T.type_alias do
-                                  T.any(T.self_type, Sam::Internal::AnyHash)
+                                  T.any(
+                                    Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64,
+                                    Sam::Internal::AnyHash
+                                  )
                                 end
 
                               sig { returns(String) }
@@ -2311,7 +2391,10 @@ module Sam
                             class URL < Sam::Internal::Type::BaseModel
                               OrHash =
                                 T.type_alias do
-                                  T.any(T.self_type, Sam::Internal::AnyHash)
+                                  T.any(
+                                    Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL,
+                                    Sam::Internal::AnyHash
+                                  )
                                 end
 
                               sig { returns(Symbol) }
@@ -2349,7 +2432,10 @@ module Sam
                           class CacheControl < Sam::Internal::Type::BaseModel
                             OrHash =
                               T.type_alias do
-                                T.any(T.self_type, Sam::Internal::AnyHash)
+                                T.any(
+                                  Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl,
+                                  Sam::Internal::AnyHash
+                                )
                               end
 
                             sig { returns(Symbol) }
@@ -2402,7 +2488,10 @@ module Sam
                   class Document < Sam::Internal::Type::BaseModel
                     OrHash =
                       T.type_alias do
-                        T.any(T.self_type, Sam::Internal::AnyHash)
+                        T.any(
+                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document,
+                          Sam::Internal::AnyHash
+                        )
                       end
 
                     sig do
@@ -2533,7 +2622,10 @@ module Sam
                       class Base64 < Sam::Internal::Type::BaseModel
                         OrHash =
                           T.type_alias do
-                            T.any(T.self_type, Sam::Internal::AnyHash)
+                            T.any(
+                              Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64,
+                              Sam::Internal::AnyHash
+                            )
                           end
 
                         sig { returns(String) }
@@ -2571,7 +2663,10 @@ module Sam
                       class Text < Sam::Internal::Type::BaseModel
                         OrHash =
                           T.type_alias do
-                            T.any(T.self_type, Sam::Internal::AnyHash)
+                            T.any(
+                              Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text,
+                              Sam::Internal::AnyHash
+                            )
                           end
 
                         sig { returns(String) }
@@ -2609,7 +2704,10 @@ module Sam
                       class Content < Sam::Internal::Type::BaseModel
                         OrHash =
                           T.type_alias do
-                            T.any(T.self_type, Sam::Internal::AnyHash)
+                            T.any(
+                              Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content,
+                              Sam::Internal::AnyHash
+                            )
                           end
 
                         sig do
@@ -2698,7 +2796,10 @@ module Sam
                             class Text < Sam::Internal::Type::BaseModel
                               OrHash =
                                 T.type_alias do
-                                  T.any(T.self_type, Sam::Internal::AnyHash)
+                                  T.any(
+                                    Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
+                                    Sam::Internal::AnyHash
+                                  )
                                 end
 
                               sig { returns(String) }
@@ -2797,7 +2898,10 @@ module Sam
                               class CacheControl < Sam::Internal::Type::BaseModel
                                 OrHash =
                                   T.type_alias do
-                                    T.any(T.self_type, Sam::Internal::AnyHash)
+                                    T.any(
+                                      Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl,
+                                      Sam::Internal::AnyHash
+                                    )
                                   end
 
                                 sig { returns(Symbol) }
@@ -2829,7 +2933,10 @@ module Sam
                                 class CharLocation < Sam::Internal::Type::BaseModel
                                   OrHash =
                                     T.type_alias do
-                                      T.any(T.self_type, Sam::Internal::AnyHash)
+                                      T.any(
+                                        Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation,
+                                        Sam::Internal::AnyHash
+                                      )
                                     end
 
                                   sig { returns(String) }
@@ -2889,7 +2996,10 @@ module Sam
                                 class PageLocation < Sam::Internal::Type::BaseModel
                                   OrHash =
                                     T.type_alias do
-                                      T.any(T.self_type, Sam::Internal::AnyHash)
+                                      T.any(
+                                        Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation,
+                                        Sam::Internal::AnyHash
+                                      )
                                     end
 
                                   sig { returns(String) }
@@ -2949,7 +3059,10 @@ module Sam
                                 class ContentBlockLocation < Sam::Internal::Type::BaseModel
                                   OrHash =
                                     T.type_alias do
-                                      T.any(T.self_type, Sam::Internal::AnyHash)
+                                      T.any(
+                                        Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation,
+                                        Sam::Internal::AnyHash
+                                      )
                                     end
 
                                   sig { returns(String) }
@@ -3021,7 +3134,10 @@ module Sam
                             class Image < Sam::Internal::Type::BaseModel
                               OrHash =
                                 T.type_alias do
-                                  T.any(T.self_type, Sam::Internal::AnyHash)
+                                  T.any(
+                                    Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image,
+                                    Sam::Internal::AnyHash
+                                  )
                                 end
 
                               sig do
@@ -3110,7 +3226,10 @@ module Sam
                                 class Base64 < Sam::Internal::Type::BaseModel
                                   OrHash =
                                     T.type_alias do
-                                      T.any(T.self_type, Sam::Internal::AnyHash)
+                                      T.any(
+                                        Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64,
+                                        Sam::Internal::AnyHash
+                                      )
                                     end
 
                                   sig { returns(String) }
@@ -3203,7 +3322,10 @@ module Sam
                                 class URL < Sam::Internal::Type::BaseModel
                                   OrHash =
                                     T.type_alias do
-                                      T.any(T.self_type, Sam::Internal::AnyHash)
+                                      T.any(
+                                        Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL,
+                                        Sam::Internal::AnyHash
+                                      )
                                     end
 
                                   sig { returns(Symbol) }
@@ -3243,7 +3365,10 @@ module Sam
                               class CacheControl < Sam::Internal::Type::BaseModel
                                 OrHash =
                                   T.type_alias do
-                                    T.any(T.self_type, Sam::Internal::AnyHash)
+                                    T.any(
+                                      Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl,
+                                      Sam::Internal::AnyHash
+                                    )
                                   end
 
                                 sig { returns(Symbol) }
@@ -3296,7 +3421,10 @@ module Sam
                       class URL < Sam::Internal::Type::BaseModel
                         OrHash =
                           T.type_alias do
-                            T.any(T.self_type, Sam::Internal::AnyHash)
+                            T.any(
+                              Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL,
+                              Sam::Internal::AnyHash
+                            )
                           end
 
                         sig { returns(Symbol) }
@@ -3332,7 +3460,10 @@ module Sam
                     class CacheControl < Sam::Internal::Type::BaseModel
                       OrHash =
                         T.type_alias do
-                          T.any(T.self_type, Sam::Internal::AnyHash)
+                          T.any(
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::CacheControl,
+                            Sam::Internal::AnyHash
+                          )
                         end
 
                       sig { returns(Symbol) }
@@ -3350,7 +3481,10 @@ module Sam
                     class Citations < Sam::Internal::Type::BaseModel
                       OrHash =
                         T.type_alias do
-                          T.any(T.self_type, Sam::Internal::AnyHash)
+                          T.any(
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Citations,
+                            Sam::Internal::AnyHash
+                          )
                         end
 
                       sig { returns(T.nilable(T::Boolean)) }
@@ -3374,7 +3508,10 @@ module Sam
                   class Thinking < Sam::Internal::Type::BaseModel
                     OrHash =
                       T.type_alias do
-                        T.any(T.self_type, Sam::Internal::AnyHash)
+                        T.any(
+                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Thinking,
+                          Sam::Internal::AnyHash
+                        )
                       end
 
                     sig { returns(String) }
@@ -3408,7 +3545,10 @@ module Sam
                   class RedactedThinking < Sam::Internal::Type::BaseModel
                     OrHash =
                       T.type_alias do
-                        T.any(T.self_type, Sam::Internal::AnyHash)
+                        T.any(
+                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking,
+                          Sam::Internal::AnyHash
+                        )
                       end
 
                     sig { returns(String) }
@@ -3498,7 +3638,12 @@ module Sam
 
             class Metadata < Sam::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Sam::Messages::BatchCreateParams::Request::Params::Metadata,
+                    Sam::Internal::AnyHash
+                  )
+                end
 
               # An external identifier for the user who is associated with the request.
               #
@@ -3547,7 +3692,12 @@ module Sam
 
               class UnionMember1 < Sam::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1,
+                      Sam::Internal::AnyHash
+                    )
+                  end
 
                 sig { returns(String) }
                 attr_accessor :text
@@ -3644,7 +3794,12 @@ module Sam
 
                 class CacheControl < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::CacheControl,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(Symbol) }
                   attr_accessor :type
@@ -3673,7 +3828,10 @@ module Sam
                   class CharLocation < Sam::Internal::Type::BaseModel
                     OrHash =
                       T.type_alias do
-                        T.any(T.self_type, Sam::Internal::AnyHash)
+                        T.any(
+                          Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation,
+                          Sam::Internal::AnyHash
+                        )
                       end
 
                     sig { returns(String) }
@@ -3733,7 +3891,10 @@ module Sam
                   class PageLocation < Sam::Internal::Type::BaseModel
                     OrHash =
                       T.type_alias do
-                        T.any(T.self_type, Sam::Internal::AnyHash)
+                        T.any(
+                          Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation,
+                          Sam::Internal::AnyHash
+                        )
                       end
 
                     sig { returns(String) }
@@ -3793,7 +3954,10 @@ module Sam
                   class ContentBlockLocation < Sam::Internal::Type::BaseModel
                     OrHash =
                       T.type_alias do
-                        T.any(T.self_type, Sam::Internal::AnyHash)
+                        T.any(
+                          Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation,
+                          Sam::Internal::AnyHash
+                        )
                       end
 
                     sig { returns(String) }
@@ -3903,7 +4067,12 @@ module Sam
 
               class Enabled < Sam::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Sam::Messages::BatchCreateParams::Request::Params::Thinking::Enabled,
+                      Sam::Internal::AnyHash
+                    )
+                  end
 
                 # Determines how many tokens Claude can use for its internal reasoning process.
                 # Larger budgets can enable more thorough analysis for complex problems, improving
@@ -3949,7 +4118,12 @@ module Sam
 
               class Disabled < Sam::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Sam::Messages::BatchCreateParams::Request::Params::Thinking::Disabled,
+                      Sam::Internal::AnyHash
+                    )
+                  end
 
                 sig { returns(Symbol) }
                 attr_accessor :type
@@ -3991,7 +4165,12 @@ module Sam
 
               class Auto < Sam::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Auto,
+                      Sam::Internal::AnyHash
+                    )
+                  end
 
                 sig { returns(Symbol) }
                 attr_accessor :type
@@ -4034,7 +4213,12 @@ module Sam
 
               class Any < Sam::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Any,
+                      Sam::Internal::AnyHash
+                    )
+                  end
 
                 sig { returns(Symbol) }
                 attr_accessor :type
@@ -4077,7 +4261,12 @@ module Sam
 
               class Tool < Sam::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Tool,
+                      Sam::Internal::AnyHash
+                    )
+                  end
 
                 # The name of the tool to use.
                 sig { returns(String) }
@@ -4131,7 +4320,12 @@ module Sam
 
               class None < Sam::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::None,
+                      Sam::Internal::AnyHash
+                    )
+                  end
 
                 sig { returns(Symbol) }
                 attr_accessor :type
@@ -4171,7 +4365,12 @@ module Sam
 
               class Tool < Sam::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Sam::Messages::BatchCreateParams::Request::Params::Tool::Tool,
+                      Sam::Internal::AnyHash
+                    )
+                  end
 
                 # [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input.
                 #
@@ -4281,7 +4480,12 @@ module Sam
 
                 class InputSchema < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::Messages::BatchCreateParams::Request::Params::Tool::Tool::InputSchema,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(Symbol) }
                   attr_accessor :type
@@ -4313,7 +4517,12 @@ module Sam
 
                 class CacheControl < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::Messages::BatchCreateParams::Request::Params::Tool::Tool::CacheControl,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(Symbol) }
                   attr_accessor :type
@@ -4330,7 +4539,12 @@ module Sam
 
               class BashTool20250124 < Sam::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Sam::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124,
+                      Sam::Internal::AnyHash
+                    )
+                  end
 
                 # Name of the tool.
                 #
@@ -4397,7 +4611,12 @@ module Sam
 
                 class CacheControl < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124::CacheControl,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(Symbol) }
                   attr_accessor :type
@@ -4414,7 +4633,12 @@ module Sam
 
               class TextEditor20250124 < Sam::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Sam::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124,
+                      Sam::Internal::AnyHash
+                    )
+                  end
 
                 # Name of the tool.
                 #
@@ -4481,7 +4705,12 @@ module Sam
 
                 class CacheControl < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124::CacheControl,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(Symbol) }
                   attr_accessor :type

@@ -602,6 +602,16 @@ module Sam
 
                 # @!method self.variants
                 #   @return [Array(Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
+
+                define_sorbet_constant!(:Variants) do
+                  T.type_alias do
+                    T.any(
+                      Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::CharLocation,
+                      Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::PageLocation,
+                      Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                    )
+                  end
+                end
               end
             end
 
@@ -705,6 +715,15 @@ module Sam
 
                 # @!method self.variants
                 #   @return [Array(Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::Base64, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::URL)]
+
+                define_sorbet_constant!(:Variants) do
+                  T.type_alias do
+                    T.any(
+                      Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::Base64,
+                      Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image::Source::URL
+                    )
+                  end
+                end
               end
 
               # @see Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image#cache_control
@@ -1034,6 +1053,16 @@ module Sam
 
                       # @!method self.variants
                       #   @return [Array(Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
+
+                      define_sorbet_constant!(:Variants) do
+                        T.type_alias do
+                          T.any(
+                            Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation,
+                            Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation,
+                            Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                          )
+                        end
+                      end
                     end
                   end
 
@@ -1137,6 +1166,15 @@ module Sam
 
                       # @!method self.variants
                       #   @return [Array(Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL)]
+
+                      define_sorbet_constant!(:Variants) do
+                        T.type_alias do
+                          T.any(
+                            Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64,
+                            Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL
+                          )
+                        end
+                      end
                     end
 
                     # @see Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image#cache_control
@@ -1153,10 +1191,33 @@ module Sam
 
                   # @!method self.variants
                   #   @return [Array(Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image)]
+
+                  define_sorbet_constant!(:Variants) do
+                    T.type_alias do
+                      T.any(
+                        Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
+                        Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
+                      )
+                    end
+                  end
                 end
 
                 # @!method self.variants
                 #   @return [Array(String, Array<Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>)]
+
+                define_sorbet_constant!(:Variants) do
+                  T.type_alias do
+                    T.any(
+                      String,
+                      T::Array[
+                        T.any(
+                          Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
+                          Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
+                        )
+                      ]
+                    )
+                  end
+                end
 
                 # @type [Sam::Internal::Type::Converter]
                 UnionMember1Array =
@@ -1520,6 +1581,16 @@ module Sam
 
                           # @!method self.variants
                           #   @return [Array(Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
+
+                          define_sorbet_constant!(:Variants) do
+                            T.type_alias do
+                              T.any(
+                                Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation,
+                                Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation,
+                                Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                              )
+                            end
+                          end
                         end
                       end
 
@@ -1623,6 +1694,15 @@ module Sam
 
                           # @!method self.variants
                           #   @return [Array(Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL)]
+
+                          define_sorbet_constant!(:Variants) do
+                            T.type_alias do
+                              T.any(
+                                Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64,
+                                Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL
+                              )
+                            end
+                          end
                         end
 
                         # @see Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image#cache_control
@@ -1639,10 +1719,33 @@ module Sam
 
                       # @!method self.variants
                       #   @return [Array(Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image)]
+
+                      define_sorbet_constant!(:Variants) do
+                        T.type_alias do
+                          T.any(
+                            Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
+                            Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
+                          )
+                        end
+                      end
                     end
 
                     # @!method self.variants
                     #   @return [Array(String, Array<Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>)]
+
+                    define_sorbet_constant!(:Variants) do
+                      T.type_alias do
+                        T.any(
+                          String,
+                          T::Array[
+                            T.any(
+                              Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
+                              Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
+                            )
+                          ]
+                        )
+                      end
+                    end
 
                     # @type [Sam::Internal::Type::Converter]
                     UnionMember1Array =
@@ -1672,6 +1775,17 @@ module Sam
 
                 # @!method self.variants
                 #   @return [Array(Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Base64, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Text, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::URL)]
+
+                define_sorbet_constant!(:Variants) do
+                  T.type_alias do
+                    T.any(
+                      Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Base64,
+                      Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Text,
+                      Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::Content,
+                      Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document::Source::URL
+                    )
+                  end
+                end
               end
 
               # @see Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document#cache_control
@@ -1737,10 +1851,43 @@ module Sam
 
             # @!method self.variants
             #   @return [Array(Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Thinking, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::RedactedThinking)]
+
+            define_sorbet_constant!(:Variants) do
+              T.type_alias do
+                T.any(
+                  Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text,
+                  Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image,
+                  Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse,
+                  Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult,
+                  Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document,
+                  Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Thinking,
+                  Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::RedactedThinking
+                )
+              end
+            end
           end
 
           # @!method self.variants
           #   @return [Array(String, Array<Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Thinking, Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::RedactedThinking>)]
+
+          define_sorbet_constant!(:Variants) do
+            T.type_alias do
+              T.any(
+                String,
+                T::Array[
+                  T.any(
+                    Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Text,
+                    Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Image,
+                    Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolUse,
+                    Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::ToolResult,
+                    Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Document,
+                    Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::Thinking,
+                    Sam::MessagesBetaTrueCreateParams::Message::Content::UnionMember1::RedactedThinking
+                  )
+                ]
+              )
+            end
+          end
 
           # @type [Sam::Internal::Type::Converter]
           UnionMember1Array =
@@ -1975,11 +2122,25 @@ module Sam
 
             # @!method self.variants
             #   @return [Array(Sam::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::CharLocation, Sam::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::PageLocation, Sam::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::ContentBlockLocation)]
+
+            define_sorbet_constant!(:Variants) do
+              T.type_alias do
+                T.any(
+                  Sam::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::CharLocation,
+                  Sam::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::PageLocation,
+                  Sam::MessagesBetaTrueCreateParams::System::UnionMember1::Citation::ContentBlockLocation
+                )
+              end
+            end
           end
         end
 
         # @!method self.variants
         #   @return [Array(String, Array<Sam::MessagesBetaTrueCreateParams::System::UnionMember1>)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias { T.any(String, T::Array[Sam::MessagesBetaTrueCreateParams::System::UnionMember1]) }
+        end
 
         # @type [Sam::Internal::Type::Converter]
         UnionMember1Array =
@@ -2045,6 +2206,15 @@ module Sam
 
         # @!method self.variants
         #   @return [Array(Sam::MessagesBetaTrueCreateParams::Thinking::Enabled, Sam::MessagesBetaTrueCreateParams::Thinking::Disabled)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias do
+            T.any(
+              Sam::MessagesBetaTrueCreateParams::Thinking::Enabled,
+              Sam::MessagesBetaTrueCreateParams::Thinking::Disabled
+            )
+          end
+        end
       end
 
       # How the model should use the provided tools. The model can use a specific tool,
@@ -2166,6 +2336,17 @@ module Sam
 
         # @!method self.variants
         #   @return [Array(Sam::MessagesBetaTrueCreateParams::ToolChoice::Auto, Sam::MessagesBetaTrueCreateParams::ToolChoice::Any, Sam::MessagesBetaTrueCreateParams::ToolChoice::Tool, Sam::MessagesBetaTrueCreateParams::ToolChoice::None)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias do
+            T.any(
+              Sam::MessagesBetaTrueCreateParams::ToolChoice::Auto,
+              Sam::MessagesBetaTrueCreateParams::ToolChoice::Any,
+              Sam::MessagesBetaTrueCreateParams::ToolChoice::Tool,
+              Sam::MessagesBetaTrueCreateParams::ToolChoice::None
+            )
+          end
+        end
       end
 
       module Tool
@@ -2598,6 +2779,20 @@ module Sam
 
         # @!method self.variants
         #   @return [Array(Sam::MessagesBetaTrueCreateParams::Tool::BetaTool, Sam::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022, Sam::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022, Sam::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022, Sam::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124, Sam::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124, Sam::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias do
+            T.any(
+              Sam::MessagesBetaTrueCreateParams::Tool::BetaTool,
+              Sam::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022,
+              Sam::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022,
+              Sam::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022,
+              Sam::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124,
+              Sam::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124,
+              Sam::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124
+            )
+          end
+        end
       end
     end
   end

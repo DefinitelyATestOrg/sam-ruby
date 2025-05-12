@@ -2,6 +2,8 @@ module Sam
   module Internal
     module Type
       module Converter
+        extend Sam::Internal::Util::SorbetRuntimeSupport
+
         type input = Sam::Internal::Type::Converter | Class
 
         type coerce_state =

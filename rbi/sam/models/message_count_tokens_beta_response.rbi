@@ -3,7 +3,13 @@
 module Sam
   module Models
     class MessageCountTokensBetaResponse < Sam::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Sam::Models::MessageCountTokensBetaResponse,
+            Sam::Internal::AnyHash
+          )
+        end
 
       # The total number of tokens across the provided list of messages, system prompt,
       # and tools.

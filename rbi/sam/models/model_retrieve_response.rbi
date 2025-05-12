@@ -3,7 +3,10 @@
 module Sam
   module Models
     class ModelRetrieveResponse < Sam::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Sam::Models::ModelRetrieveResponse, Sam::Internal::AnyHash)
+        end
 
       # Unique model identifier.
       sig { returns(String) }

@@ -4,7 +4,13 @@ module Sam
   module Models
     module Messages
       class BatchesBetaTrueListResponse < Sam::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Sam::Models::Messages::BatchesBetaTrueListResponse,
+              Sam::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(
@@ -66,7 +72,13 @@ module Sam
         end
 
         class Data < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::Models::Messages::BatchesBetaTrueListResponse::Data,
+                Sam::Internal::AnyHash
+              )
+            end
 
           # Unique object identifier.
           #
@@ -266,7 +278,13 @@ module Sam
           end
 
           class RequestCounts < Sam::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::Models::Messages::BatchesBetaTrueListResponse::Data::RequestCounts,
+                  Sam::Internal::AnyHash
+                )
+              end
 
             # Number of requests in the Message Batch that have been canceled.
             #

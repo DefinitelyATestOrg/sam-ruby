@@ -4,7 +4,13 @@ module Sam
   module Models
     module Messages
       class BatchResultsResponse < Sam::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Sam::Models::Messages::BatchResultsResponse,
+              Sam::Internal::AnyHash
+            )
+          end
 
         # Developer-provided ID created for each request in a Message Batch. Useful for
         # matching results to requests, as results may be given out of request order.
@@ -95,7 +101,13 @@ module Sam
             end
 
           class Succeeded < Sam::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::Models::Messages::BatchResultsResponse::Result::Succeeded,
+                  Sam::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -139,7 +151,12 @@ module Sam
 
             class Message < Sam::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message,
+                    Sam::Internal::AnyHash
+                  )
+                end
 
               # Unique object identifier.
               #
@@ -418,7 +435,12 @@ module Sam
 
                 class Text < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   # Citations supporting the text block.
                   #
@@ -510,7 +532,10 @@ module Sam
                     class CharLocation < Sam::Internal::Type::BaseModel
                       OrHash =
                         T.type_alias do
-                          T.any(T.self_type, Sam::Internal::AnyHash)
+                          T.any(
+                            Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation,
+                            Sam::Internal::AnyHash
+                          )
                         end
 
                       sig { returns(String) }
@@ -570,7 +595,10 @@ module Sam
                     class PageLocation < Sam::Internal::Type::BaseModel
                       OrHash =
                         T.type_alias do
-                          T.any(T.self_type, Sam::Internal::AnyHash)
+                          T.any(
+                            Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation,
+                            Sam::Internal::AnyHash
+                          )
                         end
 
                       sig { returns(String) }
@@ -630,7 +658,10 @@ module Sam
                     class ContentBlockLocation < Sam::Internal::Type::BaseModel
                       OrHash =
                         T.type_alias do
-                          T.any(T.self_type, Sam::Internal::AnyHash)
+                          T.any(
+                            Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation,
+                            Sam::Internal::AnyHash
+                          )
                         end
 
                       sig { returns(String) }
@@ -701,7 +732,12 @@ module Sam
 
                 class ToolUse < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::ToolUse,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(String) }
                   attr_accessor :id
@@ -742,7 +778,12 @@ module Sam
 
                 class Thinking < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Thinking,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(String) }
                   attr_accessor :signature
@@ -774,7 +815,12 @@ module Sam
 
                 class RedactedThinking < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::RedactedThinking,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(String) }
                   attr_accessor :data
@@ -861,7 +907,12 @@ module Sam
 
               class Usage < Sam::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Usage,
+                      Sam::Internal::AnyHash
+                    )
+                  end
 
                 # The number of input tokens used to create the cache entry.
                 sig { returns(T.nilable(Integer)) }
@@ -931,7 +982,13 @@ module Sam
           end
 
           class Errored < Sam::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::Models::Messages::BatchResultsResponse::Result::Errored,
+                  Sam::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -975,7 +1032,12 @@ module Sam
 
             class Error < Sam::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error,
+                    Sam::Internal::AnyHash
+                  )
+                end
 
               sig do
                 returns(
@@ -1059,7 +1121,12 @@ module Sam
 
                 class InvalidRequestError < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::InvalidRequestError,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(String) }
                   attr_accessor :message
@@ -1082,7 +1149,12 @@ module Sam
 
                 class AuthenticationError < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::AuthenticationError,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(String) }
                   attr_accessor :message
@@ -1105,7 +1177,12 @@ module Sam
 
                 class BillingError < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::BillingError,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(String) }
                   attr_accessor :message
@@ -1128,7 +1205,12 @@ module Sam
 
                 class PermissionError < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::PermissionError,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(String) }
                   attr_accessor :message
@@ -1151,7 +1233,12 @@ module Sam
 
                 class NotFoundError < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::NotFoundError,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(String) }
                   attr_accessor :message
@@ -1174,7 +1261,12 @@ module Sam
 
                 class RateLimitError < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::RateLimitError,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(String) }
                   attr_accessor :message
@@ -1197,7 +1289,12 @@ module Sam
 
                 class TimeoutError < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::TimeoutError,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(String) }
                   attr_accessor :message
@@ -1220,7 +1317,12 @@ module Sam
 
                 class APIError < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::APIError,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(String) }
                   attr_accessor :message
@@ -1243,7 +1345,12 @@ module Sam
 
                 class OverloadedError < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::OverloadedError,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(String) }
                   attr_accessor :message
@@ -1278,7 +1385,13 @@ module Sam
           end
 
           class Canceled < Sam::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::Models::Messages::BatchResultsResponse::Result::Canceled,
+                  Sam::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :type
@@ -1293,7 +1406,13 @@ module Sam
           end
 
           class Expired < Sam::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::Models::Messages::BatchResultsResponse::Result::Expired,
+                  Sam::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :type

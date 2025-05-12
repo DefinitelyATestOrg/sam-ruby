@@ -17,6 +17,7 @@ module Sam
       # values safely.
       module Enum
         include Sam::Internal::Type::Converter
+        include Sam::Internal::Util::SorbetRuntimeSupport
 
         # All of the valid Symbol values for this enum.
         sig do

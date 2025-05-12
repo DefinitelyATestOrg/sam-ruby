@@ -3,7 +3,10 @@
 module Sam
   module Models
     class ModelsBetaTrueListResponse < Sam::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Sam::Models::ModelsBetaTrueListResponse, Sam::Internal::AnyHash)
+        end
 
       sig { returns(T::Array[Sam::Models::ModelsBetaTrueListResponse::Data]) }
       attr_accessor :data
@@ -55,7 +58,13 @@ module Sam
       end
 
       class Data < Sam::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Sam::Models::ModelsBetaTrueListResponse::Data,
+              Sam::Internal::AnyHash
+            )
+          end
 
         # Unique model identifier.
         sig { returns(String) }

@@ -4,7 +4,13 @@ module Sam
   module Models
     module Messages
       class BatchDeleteResponse < Sam::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Sam::Models::Messages::BatchDeleteResponse,
+              Sam::Internal::AnyHash
+            )
+          end
 
         # ID of the Message Batch.
         sig { returns(String) }

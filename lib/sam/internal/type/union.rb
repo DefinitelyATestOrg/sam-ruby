@@ -6,6 +6,7 @@ module Sam
       # @api private
       module Union
         include Sam::Internal::Type::Converter
+        include Sam::Internal::Util::SorbetRuntimeSupport
 
         # @api private
         #

@@ -3,7 +3,13 @@
 module Sam
   module Models
     class MessagesBetaTrueCreateResponse < Sam::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Sam::Models::MessagesBetaTrueCreateResponse,
+            Sam::Internal::AnyHash
+          )
+        end
 
       # Unique object identifier.
       #
@@ -274,7 +280,13 @@ module Sam
           end
 
         class Text < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::Models::MessagesBetaTrueCreateResponse::Content::Text,
+                Sam::Internal::AnyHash
+              )
+            end
 
           # Citations supporting the text block.
           #
@@ -365,7 +377,12 @@ module Sam
 
             class CharLocation < Sam::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::CharLocation,
+                    Sam::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :cited_text
@@ -423,7 +440,12 @@ module Sam
 
             class PageLocation < Sam::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::PageLocation,
+                    Sam::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :cited_text
@@ -481,7 +503,12 @@ module Sam
 
             class ContentBlockLocation < Sam::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::ContentBlockLocation,
+                    Sam::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :cited_text
@@ -550,7 +577,13 @@ module Sam
         end
 
         class ToolUse < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::Models::MessagesBetaTrueCreateResponse::Content::ToolUse,
+                Sam::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -585,7 +618,13 @@ module Sam
         end
 
         class Thinking < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::Models::MessagesBetaTrueCreateResponse::Content::Thinking,
+                Sam::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :signature
@@ -614,7 +653,13 @@ module Sam
         end
 
         class RedactedThinking < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::Models::MessagesBetaTrueCreateResponse::Content::RedactedThinking,
+                Sam::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :data
@@ -698,7 +743,13 @@ module Sam
       end
 
       class Usage < Sam::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Sam::Models::MessagesBetaTrueCreateResponse::Usage,
+              Sam::Internal::AnyHash
+            )
+          end
 
         # The number of input tokens used to create the cache entry.
         sig { returns(T.nilable(Integer)) }
