@@ -6,7 +6,8 @@ module Sam
       extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Sam::ModelListParams, Sam::Internal::AnyHash) }
 
       # ID of the object to use as a cursor for pagination. When provided, returns the
       # page of results immediately after this object.

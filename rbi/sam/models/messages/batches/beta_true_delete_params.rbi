@@ -8,7 +8,13 @@ module Sam
           extend Sam::Internal::Type::RequestParameters::Converter
           include Sam::Internal::Type::RequestParameters
 
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::Messages::Batches::BetaTrueDeleteParams,
+                Sam::Internal::AnyHash
+              )
+            end
 
           # Optional header to specify the beta version(s) you want to use.
           #

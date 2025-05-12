@@ -3,9 +3,12 @@ module Sam
     module Type
       class BaseModel
         extend Sam::Internal::Type::Converter
+        extend Sam::Internal::Util::SorbetRuntimeSupport
 
         type known_field =
           { mode: (:coerce | :dump)?, required: bool, nilable: bool }
+
+        def self.inherited: (self child) -> void
 
         def self.known_fields: -> ::Hash[Symbol, (Sam::Internal::Type::BaseModel::known_field
         & { type_fn: (^-> Sam::Internal::Type::Converter::input) })]
@@ -58,10 +61,10 @@ module Sam
         def self.coerce: (
           Sam::Internal::Type::BaseModel | ::Hash[top, top] | top value,
           state: Sam::Internal::Type::Converter::coerce_state
-        ) -> (instance | top)
+        ) -> (self | top)
 
         def self.dump: (
-          instance | top value,
+          self | top value,
           state: Sam::Internal::Type::Converter::dump_state
         ) -> (::Hash[top, top] | top)
 

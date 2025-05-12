@@ -3,7 +3,10 @@
 module Sam
   module Models
     class CompleteCreateResponse < Sam::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Sam::Models::CompleteCreateResponse, Sam::Internal::AnyHash)
+        end
 
       # Unique object identifier.
       #

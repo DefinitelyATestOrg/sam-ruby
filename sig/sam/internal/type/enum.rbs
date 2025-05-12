@@ -3,6 +3,7 @@ module Sam
     module Type
       module Enum
         include Sam::Internal::Type::Converter
+        include Sam::Internal::Util::SorbetRuntimeSupport
 
         def self.values: -> ::Array[(nil | bool | Integer | Float | Symbol)]
 

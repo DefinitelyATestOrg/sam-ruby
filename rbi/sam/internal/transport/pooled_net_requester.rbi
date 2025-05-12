@@ -5,7 +5,9 @@ module Sam
     module Transport
       # @api private
       class PooledNetRequester
-        RequestShape =
+        extend Sam::Internal::Util::SorbetRuntimeSupport
+
+        Request =
           T.type_alias do
             {
               method: Symbol,
@@ -34,8 +36,7 @@ module Sam
           # @api private
           sig do
             params(
-              request:
-                Sam::Internal::Transport::PooledNetRequester::RequestShape,
+              request: Sam::Internal::Transport::PooledNetRequester::Request,
               blk: T.proc.params(arg0: String).void
             ).returns([Net::HTTPGenericRequest, T.proc.void])
           end
@@ -57,7 +58,7 @@ module Sam
         # @api private
         sig do
           params(
-            request: Sam::Internal::Transport::PooledNetRequester::RequestShape
+            request: Sam::Internal::Transport::PooledNetRequester::Request
           ).returns([Integer, Net::HTTPResponse, T::Enumerable[String]])
         end
         def execute(request)

@@ -5,10 +5,11 @@ module Sam
     module Type
       class BaseModel
         extend Sam::Internal::Type::Converter
+        extend Sam::Internal::Util::SorbetRuntimeSupport
 
         abstract!
 
-        KnownFieldShape =
+        KnownField =
           T.type_alias do
             {
               mode: T.nilable(Symbol),
@@ -17,19 +18,27 @@ module Sam
             }
           end
 
-        OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Sam::Internal::Type::BaseModel, Sam::Internal::AnyHash)
+          end
 
         class << self
           # @api private
           #
           # Assumes superclass fields are totally defined before fields are accessed /
           # defined on subclasses.
+          sig { params(child: T.self_type).void }
+          def inherited(child)
+          end
+
+          # @api private
           sig do
             returns(
               T::Hash[
                 Symbol,
                 T.all(
-                  Sam::Internal::Type::BaseModel::KnownFieldShape,
+                  Sam::Internal::Type::BaseModel::KnownField,
                   {
                     type_fn:
                       T.proc.returns(Sam::Internal::Type::Converter::Input)
@@ -47,7 +56,7 @@ module Sam
               T::Hash[
                 Symbol,
                 T.all(
-                  Sam::Internal::Type::BaseModel::KnownFieldShape,
+                  Sam::Internal::Type::BaseModel::KnownField,
                   { type: Sam::Internal::Type::Converter::Input }
                 )
               ]

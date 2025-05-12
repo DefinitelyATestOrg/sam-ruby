@@ -319,6 +319,16 @@ module Sam
 
             # @!method self.variants
             #   @return [Array(Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::CharLocation, Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::PageLocation, Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::ContentBlockLocation)]
+
+            define_sorbet_constant!(:Variants) do
+              T.type_alias do
+                T.any(
+                  Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::CharLocation,
+                  Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::PageLocation,
+                  Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::ContentBlockLocation
+                )
+              end
+            end
           end
         end
 
@@ -390,6 +400,17 @@ module Sam
 
         # @!method self.variants
         #   @return [Array(Sam::Models::MessagesBetaTrueCreateResponse::Content::Text, Sam::Models::MessagesBetaTrueCreateResponse::Content::ToolUse, Sam::Models::MessagesBetaTrueCreateResponse::Content::Thinking, Sam::Models::MessagesBetaTrueCreateResponse::Content::RedactedThinking)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias do
+            T.any(
+              Sam::Models::MessagesBetaTrueCreateResponse::Content::Text,
+              Sam::Models::MessagesBetaTrueCreateResponse::Content::ToolUse,
+              Sam::Models::MessagesBetaTrueCreateResponse::Content::Thinking,
+              Sam::Models::MessagesBetaTrueCreateResponse::Content::RedactedThinking
+            )
+          end
+        end
       end
 
       # The reason that we stopped.

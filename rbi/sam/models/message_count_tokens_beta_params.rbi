@@ -6,7 +6,10 @@ module Sam
       extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Sam::MessageCountTokensBetaParams, Sam::Internal::AnyHash)
+        end
 
       # Input messages.
       #
@@ -625,7 +628,13 @@ module Sam
       end
 
       class Message < Sam::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Sam::MessageCountTokensBetaParams::Message,
+              Sam::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(
@@ -739,7 +748,12 @@ module Sam
 
             class Text < Sam::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Text,
+                    Sam::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :text
@@ -836,7 +850,12 @@ module Sam
 
               class CacheControl < Sam::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Text::CacheControl,
+                      Sam::Internal::AnyHash
+                    )
+                  end
 
                 sig { returns(Symbol) }
                 attr_accessor :type
@@ -864,7 +883,12 @@ module Sam
 
                 class CharLocation < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Text::Citation::CharLocation,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(String) }
                   attr_accessor :cited_text
@@ -922,7 +946,12 @@ module Sam
 
                 class PageLocation < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Text::Citation::PageLocation,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(String) }
                   attr_accessor :cited_text
@@ -980,7 +1009,12 @@ module Sam
 
                 class ContentBlockLocation < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(String) }
                   attr_accessor :cited_text
@@ -1050,7 +1084,12 @@ module Sam
 
             class Image < Sam::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image,
+                    Sam::Internal::AnyHash
+                  )
+                end
 
               sig do
                 returns(
@@ -1133,7 +1172,12 @@ module Sam
 
                 class Base64 < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image::Source::Base64,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(String) }
                   attr_accessor :data
@@ -1219,7 +1263,12 @@ module Sam
 
                 class URL < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image::Source::URL,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(Symbol) }
                   attr_accessor :type
@@ -1251,7 +1300,12 @@ module Sam
 
               class CacheControl < Sam::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image::CacheControl,
+                      Sam::Internal::AnyHash
+                    )
+                  end
 
                 sig { returns(Symbol) }
                 attr_accessor :type
@@ -1268,7 +1322,12 @@ module Sam
 
             class ToolUse < Sam::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolUse,
+                    Sam::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -1341,7 +1400,12 @@ module Sam
 
               class CacheControl < Sam::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolUse::CacheControl,
+                      Sam::Internal::AnyHash
+                    )
+                  end
 
                 sig { returns(Symbol) }
                 attr_accessor :type
@@ -1358,7 +1422,12 @@ module Sam
 
             class ToolResult < Sam::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult,
+                    Sam::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :tool_use_id
@@ -1482,7 +1551,12 @@ module Sam
 
               class CacheControl < Sam::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::CacheControl,
+                      Sam::Internal::AnyHash
+                    )
+                  end
 
                 sig { returns(Symbol) }
                 attr_accessor :type
@@ -1526,7 +1600,10 @@ module Sam
                   class Text < Sam::Internal::Type::BaseModel
                     OrHash =
                       T.type_alias do
-                        T.any(T.self_type, Sam::Internal::AnyHash)
+                        T.any(
+                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
+                          Sam::Internal::AnyHash
+                        )
                       end
 
                     sig { returns(String) }
@@ -1625,7 +1702,10 @@ module Sam
                     class CacheControl < Sam::Internal::Type::BaseModel
                       OrHash =
                         T.type_alias do
-                          T.any(T.self_type, Sam::Internal::AnyHash)
+                          T.any(
+                            Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl,
+                            Sam::Internal::AnyHash
+                          )
                         end
 
                       sig { returns(Symbol) }
@@ -1655,7 +1735,10 @@ module Sam
                       class CharLocation < Sam::Internal::Type::BaseModel
                         OrHash =
                           T.type_alias do
-                            T.any(T.self_type, Sam::Internal::AnyHash)
+                            T.any(
+                              Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation,
+                              Sam::Internal::AnyHash
+                            )
                           end
 
                         sig { returns(String) }
@@ -1715,7 +1798,10 @@ module Sam
                       class PageLocation < Sam::Internal::Type::BaseModel
                         OrHash =
                           T.type_alias do
-                            T.any(T.self_type, Sam::Internal::AnyHash)
+                            T.any(
+                              Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation,
+                              Sam::Internal::AnyHash
+                            )
                           end
 
                         sig { returns(String) }
@@ -1775,7 +1861,10 @@ module Sam
                       class ContentBlockLocation < Sam::Internal::Type::BaseModel
                         OrHash =
                           T.type_alias do
-                            T.any(T.self_type, Sam::Internal::AnyHash)
+                            T.any(
+                              Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation,
+                              Sam::Internal::AnyHash
+                            )
                           end
 
                         sig { returns(String) }
@@ -1847,7 +1936,10 @@ module Sam
                   class Image < Sam::Internal::Type::BaseModel
                     OrHash =
                       T.type_alias do
-                        T.any(T.self_type, Sam::Internal::AnyHash)
+                        T.any(
+                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image,
+                          Sam::Internal::AnyHash
+                        )
                       end
 
                     sig do
@@ -1932,7 +2024,10 @@ module Sam
                       class Base64 < Sam::Internal::Type::BaseModel
                         OrHash =
                           T.type_alias do
-                            T.any(T.self_type, Sam::Internal::AnyHash)
+                            T.any(
+                              Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64,
+                              Sam::Internal::AnyHash
+                            )
                           end
 
                         sig { returns(String) }
@@ -2020,7 +2115,10 @@ module Sam
                       class URL < Sam::Internal::Type::BaseModel
                         OrHash =
                           T.type_alias do
-                            T.any(T.self_type, Sam::Internal::AnyHash)
+                            T.any(
+                              Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL,
+                              Sam::Internal::AnyHash
+                            )
                           end
 
                         sig { returns(Symbol) }
@@ -2056,7 +2154,10 @@ module Sam
                     class CacheControl < Sam::Internal::Type::BaseModel
                       OrHash =
                         T.type_alias do
-                          T.any(T.self_type, Sam::Internal::AnyHash)
+                          T.any(
+                            Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl,
+                            Sam::Internal::AnyHash
+                          )
                         end
 
                       sig { returns(Symbol) }
@@ -2106,7 +2207,12 @@ module Sam
 
             class Document < Sam::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document,
+                    Sam::Internal::AnyHash
+                  )
+                end
 
               sig do
                 returns(
@@ -2235,7 +2341,12 @@ module Sam
 
                 class Base64 < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Base64,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(String) }
                   attr_accessor :data
@@ -2271,7 +2382,12 @@ module Sam
 
                 class Text < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Text,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(String) }
                   attr_accessor :data
@@ -2303,7 +2419,12 @@ module Sam
 
                 class Content < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig do
                     returns(
@@ -2391,7 +2512,10 @@ module Sam
                       class Text < Sam::Internal::Type::BaseModel
                         OrHash =
                           T.type_alias do
-                            T.any(T.self_type, Sam::Internal::AnyHash)
+                            T.any(
+                              Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
+                              Sam::Internal::AnyHash
+                            )
                           end
 
                         sig { returns(String) }
@@ -2490,7 +2614,10 @@ module Sam
                         class CacheControl < Sam::Internal::Type::BaseModel
                           OrHash =
                             T.type_alias do
-                              T.any(T.self_type, Sam::Internal::AnyHash)
+                              T.any(
+                                Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl,
+                                Sam::Internal::AnyHash
+                              )
                             end
 
                           sig { returns(Symbol) }
@@ -2520,7 +2647,10 @@ module Sam
                           class CharLocation < Sam::Internal::Type::BaseModel
                             OrHash =
                               T.type_alias do
-                                T.any(T.self_type, Sam::Internal::AnyHash)
+                                T.any(
+                                  Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation,
+                                  Sam::Internal::AnyHash
+                                )
                               end
 
                             sig { returns(String) }
@@ -2580,7 +2710,10 @@ module Sam
                           class PageLocation < Sam::Internal::Type::BaseModel
                             OrHash =
                               T.type_alias do
-                                T.any(T.self_type, Sam::Internal::AnyHash)
+                                T.any(
+                                  Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation,
+                                  Sam::Internal::AnyHash
+                                )
                               end
 
                             sig { returns(String) }
@@ -2640,7 +2773,10 @@ module Sam
                           class ContentBlockLocation < Sam::Internal::Type::BaseModel
                             OrHash =
                               T.type_alias do
-                                T.any(T.self_type, Sam::Internal::AnyHash)
+                                T.any(
+                                  Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation,
+                                  Sam::Internal::AnyHash
+                                )
                               end
 
                             sig { returns(String) }
@@ -2712,7 +2848,10 @@ module Sam
                       class Image < Sam::Internal::Type::BaseModel
                         OrHash =
                           T.type_alias do
-                            T.any(T.self_type, Sam::Internal::AnyHash)
+                            T.any(
+                              Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image,
+                              Sam::Internal::AnyHash
+                            )
                           end
 
                         sig do
@@ -2797,7 +2936,10 @@ module Sam
                           class Base64 < Sam::Internal::Type::BaseModel
                             OrHash =
                               T.type_alias do
-                                T.any(T.self_type, Sam::Internal::AnyHash)
+                                T.any(
+                                  Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64,
+                                  Sam::Internal::AnyHash
+                                )
                               end
 
                             sig { returns(String) }
@@ -2885,7 +3027,10 @@ module Sam
                           class URL < Sam::Internal::Type::BaseModel
                             OrHash =
                               T.type_alias do
-                                T.any(T.self_type, Sam::Internal::AnyHash)
+                                T.any(
+                                  Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL,
+                                  Sam::Internal::AnyHash
+                                )
                               end
 
                             sig { returns(Symbol) }
@@ -2923,7 +3068,10 @@ module Sam
                         class CacheControl < Sam::Internal::Type::BaseModel
                           OrHash =
                             T.type_alias do
-                              T.any(T.self_type, Sam::Internal::AnyHash)
+                              T.any(
+                                Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl,
+                                Sam::Internal::AnyHash
+                              )
                             end
 
                           sig { returns(Symbol) }
@@ -2973,7 +3121,12 @@ module Sam
 
                 class URL < Sam::Internal::Type::BaseModel
                   OrHash =
-                    T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                    T.type_alias do
+                      T.any(
+                        Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::URL,
+                        Sam::Internal::AnyHash
+                      )
+                    end
 
                   sig { returns(Symbol) }
                   attr_accessor :type
@@ -3005,7 +3158,12 @@ module Sam
 
               class CacheControl < Sam::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::CacheControl,
+                      Sam::Internal::AnyHash
+                    )
+                  end
 
                 sig { returns(Symbol) }
                 attr_accessor :type
@@ -3021,7 +3179,12 @@ module Sam
 
               class Citations < Sam::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Citations,
+                      Sam::Internal::AnyHash
+                    )
+                  end
 
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :enabled
@@ -3041,7 +3204,12 @@ module Sam
 
             class Thinking < Sam::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Thinking,
+                    Sam::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :signature
@@ -3073,7 +3241,12 @@ module Sam
 
             class RedactedThinking < Sam::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::RedactedThinking,
+                    Sam::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :data
@@ -3172,7 +3345,13 @@ module Sam
           end
 
         class UnionMember1 < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::MessageCountTokensBetaParams::System::UnionMember1,
+                Sam::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :text
@@ -3263,7 +3442,13 @@ module Sam
           end
 
           class CacheControl < Sam::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::MessageCountTokensBetaParams::System::UnionMember1::CacheControl,
+                  Sam::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :type
@@ -3291,7 +3476,12 @@ module Sam
 
             class CharLocation < Sam::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Sam::MessageCountTokensBetaParams::System::UnionMember1::Citation::CharLocation,
+                    Sam::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :cited_text
@@ -3349,7 +3539,12 @@ module Sam
 
             class PageLocation < Sam::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Sam::MessageCountTokensBetaParams::System::UnionMember1::Citation::PageLocation,
+                    Sam::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :cited_text
@@ -3407,7 +3602,12 @@ module Sam
 
             class ContentBlockLocation < Sam::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Sam::MessageCountTokensBetaParams::System::UnionMember1::Citation::ContentBlockLocation,
+                    Sam::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :cited_text
@@ -3513,7 +3713,13 @@ module Sam
           end
 
         class Enabled < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::MessageCountTokensBetaParams::Thinking::Enabled,
+                Sam::Internal::AnyHash
+              )
+            end
 
           # Determines how many tokens Claude can use for its internal reasoning process.
           # Larger budgets can enable more thorough analysis for complex problems, improving
@@ -3556,7 +3762,13 @@ module Sam
         end
 
         class Disabled < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::MessageCountTokensBetaParams::Thinking::Disabled,
+                Sam::Internal::AnyHash
+              )
+            end
 
           sig { returns(Symbol) }
           attr_accessor :type
@@ -3595,7 +3807,13 @@ module Sam
           end
 
         class Auto < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::MessageCountTokensBetaParams::ToolChoice::Auto,
+                Sam::Internal::AnyHash
+              )
+            end
 
           sig { returns(Symbol) }
           attr_accessor :type
@@ -3636,7 +3854,13 @@ module Sam
         end
 
         class Any < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::MessageCountTokensBetaParams::ToolChoice::Any,
+                Sam::Internal::AnyHash
+              )
+            end
 
           sig { returns(Symbol) }
           attr_accessor :type
@@ -3677,7 +3901,13 @@ module Sam
         end
 
         class Tool < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::MessageCountTokensBetaParams::ToolChoice::Tool,
+                Sam::Internal::AnyHash
+              )
+            end
 
           # The name of the tool to use.
           sig { returns(String) }
@@ -3730,7 +3960,13 @@ module Sam
         end
 
         class None < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::MessageCountTokensBetaParams::ToolChoice::None,
+                Sam::Internal::AnyHash
+              )
+            end
 
           sig { returns(Symbol) }
           attr_accessor :type
@@ -3771,7 +4007,13 @@ module Sam
           end
 
         class BetaTool < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::MessageCountTokensBetaParams::Tool::BetaTool,
+                Sam::Internal::AnyHash
+              )
+            end
 
           # [JSON schema](https://json-schema.org/draft/2020-12) for this tool's input.
           #
@@ -3898,7 +4140,13 @@ module Sam
           end
 
           class InputSchema < Sam::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::MessageCountTokensBetaParams::Tool::BetaTool::InputSchema,
+                  Sam::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :type
@@ -3928,7 +4176,13 @@ module Sam
           end
 
           class CacheControl < Sam::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::MessageCountTokensBetaParams::Tool::BetaTool::CacheControl,
+                  Sam::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :type
@@ -3973,7 +4227,13 @@ module Sam
         end
 
         class BetaComputerUseTool20241022 < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022,
+                Sam::Internal::AnyHash
+              )
+            end
 
           # The height of the display in pixels.
           sig { returns(Integer) }
@@ -4063,7 +4323,13 @@ module Sam
           end
 
           class CacheControl < Sam::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20241022::CacheControl,
+                  Sam::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :type
@@ -4079,7 +4345,13 @@ module Sam
         end
 
         class BetaBashTool20241022 < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::MessageCountTokensBetaParams::Tool::BetaBashTool20241022,
+                Sam::Internal::AnyHash
+              )
+            end
 
           # Name of the tool.
           #
@@ -4145,7 +4417,13 @@ module Sam
           end
 
           class CacheControl < Sam::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::MessageCountTokensBetaParams::Tool::BetaBashTool20241022::CacheControl,
+                  Sam::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :type
@@ -4161,7 +4439,13 @@ module Sam
         end
 
         class BetaTextEditor20241022 < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022,
+                Sam::Internal::AnyHash
+              )
+            end
 
           # Name of the tool.
           #
@@ -4227,7 +4511,13 @@ module Sam
           end
 
           class CacheControl < Sam::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::MessageCountTokensBetaParams::Tool::BetaTextEditor20241022::CacheControl,
+                  Sam::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :type
@@ -4243,7 +4533,13 @@ module Sam
         end
 
         class BetaComputerUseTool20250124 < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124,
+                Sam::Internal::AnyHash
+              )
+            end
 
           # The height of the display in pixels.
           sig { returns(Integer) }
@@ -4333,7 +4629,13 @@ module Sam
           end
 
           class CacheControl < Sam::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::MessageCountTokensBetaParams::Tool::BetaComputerUseTool20250124::CacheControl,
+                  Sam::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :type
@@ -4349,7 +4651,13 @@ module Sam
         end
 
         class BetaBashTool20250124 < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::MessageCountTokensBetaParams::Tool::BetaBashTool20250124,
+                Sam::Internal::AnyHash
+              )
+            end
 
           # Name of the tool.
           #
@@ -4415,7 +4723,13 @@ module Sam
           end
 
           class CacheControl < Sam::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::MessageCountTokensBetaParams::Tool::BetaBashTool20250124::CacheControl,
+                  Sam::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :type
@@ -4431,7 +4745,13 @@ module Sam
         end
 
         class BetaTextEditor20250124 < Sam::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Sam::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124,
+                Sam::Internal::AnyHash
+              )
+            end
 
           # Name of the tool.
           #
@@ -4497,7 +4817,13 @@ module Sam
           end
 
           class CacheControl < Sam::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Sam::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::MessageCountTokensBetaParams::Tool::BetaTextEditor20250124::CacheControl,
+                  Sam::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :type

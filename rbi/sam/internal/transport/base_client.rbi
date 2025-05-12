@@ -5,9 +5,11 @@ module Sam
     module Transport
       # @api private
       class BaseClient
+        extend Sam::Internal::Util::SorbetRuntimeSupport
+
         abstract!
 
-        RequestComponentsShape =
+        RequestComponents =
           T.type_alias do
             {
               method: Symbol,
@@ -61,7 +63,7 @@ module Sam
             }
           end
 
-        RequestInputShape =
+        RequestInput =
           T.type_alias do
             {
               method: Symbol,
@@ -82,7 +84,7 @@ module Sam
           # @api private
           sig do
             params(
-              req: Sam::Internal::Transport::BaseClient::RequestComponentsShape
+              req: Sam::Internal::Transport::BaseClient::RequestComponents
             ).void
           end
           def validate!(req)
@@ -101,10 +103,10 @@ module Sam
           # @api private
           sig do
             params(
-              request: Sam::Internal::Transport::BaseClient::RequestInputShape,
+              request: Sam::Internal::Transport::BaseClient::RequestInput,
               status: Integer,
               response_headers: T.any(T::Hash[String, String], Net::HTTPHeader)
-            ).returns(Sam::Internal::Transport::BaseClient::RequestInputShape)
+            ).returns(Sam::Internal::Transport::BaseClient::RequestInput)
           end
           def follow_redirect(request, status:, response_headers:)
           end
@@ -166,10 +168,10 @@ module Sam
         sig do
           overridable
             .params(
-              req: Sam::Internal::Transport::BaseClient::RequestComponentsShape,
+              req: Sam::Internal::Transport::BaseClient::RequestComponents,
               opts: Sam::Internal::AnyHash
             )
-            .returns(Sam::Internal::Transport::BaseClient::RequestInputShape)
+            .returns(Sam::Internal::Transport::BaseClient::RequestInput)
         end
         private def build_request(req, opts)
         end
@@ -187,7 +189,7 @@ module Sam
         # @api private
         sig do
           params(
-            request: Sam::Internal::Transport::BaseClient::RequestInputShape,
+            request: Sam::Internal::Transport::BaseClient::RequestInput,
             redirect_count: Integer,
             retry_count: Integer,
             send_retry_header: T::Boolean

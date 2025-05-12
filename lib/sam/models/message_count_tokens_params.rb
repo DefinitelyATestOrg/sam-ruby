@@ -499,6 +499,16 @@ module Sam
 
                 # @!method self.variants
                 #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
+
+                define_sorbet_constant!(:Variants) do
+                  T.type_alias do
+                    T.any(
+                      Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::CharLocation,
+                      Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::PageLocation,
+                      Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                    )
+                  end
+                end
               end
             end
 
@@ -602,6 +612,15 @@ module Sam
 
                 # @!method self.variants
                 #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::URL)]
+
+                define_sorbet_constant!(:Variants) do
+                  T.type_alias do
+                    T.any(
+                      Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64,
+                      Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::URL
+                    )
+                  end
+                end
               end
 
               # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image#cache_control
@@ -931,6 +950,16 @@ module Sam
 
                       # @!method self.variants
                       #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
+
+                      define_sorbet_constant!(:Variants) do
+                        T.type_alias do
+                          T.any(
+                            Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation,
+                            Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation,
+                            Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                          )
+                        end
+                      end
                     end
                   end
 
@@ -1034,6 +1063,15 @@ module Sam
 
                       # @!method self.variants
                       #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL)]
+
+                      define_sorbet_constant!(:Variants) do
+                        T.type_alias do
+                          T.any(
+                            Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64,
+                            Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL
+                          )
+                        end
+                      end
                     end
 
                     # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image#cache_control
@@ -1050,10 +1088,33 @@ module Sam
 
                   # @!method self.variants
                   #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image)]
+
+                  define_sorbet_constant!(:Variants) do
+                    T.type_alias do
+                      T.any(
+                        Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
+                        Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
+                      )
+                    end
+                  end
                 end
 
                 # @!method self.variants
                 #   @return [Array(String, Array<Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>)]
+
+                define_sorbet_constant!(:Variants) do
+                  T.type_alias do
+                    T.any(
+                      String,
+                      T::Array[
+                        T.any(
+                          Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
+                          Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
+                        )
+                      ]
+                    )
+                  end
+                end
 
                 # @type [Sam::Internal::Type::Converter]
                 UnionMember1Array =
@@ -1417,6 +1478,16 @@ module Sam
 
                           # @!method self.variants
                           #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
+
+                          define_sorbet_constant!(:Variants) do
+                            T.type_alias do
+                              T.any(
+                                Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation,
+                                Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation,
+                                Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                              )
+                            end
+                          end
                         end
                       end
 
@@ -1520,6 +1591,15 @@ module Sam
 
                           # @!method self.variants
                           #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL)]
+
+                          define_sorbet_constant!(:Variants) do
+                            T.type_alias do
+                              T.any(
+                                Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64,
+                                Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL
+                              )
+                            end
+                          end
                         end
 
                         # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image#cache_control
@@ -1536,10 +1616,33 @@ module Sam
 
                       # @!method self.variants
                       #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image)]
+
+                      define_sorbet_constant!(:Variants) do
+                        T.type_alias do
+                          T.any(
+                            Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
+                            Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
+                          )
+                        end
+                      end
                     end
 
                     # @!method self.variants
                     #   @return [Array(String, Array<Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>)]
+
+                    define_sorbet_constant!(:Variants) do
+                      T.type_alias do
+                        T.any(
+                          String,
+                          T::Array[
+                            T.any(
+                              Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
+                              Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
+                            )
+                          ]
+                        )
+                      end
+                    end
 
                     # @type [Sam::Internal::Type::Converter]
                     UnionMember1Array =
@@ -1569,6 +1672,17 @@ module Sam
 
                 # @!method self.variants
                 #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Base64, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::URL)]
+
+                define_sorbet_constant!(:Variants) do
+                  T.type_alias do
+                    T.any(
+                      Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Base64,
+                      Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Text,
+                      Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content,
+                      Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::URL
+                    )
+                  end
+                end
               end
 
               # @see Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document#cache_control
@@ -1634,10 +1748,43 @@ module Sam
 
             # @!method self.variants
             #   @return [Array(Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Thinking, Sam::MessageCountTokensParams::Message::Content::UnionMember1::RedactedThinking)]
+
+            define_sorbet_constant!(:Variants) do
+              T.type_alias do
+                T.any(
+                  Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text,
+                  Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image,
+                  Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse,
+                  Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult,
+                  Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document,
+                  Sam::MessageCountTokensParams::Message::Content::UnionMember1::Thinking,
+                  Sam::MessageCountTokensParams::Message::Content::UnionMember1::RedactedThinking
+                )
+              end
+            end
           end
 
           # @!method self.variants
           #   @return [Array(String, Array<Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse, Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document, Sam::MessageCountTokensParams::Message::Content::UnionMember1::Thinking, Sam::MessageCountTokensParams::Message::Content::UnionMember1::RedactedThinking>)]
+
+          define_sorbet_constant!(:Variants) do
+            T.type_alias do
+              T.any(
+                String,
+                T::Array[
+                  T.any(
+                    Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text,
+                    Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image,
+                    Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse,
+                    Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult,
+                    Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document,
+                    Sam::MessageCountTokensParams::Message::Content::UnionMember1::Thinking,
+                    Sam::MessageCountTokensParams::Message::Content::UnionMember1::RedactedThinking
+                  )
+                ]
+              )
+            end
+          end
 
           # @type [Sam::Internal::Type::Converter]
           UnionMember1Array =
@@ -1854,11 +2001,25 @@ module Sam
 
             # @!method self.variants
             #   @return [Array(Sam::MessageCountTokensParams::System::UnionMember1::Citation::CharLocation, Sam::MessageCountTokensParams::System::UnionMember1::Citation::PageLocation, Sam::MessageCountTokensParams::System::UnionMember1::Citation::ContentBlockLocation)]
+
+            define_sorbet_constant!(:Variants) do
+              T.type_alias do
+                T.any(
+                  Sam::MessageCountTokensParams::System::UnionMember1::Citation::CharLocation,
+                  Sam::MessageCountTokensParams::System::UnionMember1::Citation::PageLocation,
+                  Sam::MessageCountTokensParams::System::UnionMember1::Citation::ContentBlockLocation
+                )
+              end
+            end
           end
         end
 
         # @!method self.variants
         #   @return [Array(String, Array<Sam::MessageCountTokensParams::System::UnionMember1>)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias { T.any(String, T::Array[Sam::MessageCountTokensParams::System::UnionMember1]) }
+        end
 
         # @type [Sam::Internal::Type::Converter]
         UnionMember1Array =
@@ -1924,6 +2085,15 @@ module Sam
 
         # @!method self.variants
         #   @return [Array(Sam::MessageCountTokensParams::Thinking::Enabled, Sam::MessageCountTokensParams::Thinking::Disabled)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias do
+            T.any(
+              Sam::MessageCountTokensParams::Thinking::Enabled,
+              Sam::MessageCountTokensParams::Thinking::Disabled
+            )
+          end
+        end
       end
 
       # How the model should use the provided tools. The model can use a specific tool,
@@ -2045,6 +2215,17 @@ module Sam
 
         # @!method self.variants
         #   @return [Array(Sam::MessageCountTokensParams::ToolChoice::Auto, Sam::MessageCountTokensParams::ToolChoice::Any, Sam::MessageCountTokensParams::ToolChoice::Tool, Sam::MessageCountTokensParams::ToolChoice::None)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias do
+            T.any(
+              Sam::MessageCountTokensParams::ToolChoice::Auto,
+              Sam::MessageCountTokensParams::ToolChoice::Any,
+              Sam::MessageCountTokensParams::ToolChoice::Tool,
+              Sam::MessageCountTokensParams::ToolChoice::None
+            )
+          end
+        end
       end
 
       module Tool
@@ -2224,6 +2405,16 @@ module Sam
 
         # @!method self.variants
         #   @return [Array(Sam::MessageCountTokensParams::Tool::Tool, Sam::MessageCountTokensParams::Tool::BashTool20250124, Sam::MessageCountTokensParams::Tool::TextEditor20250124)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias do
+            T.any(
+              Sam::MessageCountTokensParams::Tool::Tool,
+              Sam::MessageCountTokensParams::Tool::BashTool20250124,
+              Sam::MessageCountTokensParams::Tool::TextEditor20250124
+            )
+          end
+        end
       end
     end
   end

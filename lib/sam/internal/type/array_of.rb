@@ -29,7 +29,7 @@ module Sam
         #
         #   @option spec [Boolean] :"nil?"
         #
-        # @return [Sam::Internal::Type::ArrayOf]
+        # @return [self]
         def self.[](...) = new(...)
 
         # @api public

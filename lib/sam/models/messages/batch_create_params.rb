@@ -671,6 +671,16 @@ module Sam
 
                       # @!method self.variants
                       #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
+
+                      define_sorbet_constant!(:Variants) do
+                        T.type_alias do
+                          T.any(
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation,
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation,
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                          )
+                        end
+                      end
                     end
                   end
 
@@ -774,6 +784,15 @@ module Sam
 
                       # @!method self.variants
                       #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL)]
+
+                      define_sorbet_constant!(:Variants) do
+                        T.type_alias do
+                          T.any(
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64,
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL
+                          )
+                        end
+                      end
                     end
 
                     # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image#cache_control
@@ -1103,6 +1122,16 @@ module Sam
 
                             # @!method self.variants
                             #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
+
+                            define_sorbet_constant!(:Variants) do
+                              T.type_alias do
+                                T.any(
+                                  Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation,
+                                  Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation,
+                                  Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                                )
+                              end
+                            end
                           end
                         end
 
@@ -1206,6 +1235,15 @@ module Sam
 
                             # @!method self.variants
                             #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL)]
+
+                            define_sorbet_constant!(:Variants) do
+                              T.type_alias do
+                                T.any(
+                                  Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64,
+                                  Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL
+                                )
+                              end
+                            end
                           end
 
                           # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image#cache_control
@@ -1222,10 +1260,33 @@ module Sam
 
                         # @!method self.variants
                         #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image)]
+
+                        define_sorbet_constant!(:Variants) do
+                          T.type_alias do
+                            T.any(
+                              Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
+                              Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
+                            )
+                          end
+                        end
                       end
 
                       # @!method self.variants
                       #   @return [Array(String, Array<Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>)]
+
+                      define_sorbet_constant!(:Variants) do
+                        T.type_alias do
+                          T.any(
+                            String,
+                            T::Array[
+                              T.any(
+                                Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
+                                Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
+                              )
+                            ]
+                          )
+                        end
+                      end
 
                       # @type [Sam::Internal::Type::Converter]
                       UnionMember1Array =
@@ -1589,6 +1650,16 @@ module Sam
 
                                 # @!method self.variants
                                 #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation)]
+
+                                define_sorbet_constant!(:Variants) do
+                                  T.type_alias do
+                                    T.any(
+                                      Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation,
+                                      Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation,
+                                      Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation
+                                    )
+                                  end
+                                end
                               end
                             end
 
@@ -1692,6 +1763,15 @@ module Sam
 
                                 # @!method self.variants
                                 #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL)]
+
+                                define_sorbet_constant!(:Variants) do
+                                  T.type_alias do
+                                    T.any(
+                                      Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64,
+                                      Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL
+                                    )
+                                  end
+                                end
                               end
 
                               # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image#cache_control
@@ -1708,10 +1788,33 @@ module Sam
 
                             # @!method self.variants
                             #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image)]
+
+                            define_sorbet_constant!(:Variants) do
+                              T.type_alias do
+                                T.any(
+                                  Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
+                                  Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
+                                )
+                              end
+                            end
                           end
 
                           # @!method self.variants
                           #   @return [Array(String, Array<Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>)]
+
+                          define_sorbet_constant!(:Variants) do
+                            T.type_alias do
+                              T.any(
+                                String,
+                                T::Array[
+                                  T.any(
+                                    Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
+                                    Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
+                                  )
+                                ]
+                              )
+                            end
+                          end
 
                           # @type [Sam::Internal::Type::Converter]
                           UnionMember1Array =
@@ -1741,6 +1844,17 @@ module Sam
 
                       # @!method self.variants
                       #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL)]
+
+                      define_sorbet_constant!(:Variants) do
+                        T.type_alias do
+                          T.any(
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64,
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text,
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content,
+                            Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL
+                          )
+                        end
+                      end
                     end
 
                     # @see Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document#cache_control
@@ -1806,10 +1920,43 @@ module Sam
 
                   # @!method self.variants
                   #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Thinking, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking)]
+
+                  define_sorbet_constant!(:Variants) do
+                    T.type_alias do
+                      T.any(
+                        Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text,
+                        Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image,
+                        Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse,
+                        Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult,
+                        Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document,
+                        Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Thinking,
+                        Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking
+                      )
+                    end
+                  end
                 end
 
                 # @!method self.variants
                 #   @return [Array(String, Array<Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Thinking, Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking>)]
+
+                define_sorbet_constant!(:Variants) do
+                  T.type_alias do
+                    T.any(
+                      String,
+                      T::Array[
+                        T.any(
+                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Text,
+                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Image,
+                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse,
+                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult,
+                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Document,
+                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::Thinking,
+                          Sam::Messages::BatchCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking
+                        )
+                      ]
+                    )
+                  end
+                end
 
                 # @type [Sam::Internal::Type::Converter]
                 UnionMember1Array =
@@ -2053,11 +2200,30 @@ module Sam
 
                   # @!method self.variants
                   #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation, Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation, Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation)]
+
+                  define_sorbet_constant!(:Variants) do
+                    T.type_alias do
+                      T.any(
+                        Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation,
+                        Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation,
+                        Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation
+                      )
+                    end
+                  end
                 end
               end
 
               # @!method self.variants
               #   @return [Array(String, Array<Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1>)]
+
+              define_sorbet_constant!(:Variants) do
+                T.type_alias do
+                  T.any(
+                    String,
+                    T::Array[Sam::Messages::BatchCreateParams::Request::Params::System::UnionMember1]
+                  )
+                end
+              end
 
               # @type [Sam::Internal::Type::Converter]
               UnionMember1Array =
@@ -2128,6 +2294,15 @@ module Sam
 
               # @!method self.variants
               #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Thinking::Enabled, Sam::Messages::BatchCreateParams::Request::Params::Thinking::Disabled)]
+
+              define_sorbet_constant!(:Variants) do
+                T.type_alias do
+                  T.any(
+                    Sam::Messages::BatchCreateParams::Request::Params::Thinking::Enabled,
+                    Sam::Messages::BatchCreateParams::Request::Params::Thinking::Disabled
+                  )
+                end
+              end
             end
 
             # How the model should use the provided tools. The model can use a specific tool,
@@ -2254,6 +2429,17 @@ module Sam
 
               # @!method self.variants
               #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Auto, Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Any, Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Tool, Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::None)]
+
+              define_sorbet_constant!(:Variants) do
+                T.type_alias do
+                  T.any(
+                    Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Auto,
+                    Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Any,
+                    Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::Tool,
+                    Sam::Messages::BatchCreateParams::Request::Params::ToolChoice::None
+                  )
+                end
+              end
             end
 
             module Tool
@@ -2445,6 +2631,16 @@ module Sam
 
               # @!method self.variants
               #   @return [Array(Sam::Messages::BatchCreateParams::Request::Params::Tool::Tool, Sam::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124, Sam::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124)]
+
+              define_sorbet_constant!(:Variants) do
+                T.type_alias do
+                  T.any(
+                    Sam::Messages::BatchCreateParams::Request::Params::Tool::Tool,
+                    Sam::Messages::BatchCreateParams::Request::Params::Tool::BashTool20250124,
+                    Sam::Messages::BatchCreateParams::Request::Params::Tool::TextEditor20250124
+                  )
+                end
+              end
             end
           end
         end
