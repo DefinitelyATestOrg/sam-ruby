@@ -61,10 +61,10 @@ module Sam
     def initialize(
       api_key: ENV["API_KEY"],
       base_url: ENV["SAM_BASE_URL"],
-      max_retries: Sam::Client::DEFAULT_MAX_RETRIES,
-      timeout: Sam::Client::DEFAULT_TIMEOUT_IN_SECONDS,
-      initial_retry_delay: Sam::Client::DEFAULT_INITIAL_RETRY_DELAY,
-      max_retry_delay: Sam::Client::DEFAULT_MAX_RETRY_DELAY
+      max_retries: self.class::DEFAULT_MAX_RETRIES,
+      timeout: self.class::DEFAULT_TIMEOUT_IN_SECONDS,
+      initial_retry_delay: self.class::DEFAULT_INITIAL_RETRY_DELAY,
+      max_retry_delay: self.class::DEFAULT_MAX_RETRY_DELAY
     )
       base_url ||= "/api/v3"
 
