@@ -386,6 +386,14 @@ module Sam
         # @param keys [Array<Symbol>, nil]
         #
         # @return [Hash{Symbol=>Object}]
+        #
+        # @example
+        #   # `message_create_response` is a `Sam::Models::MessageCreateResponse`
+        #   message_create_response => {
+        #     id: id,
+        #     content: content,
+        #     model: model
+        #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)
             .filter_map do |k|
