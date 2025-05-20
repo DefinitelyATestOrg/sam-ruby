@@ -25,6 +25,7 @@ class Sam::Test::SorbetRuntimeSupportTest < Minitest::Test
     err = Sam::Internal::Util::SorbetRuntimeSupport::MissingSorbetRuntimeError
 
     assert_raises(err) { Sam::Internal::AnyHash }
+    assert_raises(err) { Sam::Internal::FileInput }
     assert_raises(err) { Sam::Internal::Type::Converter::Input }
     assert_raises(err) { Sam::Internal::Type::Converter::CoerceState }
     assert_raises(err) { Sam::Internal::Type::Converter::DumpState }
