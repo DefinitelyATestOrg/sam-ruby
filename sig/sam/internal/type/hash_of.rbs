@@ -3,6 +3,7 @@ module Sam
     module Type
       class HashOf[Elem]
         include Sam::Internal::Type::Converter
+        include Sam::Internal::Util::SorbetRuntimeSupport
 
         def self.[]: (
           ::Hash[Symbol, top]
@@ -26,6 +27,8 @@ module Sam
           ::Hash[top, top] | top value,
           state: Sam::Internal::Type::Converter::dump_state
         ) -> (::Hash[Symbol, top] | top)
+
+        def to_sorbet_type: -> top
 
         def item_type: -> Elem
 

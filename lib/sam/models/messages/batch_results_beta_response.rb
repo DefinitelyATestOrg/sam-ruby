@@ -399,16 +399,6 @@ module Sam
 
                     # @!method self.variants
                     #   @return [Array(Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation)]
-
-                    define_sorbet_constant!(:Variants) do
-                      T.type_alias do
-                        T.any(
-                          Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation,
-                          Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation,
-                          Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation
-                        )
-                      end
-                    end
                   end
                 end
 
@@ -480,17 +470,6 @@ module Sam
 
                 # @!method self.variants
                 #   @return [Array(Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::ToolUse, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Thinking, Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::RedactedThinking)]
-
-                define_sorbet_constant!(:Variants) do
-                  T.type_alias do
-                    T.any(
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::ToolUse,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Thinking,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::RedactedThinking
-                    )
-                  end
-                end
               end
 
               # The reason that we stopped.
@@ -783,22 +762,6 @@ module Sam
 
                 # @!method self.variants
                 #   @return [Array(Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::InvalidRequestError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::AuthenticationError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::BillingError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::PermissionError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::NotFoundError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::RateLimitError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::TimeoutError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::APIError, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::OverloadedError)]
-
-                define_sorbet_constant!(:Variants) do
-                  T.type_alias do
-                    T.any(
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::InvalidRequestError,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::AuthenticationError,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::BillingError,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::PermissionError,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::NotFoundError,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::RateLimitError,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::TimeoutError,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::APIError,
-                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::OverloadedError
-                    )
-                  end
-                end
               end
             end
           end
@@ -825,17 +788,6 @@ module Sam
 
           # @!method self.variants
           #   @return [Array(Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded, Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored, Sam::Models::Messages::BatchResultsBetaResponse::Result::Canceled, Sam::Models::Messages::BatchResultsBetaResponse::Result::Expired)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded,
-                Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored,
-                Sam::Models::Messages::BatchResultsBetaResponse::Result::Canceled,
-                Sam::Models::Messages::BatchResultsBetaResponse::Result::Expired
-              )
-            end
-          end
         end
       end
     end

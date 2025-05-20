@@ -88,6 +88,13 @@ module Sam
 
             value
           end
+
+          # @api private
+          #
+          # @return [Object]
+          def to_sorbet_type
+            T.any(Pathname, StringIO, IO, String, Sam::FilePart)
+          end
         end
       end
     end
