@@ -316,16 +316,6 @@ module Sam
 
             # @!method self.variants
             #   @return [Array(Sam::Models::MessageCreateResponse::Content::Text::Citation::CharLocation, Sam::Models::MessageCreateResponse::Content::Text::Citation::PageLocation, Sam::Models::MessageCreateResponse::Content::Text::Citation::ContentBlockLocation)]
-
-            define_sorbet_constant!(:Variants) do
-              T.type_alias do
-                T.any(
-                  Sam::Models::MessageCreateResponse::Content::Text::Citation::CharLocation,
-                  Sam::Models::MessageCreateResponse::Content::Text::Citation::PageLocation,
-                  Sam::Models::MessageCreateResponse::Content::Text::Citation::ContentBlockLocation
-                )
-              end
-            end
           end
         end
 
@@ -397,17 +387,6 @@ module Sam
 
         # @!method self.variants
         #   @return [Array(Sam::Models::MessageCreateResponse::Content::Text, Sam::Models::MessageCreateResponse::Content::ToolUse, Sam::Models::MessageCreateResponse::Content::Thinking, Sam::Models::MessageCreateResponse::Content::RedactedThinking)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias do
-            T.any(
-              Sam::Models::MessageCreateResponse::Content::Text,
-              Sam::Models::MessageCreateResponse::Content::ToolUse,
-              Sam::Models::MessageCreateResponse::Content::Thinking,
-              Sam::Models::MessageCreateResponse::Content::RedactedThinking
-            )
-          end
-        end
       end
 
       # The reason that we stopped.

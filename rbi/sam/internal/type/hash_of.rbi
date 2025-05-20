@@ -8,6 +8,7 @@ module Sam
       # Hash of items of a given type.
       class HashOf
         include Sam::Internal::Type::Converter
+        include Sam::Internal::Util::SorbetRuntimeSupport
 
         abstract!
 
@@ -61,6 +62,11 @@ module Sam
             .returns(T.any(Sam::Internal::AnyHash, T.anything))
         end
         def dump(value, state:)
+        end
+
+        # @api private
+        sig { returns(T.anything) }
+        def to_sorbet_type
         end
 
         # @api private
