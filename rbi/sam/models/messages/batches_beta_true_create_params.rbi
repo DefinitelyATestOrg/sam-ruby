@@ -344,12 +344,7 @@ module Sam
             sig do
               returns(
                 T.nilable(
-                  T.any(
-                    String,
-                    T::Array[
-                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1
-                    ]
-                  )
+                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::Variants
                 )
               )
             end
@@ -358,12 +353,7 @@ module Sam
             sig do
               params(
                 system_:
-                  T.any(
-                    String,
-                    T::Array[
-                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::OrHash
-                    ]
-                  )
+                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::Variants
               ).void
             end
             attr_writer :system_
@@ -594,12 +584,7 @@ module Sam
                 stop_sequences: T::Array[String],
                 stream: T::Boolean,
                 system_:
-                  T.any(
-                    String,
-                    T::Array[
-                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::OrHash
-                    ]
-                  ),
+                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::Variants,
                 temperature: Float,
                 thinking:
                   T.any(
@@ -880,12 +865,7 @@ module Sam
                   stop_sequences: T::Array[String],
                   stream: T::Boolean,
                   system_:
-                    T.any(
-                      String,
-                      T::Array[
-                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1
-                      ]
-                    ),
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::Variants,
                   temperature: Float,
                   thinking:
                     T.any(
@@ -930,20 +910,7 @@ module Sam
 
               sig do
                 returns(
-                  T.any(
-                    String,
-                    T::Array[
-                      T.any(
-                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text,
-                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image,
-                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse,
-                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult,
-                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document,
-                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Thinking,
-                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking
-                      )
-                    ]
-                  )
+                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::Variants
                 )
               end
               attr_accessor :content
@@ -958,20 +925,7 @@ module Sam
               sig do
                 params(
                   content:
-                    T.any(
-                      String,
-                      T::Array[
-                        T.any(
-                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::OrHash,
-                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::OrHash,
-                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse::OrHash,
-                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::OrHash,
-                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::OrHash,
-                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Thinking::OrHash,
-                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking::OrHash
-                        )
-                      ]
-                    ),
+                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::Variants,
                   role:
                     Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role::OrSymbol
                 ).returns(T.attached_class)
@@ -983,20 +937,7 @@ module Sam
                 override.returns(
                   {
                     content:
-                      T.any(
-                        String,
-                        T::Array[
-                          T.any(
-                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text,
-                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image,
-                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse,
-                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult,
-                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document,
-                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Thinking,
-                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking
-                          )
-                        ]
-                      ),
+                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::Variants,
                     role:
                       Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role::OrSymbol
                   }
@@ -1013,15 +954,7 @@ module Sam
                     T.any(
                       String,
                       T::Array[
-                        T.any(
-                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text,
-                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image,
-                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse,
-                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult,
-                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document,
-                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Thinking,
-                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking
-                        )
+                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Variants
                       ]
                     )
                   end
@@ -1755,15 +1688,7 @@ module Sam
                     sig do
                       returns(
                         T.nilable(
-                          T.any(
-                            String,
-                            T::Array[
-                              T.any(
-                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
-                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
-                              )
-                            ]
-                          )
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::Variants
                         )
                       )
                     end
@@ -1772,15 +1697,7 @@ module Sam
                     sig do
                       params(
                         content:
-                          T.any(
-                            String,
-                            T::Array[
-                              T.any(
-                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::OrHash,
-                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::OrHash
-                              )
-                            ]
-                          )
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::Variants
                       ).void
                     end
                     attr_writer :content
@@ -1799,15 +1716,7 @@ module Sam
                             Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::CacheControl::OrHash
                           ),
                         content:
-                          T.any(
-                            String,
-                            T::Array[
-                              T.any(
-                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::OrHash,
-                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::OrHash
-                              )
-                            ]
-                          ),
+                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::Variants,
                         is_error: T::Boolean,
                         type: Symbol
                       ).returns(T.attached_class)
@@ -1831,15 +1740,7 @@ module Sam
                               Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::CacheControl
                             ),
                           content:
-                            T.any(
-                              String,
-                              T::Array[
-                                T.any(
-                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
-                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
-                                )
-                              ]
-                            ),
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::Variants,
                           is_error: T::Boolean
                         }
                       )
@@ -1876,10 +1777,7 @@ module Sam
                           T.any(
                             String,
                             T::Array[
-                              T.any(
-                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
-                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
-                              )
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Variants
                             ]
                           )
                         end
@@ -2741,15 +2639,7 @@ module Sam
 
                         sig do
                           returns(
-                            T.any(
-                              String,
-                              T::Array[
-                                T.any(
-                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
-                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
-                                )
-                              ]
-                            )
+                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::Variants
                           )
                         end
                         attr_accessor :content
@@ -2760,15 +2650,7 @@ module Sam
                         sig do
                           params(
                             content:
-                              T.any(
-                                String,
-                                T::Array[
-                                  T.any(
-                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::OrHash,
-                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::OrHash
-                                  )
-                                ]
-                              ),
+                              Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::Variants,
                             type: Symbol
                           ).returns(T.attached_class)
                         end
@@ -2779,15 +2661,7 @@ module Sam
                           override.returns(
                             {
                               content:
-                                T.any(
-                                  String,
-                                  T::Array[
-                                    T.any(
-                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
-                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
-                                    )
-                                  ]
-                                ),
+                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::Variants,
                               type: Symbol
                             }
                           )
@@ -2803,10 +2677,7 @@ module Sam
                               T.any(
                                 String,
                                 T::Array[
-                                  T.any(
-                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
-                                    Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
-                                  )
+                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Variants
                                 ]
                               )
                             end

@@ -24,11 +24,7 @@ module Sam
           metadata: Sam::MessageCreateParams::Metadata::OrHash,
           stop_sequences: T::Array[String],
           stream: T::Boolean,
-          system_:
-            T.any(
-              String,
-              T::Array[Sam::MessageCreateParams::System::UnionMember1::OrHash]
-            ),
+          system_: Sam::MessageCreateParams::System::Variants,
           temperature: Float,
           thinking:
             T.any(
@@ -325,13 +321,7 @@ module Sam
         params(
           messages: T::Array[Sam::MessageCountTokensParams::Message::OrHash],
           model: String,
-          system_:
-            T.any(
-              String,
-              T::Array[
-                Sam::MessageCountTokensParams::System::UnionMember1::OrHash
-              ]
-            ),
+          system_: Sam::MessageCountTokensParams::System::Variants,
           thinking:
             T.any(
               Sam::MessageCountTokensParams::Thinking::Enabled::OrHash,
@@ -573,13 +563,7 @@ module Sam
           messages:
             T::Array[Sam::MessageCountTokensBetaParams::Message::OrHash],
           model: String,
-          system_:
-            T.any(
-              String,
-              T::Array[
-                Sam::MessageCountTokensBetaParams::System::UnionMember1::OrHash
-              ]
-            ),
+          system_: Sam::MessageCountTokensBetaParams::System::Variants,
           thinking:
             T.any(
               Sam::MessageCountTokensBetaParams::Thinking::Enabled::OrHash,

@@ -52,12 +52,7 @@ module Sam
       sig do
         returns(
           T::Array[
-            T.any(
-              Sam::Models::MessagesBetaTrueCreateResponse::Content::Text,
-              Sam::Models::MessagesBetaTrueCreateResponse::Content::ToolUse,
-              Sam::Models::MessagesBetaTrueCreateResponse::Content::Thinking,
-              Sam::Models::MessagesBetaTrueCreateResponse::Content::RedactedThinking
-            )
+            Sam::Models::MessagesBetaTrueCreateResponse::Content::Variants
           ]
         )
       end
@@ -244,12 +239,7 @@ module Sam
             id: String,
             content:
               T::Array[
-                T.any(
-                  Sam::Models::MessagesBetaTrueCreateResponse::Content::Text,
-                  Sam::Models::MessagesBetaTrueCreateResponse::Content::ToolUse,
-                  Sam::Models::MessagesBetaTrueCreateResponse::Content::Thinking,
-                  Sam::Models::MessagesBetaTrueCreateResponse::Content::RedactedThinking
-                )
+                Sam::Models::MessagesBetaTrueCreateResponse::Content::Variants
               ],
             model: String,
             role: Symbol,
@@ -297,11 +287,7 @@ module Sam
             returns(
               T.nilable(
                 T::Array[
-                  T.any(
-                    Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::CharLocation,
-                    Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::PageLocation,
-                    Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::ContentBlockLocation
-                  )
+                  Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::Variants
                 ]
               )
             )
@@ -348,11 +334,7 @@ module Sam
                 citations:
                   T.nilable(
                     T::Array[
-                      T.any(
-                        Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::CharLocation,
-                        Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::PageLocation,
-                        Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::ContentBlockLocation
-                      )
+                      Sam::Models::MessagesBetaTrueCreateResponse::Content::Text::Citation::Variants
                     ]
                   ),
                 text: String,
