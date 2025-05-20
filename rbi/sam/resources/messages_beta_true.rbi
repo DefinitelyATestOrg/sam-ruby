@@ -19,13 +19,7 @@ module Sam
           metadata: Sam::MessagesBetaTrueCreateParams::Metadata::OrHash,
           stop_sequences: T::Array[String],
           stream: T::Boolean,
-          system_:
-            T.any(
-              String,
-              T::Array[
-                Sam::MessagesBetaTrueCreateParams::System::UnionMember1::OrHash
-              ]
-            ),
+          system_: Sam::MessagesBetaTrueCreateParams::System::Variants,
           temperature: Float,
           thinking:
             T.any(

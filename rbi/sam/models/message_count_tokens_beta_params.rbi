@@ -113,26 +113,13 @@ module Sam
       # as specifying a particular goal or role. See our
       # [guide to system prompts](https://docs.anthropic.com/en/docs/system-prompts).
       sig do
-        returns(
-          T.nilable(
-            T.any(
-              String,
-              T::Array[Sam::MessageCountTokensBetaParams::System::UnionMember1]
-            )
-          )
-        )
+        returns(T.nilable(Sam::MessageCountTokensBetaParams::System::Variants))
       end
       attr_reader :system_
 
       sig do
         params(
-          system_:
-            T.any(
-              String,
-              T::Array[
-                Sam::MessageCountTokensBetaParams::System::UnionMember1::OrHash
-              ]
-            )
+          system_: Sam::MessageCountTokensBetaParams::System::Variants
         ).void
       end
       attr_writer :system_
@@ -341,13 +328,7 @@ module Sam
           messages:
             T::Array[Sam::MessageCountTokensBetaParams::Message::OrHash],
           model: String,
-          system_:
-            T.any(
-              String,
-              T::Array[
-                Sam::MessageCountTokensBetaParams::System::UnionMember1::OrHash
-              ]
-            ),
+          system_: Sam::MessageCountTokensBetaParams::System::Variants,
           thinking:
             T.any(
               Sam::MessageCountTokensBetaParams::Thinking::Enabled::OrHash,
@@ -586,13 +567,7 @@ module Sam
           {
             messages: T::Array[Sam::MessageCountTokensBetaParams::Message],
             model: String,
-            system_:
-              T.any(
-                String,
-                T::Array[
-                  Sam::MessageCountTokensBetaParams::System::UnionMember1
-                ]
-              ),
+            system_: Sam::MessageCountTokensBetaParams::System::Variants,
             thinking:
               T.any(
                 Sam::MessageCountTokensBetaParams::Thinking::Enabled,
@@ -637,22 +612,7 @@ module Sam
           end
 
         sig do
-          returns(
-            T.any(
-              String,
-              T::Array[
-                T.any(
-                  Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Text,
-                  Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image,
-                  Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolUse,
-                  Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult,
-                  Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document,
-                  Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Thinking,
-                  Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::RedactedThinking
-                )
-              ]
-            )
-          )
+          returns(Sam::MessageCountTokensBetaParams::Message::Content::Variants)
         end
         attr_accessor :content
 
@@ -664,20 +624,7 @@ module Sam
         sig do
           params(
             content:
-              T.any(
-                String,
-                T::Array[
-                  T.any(
-                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Text::OrHash,
-                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image::OrHash,
-                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolUse::OrHash,
-                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::OrHash,
-                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::OrHash,
-                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Thinking::OrHash,
-                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::RedactedThinking::OrHash
-                  )
-                ]
-              ),
+              Sam::MessageCountTokensBetaParams::Message::Content::Variants,
             role: Sam::MessageCountTokensBetaParams::Message::Role::OrSymbol
           ).returns(T.attached_class)
         end
@@ -688,20 +635,7 @@ module Sam
           override.returns(
             {
               content:
-                T.any(
-                  String,
-                  T::Array[
-                    T.any(
-                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Text,
-                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image,
-                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolUse,
-                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult,
-                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document,
-                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Thinking,
-                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::RedactedThinking
-                    )
-                  ]
-                ),
+                Sam::MessageCountTokensBetaParams::Message::Content::Variants,
               role: Sam::MessageCountTokensBetaParams::Message::Role::OrSymbol
             }
           )
@@ -717,15 +651,7 @@ module Sam
               T.any(
                 String,
                 T::Array[
-                  T.any(
-                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Text,
-                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image,
-                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolUse,
-                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult,
-                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document,
-                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Thinking,
-                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::RedactedThinking
-                  )
+                  Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Variants
                 ]
               )
             end
@@ -1457,15 +1383,7 @@ module Sam
               sig do
                 returns(
                   T.nilable(
-                    T.any(
-                      String,
-                      T::Array[
-                        T.any(
-                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
-                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
-                        )
-                      ]
-                    )
+                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::Variants
                   )
                 )
               end
@@ -1474,15 +1392,7 @@ module Sam
               sig do
                 params(
                   content:
-                    T.any(
-                      String,
-                      T::Array[
-                        T.any(
-                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::OrHash,
-                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::OrHash
-                        )
-                      ]
-                    )
+                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::Variants
                 ).void
               end
               attr_writer :content
@@ -1501,15 +1411,7 @@ module Sam
                       Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::CacheControl::OrHash
                     ),
                   content:
-                    T.any(
-                      String,
-                      T::Array[
-                        T.any(
-                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::OrHash,
-                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::OrHash
-                        )
-                      ]
-                    ),
+                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::Variants,
                   is_error: T::Boolean,
                   type: Symbol
                 ).returns(T.attached_class)
@@ -1533,15 +1435,7 @@ module Sam
                         Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::CacheControl
                       ),
                     content:
-                      T.any(
-                        String,
-                        T::Array[
-                          T.any(
-                            Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
-                            Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
-                          )
-                        ]
-                      ),
+                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::Variants,
                     is_error: T::Boolean
                   }
                 )
@@ -1578,10 +1472,7 @@ module Sam
                     T.any(
                       String,
                       T::Array[
-                        T.any(
-                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
-                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
-                        )
+                        Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Variants
                       ]
                     )
                   end
@@ -2428,15 +2319,7 @@ module Sam
 
                   sig do
                     returns(
-                      T.any(
-                        String,
-                        T::Array[
-                          T.any(
-                            Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
-                            Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
-                          )
-                        ]
-                      )
+                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::Variants
                     )
                   end
                   attr_accessor :content
@@ -2447,15 +2330,7 @@ module Sam
                   sig do
                     params(
                       content:
-                        T.any(
-                          String,
-                          T::Array[
-                            T.any(
-                              Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::OrHash,
-                              Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::OrHash
-                            )
-                          ]
-                        ),
+                        Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::Variants,
                       type: Symbol
                     ).returns(T.attached_class)
                   end
@@ -2466,15 +2341,7 @@ module Sam
                     override.returns(
                       {
                         content:
-                          T.any(
-                            String,
-                            T::Array[
-                              T.any(
-                                Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
-                                Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
-                              )
-                            ]
-                          ),
+                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::Variants,
                         type: Symbol
                       }
                     )
@@ -2490,10 +2357,7 @@ module Sam
                         T.any(
                           String,
                           T::Array[
-                            T.any(
-                              Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
-                              Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
-                            )
+                            Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Variants
                           ]
                         )
                       end

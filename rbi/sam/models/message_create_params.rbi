@@ -152,27 +152,10 @@ module Sam
       # A system prompt is a way of providing context and instructions to Claude, such
       # as specifying a particular goal or role. See our
       # [guide to system prompts](https://docs.anthropic.com/en/docs/system-prompts).
-      sig do
-        returns(
-          T.nilable(
-            T.any(
-              String,
-              T::Array[Sam::MessageCreateParams::System::UnionMember1]
-            )
-          )
-        )
-      end
+      sig { returns(T.nilable(Sam::MessageCreateParams::System::Variants)) }
       attr_reader :system_
 
-      sig do
-        params(
-          system_:
-            T.any(
-              String,
-              T::Array[Sam::MessageCreateParams::System::UnionMember1::OrHash]
-            )
-        ).void
-      end
+      sig { params(system_: Sam::MessageCreateParams::System::Variants).void }
       attr_writer :system_
 
       # Amount of randomness injected into the response.
@@ -416,11 +399,7 @@ module Sam
           metadata: Sam::MessageCreateParams::Metadata::OrHash,
           stop_sequences: T::Array[String],
           stream: T::Boolean,
-          system_:
-            T.any(
-              String,
-              T::Array[Sam::MessageCreateParams::System::UnionMember1::OrHash]
-            ),
+          system_: Sam::MessageCreateParams::System::Variants,
           temperature: Float,
           thinking:
             T.any(
@@ -714,11 +693,7 @@ module Sam
             metadata: Sam::MessageCreateParams::Metadata,
             stop_sequences: T::Array[String],
             stream: T::Boolean,
-            system_:
-              T.any(
-                String,
-                T::Array[Sam::MessageCreateParams::System::UnionMember1]
-              ),
+            system_: Sam::MessageCreateParams::System::Variants,
             temperature: Float,
             thinking:
               T.any(
@@ -758,24 +733,7 @@ module Sam
             T.any(Sam::MessageCreateParams::Message, Sam::Internal::AnyHash)
           end
 
-        sig do
-          returns(
-            T.any(
-              String,
-              T::Array[
-                T.any(
-                  Sam::MessageCreateParams::Message::Content::UnionMember1::Text,
-                  Sam::MessageCreateParams::Message::Content::UnionMember1::Image,
-                  Sam::MessageCreateParams::Message::Content::UnionMember1::ToolUse,
-                  Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult,
-                  Sam::MessageCreateParams::Message::Content::UnionMember1::Document,
-                  Sam::MessageCreateParams::Message::Content::UnionMember1::Thinking,
-                  Sam::MessageCreateParams::Message::Content::UnionMember1::RedactedThinking
-                )
-              ]
-            )
-          )
-        end
+        sig { returns(Sam::MessageCreateParams::Message::Content::Variants) }
         attr_accessor :content
 
         sig { returns(Sam::MessageCreateParams::Message::Role::OrSymbol) }
@@ -783,21 +741,7 @@ module Sam
 
         sig do
           params(
-            content:
-              T.any(
-                String,
-                T::Array[
-                  T.any(
-                    Sam::MessageCreateParams::Message::Content::UnionMember1::Text::OrHash,
-                    Sam::MessageCreateParams::Message::Content::UnionMember1::Image::OrHash,
-                    Sam::MessageCreateParams::Message::Content::UnionMember1::ToolUse::OrHash,
-                    Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::OrHash,
-                    Sam::MessageCreateParams::Message::Content::UnionMember1::Document::OrHash,
-                    Sam::MessageCreateParams::Message::Content::UnionMember1::Thinking::OrHash,
-                    Sam::MessageCreateParams::Message::Content::UnionMember1::RedactedThinking::OrHash
-                  )
-                ]
-              ),
+            content: Sam::MessageCreateParams::Message::Content::Variants,
             role: Sam::MessageCreateParams::Message::Role::OrSymbol
           ).returns(T.attached_class)
         end
@@ -807,21 +751,7 @@ module Sam
         sig do
           override.returns(
             {
-              content:
-                T.any(
-                  String,
-                  T::Array[
-                    T.any(
-                      Sam::MessageCreateParams::Message::Content::UnionMember1::Text,
-                      Sam::MessageCreateParams::Message::Content::UnionMember1::Image,
-                      Sam::MessageCreateParams::Message::Content::UnionMember1::ToolUse,
-                      Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult,
-                      Sam::MessageCreateParams::Message::Content::UnionMember1::Document,
-                      Sam::MessageCreateParams::Message::Content::UnionMember1::Thinking,
-                      Sam::MessageCreateParams::Message::Content::UnionMember1::RedactedThinking
-                    )
-                  ]
-                ),
+              content: Sam::MessageCreateParams::Message::Content::Variants,
               role: Sam::MessageCreateParams::Message::Role::OrSymbol
             }
           )
@@ -837,15 +767,7 @@ module Sam
               T.any(
                 String,
                 T::Array[
-                  T.any(
-                    Sam::MessageCreateParams::Message::Content::UnionMember1::Text,
-                    Sam::MessageCreateParams::Message::Content::UnionMember1::Image,
-                    Sam::MessageCreateParams::Message::Content::UnionMember1::ToolUse,
-                    Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult,
-                    Sam::MessageCreateParams::Message::Content::UnionMember1::Document,
-                    Sam::MessageCreateParams::Message::Content::UnionMember1::Thinking,
-                    Sam::MessageCreateParams::Message::Content::UnionMember1::RedactedThinking
-                  )
+                  Sam::MessageCreateParams::Message::Content::UnionMember1::Variants
                 ]
               )
             end
@@ -1577,15 +1499,7 @@ module Sam
               sig do
                 returns(
                   T.nilable(
-                    T.any(
-                      String,
-                      T::Array[
-                        T.any(
-                          Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
-                          Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
-                        )
-                      ]
-                    )
+                    Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::Variants
                   )
                 )
               end
@@ -1594,15 +1508,7 @@ module Sam
               sig do
                 params(
                   content:
-                    T.any(
-                      String,
-                      T::Array[
-                        T.any(
-                          Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::OrHash,
-                          Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::OrHash
-                        )
-                      ]
-                    )
+                    Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::Variants
                 ).void
               end
               attr_writer :content
@@ -1621,15 +1527,7 @@ module Sam
                       Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::CacheControl::OrHash
                     ),
                   content:
-                    T.any(
-                      String,
-                      T::Array[
-                        T.any(
-                          Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::OrHash,
-                          Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::OrHash
-                        )
-                      ]
-                    ),
+                    Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::Variants,
                   is_error: T::Boolean,
                   type: Symbol
                 ).returns(T.attached_class)
@@ -1653,15 +1551,7 @@ module Sam
                         Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::CacheControl
                       ),
                     content:
-                      T.any(
-                        String,
-                        T::Array[
-                          T.any(
-                            Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
-                            Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
-                          )
-                        ]
-                      ),
+                      Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::Variants,
                     is_error: T::Boolean
                   }
                 )
@@ -1698,10 +1588,7 @@ module Sam
                     T.any(
                       String,
                       T::Array[
-                        T.any(
-                          Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text,
-                          Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
-                        )
+                        Sam::MessageCreateParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Variants
                       ]
                     )
                   end
@@ -2548,15 +2435,7 @@ module Sam
 
                   sig do
                     returns(
-                      T.any(
-                        String,
-                        T::Array[
-                          T.any(
-                            Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
-                            Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
-                          )
-                        ]
-                      )
+                      Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::Variants
                     )
                   end
                   attr_accessor :content
@@ -2567,15 +2446,7 @@ module Sam
                   sig do
                     params(
                       content:
-                        T.any(
-                          String,
-                          T::Array[
-                            T.any(
-                              Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::OrHash,
-                              Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::OrHash
-                            )
-                          ]
-                        ),
+                        Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::Variants,
                       type: Symbol
                     ).returns(T.attached_class)
                   end
@@ -2586,15 +2457,7 @@ module Sam
                     override.returns(
                       {
                         content:
-                          T.any(
-                            String,
-                            T::Array[
-                              T.any(
-                                Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
-                                Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
-                              )
-                            ]
-                          ),
+                          Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::Variants,
                         type: Symbol
                       }
                     )
@@ -2610,10 +2473,7 @@ module Sam
                         T.any(
                           String,
                           T::Array[
-                            T.any(
-                              Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text,
-                              Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
-                            )
+                            Sam::MessageCreateParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Variants
                           ]
                         )
                       end
