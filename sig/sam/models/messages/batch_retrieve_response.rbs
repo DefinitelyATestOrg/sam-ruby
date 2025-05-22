@@ -49,6 +49,19 @@ module Sam
           ?type: :message_batch
         ) -> void
 
+        def to_hash: -> {
+          id: String,
+          archived_at: Time?,
+          cancel_initiated_at: Time?,
+          created_at: Time,
+          ended_at: Time?,
+          expires_at: Time,
+          processing_status: Sam::Models::Messages::BatchRetrieveResponse::processing_status,
+          request_counts: Sam::Models::Messages::BatchRetrieveResponse::RequestCounts,
+          results_url: String?,
+          type: :message_batch
+        }
+
         type processing_status = :in_progress | :canceling | :ended
 
         module ProcessingStatus
@@ -88,6 +101,14 @@ module Sam
             processing: Integer,
             succeeded: Integer
           ) -> void
+
+          def to_hash: -> {
+            canceled: Integer,
+            errored: Integer,
+            expired: Integer,
+            processing: Integer,
+            succeeded: Integer
+          }
         end
       end
     end

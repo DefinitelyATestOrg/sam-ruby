@@ -42,6 +42,15 @@ module Sam
         ?x_api_key: String,
         ?request_options: Sam::request_opts
       ) -> void
+
+      def to_hash: -> {
+        after_id: String,
+        before_id: String,
+        limit: Integer,
+        anthropic_version: String,
+        x_api_key: String,
+        request_options: Sam::RequestOptions
+      }
     end
   end
 end

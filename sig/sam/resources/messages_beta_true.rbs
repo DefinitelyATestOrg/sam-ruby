@@ -12,7 +12,7 @@ module Sam
         ?temperature: Float,
         ?thinking: Sam::Models::MessagesBetaTrueCreateParams::thinking,
         ?tool_choice: Sam::Models::MessagesBetaTrueCreateParams::tool_choice,
-        ?tools: ::Array[Sam::MessagesBetaTrueCreateParams::tool],
+        ?tools: ::Array[Sam::Models::MessagesBetaTrueCreateParams::tool],
         ?top_k: Integer,
         ?top_p: Float,
         ?anthropic_beta: ::Array[String],

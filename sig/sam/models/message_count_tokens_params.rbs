@@ -7,7 +7,7 @@ module Sam
         system_: Sam::Models::MessageCountTokensParams::system_,
         thinking: Sam::Models::MessageCountTokensParams::thinking,
         tool_choice: Sam::Models::MessageCountTokensParams::tool_choice,
-        tools: ::Array[Sam::MessageCountTokensParams::tool],
+        tools: ::Array[Sam::Models::MessageCountTokensParams::tool],
         anthropic_beta: ::Array[String],
         anthropic_version: String,
         x_api_key: String
@@ -40,11 +40,11 @@ module Sam
         Sam::Models::MessageCountTokensParams::tool_choice
       ) -> Sam::Models::MessageCountTokensParams::tool_choice
 
-      attr_reader tools: ::Array[Sam::MessageCountTokensParams::tool]?
+      attr_reader tools: ::Array[Sam::Models::MessageCountTokensParams::tool]?
 
       def tools=: (
-        ::Array[Sam::MessageCountTokensParams::tool]
-      ) -> ::Array[Sam::MessageCountTokensParams::tool]
+        ::Array[Sam::Models::MessageCountTokensParams::tool]
+      ) -> ::Array[Sam::Models::MessageCountTokensParams::tool]
 
       attr_reader anthropic_beta: ::Array[String]?
 
@@ -64,32 +64,50 @@ module Sam
         ?system_: Sam::Models::MessageCountTokensParams::system_,
         ?thinking: Sam::Models::MessageCountTokensParams::thinking,
         ?tool_choice: Sam::Models::MessageCountTokensParams::tool_choice,
-        ?tools: ::Array[Sam::MessageCountTokensParams::tool],
+        ?tools: ::Array[Sam::Models::MessageCountTokensParams::tool],
         ?anthropic_beta: ::Array[String],
         ?anthropic_version: String,
         ?x_api_key: String,
         ?request_options: Sam::request_opts
       ) -> void
 
+      def to_hash: -> {
+        messages: ::Array[Sam::MessageCountTokensParams::Message],
+        model: String,
+        system_: Sam::Models::MessageCountTokensParams::system_,
+        thinking: Sam::Models::MessageCountTokensParams::thinking,
+        tool_choice: Sam::Models::MessageCountTokensParams::tool_choice,
+        tools: ::Array[Sam::Models::MessageCountTokensParams::tool],
+        anthropic_beta: ::Array[String],
+        anthropic_version: String,
+        x_api_key: String,
+        request_options: Sam::RequestOptions
+      }
+
       type message =
         {
-          content: Sam::MessageCountTokensParams::Message::content,
-          role: Sam::MessageCountTokensParams::Message::role
+          content: Sam::Models::MessageCountTokensParams::Message::content,
+          role: Sam::Models::MessageCountTokensParams::Message::role
         }
 
       class Message < Sam::Internal::Type::BaseModel
-        attr_accessor content: Sam::MessageCountTokensParams::Message::content
+        attr_accessor content: Sam::Models::MessageCountTokensParams::Message::content
 
-        attr_accessor role: Sam::MessageCountTokensParams::Message::role
+        attr_accessor role: Sam::Models::MessageCountTokensParams::Message::role
 
         def initialize: (
-          content: Sam::MessageCountTokensParams::Message::content,
-          role: Sam::MessageCountTokensParams::Message::role
+          content: Sam::Models::MessageCountTokensParams::Message::content,
+          role: Sam::Models::MessageCountTokensParams::Message::role
         ) -> void
+
+        def to_hash: -> {
+          content: Sam::Models::MessageCountTokensParams::Message::content,
+          role: Sam::Models::MessageCountTokensParams::Message::role
+        }
 
         type content =
           String
-          | ::Array[Sam::MessageCountTokensParams::Message::Content::union_member1]
+          | ::Array[Sam::Models::MessageCountTokensParams::Message::Content::union_member1]
 
         module Content
           extend Sam::Internal::Type::Union
@@ -111,7 +129,7 @@ module Sam
                 text: String,
                 type: :text,
                 cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::CacheControl?,
-                citations: ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::citation]?
+                citations: ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::citation]?
               }
 
             class Text < Sam::Internal::Type::BaseModel
@@ -121,14 +139,21 @@ module Sam
 
               attr_accessor cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::CacheControl?
 
-              attr_accessor citations: ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::citation]?
+              attr_accessor citations: ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::citation]?
 
               def initialize: (
                 text: String,
                 ?cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::CacheControl?,
-                ?citations: ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::citation]?,
+                ?citations: ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::citation]?,
                 ?type: :text
               ) -> void
+
+              def to_hash: -> {
+                text: String,
+                type: :text,
+                cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::CacheControl?,
+                citations: ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::citation]?
+              }
 
               type cache_control = { type: :ephemeral }
 
@@ -136,6 +161,8 @@ module Sam
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
+
+                def to_hash: -> { type: :ephemeral }
               end
 
               type citation =
@@ -177,6 +204,15 @@ module Sam
                     start_char_index: Integer,
                     ?type: :char_location
                   ) -> void
+
+                  def to_hash: -> {
+                    cited_text: String,
+                    document_index: Integer,
+                    document_title: String?,
+                    end_char_index: Integer,
+                    start_char_index: Integer,
+                    type: :char_location
+                  }
                 end
 
                 type page_location =
@@ -210,6 +246,15 @@ module Sam
                     start_page_number: Integer,
                     ?type: :page_location
                   ) -> void
+
+                  def to_hash: -> {
+                    cited_text: String,
+                    document_index: Integer,
+                    document_title: String?,
+                    end_page_number: Integer,
+                    start_page_number: Integer,
+                    type: :page_location
+                  }
                 end
 
                 type content_block_location =
@@ -243,31 +288,46 @@ module Sam
                     start_block_index: Integer,
                     ?type: :content_block_location
                   ) -> void
+
+                  def to_hash: -> {
+                    cited_text: String,
+                    document_index: Integer,
+                    document_title: String?,
+                    end_block_index: Integer,
+                    start_block_index: Integer,
+                    type: :content_block_location
+                  }
                 end
 
-                def self?.variants: -> ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::Text::citation]
+                def self?.variants: -> ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Text::citation]
               end
             end
 
             type image =
               {
-                source: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::source,
+                source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::source,
                 type: :image,
                 cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::CacheControl?
               }
 
             class Image < Sam::Internal::Type::BaseModel
-              attr_accessor source: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::source
+              attr_accessor source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::source
 
               attr_accessor type: :image
 
               attr_accessor cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::CacheControl?
 
               def initialize: (
-                source: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::source,
+                source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::source,
                 ?cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::CacheControl?,
                 ?type: :image
               ) -> void
+
+              def to_hash: -> {
+                source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::source,
+                type: :image,
+                cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::CacheControl?
+              }
 
               type source =
                 Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64
@@ -279,22 +339,28 @@ module Sam
                 type base64 =
                   {
                     data: String,
-                    media_type: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64::media_type,
+                    media_type: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64::media_type,
                     type: :base64
                   }
 
                 class Base64 < Sam::Internal::Type::BaseModel
                   attr_accessor data: String
 
-                  attr_accessor media_type: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64::media_type
+                  attr_accessor media_type: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64::media_type
 
                   attr_accessor type: :base64
 
                   def initialize: (
                     data: String,
-                    media_type: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64::media_type,
+                    media_type: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64::media_type,
                     ?type: :base64
                   ) -> void
+
+                  def to_hash: -> {
+                    data: String,
+                    media_type: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64::media_type,
+                    type: :base64
+                  }
 
                   type media_type =
                     :"image/jpeg" | :"image/png" | :"image/gif" | :"image/webp"
@@ -307,7 +373,7 @@ module Sam
                     IMAGE_GIF: :"image/gif"
                     IMAGE_WEBP: :"image/webp"
 
-                    def self?.values: -> ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64::media_type]
+                    def self?.values: -> ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::Source::Base64::media_type]
                   end
                 end
 
@@ -319,9 +385,11 @@ module Sam
                   attr_accessor url: String
 
                   def initialize: (url: String, ?type: :url) -> void
+
+                  def to_hash: -> { type: :url, url: String }
                 end
 
-                def self?.variants: -> ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::Image::source]
+                def self?.variants: -> ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Image::source]
               end
 
               type cache_control = { type: :ephemeral }
@@ -330,6 +398,8 @@ module Sam
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
+
+                def to_hash: -> { type: :ephemeral }
               end
             end
 
@@ -361,12 +431,22 @@ module Sam
                 ?type: :tool_use
               ) -> void
 
+              def to_hash: -> {
+                id: String,
+                input: top,
+                name: String,
+                type: :tool_use,
+                cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolUse::CacheControl?
+              }
+
               type cache_control = { type: :ephemeral }
 
               class CacheControl < Sam::Internal::Type::BaseModel
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
+
+                def to_hash: -> { type: :ephemeral }
               end
             end
 
@@ -375,7 +455,7 @@ module Sam
                 tool_use_id: String,
                 type: :tool_result,
                 cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::CacheControl?,
-                content: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::content,
+                content: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::content,
                 is_error: bool
               }
 
@@ -386,11 +466,11 @@ module Sam
 
               attr_accessor cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::CacheControl?
 
-              attr_reader content: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::content?
+              attr_reader content: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::content?
 
               def content=: (
-                Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::content
-              ) -> Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::content
+                Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::content
+              ) -> Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::content
 
               attr_reader is_error: bool?
 
@@ -399,10 +479,18 @@ module Sam
               def initialize: (
                 tool_use_id: String,
                 ?cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::CacheControl?,
-                ?content: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::content,
+                ?content: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::content,
                 ?is_error: bool,
                 ?type: :tool_result
               ) -> void
+
+              def to_hash: -> {
+                tool_use_id: String,
+                type: :tool_result,
+                cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::CacheControl?,
+                content: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::content,
+                is_error: bool
+              }
 
               type cache_control = { type: :ephemeral }
 
@@ -410,11 +498,13 @@ module Sam
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
+
+                def to_hash: -> { type: :ephemeral }
               end
 
               type content =
                 String
-                | ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::union_member1]
+                | ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::union_member1]
 
               module Content
                 extend Sam::Internal::Type::Union
@@ -431,7 +521,7 @@ module Sam
                       text: String,
                       type: :text,
                       cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl?,
-                      citations: ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]?
+                      citations: ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]?
                     }
 
                   class Text < Sam::Internal::Type::BaseModel
@@ -441,14 +531,21 @@ module Sam
 
                     attr_accessor cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl?
 
-                    attr_accessor citations: ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]?
+                    attr_accessor citations: ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]?
 
                     def initialize: (
                       text: String,
                       ?cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl?,
-                      ?citations: ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]?,
+                      ?citations: ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]?,
                       ?type: :text
                     ) -> void
+
+                    def to_hash: -> {
+                      text: String,
+                      type: :text,
+                      cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::CacheControl?,
+                      citations: ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]?
+                    }
 
                     type cache_control = { type: :ephemeral }
 
@@ -456,6 +553,8 @@ module Sam
                       attr_accessor type: :ephemeral
 
                       def initialize: (?type: :ephemeral) -> void
+
+                      def to_hash: -> { type: :ephemeral }
                     end
 
                     type citation =
@@ -497,6 +596,15 @@ module Sam
                           start_char_index: Integer,
                           ?type: :char_location
                         ) -> void
+
+                        def to_hash: -> {
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: String?,
+                          end_char_index: Integer,
+                          start_char_index: Integer,
+                          type: :char_location
+                        }
                       end
 
                       type page_location =
@@ -530,6 +638,15 @@ module Sam
                           start_page_number: Integer,
                           ?type: :page_location
                         ) -> void
+
+                        def to_hash: -> {
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: String?,
+                          end_page_number: Integer,
+                          start_page_number: Integer,
+                          type: :page_location
+                        }
                       end
 
                       type content_block_location =
@@ -563,31 +680,46 @@ module Sam
                           start_block_index: Integer,
                           ?type: :content_block_location
                         ) -> void
+
+                        def to_hash: -> {
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: String?,
+                          end_block_index: Integer,
+                          start_block_index: Integer,
+                          type: :content_block_location
+                        }
                       end
 
-                      def self?.variants: -> ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]
+                      def self?.variants: -> ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::citation]
                     end
                   end
 
                   type image =
                     {
-                      source: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source,
+                      source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source,
                       type: :image,
                       cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl?
                     }
 
                   class Image < Sam::Internal::Type::BaseModel
-                    attr_accessor source: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source
+                    attr_accessor source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source
 
                     attr_accessor type: :image
 
                     attr_accessor cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl?
 
                     def initialize: (
-                      source: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source,
+                      source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source,
                       ?cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl?,
                       ?type: :image
                     ) -> void
+
+                    def to_hash: -> {
+                      source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source,
+                      type: :image,
+                      cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::CacheControl?
+                    }
 
                     type source =
                       Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64
@@ -599,22 +731,28 @@ module Sam
                       type base64 =
                         {
                           data: String,
-                          media_type: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type,
+                          media_type: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type,
                           type: :base64
                         }
 
                       class Base64 < Sam::Internal::Type::BaseModel
                         attr_accessor data: String
 
-                        attr_accessor media_type: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type
+                        attr_accessor media_type: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type
 
                         attr_accessor type: :base64
 
                         def initialize: (
                           data: String,
-                          media_type: Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type,
+                          media_type: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type,
                           ?type: :base64
                         ) -> void
+
+                        def to_hash: -> {
+                          data: String,
+                          media_type: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type,
+                          type: :base64
+                        }
 
                         type media_type =
                           :"image/jpeg"
@@ -630,7 +768,7 @@ module Sam
                           IMAGE_GIF: :"image/gif"
                           IMAGE_WEBP: :"image/webp"
 
-                          def self?.values: -> ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type]
+                          def self?.values: -> ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::media_type]
                         end
                       end
 
@@ -642,9 +780,11 @@ module Sam
                         attr_accessor url: String
 
                         def initialize: (url: String, ?type: :url) -> void
+
+                        def to_hash: -> { type: :url, url: String }
                       end
 
-                      def self?.variants: -> ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source]
+                      def self?.variants: -> ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::source]
                     end
 
                     type cache_control = { type: :ephemeral }
@@ -653,13 +793,15 @@ module Sam
                       attr_accessor type: :ephemeral
 
                       def initialize: (?type: :ephemeral) -> void
+
+                      def to_hash: -> { type: :ephemeral }
                     end
                   end
 
-                  def self?.variants: -> ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::union_member1]
+                  def self?.variants: -> ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::Content::union_member1]
                 end
 
-                def self?.variants: -> ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::content]
+                def self?.variants: -> ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::ToolResult::content]
 
                 UnionMember1Array: Sam::Internal::Type::Converter
               end
@@ -667,7 +809,7 @@ module Sam
 
             type document =
               {
-                source: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::source,
+                source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::source,
                 type: :document,
                 cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::CacheControl?,
                 citations: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Citations,
@@ -676,7 +818,7 @@ module Sam
               }
 
             class Document < Sam::Internal::Type::BaseModel
-              attr_accessor source: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::source
+              attr_accessor source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::source
 
               attr_accessor type: :document
 
@@ -693,13 +835,22 @@ module Sam
               attr_accessor title: String?
 
               def initialize: (
-                source: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::source,
+                source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::source,
                 ?cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::CacheControl?,
                 ?citations: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Citations,
                 ?context: String?,
                 ?title: String?,
                 ?type: :document
               ) -> void
+
+              def to_hash: -> {
+                source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::source,
+                type: :document,
+                cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::CacheControl?,
+                citations: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Citations,
+                context: String?,
+                title: String?
+              }
 
               type source =
                 Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Base64
@@ -729,6 +880,12 @@ module Sam
                     ?media_type: :"application/pdf",
                     ?type: :base64
                   ) -> void
+
+                  def to_hash: -> {
+                    data: String,
+                    media_type: :"application/pdf",
+                    type: :base64
+                  }
                 end
 
                 type text =
@@ -746,27 +903,38 @@ module Sam
                     ?media_type: :"text/plain",
                     ?type: :text
                   ) -> void
+
+                  def to_hash: -> {
+                    data: String,
+                    media_type: :"text/plain",
+                    type: :text
+                  }
                 end
 
                 type content =
                   {
-                    content: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::content,
+                    content: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::content,
                     type: :content
                   }
 
                 class Content < Sam::Internal::Type::BaseModel
-                  attr_accessor content: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::content
+                  attr_accessor content: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::content
 
                   attr_accessor type: :content
 
                   def initialize: (
-                    content: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::content,
+                    content: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::content,
                     ?type: :content
                   ) -> void
 
+                  def to_hash: -> {
+                    content: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::content,
+                    type: :content
+                  }
+
                   type content =
                     String
-                    | ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::union_member1]
+                    | ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::union_member1]
 
                   module Content
                     extend Sam::Internal::Type::Union
@@ -783,7 +951,7 @@ module Sam
                           text: String,
                           type: :text,
                           cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl?,
-                          citations: ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]?
+                          citations: ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]?
                         }
 
                       class Text < Sam::Internal::Type::BaseModel
@@ -793,14 +961,21 @@ module Sam
 
                         attr_accessor cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl?
 
-                        attr_accessor citations: ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]?
+                        attr_accessor citations: ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]?
 
                         def initialize: (
                           text: String,
                           ?cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl?,
-                          ?citations: ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]?,
+                          ?citations: ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]?,
                           ?type: :text
                         ) -> void
+
+                        def to_hash: -> {
+                          text: String,
+                          type: :text,
+                          cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::CacheControl?,
+                          citations: ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]?
+                        }
 
                         type cache_control = { type: :ephemeral }
 
@@ -808,6 +983,8 @@ module Sam
                           attr_accessor type: :ephemeral
 
                           def initialize: (?type: :ephemeral) -> void
+
+                          def to_hash: -> { type: :ephemeral }
                         end
 
                         type citation =
@@ -849,6 +1026,15 @@ module Sam
                               start_char_index: Integer,
                               ?type: :char_location
                             ) -> void
+
+                            def to_hash: -> {
+                              cited_text: String,
+                              document_index: Integer,
+                              document_title: String?,
+                              end_char_index: Integer,
+                              start_char_index: Integer,
+                              type: :char_location
+                            }
                           end
 
                           type page_location =
@@ -882,6 +1068,15 @@ module Sam
                               start_page_number: Integer,
                               ?type: :page_location
                             ) -> void
+
+                            def to_hash: -> {
+                              cited_text: String,
+                              document_index: Integer,
+                              document_title: String?,
+                              end_page_number: Integer,
+                              start_page_number: Integer,
+                              type: :page_location
+                            }
                           end
 
                           type content_block_location =
@@ -915,31 +1110,46 @@ module Sam
                               start_block_index: Integer,
                               ?type: :content_block_location
                             ) -> void
+
+                            def to_hash: -> {
+                              cited_text: String,
+                              document_index: Integer,
+                              document_title: String?,
+                              end_block_index: Integer,
+                              start_block_index: Integer,
+                              type: :content_block_location
+                            }
                           end
 
-                          def self?.variants: -> ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]
+                          def self?.variants: -> ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::citation]
                         end
                       end
 
                       type image =
                         {
-                          source: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source,
+                          source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source,
                           type: :image,
                           cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl?
                         }
 
                       class Image < Sam::Internal::Type::BaseModel
-                        attr_accessor source: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source
+                        attr_accessor source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source
 
                         attr_accessor type: :image
 
                         attr_accessor cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl?
 
                         def initialize: (
-                          source: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source,
+                          source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source,
                           ?cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl?,
                           ?type: :image
                         ) -> void
+
+                        def to_hash: -> {
+                          source: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source,
+                          type: :image,
+                          cache_control: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::CacheControl?
+                        }
 
                         type source =
                           Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64
@@ -951,22 +1161,28 @@ module Sam
                           type base64 =
                             {
                               data: String,
-                              media_type: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type,
+                              media_type: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type,
                               type: :base64
                             }
 
                           class Base64 < Sam::Internal::Type::BaseModel
                             attr_accessor data: String
 
-                            attr_accessor media_type: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type
+                            attr_accessor media_type: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type
 
                             attr_accessor type: :base64
 
                             def initialize: (
                               data: String,
-                              media_type: Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type,
+                              media_type: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type,
                               ?type: :base64
                             ) -> void
+
+                            def to_hash: -> {
+                              data: String,
+                              media_type: Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type,
+                              type: :base64
+                            }
 
                             type media_type =
                               :"image/jpeg"
@@ -982,7 +1198,7 @@ module Sam
                               IMAGE_GIF: :"image/gif"
                               IMAGE_WEBP: :"image/webp"
 
-                              def self?.values: -> ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type]
+                              def self?.values: -> ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::media_type]
                             end
                           end
 
@@ -994,9 +1210,11 @@ module Sam
                             attr_accessor url: String
 
                             def initialize: (url: String, ?type: :url) -> void
+
+                            def to_hash: -> { type: :url, url: String }
                           end
 
-                          def self?.variants: -> ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source]
+                          def self?.variants: -> ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::source]
                         end
 
                         type cache_control = { type: :ephemeral }
@@ -1005,13 +1223,15 @@ module Sam
                           attr_accessor type: :ephemeral
 
                           def initialize: (?type: :ephemeral) -> void
+
+                          def to_hash: -> { type: :ephemeral }
                         end
                       end
 
-                      def self?.variants: -> ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::union_member1]
+                      def self?.variants: -> ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::Content::union_member1]
                     end
 
-                    def self?.variants: -> ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::content]
+                    def self?.variants: -> ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::Source::Content::content]
 
                     UnionMember1Array: Sam::Internal::Type::Converter
                   end
@@ -1025,9 +1245,11 @@ module Sam
                   attr_accessor url: String
 
                   def initialize: (url: String, ?type: :url) -> void
+
+                  def to_hash: -> { type: :url, url: String }
                 end
 
-                def self?.variants: -> ::Array[Sam::MessageCountTokensParams::Message::Content::UnionMember1::Document::source]
+                def self?.variants: -> ::Array[Sam::Models::MessageCountTokensParams::Message::Content::UnionMember1::Document::source]
               end
 
               type cache_control = { type: :ephemeral }
@@ -1036,6 +1258,8 @@ module Sam
                 attr_accessor type: :ephemeral
 
                 def initialize: (?type: :ephemeral) -> void
+
+                def to_hash: -> { type: :ephemeral }
               end
 
               type citations = { enabled: bool }
@@ -1046,6 +1270,8 @@ module Sam
                 def enabled=: (bool) -> bool
 
                 def initialize: (?enabled: bool) -> void
+
+                def to_hash: -> { enabled: bool }
               end
             end
 
@@ -1064,6 +1290,12 @@ module Sam
                 thinking: String,
                 ?type: :thinking
               ) -> void
+
+              def to_hash: -> {
+                signature: String,
+                thinking: String,
+                type: :thinking
+              }
             end
 
             type redacted_thinking = { data: String, type: :redacted_thinking }
@@ -1074,12 +1306,14 @@ module Sam
               attr_accessor type: :redacted_thinking
 
               def initialize: (data: String, ?type: :redacted_thinking) -> void
+
+              def to_hash: -> { data: String, type: :redacted_thinking }
             end
 
-            def self?.variants: -> ::Array[Sam::MessageCountTokensParams::Message::Content::union_member1]
+            def self?.variants: -> ::Array[Sam::Models::MessageCountTokensParams::Message::Content::union_member1]
           end
 
-          def self?.variants: -> ::Array[Sam::MessageCountTokensParams::Message::content]
+          def self?.variants: -> ::Array[Sam::Models::MessageCountTokensParams::Message::content]
 
           UnionMember1Array: Sam::Internal::Type::Converter
         end
@@ -1092,7 +1326,7 @@ module Sam
           USER: :user
           ASSISTANT: :assistant
 
-          def self?.values: -> ::Array[Sam::MessageCountTokensParams::Message::role]
+          def self?.values: -> ::Array[Sam::Models::MessageCountTokensParams::Message::role]
         end
       end
 
@@ -1107,7 +1341,7 @@ module Sam
             text: String,
             type: :text,
             cache_control: Sam::MessageCountTokensParams::System::UnionMember1::CacheControl?,
-            citations: ::Array[Sam::MessageCountTokensParams::System::UnionMember1::citation]?
+            citations: ::Array[Sam::Models::MessageCountTokensParams::System::UnionMember1::citation]?
           }
 
         class UnionMember1 < Sam::Internal::Type::BaseModel
@@ -1117,14 +1351,21 @@ module Sam
 
           attr_accessor cache_control: Sam::MessageCountTokensParams::System::UnionMember1::CacheControl?
 
-          attr_accessor citations: ::Array[Sam::MessageCountTokensParams::System::UnionMember1::citation]?
+          attr_accessor citations: ::Array[Sam::Models::MessageCountTokensParams::System::UnionMember1::citation]?
 
           def initialize: (
             text: String,
             ?cache_control: Sam::MessageCountTokensParams::System::UnionMember1::CacheControl?,
-            ?citations: ::Array[Sam::MessageCountTokensParams::System::UnionMember1::citation]?,
+            ?citations: ::Array[Sam::Models::MessageCountTokensParams::System::UnionMember1::citation]?,
             ?type: :text
           ) -> void
+
+          def to_hash: -> {
+            text: String,
+            type: :text,
+            cache_control: Sam::MessageCountTokensParams::System::UnionMember1::CacheControl?,
+            citations: ::Array[Sam::Models::MessageCountTokensParams::System::UnionMember1::citation]?
+          }
 
           type cache_control = { type: :ephemeral }
 
@@ -1132,6 +1373,8 @@ module Sam
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void
+
+            def to_hash: -> { type: :ephemeral }
           end
 
           type citation =
@@ -1173,6 +1416,15 @@ module Sam
                 start_char_index: Integer,
                 ?type: :char_location
               ) -> void
+
+              def to_hash: -> {
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_char_index: Integer,
+                start_char_index: Integer,
+                type: :char_location
+              }
             end
 
             type page_location =
@@ -1206,6 +1458,15 @@ module Sam
                 start_page_number: Integer,
                 ?type: :page_location
               ) -> void
+
+              def to_hash: -> {
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_page_number: Integer,
+                start_page_number: Integer,
+                type: :page_location
+              }
             end
 
             type content_block_location =
@@ -1239,9 +1500,18 @@ module Sam
                 start_block_index: Integer,
                 ?type: :content_block_location
               ) -> void
+
+              def to_hash: -> {
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_block_index: Integer,
+                start_block_index: Integer,
+                type: :content_block_location
+              }
             end
 
-            def self?.variants: -> ::Array[Sam::MessageCountTokensParams::System::UnionMember1::citation]
+            def self?.variants: -> ::Array[Sam::Models::MessageCountTokensParams::System::UnionMember1::citation]
           end
         end
 
@@ -1265,6 +1535,8 @@ module Sam
           attr_accessor type: :enabled
 
           def initialize: (budget_tokens: Integer, ?type: :enabled) -> void
+
+          def to_hash: -> { budget_tokens: Integer, type: :enabled }
         end
 
         type disabled = { type: :disabled }
@@ -1273,6 +1545,8 @@ module Sam
           attr_accessor type: :disabled
 
           def initialize: (?type: :disabled) -> void
+
+          def to_hash: -> { type: :disabled }
         end
 
         def self?.variants: -> ::Array[Sam::Models::MessageCountTokensParams::thinking]
@@ -1300,6 +1574,8 @@ module Sam
             ?disable_parallel_tool_use: bool,
             ?type: :auto
           ) -> void
+
+          def to_hash: -> { type: :auto, disable_parallel_tool_use: bool }
         end
 
         type any = { type: :any, disable_parallel_tool_use: bool }
@@ -1315,6 +1591,8 @@ module Sam
             ?disable_parallel_tool_use: bool,
             ?type: :any
           ) -> void
+
+          def to_hash: -> { type: :any, disable_parallel_tool_use: bool }
         end
 
         type tool =
@@ -1334,6 +1612,12 @@ module Sam
             ?disable_parallel_tool_use: bool,
             ?type: :tool
           ) -> void
+
+          def to_hash: -> {
+            name: String,
+            type: :tool,
+            disable_parallel_tool_use: bool
+          }
         end
 
         type none = { type: :none }
@@ -1342,6 +1626,8 @@ module Sam
           attr_accessor type: :none
 
           def initialize: (?type: :none) -> void
+
+          def to_hash: -> { type: :none }
         end
 
         def self?.variants: -> ::Array[Sam::Models::MessageCountTokensParams::tool_choice]
@@ -1381,6 +1667,13 @@ module Sam
             ?description: String
           ) -> void
 
+          def to_hash: -> {
+            input_schema: Sam::MessageCountTokensParams::Tool::Tool::InputSchema,
+            name: String,
+            cache_control: Sam::MessageCountTokensParams::Tool::Tool::CacheControl?,
+            description: String
+          }
+
           type input_schema = { type: :object, properties: top? }
 
           class InputSchema < Sam::Internal::Type::BaseModel
@@ -1389,6 +1682,8 @@ module Sam
             attr_accessor properties: top?
 
             def initialize: (?properties: top?, ?type: :object) -> void
+
+            def to_hash: -> { type: :object, properties: top? }
           end
 
           type cache_control = { type: :ephemeral }
@@ -1397,6 +1692,8 @@ module Sam
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void
+
+            def to_hash: -> { type: :ephemeral }
           end
         end
 
@@ -1420,12 +1717,20 @@ module Sam
             ?type: :bash_20250124
           ) -> void
 
+          def to_hash: -> {
+            name: :bash,
+            type: :bash_20250124,
+            cache_control: Sam::MessageCountTokensParams::Tool::BashTool20250124::CacheControl?
+          }
+
           type cache_control = { type: :ephemeral }
 
           class CacheControl < Sam::Internal::Type::BaseModel
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void
+
+            def to_hash: -> { type: :ephemeral }
           end
         end
 
@@ -1449,16 +1754,24 @@ module Sam
             ?type: :text_editor_20250124
           ) -> void
 
+          def to_hash: -> {
+            name: :str_replace_editor,
+            type: :text_editor_20250124,
+            cache_control: Sam::MessageCountTokensParams::Tool::TextEditor20250124::CacheControl?
+          }
+
           type cache_control = { type: :ephemeral }
 
           class CacheControl < Sam::Internal::Type::BaseModel
             attr_accessor type: :ephemeral
 
             def initialize: (?type: :ephemeral) -> void
+
+            def to_hash: -> { type: :ephemeral }
           end
         end
 
-        def self?.variants: -> ::Array[Sam::MessageCountTokensParams::tool]
+        def self?.variants: -> ::Array[Sam::Models::MessageCountTokensParams::tool]
       end
     end
   end

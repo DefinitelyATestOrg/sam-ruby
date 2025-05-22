@@ -75,12 +75,29 @@ module Sam
         ?request_options: Sam::request_opts
       ) -> void
 
+      def to_hash: -> {
+        max_tokens_to_sample: Integer,
+        model: String,
+        prompt: String,
+        metadata: Sam::CompleteCreateParams::Metadata,
+        stop_sequences: ::Array[String],
+        stream: bool,
+        temperature: Float,
+        top_k: Integer,
+        top_p: Float,
+        anthropic_version: String,
+        x_api_key: String,
+        request_options: Sam::RequestOptions
+      }
+
       type metadata = { user_id: String? }
 
       class Metadata < Sam::Internal::Type::BaseModel
         attr_accessor user_id: String?
 
         def initialize: (?user_id: String?) -> void
+
+        def to_hash: -> { user_id: String? }
       end
     end
   end

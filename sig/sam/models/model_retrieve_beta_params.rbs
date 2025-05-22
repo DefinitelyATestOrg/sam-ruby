@@ -21,6 +21,12 @@ module Sam
         ?x_api_key: String,
         ?request_options: Sam::request_opts
       ) -> void
+
+      def to_hash: -> {
+        anthropic_version: String,
+        x_api_key: String,
+        request_options: Sam::RequestOptions
+      }
     end
   end
 end

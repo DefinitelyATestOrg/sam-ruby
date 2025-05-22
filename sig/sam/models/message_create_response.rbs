@@ -40,6 +40,17 @@ module Sam
         ?type: :message
       ) -> void
 
+      def to_hash: -> {
+        id: String,
+        content: ::Array[Sam::Models::MessageCreateResponse::content],
+        model: String,
+        role: :assistant,
+        stop_reason: Sam::Models::MessageCreateResponse::stop_reason?,
+        stop_sequence: String?,
+        type: :message,
+        usage: Sam::Models::MessageCreateResponse::Usage
+      }
+
       type content =
         Sam::Models::MessageCreateResponse::Content::Text
         | Sam::Models::MessageCreateResponse::Content::ToolUse
@@ -68,6 +79,12 @@ module Sam
             text: String,
             ?type: :text
           ) -> void
+
+          def to_hash: -> {
+            citations: ::Array[Sam::Models::MessageCreateResponse::Content::Text::citation]?,
+            text: String,
+            type: :text
+          }
 
           type citation =
             Sam::Models::MessageCreateResponse::Content::Text::Citation::CharLocation
@@ -108,6 +125,15 @@ module Sam
                 start_char_index: Integer,
                 ?type: :char_location
               ) -> void
+
+              def to_hash: -> {
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_char_index: Integer,
+                start_char_index: Integer,
+                type: :char_location
+              }
             end
 
             type page_location =
@@ -141,6 +167,15 @@ module Sam
                 start_page_number: Integer,
                 ?type: :page_location
               ) -> void
+
+              def to_hash: -> {
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_page_number: Integer,
+                start_page_number: Integer,
+                type: :page_location
+              }
             end
 
             type content_block_location =
@@ -174,6 +209,15 @@ module Sam
                 start_block_index: Integer,
                 ?type: :content_block_location
               ) -> void
+
+              def to_hash: -> {
+                cited_text: String,
+                document_index: Integer,
+                document_title: String?,
+                end_block_index: Integer,
+                start_block_index: Integer,
+                type: :content_block_location
+              }
             end
 
             def self?.variants: -> ::Array[Sam::Models::MessageCreateResponse::Content::Text::citation]
@@ -198,6 +242,13 @@ module Sam
             name: String,
             ?type: :tool_use
           ) -> void
+
+          def to_hash: -> {
+            id: String,
+            input: top,
+            name: String,
+            type: :tool_use
+          }
         end
 
         type thinking = { signature: String, thinking: String, type: :thinking }
@@ -214,6 +265,12 @@ module Sam
             thinking: String,
             ?type: :thinking
           ) -> void
+
+          def to_hash: -> {
+            signature: String,
+            thinking: String,
+            type: :thinking
+          }
         end
 
         type redacted_thinking = { data: String, type: :redacted_thinking }
@@ -224,6 +281,8 @@ module Sam
           attr_accessor type: :redacted_thinking
 
           def initialize: (data: String, ?type: :redacted_thinking) -> void
+
+          def to_hash: -> { data: String, type: :redacted_thinking }
         end
 
         def self?.variants: -> ::Array[Sam::Models::MessageCreateResponse::content]
@@ -265,6 +324,13 @@ module Sam
           input_tokens: Integer,
           output_tokens: Integer
         ) -> void
+
+        def to_hash: -> {
+          cache_creation_input_tokens: Integer?,
+          cache_read_input_tokens: Integer?,
+          input_tokens: Integer,
+          output_tokens: Integer
+        }
       end
     end
   end
