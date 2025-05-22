@@ -17,6 +17,11 @@ module Sam
           result: Sam::Models::Messages::BatchResultsResponse::result
         ) -> void
 
+        def to_hash: -> {
+          custom_id: String,
+          result: Sam::Models::Messages::BatchResultsResponse::result
+        }
+
         type result =
           Sam::Models::Messages::BatchResultsResponse::Result::Succeeded
           | Sam::Models::Messages::BatchResultsResponse::Result::Errored
@@ -41,6 +46,11 @@ module Sam
               message: Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message,
               ?type: :succeeded
             ) -> void
+
+            def to_hash: -> {
+              message: Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message,
+              type: :succeeded
+            }
 
             type message =
               {
@@ -82,6 +92,17 @@ module Sam
                 ?type: :message
               ) -> void
 
+              def to_hash: -> {
+                id: String,
+                content: ::Array[Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::content],
+                model: String,
+                role: :assistant,
+                stop_reason: Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::stop_reason?,
+                stop_sequence: String?,
+                type: :message,
+                usage: Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Usage
+              }
+
               type content =
                 Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text
                 | Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::ToolUse
@@ -110,6 +131,12 @@ module Sam
                     text: String,
                     ?type: :text
                   ) -> void
+
+                  def to_hash: -> {
+                    citations: ::Array[Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::citation]?,
+                    text: String,
+                    type: :text
+                  }
 
                   type citation =
                     Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation
@@ -150,6 +177,15 @@ module Sam
                         start_char_index: Integer,
                         ?type: :char_location
                       ) -> void
+
+                      def to_hash: -> {
+                        cited_text: String,
+                        document_index: Integer,
+                        document_title: String?,
+                        end_char_index: Integer,
+                        start_char_index: Integer,
+                        type: :char_location
+                      }
                     end
 
                     type page_location =
@@ -183,6 +219,15 @@ module Sam
                         start_page_number: Integer,
                         ?type: :page_location
                       ) -> void
+
+                      def to_hash: -> {
+                        cited_text: String,
+                        document_index: Integer,
+                        document_title: String?,
+                        end_page_number: Integer,
+                        start_page_number: Integer,
+                        type: :page_location
+                      }
                     end
 
                     type content_block_location =
@@ -216,6 +261,15 @@ module Sam
                         start_block_index: Integer,
                         ?type: :content_block_location
                       ) -> void
+
+                      def to_hash: -> {
+                        cited_text: String,
+                        document_index: Integer,
+                        document_title: String?,
+                        end_block_index: Integer,
+                        start_block_index: Integer,
+                        type: :content_block_location
+                      }
                     end
 
                     def self?.variants: -> ::Array[Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::citation]
@@ -240,6 +294,13 @@ module Sam
                     name: String,
                     ?type: :tool_use
                   ) -> void
+
+                  def to_hash: -> {
+                    id: String,
+                    input: top,
+                    name: String,
+                    type: :tool_use
+                  }
                 end
 
                 type thinking =
@@ -257,6 +318,12 @@ module Sam
                     thinking: String,
                     ?type: :thinking
                   ) -> void
+
+                  def to_hash: -> {
+                    signature: String,
+                    thinking: String,
+                    type: :thinking
+                  }
                 end
 
                 type redacted_thinking =
@@ -271,6 +338,8 @@ module Sam
                     data: String,
                     ?type: :redacted_thinking
                   ) -> void
+
+                  def to_hash: -> { data: String, type: :redacted_thinking }
                 end
 
                 def self?.variants: -> ::Array[Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::content]
@@ -313,6 +382,13 @@ module Sam
                   input_tokens: Integer,
                   output_tokens: Integer
                 ) -> void
+
+                def to_hash: -> {
+                  cache_creation_input_tokens: Integer?,
+                  cache_read_input_tokens: Integer?,
+                  input_tokens: Integer,
+                  output_tokens: Integer
+                }
               end
             end
           end
@@ -333,6 +409,11 @@ module Sam
               ?type: :errored
             ) -> void
 
+            def to_hash: -> {
+              error: Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error,
+              type: :errored
+            }
+
             type error =
               {
                 error: Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::error,
@@ -348,6 +429,11 @@ module Sam
                 error: Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::error,
                 ?type: :error
               ) -> void
+
+              def to_hash: -> {
+                error: Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::error,
+                type: :error
+              }
 
               type error =
                 Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::InvalidRequestError
@@ -375,6 +461,11 @@ module Sam
                     message: String,
                     ?type: :invalid_request_error
                   ) -> void
+
+                  def to_hash: -> {
+                    message: String,
+                    type: :invalid_request_error
+                  }
                 end
 
                 type authentication_error =
@@ -389,6 +480,11 @@ module Sam
                     message: String,
                     ?type: :authentication_error
                   ) -> void
+
+                  def to_hash: -> {
+                    message: String,
+                    type: :authentication_error
+                  }
                 end
 
                 type billing_error = { message: String, type: :billing_error }
@@ -402,6 +498,8 @@ module Sam
                     message: String,
                     ?type: :billing_error
                   ) -> void
+
+                  def to_hash: -> { message: String, type: :billing_error }
                 end
 
                 type permission_error =
@@ -416,6 +514,8 @@ module Sam
                     message: String,
                     ?type: :permission_error
                   ) -> void
+
+                  def to_hash: -> { message: String, type: :permission_error }
                 end
 
                 type not_found_error =
@@ -430,6 +530,8 @@ module Sam
                     message: String,
                     ?type: :not_found_error
                   ) -> void
+
+                  def to_hash: -> { message: String, type: :not_found_error }
                 end
 
                 type rate_limit_error =
@@ -444,6 +546,8 @@ module Sam
                     message: String,
                     ?type: :rate_limit_error
                   ) -> void
+
+                  def to_hash: -> { message: String, type: :rate_limit_error }
                 end
 
                 type timeout_error = { message: String, type: :timeout_error }
@@ -457,6 +561,8 @@ module Sam
                     message: String,
                     ?type: :timeout_error
                   ) -> void
+
+                  def to_hash: -> { message: String, type: :timeout_error }
                 end
 
                 type api_error = { message: String, type: :api_error }
@@ -467,6 +573,8 @@ module Sam
                   attr_accessor type: :api_error
 
                   def initialize: (message: String, ?type: :api_error) -> void
+
+                  def to_hash: -> { message: String, type: :api_error }
                 end
 
                 type overloaded_error =
@@ -481,6 +589,8 @@ module Sam
                     message: String,
                     ?type: :overloaded_error
                   ) -> void
+
+                  def to_hash: -> { message: String, type: :overloaded_error }
                 end
 
                 def self?.variants: -> ::Array[Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::error]
@@ -494,6 +604,8 @@ module Sam
             attr_accessor type: :canceled
 
             def initialize: (?type: :canceled) -> void
+
+            def to_hash: -> { type: :canceled }
           end
 
           type expired = { type: :expired }
@@ -502,6 +614,8 @@ module Sam
             attr_accessor type: :expired
 
             def initialize: (?type: :expired) -> void
+
+            def to_hash: -> { type: :expired }
           end
 
           def self?.variants: -> ::Array[Sam::Models::Messages::BatchResultsResponse::result]

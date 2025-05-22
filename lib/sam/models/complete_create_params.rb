@@ -46,7 +46,7 @@ module Sam
       # @!attribute metadata
       #   An object describing metadata about the request.
       #
-      #   @return [Sam::CompleteCreateParams::Metadata, nil]
+      #   @return [Sam::Models::CompleteCreateParams::Metadata, nil]
       optional :metadata, -> { Sam::CompleteCreateParams::Metadata }
 
       # @!attribute stop_sequences
@@ -136,7 +136,7 @@ module Sam
       #
       #   @param prompt [String] The prompt that you want Claude to complete.
       #
-      #   @param metadata [Sam::CompleteCreateParams::Metadata] An object describing metadata about the request.
+      #   @param metadata [Sam::Models::CompleteCreateParams::Metadata] An object describing metadata about the request.
       #
       #   @param stop_sequences [Array<String>] Sequences that will cause the model to stop generating.
       #
@@ -167,7 +167,7 @@ module Sam
 
         # @!method initialize(user_id: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Sam::CompleteCreateParams::Metadata} for more details.
+        #   {Sam::Models::CompleteCreateParams::Metadata} for more details.
         #
         #   An object describing metadata about the request.
         #

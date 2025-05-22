@@ -18,25 +18,25 @@ module Sam
       #
       # @param max_tokens [Integer] Body param: The maximum number of tokens to generate before stopping.
       #
-      # @param messages [Array<Sam::MessagesBetaTrueCreateParams::Message>] Body param: Input messages.
+      # @param messages [Array<Sam::Models::MessagesBetaTrueCreateParams::Message>] Body param: Input messages.
       #
       # @param model [String] Body param: The model that will complete your prompt.
       #
-      # @param metadata [Sam::MessagesBetaTrueCreateParams::Metadata] Body param: An object describing metadata about the request.
+      # @param metadata [Sam::Models::MessagesBetaTrueCreateParams::Metadata] Body param: An object describing metadata about the request.
       #
       # @param stop_sequences [Array<String>] Body param: Custom text sequences that will cause the model to stop generating.
       #
       # @param stream [Boolean] Body param: Whether to incrementally stream the response using server-sent event
       #
-      # @param system_ [String, Array<Sam::MessagesBetaTrueCreateParams::System::UnionMember1>] Body param: System prompt.
+      # @param system_ [String, Array<Sam::Models::MessagesBetaTrueCreateParams::System::UnionMember1>] Body param: System prompt.
       #
       # @param temperature [Float] Body param: Amount of randomness injected into the response.
       #
-      # @param thinking [Sam::MessagesBetaTrueCreateParams::Thinking::Enabled, Sam::MessagesBetaTrueCreateParams::Thinking::Disabled] Body param: Configuration for enabling Claude's extended thinking.
+      # @param thinking [Sam::Models::MessagesBetaTrueCreateParams::Thinking::Enabled, Sam::Models::MessagesBetaTrueCreateParams::Thinking::Disabled] Body param: Configuration for enabling Claude's extended thinking.
       #
-      # @param tool_choice [Sam::MessagesBetaTrueCreateParams::ToolChoice::Auto, Sam::MessagesBetaTrueCreateParams::ToolChoice::Any, Sam::MessagesBetaTrueCreateParams::ToolChoice::Tool, Sam::MessagesBetaTrueCreateParams::ToolChoice::None] Body param: How the model should use the provided tools. The model can use a spe
+      # @param tool_choice [Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Auto, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Any, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::Tool, Sam::Models::MessagesBetaTrueCreateParams::ToolChoice::None] Body param: How the model should use the provided tools. The model can use a spe
       #
-      # @param tools [Array<Sam::MessagesBetaTrueCreateParams::Tool::BetaTool, Sam::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022, Sam::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022, Sam::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022, Sam::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124, Sam::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124, Sam::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124>] Body param: Definitions of tools that the model may use.
+      # @param tools [Array<Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTool, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20241022, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20241022, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20241022, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaComputerUseTool20250124, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaBashTool20250124, Sam::Models::MessagesBetaTrueCreateParams::Tool::BetaTextEditor20250124>] Body param: Definitions of tools that the model may use.
       #
       # @param top_k [Integer] Body param: Only sample from the top K options for each subsequent token.
       #

@@ -24,6 +24,13 @@ module Sam
         last_id: String?
       ) -> void
 
+      def to_hash: -> {
+        data: ::Array[Sam::Models::ModelsBetaTrueListResponse::Data],
+        first_id: String?,
+        has_more: bool,
+        last_id: String?
+      }
+
       type data =
         { id: String, created_at: Time, display_name: String, type: :model }
 
@@ -42,6 +49,13 @@ module Sam
           display_name: String,
           ?type: :model
         ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          display_name: String,
+          type: :model
+        }
       end
     end
   end

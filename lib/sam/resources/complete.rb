@@ -23,7 +23,7 @@ module Sam
       #
       # @param prompt [String] Body param: The prompt that you want Claude to complete.
       #
-      # @param metadata [Sam::CompleteCreateParams::Metadata] Body param: An object describing metadata about the request.
+      # @param metadata [Sam::Models::CompleteCreateParams::Metadata] Body param: An object describing metadata about the request.
       #
       # @param stop_sequences [Array<String>] Body param: Sequences that will cause the model to stop generating.
       #

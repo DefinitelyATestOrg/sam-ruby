@@ -21,7 +21,7 @@ module Sam
         #
         # @overload create(requests:, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #
-        # @param requests [Array<Sam::Messages::BatchCreateParams::Request>] Body param: List of requests for prompt completion. Each is an individual reques
+        # @param requests [Array<Sam::Models::Messages::BatchCreateParams::Request>] Body param: List of requests for prompt completion. Each is an individual reques
         #
         # @param anthropic_beta [Array<String>] Header param: Optional header to specify the beta version(s) you want to use.
         #
