@@ -600,11 +600,12 @@ module Sam
         #
         # @return [Object]
         def encode_content(headers, body)
+          # rubocop:disable Style/CaseEquality
           content_type = headers["content-type"]
           case [content_type, body]
           in [Sam::Internal::Util::JSON_CONTENT, Hash | Array | -> { primitive?(_1) }]
             [headers, JSON.generate(body)]
-          in [Sam::Internal::Util::JSONL_CONTENT, Enumerable] unless body.is_a?(Sam::Internal::Type::FileInput)
+          in [Sam::Internal::Util::JSONL_CONTENT, Enumerable] unless Sam::Internal::Type::FileInput === body
             [headers, body.lazy.map { JSON.generate(_1) }]
           in [%r{^multipart/form-data}, Hash | Sam::Internal::Type::FileInput]
             boundary, strio = encode_multipart_streaming(body)
@@ -619,6 +620,7 @@ module Sam
           else
             [headers, body]
           end
+          # rubocop:enable Style/CaseEquality
         end
 
         # @api private
