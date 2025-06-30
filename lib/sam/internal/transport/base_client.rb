@@ -462,6 +462,7 @@ module Sam
           self.class.validate!(req)
           model = req.fetch(:model) { Sam::Internal::Type::Unknown }
           opts = req[:options].to_h
+          unwrap = req[:unwrap]
           Sam::RequestOptions.validate!(opts)
           request = build_request(req.except(:options), opts)
           url = request.fetch(:url)
@@ -478,11 +479,18 @@ module Sam
           decoded = Sam::Internal::Util.decode_content(response, stream: stream)
           case req
           in {stream: Class => st}
-            st.new(model: model, url: url, status: status, response: response, stream: decoded)
+            st.new(
+              model: model,
+              url: url,
+              status: status,
+              response: response,
+              unwrap: unwrap,
+              stream: decoded
+            )
           in {page: Class => page}
             page.new(client: self, req: req, headers: response, page_data: decoded)
           else
-            unwrapped = Sam::Internal::Util.dig(decoded, req[:unwrap])
+            unwrapped = Sam::Internal::Util.dig(decoded, unwrap)
             Sam::Internal::Type::Converter.coerce(model, unwrapped)
           end
         end
