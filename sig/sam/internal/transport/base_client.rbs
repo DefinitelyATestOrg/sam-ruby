@@ -97,7 +97,7 @@ module Sam
           retry_count: Integer
         ) -> Float
 
-        private def send_request: (
+        def send_request: (
           Sam::Internal::Transport::BaseClient::request_input request,
           redirect_count: Integer,
           retry_count: Integer,
