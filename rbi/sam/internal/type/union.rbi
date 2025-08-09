@@ -16,7 +16,8 @@ module Sam
             T::Array[
               [
                 T.nilable(Symbol),
-                T.proc.returns(Sam::Internal::Type::Converter::Input)
+                T.proc.returns(Sam::Internal::Type::Converter::Input),
+                Sam::Internal::AnyHash
               ]
             ]
           )
@@ -25,7 +26,11 @@ module Sam
         end
 
         # @api private
-        sig { returns(T::Array[[T.nilable(Symbol), T.anything]]) }
+        sig do
+          returns(
+            T::Array[[T.nilable(Symbol), T.anything, Sam::Internal::AnyHash]]
+          )
+        end
         protected def derefed_variants
         end
 
