@@ -530,10 +530,7 @@ module Sam
                 )
               ),
               page: T.nilable(T::Class[Sam::Internal::Type::BasePage[Sam::Internal::Type::BaseModel]]),
-              stream: T.nilable(
-                T::Class[Sam::Internal::Type::BaseStream[T.anything,
-                                                         Sam::Internal::Type::BaseModel]]
-              ),
+              stream: T.nilable(T::Class[Sam::Internal::Type::BaseStream[T.anything, Sam::Internal::Type::BaseModel]]),
               model: T.nilable(Sam::Internal::Type::Converter::Input),
               options: T.nilable(Sam::RequestOptions::OrHash)
             }

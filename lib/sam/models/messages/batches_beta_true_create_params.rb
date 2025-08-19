@@ -190,9 +190,7 @@ module Sam
             #
             #   @return [Array<Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message>]
             required :messages,
-                     -> {
-                       Sam::Internal::Type::ArrayOf[Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message]
-                     }
+                     -> { Sam::Internal::Type::ArrayOf[Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message] }
 
             # @!attribute model
             #   The model that will complete your prompt.
@@ -269,10 +267,7 @@ module Sam
             #   for details.
             #
             #   @return [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Enabled, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Disabled, nil]
-            optional :thinking,
-                     union: -> {
-                       Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking
-                     }
+            optional :thinking, union: -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking }
 
             # @!attribute tool_choice
             #   How the model should use the provided tools. The model can use a specific tool,
@@ -355,9 +350,7 @@ module Sam
             #
             #   @return [Array<Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124>, nil]
             optional :tools,
-                     -> {
-                       Sam::Internal::Type::ArrayOf[union: Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool]
-                     }
+                     -> { Sam::Internal::Type::ArrayOf[union: Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool] }
 
             # @!attribute top_k
             #   Only sample from the top K options for each subsequent token.
@@ -426,17 +419,12 @@ module Sam
               #
               #   @return [String, Array<Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Thinking, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking>]
               required :content,
-                       union: -> {
-                         Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content
-                       }
+                       union: -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content }
 
               # @!attribute role
               #
               #   @return [Symbol, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role]
-              required :role,
-                       enum: -> {
-                         Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role
-                       }
+              required :role, enum: -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Role }
 
               # @!method initialize(content:, role:)
               #   @param content [String, Array<Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Thinking, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking>]
@@ -456,39 +444,25 @@ module Sam
                   discriminator :type
 
                   variant :text,
-                          -> {
-                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text
-                          }
+                          -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text }
 
                   variant :image,
-                          -> {
-                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image
-                          }
+                          -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image }
 
                   variant :tool_use,
-                          -> {
-                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse
-                          }
+                          -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolUse }
 
                   variant :tool_result,
-                          -> {
-                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult
-                          }
+                          -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult }
 
                   variant :document,
-                          -> {
-                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document
-                          }
+                          -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document }
 
                   variant :thinking,
-                          -> {
-                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Thinking
-                          }
+                          -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Thinking }
 
                   variant :redacted_thinking,
-                          -> {
-                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking
-                          }
+                          -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::RedactedThinking }
 
                   class Text < Sam::Internal::Type::BaseModel
                     # @!attribute text
@@ -544,19 +518,13 @@ module Sam
                       discriminator :type
 
                       variant :char_location,
-                              -> {
-                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation
-                              }
+                              -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::CharLocation }
 
                       variant :page_location,
-                              -> {
-                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation
-                              }
+                              -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::PageLocation }
 
                       variant :content_block_location,
-                              -> {
-                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation
-                              }
+                              -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation }
 
                       class CharLocation < Sam::Internal::Type::BaseModel
                         # @!attribute cited_text
@@ -688,9 +656,7 @@ module Sam
                     #
                     #   @return [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL]
                     required :source,
-                             union: -> {
-                               Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source
-                             }
+                             union: -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source }
 
                     # @!attribute type
                     #
@@ -718,14 +684,10 @@ module Sam
                       discriminator :type
 
                       variant :base64,
-                              -> {
-                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64
-                              }
+                              -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64 }
 
                       variant :url,
-                              -> {
-                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL
-                              }
+                              -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::URL }
 
                       class Base64 < Sam::Internal::Type::BaseModel
                         # @!attribute data
@@ -737,9 +699,7 @@ module Sam
                         #
                         #   @return [Symbol, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType]
                         required :media_type,
-                                 enum: -> {
-                                   Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType
-                                 }
+                                 enum: -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Image::Source::Base64::MediaType }
 
                         # @!attribute type
                         #
@@ -870,9 +830,7 @@ module Sam
                     #
                     #   @return [String, Array<Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>, nil]
                     optional :content,
-                             union: -> {
-                               Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content
-                             }
+                             union: -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content }
 
                     # @!attribute is_error
                     #
@@ -911,14 +869,10 @@ module Sam
                         discriminator :type
 
                         variant :text,
-                                -> {
-                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text
-                                }
+                                -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text }
 
                         variant :image,
-                                -> {
-                                  Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
-                                }
+                                -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image }
 
                         class Text < Sam::Internal::Type::BaseModel
                           # @!attribute text
@@ -974,19 +928,13 @@ module Sam
                             discriminator :type
 
                             variant :char_location,
-                                    -> {
-                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation
-                                    }
+                                    -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation }
 
                             variant :page_location,
-                                    -> {
-                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation
-                                    }
+                                    -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation }
 
                             variant :content_block_location,
-                                    -> {
-                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation
-                                    }
+                                    -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation }
 
                             class CharLocation < Sam::Internal::Type::BaseModel
                               # @!attribute cited_text
@@ -1118,9 +1066,7 @@ module Sam
                           #
                           #   @return [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL]
                           required :source,
-                                   union: -> {
-                                     Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source
-                                   }
+                                   union: -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source }
 
                           # @!attribute type
                           #
@@ -1148,14 +1094,10 @@ module Sam
                             discriminator :type
 
                             variant :base64,
-                                    -> {
-                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64
-                                    }
+                                    -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64 }
 
                             variant :url,
-                                    -> {
-                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL
-                                    }
+                                    -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL }
 
                             class Base64 < Sam::Internal::Type::BaseModel
                               # @!attribute data
@@ -1167,9 +1109,7 @@ module Sam
                               #
                               #   @return [Symbol, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType]
                               required :media_type,
-                                       enum: -> {
-                                         Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType
-                                       }
+                                       enum: -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType }
 
                               # @!attribute type
                               #
@@ -1237,9 +1177,7 @@ module Sam
                       # @type [Sam::Internal::Type::Converter]
                       UnionMember1Array =
                         Sam::Internal::Type::ArrayOf[
-                          union: -> {
-                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1
-                          }
+                          union: -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::ToolResult::Content::UnionMember1 }
                         ]
                     end
                   end
@@ -1249,9 +1187,7 @@ module Sam
                     #
                     #   @return [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL]
                     required :source,
-                             union: -> {
-                               Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source
-                             }
+                             union: -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source }
 
                     # @!attribute type
                     #
@@ -1271,9 +1207,7 @@ module Sam
                     #
                     #   @return [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Citations, nil]
                     optional :citations,
-                             -> {
-                               Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Citations
-                             }
+                             -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Citations }
 
                     # @!attribute context
                     #
@@ -1300,24 +1234,16 @@ module Sam
                       discriminator :type
 
                       variant :base64,
-                              -> {
-                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64
-                              }
+                              -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Base64 }
 
                       variant :text,
-                              -> {
-                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text
-                              }
+                              -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Text }
 
                       variant :content,
-                              -> {
-                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content
-                              }
+                              -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content }
 
                       variant :url,
-                              -> {
-                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL
-                              }
+                              -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::URL }
 
                       class Base64 < Sam::Internal::Type::BaseModel
                         # @!attribute data
@@ -1368,9 +1294,7 @@ module Sam
                         #
                         #   @return [String, Array<Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>]
                         required :content,
-                                 union: -> {
-                                   Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content
-                                 }
+                                 union: -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content }
 
                         # @!attribute type
                         #
@@ -1395,14 +1319,10 @@ module Sam
                             discriminator :type
 
                             variant :text,
-                                    -> {
-                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text
-                                    }
+                                    -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text }
 
                             variant :image,
-                                    -> {
-                                      Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
-                                    }
+                                    -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image }
 
                             class Text < Sam::Internal::Type::BaseModel
                               # @!attribute text
@@ -1458,19 +1378,13 @@ module Sam
                                 discriminator :type
 
                                 variant :char_location,
-                                        -> {
-                                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation
-                                        }
+                                        -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation }
 
                                 variant :page_location,
-                                        -> {
-                                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation
-                                        }
+                                        -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation }
 
                                 variant :content_block_location,
-                                        -> {
-                                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation
-                                        }
+                                        -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation }
 
                                 class CharLocation < Sam::Internal::Type::BaseModel
                                   # @!attribute cited_text
@@ -1602,9 +1516,7 @@ module Sam
                               #
                               #   @return [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL]
                               required :source,
-                                       union: -> {
-                                         Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source
-                                       }
+                                       union: -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source }
 
                               # @!attribute type
                               #
@@ -1632,14 +1544,10 @@ module Sam
                                 discriminator :type
 
                                 variant :base64,
-                                        -> {
-                                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64
-                                        }
+                                        -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64 }
 
                                 variant :url,
-                                        -> {
-                                          Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL
-                                        }
+                                        -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL }
 
                                 class Base64 < Sam::Internal::Type::BaseModel
                                   # @!attribute data
@@ -1651,9 +1559,7 @@ module Sam
                                   #
                                   #   @return [Symbol, Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType]
                                   required :media_type,
-                                           enum: -> {
-                                             Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType
-                                           }
+                                           enum: -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType }
 
                                   # @!attribute type
                                   #
@@ -1721,9 +1627,7 @@ module Sam
                           # @type [Sam::Internal::Type::Converter]
                           UnionMember1Array =
                             Sam::Internal::Type::ArrayOf[
-                              union: -> {
-                                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1
-                              }
+                              union: -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1 }
                             ]
                         end
                       end
@@ -1923,19 +1827,13 @@ module Sam
                   discriminator :type
 
                   variant :char_location,
-                          -> {
-                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation
-                          }
+                          -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::CharLocation }
 
                   variant :page_location,
-                          -> {
-                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation
-                          }
+                          -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::PageLocation }
 
                   variant :content_block_location,
-                          -> {
-                            Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation
-                          }
+                          -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::System::UnionMember1::Citation::ContentBlockLocation }
 
                   class CharLocation < Sam::Internal::Type::BaseModel
                     # @!attribute cited_text
@@ -2088,15 +1986,9 @@ module Sam
 
               discriminator :type
 
-              variant :enabled,
-                      -> {
-                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Enabled
-                      }
+              variant :enabled, -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Enabled }
 
-              variant :disabled,
-                      -> {
-                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Disabled
-                      }
+              variant :disabled, -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Thinking::Disabled }
 
               class Enabled < Sam::Internal::Type::BaseModel
                 # @!attribute budget_tokens
@@ -2152,28 +2044,16 @@ module Sam
               discriminator :type
 
               # The model will automatically decide whether to use tools.
-              variant :auto,
-                      -> {
-                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Auto
-                      }
+              variant :auto, -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Auto }
 
               # The model will use any available tools.
-              variant :any,
-                      -> {
-                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Any
-                      }
+              variant :any, -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Any }
 
               # The model will use the specified tool with `tool_choice.name`.
-              variant :tool,
-                      -> {
-                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Tool
-                      }
+              variant :tool, -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::Tool }
 
               # The model will not be allowed to use tools.
-              variant :none,
-                      -> {
-                        Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::None
-                      }
+              variant :none, -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::ToolChoice::None }
 
               class Auto < Sam::Internal::Type::BaseModel
                 # @!attribute type
@@ -2285,29 +2165,17 @@ module Sam
 
               variant -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool }
 
-              variant -> {
-                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022
-              }
+              variant -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20241022 }
 
-              variant -> {
-                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022
-              }
+              variant -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20241022 }
 
-              variant -> {
-                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022
-              }
+              variant -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20241022 }
 
-              variant -> {
-                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124
-              }
+              variant -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaComputerUseTool20250124 }
 
-              variant -> {
-                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124
-              }
+              variant -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaBashTool20250124 }
 
-              variant -> {
-                Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124
-              }
+              variant -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTextEditor20250124 }
 
               class BetaTool < Sam::Internal::Type::BaseModel
                 # @!attribute input_schema
@@ -2318,9 +2186,7 @@ module Sam
                 #
                 #   @return [Sam::Models::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::InputSchema]
                 required :input_schema,
-                         -> {
-                           Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::InputSchema
-                         }
+                         -> { Sam::Messages::BatchesBetaTrueCreateParams::Request::Params::Tool::BetaTool::InputSchema }
 
                 # @!attribute name
                 #   Name of the tool.
