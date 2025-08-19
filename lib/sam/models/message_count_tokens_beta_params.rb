@@ -297,25 +297,13 @@ module Sam
 
             variant :image, -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image }
 
-            variant :tool_use,
-                    -> {
-                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolUse
-                    }
+            variant :tool_use, -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolUse }
 
-            variant :tool_result,
-                    -> {
-                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult
-                    }
+            variant :tool_result, -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult }
 
-            variant :document,
-                    -> {
-                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document
-                    }
+            variant :document, -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document }
 
-            variant :thinking,
-                    -> {
-                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Thinking
-                    }
+            variant :thinking, -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Thinking }
 
             variant :redacted_thinking,
                     -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::RedactedThinking }
@@ -372,19 +360,13 @@ module Sam
                 discriminator :type
 
                 variant :char_location,
-                        -> {
-                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Text::Citation::CharLocation
-                        }
+                        -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Text::Citation::CharLocation }
 
                 variant :page_location,
-                        -> {
-                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Text::Citation::PageLocation
-                        }
+                        -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Text::Citation::PageLocation }
 
                 variant :content_block_location,
-                        -> {
-                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation
-                        }
+                        -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Text::Citation::ContentBlockLocation }
 
                 class CharLocation < Sam::Internal::Type::BaseModel
                   # @!attribute cited_text
@@ -516,9 +498,7 @@ module Sam
               #
               #   @return [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image::Source::URL]
               required :source,
-                       union: -> {
-                         Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image::Source
-                       }
+                       union: -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image::Source }
 
               # @!attribute type
               #
@@ -546,14 +526,9 @@ module Sam
                 discriminator :type
 
                 variant :base64,
-                        -> {
-                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image::Source::Base64
-                        }
+                        -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image::Source::Base64 }
 
-                variant :url,
-                        -> {
-                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image::Source::URL
-                        }
+                variant :url, -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image::Source::URL }
 
                 class Base64 < Sam::Internal::Type::BaseModel
                   # @!attribute data
@@ -565,9 +540,7 @@ module Sam
                   #
                   #   @return [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image::Source::Base64::MediaType]
                   required :media_type,
-                           enum: -> {
-                             Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image::Source::Base64::MediaType
-                           }
+                           enum: -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Image::Source::Base64::MediaType }
 
                   # @!attribute type
                   #
@@ -698,9 +671,7 @@ module Sam
               #
               #   @return [String, Array<Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image>, nil]
               optional :content,
-                       union: -> {
-                         Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content
-                       }
+                       union: -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content }
 
               # @!attribute is_error
               #
@@ -739,14 +710,10 @@ module Sam
                   discriminator :type
 
                   variant :text,
-                          -> {
-                            Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text
-                          }
+                          -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text }
 
                   variant :image,
-                          -> {
-                            Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image
-                          }
+                          -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image }
 
                   class Text < Sam::Internal::Type::BaseModel
                     # @!attribute text
@@ -802,19 +769,13 @@ module Sam
                       discriminator :type
 
                       variant :char_location,
-                              -> {
-                                Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation
-                              }
+                              -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::CharLocation }
 
                       variant :page_location,
-                              -> {
-                                Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation
-                              }
+                              -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::PageLocation }
 
                       variant :content_block_location,
-                              -> {
-                                Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation
-                              }
+                              -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Text::Citation::ContentBlockLocation }
 
                       class CharLocation < Sam::Internal::Type::BaseModel
                         # @!attribute cited_text
@@ -946,9 +907,7 @@ module Sam
                     #
                     #   @return [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL]
                     required :source,
-                             union: -> {
-                               Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source
-                             }
+                             union: -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source }
 
                     # @!attribute type
                     #
@@ -976,14 +935,10 @@ module Sam
                       discriminator :type
 
                       variant :base64,
-                              -> {
-                                Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64
-                              }
+                              -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64 }
 
                       variant :url,
-                              -> {
-                                Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL
-                              }
+                              -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::URL }
 
                       class Base64 < Sam::Internal::Type::BaseModel
                         # @!attribute data
@@ -995,9 +950,7 @@ module Sam
                         #
                         #   @return [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType]
                         required :media_type,
-                                 enum: -> {
-                                   Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType
-                                 }
+                                 enum: -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1::Image::Source::Base64::MediaType }
 
                         # @!attribute type
                         #
@@ -1065,9 +1018,7 @@ module Sam
                 # @type [Sam::Internal::Type::Converter]
                 UnionMember1Array =
                   Sam::Internal::Type::ArrayOf[
-                    union: -> {
-                      Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1
-                    }
+                    union: -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::ToolResult::Content::UnionMember1 }
                   ]
               end
             end
@@ -1077,9 +1028,7 @@ module Sam
               #
               #   @return [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Base64, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Text, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::URL]
               required :source,
-                       union: -> {
-                         Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source
-                       }
+                       union: -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source }
 
               # @!attribute type
               #
@@ -1099,9 +1048,7 @@ module Sam
               #
               #   @return [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Citations, nil]
               optional :citations,
-                       -> {
-                         Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Citations
-                       }
+                       -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Citations }
 
               # @!attribute context
               #
@@ -1128,24 +1075,16 @@ module Sam
                 discriminator :type
 
                 variant :base64,
-                        -> {
-                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Base64
-                        }
+                        -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Base64 }
 
                 variant :text,
-                        -> {
-                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Text
-                        }
+                        -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Text }
 
                 variant :content,
-                        -> {
-                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content
-                        }
+                        -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content }
 
                 variant :url,
-                        -> {
-                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::URL
-                        }
+                        -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::URL }
 
                 class Base64 < Sam::Internal::Type::BaseModel
                   # @!attribute data
@@ -1196,9 +1135,7 @@ module Sam
                   #
                   #   @return [String, Array<Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image>]
                   required :content,
-                           union: -> {
-                             Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content
-                           }
+                           union: -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content }
 
                   # @!attribute type
                   #
@@ -1223,14 +1160,10 @@ module Sam
                       discriminator :type
 
                       variant :text,
-                              -> {
-                                Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text
-                              }
+                              -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text }
 
                       variant :image,
-                              -> {
-                                Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image
-                              }
+                              -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image }
 
                       class Text < Sam::Internal::Type::BaseModel
                         # @!attribute text
@@ -1286,19 +1219,13 @@ module Sam
                           discriminator :type
 
                           variant :char_location,
-                                  -> {
-                                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation
-                                  }
+                                  -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::CharLocation }
 
                           variant :page_location,
-                                  -> {
-                                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation
-                                  }
+                                  -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::PageLocation }
 
                           variant :content_block_location,
-                                  -> {
-                                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation
-                                  }
+                                  -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Text::Citation::ContentBlockLocation }
 
                           class CharLocation < Sam::Internal::Type::BaseModel
                             # @!attribute cited_text
@@ -1430,9 +1357,7 @@ module Sam
                         #
                         #   @return [Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL]
                         required :source,
-                                 union: -> {
-                                   Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source
-                                 }
+                                 union: -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source }
 
                         # @!attribute type
                         #
@@ -1460,14 +1385,10 @@ module Sam
                           discriminator :type
 
                           variant :base64,
-                                  -> {
-                                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64
-                                  }
+                                  -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64 }
 
                           variant :url,
-                                  -> {
-                                    Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL
-                                  }
+                                  -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::URL }
 
                           class Base64 < Sam::Internal::Type::BaseModel
                             # @!attribute data
@@ -1479,9 +1400,7 @@ module Sam
                             #
                             #   @return [Symbol, Sam::Models::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType]
                             required :media_type,
-                                     enum: -> {
-                                       Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType
-                                     }
+                                     enum: -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1::Image::Source::Base64::MediaType }
 
                             # @!attribute type
                             #
@@ -1549,9 +1468,7 @@ module Sam
                     # @type [Sam::Internal::Type::Converter]
                     UnionMember1Array =
                       Sam::Internal::Type::ArrayOf[
-                        union: -> {
-                          Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1
-                        }
+                        union: -> { Sam::MessageCountTokensBetaParams::Message::Content::UnionMember1::Document::Source::Content::Content::UnionMember1 }
                       ]
                   end
                 end
@@ -1731,9 +1648,7 @@ module Sam
                     -> { Sam::MessageCountTokensBetaParams::System::UnionMember1::Citation::PageLocation }
 
             variant :content_block_location,
-                    -> {
-                      Sam::MessageCountTokensBetaParams::System::UnionMember1::Citation::ContentBlockLocation
-                    }
+                    -> { Sam::MessageCountTokensBetaParams::System::UnionMember1::Citation::ContentBlockLocation }
 
             class CharLocation < Sam::Internal::Type::BaseModel
               # @!attribute cited_text
