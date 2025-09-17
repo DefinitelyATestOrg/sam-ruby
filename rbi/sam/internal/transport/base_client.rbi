@@ -92,10 +92,9 @@ module Sam
 
           # @api private
           sig do
-            params(
-              status: Integer,
-              headers: T.any(T::Hash[String, String], Net::HTTPHeader)
-            ).returns(T::Boolean)
+            params(status: Integer, headers: T::Hash[String, String]).returns(
+              T::Boolean
+            )
           end
           def should_retry?(status, headers:)
           end
@@ -105,7 +104,7 @@ module Sam
             params(
               request: Sam::Internal::Transport::BaseClient::RequestInput,
               status: Integer,
-              response_headers: T.any(T::Hash[String, String], Net::HTTPHeader)
+              response_headers: T::Hash[String, String]
             ).returns(Sam::Internal::Transport::BaseClient::RequestInput)
           end
           def follow_redirect(request, status:, response_headers:)
