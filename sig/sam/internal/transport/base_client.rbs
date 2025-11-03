@@ -85,6 +85,8 @@ module Sam
           ?idempotency_header: String?
         ) -> void
 
+        private def user_agent: -> String
+
         private def generate_idempotency_key: -> String
 
         private def build_request: (
