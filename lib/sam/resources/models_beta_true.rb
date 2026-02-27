@@ -29,12 +29,13 @@ module Sam
       #
       # @see Sam::Models::ModelsBetaTrueListParams
       def list(params = {})
-        parsed, options = Sam::ModelsBetaTrueListParams.dump_request(params)
         query_params = [:after_id, :before_id, :limit]
+        parsed, options = Sam::ModelsBetaTrueListParams.dump_request(params)
+        query = Sam::Internal::Util.encode_query_params(parsed.slice(*query_params))
         @client.request(
           method: :get,
           path: "v1/models?beta=true",
-          query: parsed.slice(*query_params),
+          query: query,
           headers: parsed.except(*query_params).transform_keys(
             anthropic_version: "anthropic-version",
             x_api_key: "x-api-key"
