@@ -12,6 +12,10 @@ module Sam
             T.any(Sam::Messages::BatchRetrieveParams, Sam::Internal::AnyHash)
           end
 
+        # ID of the Message Batch.
+        sig { returns(String) }
+        attr_accessor :message_batch_id
+
         # Optional header to specify the beta version(s) you want to use.
         #
         # To use multiple betas, use a comma separated list like `beta1,beta2` or specify
@@ -46,6 +50,7 @@ module Sam
 
         sig do
           params(
+            message_batch_id: String,
             anthropic_beta: T::Array[String],
             anthropic_version: String,
             x_api_key: String,
@@ -53,6 +58,8 @@ module Sam
           ).returns(T.attached_class)
         end
         def self.new(
+          # ID of the Message Batch.
+          message_batch_id:,
           # Optional header to specify the beta version(s) you want to use.
           #
           # To use multiple betas, use a comma separated list like `beta1,beta2` or specify
@@ -77,6 +84,7 @@ module Sam
         sig do
           override.returns(
             {
+              message_batch_id: String,
               anthropic_beta: T::Array[String],
               anthropic_version: String,
               x_api_key: String,

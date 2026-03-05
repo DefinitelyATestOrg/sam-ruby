@@ -9,6 +9,10 @@ module Sam
       OrHash =
         T.type_alias { T.any(Sam::ModelRetrieveParams, Sam::Internal::AnyHash) }
 
+      # Model identifier or alias.
+      sig { returns(String) }
+      attr_accessor :model_id
+
       # The version of the Anthropic API you want to use.
       #
       # Read more about versioning and our version history
@@ -33,12 +37,15 @@ module Sam
 
       sig do
         params(
+          model_id: String,
           anthropic_version: String,
           x_api_key: String,
           request_options: Sam::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        # Model identifier or alias.
+        model_id:,
         # The version of the Anthropic API you want to use.
         #
         # Read more about versioning and our version history
@@ -58,6 +65,7 @@ module Sam
       sig do
         override.returns(
           {
+            model_id: String,
             anthropic_version: String,
             x_api_key: String,
             request_options: Sam::RequestOptions
