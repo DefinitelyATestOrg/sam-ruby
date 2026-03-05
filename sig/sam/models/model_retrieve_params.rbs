@@ -1,12 +1,14 @@
 module Sam
   module Models
     type model_retrieve_params =
-      { anthropic_version: String, x_api_key: String }
+      { model_id: String, anthropic_version: String, x_api_key: String }
       & Sam::Internal::Type::request_parameters
 
     class ModelRetrieveParams < Sam::Internal::Type::BaseModel
       extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
+
+      attr_accessor model_id: String
 
       attr_reader anthropic_version: String?
 
@@ -17,12 +19,14 @@ module Sam
       def x_api_key=: (String) -> String
 
       def initialize: (
+        model_id: String,
         ?anthropic_version: String,
         ?x_api_key: String,
         ?request_options: Sam::request_opts
       ) -> void
 
       def to_hash: -> {
+        model_id: String,
         anthropic_version: String,
         x_api_key: String,
         request_options: Sam::RequestOptions

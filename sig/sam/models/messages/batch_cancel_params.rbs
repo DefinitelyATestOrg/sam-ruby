@@ -3,6 +3,7 @@ module Sam
     module Messages
       type batch_cancel_params =
         {
+          message_batch_id: String,
           anthropic_beta: ::Array[String],
           anthropic_version: String,
           x_api_key: String
@@ -12,6 +13,8 @@ module Sam
       class BatchCancelParams < Sam::Internal::Type::BaseModel
         extend Sam::Internal::Type::RequestParameters::Converter
         include Sam::Internal::Type::RequestParameters
+
+        attr_accessor message_batch_id: String
 
         attr_reader anthropic_beta: ::Array[String]?
 
@@ -26,6 +29,7 @@ module Sam
         def x_api_key=: (String) -> String
 
         def initialize: (
+          message_batch_id: String,
           ?anthropic_beta: ::Array[String],
           ?anthropic_version: String,
           ?x_api_key: String,
@@ -33,6 +37,7 @@ module Sam
         ) -> void
 
         def to_hash: -> {
+          message_batch_id: String,
           anthropic_beta: ::Array[String],
           anthropic_version: String,
           x_api_key: String,

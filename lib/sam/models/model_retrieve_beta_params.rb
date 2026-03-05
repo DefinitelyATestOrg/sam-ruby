@@ -7,6 +7,12 @@ module Sam
       extend Sam::Internal::Type::RequestParameters::Converter
       include Sam::Internal::Type::RequestParameters
 
+      # @!attribute model_id
+      #   Model identifier or alias.
+      #
+      #   @return [String]
+      required :model_id, String
+
       # @!attribute anthropic_version
       #   The version of the Anthropic API you want to use.
       #
@@ -27,9 +33,11 @@ module Sam
       #   @return [String, nil]
       optional :x_api_key, String
 
-      # @!method initialize(anthropic_version: nil, x_api_key: nil, request_options: {})
+      # @!method initialize(model_id:, anthropic_version: nil, x_api_key: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Sam::Models::ModelRetrieveBetaParams} for more details.
+      #
+      #   @param model_id [String] Model identifier or alias.
       #
       #   @param anthropic_version [String] The version of the Anthropic API you want to use.
       #

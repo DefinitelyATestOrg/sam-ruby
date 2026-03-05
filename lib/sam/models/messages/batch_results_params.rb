@@ -8,6 +8,12 @@ module Sam
         extend Sam::Internal::Type::RequestParameters::Converter
         include Sam::Internal::Type::RequestParameters
 
+        # @!attribute message_batch_id
+        #   ID of the Message Batch.
+        #
+        #   @return [String]
+        required :message_batch_id, String
+
         # @!attribute anthropic_beta
         #   Optional header to specify the beta version(s) you want to use.
         #
@@ -37,9 +43,11 @@ module Sam
         #   @return [String, nil]
         optional :x_api_key, String
 
-        # @!method initialize(anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
+        # @!method initialize(message_batch_id:, anthropic_beta: nil, anthropic_version: nil, x_api_key: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Sam::Models::Messages::BatchResultsParams} for more details.
+        #
+        #   @param message_batch_id [String] ID of the Message Batch.
         #
         #   @param anthropic_beta [Array<String>] Optional header to specify the beta version(s) you want to use.
         #
