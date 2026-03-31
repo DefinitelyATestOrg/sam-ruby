@@ -1,0 +1,40 @@
+module Sam
+  module Models
+    type complete_create_response =
+      {
+        id: String,
+        completion: String,
+        model: String,
+        stop_reason: String?,
+        type: :completion
+      }
+
+    class CompleteCreateResponse < Sam::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor completion: String
+
+      attr_accessor model: String
+
+      attr_accessor stop_reason: String?
+
+      attr_accessor type: :completion
+
+      def initialize: (
+        id: String,
+        completion: String,
+        model: String,
+        stop_reason: String?,
+        ?type: :completion
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        completion: String,
+        model: String,
+        stop_reason: String?,
+        type: :completion
+      }
+    end
+  end
+end

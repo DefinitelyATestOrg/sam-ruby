@@ -1,0 +1,3 @@
+module Sam
+  VERSION: String
+end

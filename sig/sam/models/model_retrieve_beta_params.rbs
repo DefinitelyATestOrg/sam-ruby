@@ -1,0 +1,36 @@
+module Sam
+  module Models
+    type model_retrieve_beta_params =
+      { model_id: String, anthropic_version: String, x_api_key: String }
+      & Sam::Internal::Type::request_parameters
+
+    class ModelRetrieveBetaParams < Sam::Internal::Type::BaseModel
+      extend Sam::Internal::Type::RequestParameters::Converter
+      include Sam::Internal::Type::RequestParameters
+
+      attr_accessor model_id: String
+
+      attr_reader anthropic_version: String?
+
+      def anthropic_version=: (String) -> String
+
+      attr_reader x_api_key: String?
+
+      def x_api_key=: (String) -> String
+
+      def initialize: (
+        model_id: String,
+        ?anthropic_version: String,
+        ?x_api_key: String,
+        ?request_options: Sam::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        model_id: String,
+        anthropic_version: String,
+        x_api_key: String,
+        request_options: Sam::RequestOptions
+      }
+    end
+  end
+end

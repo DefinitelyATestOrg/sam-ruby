@@ -1,0 +1,1394 @@
+# typed: strong
+
+module Sam
+  module Models
+    module Messages
+      class BatchResultsBetaResponse < Sam::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Sam::Models::Messages::BatchResultsBetaResponse,
+              Sam::Internal::AnyHash
+            )
+          end
+
+        # Developer-provided ID created for each request in a Message Batch. Useful for
+        # matching results to requests, as results may be given out of request order.
+        #
+        # Must be unique for each request within the Message Batch.
+        sig { returns(String) }
+        attr_accessor :custom_id
+
+        # Processing result for this request.
+        #
+        # Contains a Message output if processing was successful, an error response if
+        # processing failed, or the reason why processing was not attempted, such as
+        # cancellation or expiration.
+        sig do
+          returns(
+            Sam::Models::Messages::BatchResultsBetaResponse::Result::Variants
+          )
+        end
+        attr_accessor :result
+
+        # This is a single line in the response `.jsonl` file and does not represent the
+        # response as a whole.
+        sig do
+          params(
+            custom_id: String,
+            result:
+              T.any(
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::OrHash,
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::OrHash,
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Canceled::OrHash,
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Expired::OrHash
+              )
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Developer-provided ID created for each request in a Message Batch. Useful for
+          # matching results to requests, as results may be given out of request order.
+          #
+          # Must be unique for each request within the Message Batch.
+          custom_id:,
+          # Processing result for this request.
+          #
+          # Contains a Message output if processing was successful, an error response if
+          # processing failed, or the reason why processing was not attempted, such as
+          # cancellation or expiration.
+          result:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              custom_id: String,
+              result:
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Variants
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # Processing result for this request.
+        #
+        # Contains a Message output if processing was successful, an error response if
+        # processing failed, or the reason why processing was not attempted, such as
+        # cancellation or expiration.
+        module Result
+          extend Sam::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded,
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored,
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Canceled,
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Expired
+              )
+            end
+
+          class Succeeded < Sam::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded,
+                  Sam::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message
+              )
+            end
+            attr_reader :message
+
+            sig do
+              params(
+                message:
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::OrHash
+              ).void
+            end
+            attr_writer :message
+
+            sig { returns(Symbol) }
+            attr_accessor :type
+
+            sig do
+              params(
+                message:
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::OrHash,
+                type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(message:, type: :succeeded)
+            end
+
+            sig do
+              override.returns(
+                {
+                  message:
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message,
+                  type: Symbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class Message < Sam::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message,
+                    Sam::Internal::AnyHash
+                  )
+                end
+
+              # Unique object identifier.
+              #
+              # The format and length of IDs may change over time.
+              sig { returns(String) }
+              attr_accessor :id
+
+              # Content generated by the model.
+              #
+              # This is an array of content blocks, each of which has a `type` that determines
+              # its shape.
+              #
+              # Example:
+              #
+              # ```json
+              # [{ "type": "text", "text": "Hi, I'm Claude." }]
+              # ```
+              #
+              # If the request input `messages` ended with an `assistant` turn, then the
+              # response `content` will continue directly from that last turn. You can use this
+              # to constrain the model's output.
+              #
+              # For example, if the input `messages` were:
+              #
+              # ```json
+              # [
+              #   {
+              #     "role": "user",
+              #     "content": "What's the Greek name for Sun? (A) Sol (B) Helios (C) Sun"
+              #   },
+              #   { "role": "assistant", "content": "The best answer is (" }
+              # ]
+              # ```
+              #
+              # Then the response `content` might be:
+              #
+              # ```json
+              # [{ "type": "text", "text": "B)" }]
+              # ```
+              sig do
+                returns(
+                  T::Array[
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Variants
+                  ]
+                )
+              end
+              attr_accessor :content
+
+              # The model that handled the request.
+              sig { returns(String) }
+              attr_accessor :model
+
+              # Conversational role of the generated message.
+              #
+              # This will always be `"assistant"`.
+              sig { returns(Symbol) }
+              attr_accessor :role
+
+              # The reason that we stopped.
+              #
+              # This may be one the following values:
+              #
+              # - `"end_turn"`: the model reached a natural stopping point
+              # - `"max_tokens"`: we exceeded the requested `max_tokens` or the model's maximum
+              # - `"stop_sequence"`: one of your provided custom `stop_sequences` was generated
+              # - `"tool_use"`: the model invoked one or more tools
+              #
+              # In non-streaming mode this value is always non-null. In streaming mode, it is
+              # null in the `message_start` event and non-null otherwise.
+              sig do
+                returns(
+                  T.nilable(
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason::TaggedSymbol
+                  )
+                )
+              end
+              attr_accessor :stop_reason
+
+              # Which custom stop sequence was generated, if any.
+              #
+              # This value will be a non-null string if one of your custom stop sequences was
+              # generated.
+              sig { returns(T.nilable(String)) }
+              attr_accessor :stop_sequence
+
+              # Object type.
+              #
+              # For Messages, this is always `"message"`.
+              sig { returns(Symbol) }
+              attr_accessor :type
+
+              # Billing and rate-limit usage.
+              #
+              # Anthropic's API bills and rate-limits by token counts, as tokens represent the
+              # underlying cost to our systems.
+              #
+              # Under the hood, the API transforms requests into a format suitable for the
+              # model. The model's output then goes through a parsing stage before becoming an
+              # API response. As a result, the token counts in `usage` will not match one-to-one
+              # with the exact visible content of an API request or response.
+              #
+              # For example, `output_tokens` will be non-zero, even for an empty string response
+              # from Claude.
+              #
+              # Total input tokens in a request is the summation of `input_tokens`,
+              # `cache_creation_input_tokens`, and `cache_read_input_tokens`.
+              sig do
+                returns(
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Usage
+                )
+              end
+              attr_reader :usage
+
+              sig do
+                params(
+                  usage:
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Usage::OrHash
+                ).void
+              end
+              attr_writer :usage
+
+              sig do
+                params(
+                  id: String,
+                  content:
+                    T::Array[
+                      T.any(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::OrHash,
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::ToolUse::OrHash,
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Thinking::OrHash,
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::RedactedThinking::OrHash
+                      )
+                    ],
+                  model: String,
+                  stop_reason:
+                    T.nilable(
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason::OrSymbol
+                    ),
+                  stop_sequence: T.nilable(String),
+                  usage:
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Usage::OrHash,
+                  role: Symbol,
+                  type: Symbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Unique object identifier.
+                #
+                # The format and length of IDs may change over time.
+                id:,
+                # Content generated by the model.
+                #
+                # This is an array of content blocks, each of which has a `type` that determines
+                # its shape.
+                #
+                # Example:
+                #
+                # ```json
+                # [{ "type": "text", "text": "Hi, I'm Claude." }]
+                # ```
+                #
+                # If the request input `messages` ended with an `assistant` turn, then the
+                # response `content` will continue directly from that last turn. You can use this
+                # to constrain the model's output.
+                #
+                # For example, if the input `messages` were:
+                #
+                # ```json
+                # [
+                #   {
+                #     "role": "user",
+                #     "content": "What's the Greek name for Sun? (A) Sol (B) Helios (C) Sun"
+                #   },
+                #   { "role": "assistant", "content": "The best answer is (" }
+                # ]
+                # ```
+                #
+                # Then the response `content` might be:
+                #
+                # ```json
+                # [{ "type": "text", "text": "B)" }]
+                # ```
+                content:,
+                # The model that handled the request.
+                model:,
+                # The reason that we stopped.
+                #
+                # This may be one the following values:
+                #
+                # - `"end_turn"`: the model reached a natural stopping point
+                # - `"max_tokens"`: we exceeded the requested `max_tokens` or the model's maximum
+                # - `"stop_sequence"`: one of your provided custom `stop_sequences` was generated
+                # - `"tool_use"`: the model invoked one or more tools
+                #
+                # In non-streaming mode this value is always non-null. In streaming mode, it is
+                # null in the `message_start` event and non-null otherwise.
+                stop_reason:,
+                # Which custom stop sequence was generated, if any.
+                #
+                # This value will be a non-null string if one of your custom stop sequences was
+                # generated.
+                stop_sequence:,
+                # Billing and rate-limit usage.
+                #
+                # Anthropic's API bills and rate-limits by token counts, as tokens represent the
+                # underlying cost to our systems.
+                #
+                # Under the hood, the API transforms requests into a format suitable for the
+                # model. The model's output then goes through a parsing stage before becoming an
+                # API response. As a result, the token counts in `usage` will not match one-to-one
+                # with the exact visible content of an API request or response.
+                #
+                # For example, `output_tokens` will be non-zero, even for an empty string response
+                # from Claude.
+                #
+                # Total input tokens in a request is the summation of `input_tokens`,
+                # `cache_creation_input_tokens`, and `cache_read_input_tokens`.
+                usage:,
+                # Conversational role of the generated message.
+                #
+                # This will always be `"assistant"`.
+                role: :assistant,
+                # Object type.
+                #
+                # For Messages, this is always `"message"`.
+                type: :message
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    id: String,
+                    content:
+                      T::Array[
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Variants
+                      ],
+                    model: String,
+                    role: Symbol,
+                    stop_reason:
+                      T.nilable(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason::TaggedSymbol
+                      ),
+                    stop_sequence: T.nilable(String),
+                    type: Symbol,
+                    usage:
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Usage
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              module Content
+                extend Sam::Internal::Type::Union
+
+                Variants =
+                  T.type_alias do
+                    T.any(
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::ToolUse,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Thinking,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::RedactedThinking
+                    )
+                  end
+
+                class Text < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text,
+                        Sam::Internal::AnyHash
+                      )
+                    end
+
+                  # Citations supporting the text block.
+                  #
+                  # The type of citation returned will depend on the type of document being cited.
+                  # Citing a PDF results in `page_location`, plain text results in `char_location`,
+                  # and content document results in `content_block_location`.
+                  sig do
+                    returns(
+                      T.nilable(
+                        T::Array[
+                          Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::Variants
+                        ]
+                      )
+                    )
+                  end
+                  attr_accessor :citations
+
+                  sig { returns(String) }
+                  attr_accessor :text
+
+                  sig { returns(Symbol) }
+                  attr_accessor :type
+
+                  sig do
+                    params(
+                      citations:
+                        T.nilable(
+                          T::Array[
+                            T.any(
+                              Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation::OrHash,
+                              Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation::OrHash,
+                              Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation::OrHash
+                            )
+                          ]
+                        ),
+                      text: String,
+                      type: Symbol
+                    ).returns(T.attached_class)
+                  end
+                  def self.new(
+                    # Citations supporting the text block.
+                    #
+                    # The type of citation returned will depend on the type of document being cited.
+                    # Citing a PDF results in `page_location`, plain text results in `char_location`,
+                    # and content document results in `content_block_location`.
+                    citations:,
+                    text:,
+                    type: :text
+                  )
+                  end
+
+                  sig do
+                    override.returns(
+                      {
+                        citations:
+                          T.nilable(
+                            T::Array[
+                              Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::Variants
+                            ]
+                          ),
+                        text: String,
+                        type: Symbol
+                      }
+                    )
+                  end
+                  def to_hash
+                  end
+
+                  module Citation
+                    extend Sam::Internal::Type::Union
+
+                    Variants =
+                      T.type_alias do
+                        T.any(
+                          Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation,
+                          Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation,
+                          Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation
+                        )
+                      end
+
+                    class CharLocation < Sam::Internal::Type::BaseModel
+                      OrHash =
+                        T.type_alias do
+                          T.any(
+                            Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation,
+                            Sam::Internal::AnyHash
+                          )
+                        end
+
+                      sig { returns(String) }
+                      attr_accessor :cited_text
+
+                      sig { returns(Integer) }
+                      attr_accessor :document_index
+
+                      sig { returns(T.nilable(String)) }
+                      attr_accessor :document_title
+
+                      sig { returns(Integer) }
+                      attr_accessor :end_char_index
+
+                      sig { returns(Integer) }
+                      attr_accessor :start_char_index
+
+                      sig { returns(Symbol) }
+                      attr_accessor :type
+
+                      sig do
+                        params(
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: T.nilable(String),
+                          end_char_index: Integer,
+                          start_char_index: Integer,
+                          type: Symbol
+                        ).returns(T.attached_class)
+                      end
+                      def self.new(
+                        cited_text:,
+                        document_index:,
+                        document_title:,
+                        end_char_index:,
+                        start_char_index:,
+                        type: :char_location
+                      )
+                      end
+
+                      sig do
+                        override.returns(
+                          {
+                            cited_text: String,
+                            document_index: Integer,
+                            document_title: T.nilable(String),
+                            end_char_index: Integer,
+                            start_char_index: Integer,
+                            type: Symbol
+                          }
+                        )
+                      end
+                      def to_hash
+                      end
+                    end
+
+                    class PageLocation < Sam::Internal::Type::BaseModel
+                      OrHash =
+                        T.type_alias do
+                          T.any(
+                            Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation,
+                            Sam::Internal::AnyHash
+                          )
+                        end
+
+                      sig { returns(String) }
+                      attr_accessor :cited_text
+
+                      sig { returns(Integer) }
+                      attr_accessor :document_index
+
+                      sig { returns(T.nilable(String)) }
+                      attr_accessor :document_title
+
+                      sig { returns(Integer) }
+                      attr_accessor :end_page_number
+
+                      sig { returns(Integer) }
+                      attr_accessor :start_page_number
+
+                      sig { returns(Symbol) }
+                      attr_accessor :type
+
+                      sig do
+                        params(
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: T.nilable(String),
+                          end_page_number: Integer,
+                          start_page_number: Integer,
+                          type: Symbol
+                        ).returns(T.attached_class)
+                      end
+                      def self.new(
+                        cited_text:,
+                        document_index:,
+                        document_title:,
+                        end_page_number:,
+                        start_page_number:,
+                        type: :page_location
+                      )
+                      end
+
+                      sig do
+                        override.returns(
+                          {
+                            cited_text: String,
+                            document_index: Integer,
+                            document_title: T.nilable(String),
+                            end_page_number: Integer,
+                            start_page_number: Integer,
+                            type: Symbol
+                          }
+                        )
+                      end
+                      def to_hash
+                      end
+                    end
+
+                    class ContentBlockLocation < Sam::Internal::Type::BaseModel
+                      OrHash =
+                        T.type_alias do
+                          T.any(
+                            Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation,
+                            Sam::Internal::AnyHash
+                          )
+                        end
+
+                      sig { returns(String) }
+                      attr_accessor :cited_text
+
+                      sig { returns(Integer) }
+                      attr_accessor :document_index
+
+                      sig { returns(T.nilable(String)) }
+                      attr_accessor :document_title
+
+                      sig { returns(Integer) }
+                      attr_accessor :end_block_index
+
+                      sig { returns(Integer) }
+                      attr_accessor :start_block_index
+
+                      sig { returns(Symbol) }
+                      attr_accessor :type
+
+                      sig do
+                        params(
+                          cited_text: String,
+                          document_index: Integer,
+                          document_title: T.nilable(String),
+                          end_block_index: Integer,
+                          start_block_index: Integer,
+                          type: Symbol
+                        ).returns(T.attached_class)
+                      end
+                      def self.new(
+                        cited_text:,
+                        document_index:,
+                        document_title:,
+                        end_block_index:,
+                        start_block_index:,
+                        type: :content_block_location
+                      )
+                      end
+
+                      sig do
+                        override.returns(
+                          {
+                            cited_text: String,
+                            document_index: Integer,
+                            document_title: T.nilable(String),
+                            end_block_index: Integer,
+                            start_block_index: Integer,
+                            type: Symbol
+                          }
+                        )
+                      end
+                      def to_hash
+                      end
+                    end
+
+                    sig do
+                      override.returns(
+                        T::Array[
+                          Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Text::Citation::Variants
+                        ]
+                      )
+                    end
+                    def self.variants
+                    end
+                  end
+                end
+
+                class ToolUse < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::ToolUse,
+                        Sam::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(String) }
+                  attr_accessor :id
+
+                  sig { returns(T.anything) }
+                  attr_accessor :input
+
+                  sig { returns(String) }
+                  attr_accessor :name
+
+                  sig { returns(Symbol) }
+                  attr_accessor :type
+
+                  sig do
+                    params(
+                      id: String,
+                      input: T.anything,
+                      name: String,
+                      type: Symbol
+                    ).returns(T.attached_class)
+                  end
+                  def self.new(id:, input:, name:, type: :tool_use)
+                  end
+
+                  sig do
+                    override.returns(
+                      {
+                        id: String,
+                        input: T.anything,
+                        name: String,
+                        type: Symbol
+                      }
+                    )
+                  end
+                  def to_hash
+                  end
+                end
+
+                class Thinking < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Thinking,
+                        Sam::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(String) }
+                  attr_accessor :signature
+
+                  sig { returns(String) }
+                  attr_accessor :thinking
+
+                  sig { returns(Symbol) }
+                  attr_accessor :type
+
+                  sig do
+                    params(
+                      signature: String,
+                      thinking: String,
+                      type: Symbol
+                    ).returns(T.attached_class)
+                  end
+                  def self.new(signature:, thinking:, type: :thinking)
+                  end
+
+                  sig do
+                    override.returns(
+                      { signature: String, thinking: String, type: Symbol }
+                    )
+                  end
+                  def to_hash
+                  end
+                end
+
+                class RedactedThinking < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::RedactedThinking,
+                        Sam::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(String) }
+                  attr_accessor :data
+
+                  sig { returns(Symbol) }
+                  attr_accessor :type
+
+                  sig do
+                    params(data: String, type: Symbol).returns(T.attached_class)
+                  end
+                  def self.new(data:, type: :redacted_thinking)
+                  end
+
+                  sig { override.returns({ data: String, type: Symbol }) }
+                  def to_hash
+                  end
+                end
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Content::Variants
+                    ]
+                  )
+                end
+                def self.variants
+                end
+              end
+
+              # The reason that we stopped.
+              #
+              # This may be one the following values:
+              #
+              # - `"end_turn"`: the model reached a natural stopping point
+              # - `"max_tokens"`: we exceeded the requested `max_tokens` or the model's maximum
+              # - `"stop_sequence"`: one of your provided custom `stop_sequences` was generated
+              # - `"tool_use"`: the model invoked one or more tools
+              #
+              # In non-streaming mode this value is always non-null. In streaming mode, it is
+              # null in the `message_start` event and non-null otherwise.
+              module StopReason
+                extend Sam::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                END_TURN =
+                  T.let(
+                    :end_turn,
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason::TaggedSymbol
+                  )
+                MAX_TOKENS =
+                  T.let(
+                    :max_tokens,
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason::TaggedSymbol
+                  )
+                STOP_SEQUENCE =
+                  T.let(
+                    :stop_sequence,
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason::TaggedSymbol
+                  )
+                TOOL_USE =
+                  T.let(
+                    :tool_use,
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::StopReason::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              class Usage < Sam::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Succeeded::Message::Usage,
+                      Sam::Internal::AnyHash
+                    )
+                  end
+
+                # The number of input tokens used to create the cache entry.
+                sig { returns(T.nilable(Integer)) }
+                attr_accessor :cache_creation_input_tokens
+
+                # The number of input tokens read from the cache.
+                sig { returns(T.nilable(Integer)) }
+                attr_accessor :cache_read_input_tokens
+
+                # The number of input tokens which were used.
+                sig { returns(Integer) }
+                attr_accessor :input_tokens
+
+                # The number of output tokens which were used.
+                sig { returns(Integer) }
+                attr_accessor :output_tokens
+
+                # Billing and rate-limit usage.
+                #
+                # Anthropic's API bills and rate-limits by token counts, as tokens represent the
+                # underlying cost to our systems.
+                #
+                # Under the hood, the API transforms requests into a format suitable for the
+                # model. The model's output then goes through a parsing stage before becoming an
+                # API response. As a result, the token counts in `usage` will not match one-to-one
+                # with the exact visible content of an API request or response.
+                #
+                # For example, `output_tokens` will be non-zero, even for an empty string response
+                # from Claude.
+                #
+                # Total input tokens in a request is the summation of `input_tokens`,
+                # `cache_creation_input_tokens`, and `cache_read_input_tokens`.
+                sig do
+                  params(
+                    cache_creation_input_tokens: T.nilable(Integer),
+                    cache_read_input_tokens: T.nilable(Integer),
+                    input_tokens: Integer,
+                    output_tokens: Integer
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # The number of input tokens used to create the cache entry.
+                  cache_creation_input_tokens:,
+                  # The number of input tokens read from the cache.
+                  cache_read_input_tokens:,
+                  # The number of input tokens which were used.
+                  input_tokens:,
+                  # The number of output tokens which were used.
+                  output_tokens:
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      cache_creation_input_tokens: T.nilable(Integer),
+                      cache_read_input_tokens: T.nilable(Integer),
+                      input_tokens: Integer,
+                      output_tokens: Integer
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          class Errored < Sam::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored,
+                  Sam::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error
+              )
+            end
+            attr_reader :error
+
+            sig do
+              params(
+                error:
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::OrHash
+              ).void
+            end
+            attr_writer :error
+
+            sig { returns(Symbol) }
+            attr_accessor :type
+
+            sig do
+              params(
+                error:
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::OrHash,
+                type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(error:, type: :errored)
+            end
+
+            sig do
+              override.returns(
+                {
+                  error:
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error,
+                  type: Symbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class Error < Sam::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error,
+                    Sam::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::Variants
+                )
+              end
+              attr_accessor :error
+
+              sig { returns(Symbol) }
+              attr_accessor :type
+
+              sig do
+                params(
+                  error:
+                    T.any(
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::InvalidRequestError::OrHash,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::AuthenticationError::OrHash,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::BillingError::OrHash,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::PermissionError::OrHash,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::NotFoundError::OrHash,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::RateLimitError::OrHash,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::TimeoutError::OrHash,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::APIError::OrHash,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::OverloadedError::OrHash
+                    ),
+                  type: Symbol
+                ).returns(T.attached_class)
+              end
+              def self.new(error:, type: :error)
+              end
+
+              sig do
+                override.returns(
+                  {
+                    error:
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::Variants,
+                    type: Symbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              module Error
+                extend Sam::Internal::Type::Union
+
+                Variants =
+                  T.type_alias do
+                    T.any(
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::InvalidRequestError,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::AuthenticationError,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::BillingError,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::PermissionError,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::NotFoundError,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::RateLimitError,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::TimeoutError,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::APIError,
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::OverloadedError
+                    )
+                  end
+
+                class InvalidRequestError < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::InvalidRequestError,
+                        Sam::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(String) }
+                  attr_accessor :message
+
+                  sig { returns(Symbol) }
+                  attr_accessor :type
+
+                  sig do
+                    params(message: String, type: Symbol).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(message:, type: :invalid_request_error)
+                  end
+
+                  sig { override.returns({ message: String, type: Symbol }) }
+                  def to_hash
+                  end
+                end
+
+                class AuthenticationError < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::AuthenticationError,
+                        Sam::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(String) }
+                  attr_accessor :message
+
+                  sig { returns(Symbol) }
+                  attr_accessor :type
+
+                  sig do
+                    params(message: String, type: Symbol).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(message:, type: :authentication_error)
+                  end
+
+                  sig { override.returns({ message: String, type: Symbol }) }
+                  def to_hash
+                  end
+                end
+
+                class BillingError < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::BillingError,
+                        Sam::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(String) }
+                  attr_accessor :message
+
+                  sig { returns(Symbol) }
+                  attr_accessor :type
+
+                  sig do
+                    params(message: String, type: Symbol).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(message:, type: :billing_error)
+                  end
+
+                  sig { override.returns({ message: String, type: Symbol }) }
+                  def to_hash
+                  end
+                end
+
+                class PermissionError < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::PermissionError,
+                        Sam::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(String) }
+                  attr_accessor :message
+
+                  sig { returns(Symbol) }
+                  attr_accessor :type
+
+                  sig do
+                    params(message: String, type: Symbol).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(message:, type: :permission_error)
+                  end
+
+                  sig { override.returns({ message: String, type: Symbol }) }
+                  def to_hash
+                  end
+                end
+
+                class NotFoundError < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::NotFoundError,
+                        Sam::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(String) }
+                  attr_accessor :message
+
+                  sig { returns(Symbol) }
+                  attr_accessor :type
+
+                  sig do
+                    params(message: String, type: Symbol).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(message:, type: :not_found_error)
+                  end
+
+                  sig { override.returns({ message: String, type: Symbol }) }
+                  def to_hash
+                  end
+                end
+
+                class RateLimitError < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::RateLimitError,
+                        Sam::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(String) }
+                  attr_accessor :message
+
+                  sig { returns(Symbol) }
+                  attr_accessor :type
+
+                  sig do
+                    params(message: String, type: Symbol).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(message:, type: :rate_limit_error)
+                  end
+
+                  sig { override.returns({ message: String, type: Symbol }) }
+                  def to_hash
+                  end
+                end
+
+                class TimeoutError < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::TimeoutError,
+                        Sam::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(String) }
+                  attr_accessor :message
+
+                  sig { returns(Symbol) }
+                  attr_accessor :type
+
+                  sig do
+                    params(message: String, type: Symbol).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(message:, type: :timeout_error)
+                  end
+
+                  sig { override.returns({ message: String, type: Symbol }) }
+                  def to_hash
+                  end
+                end
+
+                class APIError < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::APIError,
+                        Sam::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(String) }
+                  attr_accessor :message
+
+                  sig { returns(Symbol) }
+                  attr_accessor :type
+
+                  sig do
+                    params(message: String, type: Symbol).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(message:, type: :api_error)
+                  end
+
+                  sig { override.returns({ message: String, type: Symbol }) }
+                  def to_hash
+                  end
+                end
+
+                class OverloadedError < Sam::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::OverloadedError,
+                        Sam::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(String) }
+                  attr_accessor :message
+
+                  sig { returns(Symbol) }
+                  attr_accessor :type
+
+                  sig do
+                    params(message: String, type: Symbol).returns(
+                      T.attached_class
+                    )
+                  end
+                  def self.new(message:, type: :overloaded_error)
+                  end
+
+                  sig { override.returns({ message: String, type: Symbol }) }
+                  def to_hash
+                  end
+                end
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Sam::Models::Messages::BatchResultsBetaResponse::Result::Errored::Error::Error::Variants
+                    ]
+                  )
+                end
+                def self.variants
+                end
+              end
+            end
+          end
+
+          class Canceled < Sam::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::Canceled,
+                  Sam::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :type
+
+            sig { params(type: Symbol).returns(T.attached_class) }
+            def self.new(type: :canceled)
+            end
+
+            sig { override.returns({ type: Symbol }) }
+            def to_hash
+            end
+          end
+
+          class Expired < Sam::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Sam::Models::Messages::BatchResultsBetaResponse::Result::Expired,
+                  Sam::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :type
+
+            sig { params(type: Symbol).returns(T.attached_class) }
+            def self.new(type: :expired)
+            end
+
+            sig { override.returns({ type: Symbol }) }
+            def to_hash
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Sam::Models::Messages::BatchResultsBetaResponse::Result::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+      end
+    end
+  end
+end

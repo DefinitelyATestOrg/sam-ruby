@@ -1,0 +1,38 @@
+module Sam
+  class Client < Sam::Internal::Transport::BaseClient
+    DEFAULT_MAX_RETRIES: 2
+
+    DEFAULT_TIMEOUT_IN_SECONDS: Float
+
+    DEFAULT_INITIAL_RETRY_DELAY: Float
+
+    DEFAULT_MAX_RETRY_DELAY: Float
+
+    attr_reader api_key: String
+
+    attr_reader store: Sam::Resources::Store
+
+    attr_reader user: Sam::Resources::User
+
+    attr_reader messages: Sam::Resources::Messages
+
+    attr_reader complete: Sam::Resources::Complete
+
+    attr_reader models: Sam::Resources::Models
+
+    attr_reader messages_beta_true: Sam::Resources::MessagesBetaTrue
+
+    attr_reader models_beta_true: Sam::Resources::ModelsBetaTrue
+
+    attr_reader sam_plop_plop: Sam::Resources::SamPlopPlop
+
+    def initialize: (
+      ?api_key: String?,
+      ?base_url: String?,
+      ?max_retries: Integer,
+      ?timeout: Float,
+      ?initial_retry_delay: Float,
+      ?max_retry_delay: Float
+    ) -> void
+  end
+end

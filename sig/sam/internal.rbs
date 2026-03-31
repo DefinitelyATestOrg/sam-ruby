@@ -1,0 +1,9 @@
+module Sam
+  module Internal
+    extend Sam::Internal::Util::SorbetRuntimeSupport
+
+    type file_input = Pathname | StringIO | IO | String | Sam::FilePart
+
+    OMIT: Object
+  end
+end

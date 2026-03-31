@@ -1,0 +1,626 @@
+module Sam
+  module Models
+    module Messages
+      type batch_results_response =
+        {
+          custom_id: String,
+          result: Sam::Models::Messages::BatchResultsResponse::result
+        }
+
+      class BatchResultsResponse < Sam::Internal::Type::BaseModel
+        attr_accessor custom_id: String
+
+        attr_accessor result: Sam::Models::Messages::BatchResultsResponse::result
+
+        def initialize: (
+          custom_id: String,
+          result: Sam::Models::Messages::BatchResultsResponse::result
+        ) -> void
+
+        def to_hash: -> {
+          custom_id: String,
+          result: Sam::Models::Messages::BatchResultsResponse::result
+        }
+
+        type result =
+          Sam::Models::Messages::BatchResultsResponse::Result::Succeeded
+          | Sam::Models::Messages::BatchResultsResponse::Result::Errored
+          | Sam::Models::Messages::BatchResultsResponse::Result::Canceled
+          | Sam::Models::Messages::BatchResultsResponse::Result::Expired
+
+        module Result
+          extend Sam::Internal::Type::Union
+
+          type succeeded =
+            {
+              message: Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message,
+              type: :succeeded
+            }
+
+          class Succeeded < Sam::Internal::Type::BaseModel
+            attr_accessor message: Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message
+
+            attr_accessor type: :succeeded
+
+            def initialize: (
+              message: Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message,
+              ?type: :succeeded
+            ) -> void
+
+            def to_hash: -> {
+              message: Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message,
+              type: :succeeded
+            }
+
+            type message =
+              {
+                id: String,
+                content: ::Array[Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::content],
+                model: String,
+                role: :assistant,
+                stop_reason: Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::stop_reason?,
+                stop_sequence: String?,
+                type: :message,
+                usage: Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Usage
+              }
+
+            class Message < Sam::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor content: ::Array[Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::content]
+
+              attr_accessor model: String
+
+              attr_accessor role: :assistant
+
+              attr_accessor stop_reason: Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::stop_reason?
+
+              attr_accessor stop_sequence: String?
+
+              attr_accessor type: :message
+
+              attr_accessor usage: Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Usage
+
+              def initialize: (
+                id: String,
+                content: ::Array[Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::content],
+                model: String,
+                stop_reason: Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::stop_reason?,
+                stop_sequence: String?,
+                usage: Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Usage,
+                ?role: :assistant,
+                ?type: :message
+              ) -> void
+
+              def to_hash: -> {
+                id: String,
+                content: ::Array[Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::content],
+                model: String,
+                role: :assistant,
+                stop_reason: Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::stop_reason?,
+                stop_sequence: String?,
+                type: :message,
+                usage: Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Usage
+              }
+
+              type content =
+                Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text
+                | Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::ToolUse
+                | Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Thinking
+                | Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::RedactedThinking
+
+              module Content
+                extend Sam::Internal::Type::Union
+
+                type text =
+                  {
+                    citations: ::Array[Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::citation]?,
+                    text: String,
+                    type: :text
+                  }
+
+                class Text < Sam::Internal::Type::BaseModel
+                  attr_accessor citations: ::Array[Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::citation]?
+
+                  attr_accessor text: String
+
+                  attr_accessor type: :text
+
+                  def initialize: (
+                    citations: ::Array[Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::citation]?,
+                    text: String,
+                    ?type: :text
+                  ) -> void
+
+                  def to_hash: -> {
+                    citations: ::Array[Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::citation]?,
+                    text: String,
+                    type: :text
+                  }
+
+                  type citation =
+                    Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::CharLocation
+                    | Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::PageLocation
+                    | Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::Citation::ContentBlockLocation
+
+                  module Citation
+                    extend Sam::Internal::Type::Union
+
+                    type char_location =
+                      {
+                        cited_text: String,
+                        document_index: Integer,
+                        document_title: String?,
+                        end_char_index: Integer,
+                        start_char_index: Integer,
+                        type: :char_location
+                      }
+
+                    class CharLocation < Sam::Internal::Type::BaseModel
+                      attr_accessor cited_text: String
+
+                      attr_accessor document_index: Integer
+
+                      attr_accessor document_title: String?
+
+                      attr_accessor end_char_index: Integer
+
+                      attr_accessor start_char_index: Integer
+
+                      attr_accessor type: :char_location
+
+                      def initialize: (
+                        cited_text: String,
+                        document_index: Integer,
+                        document_title: String?,
+                        end_char_index: Integer,
+                        start_char_index: Integer,
+                        ?type: :char_location
+                      ) -> void
+
+                      def to_hash: -> {
+                        cited_text: String,
+                        document_index: Integer,
+                        document_title: String?,
+                        end_char_index: Integer,
+                        start_char_index: Integer,
+                        type: :char_location
+                      }
+                    end
+
+                    type page_location =
+                      {
+                        cited_text: String,
+                        document_index: Integer,
+                        document_title: String?,
+                        end_page_number: Integer,
+                        start_page_number: Integer,
+                        type: :page_location
+                      }
+
+                    class PageLocation < Sam::Internal::Type::BaseModel
+                      attr_accessor cited_text: String
+
+                      attr_accessor document_index: Integer
+
+                      attr_accessor document_title: String?
+
+                      attr_accessor end_page_number: Integer
+
+                      attr_accessor start_page_number: Integer
+
+                      attr_accessor type: :page_location
+
+                      def initialize: (
+                        cited_text: String,
+                        document_index: Integer,
+                        document_title: String?,
+                        end_page_number: Integer,
+                        start_page_number: Integer,
+                        ?type: :page_location
+                      ) -> void
+
+                      def to_hash: -> {
+                        cited_text: String,
+                        document_index: Integer,
+                        document_title: String?,
+                        end_page_number: Integer,
+                        start_page_number: Integer,
+                        type: :page_location
+                      }
+                    end
+
+                    type content_block_location =
+                      {
+                        cited_text: String,
+                        document_index: Integer,
+                        document_title: String?,
+                        end_block_index: Integer,
+                        start_block_index: Integer,
+                        type: :content_block_location
+                      }
+
+                    class ContentBlockLocation < Sam::Internal::Type::BaseModel
+                      attr_accessor cited_text: String
+
+                      attr_accessor document_index: Integer
+
+                      attr_accessor document_title: String?
+
+                      attr_accessor end_block_index: Integer
+
+                      attr_accessor start_block_index: Integer
+
+                      attr_accessor type: :content_block_location
+
+                      def initialize: (
+                        cited_text: String,
+                        document_index: Integer,
+                        document_title: String?,
+                        end_block_index: Integer,
+                        start_block_index: Integer,
+                        ?type: :content_block_location
+                      ) -> void
+
+                      def to_hash: -> {
+                        cited_text: String,
+                        document_index: Integer,
+                        document_title: String?,
+                        end_block_index: Integer,
+                        start_block_index: Integer,
+                        type: :content_block_location
+                      }
+                    end
+
+                    def self?.variants: -> ::Array[Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::Content::Text::citation]
+                  end
+                end
+
+                type tool_use =
+                  { id: String, input: top, name: String, type: :tool_use }
+
+                class ToolUse < Sam::Internal::Type::BaseModel
+                  attr_accessor id: String
+
+                  attr_accessor input: top
+
+                  attr_accessor name: String
+
+                  attr_accessor type: :tool_use
+
+                  def initialize: (
+                    id: String,
+                    input: top,
+                    name: String,
+                    ?type: :tool_use
+                  ) -> void
+
+                  def to_hash: -> {
+                    id: String,
+                    input: top,
+                    name: String,
+                    type: :tool_use
+                  }
+                end
+
+                type thinking =
+                  { signature: String, thinking: String, type: :thinking }
+
+                class Thinking < Sam::Internal::Type::BaseModel
+                  attr_accessor signature: String
+
+                  attr_accessor thinking: String
+
+                  attr_accessor type: :thinking
+
+                  def initialize: (
+                    signature: String,
+                    thinking: String,
+                    ?type: :thinking
+                  ) -> void
+
+                  def to_hash: -> {
+                    signature: String,
+                    thinking: String,
+                    type: :thinking
+                  }
+                end
+
+                type redacted_thinking =
+                  { data: String, type: :redacted_thinking }
+
+                class RedactedThinking < Sam::Internal::Type::BaseModel
+                  attr_accessor data: String
+
+                  attr_accessor type: :redacted_thinking
+
+                  def initialize: (
+                    data: String,
+                    ?type: :redacted_thinking
+                  ) -> void
+
+                  def to_hash: -> { data: String, type: :redacted_thinking }
+                end
+
+                def self?.variants: -> ::Array[Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::content]
+              end
+
+              type stop_reason =
+                :end_turn | :max_tokens | :stop_sequence | :tool_use
+
+              module StopReason
+                extend Sam::Internal::Type::Enum
+
+                END_TURN: :end_turn
+                MAX_TOKENS: :max_tokens
+                STOP_SEQUENCE: :stop_sequence
+                TOOL_USE: :tool_use
+
+                def self?.values: -> ::Array[Sam::Models::Messages::BatchResultsResponse::Result::Succeeded::Message::stop_reason]
+              end
+
+              type usage =
+                {
+                  cache_creation_input_tokens: Integer?,
+                  cache_read_input_tokens: Integer?,
+                  input_tokens: Integer,
+                  output_tokens: Integer
+                }
+
+              class Usage < Sam::Internal::Type::BaseModel
+                attr_accessor cache_creation_input_tokens: Integer?
+
+                attr_accessor cache_read_input_tokens: Integer?
+
+                attr_accessor input_tokens: Integer
+
+                attr_accessor output_tokens: Integer
+
+                def initialize: (
+                  cache_creation_input_tokens: Integer?,
+                  cache_read_input_tokens: Integer?,
+                  input_tokens: Integer,
+                  output_tokens: Integer
+                ) -> void
+
+                def to_hash: -> {
+                  cache_creation_input_tokens: Integer?,
+                  cache_read_input_tokens: Integer?,
+                  input_tokens: Integer,
+                  output_tokens: Integer
+                }
+              end
+            end
+          end
+
+          type errored =
+            {
+              error: Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error,
+              type: :errored
+            }
+
+          class Errored < Sam::Internal::Type::BaseModel
+            attr_accessor error: Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error
+
+            attr_accessor type: :errored
+
+            def initialize: (
+              error: Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error,
+              ?type: :errored
+            ) -> void
+
+            def to_hash: -> {
+              error: Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error,
+              type: :errored
+            }
+
+            type error =
+              {
+                error: Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::error,
+                type: :error
+              }
+
+            class Error < Sam::Internal::Type::BaseModel
+              attr_accessor error: Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::error
+
+              attr_accessor type: :error
+
+              def initialize: (
+                error: Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::error,
+                ?type: :error
+              ) -> void
+
+              def to_hash: -> {
+                error: Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::error,
+                type: :error
+              }
+
+              type error =
+                Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::InvalidRequestError
+                | Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::AuthenticationError
+                | Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::BillingError
+                | Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::PermissionError
+                | Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::NotFoundError
+                | Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::RateLimitError
+                | Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::TimeoutError
+                | Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::APIError
+                | Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::Error::OverloadedError
+
+              module Error
+                extend Sam::Internal::Type::Union
+
+                type invalid_request_error =
+                  { message: String, type: :invalid_request_error }
+
+                class InvalidRequestError < Sam::Internal::Type::BaseModel
+                  attr_accessor message: String
+
+                  attr_accessor type: :invalid_request_error
+
+                  def initialize: (
+                    message: String,
+                    ?type: :invalid_request_error
+                  ) -> void
+
+                  def to_hash: -> {
+                    message: String,
+                    type: :invalid_request_error
+                  }
+                end
+
+                type authentication_error =
+                  { message: String, type: :authentication_error }
+
+                class AuthenticationError < Sam::Internal::Type::BaseModel
+                  attr_accessor message: String
+
+                  attr_accessor type: :authentication_error
+
+                  def initialize: (
+                    message: String,
+                    ?type: :authentication_error
+                  ) -> void
+
+                  def to_hash: -> {
+                    message: String,
+                    type: :authentication_error
+                  }
+                end
+
+                type billing_error = { message: String, type: :billing_error }
+
+                class BillingError < Sam::Internal::Type::BaseModel
+                  attr_accessor message: String
+
+                  attr_accessor type: :billing_error
+
+                  def initialize: (
+                    message: String,
+                    ?type: :billing_error
+                  ) -> void
+
+                  def to_hash: -> { message: String, type: :billing_error }
+                end
+
+                type permission_error =
+                  { message: String, type: :permission_error }
+
+                class PermissionError < Sam::Internal::Type::BaseModel
+                  attr_accessor message: String
+
+                  attr_accessor type: :permission_error
+
+                  def initialize: (
+                    message: String,
+                    ?type: :permission_error
+                  ) -> void
+
+                  def to_hash: -> { message: String, type: :permission_error }
+                end
+
+                type not_found_error =
+                  { message: String, type: :not_found_error }
+
+                class NotFoundError < Sam::Internal::Type::BaseModel
+                  attr_accessor message: String
+
+                  attr_accessor type: :not_found_error
+
+                  def initialize: (
+                    message: String,
+                    ?type: :not_found_error
+                  ) -> void
+
+                  def to_hash: -> { message: String, type: :not_found_error }
+                end
+
+                type rate_limit_error =
+                  { message: String, type: :rate_limit_error }
+
+                class RateLimitError < Sam::Internal::Type::BaseModel
+                  attr_accessor message: String
+
+                  attr_accessor type: :rate_limit_error
+
+                  def initialize: (
+                    message: String,
+                    ?type: :rate_limit_error
+                  ) -> void
+
+                  def to_hash: -> { message: String, type: :rate_limit_error }
+                end
+
+                type timeout_error = { message: String, type: :timeout_error }
+
+                class TimeoutError < Sam::Internal::Type::BaseModel
+                  attr_accessor message: String
+
+                  attr_accessor type: :timeout_error
+
+                  def initialize: (
+                    message: String,
+                    ?type: :timeout_error
+                  ) -> void
+
+                  def to_hash: -> { message: String, type: :timeout_error }
+                end
+
+                type api_error = { message: String, type: :api_error }
+
+                class APIError < Sam::Internal::Type::BaseModel
+                  attr_accessor message: String
+
+                  attr_accessor type: :api_error
+
+                  def initialize: (message: String, ?type: :api_error) -> void
+
+                  def to_hash: -> { message: String, type: :api_error }
+                end
+
+                type overloaded_error =
+                  { message: String, type: :overloaded_error }
+
+                class OverloadedError < Sam::Internal::Type::BaseModel
+                  attr_accessor message: String
+
+                  attr_accessor type: :overloaded_error
+
+                  def initialize: (
+                    message: String,
+                    ?type: :overloaded_error
+                  ) -> void
+
+                  def to_hash: -> { message: String, type: :overloaded_error }
+                end
+
+                def self?.variants: -> ::Array[Sam::Models::Messages::BatchResultsResponse::Result::Errored::Error::error]
+              end
+            end
+          end
+
+          type canceled = { type: :canceled }
+
+          class Canceled < Sam::Internal::Type::BaseModel
+            attr_accessor type: :canceled
+
+            def initialize: (?type: :canceled) -> void
+
+            def to_hash: -> { type: :canceled }
+          end
+
+          type expired = { type: :expired }
+
+          class Expired < Sam::Internal::Type::BaseModel
+            attr_accessor type: :expired
+
+            def initialize: (?type: :expired) -> void
+
+            def to_hash: -> { type: :expired }
+          end
+
+          def self?.variants: -> ::Array[Sam::Models::Messages::BatchResultsResponse::result]
+        end
+      end
+    end
+  end
+end

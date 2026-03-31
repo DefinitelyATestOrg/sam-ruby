@@ -1,0 +1,13 @@
+module Sam
+  module Models
+    type message_count_tokens_response = { input_tokens: Integer }
+
+    class MessageCountTokensResponse < Sam::Internal::Type::BaseModel
+      attr_accessor input_tokens: Integer
+
+      def initialize: (input_tokens: Integer) -> void
+
+      def to_hash: -> { input_tokens: Integer }
+    end
+  end
+end

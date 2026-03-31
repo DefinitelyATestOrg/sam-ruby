@@ -1,0 +1,9 @@
+module Sam
+  module Resources
+    class Store
+      class Orders
+        def initialize: (client: Sam::Client) -> void
+      end
+    end
+  end
+end

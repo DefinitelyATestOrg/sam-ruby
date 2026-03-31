@@ -1,0 +1,100 @@
+# typed: strong
+
+module Sam
+  module Models
+    module Messages
+      class BatchCancelParams < Sam::Internal::Type::BaseModel
+        extend Sam::Internal::Type::RequestParameters::Converter
+        include Sam::Internal::Type::RequestParameters
+
+        OrHash =
+          T.type_alias do
+            T.any(Sam::Messages::BatchCancelParams, Sam::Internal::AnyHash)
+          end
+
+        # ID of the Message Batch.
+        sig { returns(String) }
+        attr_accessor :message_batch_id
+
+        # Optional header to specify the beta version(s) you want to use.
+        #
+        # To use multiple betas, use a comma separated list like `beta1,beta2` or specify
+        # the header multiple times for each beta.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :anthropic_beta
+
+        sig { params(anthropic_beta: T::Array[String]).void }
+        attr_writer :anthropic_beta
+
+        # The version of the Anthropic API you want to use.
+        #
+        # Read more about versioning and our version history
+        # [here](https://docs.anthropic.com/en/api/versioning).
+        sig { returns(T.nilable(String)) }
+        attr_reader :anthropic_version
+
+        sig { params(anthropic_version: String).void }
+        attr_writer :anthropic_version
+
+        # Your unique API key for authentication.
+        #
+        # This key is required in the header of all API requests, to authenticate your
+        # account and access Anthropic's services. Get your API key through the
+        # [Console](https://console.anthropic.com/settings/keys). Each key is scoped to a
+        # Workspace.
+        sig { returns(T.nilable(String)) }
+        attr_reader :x_api_key
+
+        sig { params(x_api_key: String).void }
+        attr_writer :x_api_key
+
+        sig do
+          params(
+            message_batch_id: String,
+            anthropic_beta: T::Array[String],
+            anthropic_version: String,
+            x_api_key: String,
+            request_options: Sam::RequestOptions::OrHash
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # ID of the Message Batch.
+          message_batch_id:,
+          # Optional header to specify the beta version(s) you want to use.
+          #
+          # To use multiple betas, use a comma separated list like `beta1,beta2` or specify
+          # the header multiple times for each beta.
+          anthropic_beta: nil,
+          # The version of the Anthropic API you want to use.
+          #
+          # Read more about versioning and our version history
+          # [here](https://docs.anthropic.com/en/api/versioning).
+          anthropic_version: nil,
+          # Your unique API key for authentication.
+          #
+          # This key is required in the header of all API requests, to authenticate your
+          # account and access Anthropic's services. Get your API key through the
+          # [Console](https://console.anthropic.com/settings/keys). Each key is scoped to a
+          # Workspace.
+          x_api_key: nil,
+          request_options: {}
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              message_batch_id: String,
+              anthropic_beta: T::Array[String],
+              anthropic_version: String,
+              x_api_key: String,
+              request_options: Sam::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
+      end
+    end
+  end
+end

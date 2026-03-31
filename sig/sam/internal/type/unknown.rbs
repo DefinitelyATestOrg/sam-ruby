@@ -1,0 +1,26 @@
+module Sam
+  module Internal
+    module Type
+      class Unknown
+        extend Sam::Internal::Type::Converter
+        extend Sam::Internal::Util::SorbetRuntimeSupport
+
+        def self.===: (top other) -> bool
+
+        def self.==: (top other) -> bool
+
+        def self.coerce: (
+          top value,
+          state: Sam::Internal::Type::Converter::coerce_state
+        ) -> top
+
+        def self.dump: (
+          top value,
+          state: Sam::Internal::Type::Converter::dump_state
+        ) -> top
+
+        def self.to_sorbet_type: -> top
+      end
+    end
+  end
+end

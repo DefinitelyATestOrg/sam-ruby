@@ -1,0 +1,30 @@
+module Sam
+  module Resources
+    class Models
+      def retrieve: (
+        String model_id,
+        ?anthropic_version: String,
+        ?x_api_key: String,
+        ?request_options: Sam::request_opts
+      ) -> Sam::Models::ModelRetrieveResponse
+
+      def list: (
+        ?after_id: String,
+        ?before_id: String,
+        ?limit: Integer,
+        ?anthropic_version: String,
+        ?x_api_key: String,
+        ?request_options: Sam::request_opts
+      ) -> Sam::Models::ModelListResponse
+
+      def retrieve_beta: (
+        String model_id,
+        ?anthropic_version: String,
+        ?x_api_key: String,
+        ?request_options: Sam::request_opts
+      ) -> Sam::Models::ModelRetrieveBetaResponse
+
+      def initialize: (client: Sam::Client) -> void
+    end
+  end
+end

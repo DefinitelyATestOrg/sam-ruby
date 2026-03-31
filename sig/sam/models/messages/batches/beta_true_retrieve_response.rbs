@@ -1,0 +1,118 @@
+module Sam
+  module Models
+    module Messages
+      module Batches
+        type beta_true_retrieve_response =
+          {
+            id: String,
+            archived_at: Time?,
+            cancel_initiated_at: Time?,
+            created_at: Time,
+            ended_at: Time?,
+            expires_at: Time,
+            processing_status: Sam::Models::Messages::Batches::BetaTrueRetrieveResponse::processing_status,
+            request_counts: Sam::Models::Messages::Batches::BetaTrueRetrieveResponse::RequestCounts,
+            results_url: String?,
+            type: :message_batch
+          }
+
+        class BetaTrueRetrieveResponse < Sam::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor archived_at: Time?
+
+          attr_accessor cancel_initiated_at: Time?
+
+          attr_accessor created_at: Time
+
+          attr_accessor ended_at: Time?
+
+          attr_accessor expires_at: Time
+
+          attr_accessor processing_status: Sam::Models::Messages::Batches::BetaTrueRetrieveResponse::processing_status
+
+          attr_accessor request_counts: Sam::Models::Messages::Batches::BetaTrueRetrieveResponse::RequestCounts
+
+          attr_accessor results_url: String?
+
+          attr_accessor type: :message_batch
+
+          def initialize: (
+            id: String,
+            archived_at: Time?,
+            cancel_initiated_at: Time?,
+            created_at: Time,
+            ended_at: Time?,
+            expires_at: Time,
+            processing_status: Sam::Models::Messages::Batches::BetaTrueRetrieveResponse::processing_status,
+            request_counts: Sam::Models::Messages::Batches::BetaTrueRetrieveResponse::RequestCounts,
+            results_url: String?,
+            ?type: :message_batch
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            archived_at: Time?,
+            cancel_initiated_at: Time?,
+            created_at: Time,
+            ended_at: Time?,
+            expires_at: Time,
+            processing_status: Sam::Models::Messages::Batches::BetaTrueRetrieveResponse::processing_status,
+            request_counts: Sam::Models::Messages::Batches::BetaTrueRetrieveResponse::RequestCounts,
+            results_url: String?,
+            type: :message_batch
+          }
+
+          type processing_status = :in_progress | :canceling | :ended
+
+          module ProcessingStatus
+            extend Sam::Internal::Type::Enum
+
+            IN_PROGRESS: :in_progress
+            CANCELING: :canceling
+            ENDED: :ended
+
+            def self?.values: -> ::Array[Sam::Models::Messages::Batches::BetaTrueRetrieveResponse::processing_status]
+          end
+
+          type request_counts =
+            {
+              canceled: Integer,
+              errored: Integer,
+              expired: Integer,
+              processing: Integer,
+              succeeded: Integer
+            }
+
+          class RequestCounts < Sam::Internal::Type::BaseModel
+            attr_accessor canceled: Integer
+
+            attr_accessor errored: Integer
+
+            attr_accessor expired: Integer
+
+            attr_accessor processing: Integer
+
+            attr_accessor succeeded: Integer
+
+            def initialize: (
+              canceled: Integer,
+              errored: Integer,
+              expired: Integer,
+              processing: Integer,
+              succeeded: Integer
+            ) -> void
+
+            def to_hash: -> {
+              canceled: Integer,
+              errored: Integer,
+              expired: Integer,
+              processing: Integer,
+              succeeded: Integer
+            }
+          end
+        end
+      end
+    end
+  end
+end

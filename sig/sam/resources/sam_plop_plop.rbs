@@ -1,0 +1,7 @@
+module Sam
+  module Resources
+    class SamPlopPlop
+      def initialize: (client: Sam::Client) -> void
+    end
+  end
+end

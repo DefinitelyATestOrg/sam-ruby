@@ -2,40 +2,87 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - '**'
+      - '!integrated/**'
+      - '!stl-preview-head/**'
+      - '!stl-preview-base/**'
+      - '!generated'
+      - '!codegen/**'
+      - 'codegen/stl/**'
   pull_request:
-    branches:
-      - main
-      - next
+    branches-ignore:
+      - 'stl-preview-head/**'
+      - 'stl-preview-base/**'
 
 jobs:
-  lint:
-    name: lint
-    runs-on: ubuntu-latest
-    
-
+  build:
+    timeout-minutes: 10
+    name: build
+    permissions:
+      contents: read
+      id-token: write
+    runs-on: ${{ github.repository == 'stainless-sdks/sam-ruby' && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
+    if: |-
+      github.repository == 'stainless-sdks/sam-ruby' &&
+      (github.event_name == 'push' || github.event.pull_request.head.repo.fork) && (github.event_name != 'push' || github.event.head_commit.message != 'codegen metadata')
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          bundler-cache: true
-          ruby-version: '3.1'
+          bundler-cache: false
+      - run: |-
+          bundle install
+
+      - name: Get GitHub OIDC Token
+        if: |-
+          github.repository == 'stainless-sdks/sam-ruby' &&
+          !startsWith(github.ref, 'refs/heads/stl/')
+        id: github-oidc
+        uses: actions/github-script@v8
+        with:
+          script: core.setOutput('github_token', await core.getIDToken());
+
+      - name: Build and upload gem artifacts
+        if: |-
+          github.repository == 'stainless-sdks/sam-ruby' &&
+          !startsWith(github.ref, 'refs/heads/stl/')
+        env:
+          URL: https://pkg.stainless.com/s
+          AUTH: ${{ steps.github-oidc.outputs.github_token }}
+          SHA: ${{ github.sha }}
+          PACKAGE_NAME: sam
+        run: ./scripts/utils/upload-artifact.sh
+  lint:
+    timeout-minutes: 10
+    name: lint
+    runs-on: ${{ github.repository == 'stainless-sdks/sam-ruby' && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.fork
+
+    steps:
+      - uses: actions/checkout@v6
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: false
+      - run: |-
+          bundle install
 
       - name: Run lints
         run: ./scripts/lint
   test:
+    timeout-minutes: 10
     name: test
-    runs-on: ubuntu-latest
-
+    runs-on: ${{ github.repository == 'stainless-sdks/sam-ruby' && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.fork
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          bundler-cache: true
-          ruby-version: '3.1'
+          bundler-cache: false
+      - run: |-
+          bundle install
 
       - name: Run tests
         run: ./scripts/test
-

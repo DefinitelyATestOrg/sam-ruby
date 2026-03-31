@@ -1,0 +1,7 @@
+module Sam
+  module Resources
+    class User
+      def initialize: (client: Sam::Client) -> void
+    end
+  end
+end
